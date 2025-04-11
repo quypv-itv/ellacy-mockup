@@ -108,18 +108,24 @@
 
         // Handle login form submission
         function handleLogin(event) {
+            // Get base URL from current path
+        const BASE = window.location.pathname.split('/')[1];
+        const BASE_URL = '/' + BASE + '/';
+
+        // Handle login form submission
+        function handleLogin(event) {
             event.preventDefault();
             const studentRole = document.getElementById('student-role');
             const agentRole = document.getElementById('agent-role');
             
             // Redirect based on selected role
-            // if (studentRole.classList.contains('bg-blue-600')) {
-            //     window.location.href = 'Students/htmls/Student-Dashboard.html';
-            // } else if (agentRole.classList.contains('bg-blue-600')) {
-            //     window.location.href = 'Agency/html/Agency-dashboard.html';
-            // } else if (adminRole.classList.contains('bg-blue-600')) {
-            //     window.location.href = 'CRM/html/CRM-dashboard.html';
-            // }
+            if (studentRole.classList.contains('bg-blue-600')) {
+                window.location.href = BASE_URL + 'Students/htmls/Student-Dashboard.html';
+            } else if (agentRole.classList.contains('bg-blue-600')) {
+                window.location.href = BASE_URL + 'Agency/html/Agency-dashboard.html';
+            } else if (adminRole.classList.contains('bg-blue-600')) {
+                window.location.href = BASE_URL + 'CRM/html/CRM-dashboard.html';
+            }
         }
 
         // Role selection handling
