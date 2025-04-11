@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports & Analytics - Ellacy CRM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Chart.js for analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
+            <div class="p-6">
+                <h1 class="text-2xl font-bold text-gray-800">Ellacy GO</h1>
+                <p class="text-sm text-gray-500">Admin</p>
+            </div>
+            <nav class="mt-6">
+                <a href="CRM-dashboard.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>
+                    Dashboard
+                </a>
+                <a href="CRM-applications.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>
+                    Applications
+                </a>
+                <a href="CRM-agent.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="users" class="w-5 h-5 mr-3"></i>
+                    Agents
+                </a>
+                <a href="CRM-scholarships.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="graduation-cap" class="w-5 h-5 mr-3"></i>
+                    Scholarships
+                </a>
+                <a href="CRM-institutions.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="building" class="w-5 h-5 mr-3"></i>
+                    Institutions
+                </a>
+                <a href="CRM-students.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="user" class="w-5 h-5 mr-3"></i>
+                    Users
+                </a>
+                <a href="CRM-payment.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="credit-card" class="w-5 h-5 mr-3"></i>
+                    Payments
+                </a>
+                <a href="CRM-tasks.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="check-circle" class="w-5 h-5 mr-3"></i>
+                    Tasks
+                </a>
+                <a href="CRM-report.html" class="flex items-center px-6 py-3 text-blue-600 bg-blue-50">
+                    <i data-lucide="bar-chart" class="w-5 h-5 mr-3"></i>
+                    Reports
+                </a>
+                <a href="CRM-messages.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>
+                    Messages
+                </a>
+                <a href="CRM-user-admin.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="shield" class="w-5 h-5 mr-3"></i>
+                    User Admin
+                </a>
+                <a href="CRM-AI-Assistant.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="bot" class="w-5 h-5 mr-3"></i>
+                    AI Assistant
+                </a>
+                <a href="CRM-Setting.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="settings" class="w-5 h-5 mr-3"></i>
+                    Settings
+                </a>
+            </nav>
+            <div class="mt-auto px-6 py-4 border-t border-gray-200">
+                <p class="text-sm text-gray-600 text-center">Designed & developed by Innotech Viet Nam</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="ml-64 flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6">
+                <h2 class="text-xl font-semibold text-gray-800">Reports & Analytics</h2>
+                <div class="flex items-center">
+                    <button class="p-2 hover:bg-gray-100 rounded-full">
+                        <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
+                    </button>
+                    <div class="relative ml-3">
+                        <button id="profile-menu" class="flex items-center">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                alt="Admin profile" class="w-8 h-8 rounded-full object-cover">
+                        </button>
+                        <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="handleLogout()">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content Area -->
+            <main class="flex-1 overflow-y-auto p-6">
+                <!-- Global Filters -->
+                <div class="bg-white rounded-lg shadow p-6 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Date Range</label>
+                            <select class="w-full border-gray-300 rounded-md shadow-sm">
+                                <option>Last 30 Days</option>
+                                <option>Last Quarter</option>
+                                <option>Last Year</option>
+                                <option>Custom Range</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Region</label>
+                            <select class="w-full border-gray-300 rounded-md shadow-sm">
+                                <option>All Regions</option>
+                                <option>Asia Pacific</option>
+                                <option>Europe</option>
+                                <option>North America</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Institution</label>
+                            <select class="w-full border-gray-300 rounded-md shadow-sm">
+                                <option>All Institutions</option>
+                                <option>University A</option>
+                                <option>University B</option>
+                            </select>
+                        </div>
+                        <div class="flex items-end">
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 w-full">Apply Filters</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Report Sections -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Application Funnel Report -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-lg font-semibold">Application Funnel</h3>
+                            <div class="flex space-x-2">
+                                <button class="p-2 hover:bg-gray-100 rounded-md" title="Export PDF">
+                                    <i data-lucide="file-text" class="w-5 h-5"></i>
+                                </button>
+                                <button class="p-2 hover:bg-gray-100 rounded-md" title="Export CSV">
+                                    <i data-lucide="download" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="h-[300px]">
+                            <canvas id="applicationFunnelChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Agent Performance Report -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-lg font-semibold">Agent Performance</h3>
+                            <div class="flex space-x-2">
+                                <button class="p-2 hover:bg-gray-100 rounded-md" title="Export PDF">
+                                    <i data-lucide="file-text" class="w-5 h-5"></i>
+                                </button>
+                                <button class="p-2 hover:bg-gray-100 rounded-md" title="Export CSV">
+                                    <i data-lucide="download" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="h-[300px]">
+                            <canvas id="agentPerformanceChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Scholarship Utilization Report -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-lg font-semibold">Scholarship Utilization</h3>
+                            <div class="flex space-x-2">
+                                <button class="p-2 hover:bg-gray-100 rounded-md" title="Export PDF">
+                                    <i data-lucide="file-text" class="w-5 h-5"></i>
+                                </button>
+                                <button class="p-2 hover:bg-gray-100 rounded-md" title="Export CSV">
+                                    <i data-lucide="download" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="h-[300px]">
+                            <canvas id="scholarshipChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Student Demographics -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-lg font-semibold">Student Demographics</h3>
+                            <div class="flex space-x-2">
+                                <button class="p-2 hover:bg-gray-100 rounded-md" title="Export PDF">
+                                    <i data-lucide="file-text" class="w-5 h-5"></i>
+                                </button>
+                                <button class="p-2 hover:bg-gray-100 rounded-md" title="Export CSV">
+                                    <i data-lucide="download" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="h-[300px]">
+                            <canvas id="demographicsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Institution Activity -->
+                    <div class="bg-white rounded-lg shadow p-6 col-span-2">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-lg font-semibold">Institution Activity</h3>
+                            <div class="flex space-x-2">
+                                <button class="p-2 hover:bg-gray-100 rounded-md" title="Export PDF">
+                                    <i data-lucide="file-text" class="w-5 h-5"></i>
+                                </button>
+                                <button class="p-2 hover:bg-gray-100 rounded-md" title="Export CSV">
+                                    <i data-lucide="download" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="h-[200px]">
+                            <canvas id="institutionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Profile dropdown functionality
+        const profileMenu = document.getElementById('profile-menu');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        if (profileMenu && profileDropdown) {
+            profileMenu.addEventListener('click', (e) => {
+                e.stopPropagation();
+                profileDropdown.classList.toggle('hidden');
+            });
+
+            document.addEventListener('click', () => {
+                profileDropdown.classList.add('hidden');
+            });
+
+            profileDropdown.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        }
+
+        // Handle logout
+        function handleLogout() {
+            console.log('Logging out...');
+            window.location.href = '../../login.html';
+        }
+
+        // Chart configuration
+        const chartConfig = {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: false,
+            plugins: {
+                legend: {
+                    display: true
+                },
+                tooltip: {
+                    enabled: true
+                }
+            }
+        };
+
+        // Initialize Select2 and Charts
+        $(document).ready(function() {
+            $('select').select2({
+                minimumResultsForSearch: 6
+            });
+
+            // Initialize all charts
+            initApplicationFunnelChart();
+            initAgentPerformanceChart();
+            initScholarshipChart();
+            initDemographicsChart();
+            initInstitutionChart();
+        });
+
+        // Application Funnel Chart
+        function initApplicationFunnelChart() {
+            const ctx = document.getElementById('applicationFunnelChart').getContext('2d');
+            return new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Leads', 'Submitted', 'Reviewed', 'Accepted', 'Enrolled'],
+                    datasets: [{
+                        label: 'Applications',
+                        data: [1200, 800, 600, 400, 200],
+                        backgroundColor: '#3b82f6',
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    ...chartConfig,
+                    plugins: {
+                        ...chartConfig.plugins,
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        // Agent Performance Chart
+        function initAgentPerformanceChart() {
+            const ctx = document.getElementById('agentPerformanceChart').getContext('2d');
+            return new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Agent A', 'Agent B', 'Agent C', 'Agent D', 'Agent E'],
+                    datasets: [{
+                        label: 'Applications',
+                        data: [45, 39, 30, 25, 18],
+                        backgroundColor: '#10b981',
+                        borderRadius: 8
+                    }]
+                },
+                options: chartConfig
+            });
+        }
+
+        // Scholarship Utilization Chart
+        function initScholarshipChart() {
+            const ctx = document.getElementById('scholarshipChart').getContext('2d');
+            return new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Utilized', 'Available', 'Expired'],
+                    datasets: [{
+                        data: [65, 25, 10],
+                        backgroundColor: ['#3b82f6', '#10b981', '#ef4444']
+                    }]
+                },
+                options: chartConfig
+            });
+        }
+
+        // Demographics Chart
+        function initDemographicsChart() {
+            const ctx = document.getElementById('demographicsChart').getContext('2d');
+            return new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Bachelor', 'Master', 'PhD'],
+                    datasets: [{
+                        data: [50, 35, 15],
+                        backgroundColor: ['#3b82f6', '#10b981', '#f59e0b']
+                    }]
+                },
+                options: chartConfig
+            });
+        }
+
+        // Institution Activity Chart
+        function initInstitutionChart() {
+            const ctx = document.getElementById('institutionChart').getContext('2d');
+            return new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Uni A', 'Uni B', 'Uni C', 'Uni D', 'Uni E', 'Uni F'],
+                    datasets: [{
+                        label: 'Applications',
+                        data: [85, 72, 65, 58, 45, 38],
+                        backgroundColor: '#3b82f6',
+                        borderRadius: 8
+                    }, {
+                        label: 'Acceptance Rate',
+                        data: [75, 68, 80, 65, 70, 72],
+                        backgroundColor: '#10b981',
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks | Ellacy GO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Sidebar -->
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
+        <div class="p-6">
+            <h1 class="text-2xl font-bold text-gray-800">Ellacy GO</h1>
+            <p class="text-sm text-gray-500">Agent</p>
+        </div>
+        <nav class="mt-6">
+            <a href="Agency-dashboard.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>
+                Dashboard
+            </a>
+            <a href="Agency-my-students.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="users" class="w-5 h-5 mr-3"></i>
+                My Students
+            </a>
+            <a href="Agent-Application.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>
+                Applications
+            </a>
+            <a href="#" class="flex items-center px-6 py-3 bg-blue-50 text-blue-600">
+                <i data-lucide="check-square" class="w-5 h-5 mr-3"></i>
+                Tasks
+            </a>
+            <a href="Agency-scholarships.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="graduation-cap" class="w-5 h-5 mr-3"></i>
+                Scholarships
+            </a>
+            <a href="Agency-commission.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="dollar-sign" class="w-5 h-5 mr-3"></i>
+                Commissions
+            </a>
+            <a href="Agency-profile.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="settings" class="w-5 h-5 mr-3"></i>
+                Account Settings
+            </a>
+            <a href="Agency-messages.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>
+                Messages
+            </a>
+            <a href="Agency-team.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="users-2" class="w-5 h-5 mr-3"></i>
+                Team Management
+            </a>
+        </nav>
+        <div class="mt-auto px-6 py-4 border-t border-gray-200">
+            <p class="text-sm text-gray-600 text-center">Designed & developed by Innotech Viet Nam</p>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="ml-64 p-8">
+        <!-- Header -->
+        <div class="mb-8 flex justify-between items-center">
+            <h2 class="text-xl font-semibold text-gray-800">Tasks</h2>
+            <div class="flex items-center space-x-4">
+                <button onclick="openCreateTaskModal()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center">
+                    <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                    Create Task
+                </button>
+                <button class="relative">
+                    <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
+                    <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                </button>
+                <!-- Profile Dropdown -->
+                <div class="relative">
+                    <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
+                             alt="Profile" 
+                             class="w-8 h-8 rounded-full object-cover">
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                        <a href="Agency-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
+                        </a>
+                        <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Task Summary -->
+        <div class="grid grid-cols-4 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-sm font-medium text-gray-500">Due Today</h3>
+                    <span class="text-2xl font-semibold text-gray-900">5</span>
+                </div>
+                <div class="w-full bg-gray-200 h-1 rounded-full overflow-hidden">
+                    <div class="bg-blue-600 h-1 rounded-full" style="width: 40%"></div>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-sm font-medium text-gray-500">High Priority</h3>
+                    <span class="text-2xl font-semibold text-gray-900">3</span>
+                </div>
+                <div class="w-full bg-gray-200 h-1 rounded-full overflow-hidden">
+                    <div class="bg-red-600 h-1 rounded-full" style="width: 30%"></div>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-sm font-medium text-gray-500">In Progress</h3>
+                    <span class="text-2xl font-semibold text-gray-900">8</span>
+                </div>
+                <div class="w-full bg-gray-200 h-1 rounded-full overflow-hidden">
+                    <div class="bg-yellow-600 h-1 rounded-full" style="width: 60%"></div>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-sm font-medium text-gray-500">Completed</h3>
+                    <span class="text-2xl font-semibold text-gray-900">12</span>
+                </div>
+                <div class="w-full bg-gray-200 h-1 rounded-full overflow-hidden">
+                    <div class="bg-green-600 h-1 rounded-full" style="width: 80%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="bg-white p-4 rounded-xl shadow-sm mb-6">
+            <div class="grid grid-cols-5 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                    <select class="w-full border-gray-300 rounded-lg text-sm">
+                        <option>All Status</option>
+                        <option>To Do</option>
+                        <option>In Progress</option>
+                        <option>Done</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Student</label>
+                    <select class="w-full border-gray-300 rounded-lg text-sm">
+                        <option>All Students</option>
+                        <option>Sarah Chen</option>
+                        <option>John Smith</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Priority</label>
+                    <select class="w-full border-gray-300 rounded-lg text-sm">
+                        <option>All Priority</option>
+                        <option>High</option>
+                        <option>Normal</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Due Date</label>
+                    <input type="date" class="w-full border-gray-300 rounded-lg text-sm">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Sort By</label>
+                    <select class="w-full border-gray-300 rounded-lg text-sm">
+                        <option>Due Date</option>
+                        <option>Priority</option>
+                        <option>Recently Created</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Task Table -->
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Task Name</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Assigned Student</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Due Date</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Priority</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Assigned To</th>
+                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    <tr>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm text-gray-900">Upload transcript for Sarah C.</span>
+                                <span class="px-2 py-0.5 text-xs bg-purple-100 text-purple-800 rounded-full">System-generated</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-1">Linked to Application Step 2 – Documents Uploaded</p>
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="#" class="text-sm text-blue-600 hover:text-blue-800">Sarah Chen</a>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="text-sm text-red-600">Today</span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">High</span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">In Progress</span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop" alt="Staff" class="w-6 h-6 rounded-full mr-2">
+                                <span class="text-sm text-gray-900">John Agent</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-right space-x-3">
+                            <button onclick="openTaskDetailModal()" class="text-blue-600 hover:text-blue-800">View</button>
+                            <button class="text-green-600 hover:text-green-800">Done</button>
+                            <button class="text-gray-600 hover:text-gray-800">Edit</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="px-6 py-4">
+                            <span class="text-sm text-gray-900">Follow up on conditional offer</span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="#" class="text-sm text-blue-600 hover:text-blue-800">John Smith</a>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="text-sm text-gray-600">Tomorrow</span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-full">Normal</span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-full">To Do</span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop" alt="Staff" class="w-6 h-6 rounded-full mr-2">
+                                <span class="text-sm text-gray-900">Jane Agent</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-right space-x-3">
+                            <button onclick="openTaskDetailModal()" class="text-blue-600 hover:text-blue-800">View</button>
+                            <button class="text-green-600 hover:text-green-800">Done</button>
+                            <button class="text-gray-600 hover:text-gray-800">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Create Task Modal -->
+    <div id="create-task-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+        <div class="relative top-20 mx-auto p-8 border-0 w-[600px] shadow-xl rounded-3xl bg-white">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-semibold text-gray-900">Create New Task</h3>
+                <button onclick="closeCreateTaskModal()" class="text-gray-400 hover:text-gray-500">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            
+            <form class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Task Name</label>
+                    <input type="text" class="w-full border-gray-300 rounded-lg" placeholder="Enter task name">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Linked Student</label>
+                    <select class="w-full border-gray-300 rounded-lg">
+                        <option>Select student</option>
+                        <option>Sarah Chen</option>
+                        <option>John Smith</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Priority</label>
+                        <select class="w-full border-gray-300 rounded-lg">
+                            <option>Normal</option>
+                            <option>High</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Due Date</label>
+                        <input type="date" class="w-full border-gray-300 rounded-lg">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Assign To</label>
+                    <select class="w-full border-gray-300 rounded-lg">
+                        <option>Select staff member</option>
+                        <option>John Agent</option>
+                        <option>Jane Agent</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Notes / Description</label>
+                    <textarea class="w-full border-gray-300 rounded-lg" rows="3" placeholder="Enter task description"></textarea>
+                </div>
+
+                <div class="flex justify-end space-x-3">
+                    <button type="button" onclick="closeCreateTaskModal()" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                        Create Task
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Task Detail Modal -->
+    <div id="task-detail-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+        <div class="relative top-20 mx-auto p-8 border-0 w-[600px] shadow-xl rounded-3xl bg-white">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-semibold text-gray-900">Task Details</h3>
+                <button onclick="closeTaskDetailModal()" class="text-gray-400 hover:text-gray-500">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <h4 class="text-sm font-medium text-gray-500 mb-1">Task Name</h4>
+                    <p class="text-gray-900">Upload transcript for Sarah C.</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-500 mb-1">Linked Student</h4>
+                        <a href="#" class="text-blue-600 hover:text-blue-800">Sarah Chen</a>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-500 mb-1">Due Date</h4>
+                        <p class="text-red-600">Today</p>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-500 mb-1">Priority</h4>
+                        <span class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">High</span>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-500 mb-1">Status</h4>
+                        <span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">In Progress</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-medium text-gray-500 mb-1">Assigned To</h4>
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop" alt="Staff" class="w-6 h-6 rounded-full mr-2">
+                        <span class="text-gray-900">John Agent</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-medium text-gray-500 mb-1">Description</h4>
+                    <p class="text-gray-600">Need to follow up with Sarah to get her latest academic transcript for the University of Sydney application.</p>
+                </div>
+
+                <!-- Application Checklist Integration -->
+                <div class="border-t border-gray-200 pt-6 mt-6">
+                    <h4 class="text-sm font-medium text-gray-900 mb-4">Application Checklist Status</h4>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-sm">1. Profile Completed</span>
+                            </div>
+                            <span class="text-xs text-green-600">Done</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-6 h-6 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center">
+                                    <i data-lucide="alert-circle" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-sm">2. Documents Uploaded</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs text-yellow-600">Missing Items</span>
+                                <button class="text-blue-600 hover:text-blue-800 text-xs">View Documents</button>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-6 h-6 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center">
+                                    <i data-lucide="minus" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-sm text-gray-500">3. Program Selection</span>
+                            </div>
+                            <span class="text-xs text-gray-500">Not Started</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex justify-end space-x-3 mt-6">
+                    <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center">
+                        <i data-lucide="edit" class="w-4 h-4 mr-2"></i>
+                        Edit
+                    </button>
+                    <button onclick="markTaskDone()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center">
+                        <i data-lucide="check" class="w-4 h-4 mr-2"></i>
+                        Mark as Done
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Modal Management
+        const createTaskModal = document.getElementById('create-task-modal');
+        const taskDetailModal = document.getElementById('task-detail-modal');
+
+        function openCreateTaskModal() {
+            createTaskModal.classList.remove('hidden');
+        }
+
+        function closeCreateTaskModal() {
+            createTaskModal.classList.add('hidden');
+        }
+
+        function openTaskDetailModal() {
+            taskDetailModal.classList.remove('hidden');
+        }
+
+        function closeTaskDetailModal() {
+            taskDetailModal.classList.add('hidden');
+        }
+
+        // Close modals when clicking outside
+        [createTaskModal, taskDetailModal].forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+        });
+
+        // Handle form submissions
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Here you would typically handle the form submission
+            closeCreateTaskModal();
+        });
+
+        // Handle task completion and checklist sync
+        function markTaskDone() {
+            // 1. Mark task as complete
+            const taskRow = document.querySelector('tr');
+            const statusCell = taskRow.querySelector('td:nth-child(5)');
+            statusCell.innerHTML = '<span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Done</span>';
+
+            // 2. Update checklist step
+            const checklistStep = document.querySelector('.space-y-4 > div:nth-child(2)');
+            const stepIcon = checklistStep.querySelector('.w-6');
+            const stepStatus = checklistStep.querySelector('.text-xs');
+
+            stepIcon.className = 'w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center';
+            stepIcon.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i>';
+            stepStatus.className = 'text-xs text-green-600';
+            stepStatus.textContent = 'Complete';
+
+            // 3. Close modal
+            closeTaskDetailModal();
+
+            // 4. Reinitialize icons
+            lucide.createIcons();
+        }
+
+        // Profile Dropdown
+        const profileMenu = document.getElementById('profile-menu');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', () => {
+            profileDropdown.classList.add('hidden');
+        });
+
+        function handleLogout() {
+            // Add your logout logic here
+            window.location.href = '../../login.html';
+        }
+    </script>
+</body>
+</html>

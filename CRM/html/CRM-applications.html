@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications - Ellacy GO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="modal-script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+</head>
+<body class="bg-gray-50">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
+            <div class="p-6">
+                <h1 class="text-2xl font-bold text-gray-800">Ellacy GO</h1>
+                <p class="text-sm text-gray-500">Admin</p>
+            </div>
+            <nav class="mt-6">
+                <a href="CRM-dashboard.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>
+                    Dashboard
+                </a>
+                <a href="#" class="flex items-center px-6 py-3 text-blue-600 bg-blue-50">
+                    <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>
+                    Applications
+                </a>
+                <a href="CRM-agent.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="users" class="w-5 h-5 mr-3"></i>
+                    Agents
+                </a>
+                <a href="CRM-scholarships.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="graduation-cap" class="w-5 h-5 mr-3"></i>
+                    Scholarships
+                </a>
+                <a href="CRM-institutions.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="building" class="w-5 h-5 mr-3"></i>
+                    Institutions
+                </a>
+                <a href="CRM-students.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="user" class="w-5 h-5 mr-3"></i>
+                    Users
+                </a>
+                <a href="CRM-payment.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="credit-card" class="w-5 h-5 mr-3"></i>
+                    Payments
+                </a>
+                <a href="CRM-tasks.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="check-circle" class="w-5 h-5 mr-3"></i>
+                    Tasks
+                </a>
+                <a href="CRM-report.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="bar-chart" class="w-5 h-5 mr-3"></i>
+                    Reports
+                </a>
+                <a href="CRM-messages.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>
+                    Messages
+                </a>
+                <a href="CRM-user-admin.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="shield" class="w-5 h-5 mr-3"></i>
+                    User Admin
+                </a>
+                <a href="CRM-AI-Assistant.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="bot" class="w-5 h-5 mr-3"></i>
+                    AI Assistant
+                </a>
+                <a href="CRM-Setting.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="settings" class="w-5 h-5 mr-3"></i>
+                    Settings
+                </a>
+            </nav>
+            <div class="mt-auto px-6 py-4 border-t border-gray-200">
+                <p class="text-sm text-gray-600 text-center">Designed & developed by Innotech Viet Nam</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="ml-64 flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6">
+                <h2 class="text-xl font-semibold text-gray-800">Applications</h2>
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 hover:bg-gray-100 rounded-full">
+                        <i data-lucide="bell" class="w-5 h-5 text-gray-600"></i>
+                    </button>
+                    <div class="relative" id="profile-menu">
+                        <button class="flex items-center">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                alt="Admin profile" class="w-8 h-8 rounded-full object-cover">
+                        </button>
+                        <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1">
+                            <a href="CRM-Setting.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="handleLogout()">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main -->
+            <main class="flex-1 overflow-y-auto">
+                <!-- Filter Bar -->
+                <div class="bg-white border-b sticky top-0">
+                    <div class="p-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <!-- Status Filter -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                                <select class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="">All Status</option>
+                                    <option value="draft">Draft</option>
+                                    <option value="submitted">Submitted</option>
+                                    <option value="in_review">In Review</option>
+                                    <option value="accepted">Accepted</option>
+                                    <option value="rejected">Rejected</option>
+                                </select>
+                            </div>
+
+                            <!-- Country Filter -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Country</label>
+                                <select class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="">All Countries</option>
+                                    <option value="au">Australia</option>
+                                    <option value="uk">United Kingdom</option>
+                                    <option value="us">United States</option>
+                                </select>
+                            </div>
+
+                            <!-- Agent Filter -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Agent</label>
+                                <select class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="">All Agents</option>
+                                    <option value="1">Sarah Wilson</option>
+                                    <option value="2">Michael Chen</option>
+                                    <option value="3">David Kim</option>
+                                </select>
+                            </div>
+
+                            <!-- Date Range Filter -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Submission Date</label>
+                                <input type="date" class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                        </div>
+                        
+                        <!-- Advanced Filters Toggle -->
+                        <button class="mt-4 text-sm text-blue-600 hover:text-blue-700 flex items-center">
+                            <i data-lucide="sliders" class="w-4 h-4 mr-1"></i>
+                            Advanced Filters
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Action Bar -->
+                <div class="p-4 flex justify-between items-center border-b">
+                    <div class="flex items-center space-x-4">
+                        <button class="inline-flex items-center px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white">
+                            <i data-lucide="download" class="w-4 h-4 mr-2"></i>
+                            Export
+                        </button>
+                        <button class="inline-flex items-center px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50">
+                            <i data-lucide="mail" class="w-4 h-4 mr-2"></i>
+                            Send Reminder
+                        </button>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <i data-lucide="search" class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            <input type="text" placeholder="Search applications..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <button class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                            <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                            New Application
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Application Table -->
+                <div class="p-6">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Student Name
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Program Applied
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Country
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Agent
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Status
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Scholarship
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Last Updated
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <!-- Row 1 -->
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <img class="h-8 w-8 rounded-full" src="https://ui-avatars.com/api/?name=John+Smith" alt="">
+                                                <div class="ml-4">
+                                                    <div class="text-sm font-medium text-gray-900">John Smith</div>
+                                                    <div class="text-sm text-gray-500">john.smith@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">BBA - University of Melbourne</div>
+                                            <div class="text-sm text-gray-500">Fall 2024</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">Australia</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">Sarah Wilson</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                                                Submitted
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                Assigned
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            2024-04-08
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <button onclick="openApplicationModal(1)" class="inline-flex items-center px-2 py-1 border border-blue-600 text-blue-600 font-medium rounded hover:bg-blue-600 hover:text-white mr-1">
+                                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                            </button>
+                                            <button class="inline-flex items-center px-2 py-1 border border-gray-300 text-gray-700 font-medium rounded hover:bg-gray-50 mr-1">
+                                                <i data-lucide="edit" class="w-4 h-4"></i>
+                                            </button>
+                                            <button class="inline-flex items-center px-2 py-1 border border-gray-300 text-gray-700 font-medium rounded hover:bg-gray-50">
+                                                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Row 2 -->
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <img class="h-8 w-8 rounded-full" src="https://ui-avatars.com/api/?name=Emily+Johnson" alt="">
+                                                <div class="ml-4">
+                                                    <div class="text-sm font-medium text-gray-900">Emily Johnson</div>
+                                                    <div class="text-sm text-gray-500">emily.j@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">MSc Computer Science - Imperial College</div>
+                                            <div class="text-sm text-gray-500">Fall 2024</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">United Kingdom</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">Michael Chen</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                                In Review
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
+                                                None
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            2024-04-07
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <button onclick="openApplicationModal(2)" class="inline-flex items-center px-2 py-1 border border-blue-600 text-blue-600 font-medium rounded hover:bg-blue-600 hover:text-white mr-1">
+                                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                            </button>
+                                            <button class="inline-flex items-center px-2 py-1 border border-gray-300 text-gray-700 font-medium rounded hover:bg-gray-50 mr-1">
+                                                <i data-lucide="edit" class="w-4 h-4"></i>
+                                            </button>
+                                            <button class="inline-flex items-center px-2 py-1 border border-gray-300 text-gray-700 font-medium rounded hover:bg-gray-50">
+                                                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="flex items-center justify-between mt-6">
+                        <div class="text-sm text-gray-700">
+                            Showing 1 to 2 of 20 results
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="px-3 py-1 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 disabled:opacity-50" disabled>
+                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                            </button>
+                            <button class="px-3 py-1 border border-blue-600 bg-blue-50 text-blue-600 rounded-lg font-medium">1</button>
+                            <button class="px-3 py-1 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50">2</button>
+                            <button class="px-3 py-1 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50">3</button>
+                            <button class="px-3 py-1 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Application Detail Modal -->
+        <div id="applicationModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 hidden z-50">
+            <div class="flex items-start justify-center min-h-screen p-4">
+                <div class="bg-white rounded-xl shadow-xl w-full max-w-4xl overflow-hidden relative my-8">
+                    <!-- Modal Header -->
+                    <div class="px-6 py-4 border-b flex items-center justify-between sticky top-0 bg-white z-10">
+                        <div class="flex items-center space-x-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Application Details</h3>
+                            <div class="px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Submitted</div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <button class="inline-flex items-center px-3 py-1.5 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50">
+                                <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
+                                Edit
+                            </button>
+                            <button onclick="closeApplicationModal()" class="text-gray-400 hover:text-gray-500">
+                                <i data-lucide="x" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Modal Content -->
+                    <div class="overflow-y-auto" style="max-height: calc(100vh - 12rem);">
+                        <!-- Tabs -->
+                        <div class="px-6 py-2 border-b bg-white sticky top-[0.5rem] z-10">
+                            <nav class="flex space-x-4">
+                                <button role="tab" data-tab="profile" class="rounded-lg px-4 py-2 text-sm font-medium bg-blue-50 text-blue-600">
+                                    Profile
+                                </button>
+                                <button role="tab" data-tab="documents" class="rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                    Documents
+                                </button>
+                                <button role="tab" data-tab="checklist" class="rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                    Checklist
+                                </button>
+                                <button role="tab" data-tab="history" class="rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                    History
+                                </button>
+                            </nav>
+                        </div>
+
+                        <!-- Tab Contents -->
+                        <div class="p-6">
+                            <!-- Profile Tab -->
+                            <div id="profile-tab" class="space-y-8">
+                                <!-- Personal Information -->
+                                <div>
+                                    <h4 class="text-base font-medium text-gray-900 mb-4">Personal Information</h4>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                            <div class="text-sm text-gray-900">John Smith</div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                            <div class="text-sm text-gray-900">john.smith@example.com</div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                                            <div class="text-sm text-gray-900">+1 234 567 8900</div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Nationality</label>
+                                            <div class="text-sm text-gray-900">United States</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Academic Information -->
+                                <div>
+                                    <h4 class="text-base font-medium text-gray-900 mb-4">Academic Information</h4>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Current/Previous Institution</label>
+                                            <div class="text-sm text-gray-900">University of Washington</div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Major</label>
+                                            <div class="text-sm text-gray-900">Business Administration</div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">GPA</label>
+                                            <div class="text-sm text-gray-900">3.8/4.0</div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">English Proficiency</label>
+                                            <div class="text-sm text-gray-900">IELTS 7.5</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Application Details -->
+                                <div>
+                                    <h4 class="text-base font-medium text-gray-900 mb-4">Application Details</h4>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Program</label>
+                                            <div class="text-sm text-gray-900">BBA - University of Melbourne</div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Intake</label>
+                                            <div class="text-sm text-gray-900">Fall 2024</div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Agent</label>
+                                            <div class="text-sm text-gray-900">Sarah Wilson</div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Submission Date</label>
+                                            <div class="text-sm text-gray-900">April 8, 2024</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Documents Tab -->
+                            <div id="documents-tab" class="hidden">
+                                <div class="space-y-6">
+                                    <h4 class="text-base font-medium text-gray-900 mb-4">Documents</h4>
+                                    <div class="grid grid-cols-1 gap-4">
+                                        <!-- Passport -->
+                                        <div class="border rounded-lg p-4">
+                                            <div class="flex items-center justify-between">
+                                                <div>
+                                                    <h5 class="text-sm font-medium text-gray-900">Passport</h5>
+                                                    <p class="text-sm text-gray-500">Valid until 2029</p>
+                                                </div>
+                                                <div class="flex items-center space-x-2">
+                                                    <button class="inline-flex items-center px-3 py-1.5 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50">
+                                                        <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                                                        View
+                                                    </button>
+                                                    <button class="inline-flex items-center px-3 py-1.5 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50">
+                                                        <i data-lucide="download" class="w-4 h-4 mr-1"></i>
+                                                        Download
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Academic Transcript -->
+                                        <div class="border rounded-lg p-4">
+                                            <div class="flex items-center justify-between">
+                                                <div>
+                                                    <h5 class="text-sm font-medium text-gray-900">Academic Transcript</h5>
+                                                    <p class="text-sm text-gray-500">Latest semester included</p>
+                                                </div>
+                                                <div class="flex items-center space-x-2">
+                                                    <button class="inline-flex items-center px-3 py-1.5 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50">
+                                                        <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                                                        View
+                                                    </button>
+                                                    <button class="inline-flex items-center px-3 py-1.5 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50">
+                                                        <i data-lucide="download" class="w-4 h-4 mr-1"></i>
+                                                        Download
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- IELTS Certificate -->
+                                        <div class="border rounded-lg p-4">
+                                            <div class="flex items-center justify-between">
+                                                <div>
+                                                    <h5 class="text-sm font-medium text-gray-900">IELTS Certificate</h5>
+                                                    <p class="text-sm text-gray-500">Overall Band: 7.5</p>
+                                                </div>
+                                                <div class="flex items-center space-x-2">
+                                                    <button class="inline-flex items-center px-3 py-1.5 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50">
+                                                        <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                                                        View
+                                                    </button>
+                                                    <button class="inline-flex items-center px-3 py-1.5 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50">
+                                                        <i data-lucide="download" class="w-4 h-4 mr-1"></i>
+                                                        Download
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Checklist Tab -->
+                            <div id="checklist-tab" class="hidden">
+                                <div class="space-y-6">
+                                    <h4 class="text-base font-medium text-gray-900 mb-4">Application Checklist</h4>
+                                    
+                                    <!-- Step 1: Document Submission -->
+                                    <div>
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0">
+                                                <span class="w-8 h-8 flex items-center justify-center rounded-full bg-green-100 text-green-600">
+                                                    <i data-lucide="check" class="w-5 h-5"></i>
+                                                </span>
+                                            </div>
+                                            <div class="ml-4">
+                                                <h5 class="text-sm font-medium text-gray-900">Document Submission</h5>
+                                                <p class="text-sm text-gray-500">All required documents have been submitted</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 2: Document Verification -->
+                                    <div>
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0">
+                                                <span class="w-8 h-8 flex items-center justify-center rounded-full bg-green-100 text-green-600">
+                                                    <i data-lucide="check" class="w-5 h-5"></i>
+                                                </span>
+                                            </div>
+                                            <div class="ml-4">
+                                                <h5 class="text-sm font-medium text-gray-900">Document Verification</h5>
+                                                <p class="text-sm text-gray-500">Documents have been verified</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 3: Application Review -->
+                                    <div>
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0">
+                                                <span class="w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                                                    <i data-lucide="clock" class="w-5 h-5"></i>
+                                                </span>
+                                            </div>
+                                            <div class="ml-4">
+                                                <h5 class="text-sm font-medium text-gray-900">Application Review</h5>
+                                                <p class="text-sm text-gray-500">Under review by the admissions team</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 4: Interview -->
+                                    <div>
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0">
+                                                <span class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-400">
+                                                    <i data-lucide="video" class="w-5 h-5"></i>
+                                                </span>
+                                            </div>
+                                            <div class="ml-4">
+                                                <h5 class="text-sm font-medium text-gray-900">Interview</h5>
+                                                <p class="text-sm text-gray-500">Not scheduled yet</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 5: Final Decision -->
+                                    <div>
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0">
+                                                <span class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-400">
+                                                    <i data-lucide="check-circle" class="w-5 h-5"></i>
+                                                </span>
+                                            </div>
+                                            <div class="ml-4">
+                                                <h5 class="text-sm font-medium text-gray-900">Final Decision</h5>
+                                                <p class="text-sm text-gray-500">Pending</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- History Tab -->
+                            <div id="history-tab" class="hidden">
+                                <div class="space-y-6">
+                                    <h4 class="text-base font-medium text-gray-900 mb-4">Application History</h4>
+                                    
+                                    <div class="flow-root">
+                                        <ul role="list" class="-mb-8">
+                                            <li>
+                                                <div class="relative pb-8">
+                                                    <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+                                                    <div class="relative flex space-x-3">
+                                                        <div>
+                                                            <span class="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center ring-8 ring-white">
+                                                                <i data-lucide="file-text" class="w-5 h-5 text-white"></i>
+                                                            </span>
+                                                        </div>
+                                                        <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+                                                            <div>
+                                                                <p class="text-sm text-gray-500">Application submitted by <span class="font-medium text-gray-900">Sarah Wilson</span></p>
+                                                            </div>
+                                                            <div class="text-right text-sm whitespace-nowrap text-gray-500">
+                                                                <time datetime="2024-04-08">Apr 8, 2024</time>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <div class="relative pb-8">
+                                                    <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+                                                    <div class="relative flex space-x-3">
+                                                        <div>
+                                                            <span class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-white">
+                                                                <i data-lucide="check" class="w-5 h-5 text-white"></i>
+                                                            </span>
+                                                        </div>
+                                                        <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+                                                            <div>
+                                                                <p class="text-sm text-gray-500">Documents verified by <span class="font-medium text-gray-900">Admin</span></p>
+                                                            </div>
+                                                            <div class="text-right text-sm whitespace-nowrap text-gray-500">
+                                                                <time datetime="2024-04-09">Apr 9, 2024</time>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <div class="relative">
+                                                    <div class="relative flex space-x-3">
+                                                        <div>
+                                                            <span class="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center ring-8 ring-white">
+                                                                <i data-lucide="eye" class="w-5 h-5 text-white"></i>
+                                                            </span>
+                                                        </div>
+                                                        <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+                                                            <div>
+                                                                <p class="text-sm text-gray-500">Application under review by <span class="font-medium text-gray-900">Admissions Team</span></p>
+                                                            </div>
+                                                            <div class="text-right text-sm whitespace-nowrap text-gray-500">
+                                                                <time datetime="2024-04-10">Apr 10, 2024</time>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Handle logout
+        function handleLogout() {
+            window.location.href = '../../login.html';
+        }
+
+        // Profile Dropdown Toggle
+        const profileMenu = document.getElementById('profile-menu');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileMenu.addEventListener('click', () => {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!profileMenu.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

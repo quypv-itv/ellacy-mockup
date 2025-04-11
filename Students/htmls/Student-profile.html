@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Ellacy GO</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(to right top, #EDE5D6, #9ED5C5, #ffffff);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Sidebar -->
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
+        <div class="p-6">
+            <h1 class="text-2xl font-bold text-gray-800">Ellacy GO</h1>
+            <p class="text-sm text-gray-500">Student</p>
+        </div>
+        <nav class="mt-6">
+            <a href="Student-Dashboard.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>
+                Dashboard
+            </a>
+            <a href="Student-my-application.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>
+                My Applications
+            </a>
+            <a href="Student-find-program.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="search" class="w-5 h-5 mr-3"></i>
+                Find Programs
+            </a>
+            <a href="Student-sholarships.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="award" class="w-5 h-5 mr-3"></i>
+                Scholarships
+            </a>
+            <a href="Student-profile.html" class="flex items-center px-6 py-3 bg-blue-50 text-blue-600">
+                <i data-lucide="user" class="w-5 h-5 mr-3"></i>
+                Profile
+            </a>
+            <a href="Student-AI-Assistant.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="bot" class="w-5 h-5 mr-3"></i>
+                AI Assistant
+            </a>
+            <a href="Student-payment.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="credit-card" class="w-5 h-5 mr-3"></i>
+                Payment Center
+            </a>
+            <a href="Student-messages.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>
+                Messages
+            </a>
+        </nav>
+        <div class="mt-auto px-6 py-4 border-t border-gray-200">
+            <p class="text-sm text-gray-600 text-center">Designed & developed by Innotech Viet Nam</p>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="ml-64">
+        <!-- Top Bar -->
+        <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6">
+            <div class="flex items-center">
+                <h2 class="text-xl font-semibold text-gray-800">My Profile</h2>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="relative">
+                    <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
+                    <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                </button>
+                <!-- Profile Dropdown -->
+                <div class="relative">
+                    <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
+                             alt="Profile" 
+                             class="w-8 h-8 rounded-full object-cover">
+                    </button>
+                    
+                    <!-- Dropdown Menu -->
+                    <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                        <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
+                        </a>
+                        <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="p-6">
+            <!-- AI Hints Banner -->
+            <div class="bg-blue-50 rounded-3xl p-4 mb-6 flex items-center justify-between">
+                <div class="flex items-center">
+                    <i data-lucide="sparkles" class="w-5 h-5 text-blue-600 mr-3"></i>
+                    <p class="text-blue-600">You're eligible for 5 scholarships based on your profile!</p>
+                </div>
+                <button class="text-blue-600 hover:text-blue-700 font-medium">View Scholarships</button>
+            </div>
+
+            <!-- Profile Sections -->
+            <div class="space-y-6">
+                <!-- Personal Information -->
+                <div class="bg-white rounded-3xl shadow-md">
+                    <div class="p-6 border-b">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <i data-lucide="user" class="w-5 h-5 text-gray-600 mr-3"></i>
+                                <h3 class="text-lg font-semibold">Personal Information</h3>
+                            </div>
+                            <button class="text-blue-600 hover:text-blue-700 font-medium flex items-center">
+                                <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6 grid grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                            <input type="text" class="w-full px-3 py-2 border rounded-lg" value="Sarah Johnson" readonly>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
+                            <input type="date" class="w-full px-3 py-2 border rounded-lg" value="1998-05-15" readonly>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Gender</label>
+                            <select class="w-full px-3 py-2 border rounded-lg" disabled>
+                                <option>Female</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nationality</label>
+                            <select class="w-full px-3 py-2 border rounded-lg" disabled>
+                                <option>United States</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Passport Number</label>
+                            <input type="text" class="w-full px-3 py-2 border rounded-lg" value="N123456789" readonly>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Preferred Language</label>
+                            <select class="w-full px-3 py-2 border rounded-lg" disabled>
+                                <option>English</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Background -->
+                <div class="bg-white rounded-3xl shadow-md">
+                    <div class="p-6 border-b">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <i data-lucide="graduation-cap" class="w-5 h-5 text-gray-600 mr-3"></i>
+                                <h3 class="text-lg font-semibold">Academic Background</h3>
+                            </div>
+                            <button class="text-blue-600 hover:text-blue-700 font-medium flex items-center">
+                                <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6 grid grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Highest Qualification</label>
+                            <select class="w-full px-3 py-2 border rounded-lg" disabled>
+                                <option>Bachelor's Degree</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Field of Study</label>
+                            <input type="text" class="w-full px-3 py-2 border rounded-lg" value="Computer Science" readonly>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">GPA</label>
+                            <input type="number" class="w-full px-3 py-2 border rounded-lg" value="3.8" readonly>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">IELTS Score</label>
+                            <input type="number" class="w-full px-3 py-2 border rounded-lg" value="7.5" readonly>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Graduation Year</label>
+                            <input type="number" class="w-full px-3 py-2 border rounded-lg" value="2023" readonly>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">School Name</label>
+                            <input type="text" class="w-full px-3 py-2 border rounded-lg" value="University of California" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Details -->
+                <div class="bg-white rounded-3xl shadow-md">
+                    <div class="p-6 border-b">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <i data-lucide="mail" class="w-5 h-5 text-gray-600 mr-3"></i>
+                                <h3 class="text-lg font-semibold">Contact Details</h3>
+                            </div>
+                            <button class="text-blue-600 hover:text-blue-700 font-medium flex items-center">
+                                <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6 grid grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <div class="flex items-center">
+                                <input type="email" class="w-full px-3 py-2 border rounded-lg" value="sarah.j@example.com" readonly>
+                                <span class="ml-2 px-2 py-1 bg-green-100 text-green-600 text-xs rounded">Verified</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                            <input type="tel" class="w-full px-3 py-2 border rounded-lg" value="+1 234 567 8900" readonly>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Country of Residence</label>
+                            <select class="w-full px-3 py-2 border rounded-lg" disabled>
+                                <option>United States</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">City</label>
+                            <input type="text" class="w-full px-3 py-2 border rounded-lg" value="San Francisco" readonly>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Postal Code</label>
+                            <input type="text" class="w-full px-3 py-2 border rounded-lg" value="94105" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Uploaded Documents -->
+                <div class="bg-white rounded-3xl shadow-md">
+                    <div class="p-6 border-b">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <i data-lucide="file" class="w-5 h-5 text-gray-600 mr-3"></i>
+                                <h3 class="text-lg font-semibold">Uploaded Documents</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <!-- CV/Resume -->
+                        <div class="flex items-center justify-between p-4 border rounded-xl">
+                            <div class="flex items-center">
+                                <i data-lucide="file-text" class="w-5 h-5 text-gray-600 mr-3"></i>
+                                <div>
+                                    <p class="font-medium">CV/Resume</p>
+                                    <p class="text-sm text-gray-500">sarah_johnson_cv.pdf</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <button class="text-blue-600 hover:text-blue-700">
+                                    <i data-lucide="download" class="w-5 h-5"></i>
+                                </button>
+                                <button class="text-blue-600 hover:text-blue-700">
+                                    <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+                                </button>
+                                <button class="text-red-600 hover:text-red-700">
+                                    <i data-lucide="trash-2" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Transcript -->
+                        <div class="flex items-center justify-between p-4 border rounded-xl">
+                            <div class="flex items-center">
+                                <i data-lucide="file-text" class="w-5 h-5 text-gray-600 mr-3"></i>
+                                <div>
+                                    <p class="font-medium">Academic Transcript</p>
+                                    <p class="text-sm text-gray-500">transcript_2023.pdf</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <button class="text-blue-600 hover:text-blue-700">
+                                    <i data-lucide="download" class="w-5 h-5"></i>
+                                </button>
+                                <button class="text-blue-600 hover:text-blue-700">
+                                    <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+                                </button>
+                                <button class="text-red-600 hover:text-red-700">
+                                    <i data-lucide="trash-2" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Passport Copy -->
+                        <div class="flex items-center justify-between p-4 border rounded-xl">
+                            <div class="flex items-center">
+                                <i data-lucide="file-text" class="w-5 h-5 text-gray-600 mr-3"></i>
+                                <div>
+                                    <p class="font-medium">Passport Copy</p>
+                                    <p class="text-sm text-gray-500">passport_scan.pdf</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <button class="text-blue-600 hover:text-blue-700">
+                                    <i data-lucide="download" class="w-5 h-5"></i>
+                                </button>
+                                <button class="text-blue-600 hover:text-blue-700">
+                                    <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+                                </button>
+                                <button class="text-red-600 hover:text-red-700">
+                                    <i data-lucide="trash-2" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Upload New Document -->
+                        <div class="border-2 border-dashed rounded-xl p-8 text-center">
+                            <div class="flex flex-col items-center">
+                                <i data-lucide="upload" class="w-8 h-8 text-gray-400 mb-3"></i>
+                                <p class="text-gray-600 mb-2">Drag and drop a file or</p>
+                                <button class="px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700">
+                                    Browse Files
+                                </button>
+                                <p class="text-sm text-gray-500 mt-2">Supported formats: PDF, DOCX (max 10MB)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Handle logout
+        function handleLogout() {
+            window.location.href = '../../login.html';
+        }
+
+        // Profile Dropdown Toggle
+        const profileMenu = document.getElementById('profile-menu');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileMenu.addEventListener('click', () => {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!profileMenu.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

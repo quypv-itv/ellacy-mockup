@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - Ellacy GO</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .message-list::-webkit-scrollbar,
+        .message-thread::-webkit-scrollbar {
+            display: none;
+        }
+        .message-list, .message-thread {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Sidebar -->
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
+        <div class="p-6">
+            <h1 class="text-2xl font-bold text-gray-800">Ellacy GO</h1>
+            <p class="text-sm text-gray-500">Student</p>
+        </div>
+        <nav class="mt-6">
+            <a href="Student-Dashboard.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>
+                Dashboard
+            </a>
+            <a href="Student-my-application.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>
+                My Applications
+            </a>
+            <a href="Student-find-program.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="search" class="w-5 h-5 mr-3"></i>
+                Find Programs
+            </a>
+            <a href="Student-sholarships.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="award" class="w-5 h-5 mr-3"></i>
+                Scholarships
+            </a>
+            <a href="Student-profile.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="user" class="w-5 h-5 mr-3"></i>
+                Profile
+            </a>
+            <a href="Student-AI-Assistant.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="bot" class="w-5 h-5 mr-3"></i>
+                AI Assistant
+            </a>
+            <a href="Student-payment.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="credit-card" class="w-5 h-5 mr-3"></i>
+                Payment Center
+            </a>
+            <a href="Student-messages.html" class="flex items-center px-6 py-3 bg-blue-50 text-blue-600">
+                <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>
+                Messages
+            </a>
+        </nav>
+        <div class="mt-auto px-6 py-4 border-t border-gray-200">
+            <p class="text-sm text-gray-600 text-center">Designed & developed by Innotech Viet Nam</p>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="ml-64 flex h-screen">
+        <!-- Messages List (Left Panel) -->
+        <div class="w-1/3 border-r bg-white">
+            <!-- Search and Filter Header -->
+            <div class="p-4 border-b">
+                <div class="relative mb-4">
+                    <input type="text" placeholder="Search messages..." 
+                           class="w-full pl-10 pr-4 py-2 border rounded-xl">
+                    <i data-lucide="search" class="w-5 h-5 text-gray-400 absolute left-3 top-2.5"></i>
+                </div>
+                <div class="flex space-x-2">
+                    <button class="px-3 py-1 text-sm bg-blue-600 text-white rounded-lg">All</button>
+                    <button class="px-3 py-1 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">Unread</button>
+                    <button class="px-3 py-1 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">System</button>
+                    <button class="px-3 py-1 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">Agent</button>
+                </div>
+            </div>
+
+            <!-- Messages List -->
+            <div class="message-list overflow-y-auto" style="height: calc(100vh - 145px)">
+                <!-- Message 1 -->
+                <div class="p-4 border-b hover:bg-gray-50 cursor-pointer bg-blue-50">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
+                                EA
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="font-medium">Ellacy Agent</h3>
+                                <p class="text-sm text-gray-600 truncate w-48">Application Update: Document Review Complete</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-xs text-gray-500">2h ago</p>
+                            <span class="inline-block w-2 h-2 bg-blue-600 rounded-full mt-1"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Message 2 -->
+                <div class="p-4 border-b hover:bg-gray-50 cursor-pointer">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
+                                <i data-lucide="bell" class="w-5 h-5"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="font-medium">System Notification</h3>
+                                <p class="text-sm text-gray-600 truncate w-48">Payment Reminder: Application Fee Due</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-xs text-gray-500">5h ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Message 3 -->
+                <div class="p-4 border-b hover:bg-gray-50 cursor-pointer">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-semibold">
+                                UBC
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="font-medium">University of British Columbia</h3>
+                                <p class="text-sm text-gray-600 truncate w-48">Interview Schedule: MSc Data Science</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-xs text-gray-500">1d ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Message Thread (Right Panel) -->
+        <div class="flex-1 flex flex-col bg-gray-50">
+            <!-- Thread Header -->
+            <div class="p-4 bg-white border-b flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
+                        EA
+                    </div>
+                    <div class="ml-3">
+                        <h2 class="font-medium">Ellacy Agent</h2>
+                        <p class="text-sm text-gray-600">Application Update: Document Review Complete</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <i data-lucide="search" class="w-5 h-5"></i>
+                    </button>
+                    <button class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <i data-lucide="more-vertical" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Message Thread -->
+            <div class="message-thread flex-1 overflow-y-auto p-4 space-y-4">
+                <!-- System Message -->
+                <div class="flex justify-center">
+                    <span class="text-xs text-gray-500 bg-white px-3 py-1 rounded-full shadow-sm">Today</span>
+                </div>
+
+                <!-- Agent Message -->
+                <div class="flex items-start space-x-3">
+                    <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold text-sm">
+                        EA
+                    </div>
+                    <div class="flex-1 space-y-2">
+                        <div class="bg-white rounded-2xl p-4 shadow-sm">
+                            <p class="text-gray-800">Hi Sarah, I've completed the review of your documents for the UBC application. Everything looks good! 📚✨</p>
+                            <p class="text-gray-800 mt-2">I've attached the review summary below. Please check and let me know if you have any questions.</p>
+                        </div>
+                        <div class="bg-gray-100 rounded-xl p-3 flex items-center space-x-3 w-fit">
+                            <i data-lucide="file-text" class="w-5 h-5 text-gray-600"></i>
+                            <div>
+                                <p class="text-sm font-medium">Document_Review_Summary.pdf</p>
+                                <p class="text-xs text-gray-500">245 KB • PDF</p>
+                            </div>
+                            <button class="p-1 hover:bg-gray-200 rounded">
+                                <i data-lucide="download" class="w-4 h-4 text-gray-600"></i>
+                            </button>
+                        </div>
+                        <p class="text-xs text-gray-500">10:30 AM</p>
+                    </div>
+                </div>
+
+                <!-- User Message -->
+                <div class="flex items-start justify-end space-x-3">
+                    <div class="flex-1 space-y-2 flex flex-col items-end">
+                        <div class="bg-blue-600 text-white rounded-2xl p-4 shadow-sm max-w-lg">
+                            <p>Thank you for the quick review! I'll take a look at the summary right away. 🙏</p>
+                        </div>
+                        <p class="text-xs text-gray-500">10:35 AM</p>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
+                        <i data-lucide="user" class="w-5 h-5 text-gray-600"></i>
+                    </div>
+                </div>
+
+                <!-- Agent Message with Quick Actions -->
+                <div class="flex items-start space-x-3">
+                    <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold text-sm">
+                        EA
+                    </div>
+                    <div class="flex-1 space-y-2">
+                        <div class="bg-white rounded-2xl p-4 shadow-sm">
+                            <p class="text-gray-800">Great! Once you've reviewed it, please confirm if you're ready to proceed with the submission. The deadline is April 15th.</p>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-xl text-sm hover:bg-blue-700">
+                                Confirm Submission
+                            </button>
+                            <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-xl text-sm hover:bg-gray-200">
+                                Request Extension
+                            </button>
+                        </div>
+                        <p class="text-xs text-gray-500">10:36 AM</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Message Input -->
+            <div class="p-4 bg-white border-t">
+                <div class="flex items-end space-x-3">
+                    <button class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        <i data-lucide="paperclip" class="w-5 h-5"></i>
+                    </button>
+                    <div class="flex-1 relative">
+                        <textarea placeholder="Type your message..." rows="1" 
+                                  class="w-full px-4 py-3 border rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        <div class="absolute right-3 bottom-3">
+                            <i data-lucide="smile" class="w-5 h-5 text-gray-400 cursor-pointer hover:text-gray-600"></i>
+                        </div>
+                    </div>
+                    <button class="p-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                <!-- Quick Suggestions -->
+                <div class="flex mt-2 space-x-2">
+                    <button class="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200">
+                        Thanks for the update
+                    </button>
+                    <button class="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200">
+                        I'll review it soon
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Handle logout
+        function handleLogout() {
+            window.location.href = '../../login.html';
+        }
+
+        // Profile Dropdown Toggle
+        const profileMenu = document.getElementById('profile-menu');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileMenu.addEventListener('click', () => {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!profileMenu.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

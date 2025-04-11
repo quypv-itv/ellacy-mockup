@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Settings | Ellacy GO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Sidebar -->
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
+        <div class="p-6">
+            <h1 class="text-2xl font-bold text-gray-800">Ellacy GO</h1>
+            <p class="text-sm text-gray-500">Agent</p>
+        </div>
+        <nav class="mt-6">
+            <a href="Agency-dashboard.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>
+                Dashboard
+            </a>
+            <a href="Agency-my-students.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="users" class="w-5 h-5 mr-3"></i>
+                My Students
+            </a>
+            <a href="Agent-Application.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>
+                Applications
+            </a>
+            <a href="Agency-tasks.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="check-square" class="w-5 h-5 mr-3"></i>
+                Tasks
+            </a>
+            <a href="Agency-scholarships.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="graduation-cap" class="w-5 h-5 mr-3"></i>
+                Scholarships
+            </a>
+            <a href="Agency-commission.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="dollar-sign" class="w-5 h-5 mr-3"></i>
+                Commissions
+            </a>
+            <a href="#" class="flex items-center px-6 py-3 bg-blue-50 text-blue-600">
+                <i data-lucide="settings" class="w-5 h-5 mr-3"></i>
+                Account Settings
+            </a>
+            <a href="Agency-messages.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>
+                Messages
+            </a>
+            <a href="Agency-AI-assitant.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="bot" class="w-5 h-5 mr-3"></i>
+                AI Assistant
+            </a>
+            <a href="Agency-admin-management.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="users-2" class="w-5 h-5 mr-3"></i>
+                Team Management
+            </a>
+        </nav>
+        <div class="mt-auto px-6 py-4 border-t border-gray-200">
+            <p class="text-sm text-gray-600 text-center">Designed & developed by Innotech Viet Nam</p>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="ml-64">
+        <!-- Header -->
+        <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6">
+            <h2 class="text-xl font-semibold text-gray-800">Account Settings</h2>
+            <div class="flex items-center space-x-4">
+                <button class="relative">
+                    <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
+                    <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                </button>
+                <div class="relative">
+                    <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
+                             alt="Profile" 
+                             class="w-8 h-8 rounded-full object-cover">
+                    </button>
+                    <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
+                        </a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
+                        </a>
+                        <hr class="my-1">
+                        <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="p-6">
+            <!-- Tabs -->
+            <div class="mb-8">
+                <nav class="flex space-x-4" aria-label="Tabs">
+                    <button class="px-4 py-2 text-sm font-medium text-blue-700 bg-blue-50 rounded-lg" aria-current="page">
+                        Personal Information
+                    </button>
+                    <button class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 rounded-lg">
+                        Payment Information
+                    </button>
+                    <button class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 rounded-lg">
+                        Partnership Documents
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Personal Information Form -->
+            <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+                <h2 class="text-lg font-semibold mb-6">Personal Information</h2>
+                <form class="space-y-6">
+                    <div class="grid grid-cols-2 gap-6">
+                        <!-- Full Name -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                            <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" value="John Doe">
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" class="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg" value="john@example.com" readonly>
+                            <p class="mt-1 text-sm text-gray-500">Contact support to change email</p>
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" value="+1 234 567 890">
+                        </div>
+
+                        <!-- Country / City -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Country</label>
+                            <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option>United States</option>
+                                <option>United Kingdom</option>
+                                <option>Vietnam</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Language -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Language</label>
+                            <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option>English</option>
+                                <option>Vietnamese</option>
+                            </select>
+                        </div>
+
+                        <!-- Password -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                            <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50">
+                                Change Password
+                                <i data-lucide="chevron-right" class="w-4 h-4 ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Save Button -->
+                    <div class="flex justify-end">
+                        <button type="submit" class="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700">
+                            Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Payment Information Form (Hidden by default) -->
+            <div class="hidden bg-white rounded-xl shadow-sm p-6 mb-6">
+                <h2 class="text-lg font-semibold mb-6">Bank & Commission Payment Information</h2>
+                <form class="space-y-6">
+                    <div class="grid grid-cols-2 gap-6">
+                        <!-- Bank Account Holder Name -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Bank Account Holder Name</label>
+                            <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+
+                        <!-- Bank Name -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Bank Name</label>
+                            <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+
+                        <!-- Account Number / IBAN -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Account Number / IBAN</label>
+                            <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+
+                        <!-- SWIFT/BIC Code -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">SWIFT/BIC Code</label>
+                            <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+
+                        <!-- Currency -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Currency</label>
+                            <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option>USD</option>
+                                <option>EUR</option>
+                                <option>GBP</option>
+                                <option>VND</option>
+                            </select>
+                        </div>
+
+                        <!-- Tax ID / Business Code -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tax ID / Business Code (Optional)</label>
+                            <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+
+                    <!-- Notes -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Notes (Optional)</label>
+                        <textarea class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" rows="3" placeholder="e.g., Paid to company account"></textarea>
+                    </div>
+
+                    <!-- Save Button -->
+                    <div class="flex justify-end space-x-4">
+                        <button type="button" class="px-6 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200">
+                            Cancel
+                        </button>
+                        <button type="submit" class="px-6 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                            Save Payment Info
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Partnership Documents (Hidden by default) -->
+            <div class="hidden bg-white rounded-xl shadow-sm p-6">
+                <h2 class="text-lg font-semibold mb-6">Partnership Documents</h2>
+                <div class="space-y-6">
+                    <!-- Agency Agreement -->
+                    <div class="p-4 border border-gray-200 rounded-lg">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-medium">Agency Agreement / Contract</h3>
+                                <p class="text-sm text-gray-500">PDF file required</p>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-1 text-xs font-medium text-yellow-700 bg-yellow-50 rounded-full">Missing</span>
+                                <input type="file" accept=".pdf" class="hidden" id="agency-agreement-input">
+                                <button type="button" 
+                                        onclick="document.getElementById('agency-agreement-input').click()" 
+                                        class="px-3 py-1.5 text-sm font-medium text-blue-700 bg-blue-50 rounded-lg hover:bg-blue-100">
+                                    Upload
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KYC Document -->
+                    <div class="p-4 border border-gray-200 rounded-lg">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-medium">KYC / Business License</h3>
+                                <p class="text-sm text-gray-500">PDF or image file</p>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-1 text-xs font-medium text-green-700 bg-green-50 rounded-full">Uploaded</span>
+                                <input type="file" accept=".pdf,image/*" class="hidden" id="kyc-document-input">
+                                <button type="button" 
+                                        onclick="document.getElementById('kyc-document-input').click()" 
+                                        class="px-3 py-1.5 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200">
+                                    Replace
+                                </button>
+                                <button type="button" 
+                                        onclick="handleDocumentRemove('kyc')" 
+                                        class="px-3 py-1.5 text-sm font-medium text-red-700 bg-red-50 rounded-lg hover:bg-red-100">
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Company Profile -->
+                    <div class="p-4 border border-gray-200 rounded-lg">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-medium">Company Profile / Pitch Deck</h3>
+                                <p class="text-sm text-gray-500">Optional</p>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <input type="file" class="hidden" id="company-profile-input">
+                                <button type="button" 
+                                        onclick="document.getElementById('company-profile-input').click()" 
+                                        class="px-3 py-1.5 text-sm font-medium text-blue-700 bg-blue-50 rounded-lg hover:bg-blue-100">
+                                    Upload
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Profile menu functionality
+        const profileMenu = document.getElementById('profile-menu');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileMenu.addEventListener('click', () => {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!profileMenu.contains(event.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // Handle logout
+        function handleLogout() {
+            // Add your logout logic here
+            console.log('Logging out...');
+        }
+
+        // Tab switching functionality
+        const tabs = document.querySelectorAll('nav[aria-label="Tabs"] button');
+        const forms = document.querySelectorAll('.bg-white.rounded-xl.shadow-sm');
+
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => {
+                // Update tab styles
+                tabs.forEach(t => {
+                    t.classList.remove('text-blue-700', 'bg-blue-50');
+                    t.classList.add('text-gray-500');
+                });
+                tab.classList.remove('text-gray-500');
+                tab.classList.add('text-blue-700', 'bg-blue-50');
+
+                // Show/hide forms
+                forms.forEach((form, i) => {
+                    if (i === index) {
+                        form.classList.remove('hidden');
+                    } else {
+                        form.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Document upload handling
+        document.getElementById('agency-agreement-input').addEventListener('change', function(e) {
+            handleDocumentUpload(e, 'agency-agreement');
+        });
+
+        document.getElementById('kyc-document-input').addEventListener('change', function(e) {
+            handleDocumentUpload(e, 'kyc');
+        });
+
+        document.getElementById('company-profile-input').addEventListener('change', function(e) {
+            handleDocumentUpload(e, 'company-profile');
+        });
+
+        function handleDocumentUpload(event, type) {
+            const file = event.target.files[0];
+            if (file) {
+                // Here you would typically upload the file to your server
+                console.log(`Uploading ${type} document:`, file.name);
+                
+                // Update UI to show upload status
+                const container = event.target.closest('.p-4');
+                const statusSpan = container.querySelector('span');
+                if (statusSpan) {
+                    statusSpan.className = 'px-2 py-1 text-xs font-medium text-green-700 bg-green-50 rounded-full';
+                    statusSpan.textContent = 'Uploaded';
+                }
+
+                // Show replace/remove buttons if they don't exist
+                const buttonContainer = container.querySelector('.flex.items-center.space-x-2');
+                if (!buttonContainer.querySelector('button[onclick*="Remove"]')) {
+                    const replaceButton = buttonContainer.querySelector('button');
+                    replaceButton.className = 'px-3 py-1.5 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200';
+                    replaceButton.textContent = 'Replace';
+
+                    const removeButton = document.createElement('button');
+                    removeButton.type = 'button';
+                    removeButton.className = 'px-3 py-1.5 text-sm font-medium text-red-700 bg-red-50 rounded-lg hover:bg-red-100';
+                    removeButton.textContent = 'Remove';
+                    removeButton.onclick = () => handleDocumentRemove(type);
+                    buttonContainer.appendChild(removeButton);
+                }
+            }
+        }
+
+        function handleDocumentRemove(type) {
+            // Here you would typically remove the file from your server
+            console.log(`Removing ${type} document`);
+            
+            // Reset file input
+            document.getElementById(`${type}-document-input`).value = '';
+            
+            // Update UI to show removed status
+            const container = document.getElementById(`${type}-document-input`).closest('.p-4');
+            const statusSpan = container.querySelector('span');
+            if (statusSpan) {
+                statusSpan.className = 'px-2 py-1 text-xs font-medium text-yellow-700 bg-yellow-50 rounded-full';
+                statusSpan.textContent = 'Missing';
+            }
+
+            // Update buttons
+            const buttonContainer = container.querySelector('.flex.items-center.space-x-2');
+            const uploadButton = buttonContainer.querySelector('button');
+            uploadButton.className = 'px-3 py-1.5 text-sm font-medium text-blue-700 bg-blue-50 rounded-lg hover:bg-blue-100';
+            uploadButton.textContent = 'Upload';
+
+            // Remove the remove button if it exists
+            const removeButton = buttonContainer.querySelector('button[onclick*="Remove"]');
+            if (removeButton) {
+                removeButton.remove();
+            }
+        }
+    </script>
+</body>
+</html>

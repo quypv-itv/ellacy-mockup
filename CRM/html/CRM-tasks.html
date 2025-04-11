@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks / Workflows - Ellacy CRM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
+            <div class="p-6">
+                <h1 class="text-2xl font-bold text-gray-800">Ellacy GO</h1>
+                <p class="text-sm text-gray-500">Admin</p>
+            </div>
+            <nav class="mt-6">
+                <a href="CRM-dashboard.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>
+                    Dashboard
+                </a>
+                <a href="CRM-applications.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>
+                    Applications
+                </a>
+                <a href="CRM-agent.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="users" class="w-5 h-5 mr-3"></i>
+                    Agents
+                </a>
+                <a href="CRM-scholarships.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="graduation-cap" class="w-5 h-5 mr-3"></i>
+                    Scholarships
+                </a>
+                <a href="CRM-institutions.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="building" class="w-5 h-5 mr-3"></i>
+                    Institutions
+                </a>
+                <a href="CRM-students.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="user" class="w-5 h-5 mr-3"></i>
+                    Users
+                </a>
+                <a href="CRM-payment.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="credit-card" class="w-5 h-5 mr-3"></i>
+                    Payments
+                </a>
+                <a href="CRM-tasks.html" class="flex items-center px-6 py-3 text-blue-600 bg-blue-50">
+                    <i data-lucide="check-circle" class="w-5 h-5 mr-3"></i>
+                    Tasks
+                </a>
+                <a href="CRM-report.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="bar-chart" class="w-5 h-5 mr-3"></i>
+                    Reports
+                </a>
+                <a href="#" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>
+                    Messages
+                </a>
+                <a href="CRM-AI-Assistant.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="bot" class="w-5 h-5 mr-3"></i>
+                    AI Assistant
+                </a>
+                <a href="CRM-user-admin.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="shield" class="w-5 h-5 mr-3"></i>
+                    User Admin
+                </a>
+                <a href="CRM-Setting.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="settings" class="w-5 h-5 mr-3"></i>
+                    Settings
+                </a>
+            </nav>
+            <div class="mt-auto px-6 py-4 border-t border-gray-200">
+                <p class="text-sm text-gray-600 text-center">Designed & developed by Innotech Viet Nam</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="ml-64 flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6">
+                <h2 class="text-xl font-semibold text-gray-800">Tasks / Workflows</h2>
+                <div class="flex items-center">
+                    <button class="p-2 hover:bg-gray-100 rounded-full">
+                        <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
+                    </button>
+                    <div class="relative ml-3">
+                        <button id="profile-menu" class="flex items-center">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                alt="Admin profile" class="w-8 h-8 rounded-full object-cover">
+                        </button>
+                        <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="handleLogout()">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content Area -->
+            <main class="flex-1 overflow-y-auto p-6">
+                <!-- Filter & Search Bar -->
+                <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                            <select class="w-full rounded-lg border-gray-300">
+                                <option value="">All Status</option>
+                                <option value="todo">To Do</option>
+                                <option value="in-progress">In Progress</option>
+                                <option value="done">Done</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Assigned To</label>
+                            <select class="w-full rounded-lg border-gray-300">
+                                <option value="">All Staff</option>
+                                <option value="john">John Smith</option>
+                                <option value="jane">Jane Doe</option>
+                                <option value="mike">Mike Johnson</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Priority</label>
+                            <select class="w-full rounded-lg border-gray-300">
+                                <option value="">All Priority</option>
+                                <option value="high">High</option>
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Type</label>
+                            <select class="w-full rounded-lg border-gray-300">
+                                <option value="">All Types</option>
+                                <option value="application">Application</option>
+                                <option value="scholarship">Scholarship</option>
+                                <option value="agent">Agent</option>
+                                <option value="system">System-generated</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Due Date</label>
+                            <input type="date" class="w-full rounded-lg border-gray-300">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Search</label>
+                            <div class="relative">
+                                <input type="text" placeholder="Search tasks..." class="w-full rounded-lg border-gray-300 pl-10">
+                                <i data-lucide="search" class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex justify-between items-center">
+                        <button class="text-sm text-blue-600 hover:text-blue-700">Clear Filters</button>
+                        <button onclick="openCreateTaskModal()" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 flex items-center">
+                            <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                            Create Task
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tasks Table -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Task Title</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Linked Item</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Assigned To</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Priority</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Due Date</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <!-- Sample Task 1 -->
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm font-medium text-gray-900">Review Nguyen T.'s application</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">APP-2025-001</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <img class="h-8 w-8 rounded-full" src="https://ui-avatars.com/api/?name=John+Smith" alt="">
+                                            <div class="ml-3">
+                                                <div class="text-sm font-medium text-gray-900">John Smith</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">High</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-04-15</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">In Progress</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <button onclick="openTaskDetail()" class="text-blue-600 hover:text-blue-900 mr-3">View</button>
+                                        <button class="text-green-600 hover:text-green-900 mr-3">Done</button>
+                                        <button class="text-gray-600 hover:text-gray-900">Reassign</button>
+                                    </td>
+                                </tr>
+                                <!-- Sample Task 2 -->
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm font-medium text-gray-900">Verify scholarship documents</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">SCH-2025-003</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <img class="h-8 w-8 rounded-full" src="https://ui-avatars.com/api/?name=Jane+Doe" alt="">
+                                            <div class="ml-3">
+                                                <div class="text-sm font-medium text-gray-900">Jane Doe</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Medium</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-04-20</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">To Do</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <button onclick="openTaskDetail()" class="text-blue-600 hover:text-blue-900 mr-3">View</button>
+                                        <button class="text-green-600 hover:text-green-900 mr-3">Done</button>
+                                        <button class="text-gray-600 hover:text-gray-900">Reassign</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
+                        <nav class="flex items-center justify-between">
+                            <div class="flex-1 flex justify-between sm:hidden">
+                                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">Previous</a>
+                                <a href="#" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">Next</a>
+                            </div>
+                            <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                                <div>
+                                    <p class="text-sm text-gray-700">
+                                        Showing <span class="font-medium">1</span> to <span class="font-medium">10</span> of <span class="font-medium">20</span> results
+                                    </p>
+                                </div>
+                                <div>
+                                    <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                                        <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                            <span class="sr-only">Previous</span>
+                                            <i data-lucide="chevron-left" class="h-5 w-5"></i>
+                                        </a>
+                                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">1</a>
+                                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">2</a>
+                                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">3</a>
+                                        <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                            <span class="sr-only">Next</span>
+                                            <i data-lucide="chevron-right" class="h-5 w-5"></i>
+                                        </a>
+                                    </nav>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Task Detail Modal -->
+    <div id="task-detail-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
+        <div class="relative top-20 mx-auto p-5 border w-3/4 shadow-lg rounded-lg bg-white">
+            <div class="flex justify-between items-center pb-3">
+                <h3 class="text-xl font-semibold text-gray-900">Task Details</h3>
+                <button onclick="closeTaskDetail()" class="text-gray-400 hover:text-gray-500">
+                    <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+            </div>
+            <div class="mt-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-500">Task Title</h4>
+                        <p class="mt-1 text-sm text-gray-900">Review Nguyen T.'s application</p>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-500">Linked Item</h4>
+                        <p class="mt-1 text-sm text-blue-600 hover:text-blue-700 cursor-pointer">APP-2025-001</p>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-500">Description</h4>
+                        <p class="mt-1 text-sm text-gray-900">Review and verify all submitted documents for the application. Check eligibility criteria and academic requirements.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-500">Sub-tasks</h4>
+                        <div class="mt-1 space-y-2">
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" class="rounded border-gray-300 text-blue-600" checked>
+                                <span class="ml-2 text-sm text-gray-900">Review academic transcripts</span>
+                            </label>
+                            <br>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" class="rounded border-gray-300 text-blue-600">
+                                <span class="ml-2 text-sm text-gray-900">Verify language proficiency scores</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h4 class="text-sm font-medium text-gray-500">Comments</h4>
+                    <div class="mt-2 space-y-4">
+                        <div class="flex space-x-3">
+                            <img class="h-8 w-8 rounded-full" src="https://ui-avatars.com/api/?name=John+Smith" alt="">
+                            <div class="flex-1 bg-gray-50 rounded-lg px-4 py-2 sm:px-6 sm:py-4">
+                                <div class="text-sm">
+                                    <span class="font-medium text-gray-900">John Smith</span>
+                                    <span class="text-gray-500 ml-2">2 hours ago</span>
+                                </div>
+                                <div class="mt-1 text-sm text-gray-700">Started reviewing the documents. Will need additional information about the scholarship eligibility.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <label for="comment" class="sr-only">Add comment</label>
+                        <textarea id="comment" rows="3" class="w-full rounded-lg border-gray-300" placeholder="Add a comment..."></textarea>
+                        <div class="mt-2 flex justify-end">
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700">Post Comment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Task Modal -->
+    <div id="create-task-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
+        <div class="relative top-20 mx-auto p-5 border w-2/3 shadow-lg rounded-lg bg-white">
+            <div class="flex justify-between items-center pb-3">
+                <h3 class="text-xl font-semibold text-gray-900">Create New Task</h3>
+                <button onclick="closeCreateTaskModal()" class="text-gray-400 hover:text-gray-500">
+                    <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+            </div>
+            <form class="mt-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="col-span-2">
+                        <label class="block text-sm font-medium text-gray-700">Task Title</label>
+                        <input type="text" class="mt-1 w-full rounded-lg border-gray-300">
+                    </div>
+                    <div class="col-span-2">
+                        <label class="block text-sm font-medium text-gray-700">Description</label>
+                        <textarea rows="3" class="mt-1 w-full rounded-lg border-gray-300"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Linked To</label>
+                        <select class="mt-1 w-full rounded-lg border-gray-300">
+                            <option value="">Select Item Type</option>
+                            <option value="application">Application</option>
+                            <option value="scholarship">Scholarship</option>
+                            <option value="agent">Agent</option>
+                            <option value="student">Student</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Item ID</label>
+                        <input type="text" class="mt-1 w-full rounded-lg border-gray-300" placeholder="e.g. APP-2025-001">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Assign To</label>
+                        <select class="mt-1 w-full rounded-lg border-gray-300">
+                            <option value="">Select Staff</option>
+                            <option value="john">John Smith</option>
+                            <option value="jane">Jane Doe</option>
+                            <option value="mike">Mike Johnson</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Priority</label>
+                        <select class="mt-1 w-full rounded-lg border-gray-300">
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Due Date</label>
+                        <input type="date" class="mt-1 w-full rounded-lg border-gray-300">
+                    </div>
+                </div>
+                <div class="mt-4 flex justify-end space-x-3">
+                    <button type="button" onclick="closeCreateTaskModal()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700">Create Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Reassign Task Modal -->
+    <div id="reassign-task-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-lg bg-white">
+            <div class="flex justify-between items-center pb-3">
+                <h3 class="text-xl font-semibold text-gray-900">Reassign Task</h3>
+                <button onclick="closeReassignModal()" class="text-gray-400 hover:text-gray-500">
+                    <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+            </div>
+            <form class="mt-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Assign To</label>
+                    <select class="mt-1 w-full rounded-lg border-gray-300">
+                        <option value="">Select Staff</option>
+                        <option value="john">John Smith</option>
+                        <option value="jane">Jane Doe</option>
+                        <option value="mike">Mike Johnson</option>
+                    </select>
+                </div>
+                <div class="mt-4">
+                    <label class="block text-sm font-medium text-gray-700">Reason for Reassignment</label>
+                    <textarea rows="3" class="mt-1 w-full rounded-lg border-gray-300"></textarea>
+                </div>
+                <div class="mt-4 flex justify-end space-x-3">
+                    <button type="button" onclick="closeReassignModal()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700">Reassign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Profile dropdown functionality
+        const profileMenu = document.getElementById('profile-menu');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        if (profileMenu && profileDropdown) {
+            profileMenu.addEventListener('click', (e) => {
+                e.stopPropagation();
+                profileDropdown.classList.toggle('hidden');
+            });
+
+            document.addEventListener('click', () => {
+                profileDropdown.classList.add('hidden');
+            });
+
+            profileDropdown.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        }
+
+        // Handle logout
+        function handleLogout() {
+            console.log('Logging out...');
+            window.location.href = '../../login.html';
+        }
+
+        // Initialize Select2
+        $(document).ready(function() {
+            $('select').select2({
+                minimumResultsForSearch: 6
+            });
+        });
+
+        // Task Detail Modal
+        function openTaskDetail() {
+            document.getElementById('task-detail-modal').classList.remove('hidden');
+        }
+
+        function closeTaskDetail() {
+            document.getElementById('task-detail-modal').classList.add('hidden');
+        }
+
+        // Create Task Modal
+        function openCreateTaskModal() {
+            document.getElementById('create-task-modal').classList.remove('hidden');
+        }
+
+        function closeCreateTaskModal() {
+            document.getElementById('create-task-modal').classList.add('hidden');
+        }
+
+        // Reassign Task Modal
+        function openReassignModal() {
+            document.getElementById('reassign-task-modal').classList.remove('hidden');
+        }
+
+        function closeReassignModal() {
+            document.getElementById('reassign-task-modal').classList.add('hidden');
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const modals = [
+                document.getElementById('task-detail-modal'),
+                document.getElementById('create-task-modal'),
+                document.getElementById('reassign-task-modal')
+            ];
+
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+        };
+    </script>
+</body>
+</html>

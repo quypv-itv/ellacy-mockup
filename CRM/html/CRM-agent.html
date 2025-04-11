@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Agents - Ellacy GO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
+            <div class="p-6">
+                <h1 class="text-2xl font-bold text-gray-800">Ellacy GO</h1>
+                <p class="text-sm text-gray-500">Admin</p>
+            </div>
+            <nav class="mt-6">
+                <a href="CRM-dashboard.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>
+                    Dashboard
+                </a>
+                <a href="CRM-applications.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>
+                    Applications
+                </a>
+                <a href="CRM-agent.html" class="flex items-center px-6 py-3 text-blue-600 bg-blue-50">
+                    <i data-lucide="users" class="w-5 h-5 mr-3"></i>
+                    Agents
+                </a>
+                <a href="CRM-scholarships.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="graduation-cap" class="w-5 h-5 mr-3"></i>
+                    Scholarships
+                </a>
+                <a href="CRM-institutions.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="building" class="w-5 h-5 mr-3"></i>
+                    Institutions
+                </a>
+                <a href="CRM-students.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="user" class="w-5 h-5 mr-3"></i>
+                    Students
+                </a>
+                <a href="CRM-payment.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="credit-card" class="w-5 h-5 mr-3"></i>
+                    Payments
+                </a>
+                <a href="CRM-tasks.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="check-circle" class="w-5 h-5 mr-3"></i>
+                    Tasks
+                </a>
+                <a href="CRM-report.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="bar-chart" class="w-5 h-5 mr-3"></i>
+                    Reports
+                </a>
+                <a href="CRM-messages.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>
+                    Messages
+                </a>
+                <a href="CRM-user-admin.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="shield" class="w-5 h-5 mr-3"></i>
+                    User Admin
+                </a>
+                <a href="CRM-AI-Assistant.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="bot" class="w-5 h-5 mr-3"></i>
+                    AI Assistant
+                </a>
+                <a href="CRM-Setting.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="settings" class="w-5 h-5 mr-3"></i>
+                    Settings
+                </a>
+            </nav>
+            <div class="mt-auto px-6 py-4 border-t border-gray-200">
+                <p class="text-sm text-gray-600 text-center">Designed & developed by Innotech Viet Nam</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="ml-64 flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6">
+                <h2 class="text-xl font-semibold text-gray-800">Agents</h2>
+                <div class="flex items-center">
+                    <button class="p-2 hover:bg-gray-100 rounded-full">
+                        <i data-lucide="bell" class="w-5 h-5 text-gray-600"></i>
+                    </button>
+                    <div class="relative ml-4">
+                        <button id="profile-menu" class="flex items-center">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                alt="Admin profile" class="w-8 h-8 rounded-full object-cover">
+                        </button>
+                        <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="handleLogout()">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main -->
+            <main class="flex-1 overflow-y-auto">
+                <!-- Filter Bar -->
+                <div class="bg-white border-b sticky top-0">
+                    <div class="p-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <!-- Status Filter -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                                <select class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="">All Status</option>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                    <option value="pending">Pending Approval</option>
+                                </select>
+                            </div>
+
+                            <!-- Country/Region Filter -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Country/Region</label>
+                                <select class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="">All Countries</option>
+                                    <option value="vn">Vietnam</option>
+                                    <option value="th">Thailand</option>
+                                    <option value="my">Malaysia</option>
+                                    <option value="id">Indonesia</option>
+                                </select>
+                            </div>
+
+                            <!-- Agency Type Filter -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Agency Type</label>
+                                <select class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="">All Types</option>
+                                    <option value="individual">Individual</option>
+                                    <option value="company">Company</option>
+                                </select>
+                            </div>
+
+                            <!-- Search -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Search</label>
+                                <div class="relative">
+                                    <input type="text" placeholder="Search agents..." class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500 pl-10">
+                                    <i data-lucide="search" class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="p-6 pb-0">
+                    <button onclick="openAddAgentModal()" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        <i data-lucide="plus" class="w-4 h-4 mr-1.5"></i>
+                        Add Agent
+                    </button>
+                </div>
+
+                <!-- Agents Table -->
+                <div class="p-6 pt-4">
+                    <div class="bg-white rounded-lg shadow">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Agency Name</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Students</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Applications</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <!-- Sample Agent Row -->
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="flex-shrink-0 h-10 w-10">
+                                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                                                </div>
+                                                <div class="ml-4">
+                                                    <div class="text-sm font-medium text-gray-900">Global Education</div>
+                                                    <div class="text-sm text-gray-500">contact@globaledu.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">Company</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">Vietnam</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">45</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">78</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                            <button class="text-blue-600 hover:text-blue-900 mr-3">View Profile</button>
+                                            <button class="text-gray-600 hover:text-gray-900">Edit</button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- More Agent Rows -->
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="flex-shrink-0 h-10 w-10">
+                                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                                                </div>
+                                                <div class="ml-4">
+                                                    <div class="text-sm font-medium text-gray-900">John Smith</div>
+                                                    <div class="text-sm text-gray-500">john.smith@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">Individual</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">Thailand</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Pending</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">12</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">25</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                            <button class="text-blue-600 hover:text-blue-900 mr-3">View Profile</button>
+                                            <button class="text-gray-600 hover:text-gray-900">Edit</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Pagination -->
+                        <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+                            <div class="flex-1 flex justify-between sm:hidden">
+                                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">Previous</a>
+                                <a href="#" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">Next</a>
+                            </div>
+                            <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                                <div>
+                                    <p class="text-sm text-gray-700">
+                                        Showing <span class="font-medium">1</span> to <span class="font-medium">10</span> of <span class="font-medium">97</span> results
+                                    </p>
+                                </div>
+                                <div>
+                                    <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                                        <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                            <span class="sr-only">Previous</span>
+                                            <i data-lucide="chevron-left" class="h-5 w-5"></i>
+                                        </a>
+                                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">1</a>
+                                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">2</a>
+                                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">3</a>
+                                        <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-gray-50 text-sm font-medium text-gray-700">...</span>
+                                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">8</a>
+                                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">9</a>
+                                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">10</a>
+                                        <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                            <span class="sr-only">Next</span>
+                                            <i data-lucide="chevron-right" class="h-5 w-5"></i>
+                                        </a>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Agent Profile Modal -->
+    <div id="agent-profile-modal" class="fixed inset-0 bg-gray-500 bg-opacity-75 hidden">
+        <div class="fixed inset-0 overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4">
+                <div class="bg-white rounded-xl shadow-xl w-full max-w-4xl">
+                    <!-- Modal Header -->
+                    <div class="px-6 py-4 border-b flex items-center justify-between sticky top-0 bg-white z-10">
+                        <div class="flex items-center space-x-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Agent Profile</h3>
+                            <div class="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">Active</div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <button class="inline-flex items-center px-3 py-1.5 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50">
+                                <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
+                                Edit
+                            </button>
+                            <button onclick="closeAgentModal()" class="text-gray-400 hover:text-gray-500">
+                                <i data-lucide="x" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Modal Content -->
+                    <div class="overflow-y-auto" style="max-height: calc(100vh - 12rem);">
+                        <!-- Tabs -->
+                        <div class="px-6 py-2 border-b bg-white sticky top-[0.5rem] z-10">
+                            <nav class="flex space-x-4">
+                                <button role="tab" data-tab="profile" class="rounded-lg px-4 py-2 text-sm font-medium bg-blue-50 text-blue-600">
+                                    Profile
+                                </button>
+                                <button role="tab" data-tab="students" class="rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                    Students
+                                </button>
+                                <button role="tab" data-tab="documents" class="rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                    Documents
+                                </button>
+                                <button role="tab" data-tab="commission" class="rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                    Commission
+                                </button>
+                                <button role="tab" data-tab="activity" class="rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                    Activity
+                                </button>
+                            </nav>
+                        </div>
+
+                        <!-- Tab Contents -->
+                        <div class="p-6">
+                            <!-- Profile Tab -->
+                            <div id="profile-tab" class="space-y-8">
+                                <!-- Basic Info -->
+                                <div>
+                                    <h4 class="text-base font-medium text-gray-900 mb-4">Basic Information</h4>
+                                    <div class="grid grid-cols-2 gap-6">
+                                        <div>
+                                            <p class="text-sm text-gray-500 mb-1">Agency Name</p>
+                                            <p class="text-sm font-medium">Global Education</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm text-gray-500 mb-1">Agency Type</p>
+                                            <p class="text-sm font-medium">Company</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm text-gray-500 mb-1">Contact Person</p>
+                                            <p class="text-sm font-medium">John Smith</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm text-gray-500 mb-1">Email</p>
+                                            <p class="text-sm font-medium">contact@globaledu.com</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm text-gray-500 mb-1">Phone</p>
+                                            <p class="text-sm font-medium">+84 123 456 789</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm text-gray-500 mb-1">Country</p>
+                                            <p class="text-sm font-medium">Vietnam</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Commission Terms -->
+                                <div>
+                                    <h4 class="text-base font-medium text-gray-900 mb-4">Commission Terms</h4>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <p class="text-sm font-medium">Standard Commission Rate</p>
+                                            <p class="text-sm">10% per enrollment</p>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <p class="text-sm font-medium">Bonus Threshold</p>
+                                            <p class="text-sm">+2% for >10 enrollments/month</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Internal Notes -->
+                                <div>
+                                    <h4 class="text-base font-medium text-gray-900 mb-4">Internal Notes</h4>
+                                    <div class="bg-yellow-50 p-4 rounded-lg">
+                                        <p class="text-sm text-yellow-800">Strong performance in undergraduate placements. Consider for premium partnership program.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Students Tab -->
+                            <div id="students-tab" class="hidden">
+                                <div class="space-y-6">
+                                    <!-- Stats -->
+                                    <div class="grid grid-cols-3 gap-4">
+                                        <div class="bg-blue-50 p-4 rounded-lg">
+                                            <p class="text-sm text-gray-500 mb-1">Total Students</p>
+                                            <p class="text-2xl font-semibold text-blue-600">45</p>
+                                        </div>
+                                        <div class="bg-green-50 p-4 rounded-lg">
+                                            <p class="text-sm text-gray-500 mb-1">Active Applications</p>
+                                            <p class="text-2xl font-semibold text-green-600">12</p>
+                                        </div>
+                                        <div class="bg-yellow-50 p-4 rounded-lg">
+                                            <p class="text-sm text-gray-500 mb-1">Success Rate</p>
+                                            <p class="text-2xl font-semibold text-yellow-600">85%</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Students List -->
+                                    <div class="bg-white rounded-lg border">
+                                        <div class="px-4 py-3 border-b">
+                                            <h4 class="font-medium">Assigned Students</h4>
+                                        </div>
+                                        <div class="divide-y">
+                                            <!-- Student Item -->
+                                            <div class="p-4 hover:bg-gray-50">
+                                                <div class="flex items-center justify-between">
+                                                    <div class="flex items-center space-x-4">
+                                                        <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 font-medium">AS</div>
+                                                        <div>
+                                                            <p class="text-sm font-medium">Alice Smith</p>
+                                                            <p class="text-sm text-gray-500">BBA - University of Melbourne</p>
+                                                        </div>
+                                                    </div>
+                                                    <span class="px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">In Progress</span>
+                                                </div>
+                                            </div>
+                                            <!-- More students... -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Documents Tab -->
+                            <div id="documents-tab" class="hidden">
+                                <div class="space-y-6">
+                                    <!-- Required Documents -->
+                                    <div>
+                                        <h4 class="text-base font-medium text-gray-900 mb-4">Required Documents</h4>
+                                        <div class="space-y-4">
+                                            <!-- Document Item -->
+                                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                                <div class="flex items-center space-x-3">
+                                                    <i data-lucide="file-text" class="w-5 h-5 text-blue-500"></i>
+                                                    <div>
+                                                        <p class="text-sm font-medium">Agency Agreement</p>
+                                                        <p class="text-xs text-gray-500">Uploaded on Jan 15, 2025</p>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center space-x-2">
+                                                    <button class="text-sm text-blue-600 hover:text-blue-700">View</button>
+                                                    <button class="text-sm text-blue-600 hover:text-blue-700">Download</button>
+                                                </div>
+                                            </div>
+
+                                            <!-- More documents... -->
+                                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                                <div class="flex items-center space-x-3">
+                                                    <i data-lucide="file-text" class="w-5 h-5 text-blue-500"></i>
+                                                    <div>
+                                                        <p class="text-sm font-medium">Business License</p>
+                                                        <p class="text-xs text-gray-500">Uploaded on Jan 16, 2025</p>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center space-x-2">
+                                                    <button class="text-sm text-blue-600 hover:text-blue-700">View</button>
+                                                    <button class="text-sm text-blue-600 hover:text-blue-700">Download</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Upload New Document -->
+                                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                                        <i data-lucide="upload" class="w-8 h-8 text-gray-400 mx-auto mb-2"></i>
+                                        <p class="text-sm text-gray-500 mb-1">Upload a new document</p>
+                                        <button class="text-sm text-blue-600 font-medium hover:text-blue-700">Browse Files</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Commission Tab -->
+                            <div id="commission-tab" class="hidden">
+                                <div class="space-y-6">
+                                    <!-- Commission Summary -->
+                                    <div class="grid grid-cols-3 gap-4">
+                                        <div class="bg-green-50 p-4 rounded-lg">
+                                            <p class="text-sm text-gray-500 mb-1">Total Commission</p>
+                                            <p class="text-2xl font-semibold text-green-600">$45,200</p>
+                                            <p class="text-xs text-green-600 mt-1">+12% from last year</p>
+                                        </div>
+                                        <div class="bg-blue-50 p-4 rounded-lg">
+                                            <p class="text-sm text-gray-500 mb-1">Pending Payment</p>
+                                            <p class="text-2xl font-semibold text-blue-600">$5,800</p>
+                                            <p class="text-xs text-blue-600 mt-1">3 payments pending</p>
+                                        </div>
+                                        <div class="bg-purple-50 p-4 rounded-lg">
+                                            <p class="text-sm text-gray-500 mb-1">Average per Student</p>
+                                            <p class="text-2xl font-semibold text-purple-600">$1,200</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Commission History -->
+                                    <div class="bg-white rounded-lg border">
+                                        <div class="px-4 py-3 border-b flex items-center justify-between">
+                                            <h4 class="font-medium">Payment History</h4>
+                                            <button class="text-sm text-blue-600 hover:text-blue-700">Export</button>
+                                        </div>
+                                        <table class="min-w-full divide-y divide-gray-200">
+                                            <thead class="bg-gray-50">
+                                                <tr>
+                                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
+                                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Student</th>
+                                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Program</th>
+                                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Amount</th>
+                                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-gray-200">
+                                                <tr>
+                                                    <td class="px-4 py-3 text-sm">Mar 15, 2025</td>
+                                                    <td class="px-4 py-3 text-sm">Alice Smith</td>
+                                                    <td class="px-4 py-3 text-sm">BBA - Melbourne</td>
+                                                    <td class="px-4 py-3 text-sm font-medium">$2,500</td>
+                                                    <td class="px-4 py-3">
+                                                        <span class="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Paid</span>
+                                                    </td>
+                                                </tr>
+                                                <!-- More payment history... -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Activity Tab -->
+                            <div id="activity-tab" class="hidden">
+                                <div class="space-y-6">
+                                    <!-- Activity Timeline -->
+                                    <div class="flow-root">
+                                        <ul class="-mb-8">
+                                            <!-- Activity Item -->
+                                            <li>
+                                                <div class="relative pb-8">
+                                                    <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+                                                    <div class="relative flex space-x-3">
+                                                        <div>
+                                                            <span class="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center ring-8 ring-white">
+                                                                <i data-lucide="file-text" class="w-4 h-4 text-white"></i>
+                                                            </span>
+                                                        </div>
+                                                        <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+                                                            <div>
+                                                                <p class="text-sm text-gray-500">Submitted new application for <span class="font-medium text-gray-900">Alice Smith</span></p>
+                                                            </div>
+                                                            <div class="text-right text-sm whitespace-nowrap text-gray-500">
+                                                                <time datetime="2025-03-15">Mar 15</time>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <!-- More activity items... -->
+                                            <li>
+                                                <div class="relative pb-8">
+                                                    <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+                                                    <div class="relative flex space-x-3">
+                                                        <div>
+                                                            <span class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-white">
+                                                                <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                                                            </span>
+                                                        </div>
+                                                        <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+                                                            <div>
+                                                                <p class="text-sm text-gray-500">Commission payment processed for <span class="font-medium text-gray-900">February 2025</span></p>
+                                                            </div>
+                                                            <div class="text-right text-sm whitespace-nowrap text-gray-500">
+                                                                <time datetime="2025-03-10">Mar 10</time>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Handle logout
+        function handleLogout() {
+            window.location.href = '../../login.html';
+        }
+
+        // Profile Dropdown Toggle
+        const profileMenu = document.getElementById('profile-menu');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileMenu.addEventListener('click', () => {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!profileMenu.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // Agent Profile Modal
+        const agentProfileModal = document.getElementById('agent-profile-modal');
+
+        function openAgentModal() {
+            agentProfileModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAgentModal() {
+            agentProfileModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Add click handlers to View Profile buttons
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.trim() === 'View Profile') {
+                button.addEventListener('click', openAgentModal);
+            }
+        });
+
+        // Handle tab switching
+        const tabs = document.querySelectorAll('[role="tab"]');
+        const tabPanels = {
+            'profile': document.getElementById('profile-tab'),
+            'students': document.getElementById('students-tab'),
+            'documents': document.getElementById('documents-tab'),
+            'commission': document.getElementById('commission-tab'),
+            'activity': document.getElementById('activity-tab')
+        };
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.getAttribute('data-tab');
+
+                // Update tab styles
+                tabs.forEach(t => {
+                    t.classList.remove('bg-blue-50', 'text-blue-600');
+                    t.classList.add('text-gray-500');
+                });
+                tab.classList.remove('text-gray-500');
+                tab.classList.add('bg-blue-50', 'text-blue-600');
+
+                // Show/hide tab panels
+                Object.values(tabPanels).forEach(panel => {
+                    panel.classList.add('hidden');
+                });
+                tabPanels[targetTab].classList.remove('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

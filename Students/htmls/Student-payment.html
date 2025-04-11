@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Center - Ellacy GO</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(to right top, #EDE5D6, #9ED5C5, #ffffff);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Sidebar -->
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
+        <div class="p-6">
+            <h1 class="text-2xl font-bold text-gray-800">Ellacy GO</h1>
+            <p class="text-sm text-gray-500">Student</p>
+        </div>
+        <nav class="mt-6">
+            <a href="Student-Dashboard.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>
+                Dashboard
+            </a>
+            <a href="Student-my-application.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>
+                My Applications
+            </a>
+            <a href="Student-find-program.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="search" class="w-5 h-5 mr-3"></i>
+                Find Programs
+            </a>
+            <a href="Student-sholarships.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="award" class="w-5 h-5 mr-3"></i>
+                Scholarships
+            </a>
+            <a href="Student-profile.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="user" class="w-5 h-5 mr-3"></i>
+                Profile
+            </a>
+            <a href="Student-AI-Assistant.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="bot" class="w-5 h-5 mr-3"></i>
+                AI Assistant
+            </a>
+            <a href="Student-payment.html" class="flex items-center px-6 py-3 bg-blue-50 text-blue-600">
+                <i data-lucide="credit-card" class="w-5 h-5 mr-3"></i>
+                Payment Center
+            </a>
+            <a href="Student-messages.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>
+                Messages
+            </a>
+        </nav>
+        <div class="mt-auto px-6 py-4 border-t border-gray-200">
+            <p class="text-sm text-gray-600 text-center">Designed & developed by Innotech Viet Nam</p>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="ml-64">
+        <!-- Top Bar -->
+        <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6">
+            <div class="flex items-center">
+                <h2 class="text-xl font-semibold text-gray-800">Payment Center</h2>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="relative">
+                    <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
+                    <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                </button>
+                <!-- Profile Dropdown -->
+                <div class="relative">
+                    <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
+                             alt="Profile" 
+                             class="w-8 h-8 rounded-full object-cover">
+                    </button>
+                    
+                    <!-- Dropdown Menu -->
+                    <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                        <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
+                        </a>
+                        <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="p-6">
+            <!-- Payment Due Alert -->
+            <div class="bg-red-50 border border-red-200 rounded-3xl p-4 mb-6 flex items-center justify-between">
+                <div class="flex items-center">
+                    <i data-lucide="alert-circle" class="w-5 h-5 text-red-600 mr-3"></i>
+                    <p class="text-red-600">You have a payment due on April 15, 2025</p>
+                </div>
+                <button class="text-red-600 hover:text-red-700 font-medium">View Details</button>
+            </div>
+
+            <!-- Outstanding Payments -->
+            <div class="bg-white rounded-3xl shadow-md p-6 mb-6">
+                <h3 class="text-lg font-semibold mb-4">Outstanding Payments</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Total Due Amount</span>
+                            <span class="text-2xl font-semibold">$125 USD</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-600">Application Fee</span>
+                                <span>$50 USD</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-600">Counseling Package</span>
+                                <span>$75 USD</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-between">
+                        <div class="text-sm text-gray-600">
+                            <p>Due Date: April 15, 2025</p>
+                            <p class="mt-1">Payment methods: Credit Card, PayPal, Bank Transfer</p>
+                        </div>
+                        <button class="mt-4 px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 flex items-center justify-center">
+                            <i data-lucide="credit-card" class="w-5 h-5 mr-2"></i>
+                            Pay Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transaction History -->
+            <div class="bg-white rounded-3xl shadow-md p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-lg font-semibold">Transaction History</h3>
+                    <div class="flex gap-2">
+                        <button class="px-4 py-2 text-gray-600 hover:text-gray-800 flex items-center">
+                            <i data-lucide="filter" class="w-4 h-4 mr-2"></i>
+                            Filter
+                        </button>
+                        <button class="px-4 py-2 text-gray-600 hover:text-gray-800 flex items-center">
+                            <i data-lucide="download" class="w-4 h-4 mr-2"></i>
+                            Export
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Transaction List -->
+                <div class="space-y-4">
+                    <!-- Transaction 1 -->
+                    <div class="border rounded-xl p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="flex items-center">
+                                    <h4 class="font-medium">Application Fee - Canada Fall Intake</h4>
+                                    <span class="ml-2 px-2 py-1 bg-green-100 text-green-600 text-xs rounded-full">Paid</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-1">March 30, 2025</p>
+                            </div>
+                            <span class="font-medium">$75 USD</span>
+                        </div>
+                        <div class="flex justify-between items-center mt-4">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
+                                Visa •••• 4242
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="px-3 py-1.5 border rounded-lg text-sm text-gray-600 hover:bg-gray-50 flex items-center">
+                                    <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
+                                    View Receipt
+                                </button>
+                                <button class="px-3 py-1.5 border rounded-lg text-sm text-gray-600 hover:bg-gray-50 flex items-center">
+                                    <i data-lucide="download" class="w-4 h-4 mr-2"></i>
+                                    Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transaction 2 -->
+                    <div class="border rounded-xl p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="flex items-center">
+                                    <h4 class="font-medium">Counseling Package - Basic</h4>
+                                    <span class="ml-2 px-2 py-1 bg-yellow-100 text-yellow-600 text-xs rounded-full">Pending</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-1">March 28, 2025</p>
+                            </div>
+                            <span class="font-medium">$75 USD</span>
+                        </div>
+                        <div class="flex justify-between items-center mt-4">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i data-lucide="bank" class="w-4 h-4 mr-2"></i>
+                                Bank Transfer
+                            </div>
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm">
+                                Retry Payment
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Transaction 3 -->
+                    <div class="border rounded-xl p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="flex items-center">
+                                    <h4 class="font-medium">Document Processing Fee</h4>
+                                    <span class="ml-2 px-2 py-1 bg-red-100 text-red-600 text-xs rounded-full">Failed</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-1">March 25, 2025</p>
+                            </div>
+                            <span class="font-medium">$50 USD</span>
+                        </div>
+                        <div class="flex justify-between items-center mt-4">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
+                                Card Declined
+                            </div>
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm">
+                                Try Again
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Payment Modal (Hidden by default) -->
+    <div class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white rounded-3xl p-6 max-w-lg w-full mx-4">
+            <div class="flex justify-between items-start mb-6">
+                <h3 class="text-xl font-semibold">Complete Payment</h3>
+                <button class="text-gray-500 hover:text-gray-700">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Amount Summary -->
+                <div class="bg-gray-50 rounded-xl p-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-gray-600">Total Amount</span>
+                        <span class="text-xl font-semibold">$125 USD</span>
+                    </div>
+                    <div class="text-sm text-gray-600">
+                        Application Fee: $50<br>
+                        Counseling Package: $75
+                    </div>
+                </div>
+
+                <!-- Payment Method Selection -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Payment Method</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center p-4 border rounded-xl cursor-pointer hover:bg-gray-50">
+                            <input type="radio" name="payment-method" class="mr-3">
+                            <div class="flex-1">
+                                <div class="font-medium">Credit/Debit Card</div>
+                                <div class="text-sm text-gray-600">Pay securely with your card</div>
+                            </div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" 
+                                 alt="Visa" class="h-6">
+                        </label>
+                        <label class="flex items-center p-4 border rounded-xl cursor-pointer hover:bg-gray-50">
+                            <input type="radio" name="payment-method" class="mr-3">
+                            <div class="flex-1">
+                                <div class="font-medium">PayPal</div>
+                                <div class="text-sm text-gray-600">Fast and secure payment</div>
+                            </div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1280px-PayPal.svg.png" 
+                                 alt="PayPal" class="h-6">
+                        </label>
+                        <label class="flex items-center p-4 border rounded-xl cursor-pointer hover:bg-gray-50">
+                            <input type="radio" name="payment-method" class="mr-3">
+                            <div class="flex-1">
+                                <div class="font-medium">Bank Transfer</div>
+                                <div class="text-sm text-gray-600">Direct bank transfer</div>
+                            </div>
+                            <i data-lucide="bank" class="w-6 h-6 text-gray-400"></i>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Card Details (shown when card is selected) -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
+                        <input type="text" placeholder="1234 5678 9012 3456" 
+                               class="w-full px-4 py-2 border rounded-lg">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Expiry Date</label>
+                            <input type="text" placeholder="MM/YY" 
+                                   class="w-full px-4 py-2 border rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">CVC</label>
+                            <input type="text" placeholder="123" 
+                                   class="w-full px-4 py-2 border rounded-lg">
+                        </div>
+                    </div>
+                </div>
+
+                <button class="w-full px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700">
+                    Pay $125 USD
+                </button>
+
+                <p class="text-sm text-gray-600 text-center">
+                    <i data-lucide="lock" class="w-4 h-4 inline mr-1"></i>
+                    Secure payment processed by Stripe
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Handle logout
+        function handleLogout() {
+            window.location.href = '../../login.html';
+        }
+
+        // Profile Dropdown Toggle
+        const profileMenu = document.getElementById('profile-menu');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileMenu.addEventListener('click', () => {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!profileMenu.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

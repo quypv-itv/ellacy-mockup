@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students - Ellacy CRM</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        // Debug: Check if jQuery is loaded
+        window.addEventListener('load', function() {
+            console.log('Window loaded');
+            if (window.jQuery) {
+                console.log('jQuery is loaded');
+            } else {
+                console.log('jQuery is not loaded');
+            }
+        });
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
+            <div class="p-6">
+                <h1 class="text-2xl font-bold text-gray-800">Ellacy GO</h1>
+                <p class="text-sm text-gray-500">Admin</p>
+            </div>
+            <nav class="mt-6">
+                <a href="CRM-dashboard.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>
+                    Dashboard
+                </a>
+                <a href="CRM-applications.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>
+                    Applications
+                </a>
+                <a href="CRM-agent.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="users" class="w-5 h-5 mr-3"></i>
+                    Agents
+                </a>
+                <a href="CRM-scholarships.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="graduation-cap" class="w-5 h-5 mr-3"></i>
+                    Scholarships
+                </a>
+                <a href="CRM-institutions.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="building" class="w-5 h-5 mr-3"></i>
+                    Institutions
+                </a>
+                <a href="CRM-students.html" class="flex items-center px-6 py-3 text-blue-600 bg-blue-50">
+                    <i data-lucide="user" class="w-5 h-5 mr-3"></i>
+                    Users
+                </a>
+                <a href="CRM-payment.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="credit-card" class="w-5 h-5 mr-3"></i>
+                    Payments
+                </a>
+                <a href="CRM-tasks.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="check-circle" class="w-5 h-5 mr-3"></i>
+                    Tasks
+                </a>
+                <a href="CRM-report.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="bar-chart" class="w-5 h-5 mr-3"></i>
+                    Reports
+                </a>
+                <a href="CRM-messages.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>
+                    Messages
+                </a>
+                <a href="CRM-user-admin.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="shield" class="w-5 h-5 mr-3"></i>
+                    User Admin
+                </a>
+                <a href="CRM-AI-Assistant.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="bot" class="w-5 h-5 mr-3"></i>
+                    AI Assistant
+                </a>
+                <a href="CRM-Setting.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="settings" class="w-5 h-5 mr-3"></i>
+                    Settings
+                </a>
+            </nav>
+            <div class="mt-auto px-6 py-4 border-t border-gray-200">
+                <p class="text-sm text-gray-600 text-center">Designed & developed by Innotech Viet Nam</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="ml-64 flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6">
+                <h2 class="text-xl font-semibold text-gray-800">Students</h2>
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 hover:bg-gray-100 rounded-full">
+                        <div class="relative">
+                            <i data-lucide="bell" class="w-5 h-5 text-gray-600"></i>
+                            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                        </div>
+                    </button>
+                    <div class="relative" id="profile-menu">
+                        <button class="flex items-center">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                alt="Admin profile" class="w-8 h-8 rounded-full object-cover">
+                        </button>
+                        <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1">
+                            <a href="CRM-Setting.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="handleLogout()">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Filter & Search Bar -->
+            <div class="p-6">
+                <div class="bg-white rounded-lg shadow p-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <!-- Source Filter -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Source</label>
+                            <select class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                <option value="">All Sources</option>
+                                <option value="agent">Agent</option>
+                                <option value="direct">Direct</option>
+                                <option value="referral">Referral</option>
+                            </select>
+                        </div>
+
+                        <!-- Destination Filter -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Destination</label>
+                            <select class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                <option value="">All Countries</option>
+                                <option value="au">Australia</option>
+                                <option value="ca">Canada</option>
+                                <option value="uk">United Kingdom</option>
+                                <option value="us">United States</option>
+                            </select>
+                        </div>
+
+                        <!-- Application Status -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Application Status</label>
+                            <select class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                <option value="">All Status</option>
+                                <option value="new">New</option>
+                                <option value="in_progress">In Progress</option>
+                                <option value="missing_docs">Missing Documents</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </div>
+
+                        <!-- Search -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Search</label>
+                            <input type="text" placeholder="Search by name or email..." class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+
+                    <!-- Advanced Filters -->
+                    <div class="mt-4">
+                        <button class="text-sm text-blue-600 hover:text-blue-700 flex items-center" onclick="toggleAdvancedFilters()">
+                            <i data-lucide="sliders" class="w-4 h-4 mr-1"></i>
+                            Advanced Filters
+                        </button>
+                    </div>
+
+                    <!-- Advanced Filters Panel (Hidden by default) -->
+                    <div id="advanced-filters" class="hidden mt-4 pt-4 border-t">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Age Range</label>
+                                <div class="flex space-x-4">
+                                    <input type="number" placeholder="Min" class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <input type="number" placeholder="Max" class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Created Date</label>
+                                <input type="date" class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Tags</label>
+                                <select multiple class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="priority">Priority</option>
+                                    <option value="scholarship">Scholarship</option>
+                                    <option value="visa_ready">Visa Ready</option>
+                                    <option value="financial_pending">Financial Pending</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Students Table -->
+            <div class="px-6 pb-6">
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Phone</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Agent</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Destination</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Applications</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <!-- Sample Student 1 -->
+                            <tr>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center">
+                                        <div class="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center">
+                                            <span class="text-sm font-medium text-gray-600">JD</span>
+                                        </div>
+                                        <div class="ml-4">
+                                            <div class="text-sm font-medium text-gray-900">John Doe</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-500">john.doe@example.com</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">+1 234-567-8901</td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Agent</span>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-500">Australia</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">2</td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">In Progress</span>
+                                </td>
+                                <td class="px-6 py-4 text-sm">
+                                    <div class="flex space-x-2">
+                                        <button onclick="openStudentProfile()" class="text-blue-600 hover:text-blue-900">View Profile</button>
+                                        <button class="text-gray-600 hover:text-gray-900">Message</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Sample Student 2 -->
+                            <tr>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center">
+                                        <div class="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center">
+                                            <span class="text-sm font-medium text-gray-600">JS</span>
+                                        </div>
+                                        <div class="ml-4">
+                                            <div class="text-sm font-medium text-gray-900">Jane Smith</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-500">jane.smith@example.com</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">+1 345-678-9012</td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Direct</span>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-500">Canada</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">1</td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Missing Docs</span>
+                                </td>
+                                <td class="px-6 py-4 text-sm">
+                                    <div class="flex space-x-2">
+                                        <button onclick="openStudentProfile()" class="text-blue-600 hover:text-blue-900">View Profile</button>
+                                        <button class="text-gray-600 hover:text-gray-900">Message</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Student Profile Modal -->
+            <div id="student-profile-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden overflow-y-auto h-full w-full">
+                <div class="relative top-20 mx-auto p-5 w-3/4 max-w-4xl">
+                    <div class="relative bg-white rounded-lg shadow-xl">
+                        <!-- Modal Header -->
+                        <div class="flex items-center justify-between p-4 border-b">
+                            <h3 class="text-xl font-semibold text-gray-900">Student Profile</h3>
+                            <button onclick="closeStudentProfile()" class="text-gray-400 hover:text-gray-500">
+                                <i data-lucide="x" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+
+                        <!-- Modal Content -->
+                        <div class="p-6">
+                            <!-- Tabs -->
+                            <div class="border-b border-gray-200">
+                                <nav class="-mb-px flex space-x-8">
+                                    <button class="border-blue-500 text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Personal Info</button>
+                                    <button class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Academic Background</button>
+                                    <button class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Documents</button>
+                                    <button class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Applications</button>
+                                    <button class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Notes</button>
+                                </nav>
+                            </div>
+
+                            <!-- Personal Info Content -->
+                            <div class="mt-6 grid grid-cols-2 gap-6">
+                                <div>
+                                    <h4 class="text-sm font-medium text-gray-500">Basic Information</h4>
+                                    <div class="mt-2 space-y-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700">Full Name</label>
+                                            <p class="mt-1 text-sm text-gray-900">John Doe</p>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700">Email</label>
+                                            <p class="mt-1 text-sm text-gray-900">john.doe@example.com</p>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700">Phone</label>
+                                            <p class="mt-1 text-sm text-gray-900">+1 234-567-8901</p>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700">Date of Birth</label>
+                                            <p class="mt-1 text-sm text-gray-900">January 15, 1995</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h4 class="text-sm font-medium text-gray-500">Additional Details</h4>
+                                    <div class="mt-2 space-y-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700">Source</label>
+                                            <p class="mt-1 text-sm text-gray-900">Agent - Sarah Johnson</p>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700">Preferred Destination</label>
+                                            <p class="mt-1 text-sm text-gray-900">Australia</p>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700">Created Date</label>
+                                            <p class="mt-1 text-sm text-gray-900">March 1, 2024</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="mt-6 flex items-center justify-end space-x-3">
+                                <button class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                    <i data-lucide="mail" class="w-4 h-4 mr-2"></i>
+                                    Send Reminder
+                                </button>
+                                <button class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                    <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                                    Add Task
+                                </button>
+                                <button class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                    <i data-lucide="flag" class="w-4 h-4 mr-2"></i>
+                                    Flag for Attention
+                                </button>
+                                <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+                                    <i data-lucide="user-plus" class="w-4 h-4 mr-2"></i>
+                                    Assign to Agent
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student Profile Modal -->
+    <div id="student-profile-modal" class="fixed inset-0 z-50 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Background overlay -->
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <!-- Modal panel -->
+            <div class="relative inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full z-50">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <!-- Modal header -->
+                    <div class="flex justify-between items-center pb-4 border-b">
+                        <h3 class="text-lg font-semibold text-gray-900">Student Profile</h3>
+                        <button onclick="closeStudentProfile()" class="text-gray-400 hover:text-gray-500">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+
+                    <!-- Modal content -->
+                    <div class="mt-4">
+                        <!-- Tabs -->
+                        <div class="border-b border-gray-200">
+                            <div class="flex space-x-6">
+                                <button onclick="switchTab('personal')" class="tab-btn whitespace-nowrap py-4 px-4 text-sm font-medium border-b-2 border-blue-600 text-blue-600">Personal Info</button>
+                                <button onclick="switchTab('academic-background')" class="tab-btn whitespace-nowrap py-4 px-4 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">Academic Background</button>
+                                <button onclick="switchTab('documents')" class="tab-btn whitespace-nowrap py-4 px-4 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">Documents</button>
+                                <button onclick="switchTab('applications')" class="tab-btn whitespace-nowrap py-4 px-4 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">Applications</button>
+                                <button onclick="switchTab('scholarships')" class="tab-btn whitespace-nowrap py-4 px-4 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">Scholarships</button>
+                                <button onclick="switchTab('notes')" class="tab-btn whitespace-nowrap py-4 px-4 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">Notes</button>
+                            </div>
+                        </div>
+
+                        <!-- Tab content panels -->
+                        <div class="mt-4 space-y-6">
+                            <!-- Personal Info Tab -->
+                            <div id="personal-tab" class="tab-content hidden">
+                                <div class="grid grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="text-sm font-medium text-gray-500 mb-4">Basic Information</h4>
+                                        <div class="space-y-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700">Full Name</label>
+                                                <p class="mt-1 text-sm text-gray-900">John Michael Smith</p>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700">Email</label>
+                                                <p class="mt-1 text-sm text-gray-900">john.smith@example.com</p>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700">Phone</label>
+                                                <p class="mt-1 text-sm text-gray-900">+1 (555) 123-4567</p>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700">Date of Birth</label>
+                                                <p class="mt-1 text-sm text-gray-900">March 15, 1998</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-medium text-gray-500 mb-4">Additional Details</h4>
+                                        <div class="space-y-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700">Nationality</label>
+                                                <p class="mt-1 text-sm text-gray-900">United States</p>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700">Current Location</label>
+                                                <p class="mt-1 text-sm text-gray-900">New York, USA</p>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700">Assigned Agent</label>
+                                                <p class="mt-1 text-sm text-gray-900">Sarah Johnson</p>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700">Status</label>
+                                                <span class="mt-1 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Active</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Academic Background Tab -->
+                            <!-- Academic Background Tab -->
+                            <div id="academic-background-tab" class="tab-content hidden" role="tabpanel">
+                                <div class="p-4">
+                                    <h3 class="text-lg font-medium text-gray-900 mb-4">Academic Background</h3>
+                                <div class="space-y-6">
+                                    <div>
+                                        <div class="flex justify-between items-center mb-4">
+                                            <h4 class="text-sm font-medium text-gray-500">Education History</h4>
+                                            <button onclick="addEducation()" class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                                <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                                                Add Education
+                                            </button>
+                                        </div>
+                                        <div class="space-y-4" id="education-list">
+                                            <div class="border rounded-lg p-4">
+                                                <div class="flex justify-between items-start">
+                                                    <div>
+                                                        <h5 class="font-medium">Bachelor of Science in Computer Science</h5>
+                                                        <p class="text-sm text-gray-600 mt-1">University of Technology</p>
+                                                        <p class="text-sm text-gray-500 mt-1">2016 - 2020</p>
+                                                        <p class="text-sm text-gray-600 mt-2">GPA: 3.8/4.0</p>
+                                                    </div>
+                                                    <div class="flex space-x-2">
+                                                        <button onclick="editEducation(0)" class="p-1.5 text-gray-500 hover:text-gray-700">
+                                                            <i data-lucide="edit-2" class="w-4 h-4"></i>
+                                                        </button>
+                                                        <button onclick="deleteEducation(0)" class="p-1.5 text-gray-500 hover:text-red-600">
+                                                            <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="border rounded-lg p-4">
+                                                <div class="flex justify-between items-start">
+                                                    <div>
+                                                        <h5 class="font-medium">High School Diploma</h5>
+                                                        <p class="text-sm text-gray-600 mt-1">Central High School</p>
+                                                        <p class="text-sm text-gray-500 mt-1">2012 - 2016</p>
+                                                    </div>
+                                                    <div class="flex space-x-2">
+                                                        <button onclick="editEducation(1)" class="p-1.5 text-gray-500 hover:text-gray-700">
+                                                            <i data-lucide="edit-2" class="w-4 h-4"></i>
+                                                        </button>
+                                                        <button onclick="deleteEducation(1)" class="p-1.5 text-gray-500 hover:text-red-600">
+                                                            <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between items-center mb-4">
+                                            <h4 class="text-sm font-medium text-gray-500">Test Scores</h4>
+                                            <button onclick="addTestScore()" class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                                <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                                                Add Test Score
+                                            </button>
+                                        </div>
+                                        <div class="grid grid-cols-3 gap-4" id="test-scores-list">
+                                            <div class="border rounded-lg p-4">
+                                                <div class="flex justify-between items-start">
+                                                    <div>
+                                                        <h5 class="font-medium">IELTS</h5>
+                                                        <p class="text-sm text-gray-600 mt-1">Overall: 7.5</p>
+                                                        <div class="mt-2 space-y-1 text-sm text-gray-500">
+                                                            <p>Reading: 7.5</p>
+                                                            <p>Writing: 7.0</p>
+                                                            <p>Speaking: 8.0</p>
+                                                            <p>Listening: 7.5</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex space-x-2">
+                                                        <button onclick="editTestScore(0)" class="p-1.5 text-gray-500 hover:text-gray-700">
+                                                            <i data-lucide="edit-2" class="w-4 h-4"></i>
+                                                        </button>
+                                                        <button onclick="deleteTestScore(0)" class="p-1.5 text-gray-500 hover:text-red-600">
+                                                            <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="border rounded-lg p-4">
+                                                <div class="flex justify-between items-start">
+                                                    <div>
+                                                        <h5 class="font-medium">GRE</h5>
+                                                        <div class="mt-2 space-y-1 text-sm text-gray-500">
+                                                            <p>Verbal: 160</p>
+                                                            <p>Quantitative: 165</p>
+                                                            <p>Writing: 4.5</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex space-x-2">
+                                                        <button onclick="editTestScore(1)" class="p-1.5 text-gray-500 hover:text-gray-700">
+                                                            <i data-lucide="edit-2" class="w-4 h-4"></i>
+                                                        </button>
+                                                        <button onclick="deleteTestScore(1)" class="p-1.5 text-gray-500 hover:text-red-600">
+                                                            <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Documents Tab -->
+                            <div id="documents-tab" class="tab-content hidden">
+                                <div class="space-y-6">
+                                    <div class="flex justify-between items-center">
+                                        <h4 class="text-sm font-medium text-gray-500">Uploaded Documents</h4>
+                                        <button class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                            <i data-lucide="upload" class="w-4 h-4 mr-2"></i>
+                                            Upload New
+                                        </button>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <div class="flex items-center justify-between p-4 border rounded-lg">
+                                            <div class="flex items-center">
+                                                <i data-lucide="file-text" class="w-5 h-5 text-blue-500 mr-3"></i>
+                                                <div>
+                                                    <h5 class="font-medium">Passport.pdf</h5>
+                                                    <p class="text-sm text-gray-500">Uploaded on Mar 10, 2025</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex space-x-2">
+                                                <button class="p-2 text-gray-400 hover:text-gray-500">
+                                                    <i data-lucide="eye" class="w-5 h-5"></i>
+                                                </button>
+                                                <button class="p-2 text-gray-400 hover:text-gray-500">
+                                                    <i data-lucide="download" class="w-5 h-5"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between p-4 border rounded-lg">
+                                            <div class="flex items-center">
+                                                <i data-lucide="file-text" class="w-5 h-5 text-blue-500 mr-3"></i>
+                                                <div>
+                                                    <h5 class="font-medium">Academic_Transcript.pdf</h5>
+                                                    <p class="text-sm text-gray-500">Uploaded on Mar 8, 2025</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex space-x-2">
+                                                <button class="p-2 text-gray-400 hover:text-gray-500">
+                                                    <i data-lucide="eye" class="w-5 h-5"></i>
+                                                </button>
+                                                <button class="p-2 text-gray-400 hover:text-gray-500">
+                                                    <i data-lucide="download" class="w-5 h-5"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Applications Tab -->
+                            <div id="applications-tab" class="tab-content hidden">
+                                <div class="space-y-6">
+                                    <div class="flex justify-between items-center">
+                                        <h4 class="text-sm font-medium text-gray-500">Current Applications</h4>
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">2 Active</span>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <div class="border rounded-lg p-4">
+                                            <div class="flex justify-between items-start">
+                                                <div>
+                                                    <h5 class="font-medium">Master of Computer Science</h5>
+                                                    <p class="text-sm text-gray-600 mt-1">University of Melbourne</p>
+                                                    <p class="text-sm text-gray-500 mt-1">Intake: September 2025</p>
+                                                </div>
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Under Review</span>
+                                            </div>
+                                            <div class="mt-4">
+                                                <h6 class="text-sm font-medium text-gray-700 mb-2">Application Checklist</h6>
+                                                <div class="space-y-2">
+                                                    <div class="flex items-center">
+                                                        <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mr-2"></i>
+                                                        <span class="text-sm text-gray-600">Application Form</span>
+                                                    </div>
+                                                    <div class="flex items-center">
+                                                        <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mr-2"></i>
+                                                        <span class="text-sm text-gray-600">Academic Transcripts</span>
+                                                    </div>
+                                                    <div class="flex items-center">
+                                                        <i data-lucide="circle" class="w-4 h-4 text-gray-300 mr-2"></i>
+                                                        <span class="text-sm text-gray-600">Reference Letters</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Scholarships Tab -->
+                            <div id="scholarships-tab" class="tab-content hidden">
+                                <div class="space-y-6">
+                                    <div class="flex justify-between items-center">
+                                        <h4 class="text-sm font-medium text-gray-500">Assigned Scholarships</h4>
+                                        <button class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                            <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                                            Assign New
+                                        </button>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <div class="border rounded-lg p-4">
+                                            <div class="flex justify-between items-start">
+                                                <div>
+                                                    <h5 class="font-medium">International Merit Scholarship</h5>
+                                                    <p class="text-sm text-gray-600 mt-1">University of Melbourne</p>
+                                                    <p class="text-sm text-gray-500 mt-1">Value: $10,000</p>
+                                                </div>
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Awarded</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Notes Tab -->
+                            <div id="notes-tab" class="tab-content hidden">
+                                <div class="space-y-6">
+                                    <div class="flex justify-between items-center">
+                                        <h4 class="text-sm font-medium text-gray-500">Internal Notes</h4>
+                                        <button class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                            <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                                            Add Note
+                                        </button>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <div class="border rounded-lg p-4">
+                                            <div class="flex items-start justify-between">
+                                                <div class="flex items-start space-x-3">
+                                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Admin" class="w-8 h-8 rounded-full">
+                                                    <div>
+                                                        <div class="flex items-center space-x-2">
+                                                            <span class="text-sm font-medium text-gray-900">Sarah Johnson</span>
+                                                            <span class="text-sm text-gray-500">Mar 15, 2025</span>
+                                                        </div>
+                                                        <p class="mt-1 text-sm text-gray-600">Student has expressed interest in applying for the Research Excellence Scholarship. Following up with more information next week.</p>
+                                                    </div>
+                                                </div>
+                                                <button class="text-gray-400 hover:text-gray-500">
+                                                    <i data-lucide="more-vertical" class="w-5 h-5"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer with actions -->
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse space-x-3">
+                    <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        <i data-lucide="mail" class="w-4 h-4 mr-2"></i>
+                        Send Reminder
+                    </button>
+                    <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                        Add Task
+                    </button>
+                    <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        <i data-lucide="flag" class="w-4 h-4 mr-2"></i>
+                        Flag for Attention
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Initialize Select2 for dropdowns
+        $(document).ready(function() {
+            $('select').select2({
+                width: '100%'
+            });
+        });
+
+        // Profile Menu Toggle
+        const profileMenu = document.getElementById('profile-menu');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileMenu.addEventListener('click', () => {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!profileMenu.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // Student Profile Modal Functions
+        function openStudentProfile() {
+            document.getElementById('student-profile-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeStudentProfile() {
+            document.getElementById('student-profile-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Enable scrolling
+        }
+
+        // Academic Background Functions
+        function addEducation() {
+            const educationForm = `
+                <div class="fixed inset-0 z-50 overflow-y-auto" id="education-form-modal">
+                    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+                        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                <h3 class="text-lg font-medium text-gray-900 mb-4">Add Education</h3>
+                                <form id="education-form" class="space-y-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700">Degree/Certificate</label>
+                                        <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700">Institution</label>
+                                        <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" required>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700">Start Year</label>
+                                            <input type="number" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" required>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700">End Year</label>
+                                            <input type="number" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" required>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700">GPA (Optional)</label>
+                                        <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                                <button type="button" onclick="saveEducation()" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">Save</button>
+                                <button type="button" onclick="closeEducationForm()" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+
+            document.body.insertAdjacentHTML('beforeend', educationForm);
+        }
+
+        function closeEducationForm() {
+            const form = document.getElementById('education-form-modal');
+            if (form) {
+                form.remove();
+            }
+        }
+
+        function saveEducation() {
+            const form = document.getElementById('education-form');
+            const inputs = form.querySelectorAll('input');
+            const [degree, institution, startYear, endYear, gpa] = Array.from(inputs).map(input => input.value);
+
+            const newEducation = `
+                <div class="border rounded-lg p-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h5 class="font-medium">${degree}</h5>
+                            <p class="text-sm text-gray-600 mt-1">${institution}</p>
+                            <p class="text-sm text-gray-500 mt-1">${startYear} - ${endYear}</p>
+                            ${gpa ? `<p class="text-sm text-gray-600 mt-2">GPA: ${gpa}</p>` : ''}
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="editEducation(${document.querySelectorAll('#education-list > div').length})" class="p-1.5 text-gray-500 hover:text-gray-700">
+                                <i data-lucide="edit-2" class="w-4 h-4"></i>
+                            </button>
+                            <button onclick="deleteEducation(${document.querySelectorAll('#education-list > div').length})" class="p-1.5 text-gray-500 hover:text-red-600">
+                                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>`;
+
+            document.getElementById('education-list').insertAdjacentHTML('beforeend', newEducation);
+            lucide.createIcons(); // Refresh icons
+            closeEducationForm();
+        }
+
+        function editEducation(index) {
+            const educationItems = document.querySelectorAll('#education-list > div');
+            const education = educationItems[index];
+            const degree = education.querySelector('h5').textContent;
+            const institution = education.querySelector('p:nth-child(2)').textContent;
+            const years = education.querySelector('p:nth-child(3)').textContent.split(' - ');
+            const gpaElement = education.querySelector('p:nth-child(4)');
+            const gpa = gpaElement ? gpaElement.textContent.replace('GPA: ', '') : '';
+
+            addEducation(); // Open form
+            setTimeout(() => {
+                const form = document.getElementById('education-form');
+                const inputs = form.querySelectorAll('input');
+                inputs[0].value = degree;
+                inputs[1].value = institution;
+                inputs[2].value = years[0];
+                inputs[3].value = years[1];
+                inputs[4].value = gpa;
+
+                // Remove old education entry after populating form
+                education.remove();
+            }, 100);
+        }
+
+        function deleteEducation(index) {
+            if (confirm('Are you sure you want to delete this education entry?')) {
+                const educationItems = document.querySelectorAll('#education-list > div');
+                educationItems[index].remove();
+            }
+        }
+
+        // Test Score Functions
+        function addTestScore() {
+            const testScoreForm = `
+                <div class="fixed inset-0 z-50 overflow-y-auto" id="test-score-form-modal">
+                    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+                        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                <h3 class="text-lg font-medium text-gray-900 mb-4">Add Test Score</h3>
+                                <form id="test-score-form" class="space-y-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700">Test Type</label>
+                                        <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" required>
+                                            <option value="IELTS">IELTS</option>
+                                            <option value="TOEFL">TOEFL</option>
+                                            <option value="GRE">GRE</option>
+                                            <option value="GMAT">GMAT</option>
+                                        </select>
+                                    </div>
+                                    <div id="ielts-scores" class="space-y-4">
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700">Reading</label>
+                                                <input type="number" step="0.5" min="0" max="9" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" required>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700">Writing</label>
+                                                <input type="number" step="0.5" min="0" max="9" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" required>
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700">Speaking</label>
+                                                <input type="number" step="0.5" min="0" max="9" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" required>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700">Listening</label>
+                                                <input type="number" step="0.5" min="0" max="9" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                                <button type="button" onclick="saveTestScore()" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">Save</button>
+                                <button type="button" onclick="closeTestScoreForm()" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+
+            document.body.insertAdjacentHTML('beforeend', testScoreForm);
+        }
+
+        function closeTestScoreForm() {
+            const form = document.getElementById('test-score-form-modal');
+            if (form) {
+                form.remove();
+            }
+        }
+
+        function saveTestScore() {
+            const form = document.getElementById('test-score-form');
+            const testType = form.querySelector('select').value;
+            const scores = Array.from(form.querySelectorAll('input')).map(input => input.value);
+            const [reading, writing, speaking, listening] = scores;
+            const overall = ((parseFloat(reading) + parseFloat(writing) + parseFloat(speaking) + parseFloat(listening)) / 4).toFixed(1);
+
+            const newTestScore = `
+                <div class="border rounded-lg p-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h5 class="font-medium">${testType}</h5>
+                            <p class="text-sm text-gray-600 mt-1">Overall: ${overall}</p>
+                            <div class="mt-2 space-y-1 text-sm text-gray-500">
+                                <p>Reading: ${reading}</p>
+                                <p>Writing: ${writing}</p>
+                                <p>Speaking: ${speaking}</p>
+                                <p>Listening: ${listening}</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="editTestScore(${document.querySelectorAll('#test-scores-list > div').length})" class="p-1.5 text-gray-500 hover:text-gray-700">
+                                <i data-lucide="edit-2" class="w-4 h-4"></i>
+                            </button>
+                            <button onclick="deleteTestScore(${document.querySelectorAll('#test-scores-list > div').length})" class="p-1.5 text-gray-500 hover:text-red-600">
+                                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>`;
+
+            document.getElementById('test-scores-list').insertAdjacentHTML('beforeend', newTestScore);
+            lucide.createIcons(); // Refresh icons
+            closeTestScoreForm();
+        }
+
+        function editTestScore(index) {
+            const testScoreItems = document.querySelectorAll('#test-scores-list > div');
+            const testScore = testScoreItems[index];
+            const testType = testScore.querySelector('h5').textContent;
+            const scores = Array.from(testScore.querySelectorAll('p')).slice(1).map(p => parseFloat(p.textContent.split(': ')[1]));
+
+            addTestScore(); // Open form
+            setTimeout(() => {
+                const form = document.getElementById('test-score-form');
+                form.querySelector('select').value = testType;
+                const inputs = form.querySelectorAll('input');
+                scores.forEach((score, i) => inputs[i].value = score);
+
+                // Remove old test score entry after populating form
+                testScore.remove();
+            }, 100);
+        }
+
+        function deleteTestScore(index) {
+            if (confirm('Are you sure you want to delete this test score?')) {
+                const testScoreItems = document.querySelectorAll('#test-scores-list > div');
+                testScoreItems[index].remove();
+            }
+        }
+
+        // Simple tab switching function
+        function switchTab(tabName) {
+            console.log('Switching to tab:', tabName);
+
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+
+            // Show selected tab
+            const selectedTab = document.getElementById(tabName + '-tab');
+            if (selectedTab) {
+                selectedTab.classList.remove('hidden');
+            }
+
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                if (btn.textContent.toLowerCase().includes(tabName.replace('-', ' '))) {
+                    btn.classList.remove('border-transparent', 'text-gray-500');
+                    btn.classList.add('border-blue-600', 'text-blue-600');
+                } else {
+                    btn.classList.remove('border-blue-600', 'text-blue-600');
+                    btn.classList.add('border-transparent', 'text-gray-500');
+                }
+            });
+        }
+
+        function openStudentProfile() {
+            console.log('Opening student profile');
+            const modal = document.getElementById('student-profile-modal');
+            
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                
+                // Initialize icons
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+                
+                // Show personal tab by default
+                console.log('Setting default tab');
+                switchTab('personal');
+            } else {
+                console.error('Student profile modal not found');
+            }
+        }
+
+        function closeStudentProfile() {
+            const modal = document.getElementById('student-profile-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Advanced Filters Toggle
+        function toggleAdvancedFilters() {
+            const advancedFilters = document.getElementById('advanced-filters');
+            if (advancedFilters) {
+                advancedFilters.classList.toggle('hidden');
+            }
+        }
+
+        // Handle logout
+        function handleLogout() {
+            window.location.href = '../../login.html';
+        }
+    </script>
+</body>
+</html>

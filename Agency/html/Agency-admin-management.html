@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Management | Ellacy GO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Sidebar -->
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
+        <div class="p-6">
+            <h1 class="text-2xl font-bold text-gray-800">Ellacy GO</h1>
+            <p class="text-sm text-gray-500">Agent Admin</p>
+        </div>
+        <nav class="mt-6">
+            <a href="Agency-dashboard.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>
+                Dashboard
+            </a>
+            <a href="Agency-my-students.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="users" class="w-5 h-5 mr-3"></i>
+                My Students
+            </a>
+            <a href="Agent-Application.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>
+                Applications
+            </a>
+            <a href="Agency-tasks.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="check-square" class="w-5 h-5 mr-3"></i>
+                Tasks
+            </a>
+            <a href="Agency-scholarships.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="graduation-cap" class="w-5 h-5 mr-3"></i>
+                Scholarships
+            </a>
+            <a href="Agency-commission.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="dollar-sign" class="w-5 h-5 mr-3"></i>
+                Commissions
+            </a>
+            <a href="Agency-profile.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="settings" class="w-5 h-5 mr-3"></i>
+                Account Settings
+            </a>
+            <a href="Agency-messages.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>
+                Messages
+            </a>
+            <a href="Agency-AI-assitant.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="bot" class="w-5 h-5 mr-3"></i>
+                AI Assistant
+            </a>
+            <a href="#" class="flex items-center px-6 py-3 bg-blue-50 text-blue-600">
+                <i data-lucide="users-2" class="w-5 h-5 mr-3"></i>
+                Team Management
+            </a>
+        </nav>
+        <div class="mt-auto px-6 py-4 border-t border-gray-200">
+            <p class="text-sm text-gray-600 text-center">Designed & developed by Innotech Viet Nam</p>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="ml-64">
+        <!-- Header -->
+        <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6">
+            <h2 class="text-xl font-semibold text-gray-800">Team Management</h2>
+            <div class="flex items-center space-x-4">
+                <button class="relative">
+                    <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
+                    <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                </button>
+                <div class="relative">
+                    <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
+                             alt="Profile" 
+                             class="w-8 h-8 rounded-full object-cover">
+                    </button>
+                    <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                        <a href="Agency-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
+                        </a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
+                        </a>
+                        <hr class="my-1">
+                        <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+                            <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="p-6">
+            <!-- Action Bar -->
+            <div class="flex justify-between items-center mb-6">
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <i data-lucide="search" class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" 
+                               placeholder="Search team members..." 
+                               class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-64">
+                    </div>
+                    <select class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <option>All Roles</option>
+                        <option>Staff</option>
+                        <option>Sub-agent</option>
+                    </select>
+                </div>
+                <button onclick="showAddStaffModal()" 
+                        class="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 flex items-center">
+                    <i data-lucide="plus" class="w-5 h-5 mr-2"></i>
+                    Add Staff Member
+                </button>
+            </div>
+
+            <!-- Team Members Table -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Assigned Students</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Login</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <!-- Sample Row 1 -->
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="">
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Sarah Wilson</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">sarah.wilson@ellacy.com</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Staff</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">12 Students</a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-500">2 hours ago</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    Active
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <div class="relative" data-staff-actions>
+                                    <button onclick="toggleActions(this)" class="text-gray-400 hover:text-gray-600">
+                                        <i data-lucide="more-vertical" class="w-5 h-5"></i>
+                                    </button>
+                                    <div class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 z-10">
+                                        <button onclick="showStaffDetails('sarah')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                            View Details
+                                        </button>
+                                        <button onclick="resetPassword('sarah')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                            Reset Password
+                                        </button>
+                                        <button onclick="toggleStatus('sarah')" class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+                                            Deactivate
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Sample Row 2 -->
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=100&h=100&fit=crop" alt="">
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Michael Chen</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">michael.chen@ellacy.com</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Sub-agent</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">8 Students</a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-500">1 day ago</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
+                                    Inactive
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <div class="relative" data-staff-actions>
+                                    <button onclick="toggleActions(this)" class="text-gray-400 hover:text-gray-600">
+                                        <i data-lucide="more-vertical" class="w-5 h-5"></i>
+                                    </button>
+                                    <div class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 z-10">
+                                        <button onclick="showStaffDetails('michael')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                            View Details
+                                        </button>
+                                        <button onclick="resetPassword('michael')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                            Reset Password
+                                        </button>
+                                        <button onclick="toggleStatus('michael')" class="block w-full text-left px-4 py-2 text-sm text-green-600 hover:bg-gray-100">
+                                            Activate
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Staff Modal -->
+    <div id="add-staff-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-xl bg-white">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold text-gray-900">Add New Staff Member</h3>
+                <button onclick="hideAddStaffModal()" class="text-gray-400 hover:text-gray-600">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <form onsubmit="handleAddStaff(event)" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                    <input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                    <input type="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Temporary Password (Optional)</label>
+                    <input type="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Role</label>
+                    <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <option>Agent Staff</option>
+                        <option>Sub-agent</option>
+                    </select>
+                </div>
+                <div class="flex justify-end space-x-3">
+                    <button type="button" onclick="hideAddStaffModal()" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                        Invite & Create
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Staff Details Drawer -->
+    <div id="staff-details-drawer" class="hidden fixed inset-y-0 right-0 w-96 bg-white shadow-lg transform transition-transform duration-300 ease-in-out">
+        <div class="h-full flex flex-col">
+            <div class="p-6 border-b">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-semibold text-gray-900">Staff Details</h3>
+                    <button onclick="hideStaffDetails()" class="text-gray-400 hover:text-gray-600">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                <div class="flex items-center">
+                    <img id="staff-detail-avatar" class="h-16 w-16 rounded-full" src="" alt="">
+                    <div class="ml-4">
+                        <h4 id="staff-detail-name" class="text-lg font-medium text-gray-900"></h4>
+                        <p id="staff-detail-email" class="text-sm text-gray-500"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1 overflow-y-auto p-6">
+                <div class="space-y-6">
+                    <!-- Role & Status -->
+                    <div>
+                        <h5 class="text-sm font-medium text-gray-500 mb-2">Role & Status</h5>
+                        <div class="flex items-center justify-between">
+                            <span id="staff-detail-role" class="text-sm text-gray-900"></span>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="staff-detail-status" class="sr-only peer" onchange="handleStatusChange(this)">
+                                <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Assigned Students -->
+                    <div>
+                        <h5 class="text-sm font-medium text-gray-500 mb-2">Assigned Students</h5>
+                        <div id="staff-detail-students" class="space-y-2">
+                            <!-- Student items will be inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Activity Summary -->
+                    <div>
+                        <h5 class="text-sm font-medium text-gray-500 mb-2">Activity Summary</h5>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <div class="text-2xl font-semibold text-gray-900" id="staff-detail-total-students">0</div>
+                                <div class="text-sm text-gray-500">Total Students</div>
+                            </div>
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <div class="text-2xl font-semibold text-gray-900" id="staff-detail-applications">0</div>
+                                <div class="text-sm text-gray-500">Applications</div>
+                            </div>
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <div class="text-sm text-gray-900" id="staff-detail-last-activity">Never</div>
+                                <div class="text-sm text-gray-500">Last Activity</div>
+                            </div>
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <div class="text-2xl font-semibold text-gray-900" id="staff-detail-messages">0</div>
+                                <div class="text-sm text-gray-500">Messages</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notes -->
+                    <div>
+                        <h5 class="text-sm font-medium text-gray-500 mb-2">Internal Notes</h5>
+                        <textarea id="staff-detail-notes" 
+                                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                                  rows="3"
+                                  placeholder="Add internal notes about this staff member..."></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="p-6 border-t">
+                <button onclick="resetPassword(currentStaffId)" class="w-full px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 mb-3">
+                    Reset Password
+                </button>
+                <button onclick="hideStaffDetails()" class="w-full px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Profile menu functionality
+        const profileMenu = document.getElementById('profile-menu');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileMenu.addEventListener('click', () => {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!profileMenu.contains(event.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // Handle logout
+        function handleLogout() {
+            console.log('Logging out...');
+        }
+
+        // Add Staff Modal
+        function showAddStaffModal() {
+            document.getElementById('add-staff-modal').classList.remove('hidden');
+        }
+
+        function hideAddStaffModal() {
+            document.getElementById('add-staff-modal').classList.add('hidden');
+        }
+
+        function handleAddStaff(event) {
+            event.preventDefault();
+            // Here you would typically send the form data to your server
+            console.log('Creating new staff member...');
+            hideAddStaffModal();
+        }
+
+        // Staff Actions Dropdown
+        function toggleActions(button) {
+            const dropdown = button.nextElementSibling;
+            const allDropdowns = document.querySelectorAll('[data-staff-actions] > div');
+            
+            allDropdowns.forEach(d => {
+                if (d !== dropdown) d.classList.add('hidden');
+            });
+            
+            dropdown.classList.toggle('hidden');
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('[data-staff-actions]')) {
+                document.querySelectorAll('[data-staff-actions] > div').forEach(d => {
+                    d.classList.add('hidden');
+                });
+            }
+        });
+
+        // Staff Details Drawer
+        let currentStaffId = null;
+
+        function showStaffDetails(staffId) {
+            currentStaffId = staffId;
+            const drawer = document.getElementById('staff-details-drawer');
+            
+            // Here you would typically fetch staff details from your server
+            // For demo, we'll use mock data
+            const staffData = {
+                sarah: {
+                    name: 'Sarah Wilson',
+                    email: 'sarah.wilson@ellacy.com',
+                    role: 'Staff',
+                    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop',
+                    active: true,
+                    students: [
+                        { name: 'John Smith', status: 'Application in Progress' },
+                        { name: 'Emma Davis', status: 'Enrolled' },
+                        { name: 'Michael Wong', status: 'New Lead' }
+                    ],
+                    stats: {
+                        totalStudents: 12,
+                        applications: 9,
+                        lastActivity: '2 hours ago',
+                        messages: 15
+                    }
+                },
+                michael: {
+                    name: 'Michael Chen',
+                    email: 'michael.chen@ellacy.com',
+                    role: 'Sub-agent',
+                    avatar: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=100&h=100&fit=crop',
+                    active: false,
+                    students: [
+                        { name: 'Alice Brown', status: 'Enrolled' },
+                        { name: 'David Lee', status: 'Application in Progress' }
+                    ],
+                    stats: {
+                        totalStudents: 8,
+                        applications: 5,
+                        lastActivity: '1 day ago',
+                        messages: 7
+                    }
+                }
+            };
+
+            const data = staffData[staffId];
+
+            // Update drawer content
+            document.getElementById('staff-detail-avatar').src = data.avatar;
+            document.getElementById('staff-detail-name').textContent = data.name;
+            document.getElementById('staff-detail-email').textContent = data.email;
+            document.getElementById('staff-detail-role').textContent = data.role;
+            document.getElementById('staff-detail-status').checked = data.active;
+
+            // Update students list
+            const studentsList = document.getElementById('staff-detail-students');
+            studentsList.innerHTML = data.students.map(student => `
+                <div class="flex items-center justify-between py-2">
+                    <span class="text-sm text-gray-900">${student.name}</span>
+                    <span class="text-xs text-gray-500">${student.status}</span>
+                </div>
+            `).join('');
+
+            // Update stats
+            document.getElementById('staff-detail-total-students').textContent = data.stats.totalStudents;
+            document.getElementById('staff-detail-applications').textContent = data.stats.applications;
+            document.getElementById('staff-detail-last-activity').textContent = data.stats.lastActivity;
+            document.getElementById('staff-detail-messages').textContent = data.stats.messages;
+
+            drawer.classList.remove('hidden');
+            drawer.classList.remove('translate-x-full');
+        }
+
+        function hideStaffDetails() {
+            const drawer = document.getElementById('staff-details-drawer');
+            drawer.classList.add('translate-x-full');
+            setTimeout(() => {
+                drawer.classList.add('hidden');
+            }, 300);
+        }
+
+        function handleStatusChange(checkbox) {
+            const action = checkbox.checked ? 'Activating' : 'Deactivating';
+            console.log(`${action} staff member: ${currentStaffId}`);
+        }
+
+        function resetPassword(staffId) {
+            // Here you would typically call your server to reset the password
+            console.log(`Resetting password for: ${staffId}`);
+            alert('Password reset email has been sent.');
+        }
+
+        function toggleStatus(staffId) {
+            // Here you would typically call your server to toggle the status
+            console.log(`Toggling status for: ${staffId}`);
+            location.reload(); // Refresh to see changes
+        }
+    </script>
+</body>
+</html>
