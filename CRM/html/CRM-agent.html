@@ -168,19 +168,27 @@
                         <div class="overflow-x-auto">
                             <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
-                                    <tr>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Agency Name</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Students</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Applications</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                                    </tr>
-                                </thead>
+    <tr>
+        <th class="w-8"></th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">EFID</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Agency Name</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Students</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Applications</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+    </tr>
+</thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
                                     <!-- Sample Agent Row -->
-                                    <tr>
+                                    <tr class="bg-white border-b border-gray-200">
+                                        <td class="px-2 py-4">
+                                            <button onclick="toggleSubAgents(this)" aria-expanded="false" class="text-gray-400 hover:text-gray-600 transition-all" data-has-subagents="true">
+                                                <span class="expand-icon w-5 h-5 flex items-center justify-center text-lg font-bold">+</span>
+                                            </button>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-mono text-xs text-gray-700">EF-AG-2000</td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <div class="flex-shrink-0 h-10 w-10">
@@ -208,9 +216,27 @@
                                             <button class="text-gray-600 hover:text-gray-900">Edit</button>
                                         </td>
                                     </tr>
+                                    <!-- Sub-agent row (ẩn mặc định) -->
+                                    <tr class="sub-agent-row" data-parent="EF-AG-2000">
+    <td></td>
+    <td class="px-6 py-4 whitespace-nowrap font-mono text-xs text-gray-500">EF-AG-2001</td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 pl-8">Nguyen Van A<br><span class='text-xs text-gray-400'>Sub-agent</span></td>
+    <td class="px-6 py-4 whitespace-nowrap">Individual</td>
+    <td class="px-6 py-4 whitespace-nowrap">Vietnam</td>
+    <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span></td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">7</td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">11</td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm"></td>
+</tr>
 
                                     <!-- More Agent Rows -->
-                                    <tr>
+                                    <tr class="bg-white border-b border-gray-200">
+                                        <td class="px-2 py-4">
+                                            <button onclick="toggleSubAgents(this)" aria-expanded="false" class="text-gray-400 hover:text-gray-600 transition-all" data-has-subagents="true">
+                                                <span class="expand-icon w-5 h-5 flex items-center justify-center text-lg font-bold">+</span>
+                                            </button>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-mono text-xs text-gray-700">EF-AG-2002</td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <div class="flex-shrink-0 h-10 w-10">
@@ -237,6 +263,18 @@
                                             <button class="text-blue-600 hover:text-blue-900 mr-3">View Profile</button>
                                             <button class="text-gray-600 hover:text-gray-900">Edit</button>
                                         </td>
+                                    </tr>
+                                    <!-- Sub-agent row (ẩn mặc định) -->
+                                    <tr class="sub-agent-row" data-parent="EF-AG-2002">
+                                        <td></td>
+                                        <td class="px-6 py-4 whitespace-nowrap font-mono text-xs text-gray-500">EF-AG-2003</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 pl-8">Sarah Johnson<br><span class='text-xs text-gray-400'>Sub-agent</span></td>
+                                        <td class="px-6 py-4 whitespace-nowrap">Individual</td>
+                                        <td class="px-6 py-4 whitespace-nowrap">Thailand</td>
+                                        <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span></td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">5</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">8</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -664,5 +702,32 @@
             });
         });
     </script>
+<style>
+    .sub-agent-row {display: none; opacity: 0; transition: opacity 0.3s;}
+    .sub-agent-row.show {display: table-row; opacity: 1;}
+</style>
+<script>
+function toggleSubAgents(button) {
+    const icon = button.querySelector('.expand-icon');
+    if (!icon) return;
+    const parentRow = button.closest('tr');
+    if (!parentRow) return;
+    const efidCell = parentRow.querySelector('td:nth-child(2)');
+    if (!efidCell) return;
+    const parentId = efidCell.textContent.trim();
+    const subRows = document.querySelectorAll(`tr[data-parent="${parentId}"]`);
+    if (!subRows.length) return;
+    let expanded = false;
+    subRows.forEach(row => {
+        row.classList.toggle('show');
+        if (row.classList.contains('show')) expanded = true;
+    });
+    button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    icon.textContent = expanded ? '-' : '+';
+}
+</script>
+<script>
+if(window.lucide) lucide.createIcons();
+</script>
 </body>
 </html>
