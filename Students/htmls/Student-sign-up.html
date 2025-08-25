@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Ellacy GO</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .password-strength {
+            height: 4px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .strength-weak { background-color: #ef4444; width: 25%; }
+        .strength-fair { background-color: #f59e0b; width: 50%; }
+        .strength-good { background-color: #10b981; width: 75%; }
+        .strength-strong { background-color: #059669; width: 100%; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-gray-800">Ellacy GO</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-600">Already have an account?</span>
+                    <a href="login.html" class="text-blue-600 hover:text-blue-700 font-medium">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-md mx-auto mt-8 px-4 sm:px-6 lg:px-8">
+        <!-- Progress Indicator -->
+        <div class="mb-8">
+            <div class="flex items-center justify-center">
+                <div class="flex items-center">
+                    <div class="flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-full text-sm font-medium">
+                        1
+                    </div>
+                    <span class="ml-2 text-sm font-medium text-blue-600">Registration</span>
+                </div>
+                <div class="flex-1 mx-4 h-0.5 bg-gray-200"></div>
+                <div class="flex items-center">
+                    <div class="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-500 rounded-full text-sm font-medium">
+                        2
+                    </div>
+                    <span class="ml-2 text-sm font-medium text-gray-500">Verification</span>
+                </div>
+                <div class="flex-1 mx-4 h-0.5 bg-gray-200"></div>
+                <div class="flex items-center">
+                    <div class="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-500 rounded-full text-sm font-medium">
+                        3
+                    </div>
+                    <span class="ml-2 text-sm font-medium text-gray-500">Profile Setup</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Welcome Section -->
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Create Your Account</h2>
+            <div class="bg-blue-50 border border-blue-200 rounded-xl p-6 text-left max-w-2xl mx-auto">
+                <p class="text-gray-700 mb-4">
+                    Join thousands of students who have started their study abroad journey with Ellacy GO. 
+                    We'll help you discover programs and scholarships that match your academic goals and preferences.
+                </p>
+                <p class="text-gray-600">
+                    Complete the registration form below to get started. Your information helps us personalize 
+                    your experience and connect you with the best opportunities.
+                </p>
+            </div>
+        </div>
+
+        <!-- Source Attribution Display (if from referral) -->
+        <div id="sourceAttribution" class="hidden mb-6 p-4 bg-blue-50 rounded-xl border border-blue-200">
+            <div class="flex items-center">
+                <i data-lucide="user-check" class="w-5 h-5 text-blue-600 mr-2"></i>
+                <div>
+                    <p class="text-sm font-medium text-blue-800">Referred by</p>
+                    <p class="text-sm text-blue-600" id="referralSource"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registration Form -->
+        <div class="bg-white rounded-3xl shadow-lg p-8">
+            <form id="registrationForm" class="space-y-6">
+                <!-- Full Name -->
+                <div>
+                    <label for="fullName" class="block text-sm font-medium text-gray-700 mb-2">
+                        Full Name <span class="text-red-500">*</span>
+                    </label>
+                    <input type="text" id="fullName" name="fullName"
+                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                           placeholder="Enter your full legal name">
+                    <div class="text-red-500 text-sm mt-1 hidden" id="fullNameError"></div>
+                </div>
+
+                <!-- Email Address -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                        Email Address <span class="text-red-500">*</span>
+                    </label>
+                    <input type="email" id="email" name="email"
+                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                           placeholder="Enter your email address">
+                    <div class="text-red-500 text-sm mt-1 hidden" id="emailError"></div>
+                </div>
+
+                <!-- Phone Number -->
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
+                        Phone Number <span class="text-red-500">*</span>
+                    </label>
+                    <div class="flex">
+                        <select id="countryCode" name="countryCode" 
+                                class="px-3 py-3 border border-gray-300 rounded-l-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50">
+                            <option value="+1">🇺🇸 +1</option>
+                            <option value="+44">🇬🇧 +44</option>
+                            <option value="+61">🇦🇺 +61</option>
+                            <option value="+1">🇨🇦 +1</option>
+                            <option value="+84">🇻🇳 +84</option>
+                            <option value="+86">🇨🇳 +86</option>
+                            <option value="+91">🇮🇳 +91</option>
+                        </select>
+                        <input type="tel" id="phone" name="phone"
+                               class="flex-1 px-4 py-3 border border-l-0 border-gray-300 rounded-r-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                               placeholder="Enter phone number">
+                    </div>
+                    <div class="text-red-500 text-sm mt-1 hidden" id="phoneError"></div>
+                </div>
+
+                <!-- Password -->
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+                        Password <span class="text-red-500">*</span>
+                    </label>
+                    <div class="relative">
+                        <input type="password" id="password" name="password"
+                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-12"
+                           placeholder="Create a strong password">
+                        <button type="button" id="togglePassword" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700">
+                            <i data-lucide="eye" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                    <!-- Password Strength Indicator -->
+                    <div class="mt-2">
+                        <div class="flex justify-between text-xs text-gray-500 mb-1">
+                            <span>Password Strength</span>
+                            <span id="strengthText">Weak</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-1">
+                            <div id="strengthBar" class="password-strength strength-weak"></div>
+                        </div>
+                    </div>
+                    <div class="text-red-500 text-sm mt-1 hidden" id="passwordError"></div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div>
+                    <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-2">
+                        Confirm Password <span class="text-red-500">*</span>
+                    </label>
+                    <input type="password" id="confirmPassword" name="confirmPassword"
+                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                           placeholder="Confirm your password">
+                    <div class="text-red-500 text-sm mt-1 hidden" id="confirmPasswordError"></div>
+                </div>
+
+                <!-- Referral Code (Optional) -->
+                <div>
+                    <label for="referralCode" class="block text-sm font-medium text-gray-700 mb-2">
+                        Referral Code (Optional)
+                    </label>
+                    <input type="text" id="referralCode" name="referralCode"
+                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                           placeholder="Enter referral code if you have one">
+                </div>
+
+                <!-- Terms & Conditions -->
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <input type="checkbox" id="terms" name="terms"
+                               class="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                        <label for="terms" class="ml-3 text-sm text-gray-700">
+                            I agree to the <a href="#" class="text-blue-600 hover:text-blue-700 underline">Terms & Conditions</a> 
+                            and <a href="#" class="text-blue-600 hover:text-blue-700 underline">Privacy Policy</a> <span class="text-red-500">*</span>
+                        </label>
+                    </div>
+                    <div class="flex items-start">
+                        <input type="checkbox" id="marketing" name="marketing"
+                               class="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                        <label for="marketing" class="ml-3 text-sm text-gray-700">
+                            I would like to receive updates about programs, scholarships, and educational opportunities
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="submitBtn"
+                        class="w-full bg-blue-600 text-white py-3 px-4 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 font-medium transition-colors">
+                    Create Account
+                </button>
+
+                <!-- Social Login Options -->
+                <div class="mt-6">
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-300"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-white text-gray-500">Or continue with</span>
+                        </div>
+                    </div>
+                    <div class="mt-6 grid grid-cols-2 gap-3">
+                        <button type="button" class="w-full inline-flex justify-center py-3 px-4 border border-gray-300 rounded-xl shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                <path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                <path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                            </svg>
+                            <span class="ml-2">Google</span>
+                        </button>
+                        <button type="button" class="w-full inline-flex justify-center py-3 px-4 border border-gray-300 rounded-xl shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                            <span class="ml-2">Facebook</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-8 pb-8">
+            <p class="text-sm text-gray-500">
+                By creating an account, you're taking the first step towards your international education journey.
+            </p>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden overflow-y-auto h-full w-full z-50">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-3xl bg-white">
+            <div class="mt-3 text-center">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4">
+                    <i data-lucide="check" class="w-6 h-6 text-green-600"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Account Created Successfully!</h3>
+                <p class="text-sm text-gray-500 mb-4">
+                    We've sent a verification email to your address. Please check your inbox and click the verification link to activate your account.
+                </p>
+                <button id="continueBtn" class="w-full bg-blue-600 text-white py-2 px-4 rounded-xl hover:bg-blue-700 font-medium">
+                    Continue to Verification
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // URL Parameter Tracking for Source Attribution
+        function getURLParameters() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                source: params.get('source'),
+                ref: params.get('ref'),
+                campaign: params.get('campaign')
+            };
+        }
+
+        // Display source attribution if from referral
+        function displaySourceAttribution() {
+            const params = getURLParameters();
+            if (params.source || params.ref) {
+                const sourceDiv = document.getElementById('sourceAttribution');
+                const sourceText = document.getElementById('referralSource');
+                
+                let displayText = '';
+                if (params.source === 'agent') displayText = 'Education Agent';
+                else if (params.source === 'facebook') displayText = 'Facebook Campaign';
+                else if (params.source === 'instagram') displayText = 'Instagram Campaign';
+                else if (params.ref) displayText = `Referral Code: ${params.ref}`;
+                
+                if (displayText) {
+                    sourceText.textContent = displayText;
+                    sourceDiv.classList.remove('hidden');
+                    
+                    // Pre-fill referral code if available
+                    if (params.ref) {
+                        document.getElementById('referralCode').value = params.ref;
+                    }
+                }
+            }
+        }
+
+        // Password Strength Checker
+        function checkPasswordStrength(password) {
+            let strength = 0;
+            let feedback = 'Weak';
+            
+            if (password.length >= 8) strength++;
+            if (/[a-z]/.test(password)) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+            
+            const strengthBar = document.getElementById('strengthBar');
+            const strengthText = document.getElementById('strengthText');
+            
+            strengthBar.className = 'password-strength';
+            
+            if (strength <= 2) {
+                strengthBar.classList.add('strength-weak');
+                feedback = 'Weak';
+            } else if (strength === 3) {
+                strengthBar.classList.add('strength-fair');
+                feedback = 'Fair';
+            } else if (strength === 4) {
+                strengthBar.classList.add('strength-good');
+                feedback = 'Good';
+            } else {
+                strengthBar.classList.add('strength-strong');
+                feedback = 'Strong';
+            }
+            
+            strengthText.textContent = feedback;
+            return strength;
+        }
+
+        // Password Toggle
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const password = document.getElementById('password');
+            const icon = this.querySelector('i');
+            
+            if (password.type === 'password') {
+                password.type = 'text';
+                icon.setAttribute('data-lucide', 'eye-off');
+            } else {
+                password.type = 'password';
+                icon.setAttribute('data-lucide', 'eye');
+            }
+            lucide.createIcons();
+        });
+
+        // Password Strength Monitoring
+        document.getElementById('password').addEventListener('input', function() {
+            checkPasswordStrength(this.value);
+        });
+
+        // Form validation (Disabled for mockup)
+        function validateForm() {
+            // Skip all validation for mockup - always return true
+            return true;
+            
+            /* Original validation code - commented out for mockup
+            const errors = {};
+            let isValid = true;
+
+            // Full Name validation
+            const fullName = document.getElementById('fullName').value.trim();
+            if (!fullName) {
+                errors.fullName = 'Full name is required';
+                isValid = false;
+            }
+
+            // Email validation
+            const email = document.getElementById('email').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email) {
+                errors.email = 'Email is required';
+                isValid = false;
+            } else if (!emailRegex.test(email)) {
+                errors.email = 'Please enter a valid email address';
+                isValid = false;
+            }
+
+            // Phone validation
+            const phone = document.getElementById('phone').value.trim();
+            if (!phone) {
+                errors.phone = 'Phone number is required';
+                isValid = false;
+            }
+
+            // Password validation
+            const password = document.getElementById('password').value;
+            if (!password) {
+                errors.password = 'Password is required';
+                isValid = false;
+            } else if (password.length < 8) {
+                errors.password = 'Password must be at least 8 characters long';
+                isValid = false;
+            }
+
+            // Confirm Password validation
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            if (!confirmPassword) {
+                errors.confirmPassword = 'Please confirm your password';
+                isValid = false;
+            } else if (password !== confirmPassword) {
+                errors.confirmPassword = 'Passwords do not match';
+                isValid = false;
+            }
+
+            // Terms validation
+            const terms = document.getElementById('terms').checked;
+            if (!terms) {
+                alert('Please accept the Terms & Conditions to continue');
+                isValid = false;
+            }
+
+            // Display errors
+            Object.keys(errors).forEach(field => {
+                const errorElement = document.getElementById(field + 'Error');
+                if (errorElement) {
+                    errorElement.textContent = errors[field];
+                    errorElement.classList.remove('hidden');
+                }
+            });
+
+            return isValid;
+            */
+        }
+
+        // Generate UID
+        function generateUID() {
+            const year = new Date().getFullYear();
+            const randomNum = Math.floor(Math.random() * 999999).toString().padStart(6, '0');
+            return `ELC-STU-${year}-${randomNum}`;
+        }
+
+        // Form Submission (Mockup - Skip Validation)
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Skip validation for mockup - validateForm() now always returns true
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Creating Account...';
+
+            // Collect form data (use default values if fields are empty for mockup)
+            const formData = {
+                uid: generateUID(),
+                fullName: document.getElementById('fullName').value.trim() || 'Demo Student',
+                email: document.getElementById('email').value.trim() || 'demo@student.com',
+                countryCode: document.getElementById('countryCode').value || '+84',
+                phone: document.getElementById('phone').value.trim() || '123456789',
+                password: document.getElementById('password').value || 'demo123',
+                referralCode: document.getElementById('referralCode').value.trim() || '',
+                marketingConsent: document.getElementById('marketing').checked,
+                sourceAttribution: getURLParameters(),
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent
+            };
+
+            // Simulate API call (reduced time for mockup)
+            setTimeout(() => {
+                console.log('Registration Data:', formData);
+                
+                // Store data in localStorage for demo purposes
+                localStorage.setItem('registrationData', JSON.stringify(formData));
+                
+                // Show success modal
+                document.getElementById('successModal').classList.remove('hidden');
+                
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Create Account';
+            }, 1000); // Reduced from 2000ms to 1000ms for faster mockup
+        });
+
+        // Continue button in success modal
+        document.getElementById('continueBtn').addEventListener('click', function() {
+            // Redirect to verification page
+            window.location.href = 'Student-verification.html';
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            displaySourceAttribution();
+        });
+    </script>
+</body>
+</html>

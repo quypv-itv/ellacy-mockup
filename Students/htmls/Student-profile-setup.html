@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Setup - Ellacy GO</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .file-upload-area {
+            border: 2px dashed #d1d5db;
+            transition: all 0.3s ease;
+        }
+        .file-upload-area:hover {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+        .file-upload-area.dragover {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-gray-800">Ellacy GO</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-600">Step 3 of 3</span>
+                    <button class="text-blue-600 hover:text-blue-700 font-medium">Save & Continue Later</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-2xl mx-auto mt-8 px-4 sm:px-6 lg:px-8">
+        <!-- Progress Indicator -->
+        <div class="mb-8">
+            <div class="flex items-center justify-center">
+                <div class="flex items-center">
+                    <div class="flex items-center justify-center w-8 h-8 bg-green-500 text-white rounded-full text-sm font-medium">
+                        ✓
+                    </div>
+                    <span class="ml-2 text-sm font-medium text-green-600">Registration</span>
+                </div>
+                <div class="flex-1 mx-4 h-0.5 bg-green-500"></div>
+                <div class="flex items-center">
+                    <div class="flex items-center justify-center w-8 h-8 bg-green-500 text-white rounded-full text-sm font-medium">
+                        ✓
+                    </div>
+                    <span class="ml-2 text-sm font-medium text-green-600">Verification</span>
+                </div>
+                <div class="flex-1 mx-4 h-0.5 bg-blue-500"></div>
+                <div class="flex items-center">
+                    <div class="flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-full text-sm font-medium">
+                        3
+                    </div>
+                    <span class="ml-2 text-sm font-medium text-blue-600">Profile Setup</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Welcome Section -->
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-2">Complete Your Profile</h2>
+            <p class="text-gray-600">Help us personalize your study abroad experience</p>
+        </div>
+
+        <!-- Profile Form -->
+        <div class="bg-white rounded-3xl shadow-lg p-8">
+            <form id="profileForm" class="space-y-8">
+                <!-- Personal Information Section -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                        <i data-lucide="user" class="w-5 h-5 mr-2 text-blue-600"></i>
+                        Personal Information
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="dateOfBirth" class="block text-sm font-medium text-gray-700 mb-2">
+                                Date of Birth <span class="text-red-500">*</span>
+                            </label>
+                            <input type="date" id="dateOfBirth" name="dateOfBirth" required
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="gender" class="block text-sm font-medium text-gray-700 mb-2">
+                                Gender <span class="text-red-500">*</span>
+                            </label>
+                            <select id="gender" name="gender" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                                <option value="prefer-not-to-say">Prefer not to say</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="nationality" class="block text-sm font-medium text-gray-700 mb-2">
+                                Nationality <span class="text-red-500">*</span>
+                            </label>
+                            <select id="nationality" name="nationality" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select nationality</option>
+                                <option value="vietnam">Vietnam</option>
+                                <option value="china">China</option>
+                                <option value="india">India</option>
+                                <option value="thailand">Thailand</option>
+                                <option value="philippines">Philippines</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="passportNumber" class="block text-sm font-medium text-gray-700 mb-2">
+                                Passport Number
+                            </label>
+                            <input type="text" id="passportNumber" name="passportNumber"
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                   placeholder="Enter passport number">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Background Section -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                        <i data-lucide="graduation-cap" class="w-5 h-5 mr-2 text-blue-600"></i>
+                        Academic Background
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="highestQualification" class="block text-sm font-medium text-gray-700 mb-2">
+                                Highest Qualification <span class="text-red-500">*</span>
+                            </label>
+                            <select id="highestQualification" name="highestQualification" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select qualification</option>
+                                <option value="high-school">High School</option>
+                                <option value="diploma">Diploma</option>
+                                <option value="bachelor">Bachelor's Degree</option>
+                                <option value="master">Master's Degree</option>
+                                <option value="phd">PhD</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="fieldOfStudy" class="block text-sm font-medium text-gray-700 mb-2">
+                                Field of Study <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" id="fieldOfStudy" name="fieldOfStudy" required
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                   placeholder="e.g., Computer Science, Business">
+                        </div>
+                        <div>
+                            <label for="gpa" class="block text-sm font-medium text-gray-700 mb-2">
+                                GPA/Grade
+                            </label>
+                            <input type="text" id="gpa" name="gpa"
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                   placeholder="e.g., 3.8/4.0 or 85%">
+                        </div>
+                        <div>
+                            <label for="graduationYear" class="block text-sm font-medium text-gray-700 mb-2">
+                                Graduation Year
+                            </label>
+                            <input type="number" id="graduationYear" name="graduationYear" min="1990" max="2030"
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                   placeholder="e.g., 2023">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- English Proficiency Section -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                        <i data-lucide="globe" class="w-5 h-5 mr-2 text-blue-600"></i>
+                        English Proficiency
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="englishTest" class="block text-sm font-medium text-gray-700 mb-2">
+                                English Test Type
+                            </label>
+                            <select id="englishTest" name="englishTest"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select test type</option>
+                                <option value="ielts">IELTS</option>
+                                <option value="toefl">TOEFL</option>
+                                <option value="pte">PTE</option>
+                                <option value="duolingo">Duolingo</option>
+                                <option value="none">Not taken yet</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="englishScore" class="block text-sm font-medium text-gray-700 mb-2">
+                                Score
+                            </label>
+                            <input type="text" id="englishScore" name="englishScore"
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                   placeholder="e.g., 7.0, 90, 65">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Study Preferences Section -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                        <i data-lucide="target" class="w-5 h-5 mr-2 text-blue-600"></i>
+                        Study Preferences
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="preferredCountries" class="block text-sm font-medium text-gray-700 mb-2">
+                                Preferred Countries <span class="text-red-500">*</span>
+                            </label>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="preferredCountries" value="australia" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                    <span class="ml-2 text-sm text-gray-700">🇦🇺 Australia</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="preferredCountries" value="canada" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                    <span class="ml-2 text-sm text-gray-700">🇨🇦 Canada</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="preferredCountries" value="uk" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                    <span class="ml-2 text-sm text-gray-700">🇬🇧 United Kingdom</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="preferredCountries" value="usa" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                    <span class="ml-2 text-sm text-gray-700">🇺🇸 United States</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="studyLevel" class="block text-sm font-medium text-gray-700 mb-2">
+                                Intended Study Level <span class="text-red-500">*</span>
+                            </label>
+                            <select id="studyLevel" name="studyLevel" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select study level</option>
+                                <option value="diploma">Diploma</option>
+                                <option value="bachelor">Bachelor's Degree</option>
+                                <option value="master">Master's Degree</option>
+                                <option value="phd">PhD</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="intakePreference" class="block text-sm font-medium text-gray-700 mb-2">
+                                Preferred Intake
+                            </label>
+                            <select id="intakePreference" name="intakePreference"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select intake</option>
+                                <option value="fall-2025">Fall 2025</option>
+                                <option value="spring-2025">Spring 2025</option>
+                                <option value="summer-2025">Summer 2025</option>
+                                <option value="fall-2026">Fall 2026</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="budget" class="block text-sm font-medium text-gray-700 mb-2">
+                                Annual Budget (USD)
+                            </label>
+                            <select id="budget" name="budget"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select budget range</option>
+                                <option value="under-20k">Under $20,000</option>
+                                <option value="20k-40k">$20,000 - $40,000</option>
+                                <option value="40k-60k">$40,000 - $60,000</option>
+                                <option value="60k-80k">$60,000 - $80,000</option>
+                                <option value="over-80k">Over $80,000</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Document Upload Section -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                        <i data-lucide="upload" class="w-5 h-5 mr-2 text-blue-600"></i>
+                        Document Upload (Optional)
+                    </h3>
+                    <div class="space-y-4">
+                        <!-- CV/Resume Upload -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">CV/Resume</label>
+                            <div class="file-upload-area rounded-xl p-6 text-center cursor-pointer" onclick="document.getElementById('cvUpload').click()">
+                                <i data-lucide="file-text" class="w-8 h-8 text-gray-400 mx-auto mb-2"></i>
+                                <p class="text-sm text-gray-600">Click to upload or drag and drop</p>
+                                <p class="text-xs text-gray-500 mt-1">PDF, DOC, DOCX (max 5MB)</p>
+                                <input type="file" id="cvUpload" name="cvUpload" accept=".pdf,.doc,.docx" class="hidden">
+                            </div>
+                        </div>
+
+                        <!-- Transcript Upload -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Academic Transcript</label>
+                            <div class="file-upload-area rounded-xl p-6 text-center cursor-pointer" onclick="document.getElementById('transcriptUpload').click()">
+                                <i data-lucide="file-text" class="w-8 h-8 text-gray-400 mx-auto mb-2"></i>
+                                <p class="text-sm text-gray-600">Click to upload or drag and drop</p>
+                                <p class="text-xs text-gray-500 mt-1">PDF, JPG, PNG (max 5MB)</p>
+                                <input type="file" id="transcriptUpload" name="transcriptUpload" accept=".pdf,.jpg,.jpeg,.png" class="hidden">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 pt-6">
+                    <button type="button" id="saveBtn" class="flex-1 border border-gray-300 text-gray-700 py-3 px-6 rounded-xl hover:bg-gray-50 font-medium transition-colors">
+                        Save as Draft
+                    </button>
+                    <button type="submit" id="completeBtn" class="flex-1 bg-blue-600 text-white py-3 px-6 rounded-xl hover:bg-blue-700 font-medium transition-colors">
+                        Complete Profile Setup
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-8 pb-8">
+            <p class="text-sm text-gray-500">
+                You can always update your profile later from your dashboard.
+            </p>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden overflow-y-auto h-full w-full z-50">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-3xl bg-white">
+            <div class="mt-3 text-center">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4">
+                    <i data-lucide="check-circle" class="w-6 h-6 text-green-600"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Profile Setup Complete!</h3>
+                <p class="text-sm text-gray-500 mb-4">
+                    Welcome to Ellacy GO! You can now explore programs, apply for scholarships, and start your study abroad journey.
+                </p>
+                <button id="goToDashboardBtn" class="w-full bg-blue-600 text-white py-2 px-4 rounded-xl hover:bg-blue-700 font-medium">
+                    Go to Dashboard
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // File upload handling
+        function handleFileUpload(inputElement, fileName) {
+            const file = inputElement.files[0];
+            if (file) {
+                const uploadArea = inputElement.parentElement;
+                uploadArea.innerHTML = `
+                    <i data-lucide="check-circle" class="w-8 h-8 text-green-500 mx-auto mb-2"></i>
+                    <p class="text-sm text-green-600 font-medium">${file.name}</p>
+                    <p class="text-xs text-gray-500 mt-1">File uploaded successfully</p>
+                `;
+                lucide.createIcons();
+            }
+        }
+
+        // Add file upload listeners
+        document.getElementById('cvUpload').addEventListener('change', function() {
+            handleFileUpload(this, 'CV/Resume');
+        });
+
+        document.getElementById('transcriptUpload').addEventListener('change', function() {
+            handleFileUpload(this, 'Transcript');
+        });
+
+        // Form validation
+        function validateForm() {
+            const requiredFields = ['dateOfBirth', 'gender', 'nationality', 'highestQualification', 'fieldOfStudy', 'studyLevel'];
+            let isValid = true;
+
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    field.classList.add('border-red-500');
+                    isValid = false;
+                } else {
+                    field.classList.remove('border-red-500');
+                }
+            });
+
+            // Check if at least one country is selected
+            const countryCheckboxes = document.querySelectorAll('input[name="preferredCountries"]:checked');
+            if (countryCheckboxes.length === 0) {
+                alert('Please select at least one preferred country.');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        // Save as draft
+        document.getElementById('saveBtn').addEventListener('click', function() {
+            const formData = new FormData(document.getElementById('profileForm'));
+            const profileData = Object.fromEntries(formData.entries());
+            
+            // Get selected countries
+            const selectedCountries = Array.from(document.querySelectorAll('input[name="preferredCountries"]:checked'))
+                .map(cb => cb.value);
+            profileData.preferredCountries = selectedCountries;
+
+            localStorage.setItem('profileDraft', JSON.stringify(profileData));
+            
+            const btn = this;
+            btn.textContent = 'Saved!';
+            btn.classList.add('bg-green-50', 'text-green-600', 'border-green-300');
+            
+            setTimeout(() => {
+                btn.textContent = 'Save as Draft';
+                btn.classList.remove('bg-green-50', 'text-green-600', 'border-green-300');
+            }, 2000);
+        });
+
+        // Form submission
+        document.getElementById('profileForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!validateForm()) {
+                return;
+            }
+
+            const submitBtn = document.getElementById('completeBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Completing Setup...';
+
+            // Collect form data
+            const formData = new FormData(this);
+            const profileData = Object.fromEntries(formData.entries());
+            
+            // Get selected countries
+            const selectedCountries = Array.from(document.querySelectorAll('input[name="preferredCountries"]:checked'))
+                .map(cb => cb.value);
+            profileData.preferredCountries = selectedCountries;
+
+            // Combine with registration data
+            const registrationData = JSON.parse(localStorage.getItem('registrationData') || '{}');
+            const completeProfile = {
+                ...registrationData,
+                ...profileData,
+                profileCompleted: true,
+                completedAt: new Date().toISOString()
+            };
+
+            // Simulate API call
+            setTimeout(() => {
+                console.log('Complete Profile Data:', completeProfile);
+                localStorage.setItem('userProfile', JSON.stringify(completeProfile));
+                
+                // Show success modal
+                document.getElementById('successModal').classList.remove('hidden');
+                
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Complete Profile Setup';
+            }, 2000);
+        });
+
+        // Go to dashboard
+        document.getElementById('goToDashboardBtn').addEventListener('click', function() {
+            window.location.href = 'Student-Dashboard.html';
+        });
+
+        // Load draft data if available
+        function loadDraftData() {
+            const draftData = localStorage.getItem('profileDraft');
+            if (draftData) {
+                const data = JSON.parse(draftData);
+                
+                // Fill form fields
+                Object.keys(data).forEach(key => {
+                    const field = document.getElementById(key);
+                    if (field && key !== 'preferredCountries') {
+                        field.value = data[key];
+                    }
+                });
+
+                // Check preferred countries
+                if (data.preferredCountries) {
+                    data.preferredCountries.forEach(country => {
+                        const checkbox = document.querySelector(`input[name="preferredCountries"][value="${country}"]`);
+                        if (checkbox) checkbox.checked = true;
+                    });
+                }
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDraftData();
+        });
+    </script>
+</body>
+</html>
