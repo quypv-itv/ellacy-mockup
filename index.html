@@ -97,7 +97,7 @@
         <div class="text-center mt-6" id="signup-prompt" style="display: block;">
             <p class="text-gray-600">
                 Don't have an account? 
-                <a href="#" class="text-blue-600 hover:text-blue-700 font-medium">Sign up here</a>
+                <a href="Students/htmls/Student-sign-up.html" class="text-blue-600 hover:text-blue-700 font-medium">Sign up here</a>
             </p>
         </div>
     </div>
@@ -105,10 +105,6 @@
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
-
-        // Get base URL from current path
-        const BASE = window.location.pathname.split('/')[1];
-        const BASE_URL = '/' + BASE + '/';
 
         // Handle login form submission
         function handleLogin(event) {
@@ -118,11 +114,11 @@
             
             // Redirect based on selected role
             if (studentRole.classList.contains('bg-blue-600')) {
-                window.location.href = BASE_URL + 'Students/htmls/Student-Dashboard.html';
+                window.location.href = 'Students/htmls/Student-Dashboard.html';
             } else if (agentRole.classList.contains('bg-blue-600')) {
-                window.location.href = BASE_URL + 'Agency/html/Agency-dashboard.html';
+                window.location.href = 'Agency/html/Agency-dashboard.html';
             } else if (adminRole.classList.contains('bg-blue-600')) {
-                window.location.href = BASE_URL + 'CRM/html/CRM-dashboard.html';
+                window.location.href = 'CRM/html/CRM-dashboard.html';
             }
         }
 
