@@ -203,8 +203,8 @@
                                     </div>
                                     <div class="text-right">
                                         <p class="text-sm text-red-600">Deadline: May 15, 2025</p>
-                                        <button class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700">
-                                            Apply Now
+                                        <button class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 view-details-btn" data-scholarship-id="ellacy">
+                                            View Details
                                         </button>
                                     </div>
                                 </div>
@@ -231,7 +231,7 @@
                                 </div>
                                 <div class="text-right">
                                     <p class="text-sm text-red-600">Deadline: June 1, 2025</p>
-                                    <button class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700">
+                                    <button class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 view-details-btn" data-scholarship-id="1">
                                         View Details
                                     </button>
                                 </div>
@@ -254,7 +254,7 @@
                                 </div>
                                 <div class="text-right">
                                     <p class="text-sm text-red-600">Deadline: July 15, 2025</p>
-                                    <button class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700">
+                                    <button class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 view-details-btn" data-scholarship-id="2">
                                         View Details
                                     </button>
                                 </div>
@@ -267,48 +267,84 @@
     </div>
 
     <!-- Scholarship Details Modal (Hidden by default) -->
-    <div class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div id="scholarship-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
         <div class="bg-white rounded-3xl p-6 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-start mb-4">
                 <div>
-                    <h2 class="text-2xl font-semibold">International Merit Award</h2>
-                    <p class="text-gray-600">University of Toronto</p>
+                    <h2 id="modal-title" class="text-2xl font-semibold">International Merit Award</h2>
+                    <p id="modal-institution" class="text-gray-600">University of Toronto</p>
                 </div>
-                <button class="text-gray-500 hover:text-gray-700">
+                <button id="close-modal" class="text-gray-500 hover:text-gray-700">
                     <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
             </div>
             <div class="space-y-6">
+                <!-- Award Value & Deadline -->
+                <div class="bg-gray-50 rounded-xl p-4">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-sm text-gray-500">Award Value</p>
+                            <p id="modal-award" class="font-semibold text-lg">$15,000 USD/year</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm text-gray-500">Application Deadline</p>
+                            <p id="modal-deadline" class="font-semibold text-red-600">June 1, 2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Funding Terms -->
                 <div>
-                    <h3 class="font-semibold mb-2">Description</h3>
-                    <p class="text-gray-600">
-                        The International Merit Award is designed to recognize outstanding international students who demonstrate exceptional academic achievement and leadership potential...
+                    <h3 class="font-semibold mb-2">Funding Terms</h3>
+                    <div id="modal-funding" class="text-gray-600">
+                        <p>Partial tuition coverage, renewable for up to 4 years based on academic performance.</p>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <h3 class="font-semibold mb-2">Full Description</h3>
+                    <p id="modal-description" class="text-gray-600">
+                        The International Merit Award is designed to recognize outstanding international students who demonstrate exceptional academic achievement and leadership potential in their chosen field of study.
                     </p>
                 </div>
+
+                <!-- Eligibility Requirements -->
                 <div>
                     <h3 class="font-semibold mb-2">Eligibility Requirements</h3>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                    <ul id="modal-eligibility" class="list-disc list-inside text-gray-600 space-y-1">
                         <li>Minimum GPA of 3.0</li>
                         <li>Enrolled in Engineering programs</li>
                         <li>International student status</li>
                         <li>Demonstrated leadership experience</li>
                     </ul>
                 </div>
+
+                <!-- Required Documents -->
                 <div>
                     <h3 class="font-semibold mb-2">Required Documents</h3>
-                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                    <ul id="modal-documents" class="list-disc list-inside text-gray-600 space-y-1">
                         <li>Academic transcripts</li>
                         <li>Letter of recommendation</li>
                         <li>Personal statement</li>
                         <li>Resume/CV</li>
                     </ul>
                 </div>
-                <div class="flex justify-between items-center pt-4 border-t">
-                    <div>
-                        <p class="text-sm text-gray-500">Application Deadline</p>
-                        <p class="font-semibold text-red-600">June 1, 2025</p>
+
+                <!-- Application Instructions -->
+                <div>
+                    <h3 class="font-semibold mb-2">Application Instructions</h3>
+                    <div id="modal-instructions" class="text-gray-600">
+                        <p>Submit your complete application through the university's online portal. Ensure all documents are uploaded before the deadline.</p>
                     </div>
-                    <button class="px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700">
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex justify-between items-center pt-4 border-t">
+                    <button class="px-4 py-2 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50">
+                        Save Scholarship
+                    </button>
+                    <button id="modal-apply-btn" class="px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700">
                         Start Application
                     </button>
                 </div>
@@ -337,6 +373,152 @@
         document.addEventListener('click', (e) => {
             if (!profileMenu.contains(e.target)) {
                 profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // Scholarship Data
+        const scholarshipData = {
+            '1': {
+                title: 'International Merit Award',
+                institution: 'University of Toronto',
+                award: '$15,000 USD/year',
+                deadline: 'June 1, 2025',
+                funding: 'Partial tuition coverage, renewable for up to 4 years based on academic performance.',
+                description: 'The International Merit Award is designed to recognize outstanding international students who demonstrate exceptional academic achievement and leadership potential in Engineering programs. This scholarship supports students who show promise in their field and commitment to making a positive impact.',
+                eligibility: [
+                    'Minimum GPA of 3.0',
+                    'Enrolled in Engineering programs',
+                    'International student status',
+                    'Demonstrated leadership experience',
+                    'Strong academic record in STEM subjects'
+                ],
+                documents: [
+                    'Academic transcripts',
+                    'Letter of recommendation (2 required)',
+                    'Personal statement (500 words)',
+                    'Resume/CV',
+                    'Proof of English proficiency'
+                ],
+                instructions: 'Submit your complete application through the University of Toronto online portal. Ensure all documents are uploaded and properly formatted before the deadline. Late applications will not be considered.'
+            },
+            '2': {
+                title: 'Future Leaders Scholarship',
+                institution: 'University of Melbourne',
+                award: '$25,000 USD/year',
+                deadline: 'July 15, 2025',
+                funding: 'Full tuition coverage for the duration of the program, plus living allowance of $5,000/year.',
+                description: 'The Future Leaders Scholarship is awarded to exceptional students pursuing Business programs who demonstrate leadership potential and commitment to creating positive change in their communities. This prestigious scholarship covers full tuition and provides additional support.',
+                eligibility: [
+                    'Minimum GPA of 3.2',
+                    'Enrolled in Business programs',
+                    'Demonstrated leadership experience',
+                    'Community involvement or volunteer work',
+                    'Strong communication skills'
+                ],
+                documents: [
+                    'Academic transcripts',
+                    'Three letters of recommendation',
+                    'Leadership portfolio',
+                    'Personal statement (750 words)',
+                    'Resume/CV with leadership examples'
+                ],
+                instructions: 'Applications must be submitted through the University of Melbourne scholarship portal. Include a detailed leadership portfolio showcasing your achievements and impact. Shortlisted candidates will be invited for an interview.'
+            },
+            'ellacy': {
+                title: 'Global Excellence Scholarship',
+                institution: 'Ellacy Foundation',
+                award: 'Up to $50,000 USD',
+                deadline: 'May 15, 2025',
+                funding: 'Full tuition coverage for outstanding international students, renewable based on academic performance and community involvement.',
+                description: 'The Global Excellence Scholarship is Ellacy Foundation\'s flagship program designed to support exceptional international students pursuing higher education. This prestigious scholarship recognizes students who demonstrate outstanding academic achievement, leadership potential, and commitment to making a positive impact in their communities and chosen fields.',
+                eligibility: [
+                    'Minimum GPA of 3.5',
+                    'All academic programs eligible',
+                    'International student status',
+                    'Demonstrated leadership and community involvement',
+                    'Strong academic record and potential for excellence',
+                    'Commitment to giving back to the community'
+                ],
+                documents: [
+                    'Complete academic transcripts',
+                    'Two letters of recommendation from academic or professional references',
+                    'Personal statement (1000 words) describing goals and impact',
+                    'Comprehensive resume/CV',
+                    'Portfolio of achievements and community involvement',
+                    'Proof of English proficiency (if applicable)'
+                ],
+                instructions: 'Applications are submitted directly through the Ellacy Foundation scholarship portal. This is a highly competitive scholarship with a rigorous selection process. Shortlisted candidates will participate in virtual interviews and may be required to submit additional materials. Priority is given to students who demonstrate both academic excellence and commitment to social impact.'
+            }
+        };
+
+        // Modal Elements
+        const scholarshipModal = document.getElementById('scholarship-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalInstitution = document.getElementById('modal-institution');
+        const modalAward = document.getElementById('modal-award');
+        const modalDeadline = document.getElementById('modal-deadline');
+        const modalFunding = document.getElementById('modal-funding');
+        const modalDescription = document.getElementById('modal-description');
+        const modalEligibility = document.getElementById('modal-eligibility');
+        const modalDocuments = document.getElementById('modal-documents');
+        const modalInstructions = document.getElementById('modal-instructions');
+
+        // View Details Button Event Listeners
+        const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
+        viewDetailsBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const scholarshipId = btn.getAttribute('data-scholarship-id');
+                const scholarship = scholarshipData[scholarshipId];
+                
+                if (scholarship) {
+                    // Update modal content
+                    modalTitle.textContent = scholarship.title;
+                    modalInstitution.textContent = scholarship.institution;
+                    modalAward.textContent = scholarship.award;
+                    modalDeadline.textContent = scholarship.deadline;
+                    modalFunding.innerHTML = `<p>${scholarship.funding}</p>`;
+                    modalDescription.textContent = scholarship.description;
+                    modalInstructions.innerHTML = `<p>${scholarship.instructions}</p>`;
+                    
+                    // Update eligibility list
+                    modalEligibility.innerHTML = '';
+                    scholarship.eligibility.forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = item;
+                        modalEligibility.appendChild(li);
+                    });
+                    
+                    // Update documents list
+                    modalDocuments.innerHTML = '';
+                    scholarship.documents.forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = item;
+                        modalDocuments.appendChild(li);
+                    });
+                    
+                    // Show modal
+                    scholarshipModal.classList.remove('hidden');
+                }
+            });
+        });
+
+        // Close Modal Event Listeners
+        closeModalBtn.addEventListener('click', () => {
+            scholarshipModal.classList.add('hidden');
+        });
+
+        // Close modal when clicking outside
+        scholarshipModal.addEventListener('click', (e) => {
+            if (e.target === scholarshipModal) {
+                scholarshipModal.classList.add('hidden');
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !scholarshipModal.classList.contains('hidden')) {
+                scholarshipModal.classList.add('hidden');
             }
         });
     </script>
