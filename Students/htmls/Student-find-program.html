@@ -216,7 +216,7 @@
                         <div class="flex justify-between items-start mb-4">
                             <div>
                                 <h3 class="text-lg font-semibold">MSc in Data Science</h3>
-                                <p class="text-gray-600">University of British Columbia</p>
+                                <p class="text-gray-600 cursor-pointer hover:text-blue-600 hover:underline school-name" data-school-id="ubc">University of British Columbia</p>
                                 <div class="flex items-center mt-2">
                                     <i data-lucide="map-pin" class="w-4 h-4 text-gray-500 mr-1"></i>
                                     <span class="text-sm text-gray-600">Vancouver, Canada</span>
@@ -248,7 +248,7 @@
                         <div class="flex justify-between items-start mb-4">
                             <div>
                                 <h3 class="text-lg font-semibold">Bachelor of Engineering</h3>
-                                <p class="text-gray-600">University of Toronto</p>
+                                <p class="text-gray-600 cursor-pointer hover:text-blue-600 hover:underline school-name" data-school-id="uoft">University of Toronto</p>
                                 <div class="flex items-center mt-2">
                                     <i data-lucide="map-pin" class="w-4 h-4 text-gray-500 mr-1"></i>
                                     <span class="text-sm text-gray-600">Toronto, Canada</span>
@@ -279,6 +279,79 @@
         </main>
     </div>
 
+    <!-- School Details Modal (Hidden by default) -->
+    <div id="schoolModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-3xl p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-start mb-6">
+                <div class="flex items-center">
+                    <img id="schoolLogo" src="https://images.unsplash.com/photo-1562774053-701939374585?w=100&h=100&fit=crop" alt="University Logo" class="w-16 h-16 rounded-full mr-4">
+                    <div>
+                        <h2 class="text-2xl font-semibold" id="schoolName">University of British Columbia</h2>
+                        <div class="flex items-center mt-1">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-gray-500 mr-1"></i>
+                            <span class="text-gray-600" id="schoolLocation">Vancouver, Canada</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="closeSchoolModal" class="text-gray-500 hover:text-gray-700">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            
+            <!-- School Overview -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold mb-3">Overview</h3>
+                <p class="text-gray-600" id="schoolOverview">
+                    The University of British Columbia is a global centre for research and teaching, consistently ranked among the world's top 20 public universities.
+                </p>
+            </div>
+
+            <!-- Key Facts -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold mb-3">Key Facts</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-50 rounded-xl p-4">
+                        <h4 class="font-medium text-gray-800">Acceptance Rate</h4>
+                        <p class="text-2xl font-bold text-blue-600" id="acceptanceRate">52%</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-4">
+                        <h4 class="font-medium text-gray-800">Tuition Range</h4>
+                        <div id="tuitionRange">
+                            <p class="text-sm text-gray-600">Bachelor: $35,000 - $45,000/year</p>
+                            <p class="text-sm text-gray-600">Master: $40,000 - $55,000/year</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-4">
+                        <h4 class="font-medium text-gray-800">Typical Requirements</h4>
+                        <div id="requirements">
+                            <p class="text-sm text-gray-600">IELTS: 6.5+</p>
+                            <p class="text-sm text-gray-600">GPA: 3.0+</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-4">
+                        <h4 class="font-medium text-gray-800">Application Deadlines</h4>
+                        <div id="deadlines">
+                            <p class="text-sm text-gray-600">Fall 2025: January 15</p>
+                            <p class="text-sm text-gray-600">Spring 2025: September 15</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button class="flex-1 px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 flex items-center justify-center">
+                    <i data-lucide="search" class="w-4 h-4 mr-2"></i>
+                    View Programs
+                </button>
+                <button class="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 flex items-center justify-center">
+                    <i data-lucide="award" class="w-4 h-4 mr-2"></i>
+                    View Scholarships
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Program Details Modal (Hidden by default) -->
     <div id="programModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
         <div class="bg-white rounded-3xl p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
@@ -296,11 +369,24 @@
                 </button>
             </div>
             
-            <!-- Program Info Grid -->
+            <!-- Modal Content Grid -->
             <div class="grid md:grid-cols-2 gap-6 mb-6">
-                <div class="bg-gray-50 rounded-2xl p-4">
-                    <h4 class="font-semibold mb-3">Program Details</h4>
+                <!-- Institution Details -->
+                <div class="bg-blue-50 rounded-2xl p-4">
+                    <h4 class="font-semibold mb-3 text-blue-800">Institution Details</h4>
                     <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">School ID:</span>
+                            <span id="modalSchoolId">UBC-001</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Year Founded:</span>
+                            <span id="modalYearFounded">1908</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Institution Type:</span>
+                            <span id="modalInstitutionType">Public</span>
+                        </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Duration:</span>
                             <span id="modalDuration">2 Years</span>
@@ -319,16 +405,26 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-gray-50 rounded-2xl p-4">
-                    <h4 class="font-semibold mb-3">Tuition & Fees</h4>
+
+                <!-- Cost and Tuition -->
+                <div class="bg-green-50 rounded-2xl p-4">
+                    <h4 class="font-semibold mb-3 text-green-800">Cost and Tuition</h4>
                     <div class="space-y-2 text-sm">
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">Tuition (per year):</span>
-                            <span class="font-semibold" id="modalTuition">$35,000 - $40,000</span>
-                        </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Application Fee:</span>
                             <span id="modalAppFee">$150</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Program Length:</span>
+                            <span id="modalProgramLength">24 months</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Cost of Living:</span>
+                            <span id="modalCostOfLiving">$15,000/year</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Gross Tuition:</span>
+                            <span class="font-semibold" id="modalTuition">$35,000 - $40,000</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Deadline:</span>
@@ -336,6 +432,37 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Scholarship Program Offer -->
+            <div class="bg-yellow-50 rounded-2xl p-4 mb-6">
+                <h4 class="font-semibold mb-3 text-yellow-800">Scholarship Program Offer</h4>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-600">Amount Offered:</span>
+                            <span class="font-semibold text-green-600" id="modalScholarshipAmount">$10,000</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Coverage:</span>
+                            <span id="modalScholarshipCoverage">Partial Tuition</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h5 class="font-medium mb-2">Summary about the scholarship program</h5>
+                        <p class="text-sm text-gray-600" id="modalScholarshipSummary">
+                            Merit-based scholarship for international students with excellent academic records. Renewable for the duration of the program based on maintaining GPA requirements.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary about the schools -->
+            <div class="bg-purple-50 rounded-2xl p-4 mb-6">
+                <h4 class="font-semibold mb-3 text-purple-800">Summary about the schools</h4>
+                <p class="text-sm text-gray-600" id="modalSchoolSummary">
+                    The University of British Columbia is a globally recognized research university located in Vancouver, Canada. Known for its strong programs in technology, business, and sciences, UBC consistently ranks among the top 40 universities worldwide. The campus offers state-of-the-art facilities, diverse student community, and excellent career support services.
+                </p>
             </div>
 
             <div class="space-y-6">
@@ -445,6 +572,113 @@
             }
         });
 
+        // School Details Modal functionality
+        const schoolModal = document.getElementById('schoolModal');
+        const closeSchoolModalBtn = document.getElementById('closeSchoolModal');
+        const schoolNameBtns = document.querySelectorAll('.school-name');
+
+        // School data
+        const schoolData = {
+            'ubc': {
+                name: 'University of British Columbia',
+                location: 'Vancouver, Canada',
+                logo: 'https://images.unsplash.com/photo-1562774053-701939374585?w=100&h=100&fit=crop',
+                overview: 'The University of British Columbia is a global centre for research and teaching, consistently ranked among the world\'s top 20 public universities. UBC embraces innovation and transforms ideas into action.',
+                acceptanceRate: '52%',
+                tuitionRange: {
+                    bachelor: 'Bachelor: $35,000 - $45,000/year',
+                    master: 'Master: $40,000 - $55,000/year'
+                },
+                requirements: {
+                    ielts: 'IELTS: 6.5+',
+                    gpa: 'GPA: 3.0+'
+                },
+                deadlines: {
+                    fall: 'Fall 2025: January 15',
+                    spring: 'Spring 2025: September 15'
+                }
+            },
+            'uoft': {
+                name: 'University of Toronto',
+                location: 'Toronto, Canada',
+                logo: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=100&h=100&fit=crop',
+                overview: 'The University of Toronto is a globally top-ranked public research university in Toronto, Ontario, Canada. Founded in 1827, it is the oldest university in the province of Ontario and one of Canada\'s most prestigious institutions.',
+                acceptanceRate: '43%',
+                tuitionRange: {
+                    bachelor: 'Bachelor: $40,000 - $50,000/year',
+                    master: 'Master: $45,000 - $60,000/year'
+                },
+                requirements: {
+                    ielts: 'IELTS: 6.5+',
+                    gpa: 'GPA: 3.2+'
+                },
+                deadlines: {
+                    fall: 'Fall 2025: January 31',
+                    spring: 'Spring 2025: October 1'
+                }
+            }
+        };
+
+        // School name click handlers
+        schoolNameBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const schoolId = btn.getAttribute('data-school-id');
+                const school = schoolData[schoolId];
+                
+                if (school) {
+                    // Update modal content
+                    document.getElementById('schoolName').textContent = school.name;
+                    document.getElementById('schoolLocation').textContent = school.location;
+                    document.getElementById('schoolLogo').src = school.logo;
+                    document.getElementById('schoolOverview').textContent = school.overview;
+                    document.getElementById('acceptanceRate').textContent = school.acceptanceRate;
+                    
+                    // Update tuition range
+                    const tuitionContainer = document.getElementById('tuitionRange');
+                    tuitionContainer.innerHTML = `
+                        <p class="text-sm text-gray-600">${school.tuitionRange.bachelor}</p>
+                        <p class="text-sm text-gray-600">${school.tuitionRange.master}</p>
+                    `;
+                    
+                    // Update requirements
+                    const requirementsContainer = document.getElementById('requirements');
+                    requirementsContainer.innerHTML = `
+                        <p class="text-sm text-gray-600">${school.requirements.ielts}</p>
+                        <p class="text-sm text-gray-600">${school.requirements.gpa}</p>
+                    `;
+                    
+                    // Update deadlines
+                    const deadlinesContainer = document.getElementById('deadlines');
+                    deadlinesContainer.innerHTML = `
+                        <p class="text-sm text-gray-600">${school.deadlines.fall}</p>
+                        <p class="text-sm text-gray-600">${school.deadlines.spring}</p>
+                    `;
+                    
+                    // Show modal
+                    schoolModal.classList.remove('hidden');
+                }
+            });
+        });
+
+        // Close school modal
+        closeSchoolModalBtn.addEventListener('click', () => {
+            schoolModal.classList.add('hidden');
+        });
+
+        // Close school modal when clicking outside
+        schoolModal.addEventListener('click', (e) => {
+            if (e.target === schoolModal) {
+                schoolModal.classList.add('hidden');
+            }
+        });
+
+        // Close school modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !schoolModal.classList.contains('hidden')) {
+                schoolModal.classList.add('hidden');
+            }
+        });
+
         // Program Details Modal functionality
         const programModal = document.getElementById('programModal');
         const closeModalBtn = document.getElementById('closeModal');
@@ -464,7 +698,20 @@
                 appFee: '$150',
                 deadline: 'March 15, 2025',
                 description: 'The Master of Science in Data Science program at UBC provides students with comprehensive training in data science methodologies, statistical analysis, machine learning algorithms, and big data technologies. This program is designed for students who want to develop expertise in extracting insights from complex datasets and applying data-driven solutions to real-world problems.',
-                officialLink: 'https://www.ubc.ca/programs/data-science'
+                officialLink: 'https://www.ubc.ca/programs/data-science',
+                // Institution Details
+                schoolId: 'UBC-001',
+                yearFounded: '1908',
+                institutionType: 'Public',
+                // Cost and Tuition Details
+                programLength: '24 months',
+                costOfLiving: '$15,000/year',
+                // Scholarship Program Offer
+                scholarshipAmount: '$10,000',
+                scholarshipCoverage: 'Partial Tuition',
+                scholarshipSummary: 'Merit-based scholarship for international students with excellent academic records. Renewable for the duration of the program based on maintaining GPA requirements.',
+                // School Summary
+                schoolSummary: 'The University of British Columbia is a globally recognized research university located in Vancouver, Canada. Known for its strong programs in technology, business, and sciences, UBC consistently ranks among the top 40 universities worldwide. The campus offers state-of-the-art facilities, diverse student community, and excellent career support services.'
             },
             2: {
                 name: 'Bachelor of Engineering',
@@ -478,7 +725,20 @@
                 appFee: '$200',
                 deadline: 'February 1, 2025',
                 description: 'The Bachelor of Engineering program at University of Toronto offers a comprehensive engineering education with specializations in mechanical, electrical, computer, and civil engineering. Students gain hands-on experience through laboratory work, design projects, and industry partnerships.',
-                officialLink: 'https://www.utoronto.ca/programs/engineering'
+                officialLink: 'https://www.utoronto.ca/programs/engineering',
+                // Institution Details
+                schoolId: 'UOT-002',
+                yearFounded: '1827',
+                institutionType: 'Public',
+                // Cost and Tuition Details
+                programLength: '48 months',
+                costOfLiving: '$18,000/year',
+                // Scholarship Program Offer
+                scholarshipAmount: '$15,000',
+                scholarshipCoverage: 'Partial Tuition',
+                scholarshipSummary: 'Excellence scholarship for outstanding students pursuing engineering degrees. Available for domestic and international students with strong academic performance.',
+                // School Summary
+                schoolSummary: 'The University of Toronto is Canada\'s leading institution of higher learning and research. Founded in 1827, it is consistently ranked as one of the top universities globally. UofT offers world-class engineering programs with cutting-edge research facilities and strong industry connections.'
             }
         };
 
@@ -489,17 +749,36 @@
                 const program = programData[programId];
                 
                 if (program) {
-                    // Update modal content
+                    // Update modal header
                     document.getElementById('modalProgramName').textContent = program.name;
                     document.getElementById('modalUniversityName').textContent = program.university;
                     document.getElementById('modalLocation').textContent = program.location;
+                    
+                    // Update Institution Details
+                    document.getElementById('modalSchoolId').textContent = program.schoolId;
+                    document.getElementById('modalYearFounded').textContent = program.yearFounded;
+                    document.getElementById('modalInstitutionType').textContent = program.institutionType;
                     document.getElementById('modalDuration').textContent = program.duration;
                     document.getElementById('modalLevel').textContent = program.level;
                     document.getElementById('modalIntake').textContent = program.intake;
                     document.getElementById('modalLanguage').textContent = program.language;
-                    document.getElementById('modalTuition').textContent = program.tuition;
+                    
+                    // Update Cost and Tuition
                     document.getElementById('modalAppFee').textContent = program.appFee;
+                    document.getElementById('modalProgramLength').textContent = program.programLength;
+                    document.getElementById('modalCostOfLiving').textContent = program.costOfLiving;
+                    document.getElementById('modalTuition').textContent = program.tuition;
                     document.getElementById('modalDeadline').textContent = program.deadline;
+                    
+                    // Update Scholarship Program Offer
+                    document.getElementById('modalScholarshipAmount').textContent = program.scholarshipAmount;
+                    document.getElementById('modalScholarshipCoverage').textContent = program.scholarshipCoverage;
+                    document.getElementById('modalScholarshipSummary').textContent = program.scholarshipSummary;
+                    
+                    // Update School Summary
+                    document.getElementById('modalSchoolSummary').textContent = program.schoolSummary;
+                    
+                    // Update other fields
                     document.getElementById('modalDescription').textContent = program.description;
                     document.getElementById('modalOfficialLink').href = program.officialLink;
                 }
