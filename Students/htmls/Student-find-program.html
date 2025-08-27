@@ -1012,6 +1012,13 @@
             const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
             const closeBtn = document.getElementById('closeModal');
             
+            // School modal elements
+            const schoolModal = document.getElementById('schoolModal');
+            const schoolNameBtns = document.querySelectorAll('.school-name');
+            const closeSchoolBtn = document.getElementById('closeSchoolModal');
+            
+            console.log('School name buttons found:', schoolNameBtns.length);
+            
             // Program data
             const programs = {
                 '1': {
@@ -1026,7 +1033,19 @@
                 }
             };
             
-            // Add click listeners to buttons
+            // School data
+            const schools = {
+                'ubc': {
+                    name: 'University of British Columbia',
+                    location: 'Vancouver, Canada'
+                },
+                'uoft': {
+                    name: 'University of Toronto',
+                    location: 'Toronto, Canada'
+                }
+            };
+            
+            // Add click listeners to View Details buttons
             viewDetailsBtns.forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1050,10 +1069,42 @@
                 });
             });
             
-            // Close modal
+            // Add click listeners to school names
+            schoolNameBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('School name clicked');
+                    const schoolId = btn.getAttribute('data-school-id');
+                    console.log('School ID:', schoolId);
+                    const school = schools[schoolId];
+                    
+                    if (school && schoolModal) {
+                        // Update school modal content
+                        const nameEl = document.getElementById('schoolName');
+                        const locEl = document.getElementById('schoolLocation');
+                        
+                        if (nameEl) nameEl.textContent = school.name;
+                        if (locEl) locEl.textContent = school.location;
+                        
+                        // Show school modal
+                        schoolModal.classList.remove('hidden');
+                        console.log('School modal should be visible');
+                        lucide.createIcons();
+                    }
+                });
+            });
+            
+            // Close program modal
             if (closeBtn) {
                 closeBtn.addEventListener('click', function() {
                     modal.classList.add('hidden');
+                });
+            }
+            
+            // Close school modal
+            if (closeSchoolBtn) {
+                closeSchoolBtn.addEventListener('click', function() {
+                    schoolModal.classList.add('hidden');
                 });
             }
             
@@ -1062,6 +1113,14 @@
                 modal.addEventListener('click', function(e) {
                     if (e.target === modal) {
                         modal.classList.add('hidden');
+                    }
+                });
+            }
+            
+            if (schoolModal) {
+                schoolModal.addEventListener('click', function(e) {
+                    if (e.target === schoolModal) {
+                        schoolModal.classList.add('hidden');
                     }
                 });
             }

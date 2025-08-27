@@ -202,9 +202,9 @@
 
                     <!-- Navigation Dots -->
                     <div class="flex justify-center space-x-2 p-4">
-                        <button class="w-2 h-2 rounded-full bg-red-200 dot-button" data-slide="0"></button>
-                        <button class="w-2 h-2 rounded-full bg-red-200 dot-button" data-slide="1"></button>
-                        <button class="w-2 h-2 rounded-full bg-red-200 dot-button" data-slide="2"></button>
+                        <button class="w-2 h-2 rounded-full bg-gray-300 dot-button hover:bg-gray-400 transition-colors" data-slide="0"></button>
+                        <button class="w-2 h-2 rounded-full bg-gray-300 dot-button hover:bg-gray-400 transition-colors" data-slide="1"></button>
+                        <button class="w-2 h-2 rounded-full bg-gray-300 dot-button hover:bg-gray-400 transition-colors" data-slide="2"></button>
                     </div>
                 </div>
             </div>
@@ -217,7 +217,8 @@
                     const dots = carousel.querySelectorAll('.dot-button');
                     
                     // Initialize first dot as active
-                    dots[0].classList.add('bg-blue-600');
+                    dots[0].classList.remove('bg-gray-300');
+                    dots[0].style.backgroundColor = '#ED2217';
                     
                     // Dot navigation
                     dots.forEach(dot => {
@@ -230,8 +231,12 @@
                             });
                             
                             // Update active dot
-                            dots.forEach(d => d.classList.remove('bg-blue-600'));
-                            dot.classList.add('bg-blue-600');
+                            dots.forEach(d => {
+                                d.classList.add('bg-gray-300');
+                                d.style.backgroundColor = '';
+                            });
+                            dot.classList.remove('bg-gray-300');
+                            dot.style.backgroundColor = '#ED2217';
                         });
                     });
                     
@@ -248,8 +253,12 @@
                         });
                         
                         // Update active dot
-                        dots.forEach(d => d.classList.remove('bg-blue-600'));
-                        dots[currentIndex].classList.add('bg-blue-600');
+                        dots.forEach(d => {
+                            d.classList.add('bg-gray-300');
+                            d.style.backgroundColor = '';
+                        });
+                        dots[currentIndex].classList.remove('bg-gray-300');
+                        dots[currentIndex].style.backgroundColor = '#ED2217';
                     }, 5000);
                 });
 
