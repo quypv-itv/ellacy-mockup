@@ -23,84 +23,109 @@
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Sidebar -->
-    <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
-        <div class="p-6">
-            <h1 class="text-2xl font-bold text-gray-800">Ellacy GO</h1>
-            <p class="text-sm text-gray-500">Student</p>
-        </div>
-        <nav class="mt-6">
-            <a href="Student-Dashboard.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
-                <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>
-                Dashboard
-            </a>
-            <a href="Student-my-application.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
-                <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>
-                My Applications
-            </a>
-            <a href="Student-find-program.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
-                <i data-lucide="search" class="w-5 h-5 mr-3"></i>
-                Find Programs
-            </a>
-            <a href="Student-sholarships.html" class="flex items-center px-6 py-3 bg-blue-50 text-blue-600">
-                <i data-lucide="award" class="w-5 h-5 mr-3"></i>
-                Scholarships
-            </a>
-            <a href="Student-profile.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
-                <i data-lucide="user" class="w-5 h-5 mr-3"></i>
-                Profile
-            </a>
-            <a href="Student-AI-Assistant.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
-                <i data-lucide="bot" class="w-5 h-5 mr-3"></i>
-                AI Assistant
-            </a>
-            <a href="Student-payment.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
-                <i data-lucide="credit-card" class="w-5 h-5 mr-3"></i>
-                Payment Center
-            </a>
-            <a href="Student-messages.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
-                <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>
-                Messages
-            </a>
-        </nav>
-        <div class="mt-auto px-6 py-4 border-t border-gray-200">
-            <p class="text-sm text-gray-600 text-center">Designed & developed by Innotech Viet Nam</p>
-        </div>
-    </aside>
-
     <!-- Main Content -->
-    <div class="ml-64">
-        <!-- Top Bar -->
-        <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6">
-            <div class="flex items-center">
-                <h2 class="text-xl font-semibold text-gray-800">Scholarships</h2>
-            </div>
-            <div class="flex items-center space-x-4">
-                <button class="relative">
-                    <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
-                    <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
-                </button>
-                <!-- Profile Dropdown -->
-                <div class="relative">
-                    <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
-                             alt="Profile" 
-                             class="w-8 h-8 rounded-full object-cover">
-                    </button>
+    <div class="min-h-screen">
+        <!-- Header with Navigation -->
+        <header class="bg-white shadow-sm">
+            <div class="px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <!-- Logo and Navigation -->
+                    <div class="flex items-center">
+                        <img src="../../ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-4">
+                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full mr-8">Student</span>
+                        
+                        <!-- Navigation Menu -->
+                        <nav class="flex items-center space-x-6">
+                        </nav>
+                    </div>
                     
-                    <!-- Dropdown Menu -->
-                    <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
-                        <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
+                    <!-- Right Side -->
+                    <div class="flex items-center space-x-4">
+                        <a href="Student-Dashboard.html" class="px-3 py-2 text-gray-600 bg-gray-50 rounded-lg font-medium whitespace-nowrap">
+                            Dashboard
                         </a>
-                        <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
+                        
+                        <a href="Student-messages.html" class="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg" title="Messages">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
                         </a>
+                        
+                        <button class="relative p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg" title="Notifications">
+                            <i data-lucide="bell" class="w-5 h-5"></i>
+                            <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                        </button>
+                        
+                        <!-- Profile Dropdown -->
+                        <div class="relative">
+                            <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-50 rounded-lg">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
+                                     alt="Profile" 
+                                     class="w-8 h-8 rounded-full object-cover">
+                            </button>
+                            
+                            <!-- Dropdown Menu -->
+                            <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                                <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
+                                </a>
+                                <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
+                                </a>
+                                <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </header>
 
+        <!-- Secondary Navigation Bar -->
+        <div class="bg-gray-600 py-4">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex items-center justify-center relative">
+                    <!-- Find Programs -->
+                    <a href="Student-find-program.html" class="flex flex-col items-center text-white hover:text-gray-200 cursor-pointer transition-colors px-12 relative">
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-2">
+                            <i data-lucide="search" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-sm font-medium">Find Programs</span>
+                    </a>
+                    
+                    <!-- Favorites -->
+                    <a href="Student-my-application.html" class="flex flex-col items-center text-white hover:text-gray-200 cursor-pointer transition-colors px-12 relative">
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-2">
+                            <i data-lucide="heart" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-sm font-medium">Favorites (0)</span>
+                    </a>
+                    
+                    <!-- My Applications -->
+                    <a href="Student-my-application.html" class="flex flex-col items-center text-white hover:text-gray-200 cursor-pointer transition-colors px-12 relative">
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-2">
+                            <i data-lucide="file-text" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-sm font-medium">My Applications (0)</span>
+                    </a>
+                    
+                    <!-- Scholarships -->
+                    <a href="Student-sholarships.html" class="flex flex-col items-center text-white hover:text-gray-200 cursor-pointer transition-colors px-12 relative">
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-2">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-sm font-medium">Scholarships</span>
+                    </a>
+                    
+                    <!-- Payment -->
+                    <a href="Student-payment.html" class="flex flex-col items-center text-white hover:text-gray-200 cursor-pointer transition-colors px-12">
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-2">
+                            <i data-lucide="credit-card" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-sm font-medium">Payment</span>
+                    </a>
+                </div>
+            </div>
+        </div>
         <!-- Main Content Area -->
         <main class="p-6">
             <div class="flex gap-6">
@@ -356,26 +381,6 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Handle logout
-        function handleLogout() {
-            window.location.href = '../../login.html';
-        }
-
-        // Profile Dropdown Toggle
-        const profileMenu = document.getElementById('profile-menu');
-        const profileDropdown = document.getElementById('profile-dropdown');
-
-        profileMenu.addEventListener('click', () => {
-            profileDropdown.classList.toggle('hidden');
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!profileMenu.contains(e.target)) {
-                profileDropdown.classList.add('hidden');
-            }
-        });
-
         // Scholarship Data
         const scholarshipData = {
             '1': {
@@ -521,6 +526,145 @@
                 scholarshipModal.classList.add('hidden');
             }
         });
+
+        // Handle logout
+        function handleLogout() {
+            window.location.href = '../../login.html';
+        }
+
+        // Profile Dropdown Toggle
+        const profileMenu = document.getElementById('profile-menu');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileMenu.addEventListener('click', () => {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!profileMenu.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // Initialize icons after all content is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
+    </script>
+
+    <!-- AI Assistant Floating Button -->
+    <button id="ai-chat-btn" class="fixed bottom-6 right-6 w-14 h-14 rounded-full shadow-lg flex items-center justify-center z-50 transition-all duration-300 hover:scale-110" style="background-color: #ED2217;">
+        <i data-lucide="message-circle" class="w-6 h-6 text-white"></i>
+    </button>
+
+    <!-- AI Chat Panel -->
+    <div id="ai-chat-panel" class="fixed bottom-24 right-6 w-80 h-96 bg-white rounded-2xl shadow-2xl z-50 hidden flex flex-col">
+        <!-- Chat Header -->
+        <div class="flex items-center justify-between p-4 border-b border-gray-200 rounded-t-2xl" style="background-color: #FEE2E2;">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #ED2217;">
+                    <i data-lucide="bot" class="w-4 h-4 text-white"></i>
+                </div>
+                <span class="font-medium text-gray-800">AI Assistant</span>
+            </div>
+            <button id="close-chat" class="text-gray-500 hover:text-gray-700">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3">
+            <div class="flex items-start space-x-3">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: #FEE2E2;">
+                    <i data-lucide="bot" class="w-4 h-4" style="color: #ED2217;"></i>
+                </div>
+                <div class="bg-gray-100 rounded-2xl rounded-tl-md p-3 max-w-xs">
+                    <p class="text-sm text-gray-800">Hello! I'm here to help you with scholarships and any questions you might have.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="p-4 border-t border-gray-200">
+            <div class="flex space-x-2">
+                <input type="text" id="chat-input" placeholder="Type your message..." class="flex-1 px-3 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                <button id="send-message" class="w-8 h-8 rounded-full flex items-center justify-center text-white" style="background-color: #ED2217;">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // AI Chat functionality
+        const aiChatBtn = document.getElementById('ai-chat-btn');
+        const aiChatPanel = document.getElementById('ai-chat-panel');
+        const closeChatBtn = document.getElementById('close-chat');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const sendMessageBtn = document.getElementById('send-message');
+
+        aiChatBtn.addEventListener('click', () => {
+            aiChatPanel.classList.toggle('hidden');
+            if (!aiChatPanel.classList.contains('hidden')) {
+                chatInput.focus();
+            }
+        });
+
+        closeChatBtn.addEventListener('click', () => {
+            aiChatPanel.classList.add('hidden');
+        });
+
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            // Add user message
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.className = 'flex items-start space-x-3 justify-end';
+            userMessageDiv.innerHTML = `
+                <div class="rounded-2xl rounded-tr-md p-3 max-w-xs" style="background-color: #ED2217;">
+                    <p class="text-sm text-white">${message}</p>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="user" class="w-4 h-4 text-gray-600"></i>
+                </div>
+            `;
+            chatMessages.appendChild(userMessageDiv);
+            chatInput.value = '';
+
+            // Simulate AI response
+            setTimeout(() => {
+                const aiMessageDiv = document.createElement('div');
+                aiMessageDiv.className = 'flex items-start space-x-3';
+                aiMessageDiv.innerHTML = `
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: #FEE2E2;">
+                        <i data-lucide="bot" class="w-4 h-4" style="color: #ED2217;"></i>
+                    </div>
+                    <div class="bg-gray-100 rounded-2xl rounded-tl-md p-3 max-w-xs">
+                        <p class="text-sm text-gray-800">I can help you with "${message}". What specific information are you looking for about scholarships?</p>
+                    </div>
+                `;
+                chatMessages.appendChild(aiMessageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                lucide.createIcons();
+            }, 1000);
+
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            lucide.createIcons();
+        }
+
+        sendMessageBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Final icon initialization
+        lucide.createIcons();
     </script>
 </body>
 </html>
