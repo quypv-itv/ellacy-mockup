@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Applications - Ellacy GO</title>
+    <title>My Applications - APPLYLEAD</title>
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Inter Font -->
@@ -14,8 +14,11 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-        .gradient-bg {
-            background: linear-gradient(to right top, #EDE5D6, #9ED5C5, #ffffff);
+        .brand-red {
+            background-color: #ED2217;
+        }
+        .brand-red-light {
+            background-color: #F87171;
         }
     </style>
 </head>
@@ -26,23 +29,41 @@
         <header class="bg-white shadow-sm">
             <div class="px-6 py-4">
                 <div class="flex items-center justify-between">
-                    <!-- Logo and Navigation -->
+                    <!-- Logo -->
                     <div class="flex items-center">
-                        <img src="../../ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-4">
-                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full mr-8">Student</span>
-                        
-                        <!-- Navigation Menu -->
-                        <nav class="flex items-center space-x-6">
-                        </nav>
+                        <a href="Student-Dashboard.html" class="flex items-center">
+                            <img src="../../ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-4">
+                            <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Student</span>
+                        </a>
                     </div>
+                    
+                    <!-- Navigation Menu -->
+                    <nav class="flex items-center space-x-3">
+                        <a href="Student-find-program.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="search" class="w-4 h-4 mr-2"></i>
+                            Find Programs
+                        </a>
+                        <a href="Student-my-application.html" class="flex items-center text-white bg-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="heart" class="w-4 h-4 mr-2"></i>
+                            Favorites (0)
+                        </a>
+                        <a href="Student-my-application.html" class="flex items-center text-white bg-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
+                            My Applications (0)
+                        </a>
+                        <a href="Student-sholarships.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="graduation-cap" class="w-4 h-4 mr-2"></i>
+                            Scholarships
+                        </a>
+                        <a href="Student-payment.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
+                            Payment
+                        </a>
+                    </nav>
                     
                     <!-- Right Side -->
                     <div class="flex items-center space-x-4">
-                        <a href="Student-Dashboard.html" class="px-3 py-2 text-gray-600 bg-gray-50 rounded-lg font-medium whitespace-nowrap">
-                            Dashboard
-                        </a>
-                        
-                        <a href="Student-messages.html" class="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg" title="Messages">
+                        <a href="Student-messages.html" class="p-2 text-gray-600 hover:text-red-600 hover:bg-gray-50 rounded-lg" title="Messages">
                             <i data-lucide="mail" class="w-5 h-5"></i>
                         </a>
                         
@@ -76,52 +97,6 @@
             </div>
         </header>
 
-        <!-- Secondary Navigation Bar -->
-        <div class="bg-gray-600 py-4">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="flex items-center justify-center relative">
-                    <!-- Find Programs -->
-                    <a href="Student-find-program.html" class="flex flex-col items-center text-white hover:text-gray-200 cursor-pointer transition-colors px-12 relative">
-                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-2">
-                            <i data-lucide="search" class="w-6 h-6"></i>
-                        </div>
-                        <span class="text-sm font-medium">Find Programs</span>
-                    </a>
-                    
-                    <!-- Favorites -->
-                    <a href="Student-my-application.html" class="flex flex-col items-center text-white hover:text-gray-200 cursor-pointer transition-colors px-12 relative">
-                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-2">
-                            <i data-lucide="heart" class="w-6 h-6"></i>
-                        </div>
-                        <span class="text-sm font-medium">Favorites (0)</span>
-                    </a>
-                    
-                    <!-- My Applications -->
-                    <a href="Student-my-application.html" class="flex flex-col items-center text-white hover:text-gray-200 cursor-pointer transition-colors px-12 relative">
-                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-2">
-                            <i data-lucide="file-text" class="w-6 h-6"></i>
-                        </div>
-                        <span class="text-sm font-medium">My Applications (0)</span>
-                    </a>
-                    
-                    <!-- Scholarships -->
-                    <a href="Student-sholarships.html" class="flex flex-col items-center text-white hover:text-gray-200 cursor-pointer transition-colors px-12 relative">
-                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-2">
-                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
-                        </div>
-                        <span class="text-sm font-medium">Scholarships</span>
-                    </a>
-                    
-                    <!-- Payment -->
-                    <a href="Student-payment.html" class="flex flex-col items-center text-white hover:text-gray-200 cursor-pointer transition-colors px-12">
-                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-2">
-                            <i data-lucide="credit-card" class="w-6 h-6"></i>
-                        </div>
-                        <span class="text-sm font-medium">Payment</span>
-                    </a>
-                </div>
-            </div>
-        </div>
 
         <!-- Dashboard Content -->
         <main class="p-6">
@@ -129,9 +104,8 @@
             <div class="mb-6 flex items-center justify-between">
                 <div class="flex space-x-4">
                     <div class="relative">
-                        <select class="appearance-none bg-white border rounded-xl px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <select class="appearance-none bg-white border rounded-xl px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-red-500">
                             <option>All Status</option>
-                            <option>Saved Programs/Scholarships</option>
                             <option>Initial Advising</option>
                             <option>Docs Review</option>
                             <option>Agreement signing and first payment</option>
@@ -145,7 +119,7 @@
                         <i data-lucide="chevron-down" class="absolute right-2 top-3 w-4 h-4 text-gray-500"></i>
                     </div>
                     <div class="relative">
-                        <select class="appearance-none bg-white border rounded-xl px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <select class="appearance-none bg-white border rounded-xl px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-red-500">
                             <option>Sort by: Most Recent</option>
                             <option>Sort by: Deadline</option>
                             <option>Sort by: Country</option>
@@ -153,103 +127,23 @@
                         <i data-lucide="chevron-down" class="absolute right-2 top-3 w-4 h-4 text-gray-500"></i>
                     </div>
                 </div>
-                <button id="newApplicationBtn" class="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition-colors flex items-center">
+                <button id="newApplicationBtn" class="text-white px-4 py-2 rounded-xl transition-colors flex items-center" style="background-color: #F87171;" onmouseover="this.style.backgroundColor='#EF4444'" onmouseout="this.style.backgroundColor='#F87171'">
                     <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
                     New Application
                 </button>
+                <script>
+                    document.getElementById('newApplicationBtn').addEventListener('click', function() {
+                        const modal = document.getElementById('newApplicationModal');
+                        if (modal) {
+                            modal.classList.remove('hidden');
+                        }
+                    });
+                </script>
             </div>
 
             <!-- Application Cards -->
             <div class="space-y-4">
-                <!-- Saved Programs/Scholarships Card -->
-                <div class="bg-white rounded-3xl shadow-md p-6">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-lg font-semibold">Global Excellence Scholarship</h3>
-                            <p class="text-gray-600">Ellacy Foundation</p>
-                            <div class="flex items-center mt-2">
-                                <i data-lucide="bookmark" class="w-4 h-4 text-gray-500 mr-1"></i>
-                                <span class="text-sm text-gray-600">Saved on Dec 15, 2024</span>
-                                <span class="mx-2 text-gray-300">•</span>
-                                <span class="text-sm text-gray-600">Deadline: May 15, 2025</span>
-                            </div>
-                        </div>
-                        <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">Saved Programs/Scholarships</span>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="bg-gray-50 rounded-xl p-4">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-sm text-gray-500">Award Value</p>
-                                    <p class="font-semibold">Up to $50,000 USD</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="text-sm text-red-600">Days remaining</p>
-                                    <p class="font-semibold text-red-600">151 days</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex justify-end space-x-3 mt-4">
-                        <button class="text-red-600 hover:text-red-700 flex items-center">
-                            <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>
-                            Remove
-                        </button>
-                        <button class="text-blue-600 hover:text-blue-700 flex items-center view-details-btn" data-app-id="saved-1">
-                            <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
-                            View Details
-                        </button>
-                        <button class="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 flex items-center">
-                            <i data-lucide="play" class="w-4 h-4 mr-1"></i>
-                            Start Application
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Saved Program Card -->
-                <div class="bg-white rounded-3xl shadow-md p-6">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-lg font-semibold">Master of Business Administration</h3>
-                            <p class="text-gray-600">University of Sydney</p>
-                            <div class="flex items-center mt-2">
-                                <i data-lucide="bookmark" class="w-4 h-4 text-gray-500 mr-1"></i>
-                                <span class="text-sm text-gray-600">Saved on Dec 10, 2024</span>
-                                <span class="mx-2 text-gray-300">•</span>
-                                <span class="text-sm text-gray-600">Fall 2025 Intake</span>
-                            </div>
-                        </div>
-                        <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">Saved Programs/Scholarships</span>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="bg-gray-50 rounded-xl p-4">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <p class="text-sm text-gray-500">Tuition Fee</p>
-                                    <p class="font-semibold">$45,000 AUD/year</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="text-sm text-gray-500">Application Deadline</p>
-                                    <p class="font-semibold">March 31, 2025</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex justify-end space-x-3 mt-4">
-                        <button class="text-red-600 hover:text-red-700 flex items-center">
-                            <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>
-                            Remove
-                        </button>
-                        <button class="text-blue-600 hover:text-blue-700 flex items-center view-details-btn" data-app-id="saved-2">
-                            <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
-                            View Details
-                        </button>
-                        <button class="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 flex items-center">
-                            <i data-lucide="play" class="w-4 h-4 mr-1"></i>
-                            Start Application
-                        </button>
-                    </div>
-                </div>
+            
                 <!-- Application Card 1 -->
                 <div class="bg-white rounded-3xl shadow-md p-6">
                     <div class="flex justify-between items-start mb-4">
@@ -307,10 +201,22 @@
                             <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
                             Edit
                         </button>
-                        <button class="text-blue-600 hover:text-blue-700 flex items-center view-details-btn" data-app-id="1">
+                        <button class="text-red-600 hover:text-red-700 flex items-center view-details-btn" data-app-id="1" id="viewBtn3">
                             <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
                             View Details
                         </button>
+                        <script>
+                            document.getElementById('viewBtn3').addEventListener('click', function() {
+                                const modal = document.getElementById('detailViewModal');
+                                if (modal) {
+                                    // Show active application content
+                                    document.getElementById('savedProgramContent').classList.add('hidden');
+                                    document.getElementById('activeApplicationContent').classList.remove('hidden');
+                                    document.getElementById('visaPrepContent').classList.add('hidden');
+                                    modal.classList.remove('hidden');
+                                }
+                            });
+                        </script>
                     </div>
                 </div>
 
@@ -371,10 +277,22 @@
                             <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
                             Edit
                         </button>
-                        <button class="text-blue-600 hover:text-blue-700 flex items-center view-details-btn" data-app-id="2">
+                        <button class="text-red-600 hover:text-red-700 flex items-center view-details-btn" data-app-id="2" id="viewBtn4">
                             <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
                             View Details
                         </button>
+                        <script>
+                            document.getElementById('viewBtn4').addEventListener('click', function() {
+                                const modal = document.getElementById('detailViewModal');
+                                if (modal) {
+                                    // Show active application content
+                                    document.getElementById('savedProgramContent').classList.add('hidden');
+                                    document.getElementById('activeApplicationContent').classList.remove('hidden');
+                                    document.getElementById('visaPrepContent').classList.add('hidden');
+                                    modal.classList.remove('hidden');
+                                }
+                            });
+                        </script>
                     </div>
                 </div>
 
@@ -480,10 +398,22 @@
                             <i data-lucide="message-circle" class="w-4 h-4 mr-1"></i>
                             Contact Visa Advisor
                         </button>
-                        <button class="text-blue-600 hover:text-blue-700 flex items-center view-details-btn" data-app-id="3">
+                        <button class="text-red-600 hover:text-red-700 flex items-center view-details-btn" data-app-id="3" id="viewBtn5">
                             <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
                             View Details
                         </button>
+                        <script>
+                            document.getElementById('viewBtn5').addEventListener('click', function() {
+                                const modal = document.getElementById('detailViewModal');
+                                if (modal) {
+                                    // Show visa prep content
+                                    document.getElementById('savedProgramContent').classList.add('hidden');
+                                    document.getElementById('activeApplicationContent').classList.add('hidden');
+                                    document.getElementById('visaPrepContent').classList.remove('hidden');
+                                    modal.classList.remove('hidden');
+                                }
+                            });
+                        </script>
                         <button class="bg-purple-600 text-white px-4 py-2 rounded-xl hover:bg-purple-700 flex items-center">
                             <i data-lucide="upload" class="w-4 h-4 mr-1"></i>
                             Upload Documents
@@ -503,6 +433,14 @@
                     <button id="closeModal" class="text-gray-400 hover:text-gray-500">
                         <i data-lucide="x" class="w-6 h-6"></i>
                     </button>
+                     <script>
+                        document.getElementById('closeDetailModal').addEventListener('click', function() {
+                            const modal = document.getElementById('newApplicationModal');
+                            if (modal) {
+                                modal.classList.add('hidden');
+                            }
+                        });
+                    </script>
                 </div>
                 <form id="newApplicationForm" class="space-y-6">
                     <!-- Destination Country -->
@@ -590,70 +528,445 @@
                     <button id="closeDetailModal" class="text-gray-400 hover:text-gray-500">
                         <i data-lucide="x" class="w-6 h-6"></i>
                     </button>
+                    <script>
+                        document.getElementById('closeDetailModal').addEventListener('click', function() {
+                            const modal = document.getElementById('detailViewModal');
+                            if (modal) {
+                                modal.classList.add('hidden');
+                            }
+                        });
+                    </script>
                 </div>
                 
-                <!-- Program Information -->
-                <div class="bg-gray-50 rounded-2xl p-6 mb-6">
-                    <h4 class="text-lg font-semibold mb-4">Program Information</h4>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <p class="text-sm text-gray-600">Program</p>
-                            <p class="font-medium" id="programName">BSc Computer Science</p>
+                <!-- Content for Saved Programs/Scholarships -->
+                <div id="savedProgramContent" class="hidden">
+                    <!-- Program Information -->
+                    <div class="bg-gray-50 rounded-2xl p-6 mb-6">
+                        <h4 class="text-lg font-semibold mb-4">Program Information</h4>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-sm text-gray-600">Program</p>
+                                <p class="font-medium" id="savedProgramName">Global Excellence Scholarship</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Institution</p>
+                                <p class="font-medium" id="savedInstitutionName">University of Melbourne</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Country</p>
+                                <p class="font-medium" id="savedCountryName">Australia</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Award Value</p>
+                                <p class="font-medium" id="savedAwardValue">Up to $50,000 USD</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Saved Date</p>
+                                <p class="font-medium" id="savedDate">March 10, 2025</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Source</p>
+                                <p class="font-medium" id="savedSource">Find Programs</p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-sm text-gray-600">Institution</p>
-                            <p class="font-medium" id="institutionName">University of Toronto</p>
+                    </div>
+
+                    <!-- Deadline Reminder -->
+                    <div class="bg-red-50 border border-red-200 rounded-2xl p-6 mb-6">
+                        <h4 class="text-lg font-semibold text-red-800 mb-2">Application Deadline</h4>
+                        <p class="text-red-600">151 days remaining until deadline</p>
+                        <p class="text-sm text-red-500 mt-1">Don't miss out on this opportunity!</p>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex justify-end space-x-3">
+                        <button class="px-4 py-2 text-red-600 border border-red-200 rounded-xl hover:bg-red-50">
+                            Remove from Saved
+                        </button>
+                        <button class="px-4 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700">
+                            Start Application
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Content for Active Applications -->
+                <div id="activeApplicationContent" class="hidden">
+                    <!-- Program Information -->
+                    <div class="bg-gray-50 rounded-2xl p-6 mb-6">
+                        <h4 class="text-lg font-semibold mb-4">Program Information</h4>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-sm text-gray-600">Program</p>
+                                <p class="font-medium" id="activeProgramName">BSc Computer Science</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Institution</p>
+                                <p class="font-medium" id="activeInstitutionName">University of Toronto</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Country</p>
+                                <p class="font-medium" id="activeCountryName">Canada</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Intake</p>
+                                <p class="font-medium" id="activeIntakePeriod">Fall 2025</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Application Status</p>
+                                <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm" id="activeApplicationStatus">Docs Review</span>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Last Updated</p>
+                                <p class="font-medium" id="activeLastUpdated">March 28, 2025</p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-sm text-gray-600">Country</p>
-                            <p class="font-medium" id="countryName">Canada</p>
+                    </div>
+
+                    <!-- Application Timeline (9-step process) -->
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold mb-4">Application Timeline</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                    <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium">1. Initial Advising</p>
+                                    <p class="text-sm text-gray-600">Completed - March 15, 2025</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                    <i data-lucide="clock" class="w-4 h-4 text-blue-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium">2. Docs Review</p>
+                                    <p class="text-sm text-gray-600">In Progress - Started March 20, 2025</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-4">
+                                    <i data-lucide="circle" class="w-4 h-4 text-gray-400"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium text-gray-400">3. Agreement signing and first payment</p>
+                                    <p class="text-sm text-gray-400">Pending</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-4">
+                                    <i data-lucide="circle" class="w-4 h-4 text-gray-400"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium text-gray-400">4. Application Prep and 2nd payment</p>
+                                    <p class="text-sm text-gray-400">Pending</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-4">
+                                    <i data-lucide="circle" class="w-4 h-4 text-gray-400"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium text-gray-400">5. School Application</p>
+                                    <p class="text-sm text-gray-400">Pending</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-4">
+                                    <i data-lucide="circle" class="w-4 h-4 text-gray-400"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium text-gray-400">6. School Acceptance</p>
+                                    <p class="text-sm text-gray-400">Pending</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-4">
+                                    <i data-lucide="circle" class="w-4 h-4 text-gray-400"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium text-gray-400">7. Visa App</p>
+                                    <p class="text-sm text-gray-400">Pending</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-4">
+                                    <i data-lucide="circle" class="w-4 h-4 text-gray-400"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium text-gray-400">8. Pre-Departure</p>
+                                    <p class="text-sm text-gray-400">Pending</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-4">
+                                    <i data-lucide="circle" class="w-4 h-4 text-gray-400"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium text-gray-400">9. Arrival</p>
+                                    <p class="text-sm text-gray-400">Pending</p>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-sm text-gray-600">Intake</p>
-                            <p class="font-medium" id="intakePeriod">Fall 2025</p>
+                    </div>
+
+                    <!-- Next Action Items -->
+                    <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6 mb-6">
+                        <h4 class="text-lg font-semibold text-blue-800 mb-2">Next Action Required</h4>
+                        <p class="text-blue-700 mb-3">Upload missing documents for review</p>
+                        <ul class="text-sm text-blue-600 space-y-1">
+                            <li>• Academic transcripts (certified copy)</li>
+                            <li>• English proficiency test results</li>
+                            <li>• Statement of purpose</li>
+                        </ul>
+                    </div>
+
+                    <!-- Payment Status -->
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-6 mb-6">
+                        <h4 class="text-lg font-semibold text-yellow-800 mb-2">Payment Status</h4>
+                        <p class="text-yellow-700">Initial consultation fee: <span class="font-semibold">Paid</span></p>
+                        <p class="text-sm text-yellow-600 mt-1">Next payment due after document review completion</p>
+                    </div>
+
+                    <!-- Uploaded Files by Stage -->
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold mb-4">Uploaded Documents by Stage</h4>
+                        <div class="space-y-4">
+                            <div class="border rounded-xl p-4">
+                                <h5 class="font-medium text-green-700 mb-3">✓ Stage 1: Initial Advising</h5>
+                                <div class="grid md:grid-cols-2 gap-3">
+                                    <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                                        <i data-lucide="file-text" class="w-4 h-4 text-blue-600 mr-2"></i>
+                                        <span class="text-sm">Personal Statement</span>
+                                    </div>
+                                    <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                                        <i data-lucide="file-text" class="w-4 h-4 text-blue-600 mr-2"></i>
+                                        <span class="text-sm">Academic Transcripts</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-2 border-blue-200 bg-blue-50 rounded-xl p-4">
+                                <h5 class="font-medium text-blue-700 mb-3">⏳ Stage 2: Docs Review (Current)</h5>
+                                <div class="grid md:grid-cols-2 gap-3">
+                                    <div class="flex items-center p-3 bg-white rounded-lg">
+                                        <i data-lucide="file-text" class="w-4 h-4 text-green-600 mr-2"></i>
+                                        <span class="text-sm">English Test Results</span>
+                                    </div>
+                                    <div class="flex items-center p-3 bg-white border-2 border-orange-200 rounded-lg">
+                                        <i data-lucide="upload" class="w-4 h-4 text-orange-600 mr-2"></i>
+                                        <span class="text-sm text-orange-700">CV/Resume (Pending)</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-sm text-gray-600">Application Status</p>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm" id="applicationStatus">In Review</span>
+                    </div>
+
+                    <!-- Feedback & Comments -->
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold mb-4">Feedback & Comments</h4>
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                        <i data-lucide="user" class="w-4 h-4 text-blue-600"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <p class="font-medium text-blue-900">Academic Counselor - Sarah Johnson</p>
+                                        <p class="text-sm text-blue-800 mt-1">Your academic profile looks strong for this program. Please upload your updated CV highlighting your relevant work experience in technology.</p>
+                                        <p class="text-xs text-blue-600 mt-2">March 25, 2025 - 2:30 PM</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-green-600"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <p class="font-medium text-green-900">System Notification</p>
+                                        <p class="text-sm text-green-800 mt-1">English proficiency test results have been verified and approved.</p>
+                                        <p class="text-xs text-green-600 mt-2">March 22, 2025 - 10:15 AM</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-sm text-gray-600">Last Updated</p>
-                            <p class="font-medium" id="lastUpdated">March 28, 2025</p>
+                    </div>
+
+                    <!-- Document Checklist for Current Stage -->
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold mb-4">Document Checklist - Docs Review Stage</h4>
+                        <div class="bg-white border rounded-xl p-4">
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3"></i>
+                                    <span class="text-green-700">Academic transcripts (certified)</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3"></i>
+                                    <span class="text-green-700">English proficiency test results</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3"></i>
+                                    <span class="text-green-700">Personal statement</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="clock" class="w-5 h-5 text-orange-500 mr-3"></i>
+                                    <span class="text-orange-700">Updated CV/Resume</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="circle" class="w-5 h-5 text-gray-400 mr-3"></i>
+                                    <span class="text-gray-500">Letters of recommendation (2 required)</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="circle" class="w-5 h-5 text-gray-400 mr-3"></i>
+                                    <span class="text-gray-500">Portfolio (if applicable)</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 pt-4 border-t">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-gray-600">Progress: 3/6 documents completed</span>
+                                    <div class="w-32 bg-gray-200 rounded-full h-2">
+                                        <div class="bg-blue-600 h-2 rounded-full" style="width: 50%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex justify-between items-center">
+                        <button class="px-4 py-2 text-blue-600 border border-blue-200 rounded-xl hover:bg-blue-50 flex items-center">
+                            <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i>
+                            Message Counselor
+                        </button>
+                        <div class="flex space-x-3">
+                            <button class="px-4 py-2 text-gray-600 border border-gray-200 rounded-xl hover:bg-gray-50">
+                                Edit Application
+                            </button>
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 flex items-center">
+                                <i data-lucide="upload" class="w-4 h-4 mr-2"></i>
+                                Upload Documents
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Application Timeline -->
-                <div class="mb-6">
-                    <h4 class="text-lg font-semibold mb-4">Application Timeline</h4>
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
-                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+                <!-- Content for Visa Prep -->
+                <div id="visaPrepContent" class="hidden">
+                    <!-- Program Information -->
+                    <div class="bg-gray-50 rounded-2xl p-6 mb-6">
+                        <h4 class="text-lg font-semibold mb-4">Program Information</h4>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-sm text-gray-600">Program</p>
+                                <p class="font-medium" id="visaProgramName">MBA International Business</p>
                             </div>
-                            <div class="flex-1">
-                                <p class="font-medium">Application Submitted</p>
-                                <p class="text-sm text-gray-600">March 15, 2025 - Your application has been successfully submitted</p>
+                            <div>
+                                <p class="text-sm text-gray-600">Institution</p>
+                                <p class="font-medium" id="visaInstitutionName">University of Sydney</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Country</p>
+                                <p class="font-medium" id="visaCountryName">Australia</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Intake</p>
+                                <p class="font-medium" id="visaIntakePeriod">Spring 2026</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Application Status</p>
+                                <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm" id="visaApplicationStatus">Visa Prep</span>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">School Acceptance</p>
+                                <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">Accepted</span>
                             </div>
                         </div>
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                                <i data-lucide="clock" class="w-4 h-4 text-blue-600"></i>
+                    </div>
+
+                    <!-- Visa Prep Checklist -->
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold mb-4">Visa Prep Checklist</h4>
+                        <div class="bg-white border rounded-2xl p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h5 class="font-semibold">Progress Overview</h5>
+                                <span class="text-sm text-gray-600">7/12 items completed</span>
                             </div>
-                            <div class="flex-1">
-                                <p class="font-medium">Under Review</p>
-                                <p class="text-sm text-gray-600">March 20, 2025 - Application is being reviewed by admissions committee</p>
+                            <div class="w-full bg-gray-200 rounded-full h-2 mb-6">
+                                <div class="bg-purple-600 h-2 rounded-full" style="width: 58%"></div>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3"></i>
+                                    <span class="text-green-700">Visa application form completed</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3"></i>
+                                    <span class="text-green-700">Passport copy submitted</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3"></i>
+                                    <span class="text-green-700">Financial documentation provided</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3"></i>
+                                    <span class="text-green-700">Health insurance arranged</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3"></i>
+                                    <span class="text-green-700">Academic transcripts certified</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3"></i>
+                                    <span class="text-green-700">English proficiency proof submitted</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-3"></i>
+                                    <span class="text-green-700">Acceptance letter from university</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="clock" class="w-5 h-5 text-orange-500 mr-3"></i>
+                                    <span class="text-orange-700">Medical examination scheduled</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="circle" class="w-5 h-5 text-gray-400 mr-3"></i>
+                                    <span class="text-gray-500">Visa interview preparation</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="circle" class="w-5 h-5 text-gray-400 mr-3"></i>
+                                    <span class="text-gray-500">Visa appointment booking</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="circle" class="w-5 h-5 text-gray-400 mr-3"></i>
+                                    <span class="text-gray-500">Travel document preparation</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="circle" class="w-5 h-5 text-gray-400 mr-3"></i>
+                                    <span class="text-gray-500">Pre-departure orientation</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-4">
-                                <i data-lucide="circle" class="w-4 h-4 text-gray-400"></i>
-                            </div>
-                            <div class="flex-1">
-                                <p class="font-medium text-gray-400">Decision Pending</p>
-                                <p class="text-sm text-gray-400">Expected by April 15, 2025</p>
-                            </div>
+                    </div>
+
+                    <!-- Important Deadlines -->
+                    <div class="bg-red-50 border border-red-200 rounded-2xl p-6 mb-6">
+                        <h4 class="text-lg font-semibold text-red-800 mb-2">Important Deadlines</h4>
+                        <div class="space-y-2">
+                            <p class="text-red-700">• Medical examination: <span class="font-semibold">April 15, 2025</span></p>
+                            <p class="text-red-700">• Visa application submission: <span class="font-semibold">May 1, 2025</span></p>
+                            <p class="text-red-700">• Program start date: <span class="font-semibold">July 15, 2025</span></p>
                         </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex justify-end space-x-3">
+                        <button class="px-4 py-2 text-purple-600 border border-purple-200 rounded-xl hover:bg-purple-50">
+                            Contact Visa Advisor
+                        </button>
+                        <button class="px-4 py-2 bg-purple-600 text-white rounded-xl hover:bg-purple-700">
+                            Upload Documents
+                        </button>
                     </div>
                 </div>
 
@@ -761,8 +1074,17 @@
     </div>
 
     <script>
-        // Initialize Lucide Icons
+        // Initialize Lucide icons
         lucide.createIcons();
+
+        // New Application Modal function - declare first for onclick handler
+        function openNewApplicationModal() {
+            const modal = document.getElementById('newApplicationModal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                lucide.createIcons();
+            }
+        }
 
         // Handle logout
         function handleLogout() {
@@ -784,41 +1106,85 @@
             }
         });
 
-        // New Application Modal
+        // New Application Modal - Run immediately since script is at bottom of page
         const modal = document.getElementById('newApplicationModal');
         const newApplicationBtn = document.getElementById('newApplicationBtn');
         const closeModal = document.getElementById('closeModal');
         const cancelBtn = document.getElementById('cancelBtn');
         const newApplicationForm = document.getElementById('newApplicationForm');
 
-        // Open modal
-        newApplicationBtn.addEventListener('click', () => {
-            modal.classList.remove('hidden');
-        });
+        console.log('New Application Button:', newApplicationBtn);
+        console.log('Modal:', modal);
+        
+        // Test if JavaScript is running at all
+        alert('JavaScript is running! Button ID: ' + (newApplicationBtn ? 'found' : 'not found'));
+
+        // Test button click detection
+        if (newApplicationBtn) {
+            console.log('Button found, adding click listener');
+            newApplicationBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Button clicked!');
+                alert('Button clicked! Modal should open now.');
+                
+                if (modal) {
+                    console.log('Opening modal');
+                    modal.classList.remove('hidden');
+                    lucide.createIcons();
+                } else {
+                    console.error('Modal not found');
+                    alert('Modal not found!');
+                }
+            });
+            
+            // Also try with onclick as backup
+            newApplicationBtn.onclick = function(e) {
+                e.preventDefault();
+                console.log('Onclick triggered');
+                if (modal) {
+                    modal.classList.remove('hidden');
+                }
+            };
+        } else {
+            console.error('Button not found');
+            alert('Button not found!');
+        }
 
         // Close modal
         function closeModalHandler() {
-            modal.classList.add('hidden');
+            if (modal) {
+                modal.classList.add('hidden');
+            }
         }
 
-        closeModal.addEventListener('click', closeModalHandler);
-        cancelBtn.addEventListener('click', closeModalHandler);
+        if (closeModal) {
+            closeModal.addEventListener('click', closeModalHandler);
+        }
+        
+        if (cancelBtn) {
+            cancelBtn.addEventListener('click', closeModalHandler);
+        }
 
         // Close modal when clicking outside
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModalHandler();
-            }
-        });
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModalHandler();
+                }
+            });
+        }
 
         // Handle form submission
-        newApplicationForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Here you would typically send the form data to your backend
-            // For now, we'll just close the modal
-            closeModalHandler();
-            // You could also show a success message or redirect to the new application
-        });
+        if (newApplicationForm) {
+            newApplicationForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Here you would typically send the form data to your backend
+                // For now, we'll just close the modal
+                closeModalHandler();
+                // You could also show a success message or redirect to the new application
+            });
+        }
 
         // Detail View Modal functionality
         const detailModal = document.getElementById('detailViewModal');
@@ -908,6 +1274,7 @@
         document.addEventListener('click', (e) => {
             if (!profileMenu.contains(e.target)) {
                 profileDropdown.classList.add('hidden');
+                lucide.createIcons();
             }
         });
     </script>
@@ -1048,6 +1415,87 @@
 
         // Initialize icons after all content is loaded
         lucide.createIcons();
+    </script>
+    
+    <!-- Working Modal Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('applicationModal');
+            const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
+            const closeBtn = document.getElementById('closeModal');
+            
+            console.log('Modal found:', modal);
+            console.log('View Details buttons found:', viewDetailsBtns.length);
+            
+            // Application data
+            const applications = {
+                '1': {
+                    name: 'MSc in Data Science',
+                    university: 'University of British Columbia',
+                    location: 'Vancouver, Canada',
+                    status: 'Under Review',
+                    submittedDate: 'December 15, 2024',
+                    applicationId: 'APP-2024-001234'
+                },
+                '2': {
+                    name: 'Bachelor of Engineering', 
+                    university: 'University of Toronto',
+                    location: 'Toronto, Canada',
+                    status: 'Submitted',
+                    submittedDate: 'January 10, 2025',
+                    applicationId: 'APP-2025-001567'
+                }
+            };
+            
+            // Add click listeners to View Details buttons
+            viewDetailsBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('View Details clicked');
+                    const applicationId = btn.getAttribute('data-application-id');
+                    console.log('Application ID:', applicationId);
+                    const application = applications[applicationId];
+                    
+                    if (application && modal) {
+                        // Update modal content
+                        const nameEl = document.getElementById('modalApplicationName');
+                        const uniEl = document.getElementById('modalUniversityName');
+                        const locEl = document.getElementById('modalLocation');
+                        const statusEl = document.getElementById('modalStatus');
+                        const dateEl = document.getElementById('modalSubmittedDate');
+                        const idEl = document.getElementById('modalApplicationId');
+                        
+                        if (nameEl) nameEl.textContent = application.name;
+                        if (uniEl) uniEl.textContent = application.university;
+                        if (locEl) locEl.textContent = application.location;
+                        if (statusEl) statusEl.textContent = application.status;
+                        if (dateEl) dateEl.textContent = application.submittedDate;
+                        if (idEl) idEl.textContent = application.applicationId;
+                        
+                        // Show modal
+                        modal.classList.remove('hidden');
+                        console.log('Modal should be visible');
+                        lucide.createIcons();
+                    }
+                });
+            });
+            
+            // Close modal
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    modal.classList.add('hidden');
+                });
+            }
+            
+            // Close modal when clicking outside
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        modal.classList.add('hidden');
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>
