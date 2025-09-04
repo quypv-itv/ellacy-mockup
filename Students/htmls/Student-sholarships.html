@@ -106,7 +106,7 @@
                     <div class="bg-white rounded-3xl shadow-md p-6 space-y-6">
                         <div class="flex items-center justify-between">
                             <h3 class="font-semibold">Filters</h3>
-                            <button class="text-sm text-blue-600 hover:text-blue-700">Reset</button>
+                            <button class="text-sm text-red-600 hover:text-red-700 transition-colors">Reset</button>
                         </div>
 
                         <!-- Ellacy Foundation Toggle -->
@@ -114,7 +114,7 @@
                             <span class="text-sm font-medium">Ellacy Foundation Only</span>
                             <label class="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" class="sr-only peer">
-                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600"></div>
                             </label>
                         </div>
 
@@ -143,7 +143,7 @@
                         <!-- GPA Filter -->
                         <div>
                             <h4 class="text-sm font-medium mb-2">Minimum GPA</h4>
-                            <input type="range" class="w-full" min="0" max="4" step="0.1">
+                            <input type="range" class="w-full accent-red-600 h-1.5 rounded-lg appearance-none bg-gray-200 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-red-600" min="0" max="4" step="0.1" value="2.0">
                             <div class="flex justify-between text-sm text-gray-600">
                                 <span>0.0</span>
                                 <span>4.0</span>
@@ -178,29 +178,30 @@
                 <div class="flex-1 space-y-6">
                     <!-- Ellacy Foundation Section -->
                     <div class="space-y-4">
-                        <h3 class="text-lg font-semibold">Ellacy Foundation Scholarships</h3>
-                        <div class="bg-white rounded-3xl shadow-md p-6 hover:shadow-lg transition-shadow relative overflow-hidden">
-                            <div class="absolute -right-12 top-6 rotate-45">
-                                <div class="ellacy-badge text-white px-12 py-1 text-sm font-medium">
+                        <h3 class="text-lg font-semibold text-gray-800">Ellacy Foundation Scholarships</h3>
+                        <!-- Scholarship Card 1 -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all duration-200 relative overflow-hidden">
+                            <div class="absolute -right-10 top-5 transform rotate-45">
+                                <div class="bg-red-600 text-white px-10 py-1 text-xs font-medium shadow-md">
                                     Ellacy Foundation
                                 </div>
                             </div>
                             <div class="pr-8">
-                                <h3 class="text-lg font-semibold">Global Excellence Scholarship</h3>
-                                <p class="text-gray-600 mt-1">For outstanding international students pursuing higher education</p>
+                                <h3 class="text-lg font-semibold text-gray-900">Global Excellence Scholarship</h3>
+                                <p class="text-gray-600 mt-1 text-sm">For outstanding international students pursuing higher education</p>
                                 <div class="flex flex-wrap gap-2 mt-3">
-                                    <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs">GPA 3.5+</span>
-                                    <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs">All Programs</span>
-                                    <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs">Full Tuition</span>
+                                    <span class="px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs font-medium">GPA 3.5+</span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">All Programs</span>
+                                    <span class="px-3 py-1 bg-green-50 text-green-700 rounded-full text-xs font-medium">Full Tuition</span>
                                 </div>
                                 <div class="mt-4 flex justify-between items-end">
                                     <div>
                                         <p class="text-sm text-gray-500">Award Value</p>
-                                        <p class="font-semibold">Up to $50,000 USD</p>
+                                        <p class="font-semibold">$50,000 USD/year</p>
                                     </div>
                                     <div class="text-right">
                                         <p class="text-sm text-red-600">Deadline: May 15, 2025</p>
-                                        <button class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 view-details-btn" data-scholarship-id="ellacy">
+                                        <button class="mt-2 px-4 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700 transition-colors view-details-btn" data-scholarship-id="ellacy">
                                             View Details
                                         </button>
                                     </div>
@@ -211,15 +212,15 @@
 
                     <!-- Other Scholarships -->
                     <div class="space-y-4">
-                        <h3 class="text-lg font-semibold">All Scholarships</h3>
+                        <h3 class="text-lg font-semibold text-gray-800">All Scholarships</h3>
                         <!-- Scholarship Card 1 -->
-                        <div class="bg-white rounded-3xl shadow-md p-6 hover:shadow-lg transition-shadow">
-                            <h3 class="text-lg font-semibold">International Merit Award</h3>
-                            <p class="text-gray-600 mt-1">University of Toronto</p>
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all duration-200">
+                            <h3 class="text-lg font-semibold text-gray-900">International Merit Award</h3>
+                            <p class="text-gray-600 mt-1 text-sm">University of Toronto</p>
                             <div class="flex flex-wrap gap-2 mt-3">
-                                <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs">GPA 3.0+</span>
-                                <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs">Engineering</span>
-                                <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs">Partial Tuition</span>
+                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">GPA 3.0+</span>
+                                <span class="px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs font-medium">Engineering</span>
+                                <span class="px-3 py-1 bg-green-50 text-green-700 rounded-full text-xs font-medium">Partial Tuition</span>
                             </div>
                             <div class="mt-4 flex justify-between items-end">
                                 <div>
@@ -228,7 +229,7 @@
                                 </div>
                                 <div class="text-right">
                                     <p class="text-sm text-red-600">Deadline: June 1, 2025</p>
-                                    <button class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 view-details-btn" data-scholarship-id="1">
+                                    <button class="mt-2 px-4 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700 transition-colors view-details-btn" data-scholarship-id="1">
                                         View Details
                                     </button>
                                 </div>
@@ -236,13 +237,13 @@
                         </div>
 
                         <!-- Scholarship Card 2 -->
-                        <div class="bg-white rounded-3xl shadow-md p-6 hover:shadow-lg transition-shadow">
-                            <h3 class="text-lg font-semibold">Future Leaders Scholarship</h3>
-                            <p class="text-gray-600 mt-1">University of Melbourne</p>
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all duration-200">
+                            <h3 class="text-lg font-semibold text-gray-900">Future Leaders Scholarship</h3>
+                            <p class="text-gray-600 mt-1 text-sm">University of Melbourne</p>
                             <div class="flex flex-wrap gap-2 mt-3">
-                                <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs">GPA 3.2+</span>
-                                <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs">Business</span>
-                                <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs">Full Tuition</span>
+                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">GPA 3.2+</span>
+                                <span class="px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs font-medium">Business</span>
+                                <span class="px-3 py-1 bg-green-50 text-green-700 rounded-full text-xs font-medium">Full Tuition</span>
                             </div>
                             <div class="mt-4 flex justify-between items-end">
                                 <div>
@@ -251,7 +252,53 @@
                                 </div>
                                 <div class="text-right">
                                     <p class="text-sm text-red-600">Deadline: July 15, 2025</p>
-                                    <button class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 view-details-btn" data-scholarship-id="2">
+                                    <button class="mt-2 px-4 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700 transition-colors view-details-btn" data-scholarship-id="2">
+                                        View Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scholarship Card 3 -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all duration-200">
+                            <h3 class="text-lg font-semibold text-gray-900">Women in STEM Award</h3>
+                            <p class="text-gray-600 mt-1 text-sm">University of British Columbia</p>
+                            <div class="flex flex-wrap gap-2 mt-3">
+                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">GPA 3.0+</span>
+                                <span class="px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs font-medium">STEM</span>
+                                <span class="px-3 py-1 bg-amber-50 text-amber-700 rounded-full text-xs font-medium">$10,000</span>
+                            </div>
+                            <div class="mt-4 flex justify-between items-end">
+                                <div>
+                                    <p class="text-sm text-gray-500">Award Value</p>
+                                    <p class="font-semibold">$10,000 one-time</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm text-red-600">Deadline: August 1, 2025</p>
+                                    <button class="mt-2 px-4 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700 transition-colors view-details-btn" data-scholarship-id="3">
+                                        View Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scholarship Card 4 -->
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all duration-200">
+                            <h3 class="text-lg font-semibold text-gray-900">International Student Excellence</h3>
+                            <p class="text-gray-600 mt-1 text-sm">University of Toronto</p>
+                            <div class="flex flex-wrap gap-2 mt-3">
+                                <span class="px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs font-medium">GPA 3.7+</span>
+                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">All Programs</span>
+                                <span class="px-3 py-1 bg-amber-50 text-amber-700 rounded-full text-xs font-medium">$25,000</span>
+                            </div>
+                            <div class="mt-4 flex justify-between items-end">
+                                <div>
+                                    <p class="text-sm text-gray-500">Award Value</p>
+                                    <p class="font-semibold">$25,000 USD/year</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm text-red-600">Deadline: June 1, 2025</p>
+                                    <button class="mt-2 px-4 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700 transition-colors view-details-btn" data-scholarship-id="4">
                                         View Details
                                     </button>
                                 </div>
@@ -265,13 +312,13 @@
 
     <!-- Scholarship Details Modal (Hidden by default) -->
     <div id="scholarship-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div class="bg-white rounded-3xl p-6 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-            <div class="flex justify-between items-start mb-4">
+        <div class="bg-white rounded-3xl p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-start mb-6">
                 <div>
-                    <h2 id="modal-title" class="text-2xl font-semibold">International Merit Award</h2>
-                    <p id="modal-institution" class="text-gray-600">University of Toronto</p>
+                    <h2 id="modal-title" class="text-2xl font-semibold text-black">International Merit Award</h2>
+                    <p id="modal-institution" class="text-gray-600 mt-1">University of Toronto</p>
                 </div>
-                <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                <button id="close-modal" class="text-gray-400 hover:text-gray-600 transition-colors">
                     <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
             </div>
@@ -337,12 +384,18 @@
                 </div>
 
                 <!-- Action Buttons -->
-                <div class="flex justify-between items-center pt-4 border-t">
-                    <button class="px-4 py-2 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50">
-                        Save Scholarship
+                <div class="flex justify-between items-center pt-6 border-t border-gray-100">
+                    <button class="px-5 py-2.5 border border-gray-200 text-gray-700 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                        <span class="flex items-center justify-center gap-2">
+                            <i data-lucide="bookmark" class="w-4 h-4"></i>
+                            Save Scholarship
+                        </span>
                     </button>
-                    <button id="modal-apply-btn" class="px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700">
-                        Start Application
+                    <button id="modal-apply-btn" class="px-5 py-2.5 bg-red-600 text-white rounded-xl hover:bg-red-700 transition-colors font-medium">
+                        <span class="flex items-center justify-center gap-2">
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                            Start Application
+                        </span>
                     </button>
                 </div>
             </div>

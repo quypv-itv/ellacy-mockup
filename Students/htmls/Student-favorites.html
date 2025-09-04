@@ -96,12 +96,71 @@
 
 
         <!-- Dashboard Content -->
-        <main class="p-6">
-           
-            <div class="flex gap-6">
-
+        <main class="py-6 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <!-- Filter Section -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
+                    <div class="flex flex-wrap items-center gap-3">
+                        <div class="relative">
+                            <select class="appearance-none bg-white border border-red-200 text-red-700 text-sm rounded-lg px-3 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-red-200 focus:border-red-300">
+                                <option>All Programs</option>
+                                <option>Undergraduate</option>
+                                <option>Graduate</option>
+                                <option>Diploma</option>
+                                <option>Certificate</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-red-500">
+                                <i class="bi bi-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="relative">
+                            <select class="appearance-none bg-white border border-red-200 text-red-700 text-sm rounded-lg px-3 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-red-200 focus:border-red-300">
+                                <option>All Intakes</option>
+                                <option>Fall 2024</option>
+                                <option>Winter 2025</option>
+                                <option>Spring 2025</option>
+                                <option>Summer 2025</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-red-500">
+                                <i class="bi bi-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="relative">
+                            <select class="appearance-none bg-white border border-red-200 text-red-700 text-sm rounded-lg px-3 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-red-200 focus:border-red-300">
+                                <option>All Locations</option>
+                                <option>Ontario</option>
+                                <option>British Columbia</option>
+                                <option>Alberta</option>
+                                <option>Quebec</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-red-500">
+                                <i class="bi bi-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                        
+                        <button class="ml-auto text-xs font-medium border border-red-500 text-white bg-red-500 hover:bg-red-600 px-4 py-2 rounded transition-colors">
+                            Apply Filters
+                        </button>
+                    </div>
+                </div>
+                
                 <!-- Results Section -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="mb-4 flex justify-between items-center">
+                    <div class="text-sm text-gray-600">4 programs found</div>
+                    <div class="flex items-center
+                    ">
+                        <span class="text-xs text-gray-500 mr-2">Sort by:</span>
+                        <select class="text-xs border-0 text-red-500 bg-transparent focus:ring-0 focus:ring-offset-0 pr-5">
+                            <option>Most Relevant</option>
+                            <option>Tuition (Low to High)</option>
+                            <option>Tuition (High to Low)</option>
+                            <option>Application Deadline</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
                     <!-- Program Card 1 -->
                     <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow">
                         <!-- Institution Header -->
@@ -136,11 +195,11 @@
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-500">Tuition (1st year)</span>
-                                <span class="font-medium">$20,726 CAD</span>
+                                <span class="font-medium">$15,200 USD</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-500">Application fee</span>
-                                <span class="font-medium">$125 CAD</span>
+                                <span class="font-medium">$92 USD</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-500">Duration</span>
@@ -150,7 +209,12 @@
                         
                         <!-- Success Prediction -->
                         <div class="mb-4">
-                            <p class="text-xs font-medium text-gray-900 mb-2">Success prediction</p>
+                            <div class="flex justify-between items-center mb-2">
+                                <p class="text-sm font-medium text-gray-900">Success prediction</p>
+                                <button onclick="showSuccessDetails(event)" class="text-xs font-medium border border-red-500 text-red-500 bg-red-50 hover:bg-red-100 px-2 py-0.5 rounded transition-colors">
+                                    Details
+                                </button>
+                            </div>
                             <div class="flex justify-between text-xs">
                                 <div class="text-center">
                                     <div class="text-gray-500">May 2026</div>
@@ -165,7 +229,6 @@
                                     <div class="text-blue-600 font-medium">High</div>
                                 </div>
                             </div>
-                            <button class="text-xs text-blue-600 hover:text-blue-700 mt-1">Details</button>
                         </div>
                         
                         <!-- Create Application Button -->
@@ -210,11 +273,11 @@
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-500">Tuition (1st year)</span>
-                                <span class="font-medium">$23,257 CAD</span>
+                                <span class="font-medium">$17,050 USD</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-500">Application fee</span>
-                                <span class="font-medium">$135 CAD</span>
+                                <span class="font-medium">$99 USD</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-500">Duration</span>
@@ -224,7 +287,12 @@
                         
                         <!-- Success Prediction -->
                         <div class="mb-4">
-                            <p class="text-xs font-medium text-gray-900 mb-2">Success prediction</p>
+                            <div class="flex justify-between items-center mb-2">
+                                <p class="text-sm font-medium text-gray-900">Success prediction</p>
+                                <button onclick="showSuccessDetails(event)" class="text-xs font-medium border border-red-500 text-red-500 bg-red-50 hover:bg-red-100 px-2 py-0.5 rounded transition-colors">
+                                    Details
+                                </button>
+                            </div>
                             <div class="flex justify-between text-xs">
                                 <div class="text-center">
                                     <div class="text-gray-500">Jan 2026</div>
@@ -239,7 +307,6 @@
                                     <div class="text-green-600 font-medium">Very High</div>
                                 </div>
                             </div>
-                            <button class="text-xs text-blue-600 hover:text-blue-700 mt-1">Details</button>
                         </div>
                         
                         <!-- Create Application Button -->
@@ -256,14 +323,14 @@
                         <div class="flex items-center mb-3">
                             <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=40&h=40&fit=crop" alt="University of Saskatchewan Logo" class="w-10 h-10 rounded mr-3">
                             <div>
-                                <h3 class="text-sm font-medium text-gray-900">University of Saskatchewan (USASK)</h3>
+                                <h3 class="text-sm font-medium text-gray-900">University of Saskatchewan</h3>
                             </div>
                         </div>
                         
                         <!-- Program Information -->
                         <div class="mb-4">
                             <p class="text-xs text-gray-500 mb-1">4-Year Bachelor's Degree</p>
-                            <h4 class="text-sm font-semibold text-gray-900 mb-2">Bachelor of Science - Computer Science</h4>
+                            <h4 class="text-sm font-semibold text-gray-900 mb-2">BSc in Computer Science</h4>
                             
                             <!-- Status Tags -->
                             <div class="flex flex-wrap gap-1 mb-3">
@@ -284,11 +351,11 @@
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-500">Tuition (1st year)</span>
-                                <span class="font-medium">$31,983 CAD</span>
+                                <span class="font-medium">$23,450 USD</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-500">Application fee</span>
-                                <span class="font-medium">$120 CAD</span>
+                                <span class="font-medium">$88 USD</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-500">Duration</span>
@@ -298,7 +365,12 @@
                         
                         <!-- Success Prediction -->
                         <div class="mb-4">
-                            <p class="text-xs font-medium text-gray-900 mb-2">Success prediction</p>
+                            <div class="flex justify-between items-center mb-2">
+                                <p class="text-sm font-medium text-gray-900">Success prediction</p>
+                                <button onclick="showSuccessDetails(event)" class="text-xs font-medium border border-red-500 text-red-500 bg-red-50 hover:bg-red-100 px-2 py-0.5 rounded transition-colors">
+                                    Details
+                                </button>
+                            </div>
                             <div class="flex justify-between text-xs">
                                 <div class="text-center">
                                     <div class="text-gray-500">Jan 2026</div>
@@ -313,7 +385,6 @@
                                     <div class="text-blue-600 font-medium">High</div>
                                 </div>
                             </div>
-                            <button class="text-xs text-blue-600 hover:text-blue-700 mt-1">Details</button>
                         </div>
                         
                         <!-- Create Application Button -->
@@ -328,55 +399,70 @@
                     <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow">
                         <!-- Institution Header -->
                         <div class="flex items-center mb-3">
-                            <img src="https://images.unsplash.com/photo-1599582909646-7c8b2e1c2e1b?w=40&h=40&fit=crop" alt="Crandall University Logo" class="w-10 h-10 rounded mr-3">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg mr-3">UBC</div>
                             <div>
-                                <h3 class="text-sm font-medium text-gray-900">Crandall University</h3>
+                                <h3 class="text-sm font-medium text-gray-900">University of British Columbia</h3>
                             </div>
                         </div>
                         
                         <!-- Program Information -->
                         <div class="mb-4">
                             <p class="text-xs text-gray-500 mb-1">Master's Degree</p>
-                            <h4 class="text-sm font-semibold text-gray-900 mb-2">Master of Management</h4>
+                            <h4 class="text-sm font-semibold text-gray-900 mb-2">Master of Data Science</h4>
                             
                             <!-- Status Tags -->
                             <div class="flex flex-wrap gap-1 mb-3">
                                 <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs font-medium">Prime</span>
                                 <span class="px-2 py-1 bg-pink-100 text-pink-600 rounded text-xs font-medium">Popular</span>
-                                <span class="px-2 py-1 bg-green-100 text-green-600 rounded text-xs font-medium">Fast Acceptance</span>
                             </div>
                         </div>
                         
                         <!-- Program Details Grid -->
-                        <div class="grid grid-cols-2 gap-4 mb-4">
-                            <div>
-                                <p class="text-sm text-gray-500">Tuition</p>
-                                <p class="font-semibold">$9,912 USD</p>
+                        <div class="space-y-2 mb-4 text-xs">
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Location</span>
+                                <span class="font-medium">British Columbia, CAN</span>
                             </div>
-                            <div>
-                                <p class="text-sm text-gray-500">Duration</p>
-                                <p class="font-semibold">2 years</p>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Campus city</span>
+                                <span class="font-medium">Vancouver</span>
                             </div>
-                            <div>
-                                <p class="text-sm text-gray-500">Living Cost</p>
-                                <p class="font-semibold">$1,459 USD/month</p>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Tuition (1st year)</span>
+                                <span class="font-medium">$27,850 USD</span>
                             </div>
-                            <div>
-                                <p class="text-sm text-gray-500">Deadline</p>
-                                <p class="font-semibold text-red-600">Nov 15, 2025</p>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Application fee</span>
+                                <span class="font-medium">$123 USD</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Duration</span>
+                                <span class="font-medium">12 months</span>
                             </div>
                         </div>
                         
-                        <!-- Success Prediction Timeline -->
+                        <!-- Success Prediction -->
                         <div class="mb-4">
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-sm font-medium">Success Prediction</span>
-                                <span class="text-sm font-semibold text-green-600">85% Match</span>
+                            <div class="flex justify-between items-center mb-2">
+                                <p class="text-sm font-medium text-gray-900">Success prediction</p>
+                                <button onclick="showSuccessDetails(event)" class="text-xs font-medium border border-red-500 text-red-500 bg-red-50 hover:bg-red-100 px-2 py-0.5 rounded transition-colors">
+                                    Details
+                                </button>
                             </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-green-500 h-2 rounded-full" style="width: 85%"></div>
+                            <div class="flex justify-between text-xs">
+                                <div class="text-center">
+                                    <div class="text-gray-500">Jan 2025</div>
+                                    <div class="text-green-600 font-medium">High</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-gray-500">May 2025</div>
+                                    <div class="text-blue-600 font-medium">Medium</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-gray-500">Sep 2025</div>
+                                    <div class="text-yellow-600 font-medium">Low</div>
+                                </div>
                             </div>
-                            <button class="text-xs text-blue-600 hover:text-blue-700 mt-1">Details</button>
                         </div>
                         
                         <!-- Create Application Button -->
@@ -384,8 +470,8 @@
                             <i data-lucide="external-link" class="w-4 h-4 mr-1"></i>
                             Apply Now
                         </button>
-                        
                     </div>
+                    
                 </div>
             </div>
         </main>
@@ -685,6 +771,118 @@
         </div>
     </div>
 
+    <!-- Success Prediction Details Modal -->
+    <div id="successPredictionModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-2xl p-6 max-w-md w-full mx-4 border border-red-100 shadow-lg">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold text-black">Success Prediction Details</h3>
+                <button onclick="closeSuccessDetails()" class="text-gray-500 hover:text-red-600 transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-red-50 p-4 rounded-lg border border-red-100">
+                    <h4 class="font-medium text-black mb-2">Prediction Criteria</h4>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-red-600 mt-0.5 mr-2"></i>
+                            <span>Your academic background matches 85% of successful applicants</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-red-600 mt-0.5 mr-2"></i>
+                            <span>Your English proficiency meets the program requirements</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="alert-circle" class="w-4 h-4 text-yellow-500 mt-0.5 mr-2"></i>
+                            <span>Application submitted 3 months before deadline (earlier is better)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-red-600 mt-0.5 mr-2"></i>
+                            <span>All required documents are complete</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Additional Metrics -->
+                <!-- Intake Periods -->
+                <div class="space-y-3">
+                    <!-- May 2026 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="w-full flex justify-between items-center p-3 bg-gray-50 hover:bg-gray-100" onclick="toggleIntakeDetails('may2026')">
+                            <span class="font-medium">May 2026</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform" id="may2026-arrow" style="transform: rotate(180deg);"></i>
+                        </button>
+                        <div id="may2026-details" class="p-4 space-y-3 text-sm">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Seat Availability:</span>
+                                <span class="font-medium text-green-600">Very High</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Turn Around Time:</span>
+                                <span class="font-medium text-green-600">Very Fast</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Conversion:</span>
+                                <span class="font-medium text-blue-600">High</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- September 2026 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="w-full flex justify-between items-center p-3 bg-gray-50 hover:bg-gray-100" onclick="toggleIntakeDetails('sep2026')">
+                            <span class="font-medium">September 2026</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform" id="sep2026-arrow"></i>
+                        </button>
+                        <div id="sep2026-details" class="hidden p-4 space-y-3 text-sm">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Seat Availability:</span>
+                                <span class="font-medium text-green-600">High</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Turn Around Time:</span>
+                                <span class="font-medium text-green-600">Fast</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Conversion:</span>
+                                <span class="font-medium text-blue-600">Medium</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- January 2027 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="w-full flex justify-between items-center p-3 bg-gray-50 hover:bg-gray-100" onclick="toggleIntakeDetails('jan2027')">
+                            <span class="font-medium">January 2027</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform" id="jan2027-arrow"></i>
+                        </button>
+                        <div id="jan2027-details" class="hidden p-4 space-y-3 text-sm">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Seat Availability:</span>
+                                <span class="font-medium text-yellow-600">Medium</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Turn Around Time:</span>
+                                <span class="font-medium text-yellow-600">Normal</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Conversion:</span>
+                                <span class="font-medium text-blue-600">High</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-xs text-gray-600 mt-4 bg-red-50 p-3 rounded-lg border border-red-100 space-y-2">
+                    <p>• <span class="font-medium">Seat Availability:</span> The predicted likelihood of a seat being available for the program intake.</p>
+                    <p>• <span class="font-medium">Turn Around Time:</span> The expected time to receive a letter of acceptance after submitting an application.</p>
+                    <p>• <span class="font-medium">Conversion:</span> The historical ratio of accepted applications to submitted applications.</p>
+                    <p class="mt-2">Note: These predictions are based on historical data and your current profile. Actual admission decisions are made by the institution.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Program Details Modal (Hidden by default) -->
     <div id="programModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
         <div class="bg-white rounded-3xl p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
@@ -882,15 +1080,66 @@
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
+        
+        // Success Prediction Modal Functions
+        function showSuccessDetails(event) {
+            event.stopPropagation();
+            const modal = document.getElementById('successPredictionModal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeSuccessDetails() {
+            const modal = document.getElementById('successPredictionModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function toggleIntakeDetails(intakeId) {
+            const details = document.getElementById(`${intakeId}-details`);
+            const arrow = document.getElementById(`${intakeId}-arrow`);
+            
+            // Toggle visibility
+            details.classList.toggle('hidden');
+            
+            // Rotate arrow
+            if (details.classList.contains('hidden')) {
+                arrow.style.transform = 'rotate(0deg)';
+            } else {
+                arrow.style.transform = 'rotate(180deg)';
+            }
+            
+            // Close other open dropdowns
+            const allDetails = document.querySelectorAll('[id$="-details"]');
+            const allArrows = document.querySelectorAll('[id$="-arrow"]');
+            
+            allDetails.forEach(item => {
+                if (item.id !== `${intakeId}-details` && !item.classList.contains('hidden')) {
+                    item.classList.add('hidden');
+                }
+            });
+            
+            allArrows.forEach(item => {
+                if (item.id !== `${intakeId}-arrow` && item.style.transform === 'rotate(180deg)') {
+                    item.style.transform = 'rotate(0deg)';
+                }
+            });
+        }
+        
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('successPredictionModal');
+            if (event.target === modal) {
+                closeSuccessDetails();
+            }
+        });
 
         // Handle logout
         function handleLogout() {
             window.location.href = '../../login.html';
         }
 
-        // Profile Dropdown Toggle
-        const profileMenu = document.getElementById('profile-menu');
-        const profileDropdown = document.getElementById('profile-dropdown');
+        // Profile Dropdown Toggle (removed duplicate declaration)
 
         profileMenu.addEventListener('click', () => {
             profileDropdown.classList.toggle('hidden');
@@ -1049,9 +1298,7 @@
             window.location.href = '../../login.html';
         }
 
-        // Profile Dropdown Toggle
-        const profileMenu = document.getElementById('profile-menu');
-        const profileDropdown = document.getElementById('profile-dropdown');
+        // Profile Dropdown Toggle (removed duplicate declaration)
 
         profileMenu.addEventListener('click', () => {
             profileDropdown.classList.toggle('hidden');
@@ -1349,6 +1596,9 @@
     <!-- Working Modal Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Open first dropdown by default
+            const firstDetails = document.getElementById('may2026-details');
+            if (firstDetails) firstDetails.classList.remove('hidden');
             const modal = document.getElementById('programModal');
             const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
             const closeBtn = document.getElementById('closeModal');

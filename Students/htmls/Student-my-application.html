@@ -147,10 +147,123 @@
                 </script>
             </div>
 
+            <!-- Application Detail Modals -->
+            <!-- Modal 1: BSc Computer Science -->
+            <div id="appModal1" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+                <div class="bg-white rounded-2xl p-6 w-full max-w-2xl">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-semibold">Application Details</h3>
+                        <button onclick="closeModal('appModal1')" class="text-gray-500 hover:text-gray-700">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="border-b pb-4">
+                            <h4 class="font-medium text-lg">BSc Computer Science</h4>
+                            <p class="text-gray-600">University of Toronto</p>
+                            <div class="mt-2">
+                                <span class="inline-block px-3 py-1 rounded-full text-sm text-white" style="background-color: #ED2217;">Docs Review</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-sm text-gray-500">Country</p>
+                                <p>Canada</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Intake</p>
+                                <p>Fall 2025</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Application ID</p>
+                                <p>APP-2025-001</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Applied Date</p>
+                                <p>March 15, 2025</p>
+                            </div>
+                        </div>
+                        <div class="pt-4 border-t">
+                            <h5 class="font-medium mb-2">Documents Required</h5>
+                            <ul class="space-y-2">
+                                <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500"></i> Academic Transcripts</li>
+                                <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-green-500"></i> English Proficiency</li>
+                                <li class="flex items-center"><i data-lucide="alert-circle" class="w-4 h-4 mr-2 text-yellow-500"></i> Statement of Purpose</li>
+                                <li class="flex items-center"><i data-lucide="x-circle" class="w-4 h-4 mr-2 text-gray-300"></i> Letters of Recommendation</li>
+                            </ul>
+                        </div>
+                        <div class="flex justify-end space-x-3 pt-4 border-t">
+                            <button onclick="closeModal('appModal1')" class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50">Close</button>
+                            <button class="px-4 py-2 rounded-lg text-white" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#EC2217'" onmouseout="this.style.backgroundColor='#ED2217'">
+                                Upload Documents
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal 2: MSc Data Science -->
+            <div id="appModal2" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+                <div class="bg-white rounded-2xl p-6 w-full max-w-2xl">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-semibold">Application Details</h3>
+                        <button onclick="closeModal('appModal2')" class="text-gray-500 hover:text-gray-700">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                    <!-- Similar structure as Modal 1 but with MSc Data Science specific content -->
+                </div>
+            </div>
+
+            <!-- Add similar modals for other applications (appModal3 to appModal8) -->
+            <div id="appModal3" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+                <!-- Modal content for application 3 -->
+            </div>
+            <div id="appModal4" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+                <!-- Modal content for application 4 -->
+            </div>
+            <div id="appModal5" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+                <!-- Modal content for application 5 -->
+            </div>
+            <div id="appModal6" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+                <!-- Modal content for application 6 -->
+            </div>
+            <div id="appModal7" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+                <!-- Modal content for application 7 -->
+            </div>
+            <div id="appModal8" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+                <!-- Modal content for application 8 -->
+            </div>
+
+            <script>
+                // Function to open modal
+                function openModal(modalId) {
+                    document.getElementById(modalId).classList.remove('hidden');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+                }
+
+                // Function to close modal
+                function closeModal(modalId) {
+                    document.getElementById(modalId).classList.add('hidden');
+                    document.body.style.overflow = 'auto'; // Re-enable scrolling
+                }
+
+                // Close modal when clicking outside of it
+                window.onclick = function(event) {
+                    if (event.target.classList.contains('bg-black')) {
+                        const modals = document.querySelectorAll('.fixed.inset-0.bg-black');
+                        modals.forEach(modal => {
+                            modal.classList.add('hidden');
+                            document.body.style.overflow = 'auto';
+                        });
+                    }
+                }
+            </script>
+
             <!-- Application Cards -->
             <div class="space-y-4">
             
-                <!-- Application Card 1 -->
+                <!-- Application Card - Docs Review Step -->
                 <div class="bg-white rounded-3xl shadow-md p-6">
                     <div class="flex justify-between items-start mb-4">
                         <div>
@@ -163,7 +276,7 @@
                                 <span class="text-sm" style="color: #000000;">Fall 2025</span>
                             </div>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">School Application</span>
+                        <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">Docs Review</span>
                     </div>
                     <div class="space-y-4">
                         <!-- Application Timeline -->
@@ -172,33 +285,101 @@
                             <div class="space-y-2">
                                 <div class="flex items-center text-sm">
                                     <div class="w-3 h-3 rounded-full mr-3" style="background-color: #ED2217;"></div>
-                                    <span class="font-medium" style="color: #ED2217;">School Application</span>
+                                    <span class="font-medium" style="color: #ED2217;">Docs Review</span>
                                     <span class="ml-auto" style="color: #000000;">Current Stage</span>
                                 </div>
                                 <div class="flex items-center text-sm">
                                     <div class="w-3 h-3 rounded-full mr-3" style="background-color: #000000;"></div>
-                                    <span style="color: #000000;">School Acceptance</span>
+                                    <span style="color: #000000;">Agreement signing and first payment</span>
                                     <span class="ml-auto" style="color: #000000;">Next</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="space-y-4">
-                        <div class="relative pt-1">
-                            <div class="flex mb-2 items-center justify-between">
-                                <div>
-                                    <span class="text-xs font-semibold inline-block" style="color: #ED2217;">
-                                        Application Progress
-                                    </span>
-                                </div>
-                                <div class="text-right">
-                                    <span class="text-xs font-semibold inline-block" style="color: #ED2217;">
-                                        60%
-                                    </span>
-                                </div>
+                        <div class="relative">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-xs font-semibold" style="color: #ED2217;">Application Progress</span>
                             </div>
-                            <div class="overflow-hidden h-2 mb-4 text-xs flex rounded-full" style="background-color: #F9F9F9;">
-                                <div class="w-[60%] shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center" style="background-color: #ED2217;"></div>
+                            <!-- Progress Steps -->
+                            <div class="flex justify-between items-center w-full mb-4">
+                                <!-- Step 1 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">1</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Initial<br>Advising</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 2 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">2</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Docs<br>Review</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 3 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">3</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">Agreement &<br>1st Payment</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 4 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">4</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">App Prep &<br>2nd Payment</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 5 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">5</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">School<br>Application</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 6 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">6</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">School<br>Acceptance</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 7 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">7</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">Visa<br>Application</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 8 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">8</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">Pre-<br>Departure</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 9 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">9</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">Arrival</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -207,18 +388,15 @@
                             <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
                             Edit
                         </button>
-                        <button class="flex items-center view-details-btn" data-app-id="1" id="viewBtn3" style="color: #ED2217;" onmouseover="this.style.color='#EC2217'" onmouseout="this.style.color='#ED2217'">
+                        <button onclick="openModal('appModal1')" class="flex items-center text-white px-4 py-2 rounded-xl transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#EC2217'" onmouseout="this.style.backgroundColor='#ED2217'">
                             <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
                             View Details
                         </button>
-                        <script>
-                            document.getElementById('viewBtn3').addEventListener('click', function() {
-                                const modal = document.getElementById('detailViewModal');
-                                if (modal) {
-                                    // Show active application content
                                     document.getElementById('savedProgramContent').classList.add('hidden');
                                     document.getElementById('activeApplicationContent').classList.remove('hidden');
                                     document.getElementById('visaPrepContent').classList.add('hidden');
+                                    // Update modal with application data
+                                    updateModalContent('1');
                                     modal.classList.remove('hidden');
                                 }
                             });
@@ -226,7 +404,7 @@
                     </div>
                 </div>
 
-                <!-- Application Card 2 -->
+                <!-- Application Card - Agreement & 1st Payment -->
                 <div class="bg-white rounded-3xl shadow-md p-6">
                     <div class="flex justify-between items-start mb-4">
                         <div>
@@ -239,7 +417,7 @@
                                 <span class="text-sm" style="color: #000000;">Spring 2025</span>
                             </div>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">School Acceptance</span>
+                        <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">Agreement signing and first payment</span>
                     </div>
                     <div class="space-y-4">
                         <!-- Application Timeline -->
@@ -248,33 +426,101 @@
                             <div class="space-y-2">
                                 <div class="flex items-center text-sm">
                                     <div class="w-3 h-3 rounded-full mr-3" style="background-color: #ED2217;"></div>
-                                    <span class="font-medium" style="color: #ED2217;">School Acceptance</span>
+                                    <span class="font-medium" style="color: #ED2217;">Agreement signing and first payment</span>
                                     <span class="ml-auto" style="color: #000000;">Current Stage</span>
                                 </div>
                                 <div class="flex items-center text-sm">
                                     <div class="w-3 h-3 rounded-full mr-3" style="background-color: #000000;"></div>
-                                    <span style="color: #000000;">Visa App</span>
+                                    <span style="color: #000000;">Application Prep and 2nd payment</span>
                                     <span class="ml-auto" style="color: #000000;">Next</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="space-y-4">
-                        <div class="relative pt-1">
-                            <div class="flex mb-2 items-center justify-between">
-                                <div>
-                                    <span class="text-xs font-semibold inline-block" style="color: #ED2217;">
-                                        Application Progress
-                                    </span>
-                                </div>
-                                <div class="text-right">
-                                    <span class="text-xs font-semibold inline-block" style="color: #ED2217;">
-                                        100%
-                                    </span>
-                                </div>
+                        <div class="relative">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-xs font-semibold" style="color: #ED2217;">Application Progress</span>
                             </div>
-                            <div class="overflow-hidden h-2 mb-4 text-xs flex rounded-full" style="background-color: #F9F9F9;">
-                                <div class="w-full shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center" style="background-color: #ED2217;"></div>
+                            <!-- Progress Steps -->
+                            <div class="flex justify-between items-center w-full mb-4">
+                                <!-- Step 1 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">1</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Initial<br>Advising</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 2 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">2</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Docs<br>Review</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 3 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">3</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Agreement &<br>1st Payment</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 4 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">4</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">App Prep &<br>2nd Payment</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 5 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">5</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">School<br>Application</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 6 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">6</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">School<br>Acceptance</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 7 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">7</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">Visa<br>Application</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 8 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">8</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">Pre-<br>Departure</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 9 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">9</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">Arrival</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -295,6 +541,8 @@
                                     document.getElementById('savedProgramContent').classList.add('hidden');
                                     document.getElementById('activeApplicationContent').classList.remove('hidden');
                                     document.getElementById('visaPrepContent').classList.add('hidden');
+                                    // Update modal with application data
+                                    updateModalContent('2');
                                     modal.classList.remove('hidden');
                                 }
                             });
@@ -302,109 +550,139 @@
                     </div>
                 </div>
 
-                <!-- Application Card 3 - Visa Prep -->
+                <!-- Application Card - School Application -->
                 <div class="bg-white rounded-3xl shadow-md p-6">
                     <div class="flex justify-between items-start mb-4">
                         <div>
-                            <h3 class="text-lg font-semibold" style="color: #000000;">MBA International Business</h3>
-                            <p style="color: #000000;">University of Sydney</p>
+                            <h3 class="text-lg font-semibold" style="color: #000000;">MSc Artificial Intelligence</h3>
+                            <p style="color: #000000;">University of Toronto</p>
                             <div class="flex items-center mt-2">
                                 <i data-lucide="map-pin" class="w-4 h-4 mr-1" style="color: #000000;"></i>
-                                <span class="text-sm" style="color: #000000;">Australia</span>
+                                <span class="text-sm" style="color: #000000;">Canada</span>
                                 <span class="mx-2" style="color: #000000;">•</span>
                                 <span class="text-sm" style="color: #000000;">Fall 2025</span>
                             </div>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">Visa App</span>
+                        <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">Application Prep and 2nd payment</span>
                     </div>
+                    
+                    <!-- Application Timeline -->
                     <div class="space-y-4">
-                        <!-- Visa Prep Workflow -->
                         <div class="rounded-xl p-4" style="background-color: #F9F9F9;">
-                            <h4 class="text-sm font-semibold mb-3" style="color: #000000;">Visa Prep Workflow</h4>
-                            <div class="space-y-3">
-                                <!-- Visa Prep Step -->
-                                <div class="flex items-center justify-between p-3 bg-white rounded-lg border" style="border-color: #000000;">
-                                    <div class="flex items-center">
-                                        <div class="w-8 h-8 rounded-full flex items-center justify-center mr-3" style="background-color: #ED2217;">
-                                            <i data-lucide="file-text" class="w-4 h-4 text-white"></i>
-                                        </div>
-                                        <div>
-                                            <p class="font-medium" style="color: #000000;">Visa Prep</p>
-                                            <p class="text-sm" style="color: #000000;">Complete visa application forms</p>
-                                        </div>
-                                    </div>
-                                    <span class="px-2 py-1 rounded text-xs" style="background-color: #ED2217; color: #FFFFFF;">Completed</span>
-                                </div>
-                                
-                                <!-- Check List of Visa Prep Step -->
-                                <div class="flex items-center justify-between p-3 bg-white rounded-lg border" style="border-color: #000000;">
-                                    <div class="flex items-center">
-                                        <div class="w-8 h-8 rounded-full flex items-center justify-center mr-3" style="background-color: #000000;">
-                                            <i data-lucide="check-square" class="w-4 h-4 text-white"></i>
-                                        </div>
-                                        <div>
-                                            <p class="font-medium" style="color: #000000;">Check List of Visa Prep</p>
-                                            <p class="text-sm" style="color: #000000;">Verify all required documents</p>
-                                        </div>
-                                    </div>
-                                    <span class="px-2 py-1 rounded text-xs" style="background-color: #000000; color: #FFFFFF;">In Progress</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Visa Checklist Progress -->
-                        <div class="rounded-xl p-4" style="background-color: #F9F9F9;">
-                            <div class="flex items-center justify-between mb-3">
-                                <h4 class="text-sm font-semibold" style="color: #000000;">Visa Document Checklist</h4>
-                                <span class="text-sm" style="color: #000000;">7/12 completed</span>
-                            </div>
+                            <h4 class="text-sm font-semibold mb-3" style="color: #000000;">Application Timeline</h4>
                             <div class="space-y-2">
                                 <div class="flex items-center text-sm">
-                                    <i data-lucide="check" class="w-4 h-4 mr-2" style="color: #ED2217;"></i>
-                                    <span style="color: #ED2217;">Passport copy</span>
+                                    <div class="w-3 h-3 rounded-full mr-3" style="background-color: #ED2217;"></div>
+                                    <span class="font-medium" style="color: #ED2217;">Application Prep and 2nd payment</span>
+                                    <span class="ml-auto" style="color: #000000;">Current Stage</span>
                                 </div>
                                 <div class="flex items-center text-sm">
-                                    <i data-lucide="check" class="w-4 h-4 mr-2" style="color: #ED2217;"></i>
-                                    <span style="color: #ED2217;">Financial statements</span>
-                                </div>
-                                <div class="flex items-center text-sm">
-                                    <i data-lucide="clock" class="w-4 h-4 mr-2" style="color: #000000;"></i>
-                                    <span style="color: #000000;">Medical examination</span>
-                                </div>
-                                <div class="flex items-center text-sm">
-                                    <i data-lucide="x" class="w-4 h-4 mr-2" style="color: #000000;"></i>
-                                    <span style="color: #000000;">Visa interview preparation</span>
+                                    <div class="w-3 h-3 rounded-full mr-3" style="background-color: #000000;"></div>
+                                    <span style="color: #000000;">School Application
+                                    </span>
+                                    <span class="ml-auto" style="color: #000000;">Next</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
+                    <!-- Progress Bar -->
                     <div class="space-y-4">
-                        <div class="relative pt-1">
-                            <div class="flex mb-2 items-center justify-between">
-                                <div>
-                                    <span class="text-xs font-semibold inline-block" style="color: #ED2217;">
-                                        Visa Prep Progress
-                                    </span>
-                                </div>
-                                <div class="text-right">
-                                    <span class="text-xs font-semibold inline-block" style="color: #ED2217;">
-                                        58%
-                                    </span>
-                                </div>
+                        <div class="relative">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-xs font-semibold" style="color: #ED2217;">Application Progress</span>
                             </div>
-                            <div class="overflow-hidden h-2 mb-4 text-xs flex rounded-full" style="background-color: #F9F9F9;">
-                                <div class="w-[58%] shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center" style="background-color: #ED2217;"></div>
+                            
+                            <!-- Progress Steps -->
+                            <div class="flex justify-between items-center w-full mb-4">
+                                <!-- Step 1 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">1</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Initial<br>Advising</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 2 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">2</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Docs<br>Review</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 3 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">3</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Agreement &<br>1st Payment</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 4 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">4</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">App Prep &<br>2nd Payment</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 5 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">5</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">School<br>Application</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 6 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">6</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">School<br>Acceptance</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 7 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">7</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">Visa<br>Application</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 8 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">8</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">Pre-<br>Departure</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 9 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">9</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">Arrival</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
+                    <!-- Action Buttons -->
                     <div class="flex justify-end space-x-3 mt-4">
                         <button class="flex items-center" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
-                            <i data-lucide="message-circle" class="w-4 h-4 mr-1"></i>
-                            Contact Visa Advisor
+                            <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
+                            Edit
                         </button>
-                        <button class="flex items-center view-details-btn" data-app-id="3" id="viewBtn5" style="color: #ED2217;" onmouseover="this.style.color='#EC2217'" onmouseout="this.style.color='#ED2217'">
+                        <button class="flex items-center view-details-btn" data-app-id="5" id="viewBtn5" style="color: #ED2217;" onmouseover="this.style.color='#EC2217'" onmouseout="this.style.color='#ED2217'">
                             <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
                             View Details
                         </button>
@@ -412,32 +690,776 @@
                             document.getElementById('viewBtn5').addEventListener('click', function() {
                                 const modal = document.getElementById('detailViewModal');
                                 if (modal) {
-                                    // Show visa prep content
+                                    // Show active application content
                                     document.getElementById('savedProgramContent').classList.add('hidden');
-                                    document.getElementById('activeApplicationContent').classList.add('hidden');
-                                    document.getElementById('visaPrepContent').classList.remove('hidden');
+                                    document.getElementById('activeApplicationContent').classList.remove('hidden');
+                                    document.getElementById('visaPrepContent').classList.add('hidden');
+                                    // Update modal with application data
+                                    updateModalContent('3');
                                     modal.classList.remove('hidden');
                                 }
                             });
                         </script>
-                        <button class="bg-purple-600 text-white px-4 py-2 rounded-xl hover:bg-purple-700 flex items-center">
-                            <i data-lucide="upload" class="w-4 h-4 mr-1"></i>
-                            Upload Documents
-                        </button>
                     </div>
                 </div>
+
+                <!-- Application Card - School Application -->
+                <div class="bg-white rounded-3xl shadow-md p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-lg font-semibold" style="color: #000000;">MSc Business Analytics</h3>
+                            <p style="color: #000000;">University of British Columbia</p>
+                            <div class="flex items-center mt-2">
+                                <i data-lucide="map-pin" class="w-4 h-4 mr-1" style="color: #000000;"></i>
+                                <span class="text-sm" style="color: #000000;">Canada</span>
+                                <span class="mx-2" style="color: #000000;">•</span>
+                                <span class="text-sm" style="color: #000000;">Winter 2026</span>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">School Application</span>
+                    </div>
+                    
+                    <!-- Application Timeline -->
+                    <div class="space-y-4">
+                        <div class="rounded-xl p-4" style="background-color: #F9F9F9;">
+                            <h4 class="text-sm font-semibold mb-3" style="color: #000000;">Application Timeline</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-center text-sm">
+                                    <div class="w-3 h-3 rounded-full mr-3" style="background-color: #ED2217;"></div>
+                                    <span class="font-medium" style="color: #ED2217;">School Application</span>
+                                    <span class="ml-auto" style="color: #000000;">Current Stage</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <div class="w-3 h-3 rounded-full mr-3" style="background-color: #000000;"></div>
+                                    <span style="color: #000000;">School Acceptance</span>
+                                    <span class="ml-auto" style="color: #000000;">Next</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Progress Bar -->
+                    <div class="space-y-4">
+                        <div class="relative">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-xs font-semibold" style="color: #ED2217;">Application Progress</span>
+                            </div>
+                            <!-- Progress Steps -->
+                            <div class="flex justify-between items-center w-full mb-4">
+                                <!-- Step 1 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">1</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Initial<br>Advising</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 2 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">2</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Docs<br>Review</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 3 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">3</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Agreement &<br>1st Payment</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 4 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">4</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">App Prep &<br>2nd Payment</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 5 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">5</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">School<br>Application</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 6 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">6</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">School<br>Acceptance</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 7 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">7</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">Visa<br>Application</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 8 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">8</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">Pre-<br>Departure</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 9 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">9</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">Arrival</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="flex justify-end space-x-3 mt-4">
+                        <button class="flex items-center" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
+                            <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
+                            Edit
+                        </button>
+                        <button class="flex items-center view-details-btn" data-app-id="6" id="viewBtn6" style="color: #ED2217;" onmouseover="this.style.color='#EC2217'" onmouseout="this.style.color='#ED2217'">
+                            <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                            View Details
+                        </button>
+                        <script>
+                            document.getElementById('viewBtn6').addEventListener('click', function() {
+                                const modal = document.getElementById('detailViewModal');
+                                if (modal) {
+                                    document.getElementById('savedProgramContent').classList.add('hidden');
+                                    document.getElementById('activeApplicationContent').classList.remove('hidden');
+                                    document.getElementById('visaPrepContent').classList.add('hidden');
+                                    // Update modal with application data
+                                    updateModalContent('4');
+                                    modal.classList.remove('hidden');
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+
+                <!-- Application Card - School Acceptance -->
+                <div class="bg-white rounded-3xl shadow-md p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-lg font-semibold" style="color: #000000;">BSc Mechanical Engineering</h3>
+                            <p style="color: #000000;">University of Auckland</p>
+                            <div class="flex items-center mt-2">
+                                <i data-lucide="map-pin" class="w-4 h-4 mr-1" style="color: #000000;"></i>
+                                <span class="text-sm" style="color: #000000;">New Zealand</span>
+                                <span class="mx-2" style="color: #000000;">•</span>
+                                <span class="text-sm" style="color: #000000;">February 2025</span>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">School Acceptance</span>
+                    </div>
+                    
+                    <!-- Application Timeline -->
+                    <div class="space-y-4">
+                        <div class="rounded-xl p-4" style="background-color: #F9F9F9;">
+                            <h4 class="text-sm font-semibold mb-3" style="color: #000000;">Application Timeline</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-center text-sm">
+                                    <div class="w-3 h-3 rounded-full mr-3" style="background-color: #ED2217;"></div>
+                                    <span class="font-medium" style="color: #ED2217;">School Acceptance</span>
+                                    <span class="ml-auto" style="color: #000000;">Current Stage</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <div class="w-3 h-3 rounded-full mr-3" style="background-color: #000000;"></div>
+                                    <span style="color: #000000;">Visa Application</span>
+                                    <span class="ml-auto" style="color: #000000;">Next</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Progress Bar -->
+                    <div class="space-y-4">
+                        <div class="relative">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-xs font-semibold" style="color: #ED2217;">Application Progress</span>
+                            </div>
+                            <!-- Progress Steps -->
+                            <div class="flex justify-between items-center w-full mb-4">
+                                <!-- Step 1 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">1</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Initial<br>Advising</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 2 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">2</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Docs<br>Review</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 3 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">3</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Agreement &<br>1st Payment</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 4 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">4</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">App Prep &<br>2nd Payment</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 5 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">5</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">School<br>Application</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 6 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">6</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">School<br>Acceptance</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 7 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">7</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">Visa<br>Application</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 8 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">8</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">Pre-<br>Departure</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 9 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">9</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">Arrival</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="flex justify-end space-x-3 mt-4">
+                        <button class="flex items-center" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
+                            <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
+                            Edit
+                        </button>
+                        <button class="flex items-center view-details-btn" data-app-id="7" id="viewBtn7" style="color: #ED2217;" onmouseover="this.style.color='#EC2217'" onmouseout="this.style.color='#ED2217'">
+                            <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                            View Details
+                        </button>
+                        <script>
+                            document.getElementById('viewBtn7').addEventListener('click', function() {
+                                const modal = document.getElementById('detailViewModal');
+                                if (modal) {
+                                    document.getElementById('savedProgramContent').classList.add('hidden');
+                                    document.getElementById('activeApplicationContent').classList.remove('hidden');
+                                    document.getElementById('visaPrepContent').classList.add('hidden');
+                                    // Update modal with application data
+                                    updateModalContent('5');
+                                    modal.classList.remove('hidden');
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+
+                <!-- Application Card - Visa Application -->
+                <div class="bg-white rounded-3xl shadow-md p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-lg font-semibold" style="color: #000000;">MSc Computer Science</h3>
+                            <p style="color: #000000;">University of Edinburgh</p>
+                            <div class="flex items-center mt-2">
+                                <i data-lucide="map-pin" class="w-4 h-4 mr-1" style="color: #000000;"></i>
+                                <span class="text-sm" style="color: #000000;">United Kingdom</span>
+                                <span class="mx-2" style="color: #000000;">•</span>
+                                <span class="text-sm" style="color: #000000;">September 2025</span>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">Visa Application</span>
+                    </div>
+                    
+                    <!-- Application Timeline -->
+                    <div class="space-y-4">
+                        <div class="rounded-xl p-4" style="background-color: #F9F9F9;">
+                            <h4 class="text-sm font-semibold mb-3" style="color: #000000;">Application Timeline</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-center text-sm">
+                                    <div class="w-3 h-3 rounded-full mr-3" style="background-color: #ED2217;"></div>
+                                    <span class="font-medium" style="color: #ED2217;">Visa Application</span>
+                                    <span class="ml-auto" style="color: #000000;">Current Stage</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <div class="w-3 h-3 rounded-full mr-3" style="background-color: #000000;"></div>
+                                    <span style="color: #000000;">Pre-Departure</span>
+                                    <span class="ml-auto" style="color: #000000;">Next</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Progress Bar -->
+                    <div class="space-y-4">
+                        <div class="relative">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-xs font-semibold" style="color: #ED2217;">Application Progress</span>
+                            </div>
+                            <!-- Progress Steps -->
+                            <div class="flex justify-between items-center w-full mb-4">
+                                <!-- Step 1 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">1</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Initial<br>Advising</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 2 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">2</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Docs<br>Review</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 3 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">3</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Agreement &<br>1st Payment</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 4 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">4</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">App Prep &<br>2nd Payment</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 5 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">5</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">School<br>Application</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 6 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">6</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">School<br>Acceptance</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 7 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">7</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Visa<br>Application</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 8 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">8</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">Pre-<br>Departure</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 9 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">9</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">Arrival</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="flex justify-end space-x-3 mt-4">
+                        <button class="flex items-center" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
+                            <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
+                            Edit
+                        </button>
+                        <button class="flex items-center view-details-btn" data-app-id="8" id="viewBtn8" style="color: #ED2217;" onmouseover="this.style.color='#EC2217'" onmouseout="this.style.color='#ED2217'">
+                            <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                            View Details
+                        </button>
+                        <script>
+                            document.getElementById('viewBtn8').addEventListener('click', function() {
+                                const modal = document.getElementById('detailViewModal');
+                                if (modal) {
+                                    document.getElementById('savedProgramContent').classList.add('hidden');
+                                    document.getElementById('activeApplicationContent').classList.remove('hidden');
+                                    document.getElementById('visaPrepContent').classList.add('hidden');
+                                    // Update modal with application data
+                                    updateModalContent('6');
+                                    modal.classList.remove('hidden');
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+
+                <!-- Application Card - Pre-Departure -->
+                <div class="bg-white rounded-3xl shadow-md p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-lg font-semibold" style="color: #000000;">BBA Business Administration</h3>
+                            <p style="color: #000000;">University of Manchester</p>
+                            <div class="flex items-center mt-2">
+                                <i data-lucide="map-pin" class="w-4 h-4 mr-1" style="color: #000000;"></i>
+                                <span class="text-sm" style="color: #000000;">United Kingdom</span>
+                                <span class="mx-2" style="color: #000000;">•</span>
+                                <span class="text-sm" style="color: #000000;">January 2025</span>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">Pre-Departure</span>
+                    </div>
+                    
+                    <!-- Application Timeline -->
+                    <div class="space-y-4">
+                        <div class="rounded-xl p-4" style="background-color: #F9F9F9;">
+                            <h4 class="text-sm font-semibold mb-3" style="color: #000000;">Application Timeline</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-center text-sm">
+                                    <div class="w-3 h-3 rounded-full mr-3" style="background-color: #ED2217;"></div>
+                                    <span class="font-medium" style="color: #ED2217;">Pre-Departure</span>
+                                    <span class="ml-auto" style="color: #000000;">Current Stage</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <div class="w-3 h-3 rounded-full mr-3" style="background-color: #000000;"></div>
+                                    <span style="color: #000000;">Arrival</span>
+                                    <span class="ml-auto" style="color: #000000;">Next</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Progress Bar -->
+                    <div class="space-y-4">
+                        <div class="relative">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-xs font-semibold" style="color: #ED2217;">Application Progress</span>
+                            </div>
+                            <!-- Progress Steps -->
+                            <div class="flex justify-between items-center w-full mb-4">
+                                <!-- Step 1 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">1</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Initial<br>Advising</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 2 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">2</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Docs<br>Review</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 3 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">3</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Agreement &<br>1st Payment</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 4 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">4</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">App Prep &<br>2nd Payment</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 5 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">5</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">School<br>Application</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 6 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">6</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">School<br>Acceptance</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 7 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">7</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Visa<br>Application</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 8 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">8</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Pre-<br>Departure</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 0%;"></div>
+                                </div>
+                                <!-- Step 9 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border border-gray-300" style="background-color: #FFFFFF;">9</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #000000;">Arrival</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="flex justify-end space-x-3 mt-4">
+                        <button class="flex items-center" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
+                            <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
+                            Edit
+                        </button>
+                        <button class="flex items-center view-details-btn" data-app-id="9" id="viewBtn9" style="color: #ED2217;" onmouseover="this.style.color='#EC2217'" onmouseout="this.style.color='#ED2217'">
+                            <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                            View Details
+                        </button>
+                        <script>
+                            document.getElementById('viewBtn9').addEventListener('click', function() {
+                                const modal = document.getElementById('detailViewModal');
+                                if (modal) {
+                                    document.getElementById('savedProgramContent').classList.add('hidden');
+                                    document.getElementById('activeApplicationContent').classList.remove('hidden');
+                                    document.getElementById('visaPrepContent').classList.add('hidden');
+                                    // Update modal with application data
+                                    updateModalContent('7');
+                                    modal.classList.remove('hidden');
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+
+                <!-- Application Card - Arrival (Completed) -->
+                <div class="bg-white rounded-3xl shadow-md p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-lg font-semibold" style="color: #000000;">BSc Psychology</h3>
+                            <p style="color: #000000;">University of British Columbia</p>
+                            <div class="flex items-center mt-2">
+                                <i data-lucide="map-pin" class="w-4 h-4 mr-1" style="color: #000000;"></i>
+                                <span class="text-sm" style="color: #000000;">Canada</span>
+                                <span class="mx-2" style="color: #000000;">•</span>
+                                <span class="text-sm" style="color: #000000;">May 2024</span>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">Post-Departure</span>
+                    </div>
+                    
+                    <!-- Application Timeline -->
+                    <div class="space-y-4">
+                        <div class="rounded-xl p-4" style="background-color: #F9F9F9;">
+                            <h4 class="text-sm font-semibold mb-3" style="color: #000000;">Application Timeline</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-center text-sm">
+                                    <div class="w-3 h-3 rounded-full mr-3" style="background-color: #ED2217;"></div>
+                                    <span class="font-medium" style="color: #ED2217;">Arrival</span>
+                                    <span class="ml-auto" style="color: #000000;">Completed</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Progress Bar -->
+                    <div class="space-y-4">
+                        <div class="relative">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-xs font-semibold" style="color: #ED2217;">Application Progress</span>
+                            </div>
+                            <!-- Progress Steps -->
+                            <div class="flex justify-between items-center w-full mb-4">
+                                <!-- Step 1 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">1</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Initial<br>Advising</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 2 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">2</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Docs<br>Review</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 3 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">3</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Agreement &<br>1st Payment</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 4 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">4</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">App Prep &<br>2nd Payment</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 5 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">5</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">School<br>Application</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 6 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">6</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">School<br>Acceptance</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 7 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">7</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Visa<br>Application</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 8 -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">8</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Pre-<br>Departure</span>
+                                </div>
+                                <!-- Connector -->
+                                <div class="h-0.5 flex-1 bg-gray-200 mx-1">
+                                    <div class="h-full" style="background-color: #ED2217; width: 100%;"></div>
+                                </div>
+                                <!-- Step 9 - Final Step -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #ED2217;">9</div>
+                                    <span class="text-[10px] mt-1 text-center" style="color: #ED2217;">Arrival</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="flex justify-end space-x-3 mt-4">
+                        <button class="flex items-center" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
+                            <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
+                            Edit
+                        </button>
+                        <button class="flex items-center view-details-btn" data-app-id="11" id="viewBtn11" style="color: #ED2217;" onmouseover="this.style.color='#EC2217'" onmouseout="this.style.color='#ED2217'">
+                            <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                            View Details
+                        </button>
+                        <script>
+                            document.getElementById('viewBtn11').addEventListener('click', function() {
+                                const modal = document.getElementById('detailViewModal');
+                                if (modal) {
+                                    document.getElementById('savedProgramContent').classList.add('hidden');
+                                    document.getElementById('activeApplicationContent').classList.remove('hidden');
+                                    document.getElementById('visaPrepContent').classList.add('hidden');
+                                    // Update modal with application data
+                                    updateModalContent('8');
+                                    modal.classList.remove('hidden');
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+
             </div>
         </main>
     </div>
 
     <!-- New Application Modal -->
-    <div id="newApplicationModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden overflow-y-auto h-full w-full">
-        <div class="relative top-20 mx-auto p-5 border w-[600px] shadow-lg rounded-3xl bg-white">
-            <div class="mt-3">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-xl font-semibold text-gray-900">Start New Application</h3>
-                    <button id="closeModal" class="text-gray-400 hover:text-gray-500">
-                        <i data-lucide="x" class="w-6 h-6"></i>
+    <div id="newApplicationModal" class="fixed inset-0 bg-black bg-opacity-50 hidden overflow-y-auto h-full w-full z-50">
+        <div class="relative top-20 mx-auto p-6 w-[600px] shadow-2xl rounded-2xl bg-white">
+            <div class="mt-2">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-2xl font-bold text-black">Start New Application</h3>
+                    <button id="closeModal" class="text-black hover:text-red-600 transition-colors">
+                        <i data-lucide="x" class="w-8 h-8"></i>
                     </button>
                      <script>
                         document.getElementById('closeDetailModal').addEventListener('click', function() {
@@ -526,13 +1548,13 @@
     </div>
 
     <!-- Detail View Modal -->
-    <div id="detailViewModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden overflow-y-auto h-full w-full z-50">
-        <div class="relative top-4 mx-auto p-5 border w-[90%] max-w-4xl shadow-lg rounded-3xl bg-white mb-8">
-            <div class="mt-3">
-                <div class="flex items-center justify-between mb-6">
-                    <h3 class="text-2xl font-semibold text-gray-900" id="modalTitle">Application Details</h3>
-                    <button id="closeDetailModal" class="text-gray-400 hover:text-gray-500">
-                        <i data-lucide="x" class="w-6 h-6"></i>
+    <div id="detailViewModal" class="fixed inset-0 bg-black bg-opacity-50 hidden overflow-y-auto h-full w-full z-50">
+        <div class="relative top-4 mx-auto p-6 w-[90%] max-w-4xl shadow-2xl rounded-2xl bg-white mb-8">
+            <div class="mt-2">
+                <div class="flex items-center justify-between mb-8">
+                    <h3 class="text-2xl font-bold text-black border-b-2 border-red-600 pb-2" id="modalTitle">Application Details</h3>
+                    <button id="closeDetailModal" class="text-black hover:text-red-600 transition-colors">
+                        <i data-lucide="x" class="w-8 h-8"></i>
                     </button>
                     <script>
                         document.getElementById('closeDetailModal').addEventListener('click', function() {
@@ -619,99 +1641,11 @@
                             </div>
                             <div>
                                 <p class="text-sm text-gray-600">Application Status</p>
-                                <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm" id="activeApplicationStatus">Docs Review</span>
+                                <span class="px-3 py-1 bg-red-600 text-white rounded-full text-sm" id="activeApplicationStatus">Docs Review</span>
                             </div>
                             <div>
                                 <p class="text-sm text-gray-600">Last Updated</p>
                                 <p class="font-medium" id="activeLastUpdated">March 28, 2025</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Application Timeline (9-step process) -->
-                    <div class="mb-6">
-                        <h4 class="text-lg font-semibold mb-4">Application Timeline</h4>
-                        <div class="space-y-4">
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
-                                    <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <p class="font-medium">1. Initial Advising</p>
-                                    <p class="text-sm text-gray-600">Completed - March 15, 2025</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                                    <i data-lucide="clock" class="w-4 h-4 text-blue-600"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <p class="font-medium">2. Docs Review</p>
-                                    <p class="text-sm text-gray-600">In Progress - Started March 20, 2025</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-4">
-                                    <i data-lucide="circle" class="w-4 h-4 text-gray-400"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <p class="font-medium text-gray-400">3. Agreement signing and first payment</p>
-                                    <p class="text-sm text-gray-400">Pending</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-4">
-                                    <i data-lucide="circle" class="w-4 h-4 text-gray-400"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <p class="font-medium text-gray-400">4. Application Prep and 2nd payment</p>
-                                    <p class="text-sm text-gray-400">Pending</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-4">
-                                    <i data-lucide="circle" class="w-4 h-4 text-gray-400"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <p class="font-medium text-gray-400">5. School Application</p>
-                                    <p class="text-sm text-gray-400">Pending</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-4">
-                                    <i data-lucide="circle" class="w-4 h-4 text-gray-400"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <p class="font-medium text-gray-400">6. School Acceptance</p>
-                                    <p class="text-sm text-gray-400">Pending</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-4">
-                                    <i data-lucide="circle" class="w-4 h-4 text-gray-400"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <p class="font-medium text-gray-400">7. Visa App</p>
-                                    <p class="text-sm text-gray-400">Pending</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-4">
-                                    <i data-lucide="circle" class="w-4 h-4 text-gray-400"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <p class="font-medium text-gray-400">8. Pre-Departure</p>
-                                    <p class="text-sm text-gray-400">Pending</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-4">
-                                    <i data-lucide="circle" class="w-4 h-4 text-gray-400"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <p class="font-medium text-gray-400">9. Arrival</p>
-                                    <p class="text-sm text-gray-400">Pending</p>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -739,7 +1673,7 @@
                         <h4 class="text-lg font-semibold mb-4">Uploaded Documents by Stage</h4>
                         <div class="space-y-4">
                             <div class="border rounded-xl p-4">
-                                <h5 class="font-medium text-green-700 mb-3">✓ Stage 1: Initial Advising</h5>
+                                <h5 class="font-medium">✓ Stage 1: Initial Advising</h5>
                                 <div class="grid md:grid-cols-2 gap-3">
                                     <div class="flex items-center p-3 bg-gray-50 rounded-lg">
                                         <i data-lucide="file-text" class="w-4 h-4 text-blue-600 mr-2"></i>
@@ -752,7 +1686,7 @@
                                 </div>
                             </div>
                             <div class="border-2 border-blue-200 bg-blue-50 rounded-xl p-4">
-                                <h5 class="font-medium text-blue-700 mb-3">⏳ Stage 2: Docs Review (Current)</h5>
+                                <h5 class="font-medium">⏳ Stage 2: Docs Review (Current)</h5>
                                 <div class="grid md:grid-cols-2 gap-3">
                                     <div class="flex items-center p-3 bg-white rounded-lg">
                                         <i data-lucide="file-text" class="w-4 h-4 text-green-600 mr-2"></i>
@@ -783,15 +1717,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+                            <div class="bg-gray-50 border border-gray-200 rounded-xl p-4">
                                 <div class="flex items-start">
-                                    <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                                        <i data-lucide="check-circle" class="w-4 h-4 text-green-600"></i>
+                                    <div class="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-3">
+                                        <i data-lucide="bot" class="w-4 h-4 text-gray-600"></i>
                                     </div>
                                     <div class="flex-1">
-                                        <p class="font-medium text-green-900">System Notification</p>
-                                        <p class="text-sm text-green-800 mt-1">English proficiency test results have been verified and approved.</p>
-                                        <p class="text-xs text-green-600 mt-2">March 22, 2025 - 10:15 AM</p>
+                                        <p class="font-medium text-gray-900">System</p>
+                                        <p class="text-sm text-gray-800 mt-1">All required documents have been received and verified.</p>
+                                        <p class="text-xs text-gray-600 mt-2">March 20, 2025</p>
                                     </div>
                                 </div>
                             </div>
@@ -832,7 +1766,7 @@
                                 <div class="flex items-center justify-between">
                                     <span class="text-sm text-gray-600">Progress: 3/6 documents completed</span>
                                     <div class="w-32 bg-gray-200 rounded-full h-2">
-                                        <div class="bg-blue-600 h-2 rounded-full" style="width: 50%"></div>
+                                        <div class="bg-red-600 h-2 rounded-full" style="width: 50%"></div>
                                     </div>
                                 </div>
                             </div>
@@ -841,7 +1775,7 @@
 
                     <!-- Action Buttons -->
                     <div class="flex justify-between items-center">
-                        <button class="px-4 py-2 text-blue-600 border border-blue-200 rounded-xl hover:bg-blue-50 flex items-center">
+                        <button class="px-4 py-2 text-red-600 border border-red-200 rounded-xl hover:bg-red-50 flex items-center">
                             <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i>
                             Message Counselor
                         </button>
@@ -849,8 +1783,7 @@
                             <button class="px-4 py-2 text-gray-600 border border-gray-200 rounded-xl hover:bg-gray-50">
                                 Edit Application
                             </button>
-                            <button class="px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 flex items-center">
-                                <i data-lucide="upload" class="w-4 h-4 mr-2"></i>
+                            <button class="px-4 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700">
                                 Upload Documents
                             </button>
                         </div>
@@ -899,7 +1832,7 @@
                                 <span class="text-sm text-gray-600">7/12 items completed</span>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-2 mb-6">
-                                <div class="bg-purple-600 h-2 rounded-full" style="width: 58%"></div>
+                                <div class="bg-red-600 h-2 rounded-full" style="width: 58%"></div>
                             </div>
                             
                             <div class="space-y-3">
@@ -967,10 +1900,10 @@
 
                     <!-- Action Buttons -->
                     <div class="flex justify-end space-x-3">
-                        <button class="px-4 py-2 text-purple-600 border border-purple-200 rounded-xl hover:bg-purple-50">
+                        <button class="px-4 py-2 text-red-600 border border-red-200 rounded-xl hover:bg-red-50">
                             Contact Visa Advisor
                         </button>
-                        <button class="px-4 py-2 bg-purple-600 text-white rounded-xl hover:bg-purple-700">
+                        <button class="px-4 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700">
                             Upload Documents
                         </button>
                     </div>
@@ -1062,17 +1995,16 @@
 
                 <!-- Action Buttons -->
                 <div class="flex justify-between items-center pt-4 border-t">
-                    <button class="px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 flex items-center">
+                    <button class="px-4 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700 flex items-center">
                         <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i>
                         Message Support
+                    <div class="mt-6 space-y-3">
+                    <button type="submit" class="w-full flex justify-center py-3 px-4 rounded-xl shadow-sm text-sm font-bold text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors">
+                        Start Application
                     </button>
-                    <div class="flex space-x-3">
-                        <button class="px-4 py-2 text-gray-600 hover:text-gray-800 border rounded-xl">
-                            Edit Application
-                        </button>
-                        <button class="px-4 py-2 bg-gray-600 text-white rounded-xl hover:bg-gray-700">
-                            Close
-                        </button>
+                    <button type="button" id="cancelBtn" class="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-xl shadow-sm text-sm font-medium text-black bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors">
+                        Cancel
+                    </button>
                     </div>
                 </div>
             </div>
@@ -1080,6 +2012,324 @@
     </div>
 
     <script>
+        // Application data for each card
+        const applicationData = {
+            '1': {
+                programName: 'BSc Computer Science',
+                institutionName: 'University of Toronto',
+                countryName: 'Canada',
+                intakePeriod: 'Fall 2025',
+                applicationStatus: 'Docs Review',
+                lastUpdated: 'March 28, 2025',
+                currentStage: 2,
+                nextAction: 'Please upload the following documents for review',
+                requiredDocuments: [
+                    'Academic transcripts (certified copy)',
+                    'English proficiency test results',
+                    'Statement of purpose',
+                    'CV/Resume',
+                    'Letters of recommendation (2 required)',
+                    'Portfolio (if applicable)'
+                ],
+                completedDocuments: [
+                    'Academic transcripts (certified copy)',
+                    'English proficiency test results',
+                    'Statement of purpose'
+                ]
+            },
+            '2': {
+                programName: 'MSc Data Science',
+                institutionName: 'University of Melbourne',
+                countryName: 'Australia',
+                intakePeriod: 'Fall 2025',
+                applicationStatus: 'Agreement & 1st Payment',
+                lastUpdated: 'April 1, 2025',
+                currentStage: 3,
+                nextAction: 'Please review and sign the agreement',
+                requiredDocuments: [
+                    'Signed agreement form',
+                    'First payment receipt',
+                    'Passport copy'
+                ],
+                completedDocuments: [
+                    'Signed agreement form',
+                    'First payment receipt'
+                ]
+            },
+            '3': {
+                programName: 'MSc Artificial Intelligence',
+                institutionName: 'University of Toronto',
+                countryName: 'Canada',
+                intakePeriod: 'Fall 2025',
+                applicationStatus: 'School Application',
+                lastUpdated: 'April 5, 2025',
+                currentStage: 5,
+                nextAction: 'Complete your school application form',
+                requiredDocuments: [
+                    'Completed application form',
+                    'Application fee payment',
+                    'Personal statement',
+                    'Letters of recommendation',
+                    'Resume/CV'
+                ],
+                completedDocuments: [
+                    'Completed application form',
+                    'Application fee payment'
+                ]
+            },
+            '4': {
+                programName: 'MSc Business Analytics',
+                institutionName: 'University of British Columbia',
+                countryName: 'Canada',
+                intakePeriod: 'Fall 2025',
+                applicationStatus: 'School Acceptance',
+                lastUpdated: 'April 10, 2025',
+                currentStage: 6,
+                nextAction: 'Accept your offer and pay the deposit',
+                requiredDocuments: [
+                    'Offer acceptance form',
+                    'Tuition deposit payment',
+                    'Official transcripts'
+                ],
+                completedDocuments: [
+                    'Offer acceptance form',
+                    'Tuition deposit payment'
+                ]
+            },
+            '5': {
+                programName: 'BSc Mechanical Engineering',
+                institutionName: 'University of Auckland',
+                countryName: 'New Zealand',
+                intakePeriod: 'July 2025',
+                applicationStatus: 'Visa App',
+                lastUpdated: 'April 15, 2025',
+                currentStage: 7,
+                nextAction: 'Prepare your visa application documents',
+                requiredDocuments: [
+                    'Passport copy',
+                    'Financial statements',
+                    'Medical examination',
+                    'Police clearance',
+                    'Visa application form'
+                ],
+                completedDocuments: [
+                    'Passport copy',
+                    'Financial statements'
+                ]
+            },
+            '6': {
+                programName: 'MSc Computer Science',
+                institutionName: 'University of Edinburgh',
+                countryName: 'United Kingdom',
+                intakePeriod: 'Fall 2025',
+                applicationStatus: 'Pre-Departure',
+                lastUpdated: 'April 20, 2025',
+                currentStage: 8,
+                nextAction: 'Complete your pre-departure checklist',
+                requiredDocuments: [
+                    'Flight booking confirmation',
+                    'Accommodation confirmation',
+                    'Travel insurance',
+                    'Visa approval',
+                    'Vaccination records'
+                ],
+                completedDocuments: [
+                    'Flight booking confirmation',
+                    'Accommodation confirmation',
+                    'Travel insurance'
+                ]
+            },
+            '7': {
+                programName: 'BBA Business Administration',
+                institutionName: 'University of Manchester',
+                countryName: 'United Kingdom',
+                intakePeriod: 'January 2025',
+                applicationStatus: 'Pre-Departure',
+                lastUpdated: 'April 25, 2025',
+                currentStage: 8,
+                nextAction: 'Finalize your travel arrangements',
+                requiredDocuments: [
+                    'Flight details',
+                    'Accommodation details',
+                    'Airport pickup confirmation',
+                    'Orientation schedule'
+                ],
+                completedDocuments: [
+                    'Flight details',
+                    'Accommodation details'
+                ]
+            },
+            '8': {
+                programName: 'BSc Psychology',
+                institutionName: 'University of British Columbia',
+                countryName: 'Canada',
+                intakePeriod: 'May 2024',
+                applicationStatus: 'Post-Departure',
+                lastUpdated: 'May 1, 2024',
+                currentStage: 9,
+                nextAction: 'Complete your arrival checklist',
+                requiredDocuments: [
+                    'Passport and visa',
+                    'Letter of acceptance',
+                    'Proof of funds',
+                    'Accommodation details',
+                    'Emergency contacts'
+                ],
+                completedDocuments: [
+                    'Passport and visa',
+                    'Letter of acceptance',
+                    'Proof of funds',
+                    'Accommodation details',
+                    'Emergency contacts'
+                ]
+            },
+            '9': {
+                programName: 'MBA International Business',
+                institutionName: 'University of Sydney',
+                countryName: 'Australia',
+                intakePeriod: 'Fall 2025',
+                applicationStatus: 'Visa App',
+                lastUpdated: 'April 28, 2025',
+                currentStage: 7,
+                nextAction: 'Schedule your visa interview',
+                requiredDocuments: [
+                    'Visa application form',
+                    'Passport photos',
+                    'Financial documents',
+                    'Health insurance',
+                    'Visa fee payment'
+                ],
+                completedDocuments: [
+                    'Visa application form',
+                    'Passport photos'
+                ]
+            }
+        };
+
+        // Function to update modal content based on application ID
+        function updateModalContent(appId) {
+            const appData = applicationData[appId];
+            if (!appData) return;
+
+            // Update program information
+            document.getElementById('activeProgramName').textContent = appData.programName;
+            document.getElementById('activeInstitutionName').textContent = appData.institutionName;
+            document.getElementById('activeCountryName').textContent = appData.countryName;
+            document.getElementById('activeIntakePeriod').textContent = appData.intakePeriod;
+            document.getElementById('activeApplicationStatus').textContent = appData.applicationStatus;
+            document.getElementById('activeLastUpdated').textContent = appData.lastUpdated;
+
+            // Update progress steps
+            const stages = [
+                'Initial Advising',
+                'Docs Review',
+                'Agreement & 1st Payment',
+                'App Prep & 2nd Payment',
+                'School Application',
+                'School Acceptance',
+                'Visa App',
+                'Pre-Departure',
+                'Arrival'
+            ];
+
+            // Update timeline steps
+            const timelineContainer = document.querySelector('#activeApplicationContent .space-y-4');
+            if (timelineContainer) {
+                let timelineHTML = '';
+                
+                stages.forEach((stage, index) => {
+                    const stepNumber = index + 1;
+                    let statusIcon = '';
+                    let statusText = '';
+                    let statusClass = '';
+                    
+                    if (stepNumber < appData.currentStage) {
+                        // Completed steps
+                        statusIcon = '<i data-lucide="check" class="w-4 h-4 text-green-600"></i>';
+                        statusClass = 'bg-green-100';
+                        statusText = `Completed - ${appData.lastUpdated}`;
+                    } else if (stepNumber === appData.currentStage) {
+                        // Current step
+                        statusIcon = '<i data-lucide="clock" class="w-4 h-4 text-blue-600"></i>';
+                        statusClass = 'bg-blue-100';
+                        statusText = 'In Progress';
+                    } else {
+                        // Upcoming steps
+                        statusIcon = '<i data-lucide="circle" class="w-4 h-4 text-gray-400"></i>';
+                        statusClass = 'bg-gray-100';
+                        statusText = 'Pending';
+                    }
+                    
+                    timelineHTML += `
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-8 h-8 ${statusClass} rounded-full flex items-center justify-center mr-4">
+                                ${statusIcon}
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-medium">${stepNumber}. ${stage}</p>
+                                <p class="text-sm text-gray-600">${statusText}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                timelineContainer.innerHTML = timelineHTML;
+                lucide.createIcons(); // Refresh icons after updating DOM
+            }
+
+            // Update next action items
+            const nextActionContainer = document.querySelector('#activeApplicationContent .bg-blue-50');
+            if (nextActionContainer) {
+                nextActionContainer.querySelector('p.text-blue-700').textContent = appData.nextAction;
+                
+                const actionList = nextActionContainer.querySelector('ul');
+                if (actionList) {
+                    actionList.innerHTML = appData.requiredDocuments
+                        .filter(doc => !appData.completedDocuments.includes(doc))
+                        .map(doc => `<li>• ${doc}</li>`)
+                        .join('');
+                }
+            }
+
+            // Update document checklist
+            const checklistContainer = document.querySelector('#activeApplicationContent .bg-white.border.rounded-xl.p-4');
+            if (checklistContainer) {
+                const checklistItems = appData.requiredDocuments.map(doc => {
+                    const isCompleted = appData.completedDocuments.includes(doc);
+                    const icon = isCompleted ? 'check-circle' : 'circle';
+                    const colorClass = isCompleted ? 'text-green-600' : 'text-gray-400';
+                    const textClass = isCompleted ? 'text-green-700' : 'text-gray-500';
+                    
+                    return `
+                        <div class="flex items-center">
+                            <i data-lucide="${icon}" class="w-5 h-5 ${colorClass} mr-3"></i>
+                            <span class="${textClass}">${doc}</span>
+                        </div>
+                    `;
+                }).join('');
+                
+                const progress = (appData.completedDocuments.length / appData.requiredDocuments.length) * 100;
+                
+                checklistContainer.innerHTML = `
+                    <div class="space-y-3">
+                        ${checklistItems}
+                    </div>
+                    <div class="mt-4 pt-4 border-t">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-600">
+                                Progress: ${appData.completedDocuments.length}/${appData.requiredDocuments.length} documents completed
+                            </span>
+                            <div class="w-32 bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-600 h-2 rounded-full" style="width: ${progress}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                lucide.createIcons(); // Refresh icons after updating DOM
+            }
+        }
+
         // Initialize Lucide icons
         lucide.createIcons();
 
@@ -1088,7 +2338,6 @@
             const modal = document.getElementById('newApplicationModal');
             if (modal) {
                 modal.classList.remove('hidden');
-                lucide.createIcons();
             }
         }
 
@@ -1096,21 +2345,6 @@
         function handleLogout() {
             window.location.href = '../../login.html';
         }
-
-        // Profile Dropdown Toggle
-        const profileMenu = document.getElementById('profile-menu');
-        const profileDropdown = document.getElementById('profile-dropdown');
-
-        profileMenu.addEventListener('click', () => {
-            profileDropdown.classList.toggle('hidden');
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!profileMenu.contains(e.target)) {
-                profileDropdown.classList.add('hidden');
-            }
-        });
 
         // New Application Modal - Run immediately since script is at bottom of page
         const modal = document.getElementById('newApplicationModal');
@@ -1122,9 +2356,6 @@
         console.log('New Application Button:', newApplicationBtn);
         console.log('Modal:', modal);
         
-        // Test if JavaScript is running at all
-        alert('JavaScript is running! Button ID: ' + (newApplicationBtn ? 'found' : 'not found'));
-
         // Test button click detection
         if (newApplicationBtn) {
             console.log('Button found, adding click listener');
@@ -1192,97 +2423,108 @@
             });
         }
 
-        // Detail View Modal functionality
-        const detailModal = document.getElementById('detailViewModal');
-        const closeDetailModal = document.getElementById('closeDetailModal');
-        const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
+        // Initialize modals when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Profile Dropdown Toggle
+            const profileMenu = document.getElementById('profile-menu');
+            const profileDropdown = document.getElementById('profile-dropdown');
 
-        // Application data
-        const applicationData = {
-            1: {
-                program: 'BSc Computer Science',
-                institution: 'University of Toronto',
-                country: 'Canada',
-                intake: 'Fall 2025',
-                status: 'In Review',
-                statusClass: 'bg-blue-100 text-blue-600',
-                lastUpdated: 'March 28, 2025'
-            },
-            2: {
-                program: 'MSc Data Science',
-                institution: 'University of Melbourne',
-                country: 'Australia',
-                intake: 'Spring 2025',
-                status: 'Submitted',
-                statusClass: 'bg-green-100 text-green-600',
-                lastUpdated: 'March 25, 2025'
+            if (profileMenu && profileDropdown) {
+                profileMenu.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    profileDropdown.classList.toggle('hidden');
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', () => {
+                    profileDropdown.classList.add('hidden');
+                });
             }
-        };
 
-        // Open detail modal
-        viewDetailsBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const appId = btn.getAttribute('data-app-id');
-                const appData = applicationData[appId];
-                
-                if (appData) {
-                    // Update modal content
-                    document.getElementById('programName').textContent = appData.program;
-                    document.getElementById('institutionName').textContent = appData.institution;
-                    document.getElementById('countryName').textContent = appData.country;
-                    document.getElementById('intakePeriod').textContent = appData.intake;
-                    document.getElementById('lastUpdated').textContent = appData.lastUpdated;
-                    
-                    const statusElement = document.getElementById('applicationStatus');
-                    statusElement.textContent = appData.status;
-                    statusElement.className = `px-3 py-1 rounded-full text-sm ${appData.statusClass}`;
-                    
-                    document.getElementById('modalTitle').textContent = `${appData.program} - Application Details`;
+            // New Application Modal
+            const modal = document.getElementById('newApplicationModal');
+            const newApplicationBtn = document.getElementById('newApplicationBtn');
+            const closeModalBtn = document.getElementById('closeModal');
+            const cancelBtn = document.getElementById('cancelBtn');
+            const newApplicationForm = document.getElementById('newApplicationForm');
+
+            // New Application Modal functionality
+            if (newApplicationBtn && modal) {
+                newApplicationBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    modal.classList.remove('hidden');
+                    lucide.createIcons();
+                });
+            }
+
+            // Close modal handler
+            function closeModalHandler() {
+                if (modal) {
+                    modal.classList.add('hidden');
                 }
-                
-                detailModal.classList.remove('hidden');
+            }
+
+            // Close modal buttons
+            if (closeModalBtn) closeModalBtn.addEventListener('click', closeModalHandler);
+            if (cancelBtn) cancelBtn.addEventListener('click', closeModalHandler);
+
+            // Close when clicking outside
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeModalHandler();
+                    }
+                });
+            }
+
+            // Form submission
+            if (newApplicationForm) {
+                newApplicationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    closeModalHandler();
+                    // Form submission logic would go here
+                });
+            }
+
+            // Detail View Modal
+            const detailModal = document.getElementById('detailViewModal');
+            const closeDetailBtn = document.getElementById('closeDetailModal');
+            const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
+
+            // View Details buttons
+            viewDetailsBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const appId = this.getAttribute('data-app-id');
+                    updateModalContent(appId);
+                    if (detailModal) {
+                        detailModal.classList.remove('hidden');
+                    }
+                });
             });
-        });
 
-        // Close detail modal
-        function closeDetailModalHandler() {
-            detailModal.classList.add('hidden');
-        }
+            // Close detail modal
+            function closeDetailModal() {
+                if (detailModal) {
+                    detailModal.classList.add('hidden');
+                }
+            }
 
-        closeDetailModal.addEventListener('click', closeDetailModalHandler);
-
-        // Close modal when clicking outside
-        detailModal.addEventListener('click', (e) => {
-            if (e.target === detailModal) {
-                closeDetailModalHandler();
+            // Close buttons for detail modal
+            if (closeDetailBtn) closeDetailBtn.addEventListener('click', closeDetailModal);
+            
+            // Close when clicking outside
+            if (detailModal) {
+                detailModal.addEventListener('click', function(e) {
+                    if (e.target === detailModal) {
+                        closeDetailModal();
+                    }
+                });
             }
         });
 
-        // Close button in modal footer
-        const modalCloseBtn = detailModal.querySelector('button:contains("Close")');
-        if (modalCloseBtn) {
-            modalCloseBtn.addEventListener('click', closeDetailModalHandler);
-        }
-        // Handle logout
-        function handleLogout() {
-            window.location.href = '../../login.html';
-        }
-
-        // Profile Dropdown Toggle
-        const profileMenu = document.getElementById('profile-menu');
-        const profileDropdown = document.getElementById('profile-dropdown');
-
-        profileMenu.addEventListener('click', () => {
-            profileDropdown.classList.toggle('hidden');
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!profileMenu.contains(e.target)) {
-                profileDropdown.classList.add('hidden');
-                lucide.createIcons();
-            }
-        });
+        // Profile Dropdown Toggle - Moved to DOMContentLoaded
     </script>
 
     <!-- AI Assistant Floating Button -->
@@ -1425,83 +2667,74 @@
     
     <!-- Working Modal Script -->
     <script>
+        // Initialize modal when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById('applicationModal');
-            const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
-            const closeBtn = document.getElementById('closeModal');
-            
-            console.log('Modal found:', modal);
-            console.log('View Details buttons found:', viewDetailsBtns.length);
-            
-            // Application data
-            const applications = {
-                '1': {
-                    name: 'MSc in Data Science',
-                    university: 'University of British Columbia',
-                    location: 'Vancouver, Canada',
-                    status: 'Under Review',
-                    submittedDate: 'December 15, 2024',
-                    applicationId: 'APP-2024-001234'
-                },
-                '2': {
-                    name: 'Bachelor of Engineering', 
-                    university: 'University of Toronto',
-                    location: 'Toronto, Canada',
-                    status: 'Submitted',
-                    submittedDate: 'January 10, 2025',
-                    applicationId: 'APP-2025-001567'
-                }
-            };
-            
+            // Close modal when clicking outside
+            const detailModal = document.getElementById('detailViewModal');
+            if (detailModal) {
+                detailModal.addEventListener('click', function(e) {
+                    if (e.target === detailModal) {
+                        detailModal.classList.add('hidden');
+                    }
+                });
+            }
+
             // Add click listeners to View Details buttons
+            const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
             viewDetailsBtns.forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    console.log('View Details clicked');
-                    const applicationId = btn.getAttribute('data-application-id');
-                    console.log('Application ID:', applicationId);
-                    const application = applications[applicationId];
-                    
-                    if (application && modal) {
-                        // Update modal content
-                        const nameEl = document.getElementById('modalApplicationName');
-                        const uniEl = document.getElementById('modalUniversityName');
-                        const locEl = document.getElementById('modalLocation');
-                        const statusEl = document.getElementById('modalStatus');
-                        const dateEl = document.getElementById('modalSubmittedDate');
-                        const idEl = document.getElementById('modalApplicationId');
-                        
-                        if (nameEl) nameEl.textContent = application.name;
-                        if (uniEl) uniEl.textContent = application.university;
-                        if (locEl) locEl.textContent = application.location;
-                        if (statusEl) statusEl.textContent = application.status;
-                        if (dateEl) dateEl.textContent = application.submittedDate;
-                        if (idEl) idEl.textContent = application.applicationId;
-                        
-                        // Show modal
+                    const appId = this.getAttribute('data-app-id');
+                    updateModalContent(appId);
+                    const modal = document.getElementById('detailViewModal');
+                    if (modal) {
                         modal.classList.remove('hidden');
-                        console.log('Modal should be visible');
-                        lucide.createIcons();
                     }
                 });
             });
-            
-            // Close modal
-            if (closeBtn) {
-                closeBtn.addEventListener('click', function() {
-                    modal.classList.add('hidden');
-                });
-            }
-            
-            // Close modal when clicking outside
-            if (modal) {
-                modal.addEventListener('click', function(e) {
-                    if (e.target === modal) {
-                        modal.classList.add('hidden');
-                    }
-                });
-            }
         });
+
+        // Update modal content function
+        function updateModalContent(appId) {
+            const appData = applicationData[appId];
+            if (!appData) return;
+
+            // Update program information
+            const programNameEl = document.getElementById('activeProgramName');
+            const institutionEl = document.getElementById('activeInstitutionName');
+            const countryEl = document.getElementById('activeCountryName');
+            const intakeEl = document.getElementById('activeIntakePeriod');
+            const statusEl = document.getElementById('activeApplicationStatus');
+            const updatedEl = document.getElementById('activeLastUpdated');
+
+            if (programNameEl) programNameEl.textContent = appData.programName;
+            if (institutionEl) institutionEl.textContent = appData.institutionName;
+            if (countryEl) countryEl.textContent = appData.countryName;
+            if (intakeEl) intakeEl.textContent = appData.intakePeriod;
+            if (statusEl) statusEl.textContent = appData.applicationStatus;
+            if (updatedEl) updatedEl.textContent = appData.lastUpdated;
+
+            // Update timeline steps if they exist in appData
+            if (appData.timeline) {
+                const timelineContainer = document.querySelector('#activeApplicationContent .space-y-4');
+                if (timelineContainer) {
+                    timelineContainer.innerHTML = appData.timeline.map(step => `
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center mr-4 ${step.completed ? 'bg-green-100' : 'bg-gray-100'}">
+                                <i data-lucide="${step.completed ? 'check' : 'circle'}" class="w-4 h-4 ${step.completed ? 'text-green-600' : 'text-gray-400'}"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-medium ${step.completed ? 'text-gray-900' : 'text-gray-500'}">${step.title}</p>
+                                <p class="text-sm text-gray-500">${step.date || ''}</p>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            // Refresh icons after updating DOM
+            lucide.createIcons();
+        }
     </script>
 </body>
 </html>

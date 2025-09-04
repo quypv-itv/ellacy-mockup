@@ -13,6 +13,7 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            color: #000000;
         }
         .message-list::-webkit-scrollbar,
         .message-thread::-webkit-scrollbar {
@@ -21,6 +22,15 @@
         .message-list, .message-thread {
             -ms-overflow-style: none;
             scrollbar-width: none;
+        }
+        .bg-primary {
+            background-color: #ED2217;
+        }
+        .text-primary {
+            color: #ED2217;
+        }
+        .hover\:text-primary:hover {
+            color: #ED2217;
         }
     </style>
 </head>
@@ -41,23 +51,23 @@
                     
                     <!-- Navigation Menu -->
                     <nav class="flex items-center space-x-3">
-                        <a href="Student-find-program.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <a href="Student-find-program.html" class="flex items-center text-black hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
                             <i data-lucide="search" class="w-4 h-4 mr-2"></i>
                             Find Programs
                         </a>
-                        <a href="Student-favorites.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <a href="Student-favorites.html" class="flex items-center text-black hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
                             <i data-lucide="heart" class="w-4 h-4 mr-2"></i>
                             Favorites (0)
                         </a>
-                        <a href="Student-my-application.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <a href="Student-my-application.html" class="flex items-center text-black hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
                             <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
                             My Applications (0)
                         </a>
-                        <a href="Student-sholarships.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <a href="Student-sholarships.html" class="flex items-center text-black hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
                             <i data-lucide="graduation-cap" class="w-4 h-4 mr-2"></i>
                             Scholarships
                         </a>
-                        <a href="Student-payment.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <a href="Student-payment.html" class="flex items-center text-black hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
                             <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
                             Payment
                         </a>
@@ -70,7 +80,7 @@
                         </a>
                         
                         <button class="relative">
-                            <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
+                            <i data-lucide="bell" class="w-6 h-6 text-black"></i>
                             <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
                         </button>
                         
@@ -110,32 +120,32 @@
                 <div class="relative mb-4">
                     <input type="text" placeholder="Search messages..." 
                            class="w-full pl-10 pr-4 py-2 border rounded-xl">
-                    <i data-lucide="search" class="w-5 h-5 text-gray-400 absolute left-3 top-2.5"></i>
+                    <i data-lucide="search" class="w-5 h-5 text-gray-600 absolute left-3 top-2.5"></i>
                 </div>
                 <div class="flex space-x-2">
-                    <button class="px-3 py-1 text-sm bg-blue-600 text-white rounded-lg">All</button>
-                    <button class="px-3 py-1 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">Unread</button>
-                    <button class="px-3 py-1 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">System</button>
-                    <button class="px-3 py-1 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">Agent</button>
+                    <button class="px-3 py-1 text-sm bg-red-600 text-white rounded-lg">All</button>
+                    <button class="px-3 py-1 text-sm text-black hover:bg-gray-100 rounded-lg">Unread</button>
+                    <button class="px-3 py-1 text-sm text-black hover:bg-gray-100 rounded-lg">System</button>
+                    <button class="px-3 py-1 text-sm text-black hover:bg-gray-100 rounded-lg">Agent</button>
                 </div>
             </div>
 
             <!-- Messages List -->
             <div class="message-list overflow-y-auto" style="height: calc(100vh - 145px)">
                 <!-- Message 1 -->
-                <div class="p-4 border-b hover:bg-gray-50 cursor-pointer bg-blue-50">
+                <div class="p-4 border-b hover:bg-gray-50 cursor-pointer bg-red-50">
                     <div class="flex items-start justify-between">
                         <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
+                            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600 font-semibold">
                                 EA
                             </div>
                             <div class="ml-3">
                                 <h3 class="font-medium">Ellacy Agent</h3>
-                                <p class="text-sm text-gray-600 truncate w-48">Application Update: Document Review Complete</p>
+                                <p class="text-sm text-black truncate w-48">Application Update: Document Review Complete</p>
                             </div>
                         </div>
                         <div class="text-right">
-                            <p class="text-xs text-gray-500">2h ago</p>
+                            <p class="text-xs text-gray-600">2h ago</p>
                             <span class="inline-block w-2 h-2 bg-blue-600 rounded-full mt-1"></span>
                         </div>
                     </div>
@@ -145,16 +155,16 @@
                 <div class="p-4 border-b hover:bg-gray-50 cursor-pointer">
                     <div class="flex items-start justify-between">
                         <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
+                            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600">
                                 <i data-lucide="bell" class="w-5 h-5"></i>
                             </div>
                             <div class="ml-3">
                                 <h3 class="font-medium">System Notification</h3>
-                                <p class="text-sm text-gray-600 truncate w-48">Payment Reminder: Application Fee Due</p>
+                                <p class="text-sm text-black truncate w-48">Payment Reminder: Application Fee Due</p>
                             </div>
                         </div>
                         <div class="text-right">
-                            <p class="text-xs text-gray-500">5h ago</p>
+                            <p class="text-xs text-gray-600">5h ago</p>
                         </div>
                     </div>
                 </div>
@@ -163,16 +173,16 @@
                 <div class="p-4 border-b hover:bg-gray-50 cursor-pointer">
                     <div class="flex items-start justify-between">
                         <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-semibold">
+                            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600 font-semibold">
                                 UBC
                             </div>
                             <div class="ml-3">
                                 <h3 class="font-medium">University of British Columbia</h3>
-                                <p class="text-sm text-gray-600 truncate w-48">Interview Schedule: MSc Data Science</p>
+                                <p class="text-sm text-black truncate w-48">Interview Schedule: MSc Data Science</p>
                             </div>
                         </div>
                         <div class="text-right">
-                            <p class="text-xs text-gray-500">1d ago</p>
+                            <p class="text-xs text-gray-600">1d ago</p>
                         </div>
                     </div>
                 </div>
@@ -184,19 +194,19 @@
             <!-- Thread Header -->
             <div class="p-4 bg-white border-b flex items-center justify-between">
                 <div class="flex items-center">
-                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold">
+                    <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600 font-semibold">
                         EA
                     </div>
                     <div class="ml-3">
                         <h2 class="font-medium">Ellacy Agent</h2>
-                        <p class="text-sm text-gray-600">Application Update: Document Review Complete</p>
+                        <p class="text-sm text-black">Application Update: Document Review Complete</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-3">
-                    <button class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                    <button class="p-2 text-black hover:bg-red-50 rounded-lg">
                         <i data-lucide="search" class="w-5 h-5"></i>
                     </button>
-                    <button class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                    <button class="p-2 text-black hover:bg-red-50 rounded-lg">
                         <i data-lucide="more-vertical" class="w-5 h-5"></i>
                     </button>
                 </div>
@@ -206,37 +216,37 @@
             <div class="message-thread flex-1 overflow-y-auto p-4 space-y-4">
                 <!-- System Message -->
                 <div class="flex justify-center">
-                    <span class="text-xs text-gray-500 bg-white px-3 py-1 rounded-full shadow-sm">Today</span>
+                    <span class="text-xs text-gray-600 bg-white px-3 py-1 rounded-full border border-gray-200">Today</span>
                 </div>
 
                 <!-- Agent Message -->
                 <div class="flex items-start space-x-3">
-                    <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold text-sm">
+                    <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-600 font-semibold text-sm">
                         EA
                     </div>
                     <div class="flex-1 space-y-2">
                         <div class="bg-white rounded-2xl p-4 shadow-sm">
-                            <p class="text-gray-800">Hi Sarah, I've completed the review of your documents for the UBC application. Everything looks good! 📚✨</p>
-                            <p class="text-gray-800 mt-2">I've attached the review summary below. Please check and let me know if you have any questions.</p>
+                            <p class="text-black">Hi Sarah, I've completed the review of your documents for the UBC application. Everything looks good! 📚✨</p>
+                            <p class="text-black mt-2">I've attached the review summary below. Please check and let me know if you have any questions.</p>
                         </div>
-                        <div class="bg-gray-100 rounded-xl p-3 flex items-center space-x-3 w-fit">
-                            <i data-lucide="file-text" class="w-5 h-5 text-gray-600"></i>
+                        <div class="bg-red-50 border border-red-100 rounded-xl p-3 flex items-center space-x-3 w-fit">
+                            <i data-lucide="file-text" class="w-5 h-5 text-red-600"></i>
                             <div>
-                                <p class="text-sm font-medium">Document_Review_Summary.pdf</p>
-                                <p class="text-xs text-gray-500">245 KB • PDF</p>
+                                <p class="text-sm font-medium text-black">Document_Review_Summary.pdf</p>
+                                <p class="text-xs text-gray-600">245 KB • PDF</p>
                             </div>
-                            <button class="p-1 hover:bg-gray-200 rounded">
-                                <i data-lucide="download" class="w-4 h-4 text-gray-600"></i>
+                            <button class="p-1 hover:bg-red-100 rounded text-red-600">
+                                <i data-lucide="download" class="w-4 h-4"></i>
                             </button>
                         </div>
-                        <p class="text-xs text-gray-500">10:30 AM</p>
+                        <p class="text-xs text-gray-600">10:30 AM</p>
                     </div>
                 </div>
 
                 <!-- User Message -->
                 <div class="flex items-start justify-end space-x-3">
                     <div class="flex-1 space-y-2 flex flex-col items-end">
-                        <div class="bg-blue-600 text-white rounded-2xl p-4 shadow-sm max-w-lg">
+                        <div class="bg-red-600 text-white rounded-2xl p-4 shadow-sm max-w-lg">
                             <p>Thank you for the quick review! I'll take a look at the summary right away. 🙏</p>
                         </div>
                         <p class="text-xs text-gray-500">10:35 AM</p>
@@ -248,7 +258,7 @@
 
                 <!-- Agent Message with Quick Actions -->
                 <div class="flex items-start space-x-3">
-                    <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-semibold text-sm">
+                    <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-600 font-semibold text-sm">
                         EA
                     </div>
                     <div class="flex-1 space-y-2">
@@ -256,7 +266,7 @@
                             <p class="text-gray-800">Great! Once you've reviewed it, please confirm if you're ready to proceed with the submission. The deadline is April 15th.</p>
                         </div>
                         <div class="flex space-x-2">
-                            <button class="px-4 py-2 bg-blue-600 text-white rounded-xl text-sm hover:bg-blue-700">
+                            <button class="px-4 py-2 bg-red-600 text-white rounded-xl text-sm hover:bg-red-700 transition-colors">
                                 Confirm Submission
                             </button>
                             <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-xl text-sm hover:bg-gray-200">
@@ -271,26 +281,26 @@
             <!-- Message Input -->
             <div class="p-4 bg-white border-t">
                 <div class="flex items-end space-x-3">
-                    <button class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                    <button class="p-2 text-black hover:bg-red-50 rounded-lg">
                         <i data-lucide="paperclip" class="w-5 h-5"></i>
                     </button>
                     <div class="flex-1 relative">
                         <textarea placeholder="Type your message..." rows="1" 
-                                  class="w-full px-4 py-3 border rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                                  class="w-full px-4 py-3 border-0 focus:ring-0 focus:outline-none text-black placeholder-gray-400 bg-white rounded-lg"></textarea>
                         <div class="absolute right-3 bottom-3">
                             <i data-lucide="smile" class="w-5 h-5 text-gray-400 cursor-pointer hover:text-gray-600"></i>
                         </div>
                     </div>
-                    <button class="p-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700">
+                    <button class="p-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
                         <i data-lucide="send" class="w-5 h-5"></i>
                     </button>
                 </div>
                 <!-- Quick Suggestions -->
                 <div class="flex mt-2 space-x-2">
-                    <button class="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200">
+                    <button class="px-3 py-1 text-sm bg-gray-100 text-black rounded-lg hover:bg-red-50 hover:text-red-600 border border-gray-200 transition-colors">
                         Thanks for the update
                     </button>
-                    <button class="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200">
+                    <button class="px-3 py-1 text-sm bg-gray-100 text-black rounded-lg hover:bg-red-50 hover:text-red-600 border border-gray-200 transition-colors">
                         I'll review it soon
                     </button>
                 </div>
@@ -330,8 +340,8 @@
                     <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: #FEE2E2;">
                         <i data-lucide="bot" class="w-4 h-4" style="color: #ED2217;"></i>
                     </div>
-                    <div class="bg-gray-100 rounded-2xl rounded-tl-md p-3 max-w-xs">
-                        <p class="text-sm text-gray-800">Hi! I can help you with your messages and applications. What can I assist you with?</p>
+                    <div class="bg-red-50 border border-red-100 rounded-2xl rounded-tl-md p-3 max-w-xs">
+                        <p class="text-sm text-black">Hi! I can help you with your messages and applications. What can I assist you with?</p>
                     </div>
                 </div>
             </div>
@@ -339,7 +349,7 @@
             <!-- Chat Input -->
             <div class="p-4 border-t border-gray-200">
                 <div class="flex items-center space-x-2">
-                    <input type="text" id="chatInput" placeholder="Type your message..." class="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:border-transparent" style="--tw-ring-color: #ED2217;">
+                    <input type="text" id="chatInput" placeholder="Type a message..." class="flex-1 border-0 focus:ring-0 focus:outline-none text-black placeholder-gray-400 bg-white rounded-lg px-4">
                     <button id="sendMessageBtn" class="text-white rounded-full p-2 transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#DC1F12'" onmouseout="this.style.backgroundColor='#ED2217'">
                         <i data-lucide="send" class="w-5 h-5"></i>
                     </button>
@@ -434,7 +444,7 @@
                     <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: #FEE2E2;">
                         <i data-lucide="bot" class="w-4 h-4" style="color: #ED2217;"></i>
                     </div>
-                    <div class="bg-gray-100 rounded-2xl rounded-tl-md p-3 max-w-xs">
+                    <div class="bg-red-50 border border-red-100 rounded-2xl rounded-tl-md p-3 max-w-xs">
                         <p class="text-sm text-gray-800">I can help you with "${message}". What specific assistance do you need with your messages or applications?</p>
                     </div>
                 `;
