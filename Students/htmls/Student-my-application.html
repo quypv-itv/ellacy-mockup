@@ -47,19 +47,15 @@
                     <nav class="flex items-center space-x-3">
                         <a href="Student-find-program.html" class="flex items-center text-gray-600 px-3 py-2 rounded-lg font-medium transition-colors" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
                             <i data-lucide="search" class="w-4 h-4 mr-2"></i>
-                            Find Programs
+                            Find Scholarships
                         </a>
                         <a href="Student-favorites.html" class="flex items-center text-gray-600 px-3 py-2 rounded-lg font-medium transition-colors" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
                             <i data-lucide="heart" class="w-4 h-4 mr-2"></i>
-                            Favorites (0)
+                            Favorites (4)
                         </a>
                         <a href="Student-my-application.html" class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors">
-                            <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
-                            My Applications (0)
-                        </a>
-                        <a href="Student-sholarships.html" class="flex items-center px-3 py-2 rounded-lg font-medium transition-colors" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
-                            <i data-lucide="graduation-cap" class="w-4 h-4 mr-2"></i>
-                            Scholarships
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-text" class="lucide lucide-file-text w-4 h-4 mr-2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+                            My Applications (8)
                         </a>
                         <a href="Student-payment.html" class="flex items-center px-3 py-2 rounded-lg font-medium transition-colors" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
                             <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
@@ -236,6 +232,32 @@
             </div>
 
             <script>
+                // Toggle profile dropdown
+                const profileMenu = document.getElementById('profile-menu');
+                const profileDropdown = document.getElementById('profile-dropdown');
+                
+                if (profileMenu && profileDropdown) {
+                    // Toggle dropdown on button click
+                    profileMenu.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        profileDropdown.classList.toggle('hidden');
+                    });
+                    
+                    // Close dropdown when clicking outside
+                    document.addEventListener('click', function(e) {
+                        if (!profileMenu.contains(e.target) && !profileDropdown.contains(e.target)) {
+                            profileDropdown.classList.add('hidden');
+                        }
+                    });
+                    
+                    // Close dropdown when clicking on a menu item
+                    profileDropdown.querySelectorAll('a').forEach(link => {
+                        link.addEventListener('click', function() {
+                            profileDropdown.classList.add('hidden');
+                        });
+                    });
+                }
+
                 // Function to open modal
                 function openModal(modalId) {
                     document.getElementById(modalId).classList.remove('hidden');
@@ -276,7 +298,7 @@
                                 <span class="text-sm" style="color: #000000;">Fall 2025</span>
                             </div>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">Docs Review</span>
+                        <!-- <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">Docs Review</span> -->
                     </div>
                     <div class="space-y-4">
                         <!-- Application Timeline -->
@@ -383,25 +405,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-end space-x-3 mt-4">
-                        <button class="flex items-center" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
-                            <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
-                            Edit
-                        </button>
-                        <button onclick="openModal('appModal1')" class="flex items-center text-white px-4 py-2 rounded-xl transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#EC2217'" onmouseout="this.style.backgroundColor='#ED2217'">
-                            <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                    <div class="flex justify-end mt-4">
+                        <a href="Student-my-application-details.html?id=1" target="_blank" class="text-white px-4 py-2 rounded-xl transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'">
                             View Details
-                        </button>
-                                    document.getElementById('savedProgramContent').classList.add('hidden');
-                                    document.getElementById('activeApplicationContent').classList.remove('hidden');
-                                    document.getElementById('visaPrepContent').classList.add('hidden');
-                                    // Update modal with application data
-                                    updateModalContent('1');
-                                    modal.classList.remove('hidden');
-                                }
-                            });
-                        </script>
+                        </a>
                     </div>
+                    <script>
+                        document.getElementById('savedProgramContent').classList.add('hidden');
+                        document.getElementById('activeApplicationContent').classList.remove('hidden');
+                        document.getElementById('visaPrepContent').classList.add('hidden');
+                        // Update modal with application data
+                        updateModalContent('1');
+                        modal.classList.remove('hidden');
+                    </script>
                 </div>
 
                 <!-- Application Card - Agreement & 1st Payment -->
@@ -417,7 +433,7 @@
                                 <span class="text-sm" style="color: #000000;">Spring 2025</span>
                             </div>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">Agreement signing and first payment</span>
+                        <!-- <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">Agreement signing and first payment</span> -->
                     </div>
                     <div class="space-y-4">
                         <!-- Application Timeline -->
@@ -524,29 +540,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-end space-x-3 mt-4">
-                        <button class="flex items-center" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
-                            <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
-                            Edit
-                        </button>
-                        <button class="flex items-center view-details-btn" data-app-id="2" id="viewBtn4" style="color: #ED2217;" onmouseover="this.style.color='#EC2217'" onmouseout="this.style.color='#ED2217'">
-                            <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                    <div class="flex justify-end mt-4">
+                        <a href="Student-my-application-details.html?id=1" target="_blank" class="text-white px-4 py-2 rounded-xl transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'">
                             View Details
-                        </button>
-                        <script>
-                            document.getElementById('viewBtn4').addEventListener('click', function() {
-                                const modal = document.getElementById('detailViewModal');
-                                if (modal) {
-                                    // Show active application content
-                                    document.getElementById('savedProgramContent').classList.add('hidden');
-                                    document.getElementById('activeApplicationContent').classList.remove('hidden');
-                                    document.getElementById('visaPrepContent').classList.add('hidden');
-                                    // Update modal with application data
-                                    updateModalContent('2');
-                                    modal.classList.remove('hidden');
-                                }
-                            });
-                        </script>
+                        </a>
                     </div>
                 </div>
 
@@ -563,7 +560,7 @@
                                 <span class="text-sm" style="color: #000000;">Fall 2025</span>
                             </div>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">Application Prep and 2nd payment</span>
+                        <!-- <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">Application Prep and 2nd payment</span> -->
                     </div>
                     
                     <!-- Application Timeline -->
@@ -677,29 +674,10 @@
                     </div>
                     
                     <!-- Action Buttons -->
-                    <div class="flex justify-end space-x-3 mt-4">
-                        <button class="flex items-center" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
-                            <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
-                            Edit
-                        </button>
-                        <button class="flex items-center view-details-btn" data-app-id="5" id="viewBtn5" style="color: #ED2217;" onmouseover="this.style.color='#EC2217'" onmouseout="this.style.color='#ED2217'">
-                            <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                    <div class="flex justify-end mt-4">
+                        <a href="Student-my-application-details.html?id=1" target="_blank" class="text-white px-4 py-2 rounded-xl transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'">
                             View Details
-                        </button>
-                        <script>
-                            document.getElementById('viewBtn5').addEventListener('click', function() {
-                                const modal = document.getElementById('detailViewModal');
-                                if (modal) {
-                                    // Show active application content
-                                    document.getElementById('savedProgramContent').classList.add('hidden');
-                                    document.getElementById('activeApplicationContent').classList.remove('hidden');
-                                    document.getElementById('visaPrepContent').classList.add('hidden');
-                                    // Update modal with application data
-                                    updateModalContent('3');
-                                    modal.classList.remove('hidden');
-                                }
-                            });
-                        </script>
+                        </a>
                     </div>
                 </div>
 
@@ -716,7 +694,7 @@
                                 <span class="text-sm" style="color: #000000;">Winter 2026</span>
                             </div>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">School Application</span>
+                        <!-- <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">School Application</span> -->
                     </div>
                     
                     <!-- Application Timeline -->
@@ -828,28 +806,10 @@
                     </div>
                     
                     <!-- Action Buttons -->
-                    <div class="flex justify-end space-x-3 mt-4">
-                        <button class="flex items-center" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
-                            <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
-                            Edit
-                        </button>
-                        <button class="flex items-center view-details-btn" data-app-id="6" id="viewBtn6" style="color: #ED2217;" onmouseover="this.style.color='#EC2217'" onmouseout="this.style.color='#ED2217'">
-                            <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                    <div class="flex justify-end mt-4">
+                        <a href="Student-my-application-details.html?id=1" target="_blank" class="text-white px-4 py-2 rounded-xl transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'">
                             View Details
-                        </button>
-                        <script>
-                            document.getElementById('viewBtn6').addEventListener('click', function() {
-                                const modal = document.getElementById('detailViewModal');
-                                if (modal) {
-                                    document.getElementById('savedProgramContent').classList.add('hidden');
-                                    document.getElementById('activeApplicationContent').classList.remove('hidden');
-                                    document.getElementById('visaPrepContent').classList.add('hidden');
-                                    // Update modal with application data
-                                    updateModalContent('4');
-                                    modal.classList.remove('hidden');
-                                }
-                            });
-                        </script>
+                        </a>
                     </div>
                 </div>
 
@@ -866,7 +826,7 @@
                                 <span class="text-sm" style="color: #000000;">February 2025</span>
                             </div>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">School Acceptance</span>
+                        <!-- <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">School Acceptance</span> -->
                     </div>
                     
                     <!-- Application Timeline -->
@@ -978,28 +938,10 @@
                     </div>
                     
                     <!-- Action Buttons -->
-                    <div class="flex justify-end space-x-3 mt-4">
-                        <button class="flex items-center" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
-                            <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
-                            Edit
-                        </button>
-                        <button class="flex items-center view-details-btn" data-app-id="7" id="viewBtn7" style="color: #ED2217;" onmouseover="this.style.color='#EC2217'" onmouseout="this.style.color='#ED2217'">
-                            <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                    <div class="flex justify-end mt-4">
+                        <a href="Student-my-application-details.html?id=1" target="_blank" class="text-white px-4 py-2 rounded-xl transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'">
                             View Details
-                        </button>
-                        <script>
-                            document.getElementById('viewBtn7').addEventListener('click', function() {
-                                const modal = document.getElementById('detailViewModal');
-                                if (modal) {
-                                    document.getElementById('savedProgramContent').classList.add('hidden');
-                                    document.getElementById('activeApplicationContent').classList.remove('hidden');
-                                    document.getElementById('visaPrepContent').classList.add('hidden');
-                                    // Update modal with application data
-                                    updateModalContent('5');
-                                    modal.classList.remove('hidden');
-                                }
-                            });
-                        </script>
+                        </a>
                     </div>
                 </div>
 
@@ -1016,7 +958,7 @@
                                 <span class="text-sm" style="color: #000000;">September 2025</span>
                             </div>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">Visa Application</span>
+                        <!-- <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">Visa Application</span> -->
                     </div>
                     
                     <!-- Application Timeline -->
@@ -1128,28 +1070,10 @@
                     </div>
                     
                     <!-- Action Buttons -->
-                    <div class="flex justify-end space-x-3 mt-4">
-                        <button class="flex items-center" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
-                            <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
-                            Edit
-                        </button>
-                        <button class="flex items-center view-details-btn" data-app-id="8" id="viewBtn8" style="color: #ED2217;" onmouseover="this.style.color='#EC2217'" onmouseout="this.style.color='#ED2217'">
-                            <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                    <div class="flex justify-end mt-4">
+                        <a href="Student-my-application-details.html?id=1" target="_blank" class="text-white px-4 py-2 rounded-xl transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'">
                             View Details
-                        </button>
-                        <script>
-                            document.getElementById('viewBtn8').addEventListener('click', function() {
-                                const modal = document.getElementById('detailViewModal');
-                                if (modal) {
-                                    document.getElementById('savedProgramContent').classList.add('hidden');
-                                    document.getElementById('activeApplicationContent').classList.remove('hidden');
-                                    document.getElementById('visaPrepContent').classList.add('hidden');
-                                    // Update modal with application data
-                                    updateModalContent('6');
-                                    modal.classList.remove('hidden');
-                                }
-                            });
-                        </script>
+                        </a>
                     </div>
                 </div>
 
@@ -1166,7 +1090,7 @@
                                 <span class="text-sm" style="color: #000000;">January 2025</span>
                             </div>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">Pre-Departure</span>
+                        <!-- <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">Pre-Departure</span> -->
                     </div>
                     
                     <!-- Application Timeline -->
@@ -1278,28 +1202,10 @@
                     </div>
                     
                     <!-- Action Buttons -->
-                    <div class="flex justify-end space-x-3 mt-4">
-                        <button class="flex items-center" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
-                            <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
-                            Edit
-                        </button>
-                        <button class="flex items-center view-details-btn" data-app-id="9" id="viewBtn9" style="color: #ED2217;" onmouseover="this.style.color='#EC2217'" onmouseout="this.style.color='#ED2217'">
-                            <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                    <div class="flex justify-end mt-4">
+                        <a href="Student-my-application-details.html?id=1" target="_blank" class="text-white px-4 py-2 rounded-xl transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'">
                             View Details
-                        </button>
-                        <script>
-                            document.getElementById('viewBtn9').addEventListener('click', function() {
-                                const modal = document.getElementById('detailViewModal');
-                                if (modal) {
-                                    document.getElementById('savedProgramContent').classList.add('hidden');
-                                    document.getElementById('activeApplicationContent').classList.remove('hidden');
-                                    document.getElementById('visaPrepContent').classList.add('hidden');
-                                    // Update modal with application data
-                                    updateModalContent('7');
-                                    modal.classList.remove('hidden');
-                                }
-                            });
-                        </script>
+                        </a>
                     </div>
                 </div>
 
@@ -1316,7 +1222,7 @@
                                 <span class="text-sm" style="color: #000000;">May 2024</span>
                             </div>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">Post-Departure</span>
+                        <!-- <span class="px-3 py-1 rounded-full text-sm" style="background-color: #ED2217; color: #FFFFFF;">Post-Departure</span> -->
                     </div>
                     
                     <!-- Application Timeline -->
@@ -1423,28 +1329,10 @@
                     </div>
                     
                     <!-- Action Buttons -->
-                    <div class="flex justify-end space-x-3 mt-4">
-                        <button class="flex items-center" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
-                            <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
-                            Edit
-                        </button>
-                        <button class="flex items-center view-details-btn" data-app-id="11" id="viewBtn11" style="color: #ED2217;" onmouseover="this.style.color='#EC2217'" onmouseout="this.style.color='#ED2217'">
-                            <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                    <div class="flex justify-end mt-4">
+                        <a href="Student-my-application-details.html?id=1" target="_blank" class="text-white px-4 py-2 rounded-xl transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'">
                             View Details
-                        </button>
-                        <script>
-                            document.getElementById('viewBtn11').addEventListener('click', function() {
-                                const modal = document.getElementById('detailViewModal');
-                                if (modal) {
-                                    document.getElementById('savedProgramContent').classList.add('hidden');
-                                    document.getElementById('activeApplicationContent').classList.remove('hidden');
-                                    document.getElementById('visaPrepContent').classList.add('hidden');
-                                    // Update modal with application data
-                                    updateModalContent('8');
-                                    modal.classList.remove('hidden');
-                                }
-                            });
-                        </script>
+                        </a>
                     </div>
                 </div>
 
@@ -1540,7 +1428,7 @@
                     <!-- Form Actions -->
                     <div class="flex justify-end space-x-3">
                         <button type="button" id="cancelBtn" class="px-4 py-2 text-gray-600 hover:text-gray-800">Cancel</button>
-                        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700">Start Application</button>
+                        <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700">Start Application</button>
                     </div>
                 </form>
             </div>

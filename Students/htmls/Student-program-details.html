@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berkeley City College (BCC) - ApplyLead</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(to right top, #EDE5D6, #9ED5C5, #ffffff);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Main Content -->
+    <div class="min-h-screen">
+        <!-- Header with Navigation -->
+        <header class="bg-white shadow-sm">
+            <div class="px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <a href="Student-Dashboard.html" class="flex items-center">
+                            <img src="../../ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-4">
+                            <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Student</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Navigation Menu -->
+                    <nav class="flex items-center space-x-3">
+                        <a href="Student-find-program.html" class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="search" class="w-4 h-4 mr-2"></i>
+                            Find Scholarships
+                        </a>
+                        <a href="Student-favorites.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="heart" class="w-4 h-4 mr-2"></i>
+                            Favorites (4)
+                        </a>
+                        <a href="Student-my-application.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
+                            My Applications (8)
+                        </a>
+                        <a href="Student-payment.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
+                            Payment
+                        </a>
+                    </nav>
+                    
+                    <!-- Right Side -->
+                    <div class="flex items-center space-x-4">
+                        <a href="Student-messages.html" class="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg" title="Messages">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </a>
+                        
+                        <button class="relative">
+                            <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
+                            <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                        </button>
+                        <!-- Profile Dropdown -->
+                        <div class="relative">
+                            <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
+                                     alt="Profile" 
+                                     class="w-8 h-8 rounded-full object-cover">
+                            </button>
+                            
+                            <!-- Dropdown Menu -->
+                            <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                                <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
+                                </a>
+                                <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
+                                </a>
+                                <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="max-w-7xl mx-auto px-6 py-8">
+            <!-- School Header -->
+            <div class="bg-white rounded-2xl shadow-sm p-6 mb-6">
+                <div class="flex items-start justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center">
+                            <i data-lucide="graduation-cap" class="w-8 h-8 text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h1 class="text-2xl font-bold text-gray-900">Berkeley City College (BCC)</h1>
+                            <p class="text-gray-600">Berkeley, California, USA</p>
+                            <div class="flex items-center mt-2 space-x-4">
+                                <span class="text-sm text-gray-500">Est. 1973</span>
+                                <span class="text-sm text-gray-500">•</span>
+                                <span class="text-sm text-gray-500">Public College</span>
+                                <span class="text-sm text-gray-500">•</span>
+                                <span class="text-sm text-gray-500">7,500+ Students</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <button class="text-red-600 hover:text-red-700 flex items-center text-sm font-medium">
+                            <i data-lucide="heart" class="w-4 h-4 mr-1"></i>
+                            Add to Favorites
+                        </button>
+                        <button class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-medium">
+                            Apply Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Left Column - Main Content -->
+                <div class="lg:col-span-2 space-y-6">
+                    <!-- Image Gallery -->
+                    <div class="bg-white rounded-2xl shadow-sm p-6">
+                        <h2 class="text-xl font-semibold mb-4">Campus Gallery</h2>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=400&h=300&fit=crop" alt="Campus Building" class="w-full h-full object-cover">
+                            </div>
+                            <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop" alt="Students" class="w-full h-full object-cover">
+                            </div>
+                            <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=300&fit=crop" alt="Library" class="w-full h-full object-cover">
+                            </div>
+                            <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop" alt="Classroom" class="w-full h-full object-cover">
+                            </div>
+                            <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=400&h=300&fit=crop" alt="Campus Life" class="w-full h-full object-cover">
+                            </div>
+                            <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=400&h=300&fit=crop" alt="More Photos" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                                    <span class="text-white font-semibold">+12 more</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- School Details Tabs -->
+                    <div class="bg-white rounded-2xl shadow-sm">
+                        <div class="border-b border-gray-200">
+                            <nav class="flex space-x-8 px-6">
+                                <button class="tab-btn py-4 px-1 border-b-2 border-red-600 text-red-600 font-medium text-sm" data-tab="overview">
+                                    Overview
+                                </button>
+                                <button class="tab-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm" data-tab="scholarships">
+                                    Scholarships
+                                </button>
+                                <button class="tab-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm" data-tab="admissions">
+                                    Admissions
+                                </button>
+                                <button class="tab-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm" data-tab="campus">
+                                    Campus Life
+                                </button>
+                            </nav>
+                        </div>
+
+                        <div class="p-6">
+                            <!-- Overview Tab -->
+                            <div class="tab-content" data-tab="overview">
+                                <h3 class="text-lg font-semibold mb-4">About Berkeley City College</h3>
+                                <div class="prose max-w-none text-gray-700">
+                                    <p class="mb-4">
+                                        Berkeley City College (BCC) is a public community college located in Berkeley, California. 
+                                        Established in 1973, BCC serves over 7,500 students annually and is part of the Peralta 
+                                        Community College District. The college is known for its diverse student body and strong 
+                                        academic programs.
+                                    </p>
+                                    <p class="mb-4">
+                                        BCC offers over 50 degree and certificate programs across various fields including liberal 
+                                        arts, sciences, business, and career technical education. The college is committed to 
+                                        providing accessible, high-quality education that prepares students for transfer to 
+                                        four-year universities or direct entry into the workforce.
+                                    </p>
+                                    <p>
+                                        Located in the heart of Berkeley, students benefit from the vibrant academic and cultural 
+                                        environment of the San Francisco Bay Area. The college maintains strong partnerships with 
+                                        UC Berkeley and other prestigious institutions in the region.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Scholarships Tab -->
+                            <div class="tab-content hidden" data-tab="scholarships">
+                                <h3 class="text-lg font-semibold mb-4">Available Scholarships</h3>
+                                <div class="space-y-4">
+                                    <div class="border rounded-lg p-4">
+                                        <h4 class="font-semibold text-gray-900">BCC Academic Excellence Scholarship</h4>
+                                        <p class="text-sm text-gray-600 mt-1">Award: $1,000 per semester</p>
+                                        <p class="text-sm text-gray-600">Deadline: May 15, 2024</p>
+                                        <p class="text-sm text-gray-600 mt-2">For students with a minimum GPA of 3.5. Must be enrolled full-time and demonstrate financial need.</p>
+                                    </div>
+                                    <div class="border rounded-lg p-4">
+                                        <h4 class="font-semibold text-gray-900">Berkeley Community Leadership Award</h4>
+                                        <p class="text-sm text-gray-600 mt-1">Award: $750 per semester</p>
+                                        <p class="text-sm text-gray-600">Deadline: June 1, 2024</p>
+                                        <p class="text-sm text-gray-600 mt-2">For students who have demonstrated leadership in community service. Requires two letters of recommendation.</p>
+                                    </div>
+                                    <div class="border rounded-lg p-4">
+                                        <h4 class="font-semibold text-gray-900">First Generation Student Grant</h4>
+                                        <p class="text-sm text-gray-600 mt-1">Award: $1,200 per academic year</p>
+                                        <p class="text-sm text-gray-600">Deadline: April 30, 2024</p>
+                                        <p class="text-sm text-gray-600 mt-2">For first-generation college students with financial need. Must maintain a 2.5 GPA.</p>
+                                    </div>
+                                    <div class="border rounded-lg p-4">
+                                        <h4 class="font-semibold text-gray-900">STEM Excellence Scholarship</h4>
+                                        <p class="text-sm text-gray-600 mt-1">Award: $1,500 per semester</p>
+                                        <p class="text-sm text-gray-600">Deadline: May 20, 2024</p>
+                                        <p class="text-sm text-gray-600 mt-2">For students majoring in Science, Technology, Engineering, or Mathematics with a minimum 3.0 GPA.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Admissions Tab -->
+                            <div class="tab-content hidden" data-tab="admissions">
+                                <h3 class="text-lg font-semibold mb-4">Admission Requirements</h3>
+                                <div class="space-y-4">
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">General Requirements</h4>
+                                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                            <li>High school diploma or equivalent</li>
+                                            <li>Completed application form</li>
+                                            <li>Official transcripts</li>
+                                            <li>English proficiency for international students</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">International Students</h4>
+                                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                            <li>TOEFL iBT: 61 or higher</li>
+                                            <li>IELTS: 6.0 or higher</li>
+                                            <li>Financial documentation</li>
+                                            <li>Passport copy</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Campus Life Tab -->
+                            <div class="tab-content hidden" data-tab="campus">
+                                <h3 class="text-lg font-semibold mb-4">Campus Life</h3>
+                                <div class="space-y-4">
+                                    <p class="text-gray-700">
+                                        Berkeley City College offers a vibrant campus life with numerous student organizations, 
+                                        cultural events, and academic support services. Students can participate in various 
+                                        clubs, sports teams, and community service opportunities.
+                                    </p>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900 mb-2">Student Services</h4>
+                                            <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                                <li>Academic counseling</li>
+                                                <li>Career services</li>
+                                                <li>Tutoring center</li>
+                                                <li>Library resources</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900 mb-2">Campus Facilities</h4>
+                                            <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                                <li>Modern classrooms</li>
+                                                <li>Computer labs</li>
+                                                <li>Student center</li>
+                                                <li>Cafeteria</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Sidebar -->
+                <div class="space-y-6">
+                    <!-- Quick Stats -->
+                    <div class="bg-white rounded-2xl shadow-sm p-6">
+                        <h3 class="text-lg font-semibold mb-4">Quick Stats</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Founded</span>
+                                <span class="font-semibold">1973</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Students</span>
+                                <span class="font-semibold">7,500+</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Faculty</span>
+                                <span class="font-semibold">350+</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Programs</span>
+                                <span class="font-semibold">50+</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Campus Size</span>
+                                <span class="font-semibold">9 acres</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cost and Tuition -->
+                    <div class="bg-white rounded-2xl shadow-sm p-6">
+                        <h3 class="text-lg font-semibold mb-4">Cost and Tuition</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">In-State Tuition</span>
+                                <span class="font-semibold">$1,380/year</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Out-of-State</span>
+                                <span class="font-semibold">$8,580/year</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">International</span>
+                                <span class="font-semibold">$8,580/year</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Books & Supplies</span>
+                                <span class="font-semibold">$1,800/year</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Living Expenses</span>
+                                <span class="font-semibold">$18,000/year</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="bg-white rounded-2xl shadow-sm p-6">
+                        <h3 class="text-lg font-semibold mb-4">Contact Information</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="map-pin" class="w-4 h-4 text-gray-500 mt-0.5"></i>
+                                <div>
+                                    <p class="text-sm text-gray-900">2050 Center Street</p>
+                                    <p class="text-sm text-gray-600">Berkeley, CA 94704</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="phone" class="w-4 h-4 text-gray-500"></i>
+                                <span class="text-sm text-gray-900">(510) 981-2800</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="mail" class="w-4 h-4 text-gray-500"></i>
+                                <span class="text-sm text-gray-900">info@berkeleycitycollege.edu</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="globe" class="w-4 h-4 text-gray-500"></i>
+                                <span class="text-sm text-gray-900">www.berkeleycitycollege.edu</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Profile dropdown functionality
+        document.getElementById('profile-menu').addEventListener('click', function() {
+            const dropdown = document.getElementById('profile-dropdown');
+            dropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const profileMenu = document.getElementById('profile-menu');
+            const dropdown = document.getElementById('profile-dropdown');
+            
+            if (!profileMenu.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Update active tab button
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('text-red-600', 'border-red-600');
+                        btn.classList.add('text-gray-500', 'border-transparent');
+                    });
+                    
+                    this.classList.remove('text-gray-500', 'border-transparent');
+                    this.classList.add('text-red-600', 'border-red-600');
+                    
+                    // Show active tab content
+                    tabContents.forEach(content => {
+                        content.classList.add('hidden');
+                    });
+                    
+                    const activeContent = document.querySelector(`.tab-content[data-tab="${tabId}"]`);
+                    if (activeContent) {
+                        activeContent.classList.remove('hidden');
+                    }
+                });
+            });
+        });
+
+        // Logout function
+        function handleLogout() {
+            if (confirm('Are you sure you want to logout?')) {
+                window.location.href = '../login.html';
+            }
+        }
+    </script>
+
+    <!-- AI Assistant Floating Button -->
+    <div id="aiAssistantButton" class="fixed bottom-6 right-6 z-50">
+        <button class="text-white rounded-full p-4 shadow-lg transition-all duration-300 hover:scale-110" style="background-color: rgb(237, 34, 23);" onmouseover="this.style.backgroundColor='#DC1F12'" onmouseout="this.style.backgroundColor='#ED2217'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="message-circle" class="lucide lucide-message-circle w-6 h-6"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg>
+        </button>
+    </div>
+
+    <!-- AI Assistant Chat Panel -->
+    <div id="aiChatOverlay" class="fixed z-50 hidden">
+        <div class="fixed bottom-0 left-0 right-0 md:right-6 md:bottom-6 md:left-auto md:w-96 bg-white rounded-t-3xl md:rounded-3xl shadow-2xl transform transition-transform duration-300 translate-y-full" id="aiChatPanel">
+            <!-- Chat Header -->
+            <div class="flex items-center justify-between p-4 border-b border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #ED2217;">
+                        <i data-lucide="bot" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900">AI Assistant</h3>
+                        <p class="text-sm text-green-600">Online</p>
+                    </div>
+                </div>
+                <button id="closeChatBtn" class="text-gray-400 hover:text-gray-500">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            
+            <!-- Chat Messages -->
+            <div class="h-96 overflow-y-auto p-4 space-y-4" id="chatMessages">
+                <div class="flex items-start space-x-3">
+                    <div class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center" style="background-color: #ED2217;">
+                        <i data-lucide="bot" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <div class="bg-gray-100 rounded-2xl px-4 py-2 max-w-xs">
+                        <p class="text-sm text-gray-800">Hello! I'm your AI assistant. How can I help you with Berkeley City College today?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chat Input -->
+            <div class="p-4 border-t border-gray-200">
+                <div class="flex items-center space-x-2">
+                    <input type="text" placeholder="Type your message..." class="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                    <button class="bg-red-600 text-white rounded-full p-2 hover:bg-red-700 transition-colors">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // AI Assistant Chat Functionality
+        const aiButton = document.getElementById('aiAssistantButton');
+        const chatOverlay = document.getElementById('aiChatOverlay');
+        const chatPanel = document.getElementById('aiChatPanel');
+        const closeChatBtn = document.getElementById('closeChatBtn');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.querySelector('#aiChatOverlay input');
+        const sendButton = document.querySelector('#aiChatOverlay button');
+
+        // Toggle chat panel
+        aiButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            chatOverlay.classList.toggle('hidden');
+            chatPanel.classList.toggle('translate-y-full');
+            chatPanel.classList.toggle('translate-y-0');
+            
+            // Focus input when opening
+            if (!chatOverlay.classList.contains('hidden')) {
+                setTimeout(() => {
+                    chatInput.focus();
+                }, 300);
+            }
+        });
+
+        // Close chat panel
+        function closeChat() {
+            chatOverlay.classList.add('hidden');
+            chatPanel.classList.remove('translate-y-0');
+            chatPanel.classList.add('translate-y-full');
+        }
+
+        closeChatBtn.addEventListener('click', closeChat);
+
+        // Close when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!chatPanel.contains(e.target) && !aiButton.contains(e.target)) {
+                closeChat();
+            }
+        });
+
+        // Send message on Enter or button click
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                // Add user message
+                const userMessage = document.createElement('div');
+                userMessage.className = 'flex items-start justify-end space-x-3';
+                userMessage.innerHTML = `
+                    <div class="bg-red-100 rounded-2xl px-4 py-2 max-w-xs">
+                        <p class="text-sm text-gray-800">${message}</p>
+                    </div>
+                    <div class="w-8 h-8 rounded-full flex-shrink-0 bg-gray-200 flex items-center justify-center">
+                        <i data-lucide="user" class="w-4 h-4 text-gray-600"></i>
+                    </div>
+                `;
+                chatMessages.appendChild(userMessage);
+                chatInput.value = '';
+                
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // Simulate AI response (in a real app, this would be an API call)
+                setTimeout(() => {
+                    const aiResponse = document.createElement('div');
+                    aiResponse.className = 'flex items-start space-x-3';
+                    aiResponse.innerHTML = `
+                        <div class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center" style="background-color: #ED2217;">
+                            <i data-lucide="bot" class="w-4 h-4 text-white"></i>
+                        </div>
+                        <div class="bg-gray-100 rounded-2xl px-4 py-2 max-w-xs">
+                            <p class="text-sm text-gray-800">I'm an AI assistant. In a real implementation, I would provide helpful information about Berkeley City College based on your message: "${message}"</p>
+                        </div>
+                    `;
+                    chatMessages.appendChild(aiResponse);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000);
+            }
+        }
+
+        sendButton.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

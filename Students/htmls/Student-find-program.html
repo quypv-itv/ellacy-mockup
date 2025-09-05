@@ -38,19 +38,15 @@
                     <nav class="flex items-center space-x-3">
                         <a href="Student-find-program.html" class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors">
                             <i data-lucide="search" class="w-4 h-4 mr-2"></i>
-                            Find Programs
+                            Find Scholarships
                         </a>
                         <a href="Student-favorites.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
                             <i data-lucide="heart" class="w-4 h-4 mr-2"></i>
-                            Favorites (0)
+                            Favorites (4)
                         </a>
                         <a href="Student-my-application.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
                             <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
-                            My Applications (0)
-                        </a>
-                        <a href="Student-sholarships.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
-                            <i data-lucide="graduation-cap" class="w-4 h-4 mr-2"></i>
-                            Scholarships
+                            My Applications (8)
                         </a>
                         <a href="Student-payment.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
                             <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
@@ -242,6 +238,62 @@
                             </div>
                         </div>
 
+                        <!-- Filter Section -->
+                        <div class="flex flex-wrap gap-4 mb-6">
+                            <!-- Scholarship Type Filter -->
+                            <div class="relative">
+                                <select id="scholarshipTypeSelect" class="px-4 py-2 bg-white border border-gray-300 rounded-xl hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                    <option value="merit-based" selected>Merit-based</option>
+                                    <option value="need-based">Need-based</option>
+                                    <option value="entrance">Entrance</option>
+                                    <option value="research">Research</option>
+                                    <option value="athletic">Athletic</option>
+                                    <option value="diversity-inclusion">Diversity & Inclusion</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Program Level Filter -->
+                            <div class="relative">
+                                <button class="filter-toggle flex items-center px-4 py-2 bg-white border border-gray-300 rounded-xl hover:bg-gray-50" data-filter="level">
+                                    <span class="mr-2">Program Level</span>
+                                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                                </button>
+                                <div class="filter-content absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-xl shadow-lg z-10 hidden" data-filter="level">
+                                    <div class="p-2">
+                                        <label class="flex items-center p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
+                                            <input type="checkbox" class="mr-3">
+                                            <span class="text-sm">Bachelor's</span>
+                                        </label>
+                                        <label class="flex items-center p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
+                                            <input type="checkbox" class="mr-3">
+                                            <span class="text-sm">Master's</span>
+                                        </label>
+                                        <label class="flex items-center p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
+                                            <input type="checkbox" class="mr-3">
+                                            <span class="text-sm">PhD</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tuition Filter -->
+                            <div class="relative">
+                                <button class="filter-toggle flex items-center px-4 py-2 bg-white border border-gray-300 rounded-xl hover:bg-gray-50" data-filter="tuition">
+                                    <span class="mr-2">Tuition (USD)</span>
+                                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                                </button>
+                                <div class="filter-content absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-xl shadow-lg z-10 hidden" data-filter="tuition">
+                                    <div class="p-2">
+                                        <input type="range" class="w-full" min="0" max="100000" step="1000">
+                                        <div class="flex justify-between text-sm text-gray-600">
+                                            <span>$0</span>
+                                            <span>$100,000+</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <button class="w-full px-4 py-2 text-gray-600 border rounded-xl hover:bg-gray-50">
                             Reset Filters
                         </button>
@@ -276,12 +328,21 @@
                                 
                                 <!-- Program Duration -->
                                 <p class="text-sm text-gray-500 mb-1">Duration: 2 years</p>
-                                
-                                <!-- Program Name -->
-                                <h3 class="text-lg font-semibold mb-1">3D Animation and Videogame Art</h3>
-                                
-                                <!-- Degree Level & Field -->
-                                <p class="text-sm text-gray-600 mb-3">Associate degree - Arts, Design & Architecture</p>
+                                <!-- Scholarship Type Dropdown -->
+                                <div class="mb-3">
+                                    <label class="text-sm text-gray-600 mb-1 block">Scholarship Type:</label>
+                                    <div class="relative inline-block">
+                                        <select class="scholarship-dropdown appearance-none bg-white border border-gray-300 rounded-lg px-3 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 w-full max-w-xs" data-card="1">
+                                            <option value="merit-based" selected>Merit-based</option>
+                                            <option value="need-based">Need-based</option>
+                                            <option value="entrance">Entrance</option>
+                                            <option value="research">Research</option>
+                                            <option value="athletic">Athletic</option>
+                                            <option value="diversity-inclusion">Diversity & Inclusion</option>
+                                        </select>
+                                        <i data-lucide="chevron-down" class="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none"></i>
+                                    </div>
+                                </div>
                                 
                                 <!-- Intake Period Dropdown -->
                                 <div class="flex items-center gap-4 mb-4">
@@ -308,8 +369,8 @@
                             </div>
                         </div>
                         
-                        <!-- Tabbed Information Section -->
-                        <div class="border-t pt-4">
+                        <!-- Merit-based Scholarship Section (Default) -->
+                        <div class="border-t pt-4 scholarship-section" data-scholarship="merit-based">
                             <div class="flex border-b mb-4">
                                 <button class="tab-btn px-4 py-2 text-sm font-medium text-red-600 border-b-2 border-red-600" data-tab="fees" data-card="1">Fees</button>
                                 <button class="tab-btn px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700" data-tab="requirements" data-card="1">Requirements</button>
@@ -317,71 +378,107 @@
                             </div>
                             
                             <!-- Fees Tab Content -->
-                            <div class="tab-content" data-tab="fees" data-card="1">
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div>
-                                        <p class="text-sm text-gray-500">Tuition cost</p>
-                                        <p class="font-semibold">$9,912 USD / Annual</p>
+                            <div class="tab-content" data-tab="fees" data-card="1" id="feesContent">
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600">Application Fee</span>
+                                        <span class="font-semibold">$100</span>
                                     </div>
-                                    <div>
-                                        <p class="text-sm text-gray-500">Monthly Living Cost</p>
-                                        <p class="font-semibold">$1459 USD</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600">Tuition (per year)</span>
+                                        <span class="font-semibold">$25,000 - $30,000</span>
                                     </div>
-                                    <div>
-                                        <p class="text-sm text-gray-500">Application Fee</p>
-                                        <p class="font-semibold">$250 USD</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600">Living Expenses</span>
+                                        <span class="font-semibold">$12,000</span>
                                     </div>
-                                    <div>
-                                        <p class="text-sm text-gray-500">Application Deadline</p>
-                                        <p class="font-semibold text-red-600">Nov 15, 2025</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600">Books & Supplies</span>
+                                        <span class="font-semibold">$800</span>
+                                    </div>
+                                    <hr class="my-4">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600">Subtotal</span>
+                                        <span class="font-semibold">$38,900</span>
+                                    </div>
+                                    <div class="flex justify-between items-center text-green-600">
+                                        <span>Scholarship Discount</span>
+                                        <span class="font-semibold">-$8,000</span>
+                                    </div>
+                                    <hr class="my-4">
+                                    <div class="flex justify-between items-center font-semibold text-lg">
+                                        <span>Final Cost</span>
+                                        <span class="text-red-600">$30,900</span>
                                     </div>
                                 </div>
                             </div>
                             
                             <!-- Requirements Tab Content -->
-                            <div class="tab-content hidden" data-tab="requirements" data-card="1">
-                                <div class="space-y-3">
-                                    <div>
-                                        <p class="text-sm text-gray-500">Academic requirements</p>
-                                        <p class="font-semibold">GPA 3.0+, IELTS 6.5</p>
+                            <div class="tab-content hidden" data-tab="requirements" data-card="1" id="requirementsContent">
+                                <div class="space-y-4" id="requirementsData">
+                                    <div class="bg-white rounded-lg p-4 border">
+                                        <h4 class="font-semibold mb-2 text-black">Academic Requirements</h4>
+                                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1" id="academicRequirements">
+                                            <li>Minimum GPA of 3.7/4.0 or equivalent</li>
+                                            <li>Bachelor's degree in relevant field</li>
+                                            <li>Academic excellence demonstrated through transcripts</li>
+                                            <li>Dean's list or honor roll recognition preferred</li>
+                                        </ul>
                                     </div>
-                                    <div>
-                                        <p class="text-sm text-gray-500">Language proficiency</p>
-                                        <p class="font-semibold">IELTS 6.5 or TOEFL 90+</p>
+                                    <div class="bg-white rounded-lg p-4 border">
+                                        <h4 class="font-semibold mb-2 text-black">Language Requirements</h4>
+                                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1" id="languageRequirements">
+                                            <li>IELTS: 7.0 overall (no band below 6.5)</li>
+                                            <li>TOEFL iBT: 100 overall</li>
+                                            <li>Duolingo: 125 overall</li>
+                                        </ul>
                                     </div>
-                                    <div>
-                                        <p class="text-sm text-gray-500">Prerequisite courses</p>
-                                        <p class="font-semibold">High school diploma or equivalent</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-gray-500">Portfolio requirements</p>
-                                        <p class="font-semibold">Art portfolio with 10-15 pieces required</p>
+                                    <div class="bg-white rounded-lg p-4 border">
+                                        <h4 class="font-semibold mb-2 text-black">Required Documents</h4>
+                                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1" id="requiredDocuments">
+                                            <li>Academic transcripts with grade verification</li>
+                                            <li>Two academic letters of recommendation</li>
+                                            <li>Personal statement highlighting achievements</li>
+                                            <li>Portfolio of academic work (if applicable)</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                             
                             <!-- Course Detail Tab Content -->
-                            <div class="tab-content hidden" data-tab="course-detail" data-card="1">
-                                <div class="space-y-3">
+                            <div class="tab-content hidden" data-tab="course-detail" data-card="1" id="courseDetailContent">
+                                <div class="space-y-4" id="courseDetailData">
                                     <div>
-                                        <p class="text-sm text-gray-500">Program curriculum</p>
-                                        <p class="font-semibold">2D/3D Animation, Game Design, Digital Arts</p>
+                                        <h4 class="font-semibold mb-2">Program Overview</h4>
+                                        <p class="text-gray-600 text-sm leading-relaxed" id="programOverview">
+                                            Merit-based scholarship program designed for academically outstanding students who have demonstrated exceptional performance in their undergraduate studies.
+                                        </p>
                                     </div>
                                     <div>
-                                        <p class="text-sm text-gray-500">Core courses</p>
-                                        <p class="font-semibold">Animation Principles, 3D Modeling, Game Development</p>
+                                        <h4 class="font-semibold mb-2">Core Courses</h4>
+                                        <ul class="list-disc list-inside text-sm text-gray-600 space-y-1" id="coreCourses">
+                                            <li>Advanced Research Methodologies</li>
+                                            <li>Leadership in Academic Excellence</li>
+                                            <li>Scholarly Communication</li>
+                                            <li>Independent Study Project</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-500">Duration</p>
+                                        <p class="font-semibold" id="programDuration">2 years full-time</p>
                                     </div>
                                     <div>
                                         <p class="text-sm text-gray-500">Semester breakdown</p>
-                                        <p class="font-semibold">4 semesters over 2 years</p>
+                                        <p class="font-semibold" id="semesterBreakdown">4 semesters over 2 years</p>
                                     </div>
                                     <div>
                                         <p class="text-sm text-gray-500">Specialization tracks</p>
-                                        <p class="font-semibold">Character Animation, Environment Design, Game Programming</p>
+                                        <p class="font-semibold" id="specializationTracks">Research Focus, Academic Leadership, Scholarly Publications</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
 
                     <!-- Program Card 2 -->
@@ -393,6 +490,14 @@
                             </div>
                             
                             <div class="flex-1">
+                                <!-- School Name (Clickable) -->
+                                <h2 class="text-xl font-bold mb-2">
+                                    <button class="school-name-btn text-gray-900 hover:text-red-600 hover:underline cursor-pointer transition-colors" 
+                                            data-school="university-of-toronto">
+                                        University of Toronto
+                                    </button>
+                                </h2>
+                                
                                 <!-- Institution Type Tags -->
                                 <div class="flex flex-wrap gap-2 mb-2">
                                     <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs font-medium">Canada College</span>
@@ -402,11 +507,22 @@
                                 <!-- Program Duration -->
                                 <p class="text-sm text-gray-500 mb-1">Duration: 4 years</p>
                                 
-                                <!-- Program Name -->
-                                <h3 class="text-lg font-semibold mb-1">Bachelor of Engineering</h3>
                                 
-                                <!-- Degree Level & Field -->
-                                <p class="text-sm text-gray-600 mb-3">Bachelor degree - Engineering & Technology</p>
+                                <!-- Scholarship Type Dropdown -->
+                                <div class="mb-3">
+                                    <label class="text-sm text-gray-600 mb-1 block">Scholarship Type:</label>
+                                    <div class="relative inline-block">
+                                        <select class="scholarship-dropdown appearance-none bg-white border border-gray-300 rounded-lg px-3 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 w-full max-w-xs" data-card="2">
+                                            <option value="merit-based" selected>Merit-based</option>
+                                            <option value="need-based">Need-based</option>
+                                            <option value="entrance">Entrance</option>
+                                            <option value="research">Research</option>
+                                            <option value="athletic">Athletic</option>
+                                            <option value="diversity-inclusion">Diversity & Inclusion</option>
+                                        </select>
+                                        <i data-lucide="chevron-down" class="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none"></i>
+                                    </div>
+                                </div>
                                 
                                 <!-- Intake Period Dropdown -->
                                 <div class="flex items-center gap-4 mb-4">
@@ -443,66 +559,101 @@
                             
                             <!-- Fees Tab Content -->
                             <div class="tab-content" data-tab="fees" data-card="2">
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div>
-                                        <p class="text-sm text-gray-500">Tuition cost</p>
-                                        <p class="font-semibold">$45,000 USD / Annual</p>
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600">Application Fee</span>
+                                        <span class="font-semibold" id="applicationFee2">$100</span>
                                     </div>
-                                    <div>
-                                        <p class="text-sm text-gray-500">Monthly Living Cost</p>
-                                        <p class="font-semibold">$1,800 USD</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600">Tuition (per year)</span>
+                                        <span class="font-semibold" id="tuitionFee2">$25,000 - $30,000</span>
                                     </div>
-                                    <div>
-                                        <p class="text-sm text-gray-500">Application Fee</p>
-                                        <p class="font-semibold">$150 USD</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600">Living Expenses</span>
+                                        <span class="font-semibold" id="livingExpenses2">$12,000</span>
                                     </div>
-                                    <div>
-                                        <p class="text-sm text-gray-500">Application Deadline</p>
-                                        <p class="font-semibold text-orange-600">Mar 31, 2025</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600">Books & Supplies</span>
+                                        <span class="font-semibold" id="booksSupplies2">$800</span>
+                                    </div>
+                                    <hr class="my-4">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600">Subtotal</span>
+                                        <span class="font-semibold" id="subtotal2">$38,900</span>
+                                    </div>
+                                    <div class="flex justify-between items-center text-green-600">
+                                        <span>Scholarship Discount</span>
+                                        <span class="font-semibold" id="scholarshipDiscount2">-$8,000</span>
+                                    </div>
+                                    <hr class="my-4">
+                                    <div class="flex justify-between items-center font-semibold text-lg">
+                                        <span>Final Cost</span>
+                                        <span class="text-red-600" id="finalCost2">$30,900</span>
                                     </div>
                                 </div>
                             </div>
                             
                             <!-- Requirements Tab Content -->
                             <div class="tab-content hidden" data-tab="requirements" data-card="2">
-                                <div class="space-y-3">
-                                    <div>
-                                        <p class="text-sm text-gray-500">Academic requirements</p>
-                                        <p class="font-semibold">GPA 3.2+, IELTS 6.5</p>
+                                <div class="space-y-4">
+                                    <div class="bg-white rounded-lg p-4 border">
+                                        <h4 class="font-semibold mb-2 text-black">Academic Requirements</h4>
+                                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1" id="academicRequirements2">
+                                            <li>Minimum GPA of 3.7/4.0 or equivalent</li>
+                                            <li>Bachelor's degree in relevant field</li>
+                                            <li>Academic excellence demonstrated through transcripts</li>
+                                            <li>Dean's list or honor roll recognition preferred</li>
+                                        </ul>
                                     </div>
-                                    <div>
-                                        <p class="text-sm text-gray-500">Language proficiency</p>
-                                        <p class="font-semibold">IELTS 6.5 or TOEFL 90+</p>
+                                    <div class="bg-white rounded-lg p-4 border">
+                                        <h4 class="font-semibold mb-2 text-black">Language Requirements</h4>
+                                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1" id="languageRequirements2">
+                                            <li>IELTS: 7.0 overall (no band below 6.5)</li>
+                                            <li>TOEFL iBT: 100 overall</li>
+                                            <li>Duolingo: 125 overall</li>
+                                        </ul>
                                     </div>
-                                    <div>
-                                        <p class="text-sm text-gray-500">Prerequisite courses</p>
-                                        <p class="font-semibold">High school with strong math and science</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-gray-500">Portfolio requirements</p>
-                                        <p class="font-semibold">Not required</p>
+                                    <div class="bg-white rounded-lg p-4 border">
+                                        <h4 class="font-semibold mb-2 text-black">Required Documents</h4>
+                                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1" id="requiredDocuments2">
+                                            <li>Academic transcripts with grade verification</li>
+                                            <li>Two academic letters of recommendation</li>
+                                            <li>Personal statement highlighting achievements</li>
+                                            <li>Portfolio of academic work (if applicable)</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                             
                             <!-- Course Detail Tab Content -->
                             <div class="tab-content hidden" data-tab="course-detail" data-card="2">
-                                <div class="space-y-3">
+                                <div class="space-y-4">
                                     <div>
-                                        <p class="text-sm text-gray-500">Program curriculum</p>
-                                        <p class="font-semibold">Mechanical, Electrical, Computer Engineering</p>
+                                        <h4 class="font-semibold mb-2">Program Overview</h4>
+                                        <p class="text-gray-600 text-sm leading-relaxed" id="programOverview2">
+                                            Merit-based scholarship program designed for academically outstanding students who have demonstrated exceptional performance in their undergraduate studies.
+                                        </p>
                                     </div>
                                     <div>
-                                        <p class="text-sm text-gray-500">Core courses</p>
-                                        <p class="font-semibold">Calculus, Physics, Engineering Design, Programming</p>
+                                        <h4 class="font-semibold mb-2">Core Courses</h4>
+                                        <ul class="list-disc list-inside text-sm text-gray-600 space-y-1" id="coreCourses2">
+                                            <li>Advanced Research Methodologies</li>
+                                            <li>Leadership in Academic Excellence</li>
+                                            <li>Scholarly Communication</li>
+                                            <li>Independent Study Project</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-500">Duration</p>
+                                        <p class="font-semibold" id="programDuration2">2 years full-time</p>
                                     </div>
                                     <div>
                                         <p class="text-sm text-gray-500">Semester breakdown</p>
-                                        <p class="font-semibold">8 semesters over 4 years</p>
+                                        <p class="font-semibold" id="semesterBreakdown2">4 semesters over 2 years</p>
                                     </div>
                                     <div>
                                         <p class="text-sm text-gray-500">Specialization tracks</p>
-                                        <p class="font-semibold">Mechanical, Electrical, Computer, Civil Engineering</p>
+                                        <p class="font-semibold" id="specializationTracks2">Research Focus, Academic Leadership, Scholarly Publications</p>
                                     </div>
                                 </div>
                             </div>
@@ -513,7 +664,7 @@
         </main>
     </div>
 
-    <!-- School Details Modal (Hidden by default) -->
+    <!-- School Details Modal for Berkeley City College (Hidden by default) -->
     <div id="schoolModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
         <div class="bg-white rounded-3xl max-w-7xl w-full mx-4 max-h-[95vh] overflow-hidden">
             <!-- Header Section -->
@@ -521,7 +672,7 @@
                 <div class="flex items-center">
                     <img id="schoolLogo" src="https://images.unsplash.com/photo-1562774053-701939374585?w=80&h=80&fit=crop" alt="School Logo" class="w-16 h-16 rounded-lg mr-4">
                     <div>
-                        <h2 class="text-2xl font-bold" id="schoolName">Berkeley City College (BCC)</h2>
+                        <h2 class="text-2xl font-bold cursor-pointer hover:text-red-600 transition-colors" id="schoolName" onclick="window.open('Student-program-details.html', '_blank')">Berkeley City College (BCC)</h2>
                         <div class="flex items-center mt-1">
                             <i data-lucide="map-pin" class="w-4 h-4 text-gray-500 mr-1"></i>
                             <span class="text-gray-600" id="schoolLocation">Berkeley, California, USA</span>
@@ -807,6 +958,278 @@
         </div>
     </div>
 
+    <!-- School Details Modal for University of Toronto (Hidden by default) -->
+    <div id="schoolModalToronto" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-3xl max-w-7xl w-full mx-4 max-h-[95vh] overflow-hidden">
+            <!-- Header Section -->
+            <div class="flex justify-between items-start p-6 border-b">
+                <div class="flex items-center">
+                    <img id="torontoSchoolLogo" src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=80&h=80&fit=crop" alt="University of Toronto Logo" class="w-16 h-16 rounded-lg mr-4">
+                    <div>
+                        <h2 class="text-2xl font-bold cursor-pointer hover:text-red-600 transition-colors" id="torontoSchoolName" onclick="window.open('Student-program-details-2.html', '_blank')">University of Toronto</h2>
+                        <div class="flex items-center mt-1">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-gray-500 mr-1"></i>
+                            <span class="text-gray-600" id="torontoSchoolLocation">Toronto, Ontario, Canada</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="closeTorontoModal" class="text-gray-500 hover:text-gray-700">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <!-- Photo Gallery Section -->
+            <div class="relative h-48 bg-gray-200">
+                <div class="absolute inset-0 grid grid-cols-4 gap-1 p-4">
+                    <div class="col-span-2 row-span-2 relative">
+                        <img src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=400&h=300&fit=crop" alt="UofT Main Campus" class="w-full h-full object-cover rounded-lg">
+                        <div class="absolute bottom-2 left-2">
+                            <button class="bg-black bg-opacity-50 text-white px-3 py-1 rounded text-sm hover:bg-opacity-70">
+                                <i data-lucide="camera" class="w-4 h-4 inline mr-1"></i>
+                                View Photos
+                            </button>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=200&h=150&fit=crop" alt="UofT Campus" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1526662090664-527df9cdecfa?w=200&h=150&fit=crop" alt="UofT Library" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=200&h=150&fit=crop" alt="UofT Students" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1499028344703-v9c2d66e2af1?w=200&h=150&fit=crop" alt="UofT Architecture" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                </div>
+                <!-- Navigation Arrows -->
+                <button class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2">
+                    <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                </button>
+                <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2">
+                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <div class="flex">
+                <!-- Main Content Area -->
+                <div class="flex-1">
+                    <!-- Tabbed Navigation -->
+                    <div class="border-b px-6">
+                        <div class="flex space-x-8">
+                            <button class="toronto-tab-btn py-4 text-sm font-medium border-b-2 border-red-600 text-red-600" data-tab="overview">Overview</button>
+                            <button class="toronto-tab-btn py-4 text-sm font-medium text-gray-500 hover:text-gray-700" data-tab="features">Features</button>
+                            <button class="toronto-tab-btn py-4 text-sm font-medium text-gray-500 hover:text-gray-700" data-tab="location">Location</button>
+                            <button class="toronto-tab-btn py-4 text-sm font-medium text-gray-500 hover:text-gray-700" data-tab="programs">Programs</button>
+                        </div>
+                    </div>
+
+                    <!-- Tab Content -->
+                    <div class="p-6 max-h-96 overflow-y-auto">
+                        <!-- Overview Tab -->
+                        <div id="toronto-overview-tab" class="toronto-tab-content">
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="text-lg font-semibold mb-3">About</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        The University of Toronto is a globally top-ranked public research university in Toronto, Ontario, Canada. Founded in 1827, U of T has evolved into Canada's leading institution of learning, discovery and knowledge creation. We're proud to be one of the world's top research-intensive universities, driven to invent and innovate.
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">Key Statistics</h4>
+                                    <div class="grid grid-cols-2 gap-4 text-sm">
+                                        <div><span class="text-gray-500">Founded:</span> <span class="font-medium">1827</span></div>
+                                        <div><span class="text-gray-500">Student Body:</span> <span class="font-medium">95,000+</span></div>
+                                        <div><span class="text-gray-500">Campus Type:</span> <span class="font-medium">Urban</span></div>
+                                        <div><span class="text-gray-500">Programs:</span> <span class="font-medium">700+</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Features Tab -->
+                        <div id="toronto-features-tab" class="toronto-tab-content hidden">
+                            <div class="space-y-4">
+                                <div class="border rounded-lg">
+                                    <button class="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50">
+                                        <div class="flex items-center">
+                                            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+                                            </div>
+                                            <span class="font-medium">World-Class Research Facilities</span>
+                                        </div>
+                                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400"></i>
+                                    </button>
+                                </div>
+                                <div class="border rounded-lg">
+                                    <button class="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50">
+                                        <div class="flex items-center">
+                                            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+                                            </div>
+                                            <span class="font-medium">Co-op/Internship Programs</span>
+                                        </div>
+                                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400"></i>
+                                    </button>
+                                </div>
+                                <div class="border rounded-lg">
+                                    <button class="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50">
+                                        <div class="flex items-center">
+                                            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+                                            </div>
+                                            <span class="font-medium">International Student Support</span>
+                                        </div>
+                                        <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Location Tab -->
+                        <div id="toronto-location-tab" class="toronto-tab-content hidden">
+                            <div class="space-y-6">
+                                <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
+                                    <div class="text-center">
+                                        <i data-lucide="map" class="w-12 h-12 text-gray-400 mx-auto mb-2"></i>
+                                        <p class="text-gray-500">Interactive Map</p>
+                                        <p class="text-sm text-gray-400">Toronto, Ontario, Canada</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">Campus Address</h4>
+                                    <p class="text-gray-600">27 King's College Circle, Toronto, ON M5S 1A1, Canada</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">Transportation</h4>
+                                    <ul class="text-gray-600 space-y-1">
+                                        <li>• TTC: St. George Station (0.2 miles)</li>
+                                        <li>• Multiple bus and streetcar routes</li>
+                                        <li>• Bike-friendly campus with bike lanes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Programs Tab -->
+                        <div id="toronto-programs-tab" class="toronto-tab-content hidden">
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="text-lg font-semibold">Top Programs</h3>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="px-3 py-1 text-sm border rounded-lg">Filters</button>
+                                        <select class="text-sm border rounded-lg px-2 py-1">
+                                            <option>All Programs</option>
+                                            <option>Undergraduate</option>
+                                            <option>Graduate</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="border rounded-lg p-4 hover:bg-gray-50">
+                                        <h4 class="font-medium">Computer Science</h4>
+                                        <p class="text-sm text-gray-600">Bachelor of Science • Duration: 4 years</p>
+                                    </div>
+                                    <div class="border rounded-lg p-4 hover:bg-gray-50">
+                                        <h4 class="font-medium">Mechanical Engineering</h4>
+                                        <p class="text-sm text-gray-600">Bachelor of Applied Science • Duration: 4 years</p>
+                                    </div>
+                                    <div class="border rounded-lg p-4 hover:bg-gray-50">
+                                        <h4 class="font-medium">Business Administration</h4>
+                                        <p class="text-sm text-gray-600">MBA • Duration: 2 years</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Sidebar (Statistics Panel) -->
+                <div class="w-80 border-l bg-gray-50 p-6 space-y-6">
+                    <div>
+                        <h4 class="font-semibold mb-3">Tuition Details</h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Domestic (per year):</span>
+                                <span class="font-medium">$6,100</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">International (per year):</span>
+                                <span class="font-medium">$45,690 - $50,780</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Institution Type:</span>
+                                <span class="font-medium">Public</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-semibold mb-3">Duration</h4>
+                        <div class="flex items-center">
+                            <i data-lucide="calendar" class="w-4 h-4 text-gray-500 mr-2"></i>
+                            <span class="text-sm">4 years (Undergraduate)</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-semibold mb-3">Enrollment</h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Total Students:</span>
+                                <span class="font-medium">95,000+</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">International:</span>
+                                <span class="font-medium">25%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-semibold mb-3">Top Specialties</h4>
+                        <div class="relative h-32 mb-4">
+                            <canvas id="torontoSpecialtiesChart" class="w-full h-full"></canvas>
+                        </div>
+                        <div class="space-y-1 text-xs">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+                                <span>Engineering</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                                <span>Computer Science</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+                                <span>Business</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-semibold mb-3">Additional Services</h4>
+                        <div class="space-y-2 text-sm text-gray-600">
+                            <div class="flex items-center">
+                                <i data-lucide="check" class="w-4 h-4 text-green-600 mr-2"></i>
+                                <span>Career Services</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="check" class="w-4 h-4 text-green-600 mr-2"></i>
+                                <span>Research Opportunities</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="check" class="w-4 h-4 text-green-600 mr-2"></i>
+                                <span>International Student Support</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Program Details Modal (Hidden by default) -->
     <div id="programModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
         <div class="bg-white rounded-3xl p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
@@ -1005,25 +1428,37 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
+        // Toggle profile dropdown
+        const profileMenu = document.getElementById('profile-menu');
+        const profileDropdown = document.getElementById('profile-dropdown');
+        
+        if (profileMenu && profileDropdown) {
+            // Toggle dropdown on button click
+            profileMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+                profileDropdown.classList.toggle('hidden');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!profileMenu.contains(e.target) && !profileDropdown.contains(e.target)) {
+                    profileDropdown.classList.add('hidden');
+                }
+            });
+            
+            // Close dropdown when clicking on a menu item
+            profileDropdown.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    profileDropdown.classList.add('hidden');
+                });
+            });
+        }
+
         // Handle logout
         function handleLogout() {
             window.location.href = '../../login.html';
         }
 
-        // Profile Dropdown Toggle
-        const profileMenu = document.getElementById('profile-menu');
-        const profileDropdown = document.getElementById('profile-dropdown');
-
-        profileMenu.addEventListener('click', () => {
-            profileDropdown.classList.toggle('hidden');
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!profileMenu.contains(e.target)) {
-                profileDropdown.classList.add('hidden');
-            }
-        });
 
         // Program Details Modal functionality
         const programModal = document.getElementById('programModal');
@@ -1106,6 +1541,40 @@
                     document.getElementById('modalUniversityName').textContent = program.university;
                     document.getElementById('modalLocation').textContent = program.location;
                     
+                    function updateScholarshipData(scholarshipType) {
+                        const data = scholarshipData[scholarshipType];
+                        if (data) {
+                            // Update Fees data
+                            document.getElementById('applicationFee').textContent = data.applicationFee;
+                            document.getElementById('tuitionFee').textContent = data.tuitionFee;
+                            document.getElementById('livingExpenses').textContent = data.livingExpenses;
+                            document.getElementById('booksSupplies').textContent = data.booksSupplies;
+                            document.getElementById('subtotal').textContent = data.subtotal;
+                            document.getElementById('scholarshipDiscount').textContent = data.scholarshipDiscount;
+                            document.getElementById('finalCost').textContent = data.finalCost;
+                            
+                            // Update Requirements data
+                            const academicReqs = document.getElementById('academicRequirements');
+                            academicReqs.innerHTML = data.academicRequirements.map(req => `<li>${req}</li>`).join('');
+                            
+                            const languageReqs = document.getElementById('languageRequirements');
+                            languageReqs.innerHTML = data.languageRequirements.map(req => `<li>${req}</li>`).join('');
+                            
+                            const requiredDocs = document.getElementById('requiredDocuments');
+                            requiredDocs.innerHTML = data.requiredDocuments.map(doc => `<li>${doc}</li>`).join('');
+                            
+                            // Update Course Detail data
+                            document.getElementById('programOverview').textContent = data.programOverview;
+                            
+                            const coreCoursesList = document.getElementById('coreCourses');
+                            coreCoursesList.innerHTML = data.coreCourses.map(course => `<li>${course}</li>`).join('');
+                            
+                            document.getElementById('programDuration').textContent = data.programDuration;
+                            document.getElementById('semesterBreakdown').textContent = data.semesterBreakdown;
+                            document.getElementById('specializationTracks').textContent = data.specializationTracks;
+                        }
+                    }
+                    
                     // Update Institution Details
                     document.getElementById('modalSchoolId').textContent = program.schoolId;
                     document.getElementById('modalYearFounded').textContent = program.yearFounded;
@@ -1171,26 +1640,67 @@
             window.location.href = '../../login.html';
         }
 
-        // Profile Dropdown Toggle
-        const profileMenu = document.getElementById('profile-menu');
-        const profileDropdown = document.getElementById('profile-dropdown');
-
-        profileMenu.addEventListener('click', () => {
-            profileDropdown.classList.toggle('hidden');
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!profileMenu.contains(e.target)) {
-                profileDropdown.classList.add('hidden');
-                lucide.createIcons();
-            }
-        });
-
         // School Modal Functionality - Wrap in DOMContentLoaded to ensure elements exist
         document.addEventListener('DOMContentLoaded', function() {
+            // Berkeley City College Modal
             const schoolModal = document.getElementById('schoolModal');
             const closeSchoolModalBtn = document.getElementById('closeSchoolModal');
+            
+            // University of Toronto Modal
+            const torontoModal = document.getElementById('schoolModalToronto');
+            const closeTorontoModalBtn = document.getElementById('closeTorontoModal');
+            
+            // Handle school name clicks
+            document.querySelectorAll('.school-name-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const school = this.getAttribute('data-school');
+                    if (school === 'university-of-toronto') {
+                        torontoModal.classList.remove('hidden');
+                        document.body.style.overflow = 'hidden';
+                    } else if (school === 'berkeley-city-college') {
+                        schoolModal.classList.remove('hidden');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            
+            // Close Toronto Modal
+            if (closeTorontoModalBtn) {
+                closeTorontoModalBtn.addEventListener('click', function() {
+                    torontoModal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                });
+            }
+            
+            // Close Toronto Modal when clicking outside
+            torontoModal.addEventListener('click', function(e) {
+                if (e.target === torontoModal) {
+                    torontoModal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Toronto Tab Functionality
+            const torontoTabButtons = document.querySelectorAll('.toronto-tab-btn');
+            torontoTabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Update active tab
+                    torontoTabButtons.forEach(btn => {
+                        btn.classList.remove('border-red-600', 'text-red-600');
+                        btn.classList.add('text-gray-500', 'hover:text-gray-700');
+                    });
+                    this.classList.add('border-red-600', 'text-red-600');
+                    this.classList.remove('text-gray-500', 'hover:text-gray-700');
+                    
+                    // Show corresponding tab content
+                    document.querySelectorAll('.toronto-tab-content').forEach(content => {
+                        content.classList.add('hidden');
+                    });
+                    document.getElementById(`toronto-${tabId}-tab`).classList.remove('hidden');
+                });
+            });
             const schoolNameBtns = document.querySelectorAll('.school-name-btn');
             const schoolTabBtns = document.querySelectorAll('.school-tab-btn');
             const schoolTabContents = document.querySelectorAll('.school-tab-content');
@@ -1260,6 +1770,7 @@
             if (closeSchoolModalBtn) {
                 closeSchoolModalBtn.addEventListener('click', function() {
                     schoolModal.classList.add('hidden');
+                    document.body.style.overflow = ''; // Reset overflow when modal is closed
                 });
             }
 
@@ -1268,6 +1779,7 @@
                 schoolModal.addEventListener('click', function(e) {
                     if (e.target === schoolModal) {
                         schoolModal.classList.add('hidden');
+                        document.body.style.overflow = ''; // Reset overflow when clicking outside
                     }
                 });
             }
@@ -1283,8 +1795,8 @@
 
     <!-- AI Assistant Floating Button -->
     <div id="aiAssistantButton" class="fixed bottom-6 right-6 z-50">
-        <button class="text-white rounded-full p-4 shadow-lg transition-all duration-300 hover:scale-110" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#DC1F12'" onmouseout="this.style.backgroundColor='#ED2217'">
-            <i data-lucide="message-circle" class="w-6 h-6"></i>
+        <button class="text-white rounded-full p-4 shadow-lg transition-all duration-300 hover:scale-110" style="background-color: rgb(237, 34, 23);" onmouseover="this.style.backgroundColor='#DC1F12'" onmouseout="this.style.backgroundColor='#ED2217'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="message-circle" class="lucide lucide-message-circle w-6 h-6"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg>
         </button>
     </div>
 
@@ -1464,8 +1976,377 @@
             }
         });
 
-        // Initialize icons after all content is loaded
-        lucide.createIcons();
+        // Scholarship data for dynamic content
+        const scholarshipData = {
+            'merit-based': {
+                applicationFee: '$100',
+                tuitionFee: '$25,000 - $30,000',
+                livingExpenses: '$12,000',
+                booksSupplies: '$800',
+                subtotal: '$38,900',
+                scholarshipDiscount: '-$8,000',
+                finalCost: '$30,900',
+                academicRequirements: [
+                    'Minimum GPA of 3.7/4.0 or equivalent',
+                    'Bachelor\'s degree in relevant field',
+                    'Academic excellence demonstrated through transcripts',
+                    'Dean\'s list or honor roll recognition preferred'
+                ],
+                languageRequirements: [
+                    'IELTS: 7.0 overall (no band below 6.5)',
+                    'TOEFL iBT: 100 overall',
+                    'Duolingo: 125 overall'
+                ],
+                requiredDocuments: [
+                    'Academic transcripts with grade verification',
+                    'Two academic letters of recommendation',
+                    'Personal statement highlighting achievements',
+                    'Portfolio of academic work (if applicable)'
+                ],
+                programOverview: 'Merit-based scholarship program designed for academically outstanding students who have demonstrated exceptional performance in their undergraduate studies.',
+                coreCourses: [
+                    'Advanced Research Methodologies',
+                    'Leadership in Academic Excellence',
+                    'Scholarly Communication',
+                    'Independent Study Project'
+                ],
+                programDuration: '2 years full-time',
+                semesterBreakdown: '4 semesters over 2 years',
+                specializationTracks: 'Research Focus, Academic Leadership, Scholarly Publications'
+            },
+            'need-based': {
+                fees: {
+                    applicationFee: '$75',
+                    tuition: '$20,000 - $25,000',
+                    livingExpenses: '$10,000',
+                    booksSupplies: '$600',
+                    total: '$31,275',
+                    scholarshipDiscount: '$12,000'
+                },
+                requirements: {
+                    academic: [
+                        'Minimum GPA of 3.0/4.0 or equivalent',
+                        'Bachelor\'s degree from accredited institution',
+                        'Demonstrated financial need through documentation',
+                        'Strong academic potential despite financial constraints'
+                    ],
+                    language: [
+                        'IELTS: 6.0 overall (no band below 5.5)',
+                        'TOEFL iBT: 80 overall',
+                        'Duolingo: 105 overall'
+                    ],
+                    documents: [
+                        'Financial aid application (FAFSA or equivalent)',
+                        'Family income documentation',
+                        'Personal statement explaining financial circumstances',
+                        'Bank statements and tax returns'
+                    ]
+                },
+                courseDetails: {
+                    overview: 'Need-based scholarship program providing financial assistance to deserving students who require support to pursue their educational goals.',
+                    coreCourses: [
+                        'Financial Literacy and Management',
+                        'Career Development and Planning',
+                        'Community Service Learning',
+                        'Peer Mentoring Program'
+                    ],
+                    duration: '2-3 years flexible',
+                    semesters: '4-6 semesters with flexible scheduling',
+                    specializations: 'Community Engagement, Financial Planning, Career Services'
+                }
+            },
+            'entrance': {
+                fees: {
+                    applicationFee: '$50',
+                    tuition: '$22,000 - $28,000',
+                    livingExpenses: '$11,000',
+                    booksSupplies: '$700',
+                    total: '$34,250',
+                    scholarshipDiscount: '$5,000'
+                },
+                requirements: {
+                    academic: [
+                        'High school diploma or equivalent',
+                        'Minimum GPA of 3.2/4.0 in final year',
+                        'Strong performance in entrance examinations',
+                        'Completion of prerequisite courses'
+                    ],
+                    language: [
+                        'IELTS: 6.5 overall (no band below 6.0)',
+                        'TOEFL iBT: 85 overall',
+                        'Duolingo: 110 overall'
+                    ],
+                    documents: [
+                        'High school transcripts',
+                        'Entrance exam scores (SAT/ACT)',
+                        'Letter of motivation',
+                        'Extracurricular activity records'
+                    ]
+                },
+                courseDetails: {
+                    overview: 'Entrance scholarship program for new students beginning their academic journey, designed to support transition into higher education.',
+                    coreCourses: [
+                        'Academic Foundations',
+                        'Study Skills and Time Management',
+                        'Introduction to Research Methods',
+                        'First-Year Seminar'
+                    ],
+                    duration: '4 years undergraduate',
+                    semesters: '8 semesters over 4 years',
+                    specializations: 'Liberal Arts, Sciences, Pre-Professional Programs'
+                }
+            },
+            'research': {
+                fees: {
+                    applicationFee: '$125',
+                    tuition: '$30,000 - $35,000',
+                    livingExpenses: '$15,000',
+                    booksSupplies: '$1,000',
+                    total: '$46,125',
+                    scholarshipDiscount: '$15,000'
+                },
+                requirements: {
+                    academic: [
+                        'Master\'s degree or equivalent research experience',
+                        'Minimum GPA of 3.5/4.0 in graduate studies',
+                        'Published research papers or conference presentations',
+                        'Strong research proposal aligned with faculty interests'
+                    ],
+                    language: [
+                        'IELTS: 7.5 overall (no band below 7.0)',
+                        'TOEFL iBT: 105 overall',
+                        'Duolingo: 130 overall'
+                    ],
+                    documents: [
+                        'Research proposal (2000-3000 words)',
+                        'Three academic references from research supervisors',
+                        'CV highlighting research experience',
+                        'Writing sample from previous research work'
+                    ]
+                },
+                courseDetails: {
+                    overview: 'Research scholarship program for doctoral candidates and advanced researchers pursuing cutting-edge research in their field of expertise.',
+                    coreCourses: [
+                        'Advanced Research Design',
+                        'Statistical Analysis and Data Science',
+                        'Grant Writing and Funding',
+                        'Dissertation Seminar'
+                    ],
+                    duration: '3-5 years doctoral program',
+                    semesters: '6-10 semesters with research focus',
+                    specializations: 'STEM Research, Social Sciences, Humanities Research'
+                }
+            },
+            'athletic': {
+                fees: {
+                    applicationFee: '$75',
+                    tuition: '$18,000 - $24,000',
+                    livingExpenses: '$9,000',
+                    booksSupplies: '$500',
+                    total: '$28,075',
+                    scholarshipDiscount: '$10,000'
+                },
+                requirements: {
+                    academic: [
+                        'Minimum GPA of 2.8/4.0 or equivalent',
+                        'High school diploma with sports participation',
+                        'NCAA eligibility requirements met',
+                        'Demonstrated athletic excellence in chosen sport'
+                    ],
+                    language: [
+                        'IELTS: 6.0 overall (no band below 5.5)',
+                        'TOEFL iBT: 75 overall',
+                        'Duolingo: 100 overall'
+                    ],
+                    documents: [
+                        'Athletic performance records and statistics',
+                        'Coach recommendations from previous teams',
+                        'Medical clearance and physical examination',
+                        'Video highlights of athletic performance'
+                    ]
+                },
+                courseDetails: {
+                    overview: 'Athletic scholarship program for student-athletes who excel in sports while maintaining academic standards and representing the university in competitions.',
+                    coreCourses: [
+                        'Sports Science and Kinesiology',
+                        'Athletic Training and Conditioning',
+                        'Sports Psychology',
+                        'Team Leadership and Communication'
+                    ],
+                    duration: '4 years with athletic commitment',
+                    semesters: '8 semesters with seasonal training',
+                    specializations: 'Team Sports, Individual Sports, Sports Management'
+                }
+            },
+            'diversity-inclusion': {
+                fees: {
+                    applicationFee: '$50',
+                    tuition: '$20,000 - $26,000',
+                    livingExpenses: '$10,500',
+                    booksSupplies: '$650',
+                    total: '$31,700',
+                    scholarshipDiscount: '$9,000'
+                },
+                requirements: {
+                    academic: [
+                        'Minimum GPA of 3.0/4.0 or equivalent',
+                        'Demonstrated commitment to diversity and inclusion',
+                        'Leadership in community or cultural organizations',
+                        'Essay on diversity, equity, and inclusion experiences'
+                    ],
+                    language: [
+                        'IELTS: 6.5 overall (no band below 6.0)',
+                        'TOEFL iBT: 85 overall',
+                        'Duolingo: 110 overall'
+                    ],
+                    documents: [
+                        'Diversity and inclusion personal statement',
+                        'Community involvement and leadership records',
+                        'Cultural background documentation',
+                        'Letters of support from community leaders'
+                    ]
+                },
+                courseDetails: {
+                    overview: 'Diversity and inclusion scholarship program promoting educational access for underrepresented groups and fostering inclusive campus communities.',
+                    coreCourses: [
+                        'Cultural Studies and Identity',
+                        'Social Justice and Advocacy',
+                        'Community Engagement and Leadership',
+                        'Intercultural Communication'
+                    ],
+                    duration: '2-4 years flexible',
+                    semesters: '4-8 semesters with community service',
+                    specializations: 'Cultural Studies, Social Work, Community Development'
+                }
+            }
+        };
+
+        // Function to update scholarship data for a specific card
+        function updateScholarshipData(scholarshipType, cardNumber) {
+            const data = scholarshipData[scholarshipType];
+            if (!data) return;
+            
+            const suffix = cardNumber === '1' ? '' : cardNumber;
+            
+            // Update fees content
+            const applicationFeeEl = document.getElementById(`applicationFee${suffix}`);
+            const tuitionFeeEl = document.getElementById(`tuitionFee${suffix}`);
+            const livingExpensesEl = document.getElementById(`livingExpenses${suffix}`);
+            const booksSuppliesEl = document.getElementById(`booksSupplies${suffix}`);
+            const subtotalEl = document.getElementById(`subtotal${suffix}`);
+            const scholarshipDiscountEl = document.getElementById(`scholarshipDiscount${suffix}`);
+            const finalCostEl = document.getElementById(`finalCost${suffix}`);
+            
+            if (applicationFeeEl) applicationFeeEl.textContent = data.fees.applicationFee;
+            if (tuitionFeeEl) tuitionFeeEl.textContent = data.fees.tuition;
+            if (livingExpensesEl) livingExpensesEl.textContent = data.fees.livingExpenses;
+            if (booksSuppliesEl) booksSuppliesEl.textContent = data.fees.booksSupplies;
+            if (subtotalEl) subtotalEl.textContent = data.fees.total;
+            if (scholarshipDiscountEl) scholarshipDiscountEl.textContent = `-${data.fees.scholarshipDiscount}`;
+            if (finalCostEl) {
+                const total = parseInt(data.fees.total.replace(/[$,]/g, ''));
+                const discount = parseInt(data.fees.scholarshipDiscount.replace(/[$,]/g, ''));
+                const final = total - discount;
+                finalCostEl.textContent = `$${final.toLocaleString()}`;
+            }
+            
+            // Update requirements content
+            const academicReqEl = document.getElementById(`academicRequirements${suffix}`);
+            const languageReqEl = document.getElementById(`languageRequirements${suffix}`);
+            const documentsReqEl = document.getElementById(`requiredDocuments${suffix}`);
+            
+            if (academicReqEl) {
+                academicReqEl.innerHTML = data.requirements.academic.map(req => `<li>${req}</li>`).join('');
+            }
+            if (languageReqEl) {
+                languageReqEl.innerHTML = data.requirements.language.map(req => `<li>${req}</li>`).join('');
+            }
+            if (documentsReqEl) {
+                documentsReqEl.innerHTML = data.requirements.documents.map(doc => `<li>${doc}</li>`).join('');
+            }
+            
+            // Update course details content
+            const programOverviewEl = document.getElementById(`programOverview${suffix}`);
+            const coreCoursesEl = document.getElementById(`coreCourses${suffix}`);
+            const programDurationEl = document.getElementById(`programDuration${suffix}`);
+            const semesterBreakdownEl = document.getElementById(`semesterBreakdown${suffix}`);
+            const specializationTracksEl = document.getElementById(`specializationTracks${suffix}`);
+            
+            if (programOverviewEl) programOverviewEl.textContent = data.courseDetails.overview;
+            if (coreCoursesEl) {
+                coreCoursesEl.innerHTML = data.courseDetails.coreCourses.map(course => `<li>${course}</li>`).join('');
+            }
+            if (programDurationEl) programDurationEl.textContent = data.courseDetails.duration;
+            if (semesterBreakdownEl) semesterBreakdownEl.textContent = data.courseDetails.semesters;
+            if (specializationTracksEl) specializationTracksEl.textContent = data.courseDetails.specializations;
+        }
+
+        // Simple tab functionality for scholarship sections
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize tab functionality for all scholarship sections
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    const cardId = this.getAttribute('data-card');
+                    const section = this.closest('.border-t.pt-4');
+                    
+                    if (section) {
+                        showTab(section, tabId);
+                    }
+                });
+            });
+
+            function showTab(section, tabId) {
+                // Update active tab button
+                const tabButtons = section.querySelectorAll('.tab-btn');
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('text-red-600', 'border-b-2', 'border-red-600');
+                    btn.classList.add('text-gray-500', 'hover:text-gray-700');
+                });
+                
+                const activeButton = section.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+                if (activeButton) {
+                    activeButton.classList.remove('text-gray-500', 'hover:text-gray-700');
+                    activeButton.classList.add('text-red-600', 'border-b-2', 'border-red-600');
+                }
+                
+                // Show active tab content
+                const tabContents = section.querySelectorAll('.tab-content');
+                tabContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+                
+                const activeContent = section.querySelector(`.tab-content[data-tab="${tabId}"]`);
+                if (activeContent) {
+                    activeContent.classList.remove('hidden');
+                }
+            }
+
+            // Initialize default state - show fees tab
+            const scholarshipSections = document.querySelectorAll('.border-t.pt-4');
+            scholarshipSections.forEach(section => {
+                showTab(section, 'fees');
+            });
+
+            // Add event listeners for scholarship dropdown changes
+            const scholarshipDropdowns = document.querySelectorAll('.scholarship-dropdown');
+            scholarshipDropdowns.forEach(dropdown => {
+                dropdown.addEventListener('change', function() {
+                    const scholarshipType = this.value;
+                    const cardNumber = this.getAttribute('data-card');
+                    updateScholarshipData(scholarshipType, cardNumber);
+                });
+            });
+
+            // Initialize with default scholarship data for all cards
+            scholarshipDropdowns.forEach(dropdown => {
+                const scholarshipType = dropdown.value;
+                const cardNumber = dropdown.getAttribute('data-card');
+                updateScholarshipData(scholarshipType, cardNumber);
+            });
+        });
     </script>
     
     <!-- Working Modal Script -->
