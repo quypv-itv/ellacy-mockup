@@ -329,10 +329,216 @@
                                 </div>
                                 <!-- Next Steps Section inside dropdown -->
                                 <div class="mt-6 pt-6 border-t border-gray-200">
-                                    <button class="mt-4 w-full flex justify-center items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium text-white hover:bg-[#D61D13] transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'">
-                                        <i data-lucide="upload" class="w-4 h-4 mr-2"></i> Upload Documents
+                                    <button id="openDocModal" class="w-full flex justify-center items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium text-white hover:bg-[#D61D13] transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'">
+                                        <i data-lucide="upload" class="w-4 h-4 mr-2"></i> Choose document from your profile
                                     </button>
                                 </div>
+
+                                <!-- Document Selection Modal -->
+                                <div id="documentModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+                                    <div class="bg-white rounded-xl p-6 w-full max-w-2xl max-h-[80vh] overflow-y-auto">
+                                        <div class="flex justify-between items-center mb-4">
+                                            <div class="flex items-center space-x-2">
+                                                <h3 class="text-lg font-semibold text-gray-900">Select Document from Profile</h3>
+                                                <div class="relative group">
+                                                    <i data-lucide="help-circle" class="w-4 h-4 text-gray-400 hover:text-gray-500 cursor-help"></i>
+                                                    <div class="absolute left-0 mt-1 w-48 p-2 bg-gray-700 text-white text-xs rounded whitespace-normal opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none" style="z-index: 50;">
+                                                        To upload a new document, please upload it in your profile.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button id="closeDocModal" class="text-gray-400 hover:text-gray-500">
+                                                <i data-lucide="x" class="w-5 h-5"></i>
+                                            </button>
+                                        </div>
+                                        
+                                        <div class="space-y-3 mb-4">
+                                            <!-- Document Item -->
+                                            <label class="block">
+                                                <input type="checkbox" class="hidden document-checkbox" data-doc-id="doc1">
+                                                <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer document-item">
+                                                    <div class="flex items-center">
+                                                        <div class="flex items-center justify-center w-5 h-5 border-2 border-gray-300 rounded mr-3 flex-shrink-0">
+                                                            <i data-lucide="check" class="w-4 h-4 text-white check-icon"></i>
+                                                        </div>
+                                                        <div class="bg-red-50 p-2 rounded-lg mr-3">
+                                                            <i data-lucide="file-text" class="w-5 h-5 text-red-600"></i>
+                                                        </div>
+                                                        <div class="min-w-0">
+                                                            <p class="text-sm font-medium text-gray-900 truncate">High School Transcript</p>
+                                                            <p class="text-xs text-gray-500">PDF • 1.2 MB • Uploaded on Aug 15, 2025</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+
+                                            <!-- Document Item -->
+                                            <label class="block">
+                                                <input type="checkbox" class="hidden document-checkbox" data-doc-id="doc2">
+                                                <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer document-item">
+                                                    <div class="flex items-center">
+                                                        <div class="flex items-center justify-center w-5 h-5 border-2 border-gray-300 rounded mr-3 flex-shrink-0">
+                                                            <i data-lucide="check" class="w-4 h-4 text-white check-icon"></i>
+                                                        </div>
+                                                        <div class="bg-red-50 p-2 rounded-lg mr-3">
+                                                            <i data-lucide="file-text" class="w-5 h-5 text-red-600"></i>
+                                                        </div>
+                                                        <div class="min-w-0">
+                                                            <p class="text-sm font-medium text-gray-900 truncate">IELTS Test Results</p>
+                                                            <p class="text-xs text-gray-500">PDF • 0.8 MB • Uploaded on Aug 10, 2025</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+
+                                            <!-- Document Item -->
+                                            <label class="block">
+                                                <input type="checkbox" class="hidden document-checkbox" data-doc-id="doc3">
+                                                <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer document-item">
+                                                    <div class="flex items-center">
+                                                        <div class="flex items-center justify-center w-5 h-5 border-2 border-gray-300 rounded mr-3 flex-shrink-0">
+                                                            <i data-lucide="check" class="w-4 h-4 text-white check-icon"></i>
+                                                        </div>
+                                                        <div class="bg-red-50 p-2 rounded-lg mr-3">
+                                                            <i data-lucide="file-text" class="w-5 h-5 text-red-600"></i>
+                                                        </div>
+                                                        <div class="min-w-0">
+                                                            <p class="text-sm font-medium text-gray-900 truncate">Letter of Recommendation</p>
+                                                            <p class="text-xs text-gray-500">PDF • 0.5 MB • Uploaded on Aug 5, 2025</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="flex justify-between items-center pt-4 border-t border-gray-200">
+                                            <span id="selectedCount" class="text-sm text-gray-500">0 documents selected</span>
+                                            <div class="space-x-3">
+                                                <button id="cancelDocSelect" class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                                                    Cancel
+                                                </button>
+                                                <button id="confirmDocSelect" class="px-4 py-2 text-sm font-medium text-white rounded-lg disabled:opacity-50" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'" disabled>
+                                                    Add Selected Documents (0)
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <style>
+                                    .document-checkbox:checked + .document-item {
+                                        border-color: #ED2217;
+                                        background-color: #FEF2F2;
+                                    }
+                                    .document-checkbox:checked + .document-item .check-icon {
+                                        color: white;
+                                        background-color: #ED2217;
+                                        border-radius: 3px;
+                                    }
+                                    
+                                    /* Help tooltip styles */
+                                    .relative.group .hidden {
+                                        display: none;
+                                    }
+                                    .relative.group:hover .hidden {
+                                        display: block;
+                                    }
+                                </style>
+
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        const modal = document.getElementById('documentModal');
+                                        const openBtn = document.getElementById('openDocModal');
+                                        const closeBtn = document.getElementById('closeDocModal');
+                                        const cancelBtn = document.getElementById('cancelDocSelect');
+                                        const confirmBtn = document.getElementById('confirmDocSelect');
+                                        const checkboxes = document.querySelectorAll('.document-checkbox');
+                                        const selectedCountEl = document.getElementById('selectedCount');
+                                        
+                                        let selectedDocs = [];
+
+                                        // Update selected count and button state
+                                        function updateSelection() {
+                                            const checkedBoxes = Array.from(checkboxes).filter(checkbox => checkbox.checked);
+                                            const count = checkedBoxes.length;
+                                            
+                                            // Update count display
+                                            selectedCountEl.textContent = `${count} ${count === 1 ? 'document' : 'documents'} selected`;
+                                            
+                                            // Update confirm button
+                                            confirmBtn.textContent = `Add Selected Documents${count > 0 ? ` (${count})` : ''}`;
+                                            confirmBtn.disabled = count === 0;
+                                            
+                                            // Update selected docs array
+                                            selectedDocs = checkedBoxes.map(checkbox => ({
+                                                id: checkbox.dataset.docId,
+                                                name: checkbox.closest('label').querySelector('.text-gray-900').textContent
+                                            }));
+                                        }
+
+                                        // Open modal
+                                        openBtn.addEventListener('click', function() {
+                                            modal.classList.remove('hidden');
+                                            document.body.style.overflow = 'hidden';
+                                            // Reset selections when opening
+                                            checkboxes.forEach(cb => cb.checked = false);
+                                            updateSelection();
+                                        });
+
+                                        // Close modal
+                                        function closeModal() {
+                                            modal.classList.add('hidden');
+                                            document.body.style.overflow = 'auto';
+                                        }
+
+                                        closeBtn.addEventListener('click', closeModal);
+                                        cancelBtn.addEventListener('click', closeModal);
+                                        
+                                        // Close when clicking outside modal content
+                                        modal.addEventListener('click', function(e) {
+                                            if (e.target === modal) {
+                                                closeModal();
+                                            }
+                                        });
+
+                                        // Handle checkbox changes
+                                        checkboxes.forEach(checkbox => {
+                                            checkbox.addEventListener('change', updateSelection);
+                                            
+                                            // Also make the entire item clickable
+                                            const label = checkbox.closest('label');
+                                            label.addEventListener('click', function(e) {
+                                                // Don't toggle if clicking the actual checkbox
+                                                if (e.target === checkbox) return;
+                                                
+                                                // Toggle the checkbox
+                                                checkbox.checked = !checkbox.checked;
+                                                updateSelection();
+                                                
+                                                // Prevent event from bubbling up
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                            });
+                                        });
+
+                                        // Confirm selection
+                                        confirmBtn.addEventListener('click', function() {
+                                            if (selectedDocs.length > 0) {
+                                                // Here you would typically handle the selected documents
+                                                console.log('Selected documents:', selectedDocs);
+                                                
+                                                // Show success message with selected document names
+                                                const docNames = selectedDocs.map(doc => `• ${doc.name}`).join('\n');
+                                                alert(`The following documents have been added to your application:\n\n${docNames}`);
+                                                
+                                                // Close the modal
+                                                closeModal();
+                                            } else {
+                                                alert('Please select at least one document.');
+                                            }
+                                        });
+                                    });
+                                </script>
                             </div>
                         </div>
 

@@ -117,28 +117,6 @@
                     <div class="text-sm mt-1 hidden" id="emailError" style="color: #ED2217;"></div>
                 </div>
 
-                <!-- Phone Number -->
-                <div>
-                    <label for="phone" class="block text-sm font-medium text-black mb-2">
-                        Phone Number <span style="color: #ED2217;">*</span>
-                    </label>
-                    <div class="flex w-80">
-                        <select id="countryCode" name="countryCode" 
-                                class="w-20 px-1 py-3 border border-gray-300 rounded-l-xl focus:outline-none focus:ring-2 focus:border-transparent bg-gray-50 text-sm" style="--tw-ring-color: #ED2217;">
-                            <option value="+1">🇺🇸 +1</option>
-                            <option value="+44">🇬🇧 +44</option>
-                            <option value="+61">🇦🇺 +61</option>
-                            <option value="+1">🇨🇦 +1</option>
-                            <option value="+84">🇻🇳 +84</option>
-                            <option value="+86">🇨🇳 +86</option>
-                            <option value="+91">🇮🇳 +91</option>
-                        </select>
-                        <input type="tel" id="phone" name="phone"
-                               class="flex-1 min-w-0 px-2 py-3 border border-l-0 border-gray-300 rounded-r-xl focus:outline-none focus:ring-2 focus:border-transparent text-sm" style="--tw-ring-color: #ED2217;"
-                               placeholder="Enter phone number">
-                    </div>
-                    <div class="text-sm mt-1 hidden" id="phoneError" style="color: #ED2217;"></div>
-                </div>
 
                 <!-- Password -->
                 <div>
@@ -458,8 +436,6 @@
                 uid: generateUID(),
                 fullName: document.getElementById('fullName').value.trim() || 'Demo Student',
                 email: document.getElementById('email').value.trim() || 'demo@student.com',
-                countryCode: document.getElementById('countryCode').value || '+84',
-                phone: document.getElementById('phone').value.trim() || '123456789',
                 password: document.getElementById('password').value || 'demo123',
                 referralCode: document.getElementById('referralCode').value.trim() || '',
                 marketingConsent: document.getElementById('marketing').checked,

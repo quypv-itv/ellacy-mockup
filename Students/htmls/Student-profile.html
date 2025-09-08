@@ -240,13 +240,49 @@
                                     <img src="qr-code-student.svg" alt="Student QR Code" class="w-full h-full object-cover">
                                 </div>
                             </div>
-                            <div>
-                                <label class="block text-sm font-medium text-black mb-1">Student Name <span class="text-red-600">*</span></label>
-                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" value="Sarah Johnson">
+                            <div class="col-span-2">
+                                <div class="grid grid-cols-3 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-black mb-1">First Name <span class="text-red-600">*</span></label>
+                                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" value="Sarah">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-black mb-1">Middle Name</label>
+                                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="Optional">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-black mb-1">Last Name <span class="text-red-600">*</span></label>
+                                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" value="Johnson">
+                                    </div>
+                                </div>
+                                <p class="mt-1 text-xs text-gray-500">Match with the name listed in Passport</p>
                             </div>
                             <div class="col-span-2">
-                                <label class="block text-sm font-medium text-black mb-1">Address <span class="text-red-600">*</span></label>
-                                <textarea class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" rows="3">123 Main Street, San Francisco, CA 94105, United States</textarea>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="col-span-2">
+                                        <label class="block text-sm font-medium text-black mb-1">Street Address <span class="text-red-600">*</span></label>
+                                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" value="123 Main Street">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-black mb-1">City <span class="text-red-600">*</span></label>
+                                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" value="San Francisco">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-black mb-1">State/Province/County <span class="text-red-600">*</span></label>
+                                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" value="California">
+                                    </div>
+                                    <div class="col-span-2">
+                                        <label class="block text-sm font-medium text-black mb-1">Country <span class="text-red-600">*</span></label>
+                                        <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                            <option>Select a country</option>
+                                            <option selected>United States</option>
+                                            <option>Canada</option>
+                                            <option>United Kingdom</option>
+                                            <option>Australia</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-black mb-1">Date of Birth <span class="text-red-600">*</span></label>
@@ -256,34 +292,68 @@
                                 <label class="block text-sm font-medium text-black mb-1">Telephone <span class="text-red-600">*</span></label>
                                 <input type="tel" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" value="+1 234 567 8900">
                             </div>
-                            <div>
+                            <div class="email-container">
                                 <label class="block text-sm font-medium text-black mb-1">Email <span class="text-red-600">*</span></label>
-                                <input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" value="sarah.j@example.com">
+                                <div id="email-inputs" class="space-y-2">
+                                    <div class="flex items-center gap-2">
+                                        <input type="email" name="emails[]" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" value="sarah.j@example.com" required>
+                                    </div>
+                                </div>
+                                <button type="button" onclick="addEmailField()" class="mt-2 text-sm text-red-600 hover:text-red-800 flex items-center">
+                                    <i data-lucide="plus-circle" class="w-4 h-4 mr-1"></i> Add another email
+                                </button>
+                                <script>
+                                    function addEmailField() {
+                                        const container = document.getElementById('email-inputs');
+                                        const newField = document.createElement('div');
+                                        newField.className = 'flex items-center gap-2';
+                                        newField.innerHTML = `
+                                            <input type="email" name="emails[]" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" required>
+                                            <button type="button" onclick="this.parentElement.remove()" class="text-red-500 hover:text-red-700">
+                                                <i data-lucide="x" class="w-4 h-4"></i>
+                                            </button>
+                                        `;
+                                        container.appendChild(newField);
+                                        lucide.createIcons({ icons: lucide.icons });
+                                    }
+                                </script>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-black mb-1">Skype ID</label>
-                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" value="sarah.johnson.skype">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-black mb-1">Agent</label>
-                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50" value="Michael Chen (AGT-2024-789)" readonly>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-black mb-1">Academic Advisor</label>
-                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50" value="Dr. Emily Rodriguez" readonly>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-black mb-1">Visa Advisor</label>
-                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50" value="James Wilson" readonly>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-black mb-1">Senior Advisor</label>
-                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50" value="James Lee" readonly>
+                                <label class="block text-sm font-medium text-black mb-1">Social Media Link</label>
+                                <input type="url" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="https://">
                             </div>
                         </div>
                     </div>
 
-                    <!-- Section B: Education Background -->
+                    <!-- Section B: Agent & Advisor -->
+                    <div class="bg-white rounded-3xl shadow-md">
+                        <div class="p-6 border-b">
+                            <div class="flex items-center">
+                                <i data-lucide="passport" class="w-5 h-5 text-gray-600 mr-3"></i>
+                                <h3 class="text-lg font-semibold text-black">Agent & Advisor</h3>
+                            </div>
+                        </div>
+                        <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-black mb-1">Agent</label>
+                                <div class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 text-gray-700">Michael Chen (AGT-2024-789)</div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-black mb-1">Academic Advisor</label>
+                                <div class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 text-gray-700">Dr. Emily Rodriguez</div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-black mb-1">Visa Advisor</label>
+                                <div class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 text-gray-700">James Wilson</div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-black mb-1">Senior Advisor</label>
+                                <div class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 text-gray-700">James Lee</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section C: Education Background -->
                     <div class="bg-white rounded-3xl shadow-md">
                         <div class="p-6 border-b">
                             <div class="flex items-center">
@@ -292,61 +362,51 @@
                             </div>
                         </div>
                         <div class="p-6 space-y-8">
-                            <!-- Test Scores -->
+                            <!-- Language Scores -->
                             <div>
-                                <h4 class="text-md font-semibold text-black mb-4">Test Scores</h4>
-                                <div class="grid grid-cols-2 gap-6">
-                                    <div>
-                                        <label class="block text-sm font-medium text-black mb-1">TOEFL/IELTS Score</label>
-                                        <div class="flex space-x-2">
-                                            <input type="number" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="Score">
-                                            <input type="date" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                <h4 class="text-md font-semibold text-black mb-4">Language Scores</h4>
+                                <div class="flex flex-col md:flex-row gap-6">
+                                    <!-- Left Column -->
+                                    <div class="flex-1 space-y-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-black mb-1">IELTS</label>
+                                            <div class="flex space-x-2">
+                                                <input type="number" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="Score">
+                                                <input type="date" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-black mb-1">Duolingo</label>
+                                            <div class="flex space-x-2">
+                                                <input type="number" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="Score">
+                                                <input type="date" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-black mb-1">Other test score</label>
+                                            <div class="flex space-x-2">
+                                                <input type="number" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="Score">
+                                                <input type="date" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-black mb-1">SAT/ACT Score</label>
-                                        <div class="flex space-x-2">
-                                            <input type="number" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="Score">
-                                            <input type="date" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                    
+                                    <!-- Right Column -->
+                                    <div class="flex-1 space-y-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-black mb-1">SAT/ACT</label>
+                                            <div class="flex space-x-2">
+                                                <input type="number" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="Score">
+                                                <input type="date" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-black mb-1">GRE/GMAT Scores</label>
-                                        <div class="flex space-x-2">
-                                            <input type="number" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="Score">
-                                            <input type="date" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                        <div>
+                                            <label class="block text-sm font-medium text-black mb-1">GRE/GMAT</label>
+                                            <div class="flex space-x-2">
+                                                <input type="number" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="Score">
+                                                <input type="date" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-black mb-1">Other Scores</label>
-                                        <textarea class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" rows="2" placeholder="Other test scores"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Academic History -->
-                            <div>
-                                <h4 class="text-md font-semibold text-black mb-4">Academic History</h4>
-                                <div class="grid grid-cols-2 gap-6">
-                                    <div>
-                                        <label class="block text-sm font-medium text-black mb-1">High School</label>
-                                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="School name, location">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-black mb-1">College</label>
-                                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="School name, location">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-black mb-1">GPA for High School</label>
-                                        <input type="number" step="0.1" min="0" max="4" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="0.0-4.0 scale">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-black mb-1">GPA for College</label>
-                                        <input type="number" step="0.1" min="0" max="4" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="0.0-4.0 scale">
-                                    </div>
-                                    <div class="col-span-2">
-                                        <label class="block text-sm font-medium text-black mb-1">Awards/Honors</label>
-                                        <textarea class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" rows="3" placeholder="List your awards and honors"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -386,47 +446,42 @@
                                             <textarea class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" rows="3" placeholder="Math, Physics, Computer Science, English, etc."></textarea>
                                         </div>
                                     </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-black mb-3">Maximum Annual Budget (USD)</label>
-                                        <div class="flex flex-wrap gap-4">
-                                            <label class="flex items-center">
-                                                <input type="radio" name="budget" value="under_10k" class="text-red-600 focus:ring-red-500">
-                                                <span class="ml-2 text-sm">&lt;$10,000</span>
-                                            </label>
-                                            <label class="flex items-center">
-                                                <input type="radio" name="budget" value="10k_20k" class="text-red-600 focus:ring-red-500">
-                                                <span class="ml-2 text-sm">$10,000-$20,000</span>
-                                            </label>
-                                            <label class="flex items-center">
-                                                <input type="radio" name="budget" value="20k_30k" class="text-red-600 focus:ring-red-500">
-                                                <span class="ml-2 text-sm">$20,000-$30,000</span>
-                                            </label>
-                                            <label class="flex items-center">
-                                                <input type="radio" name="budget" value="30k_40k" class="text-red-600 focus:ring-red-500">
-                                                <span class="ml-2 text-sm">$30,000-$40,000</span>
-                                            </label>
-                                            <label class="flex items-center">
-                                                <input type="radio" name="budget" value="other" class="text-red-600 focus:ring-red-500">
-                                                <span class="ml-2 text-sm">Other</span>
-                                            </label>
-                                        </div>
+                                </div>
+                            </div>
+
+                            <!-- Academic History -->
+                            <div>
+                                <h4 class="text-md font-semibold text-black mb-4">Academic History</h4>
+                                <div class="grid grid-cols-12 gap-4">
+                                    <div class="col-span-5">
+                                        <label class="block text-sm font-medium text-black mb-1">High School & College</label>
+                                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="School name, location">
                                     </div>
-                                    <div class="grid grid-cols-2 gap-6">
-                                        <div>
-                                            <label class="block text-sm font-medium text-black mb-1">Desired Scholarships</label>
-                                            <textarea class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" rows="3" placeholder="Scholarship preferences"></textarea>
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-black mb-1">Additional Information</label>
-                                            <textarea class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" rows="3" placeholder="Any additional information"></textarea>
-                                        </div>
+                                    <div class="col-span-2">
+                                        <label class="block text-sm font-medium text-black mb-1">GPA</label>
+                                        <input type="number" step="0.1" min="0" max="4" class="w-full px-2 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 text-center" placeholder="0.0-4.0">
                                     </div>
+                                    <div class="col-span-5">
+                                        <label class="block text-sm font-medium text-black mb-1">Awards/Honors</label>
+                                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="List your awards and honors">
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <button type="button" onclick="addSchoolField()" class="flex items-center text-red-600 hover:text-red-700 text-sm font-medium">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                        </svg>
+                                        Add More School
+                                    </button>
+                                </div>
+                                <div id="additionalSchools" class="space-y-4 mt-4">
+                                    <!-- Additional school entries will be added here -->
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Section C: Visa Background -->
+                    <!-- Section D: Visa Background -->
                     <div class="bg-white rounded-3xl shadow-md">
                         <div class="p-6 border-b">
                             <div class="flex items-center">
@@ -470,7 +525,7 @@
                         </div>
                     </div>
 
-                    <!-- Section D: Family Background -->
+                    <!-- Section E: Family Background -->
                     <div class="bg-white rounded-3xl shadow-md">
                         <div class="p-6 border-b">
                             <div class="flex items-center">
@@ -508,7 +563,7 @@
                         </div>
                     </div>
 
-                    <!-- Section E: Referral Information -->
+                    <!-- Section F: Referral Information -->
                     <div class="bg-white rounded-3xl shadow-md">
                         <div class="p-6 border-b">
                             <div class="flex items-center">
@@ -524,114 +579,83 @@
                         </div>
                     </div>
 
-                    <!-- Section F: Uploaded Documents -->
+                    <!-- Section G: Uploaded Documents -->
                     <div class="bg-white rounded-3xl shadow-md">
                         <div class="p-6 border-b">
                             <div class="flex items-center">
                                 <i data-lucide="file" class="w-5 h-5 text-gray-600 mr-3"></i>
-                                <h3 class="text-lg font-semibold text-black">Uploaded Documents</h3>
+                                <h3 class="text-lg font-semibold text-black">Upload Documents</h3>
                             </div>
                         </div>
                         <div class="p-6 space-y-4">
                             <!-- CV/Resume -->
                             <div class="flex items-center justify-between p-4 border rounded-xl">
                                 <div class="flex items-center">
-                                    <i data-lucide="file-text" class="w-5 h-5 text-gray-600 mr-3"></i>
+                                    <i data-lucide="file-text" class="w-5 h-5 text-red-600 mr-3"></i>
                                     <div>
-                                        <p class="font-medium">CV/Resume <span class="text-red-600">*</span></p>
-                                        <p class="text-sm text-gray-500">PDF, DOCX</p>
+                                        <p class="font-medium">CV/Resume <span class="text-red-600">✓</span></p>
+                                        <p class="text-sm text-gray-500">resume_john_doe.pdf</p>
                                     </div>
                                 </div>
                                 <div class="flex items-center space-x-3">
-                                    <span class="px-2 py-1 bg-red-100 text-red-600 text-xs rounded">Missing</span>
-                                    <button class="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700">
-                                        Upload
+                                    <span class="text-red-600 text-xs">Uploaded</span>
+                                    <button class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-gray-100" title="Delete file">
+                                        <i data-lucide="trash-2" class="w-4 h-4"></i>
                                     </button>
                                 </div>
                             </div>
 
                             <!-- Academic Transcript -->
-                            <div class="flex items-center justify-between p-4 border rounded-xl">
+                            <div class="flex items-center justify-between p-4 border rounded-xl mt-3">
                                 <div class="flex items-center">
-                                    <i data-lucide="file-text" class="w-5 h-5 text-gray-600 mr-3"></i>
+                                    <i data-lucide="file-text" class="w-5 h-5 text-red-600 mr-3"></i>
                                     <div>
-                                        <p class="font-medium">Academic Transcript <span class="text-red-600">*</span></p>
-                                        <p class="text-sm text-gray-500">PDF</p>
+                                        <p class="font-medium">Academic Transcript <span class="text-red-600">✓</span></p>
+                                        <p class="text-sm text-gray-500">transcript_2023.pdf</p>
                                     </div>
                                 </div>
                                 <div class="flex items-center space-x-3">
-                                    <span class="px-2 py-1 bg-red-100 text-red-600 text-xs rounded">Missing</span>
-                                    <button class="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700">
-                                        Upload
+                                    <span class="text-red-600 text-xs">Uploaded</span>
+                                    <button class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-gray-100" title="Delete file">
+                                        <i data-lucide="trash-2" class="w-4 h-4"></i>
                                     </button>
                                 </div>
                             </div>
 
                             <!-- ID/Passport Copy -->
-                            <div class="flex items-center justify-between p-4 border rounded-xl">
+                            <div class="flex items-center justify-between p-4 border rounded-xl mt-3">
                                 <div class="flex items-center">
-                                    <i data-lucide="file-text" class="w-5 h-5 text-gray-600 mr-3"></i>
+                                    <i data-lucide="file-text" class="w-5 h-5 text-red-600 mr-3"></i>
                                     <div>
-                                        <p class="font-medium">ID/Passport Copy <span class="text-red-600">*</span></p>
-                                        <p class="text-sm text-gray-500">PDF, JPG, PNG</p>
+                                        <p class="font-medium">ID/Passport Copy <span class="text-red-600">✓</span></p>
+                                        <p class="text-sm text-gray-500">passport_id_scan.pdf</p>
                                     </div>
                                 </div>
                                 <div class="flex items-center space-x-3">
-                                    <span class="px-2 py-1 bg-red-100 text-red-600 text-xs rounded">Missing</span>
-                                    <button class="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700">
-                                        Upload
+                                    <span class="text-red-600 text-xs">Uploaded</span>
+                                    <button class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-gray-100" title="Delete file">
+                                        <i data-lucide="trash-2" class="w-4 h-4"></i>
                                     </button>
                                 </div>
                             </div>
 
-                            <!-- Test Score Reports -->
-                            <div class="flex items-center justify-between p-4 border rounded-xl">
-                                <div class="flex items-center">
-                                    <i data-lucide="file-text" class="w-5 h-5 text-gray-600 mr-3"></i>
-                                    <div>
-                                        <p class="font-medium">Test Score Reports</p>
-                                        <p class="text-sm text-gray-500">PDF</p>
+                            <!-- Additional Documents Upload -->
+                            <div class="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center">
+                                <div class="flex flex-col items-center justify-center space-y-3">
+                                    <div class="p-3 bg-gray-100 rounded-full">
+                                        <i data-lucide="upload" class="w-6 h-6 text-gray-500"></i>
                                     </div>
-                                </div>
-                                <div class="flex items-center space-x-3">
-                                    <span class="px-2 py-1 bg-orange-100 text-orange-600 text-xs rounded">Optional</span>
-                                    <button class="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700">
-                                        Upload
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Recommendation Letter -->
-                            <div class="flex items-center justify-between p-4 border rounded-xl">
-                                <div class="flex items-center">
-                                    <i data-lucide="file-text" class="w-5 h-5 text-gray-600 mr-3"></i>
                                     <div>
-                                        <p class="font-medium">Recommendation Letter</p>
-                                        <p class="text-sm text-gray-500">PDF</p>
+                                        <p class="text-sm font-medium text-gray-700">Upload Additional Documents</p>
+                                        <p class="text-xs text-gray-500 mt-1">PDF, DOCX, JPG, PNG (Max. 10MB each)</p>
                                     </div>
+                                    <label class="cursor-pointer mt-2 px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-lg hover:bg-red-700 transition-colors">
+                                        Choose Files
+                                        <input type="file" class="hidden" multiple>
+                                    </label>
                                 </div>
-                                <div class="flex items-center space-x-3">
-                                    <span class="px-2 py-1 bg-orange-100 text-orange-600 text-xs rounded">Optional</span>
-                                    <button class="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700">
-                                        Upload
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Personal Statement/Essay -->
-                            <div class="flex items-center justify-between p-4 border rounded-xl">
-                                <div class="flex items-center">
-                                    <i data-lucide="file-text" class="w-5 h-5 text-gray-600 mr-3"></i>
-                                    <div>
-                                        <p class="font-medium">Personal Statement/Essay</p>
-                                        <p class="text-sm text-gray-500">PDF, DOCX</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center space-x-3">
-                                    <span class="px-2 py-1 bg-orange-100 text-orange-600 text-xs rounded">Optional</span>
-                                    <button class="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700">
-                                        Upload
-                                    </button>
+                                <div class="mt-4 text-xs text-gray-500">
+                                    You can upload test scores, recommendation letters, personal statements, or any other supporting documents.
                                 </div>
                             </div>
                         </div>
@@ -701,6 +725,47 @@
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
+
+        // Function to add a new school field
+        function addSchoolField() {
+            const container = document.getElementById('additionalSchools');
+            const schoolId = 'school-' + Date.now();
+            
+            const schoolDiv = document.createElement('div');
+            schoolDiv.className = 'bg-gray-50 p-4 rounded-lg border border-gray-200 mt-4';
+            schoolDiv.id = schoolId;
+            
+            schoolDiv.innerHTML = `
+                <div class="grid grid-cols-12 gap-4">
+                    <div class="col-span-5">
+                        <label class="block text-sm font-medium text-black mb-1">High School & College</label>
+                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="School name, location">
+                    </div>
+                    <div class="col-span-2">
+                        <label class="block text-sm font-medium text-black mb-1">GPA</label>
+                        <input type="number" step="0.1" min="0" max="4" class="w-full px-2 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 text-center" placeholder="0.0-4.0">
+                    </div>
+                    <div class="col-span-5">
+                        <div class="flex items-end">
+                            <div class="flex-1">
+                                <label class="block text-sm font-medium text-black mb-1">Awards/Honors</label>
+                                <div class="relative">
+                                    <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 pr-10" placeholder="List your awards and honors">
+                                </div>
+                            </div>
+                            <button type="button" onclick="document.getElementById('${schoolId}').remove()" class="ml-2 text-gray-500 hover:text-red-600 p-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(schoolDiv);
+            lucide.createIcons(); // Re-initialize icons for the new elements
+        }
 
         // Handle logout
         function handleLogout() {
