@@ -272,11 +272,11 @@
                                 Most Popular Scholarships
                             </button>
                             <button class="tab-btn px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700" data-tab="university">
-                                My Applications
+                                My University
                             </button>
-                            <button class="tab-btn px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700" data-tab="favourite">
+                            <!-- <button class="tab-btn px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700" data-tab="favourite">
                                 My Favorites
-                            </button>
+                            </button> -->
                         </div>
 
                         <!-- Tab Content -->
@@ -307,11 +307,43 @@
                         </div>
 
                         <div id="university-tab" class="tab-content hidden">
-                            <div class="text-center py-8">
+                            <!-- Table Header -->
+                            <div class="grid grid-cols-3 gap-4 font-medium text-gray-700 border-b pb-2 mb-2">
+                                <div>Program Name</div>
+                                <div>Status</div>
+                                <div>Required Action</div>
+                            </div>
+                            
+                            <!-- Table Rows -->
+                            <div class="space-y-2">
+                                <!-- Example Row 1 -->
+                                <div class="grid grid-cols-3 gap-4 items-center py-2 border-b">
+                                    <div class="font-medium">Computer Science</div>
+                                    <div><span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">Docs Review</span></div>
+                                    <div><button class="text-red-600 hover:text-red-700 text-sm">Upload Documents</button></div>
+                                </div>
+                                
+                                <!-- Example Row 2 -->
+                                <div class="grid grid-cols-3 gap-4 items-center py-2 border-b">
+                                    <div class="font-medium">Business Administration</div>
+                                    <div><span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">Application Prep and 2nd payment</span></div>
+                                    <div><button class="text-red-600 hover:text-red-700 text-sm">Complete Application</button></div>
+                                </div>
+                                
+                                <!-- Example Row 3 -->
+                                <div class="grid grid-cols-3 gap-4 items-center py-2 border-b">
+                                    <div class="font-medium">Data Science</div>
+                                    <div><span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">Agreement signing and first payment</span></div>
+                                    <div><button class="text-red-600 hover:text-red-700 text-sm">Pay Deposit</button></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Empty State (shown when no applications) -->
+                            <div id="no-applications" class="hidden text-center py-8">
                                 <p class="text-gray-500 mb-4">You haven't submitted any applications yet</p>
-                                <button class="bg-red-400 text-white px-6 py-2 rounded-lg hover:bg-red-500 transition-colors">
-                                    Please Search for Program Here
-                                </button>
+                                <a href="Student-find-program.html" class="inline-block bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 transition-colors">
+                                    Search for Programs
+                                </a>
                             </div>
                         </div>
 

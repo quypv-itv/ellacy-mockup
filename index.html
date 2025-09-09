@@ -3,201 +3,431 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - APPLYLEAD</title>
+    <title>APPLYLEAD - Your Gateway to Global Education</title>
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Inter Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #F9F9F9;
         }
-        .light-bg {
-            background: #F9F9F9;
+        .hero-gradient {
+            background: linear-gradient(135deg, #ED2217 0%, #DC1F12 100%);
         }
-        .focus-red:focus {
-            --tw-ring-color: #ED2217;
-            border-color: #ED2217;
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="light-bg min-h-screen p-0">
-    <!-- Header with Logo -->
-    <div class="absolute top-4 left-4">
-        <img src="ApplyLead_logo.png" alt="ApplyLead Logo" class="h-9 w-auto object-fill">
-    </div>
-
-    <!-- Language Switcher -->
-    <div class="absolute top-4 right-4">
-        <select class="bg-white/80 backdrop-blur-sm text-black text-sm rounded-lg px-3 py-1.5 border border-gray-200">
-            <option value="en">English</option>
-            <option value="vi">Tiếng Việt</option>
-        </select>
-    </div>
-
-    <!-- Main Container -->
-    <div class="min-h-screen flex items-center justify-center p-4">
-        <div class="w-full max-w-sm">
-
-        <!-- Role Selector (for mockup/testing) -->
-        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-2 mb-6">
-            <div class="flex justify-center space-x-2" role="group">
-                <button type="button" class="flex-1 px-4 py-2 text-sm font-medium rounded-xl text-white" id="student-role" style="background-color: #ED2217;">Student</button>
-                <button type="button" class="flex-1 px-4 py-2 text-sm font-medium rounded-xl text-black hover:bg-gray-100" id="agent-role">Agent</button>
-                <button type="button" class="flex-1 px-4 py-2 text-sm font-medium rounded-xl text-black hover:bg-gray-100" id="admin-role">Admin</button>
+<body class="min-h-screen" style="background-color: #F9F9F9;">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-3">
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#programs" class="text-black hover:text-gray-700 font-medium">Programs</a>
+                    <a href="#scholarships" class="text-black hover:text-gray-700 font-medium">Scholarships</a>
+                    <a href="#universities" class="text-black hover:text-gray-700 font-medium">Universities</a>
+                    <a href="#about" class="text-black hover:text-gray-700 font-medium">About</a>
+                    <a href="#contact" class="text-black hover:text-gray-700 font-medium">Contact</a>
+                </nav>
+                
+                <!-- CTA Buttons -->
+                <div class="flex items-center space-x-4">
+                    <a href="login.html" class="border border-gray-300 text-black px-4 py-2 rounded-lg hover:bg-gray-50 font-medium">Sign In</a>
+                    <a href="Students/htmls/Student-sign-up.html" class="text-white px-6 py-2 rounded-lg font-medium transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#DC1F12'" onmouseout="this.style.backgroundColor='#ED2217'">Get Started</a>
+                </div>
             </div>
-            <p class="text-xs text-gray-600 text-center mt-2">📌 For testing different user flows</p>
         </div>
+    </header>
 
-        <!-- Login Form -->
-        <div class="bg-white rounded-3xl shadow-md p-8">
-            <h1 class="text-2xl font-semibold text-black mb-6">Sign In</h1>
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h1 class="text-5xl font-bold mb-6">Your Gateway to Global Education</h1>
+                    <p class="text-xl mb-8 text-white/90">Connect with top universities worldwide. Find scholarships. Get expert guidance. Start your study abroad journey today.</p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <a href="Students/htmls/Student-sign-up.html" class="bg-white text-black px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors text-center">Get Started as Student</a>
+                        <a href="#agent-section" class="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-black transition-colors text-center">Join as Education Agent</a>
+                    </div>
+                    
+                    <p class="text-white/80">Join 50,000+ students already studying abroad</p>
+                </div>
+                
+                <div class="floating-animation">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=400&fit=crop" alt="Students in academic setting" class="rounded-2xl shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-black mb-4">Why Choose APPLYLEAD?</h2>
+                <p class="text-xl text-black max-w-3xl mx-auto">Discover the advantages that make us the preferred choice for international education</p>
+            </div>
             
-            <form id="loginForm" class="space-y-4" onsubmit="handleLogin(event)">
-                <!-- Email -->
-                <div>
-                    <label for="email" class="block text-sm font-medium text-black mb-1">Email address</label>
-                    <div class="relative">
-                        <i data-lucide="mail" class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
-                        <input type="email" id="email" name="email" 
-                               class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus-red"
-                               placeholder="your.email@example.com">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-8 rounded-3xl shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background-color: #ED2217;">
+                        <i data-lucide="search" class="w-8 h-8 text-white"></i>
                     </div>
+                    <h3 class="text-2xl font-bold text-black mb-4">Program Discovery</h3>
+                    <p class="text-black">Browse 10,000+ programs from 500+ universities worldwide and find your perfect match</p>
                 </div>
-
-                <!-- Password -->
-                <div>
-                    <label for="password" class="block text-sm font-medium text-black mb-1">Password</label>
-                    <div class="relative">
-                        <i data-lucide="lock" class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
-                        <input type="password" id="password" name="password" 
-                               class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus-red"
-                               placeholder="••••••••">
-                        <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-600 transition-colors duration-200" onclick="togglePassword()">
-                            <i data-lucide="eye" class="w-5 h-5" id="password-toggle-icon"></i>
-                        </button>
+                
+                <div class="text-center p-8 rounded-3xl shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background-color: #ED2217;">
+                        <i data-lucide="award" class="w-8 h-8 text-white"></i>
                     </div>
+                    <h3 class="text-2xl font-bold text-black mb-4">Scholarship Matching</h3>
+                    <p class="text-black">Find scholarships worth up to $50,000 with our intelligent matching system</p>
                 </div>
-
-                <!-- Remember Me & Forgot Password -->
-                <div class="flex items-center justify-between">
-                    <label class="flex items-center">
-                        <input type="checkbox" class="w-4 h-4 rounded border-gray-300 focus:ring-red-500" style="accent-color: #ED2217;">
-                        <span class="ml-2 text-sm text-black">Remember me</span>
-                    </label>
-                    <a href="#" class="text-sm hover:text-red-700" style="color: #ED2217;">Forgot password?</a>
+                
+                <div class="text-center p-8 rounded-3xl shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background-color: #ED2217;">
+                        <i data-lucide="users" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-black mb-4">Expert Guidance</h3>
+                    <p class="text-black">Get personalized advice from certified counselors throughout your journey</p>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Sign In Button -->
-                <button type="submit" 
-                        class="w-full text-white py-2.5 rounded-xl hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2" style="background-color: #ED2217; --tw-ring-color: #ED2217;">
-                    Sign In
-                </button>
+    <!-- Program Showcase Section -->
+    <section id="programs" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-black mb-4">Popular Study Destinations</h2>
+                <p class="text-xl text-black">Explore top programs from leading universities around the world</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white rounded-3xl shadow-md p-6 hover:shadow-lg transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1549451371-64aa98a6f660?w=400&h=200&fit=crop" alt="MIT Campus" class="w-full h-48 object-cover rounded-xl mb-4">
+                    <h3 class="text-xl font-bold text-black mb-2">Computer Science - MIT</h3>
+                    <p class="text-black mb-2">Massachusetts Institute of Technology, USA</p>
+                    <p class="font-semibold" style="color: #ED2217;">$75,000/year</p>
+                </div>
+                
+                <div class="bg-white rounded-3xl shadow-md p-6 hover:shadow-lg transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1576495199011-eb94736d05d6?w=400&h=200&fit=crop" alt="University of Toronto" class="w-full h-48 object-cover rounded-xl mb-4">
+                    <h3 class="text-xl font-bold text-black mb-2">Business Administration</h3>
+                    <p class="text-black mb-2">University of Toronto, Canada</p>
+                    <p class="font-semibold" style="color: #ED2217;">$45,000/year</p>
+                </div>
+                
+                <div class="bg-white rounded-3xl shadow-md p-6 hover:shadow-lg transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=200&fit=crop" alt="University of Melbourne" class="w-full h-48 object-cover rounded-xl mb-4">
+                    <h3 class="text-xl font-bold text-black mb-2">Engineering</h3>
+                    <p class="text-black mb-2">University of Melbourne, Australia</p>
+                    <p class="font-semibold" style="color: #ED2217;">$40,000/year</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="Students/htmls/Student-find-program.html" class="text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#DC1F12'" onmouseout="this.style.backgroundColor='#ED2217'">View All Programs</a>
+            </div>
+        </div>
+    </section>
 
-                <!-- Social Login Options -->
-                <div class="mt-6">
-                    <div class="relative">
-                        <div class="absolute inset-0 flex items-center">
-                            <div class="w-full border-t border-gray-300"></div>
+    <!-- Scholarship Highlights -->
+    <section id="scholarships" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-black mb-4">Available Scholarships</h2>
+                <p class="text-xl text-black">Discover funding opportunities to support your education</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white rounded-3xl shadow-md p-6 border-l-4" style="border-color: #ED2217;">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-black">Merit-Based International Scholarship</h3>
+                        <span class="px-3 py-1 rounded-full text-xs font-medium text-white" style="background-color: #ED2217;">Deadline: Dec 15</span>
+                    </div>
+                    <p class="text-2xl font-bold mb-2" style="color: #ED2217;">Up to $10,000</p>
+                    <p class="text-black">For outstanding academic achievers pursuing undergraduate or graduate studies</p>
+                </div>
+                
+                <div class="bg-white rounded-3xl shadow-md p-6 border-l-4" style="border-color: #ED2217;">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-black">STEM Excellence Award</h3>
+                        <span class="px-3 py-1 rounded-full text-xs font-medium text-white" style="background-color: #ED2217;">Deadline: Jan 30</span>
+                    </div>
+                    <p class="text-2xl font-bold mb-2" style="color: #ED2217;">Up to $8,000</p>
+                    <p class="text-black">Supporting students in Science, Technology, Engineering, and Mathematics fields</p>
+                </div>
+                
+                <div class="bg-white rounded-3xl shadow-md p-6 border-l-4" style="border-color: #ED2217;">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-black">Diversity & Inclusion Grant</h3>
+                        <span class="px-3 py-1 rounded-full text-xs font-medium text-white" style="background-color: #ED2217;">Deadline: Mar 15</span>
+                    </div>
+                    <p class="text-2xl font-bold mb-2" style="color: #ED2217;">Up to $5,000</p>
+                    <p class="text-black">Promoting diversity and inclusion in international education</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="#" class="text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#DC1F12'" onmouseout="this.style.backgroundColor='#ED2217'">Explore All Scholarships</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-black mb-4">Success Stories</h2>
+                <p class="text-xl text-black">Hear from students who achieved their dreams with APPLYLEAD</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <div class="bg-white rounded-3xl shadow-md p-8">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face" alt="Sarah Chen" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-black">Sarah Chen</h4>
+                            <p class="text-black">Stanford University, USA</p>
                         </div>
-                        <div class="relative flex justify-center text-sm">
-                            <span class="px-2 bg-white text-black">Or continue with</span>
+                    </div>
+                    <p class="text-black italic">"APPLYLEAD helped me find my dream program at Stanford. The scholarship matching saved me $15,000!"</p>
+                </div>
+                
+                <div class="bg-white rounded-3xl shadow-md p-8">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Ahmed Hassan" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-black">Ahmed Hassan</h4>
+                            <p class="text-black">Oxford University, UK</p>
                         </div>
                     </div>
-                    <div class="mt-6 grid grid-cols-2 gap-3">
-                        <button type="button" class="w-full inline-flex justify-center py-3 px-4 border border-gray-300 rounded-xl shadow-sm bg-white text-sm font-medium text-black hover:bg-gray-50">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24">
-                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                            </svg>
-                            <span class="ml-2">Google</span>
-                        </button>
-                        <button type="button" class="w-full inline-flex justify-center py-3 px-4 border border-gray-300 rounded-xl shadow-sm bg-white text-sm font-medium text-black hover:bg-gray-50">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24">
-                                <path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                            </svg>
-                            <span class="ml-2">Facebook</span>
-                        </button>
+                    <p class="text-black italic">"The expert guidance made my visa process seamless. Now studying at Oxford!"</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-bold mb-2" style="color: #ED2217;">95%</div>
+                    <p class="text-black font-semibold">Visa Success Rate</p>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2" style="color: #ED2217;">50,000+</div>
+                    <p class="text-black font-semibold">Students Placed</p>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2" style="color: #ED2217;">$100M+</div>
+                    <p class="text-black font-semibold">in Scholarships Secured</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-black mb-4">Simple 4-Step Process</h2>
+                <p class="text-xl text-black">Your journey to international education made easy</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center text-white text-2xl font-bold" style="background-color: #ED2217;">1</div>
+                    <h3 class="text-xl font-bold text-black mb-4">Create Profile</h3>
+                    <p class="text-black">Tell us about your academic goals and preferences</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center text-white text-2xl font-bold" style="background-color: #ED2217;">2</div>
+                    <h3 class="text-xl font-bold text-black mb-4">Explore Programs</h3>
+                    <p class="text-black">Browse matched universities and courses tailored for you</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center text-white text-2xl font-bold" style="background-color: #ED2217;">3</div>
+                    <h3 class="text-xl font-bold text-black mb-4">Apply with Guidance</h3>
+                    <p class="text-black">Get expert help with applications and documentation</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center text-white text-2xl font-bold" style="background-color: #ED2217;">4</div>
+                    <h3 class="text-xl font-bold text-black mb-4">Secure Your Future</h3>
+                    <p class="text-black">Start your international education journey</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agent Partnership Section -->
+    <section id="agent-section" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-lg p-12">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-black mb-4">For Education Agents</h2>
+                    <p class="text-xl text-black">Grow your business with powerful tools and exclusive partnerships</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="flex items-start">
+                        <i data-lucide="users" class="w-8 h-8 mr-4 mt-1" style="color: #ED2217;"></i>
+                        <div>
+                            <h3 class="text-xl font-bold text-black mb-2">Manage Multiple Students</h3>
+                            <p class="text-black">Efficiently handle multiple student applications from one dashboard</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <i data-lucide="handshake" class="w-8 h-8 mr-4 mt-1" style="color: #ED2217;"></i>
+                        <div>
+                            <h3 class="text-xl font-bold text-black mb-2">Exclusive Partnerships</h3>
+                            <p class="text-black">Access to exclusive university partnerships and programs</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <i data-lucide="dollar-sign" class="w-8 h-8 mr-4 mt-1" style="color: #ED2217;"></i>
+                        <div>
+                            <h3 class="text-xl font-bold text-black mb-2">Commission Tracking</h3>
+                            <p class="text-black">Real-time commission tracking and automated payments</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <i data-lucide="bar-chart" class="w-8 h-8 mr-4 mt-1" style="color: #ED2217;"></i>
+                        <div>
+                            <h3 class="text-xl font-bold text-black mb-2">Professional Dashboard</h3>
+                            <p class="text-black">Comprehensive tools for managing your education consultancy</p>
+                        </div>
                     </div>
                 </div>
-            </form>
+                
+                <div class="text-center">
+                    <a href="#" class="text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#DC1F12'" onmouseout="this.style.backgroundColor='#ED2217'">Become a Partner Agent</a>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Sign Up Link (For Students) -->
-        <div class="text-center mt-6" id="signup-prompt" style="display: block;">
-            <p class="text-black">
-                Don't have an account? 
-                <a href="Students/htmls/Student-sign-up.html" class="hover:text-red-700 font-medium underline" style="color: #ED2217;">Sign up here</a>
-            </p>
+    <!-- Footer -->
+    <footer class="bg-black text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <img src="ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-3">
+                    </div>
+                    <p class="text-white/80">Your gateway to global education opportunities</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">For Students</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-white/80 hover:text-white">Find Programs</a></li>
+                        <li><a href="#" class="text-white/80 hover:text-white">Scholarships</a></li>
+                        <li><a href="#" class="text-white/80 hover:text-white">Application Guide</a></li>
+                        <li><a href="#" class="text-white/80 hover:text-white">Visa Support</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">For Agents</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-white/80 hover:text-white">Partner Program</a></li>
+                        <li><a href="#" class="text-white/80 hover:text-white">Agent Resources</a></li>
+                        <li><a href="#" class="text-white/80 hover:text-white">Commission Structure</a></li>
+                        <li><a href="#" class="text-white/80 hover:text-white">Training Materials</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-white/80 hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="text-white/80 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-white/80 hover:text-white">Live Chat</a></li>
+                        <li><a href="#" class="text-white/80 hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-white/60">&copy; 2024 APPLYLEAD. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-white/60 hover:text-white">Privacy Policy</a>
+                    <a href="#" class="text-white/60 hover:text-white">Terms of Service</a>
+                    <a href="#" class="text-white/60 hover:text-white">Cookie Policy</a>
+                </div>
+            </div>
         </div>
-        </div>
+    </footer>
+
+    <!-- Live Chat Widget -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button id="chatWidget" class="w-16 h-16 rounded-full text-white shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center" style="background-color: #ED2217;">
+            <i data-lucide="message-circle" class="w-8 h-8"></i>
+        </button>
     </div>
 
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Toggle password visibility
-        function togglePassword() {
-            const passwordInput = document.getElementById('password');
-            const toggleIcon = document.getElementById('password-toggle-icon');
-            
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                toggleIcon.setAttribute('data-lucide', 'eye-off');
-            } else {
-                passwordInput.type = 'password';
-                toggleIcon.setAttribute('data-lucide', 'eye');
-            }
-            lucide.createIcons();
-        }
+        // Chat Widget Functionality
+        document.getElementById('chatWidget').addEventListener('click', function() {
+            alert('Live chat feature coming soon! For immediate assistance, please contact us at support@applylead.com');
+        });
 
-        // Handle login form submission
-        function handleLogin(event) {
-            event.preventDefault();
-            const studentRole = document.getElementById('student-role');
-            const agentRole = document.getElementById('agent-role');
-            
-            // Redirect based on selected role
-            if (studentRole.style.backgroundColor === 'rgb(237, 34, 23)' || studentRole.classList.contains('text-white')) {
-                window.location.href = 'Students/htmls/Student-Dashboard.html';
-            } else if (agentRole.style.backgroundColor === 'rgb(237, 34, 23)' || agentRole.classList.contains('text-white')) {
-                window.location.href = 'Agency/html/Agency-dashboard.html';
-            } else if (adminRole.style.backgroundColor === 'rgb(237, 34, 23)' || adminRole.classList.contains('text-white')) {
-                window.location.href = 'CRM/html/CRM-dashboard.html';
-            }
-        }
-
-        // Role selection handling
-        const studentRole = document.getElementById('student-role');
-        const agentRole = document.getElementById('agent-role');
-        const adminRole = document.getElementById('admin-role');
-        const signupPrompt = document.getElementById('signup-prompt');
-
-        function setActiveRole(activeButton) {
-            // Reset all buttons
-            [studentRole, agentRole, adminRole].forEach(btn => {
-                btn.classList.remove('text-white');
-                btn.classList.add('text-black', 'hover:bg-gray-100');
-                btn.style.backgroundColor = '';
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
-            
-            // Set active button
-            activeButton.classList.remove('text-black', 'hover:bg-gray-100');
-            activeButton.classList.add('text-white');
-            activeButton.style.backgroundColor = '#ED2217';
+        });
 
-            // Show/hide signup prompt based on role
-            signupPrompt.style.display = (activeButton === studentRole) ? 'block' : 'none';
-        }
-
-        studentRole.addEventListener('click', () => setActiveRole(studentRole));
-        agentRole.addEventListener('click', () => setActiveRole(agentRole));
-        adminRole.addEventListener('click', () => setActiveRole(adminRole));
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
     </script>
 </body>
 </html>
