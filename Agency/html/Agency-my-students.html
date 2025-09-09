@@ -14,21 +14,36 @@
         body {
             font-family: 'Inter', sans-serif;
         }
+        .brand-red {
+            background-color: #ED2217;
+        }
+        .brand-red-light {
+            background-color: #FEF2F2;
+        }
+        .text-brand-red {
+            color: #ED2217;
+        }
+        .border-brand-red {
+            border-color: #ED2217;
+        }
+        .hover\:bg-brand-red:hover {
+            background-color: #EC2217;
+        }
     </style>
 </head>
-<body class="bg-gray-50">
+<body style="background-color: #F9F9F9;">
     <!-- Sidebar -->
     <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
         <div class="p-6">
-            <h1 class="text-2xl font-bold text-gray-800">APPLYLEAD</h1>
-            <p class="text-sm text-gray-500">Agent</p>
+             <img src="../../ApplyLead_logo.png" alt="ApplyLead" class="h-9 mb-2">
+            <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Agent</span>
         </div>
-        <nav class="mt-6">
+        <nav class="mt">
             <a href="Agency-dashboard.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
                 <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>
                 Dashboard
             </a>
-            <a href="#" class="flex items-center px-6 py-3 bg-blue-50 text-blue-600">
+            <a href="#" class="flex items-center px-6 py-3 text-white" style="background-color: #ED2217;">
                 <i data-lucide="users" class="w-5 h-5 mr-3"></i>
                 My Students
             </a>
@@ -56,17 +71,13 @@
                 <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>
                 Messages
             </a>
-            <a href="Agency-AI-assitant.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
-                <i data-lucide="bot" class="w-5 h-5 mr-3"></i>
-                AI Assistant
-            </a>
             <a href="Agency-admin-management.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
                 <i data-lucide="users-2" class="w-5 h-5 mr-3"></i>
                 Team Management
             </a>
         </nav>
         <div class="mt-auto px-6 py-4 border-t border-gray-200">
-            <p class="text-sm text-gray-600 text-center">Designed & developed by Innotech Viet Nam</p>
+            <p class="text-sm text-gray-600 text-center">© 2025 APPLYLEAD. All rights reserved.</p>
         </div>
     </aside>
 
@@ -112,7 +123,7 @@
                                placeholder="Search by student name or email" 
                                class="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                     </div>
-                    <button onclick="openAddStudentModal()" class="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700">
+                    <button onclick="openAddStudentModal()" class="text-white px-4 py-2 rounded-xl transition-colors hover:opacity-90" style="background-color: #ED2217;">
                         <i data-lucide="plus" class="w-5 h-5 inline-block mr-1"></i>
                         Add New Student
                     </button>
@@ -120,10 +131,15 @@
                 <div class="flex items-center space-x-4">
                     <select class="rounded-lg border border-gray-300 px-3 py-2 text-sm">
                         <option>All Status</option>
-                        <option>Draft</option>
-                        <option>Submitted</option>
-                        <option>Accepted</option>
-                        <option>Rejected</option>
+                        <option>Step 1: Initial Advising</option>
+                        <option>Step 2: Docs Review</option>
+                        <option>Step 3: Agreement signing and first payment</option>
+                        <option>Step 4: Application Prep and 2nd payment</option>
+                        <option>Step 5: School Application</option>
+                        <option>Step 6: School Acceptance</option>
+                        <option>Step 7: Visa App</option>
+                        <option>Step 8: Pre-Departure</option>
+                        <option>Step 9: Arrival</option>
                     </select>
                     <select class="rounded-lg border border-gray-300 px-3 py-2 text-sm">
                         <option>All Documents</option>
@@ -143,23 +159,36 @@
                         <option>Spring 2025</option>
                         <option>Fall 2025</option>
                     </select>
+                    <!-- View Toggle Buttons -->
+                    <div class="flex items-center space-x-2 ml-4">
+                        <button id="table-view-btn" class="px-3 py-2 text-sm font-medium rounded-lg transition-colors" style="background-color: #ED2217; color: white;">
+                            <i data-lucide="list" class="w-4 h-4 inline-block mr-1"></i>
+                            Table View
+                        </button>
+                        <button id="board-view-btn" class="px-3 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                            <i data-lucide="columns" class="w-4 h-4 inline-block mr-1"></i>
+                            Board View
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Students Table -->
-            <div class="bg-white rounded-3xl shadow-md overflow-hidden">
-                <table class="w-full">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Student Name</th>
-                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Email</th>
-                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Program Interest</th>
-                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Status</th>
-                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Last Activity</th>
-                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Progress</th>
-                            <th class="px-6 py-4 text-right text-sm font-semibold text-gray-600">Actions</th>
-                        </tr>
-                    </thead>
+            <!-- Table View -->
+            <div id="table-view" class="block">
+                <!-- Students Table -->
+                <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+                    <table class="w-full">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Student Name</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Email</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Program Interest</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Application Status</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Last Activity</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Progress</th>
+                                <th class="px-6 py-4 text-right text-sm font-semibold text-gray-600">Actions</th>
+                            </tr>
+                        </thead>
                     <tbody class="divide-y divide-gray-100">
                         <!-- Student Row 1 -->
                         <tr class="hover:bg-gray-50">
@@ -173,18 +202,32 @@
                             <td class="px-6 py-4 text-sm text-gray-600">sarah.chen@example.com</td>
                             <td class="px-6 py-4 text-sm text-gray-600">Canada – Business</td>
                             <td class="px-6 py-4">
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                    Accepted
-                                </span>
+                                <div class="flex flex-col space-y-1">
+                                    <div class="text-xs font-medium text-gray-700">Step 6: School Acceptance</div>
+                                    <div class="flex items-center space-x-1">
+                                        <div class="flex space-x-1">
+                                            <div class="w-2 h-2 rounded-full" style="background-color: #ED2217;"></div>
+                                            <div class="w-2 h-2 rounded-full" style="background-color: #ED2217;"></div>
+                                            <div class="w-2 h-2 rounded-full" style="background-color: #ED2217;"></div>
+                                            <div class="w-2 h-2 rounded-full" style="background-color: #ED2217;"></div>
+                                            <div class="w-2 h-2 rounded-full" style="background-color: #ED2217;"></div>
+                                            <div class="w-2 h-2 rounded-full" style="background-color: #ED2217;"></div>
+                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                        </div>
+                                        <span class="text-xs text-gray-500 ml-2">6/9</span>
+                                    </div>
+                                </div>
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-600">Uploaded transcript – 2 days ago</td>
                             <td class="px-6 py-4">
                                 <div class="w-full bg-gray-200 rounded-full h-2">
-                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 80%"></div>
+                                    <div class="h-2 rounded-full" style="background-color: #ED2217; width: 80%"></div>
                                 </div>
                             </td>
                             <td class="px-6 py-4 text-right">
-                                <button class="text-sm text-blue-600 hover:text-blue-700 font-medium">View Details</button>
+                                <button class="text-sm font-medium hover:opacity-80" style="color: #ED2217;">View Details</button>
                             </td>
                         </tr>
                         <!-- Student Row 2 -->
@@ -199,24 +242,335 @@
                             <td class="px-6 py-4 text-sm text-gray-600">mike.wong@example.com</td>
                             <td class="px-6 py-4 text-sm text-gray-600">Australia – Engineering</td>
                             <td class="px-6 py-4">
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                                    Missing Docs
-                                </span>
+                                <div class="flex flex-col space-y-1">
+                                    <div class="text-xs font-medium text-gray-700">Step 2: Docs Review</div>
+                                    <div class="flex items-center space-x-1">
+                                        <div class="flex space-x-1">
+                                            <div class="w-2 h-2 rounded-full" style="background-color: #ED2217;"></div>
+                                            <div class="w-2 h-2 rounded-full" style="background-color: #ED2217;"></div>
+                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                        </div>
+                                        <span class="text-xs text-gray-500 ml-2">2/9</span>
+                                    </div>
+                                </div>
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-600">Updated profile – 5 days ago</td>
                             <td class="px-6 py-4">
                                 <div class="w-full bg-gray-200 rounded-full h-2">
-                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 60%"></div>
+                                    <div class="h-2 rounded-full" style="background-color: #ED2217; width: 60%"></div>
                                 </div>
                             </td>
                             <td class="px-6 py-4 text-right">
-                                <button class="text-sm text-blue-600 hover:text-blue-700 font-medium">View Details</button>
+                                <button class="text-sm font-medium hover:opacity-80" style="color: #ED2217;">View Details</button>
                             </td>
                         </tr>
                     </tbody>
-                </table>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Kanban Board View -->
+            <div id="board-view" class="hidden">
+                <div class="overflow-x-auto">
+                    <div class="flex space-x-4 min-w-max pb-4">
+                        <!-- Step 1: Initial Advising -->
+                        <div class="flex-shrink-0 w-72">
+                            <div class="bg-white rounded-2xl shadow-sm">
+                                <div class="p-4 border-b border-gray-200">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="font-semibold text-gray-900">Initial Advising</h3>
+                                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">2</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 space-y-3 min-h-96">
+                                    <!-- Student Card -->
+                                    <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move" draggable="true" data-student-id="1" data-step="1">
+                                        <div class="flex items-center space-x-3 mb-2">
+                                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop" class="w-8 h-8 rounded-full">
+                                            <div class="flex-1">
+                                                <div class="font-medium text-sm text-gray-900">John Smith</div>
+                                                <div class="text-xs text-gray-500">USA – Computer Science</div>
+                                            </div>
+                                        </div>
+                                        <div class="text-xs text-gray-500 mb-2">Last activity: 1 day ago</div>
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex space-x-1">
+                                                <button class="text-xs px-2 py-1 rounded" style="background-color: #FEF2F2; color: #ED2217;" title="Send Message">
+                                                    <i data-lucide="message-circle" class="w-3 h-3"></i>
+                                                </button>
+                                                <button class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200" title="View Details">
+                                                    <i data-lucide="eye" class="w-3 h-3"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Another Student Card -->
+                                    <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move" draggable="true" data-student-id="2" data-step="1">
+                                        <div class="flex items-center space-x-3 mb-2">
+                                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop" class="w-8 h-8 rounded-full">
+                                            <div class="flex-1">
+                                                <div class="font-medium text-sm text-gray-900">Lisa Wang</div>
+                                                <div class="text-xs text-gray-500">Canada – Business</div>
+                                            </div>
+                                        </div>
+                                        <div class="text-xs text-gray-500 mb-2">Last activity: 3 days ago</div>
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex space-x-1">
+                                                <button class="text-xs px-2 py-1 rounded" style="background-color: #FEF2F2; color: #ED2217;" title="Send Message">
+                                                    <i data-lucide="message-circle" class="w-3 h-3"></i>
+                                                </button>
+                                                <button class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200" title="View Details">
+                                                    <i data-lucide="eye" class="w-3 h-3"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Docs Review -->
+                        <div class="flex-shrink-0 w-72">
+                            <div class="bg-white rounded-2xl shadow-sm">
+                                <div class="p-4 border-b border-gray-200">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="font-semibold text-gray-900">Docs Review</h3>
+                                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">1</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="2">
+                                    <!-- Student Card -->
+                                    <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move" draggable="true" data-student-id="3" data-step="2">
+                                        <div class="flex items-center space-x-3 mb-2">
+                                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop" class="w-8 h-8 rounded-full">
+                                            <div class="flex-1">
+                                                <div class="font-medium text-sm text-gray-900">Mike Wong</div>
+                                                <div class="text-xs text-gray-500">Australia – Engineering</div>
+                                            </div>
+                                        </div>
+                                        <div class="text-xs text-gray-500 mb-2">Last activity: 5 days ago</div>
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex space-x-1">
+                                                <button class="text-xs px-2 py-1 rounded" style="background-color: #FEF2F2; color: #ED2217;" title="Send Message">
+                                                    <i data-lucide="message-circle" class="w-3 h-3"></i>
+                                                </button>
+                                                <button class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200" title="View Details">
+                                                    <i data-lucide="eye" class="w-3 h-3"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Agreement & 1st Payment -->
+                        <div class="flex-shrink-0 w-72">
+                            <div class="bg-white rounded-2xl shadow-sm">
+                                <div class="p-4 border-b border-gray-200">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="font-semibold text-gray-900">Agreement & 1st Payment</h3>
+                                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="3">
+                                    <div class="text-center text-gray-400 text-sm mt-20">
+                                        No students at this stage
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Application Prep & 2nd Payment -->
+                        <div class="flex-shrink-0 w-72">
+                            <div class="bg-white rounded-2xl shadow-sm">
+                                <div class="p-4 border-b border-gray-200">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="font-semibold text-gray-900">Application Prep & 2nd Payment</h3>
+                                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="4">
+                                    <div class="text-center text-gray-400 text-sm mt-20">
+                                        No students at this stage
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 5: School Application -->
+                        <div class="flex-shrink-0 w-72">
+                            <div class="bg-white rounded-2xl shadow-sm">
+                                <div class="p-4 border-b border-gray-200">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="font-semibold text-gray-900">School Application</h3>
+                                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="5">
+                                    <div class="text-center text-gray-400 text-sm mt-20">
+                                        No students at this stage
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 6: School Acceptance -->
+                        <div class="flex-shrink-0 w-72">
+                            <div class="bg-white rounded-2xl shadow-sm">
+                                <div class="p-4 border-b border-gray-200">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="font-semibold text-gray-900">School Acceptance</h3>
+                                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">1</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="6">
+                                    <!-- Student Card -->
+                                    <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move" draggable="true" data-student-id="4" data-step="6">
+                                        <div class="flex items-center space-x-3 mb-2">
+                                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&fit=crop" class="w-8 h-8 rounded-full">
+                                            <div class="flex-1">
+                                                <div class="font-medium text-sm text-gray-900">Sarah Chen</div>
+                                                <div class="text-xs text-gray-500">Canada – Business</div>
+                                            </div>
+                                        </div>
+                                        <div class="text-xs text-gray-500 mb-2">Last activity: 2 days ago</div>
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex space-x-1">
+                                                <button class="text-xs px-2 py-1 rounded" style="background-color: #FEF2F2; color: #ED2217;" title="Send Message">
+                                                    <i data-lucide="message-circle" class="w-3 h-3"></i>
+                                                </button>
+                                                <button class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200" title="View Details">
+                                                    <i data-lucide="eye" class="w-3 h-3"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 7: Visa App -->
+                        <div class="flex-shrink-0 w-72">
+                            <div class="bg-white rounded-2xl shadow-sm">
+                                <div class="p-4 border-b border-gray-200">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="font-semibold text-gray-900">Visa App</h3>
+                                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="7">
+                                    <div class="text-center text-gray-400 text-sm mt-20">
+                                        No students at this stage
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 8: Pre-Departure -->
+                        <div class="flex-shrink-0 w-72">
+                            <div class="bg-white rounded-2xl shadow-sm">
+                                <div class="p-4 border-b border-gray-200">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="font-semibold text-gray-900">Pre-Departure</h3>
+                                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="8">
+                                    <div class="text-center text-gray-400 text-sm mt-20">
+                                        No students at this stage
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 9: Arrival -->
+                        <div class="flex-shrink-0 w-72">
+                            <div class="bg-white rounded-2xl shadow-sm">
+                                <div class="p-4 border-b border-gray-200">
+                                    <div class="flex items-center justify-between">
+                                        <h3 class="font-semibold text-gray-900">Arrival</h3>
+                                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="9">
+                                    <div class="text-center text-gray-400 text-sm mt-20">
+                                        No students at this stage
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
+    </div>
+
+    <!-- AI Assistant Floating Button -->
+    <div id="ai-assistant" class="fixed bottom-6 right-6 z-50">
+        <!-- Floating Button -->
+        <button id="ai-chat-toggle" class="w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110" style="background-color: #ED2217;">
+            <i data-lucide="message-circle" class="w-6 h-6 text-white"></i>
+        </button>
+        
+        <!-- Chat Panel -->
+        <div id="ai-chat-panel" class="hidden absolute bottom-16 right-0 w-80 h-96 bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col">
+            <!-- Chat Header -->
+            <div class="flex items-center justify-between p-4 border-b border-gray-200 rounded-t-2xl" style="background-color: #FEF2F2;">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #ED2217;">
+                        <i data-lucide="bot" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-gray-900">AI Assistant</h3>
+                        <div class="flex items-center space-x-1">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span class="text-xs text-gray-500">Online</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="ai-chat-close" class="text-gray-400 hover:text-gray-600">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            
+            <!-- Chat Messages -->
+            <div class="flex-1 p-4 overflow-y-auto space-y-3">
+                <!-- AI Message -->
+                <div class="flex items-start space-x-2">
+                    <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: #FEF2F2;">
+                        <i data-lucide="bot" class="w-3 h-3" style="color: #ED2217;"></i>
+                    </div>
+                    <div class="bg-gray-100 rounded-2xl px-3 py-2 max-w-xs">
+                        <p class="text-sm text-gray-800">Hello! I can help you manage your students and track their progress. What would you like to know?</p>
+                    </div>
+                </div>
+                
+                <!-- User Message Example -->
+                <div class="flex items-start space-x-2 justify-end">
+                    <div class="rounded-2xl px-3 py-2 max-w-xs" style="background-color: #ED2217;">
+                        <p class="text-sm text-white">Show me students with missing documents</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chat Input -->
+            <div class="p-4 border-t border-gray-200">
+                <div class="flex items-center space-x-2">
+                    <input type="text" placeholder="Type your message..." class="flex-1 px-3 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2" style="--tw-ring-color: #ED2217;">
+                    <button class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #ED2217;">
+                        <i data-lucide="send" class="w-4 h-4 text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Student Details Modal -->
@@ -315,7 +669,7 @@
                     <button class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                         Send Reminder
                     </button>
-                    <button class="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg">
+                    <button class="px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors hover:opacity-90" style="background-color: #ED2217;">
                         Open in Application Manager
                     </button>
                 </div>
@@ -362,25 +716,25 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
                         <input type="text" name="fullName" required
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2" style="--tw-ring-color: #ED2217;">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
                         <input type="email" name="email" required
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2" style="--tw-ring-color: #ED2217;">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
                         <input type="tel" name="phone"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2" style="--tw-ring-color: #ED2217;">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Country of Interest *</label>
                         <select name="country" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2" style="--tw-ring-color: #ED2217;">
                             <option value="">Select a country</option>
                             <option value="usa">United States</option>
                             <option value="uk">United Kingdom</option>
@@ -393,13 +747,13 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Intended Field of Study *</label>
                         <input type="text" name="fieldOfStudy" required
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2" style="--tw-ring-color: #ED2217;">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Intake Period *</label>
                         <select name="intakePeriod" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2" style="--tw-ring-color: #ED2217;">
                             <option value="">Select intake period</option>
                             <option value="fall2025">Fall 2025</option>
                             <option value="spring2026">Spring 2026</option>
@@ -410,7 +764,7 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Notes</label>
                         <textarea name="notes" rows="3"
-                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2" style="--tw-ring-color: #ED2217;"></textarea>
                     </div>
 
                     <!-- Optional Section for Agent Admin -->
@@ -424,7 +778,7 @@
                             <label class="block text-sm font-medium text-gray-700 mb-1">Assign to Staff Member</label>
                             <div class="relative">
                                 <select name="assignedStaff" id="assignedStaff"
-                                        class="w-full px-3 py-2 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none">
+                                        class="w-full px-3 py-2 pl-10 border border-gray-300 rounded-lg focus:ring-2 appearance-none" style="--tw-ring-color: #ED2217;">
                                     <option value="">Select staff member</option>
                                     <option value="john" data-role="Senior Agent">John Smith</option>
                                     <option value="sarah" data-role="Education Consultant">Sarah Johnson</option>
@@ -439,7 +793,7 @@
 
                         <div class="flex items-start space-x-2">
                             <input type="checkbox" id="notify-staff" name="notifyStaff"
-                                   class="mt-1 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                   class="mt-1 rounded border-gray-300" style="color: #ED2217; --tw-ring-color: #ED2217;">
                             <label for="notify-staff" class="text-sm text-gray-600">
                                 Send email notification to assigned staff member
                             </label>
@@ -454,7 +808,7 @@
                         Cancel
                     </button>
                     <button type="submit"
-                            class="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg">
+                            class="px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors hover:opacity-90" style="background-color: #ED2217;">
                         Save & Continue
                     </button>
                 </div>
@@ -601,6 +955,219 @@
                 closeAddStudentModal();
             }
         });
+
+        // AI Assistant Chat Toggle
+        const aiChatToggle = document.getElementById('ai-chat-toggle');
+        const aiChatPanel = document.getElementById('ai-chat-panel');
+        const aiChatClose = document.getElementById('ai-chat-close');
+
+        aiChatToggle.addEventListener('click', () => {
+            aiChatPanel.classList.toggle('hidden');
+        });
+
+        aiChatClose.addEventListener('click', () => {
+            aiChatPanel.classList.add('hidden');
+        });
+
+        // Close chat panel when clicking outside
+        document.addEventListener('click', (e) => {
+            const aiAssistant = document.getElementById('ai-assistant');
+            if (!aiAssistant.contains(e.target)) {
+                aiChatPanel.classList.add('hidden');
+            }
+        });
+
+        // View Toggle Functionality
+        const tableViewBtn = document.getElementById('table-view-btn');
+        const boardViewBtn = document.getElementById('board-view-btn');
+        const tableView = document.getElementById('table-view');
+        const boardView = document.getElementById('board-view');
+
+        tableViewBtn.addEventListener('click', () => {
+            // Show table view
+            tableView.classList.remove('hidden');
+            tableView.classList.add('block');
+            boardView.classList.remove('block');
+            boardView.classList.add('hidden');
+            
+            // Update button styles
+            tableViewBtn.style.backgroundColor = '#ED2217';
+            tableViewBtn.style.color = 'white';
+            boardViewBtn.style.backgroundColor = '#F3F4F6';
+            boardViewBtn.style.color = '#6B7280';
+            
+            // Save preference
+            localStorage.setItem('studentViewMode', 'table');
+        });
+
+        boardViewBtn.addEventListener('click', () => {
+            // Show board view
+            boardView.classList.remove('hidden');
+            boardView.classList.add('block');
+            tableView.classList.remove('block');
+            tableView.classList.add('hidden');
+            
+            // Update button styles
+            boardViewBtn.style.backgroundColor = '#ED2217';
+            boardViewBtn.style.color = 'white';
+            tableViewBtn.style.backgroundColor = '#F3F4F6';
+            tableViewBtn.style.color = '#6B7280';
+            
+            // Save preference
+            localStorage.setItem('studentViewMode', 'board');
+        });
+
+        // Load saved view preference
+        const savedViewMode = localStorage.getItem('studentViewMode');
+        if (savedViewMode === 'board') {
+            boardViewBtn.click();
+        }
+
+        // Drag and Drop Functionality
+        let draggedElement = null;
+        let draggedStudentId = null;
+        let draggedFromStep = null;
+
+        // Add drag event listeners to all student cards
+        document.querySelectorAll('[draggable="true"]').forEach(card => {
+            card.addEventListener('dragstart', (e) => {
+                draggedElement = e.target;
+                draggedStudentId = e.target.getAttribute('data-student-id');
+                draggedFromStep = parseInt(e.target.getAttribute('data-step'));
+                e.target.style.opacity = '0.5';
+            });
+
+            card.addEventListener('dragend', (e) => {
+                e.target.style.opacity = '1';
+                draggedElement = null;
+                draggedStudentId = null;
+                draggedFromStep = null;
+            });
+        });
+
+        // Add drop event listeners to all drop zones
+        document.querySelectorAll('.drop-zone').forEach(zone => {
+            zone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                const targetStep = parseInt(zone.getAttribute('data-step'));
+                
+                // Check if drop is valid (only forward one step or backward one step)
+                if (draggedFromStep && (targetStep === draggedFromStep + 1 || targetStep === draggedFromStep - 1)) {
+                    zone.style.backgroundColor = '#FEF2F2';
+                    zone.style.borderColor = '#ED2217';
+                    zone.style.borderWidth = '2px';
+                    zone.style.borderStyle = 'dashed';
+                } else if (draggedFromStep && targetStep !== draggedFromStep) {
+                    zone.style.backgroundColor = '#FEF2F2';
+                    zone.style.borderColor = '#EF4444';
+                    zone.style.borderWidth = '2px';
+                    zone.style.borderStyle = 'dashed';
+                }
+            });
+
+            zone.addEventListener('dragleave', (e) => {
+                zone.style.backgroundColor = '';
+                zone.style.borderColor = '';
+                zone.style.borderWidth = '';
+                zone.style.borderStyle = '';
+            });
+
+            zone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                const targetStep = parseInt(zone.getAttribute('data-step'));
+                
+                // Reset zone styling
+                zone.style.backgroundColor = '';
+                zone.style.borderColor = '';
+                zone.style.borderWidth = '';
+                zone.style.borderStyle = '';
+                
+                // Validate move (only forward one step or backward one step)
+                if (draggedFromStep && (targetStep === draggedFromStep + 1 || targetStep === draggedFromStep - 1)) {
+                    // Move the student card
+                    if (draggedElement) {
+                        // Update the data-step attribute
+                        draggedElement.setAttribute('data-step', targetStep);
+                        
+                        // Remove empty state message if it exists
+                        const emptyMessage = zone.querySelector('.text-center.text-gray-400');
+                        if (emptyMessage) {
+                            emptyMessage.remove();
+                        }
+                        
+                        // Append to new column
+                        zone.appendChild(draggedElement);
+                        
+                        // Update column counts
+                        updateColumnCounts();
+                        
+                        // Show success message
+                        showMoveSuccessToast(targetStep);
+                        
+                        // Here you would typically send the update to your backend
+                        console.log(`Moved student ${draggedStudentId} to step ${targetStep}`);
+                    }
+                } else {
+                    // Show error for invalid move
+                    showMoveErrorToast();
+                }
+            });
+        });
+
+        // Update column counts
+        function updateColumnCounts() {
+            for (let step = 1; step <= 9; step++) {
+                const column = document.querySelector(`[data-step="${step}"]`);
+                const cards = column.querySelectorAll('[data-student-id]');
+                const countBadge = column.parentElement.parentElement.querySelector('.rounded-full');
+                if (countBadge) {
+                    countBadge.textContent = cards.length;
+                }
+                
+                // Add/remove empty state message
+                const existingEmptyMessage = column.querySelector('.text-center.text-gray-400');
+                if (cards.length === 0 && !existingEmptyMessage) {
+                    column.innerHTML = '<div class="text-center text-gray-400 text-sm mt-20">No students at this stage</div>';
+                } else if (cards.length > 0 && existingEmptyMessage) {
+                    existingEmptyMessage.remove();
+                }
+            }
+        }
+
+        // Toast notifications for drag and drop
+        function showMoveSuccessToast(step) {
+            const stepNames = {
+                1: 'Initial Advising',
+                2: 'Docs Review',
+                3: 'Agreement & 1st Payment',
+                4: 'Application Prep & 2nd Payment',
+                5: 'School Application',
+                6: 'School Acceptance',
+                7: 'Visa App',
+                8: 'Pre-Departure',
+                9: 'Arrival'
+            };
+            
+            const toast = document.createElement('div');
+            toast.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
+            toast.textContent = `Student moved to ${stepNames[step]}`;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        function showMoveErrorToast() {
+            const toast = document.createElement('div');
+            toast.className = 'fixed top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
+            toast.textContent = 'Invalid move! Students can only move one step forward or backward.';
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
     </script>
 </body>
 </html>
