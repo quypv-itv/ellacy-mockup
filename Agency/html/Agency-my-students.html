@@ -131,26 +131,21 @@
                 <div class="flex items-center space-x-4">
                     <select class="rounded-lg border border-gray-300 px-3 py-2 text-sm">
                         <option>All Status</option>
-                        <option>Step 1: Initial Advising</option>
-                        <option>Step 2: Docs Review</option>
-                        <option>Step 3: Agreement signing and first payment</option>
-                        <option>Step 4: Application Prep and 2nd payment</option>
-                        <option>Step 5: School Application</option>
-                        <option>Step 6: School Acceptance</option>
-                        <option>Step 7: Visa App</option>
-                        <option>Step 8: Pre-Departure</option>
-                        <option>Step 9: Arrival</option>
+                        <option>Initial Advising</option>
+                        <option>Docs Review</option>
+                        <option>Agreement signing and first payment</option>
+                        <option>Application Prep and 2nd payment</option>
+                        <option>School Application</option>
+                        <option>School Acceptance</option>
+                        <option>Visa App</option>
+                        <option>Pre-Departure</option>
+                        <option>Arrival</option>
                     </select>
-                    <select class="rounded-lg border border-gray-300 px-3 py-2 text-sm">
-                        <option>All Documents</option>
-                        <option>Missing Documents</option>
-                        <option>Complete</option>
-                    </select>
+                 
                     <select class="rounded-lg border border-gray-300 px-3 py-2 text-sm">
                         <option>All Countries</option>
                         <option>Canada</option>
-                        <option>USA</option>
-                        <option>UK</option>
+                        <option>Viet Nam</option>
                         <option>Australia</option>
                     </select>
                     <select class="rounded-lg border border-gray-300 px-3 py-2 text-sm">
@@ -159,15 +154,26 @@
                         <option>Spring 2025</option>
                         <option>Fall 2025</option>
                     </select>
+                    <select id="agent-filter" class="rounded-lg border border-gray-300 px-3 py-2 text-sm">
+                        <option value="all">All Agents</option>
+                        <option value="john-smith">John Smith</option>
+                        <option value="emily-davis">Emily Davis</option>
+                        <option value="michael-chen">Michael Chen</option>
+                    </select>
+                    <select id="activity-filter" class="rounded-lg border border-gray-300 px-3 py-2 text-sm">
+                        <option value="all">All Activity</option>
+                        <option value="active">Active Students</option>
+                        <option value="inactive">Inactive Students</option>
+                    </select>
                     <!-- View Toggle Buttons -->
                     <div class="flex items-center space-x-2 ml-4">
                         <button id="table-view-btn" class="px-3 py-2 text-sm font-medium rounded-lg transition-colors" style="background-color: #ED2217; color: white;">
                             <i data-lucide="list" class="w-4 h-4 inline-block mr-1"></i>
-                            Table View
+                            
                         </button>
                         <button id="board-view-btn" class="px-3 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
                             <i data-lucide="columns" class="w-4 h-4 inline-block mr-1"></i>
-                            Board View
+                            
                         </button>
                     </div>
                 </div>
@@ -180,7 +186,7 @@
                     <table class="w-full">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Student Name</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Agent / Student Name</th>
                                 <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Email</th>
                                 <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Program Interest</th>
                                 <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Application Status</th>
@@ -189,11 +195,20 @@
                                 <th class="px-6 py-4 text-right text-sm font-semibold text-gray-600">Actions</th>
                             </tr>
                         </thead>
-                    <tbody class="divide-y divide-gray-100">
-                        <!-- Student Row 1 -->
-                        <tr class="hover:bg-gray-50">
-                            <td class="px-6 py-4">
+                    <tbody class="divide-y divide-gray-100" id="students-table-body">
+                        <!-- Agent Group 1: John Smith -->
+                        <tr class="bg-gray-100 agent-group-header cursor-pointer hover:bg-gray-200" onclick="toggleAgentGroup('john-smith')">
+                            <td class="px-6 py-3" colspan="7">
                                 <div class="flex items-center">
+                                    <i id="john-smith-icon" data-lucide="plus" class="w-4 h-4 mr-2 text-gray-600"></i>
+                                    <span class="text-sm font-semibold text-gray-800">John Smith (2 students)</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Student Row 1 - Under John Smith -->
+                        <tr class="hover:bg-gray-50 student-row john-smith-students hidden">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center pl-6">
                                     <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&fit=crop" 
                                          class="w-8 h-8 rounded-full mr-3">
                                     <span class="text-sm font-medium">Sarah Chen</span>
@@ -220,7 +235,15 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="px-6 py-4 text-sm text-gray-600">Uploaded transcript – 2 days ago</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">
+                                <div class="flex items-center space-x-2">
+                                    <span>Uploaded transcript – 2 days ago</span>
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        <div class="w-2 h-2 bg-green-400 rounded-full mr-1"></div>
+                                        Active
+                                    </span>
+                                </div>
+                            </td>
                             <td class="px-6 py-4">
                                 <div class="w-full bg-gray-200 rounded-full h-2">
                                     <div class="h-2 rounded-full" style="background-color: #ED2217; width: 80%"></div>
@@ -230,10 +253,10 @@
                                 <button class="text-sm font-medium hover:opacity-80" style="color: #ED2217;">View Details</button>
                             </td>
                         </tr>
-                        <!-- Student Row 2 -->
-                        <tr class="hover:bg-gray-50">
+                        <!-- Student Row 2 - Under John Smith -->
+                        <tr class="hover:bg-gray-50 student-row john-smith-students hidden">
                             <td class="px-6 py-4">
-                                <div class="flex items-center">
+                                <div class="flex items-center pl-6">
                                     <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop" 
                                          class="w-8 h-8 rounded-full mr-3">
                                     <span class="text-sm font-medium">Mike Wong</span>
@@ -242,32 +265,90 @@
                             <td class="px-6 py-4 text-sm text-gray-600">mike.wong@example.com</td>
                             <td class="px-6 py-4 text-sm text-gray-600">Australia – Engineering</td>
                             <td class="px-6 py-4">
-                                <div class="flex flex-col space-y-1">
-                                    <div class="text-xs font-medium text-gray-700">Step 2: Docs Review</div>
-                                    <div class="flex items-center space-x-1">
-                                        <div class="flex space-x-1">
-                                            <div class="w-2 h-2 rounded-full" style="background-color: #ED2217;"></div>
-                                            <div class="w-2 h-2 rounded-full" style="background-color: #ED2217;"></div>
-                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
-                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
-                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
-                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
-                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
-                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                <div class="flex items-center">
+                                    <span class="text-sm text-gray-600 mr-2">60%</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="h-2 rounded-full" style="background-color: #ED2217; width: 60%"></div>
                                             <div class="w-2 h-2 rounded-full bg-gray-300"></div>
                                         </div>
                                         <span class="text-xs text-gray-500 ml-2">2/9</span>
                                     </div>
                                 </div>
                             </td>
-                            <td class="px-6 py-4 text-sm text-gray-600">Updated profile – 5 days ago</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">
+                                <div class="flex items-center space-x-2">
+                                    <span>Updated profile – 5 days ago</span>
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                        <div class="w-2 h-2 bg-yellow-400 rounded-full mr-1"></div>
+                                        Inactive
+                                    </span>
+                                </div>
+                            </td>
                             <td class="px-6 py-4">
                                 <div class="w-full bg-gray-200 rounded-full h-2">
                                     <div class="h-2 rounded-full" style="background-color: #ED2217; width: 60%"></div>
                                 </div>
                             </td>
                             <td class="px-6 py-4 text-right">
-                                <button class="text-sm font-medium hover:opacity-80" style="color: #ED2217;">View Details</button>
+                                <button onclick="window.location.href='Agency-my-student-detail.html?student=mike-wong'" class="text-sm font-medium hover:opacity-80" style="color: #ED2217;">View Details</button>
+                            </td>
+                        </tr>
+
+                        <!-- Agent Group 2: Emily Davis -->
+                        <tr class="bg-gray-100 agent-group-header cursor-pointer hover:bg-gray-200" onclick="toggleAgentGroup('emily-davis')">
+                            <td class="px-6 py-3" colspan="7">
+                                <div class="flex items-center">
+                                    <i id="emily-davis-icon" data-lucide="plus" class="w-4 h-4 mr-2 text-gray-600"></i>
+                                    <span class="text-sm font-semibold text-gray-800">Emily Davis (1 student)</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Student Row 3 - Under Emily Davis -->
+                        <tr class="hover:bg-gray-50 student-row emily-davis-students hidden">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center pl-6">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop" 
+                                         class="w-8 h-8 rounded-full mr-3">
+                                    <span class="text-sm font-medium">David Kim</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-600">david.kim@example.com</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">UK – Medicine</td>
+                            <td class="px-6 py-4">
+                                <div class="flex flex-col space-y-1">
+                                    <div class="text-xs font-medium text-gray-700">Step 4: Application Prep</div>
+                                    <div class="flex items-center space-x-1">
+                                        <div class="flex space-x-1">
+                                            <div class="w-2 h-2 rounded-full" style="background-color: #ED2217;"></div>
+                                            <div class="w-2 h-2 rounded-full" style="background-color: #ED2217;"></div>
+                                            <div class="w-2 h-2 rounded-full" style="background-color: #ED2217;"></div>
+                                            <div class="w-2 h-2 rounded-full" style="background-color: #ED2217;"></div>
+                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                        </div>
+                                        <span class="text-xs text-gray-500 ml-2">4/9</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-600">
+                                <div class="flex items-center space-x-2">
+                                    <span>Submitted documents – 1 day ago</span>
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        <div class="w-2 h-2 bg-green-400 rounded-full mr-1"></div>
+                                        Active
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="h-2 rounded-full" style="background-color: #ED2217; width: 45%"></div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button onclick="window.location.href='Agency-my-student-detail.html?student=emma-davis'" class="text-sm font-medium hover:opacity-80" style="color: #ED2217;">View Details</button>
                             </td>
                         </tr>
                     </tbody>
@@ -291,20 +372,29 @@
                                 <div class="p-4 space-y-3 min-h-96">
                                     <!-- Student Card -->
                                     <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move" draggable="true" data-student-id="1" data-step="1">
-                                        <div class="flex items-center space-x-3 mb-2">
-                                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop" class="w-8 h-8 rounded-full">
-                                            <div class="flex-1">
-                                                <div class="font-medium text-sm text-gray-900">John Smith</div>
-                                                <div class="text-xs text-gray-500">USA – Computer Science</div>
+                                        <div class="flex items-center justify-between mb-2">
+                                            <div class="flex items-center space-x-3">
+                                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop" class="w-8 h-8 rounded-full">
+                                                <div class="flex-1">
+                                                    <div class="font-medium text-sm text-gray-900">John Smith</div>
+                                                    <div class="text-xs text-gray-500">USA – Computer Science</div>
+                                                </div>
                                             </div>
+                                            <span class="text-xs px-2 py-1 rounded-full text-white" style="background-color: #3B82F6;">John Smith</span>
                                         </div>
-                                        <div class="text-xs text-gray-500 mb-2">Last activity: 1 day ago</div>
+                                        <div class="flex items-center justify-between mb-2">
+                                            <div class="text-xs text-gray-500">Last activity: 1 day ago</div>
+                                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                                <div class="w-2 h-2 bg-green-400 rounded-full mr-1"></div>
+                                                Active
+                                            </span>
+                                        </div>
                                         <div class="flex items-center justify-between">
                                             <div class="flex space-x-1">
                                                 <button class="text-xs px-2 py-1 rounded" style="background-color: #FEF2F2; color: #ED2217;" title="Send Message">
                                                     <i data-lucide="message-circle" class="w-3 h-3"></i>
                                                 </button>
-                                                <button class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200" title="View Details">
+                                                <button onclick="window.location.href='Agency-my-student-detail.html?student=sarah-johnson'" class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200" title="View Details">
                                                     <i data-lucide="eye" class="w-3 h-3"></i>
                                                 </button>
                                             </div>
@@ -313,20 +403,29 @@
                                     
                                     <!-- Another Student Card -->
                                     <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move" draggable="true" data-student-id="2" data-step="1">
-                                        <div class="flex items-center space-x-3 mb-2">
-                                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop" class="w-8 h-8 rounded-full">
-                                            <div class="flex-1">
-                                                <div class="font-medium text-sm text-gray-900">Lisa Wang</div>
-                                                <div class="text-xs text-gray-500">Canada – Business</div>
+                                        <div class="flex items-center justify-between mb-2">
+                                            <div class="flex items-center space-x-3">
+                                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop" class="w-8 h-8 rounded-full">
+                                                <div class="flex-1">
+                                                    <div class="font-medium text-sm text-gray-900">Lisa Wang</div>
+                                                    <div class="text-xs text-gray-500">Canada – Business</div>
+                                                </div>
                                             </div>
+                                            <span class="text-xs px-2 py-1 rounded-full text-white" style="background-color: #10B981;">Emily Davis</span>
                                         </div>
-                                        <div class="text-xs text-gray-500 mb-2">Last activity: 3 days ago</div>
+                                        <div class="flex items-center justify-between mb-2">
+                                            <div class="text-xs text-gray-500">Last activity: 3 days ago</div>
+                                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                                <div class="w-2 h-2 bg-yellow-400 rounded-full mr-1"></div>
+                                                Inactive
+                                            </span>
+                                        </div>
                                         <div class="flex items-center justify-between">
                                             <div class="flex space-x-1">
                                                 <button class="text-xs px-2 py-1 rounded" style="background-color: #FEF2F2; color: #ED2217;" title="Send Message">
                                                     <i data-lucide="message-circle" class="w-3 h-3"></i>
                                                 </button>
-                                                <button class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200" title="View Details">
+                                                <button onclick="window.location.href='Agency-my-student-detail.html?student=sarah-johnson'" class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200" title="View Details">
                                                     <i data-lucide="eye" class="w-3 h-3"></i>
                                                 </button>
                                             </div>
@@ -348,12 +447,15 @@
                                 <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="2">
                                     <!-- Student Card -->
                                     <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move" draggable="true" data-student-id="3" data-step="2">
-                                        <div class="flex items-center space-x-3 mb-2">
-                                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop" class="w-8 h-8 rounded-full">
-                                            <div class="flex-1">
-                                                <div class="font-medium text-sm text-gray-900">Mike Wong</div>
-                                                <div class="text-xs text-gray-500">Australia – Engineering</div>
+                                        <div class="flex items-center justify-between mb-2">
+                                            <div class="flex items-center space-x-3">
+                                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop" class="w-8 h-8 rounded-full">
+                                                <div class="flex-1">
+                                                    <div class="font-medium text-sm text-gray-900">Mike Wong</div>
+                                                    <div class="text-xs text-gray-500">Australia – Engineering</div>
+                                                </div>
                                             </div>
+                                            <span class="text-xs px-2 py-1 rounded-full text-white" style="background-color: #3B82F6;">John Smith</span>
                                         </div>
                                         <div class="text-xs text-gray-500 mb-2">Last activity: 5 days ago</div>
                                         <div class="flex items-center justify-between">
@@ -361,7 +463,7 @@
                                                 <button class="text-xs px-2 py-1 rounded" style="background-color: #FEF2F2; color: #ED2217;" title="Send Message">
                                                     <i data-lucide="message-circle" class="w-3 h-3"></i>
                                                 </button>
-                                                <button class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200" title="View Details">
+                                                <button onclick="window.location.href='Agency-my-student-detail.html?student=sarah-johnson'" class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200" title="View Details">
                                                     <i data-lucide="eye" class="w-3 h-3"></i>
                                                 </button>
                                             </div>
@@ -434,12 +536,15 @@
                                 <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="6">
                                     <!-- Student Card -->
                                     <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move" draggable="true" data-student-id="4" data-step="6">
-                                        <div class="flex items-center space-x-3 mb-2">
-                                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&fit=crop" class="w-8 h-8 rounded-full">
-                                            <div class="flex-1">
-                                                <div class="font-medium text-sm text-gray-900">Sarah Chen</div>
-                                                <div class="text-xs text-gray-500">Canada – Business</div>
+                                        <div class="flex items-center justify-between mb-2">
+                                            <div class="flex items-center space-x-3">
+                                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&fit=crop" class="w-8 h-8 rounded-full">
+                                                <div class="flex-1">
+                                                    <div class="font-medium text-sm text-gray-900">Sarah Chen</div>
+                                                    <div class="text-xs text-gray-500">Canada – Business</div>
+                                                </div>
                                             </div>
+                                            <span class="text-xs px-2 py-1 rounded-full text-white" style="background-color: #3B82F6;">John Smith</span>
                                         </div>
                                         <div class="text-xs text-gray-500 mb-2">Last activity: 2 days ago</div>
                                         <div class="flex items-center justify-between">
@@ -447,7 +552,7 @@
                                                 <button class="text-xs px-2 py-1 rounded" style="background-color: #FEF2F2; color: #ED2217;" title="Send Message">
                                                     <i data-lucide="message-circle" class="w-3 h-3"></i>
                                                 </button>
-                                                <button class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200" title="View Details">
+                                                <button onclick="window.location.href='Agency-my-student-detail.html?student=sarah-johnson'" class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200" title="View Details">
                                                     <i data-lucide="eye" class="w-3 h-3"></i>
                                                 </button>
                                             </div>
@@ -579,7 +684,7 @@
             <div class="p-6 border-b">
                 <div class="flex items-center justify-between">
                     <h3 class="text-xl font-semibold">Student Details</h3>
-                    <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">
+                    <button onclick="closeStudentDetailsModal()" class="text-gray-400 hover:text-gray-600">
                         <i data-lucide="x" class="w-6 h-6"></i>
                     </button>
                 </div>
@@ -762,6 +867,23 @@
                     </div>
 
                     <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Agent Name *</label>
+                        <div class="relative">
+                            <select name="Agent Name" required
+                                    class="w-full px-3 py-2 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none">
+                                <option value="">Select an agent</option>
+                                <option value="john-smith">John Smith</option>
+                                <option value="sarah-wilson">Sarah Wilson</option>
+                                <option value="emily-davis">Emily Davis</option>
+                                <option value="michael-lee">Michael Lee</option>
+                                <option value="david-chen">David Chen</option>
+                            </select>
+                            <i data-lucide="user-check" class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2"></i>
+                        </div>
+                    </div>
+
+                    <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Notes</label>
                         <textarea name="notes" rows="3"
                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2" style="--tw-ring-color: #ED2217;"></textarea>
@@ -816,86 +938,375 @@
         </div>
     </div>
 
+    <!-- Student Details Modal -->
+    <div id="student-details-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+        <div class="relative top-10 mx-auto p-8 border-0 w-[700px] shadow-xl rounded-3xl bg-white">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-semibold text-gray-900">Student Details</h3>
+                <button onclick="closeStudentDetailsModal()" class="text-gray-400 hover:text-gray-500">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            
+            <!-- Student Info -->
+            <div class="grid grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                    <p id="detail-student-name" class="text-sm text-gray-900 font-medium">-</p>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <p id="detail-student-email" class="text-sm text-gray-900">-</p>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                    <p id="detail-student-phone" class="text-sm text-gray-900">-</p>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Country</label>
+                    <p id="detail-student-country" class="text-sm text-gray-900">-</p>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Program</label>
+                    <p id="detail-student-program" class="text-sm text-gray-900">-</p>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Assigned Agent</label>
+                    <p id="detail-student-agent" class="text-sm text-gray-900">-</p>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Current Step</label>
+                    <p id="detail-student-step" class="text-sm text-gray-900">-</p>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Join Date</label>
+                    <p id="detail-student-join-date" class="text-sm text-gray-900">-</p>
+                </div>
+            </div>
+
+            <!-- Progress -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Application Progress</label>
+                <div class="w-full bg-gray-200 rounded-full h-3">
+                    <div id="detail-student-progress" class="h-3 rounded-full" style="background-color: #ED2217; width: 0%"></div>
+                </div>
+                <p id="detail-student-progress-text" class="text-sm text-gray-600 mt-1">0%</p>
+            </div>
+
+            <!-- Notes -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Notes</label>
+                <p id="detail-student-notes" class="text-sm text-gray-700 bg-gray-50 p-3 rounded-lg">-</p>
+            </div>
+
+            <!-- Documents -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Documents</label>
+                <ul id="detail-student-documents" class="space-y-2">
+                    <!-- Documents will be populated by JavaScript -->
+                </ul>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex justify-end space-x-4">
+                <button onclick="closeStudentDetailsModal()" 
+                        class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                    Close
+                </button>
+                <button class="px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors hover:opacity-90" 
+                        style="background-color: #ED2217;">
+                    Edit Student
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Toast Notification -->
-    <div id="toast" class="hidden fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
-        Student created successfully.
+    <div id="toast" class="hidden fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50">
+        <span id="toast-message">Success!</span>
     </div>
 
     <script>
-        // Initialize Lucide Icons
+        // Initialize Lucide icons
         lucide.createIcons();
 
-        // Handle logout
-        function handleLogout() {
-            window.location.href = '../../login.html';
+        // Agent Group Toggle Functionality
+        function toggleAgentGroup(agentId) {
+            const students = document.querySelectorAll(`.${agentId}-students`);
+            const icon = document.getElementById(`${agentId}-icon`);
+            const isHidden = students[0] && students[0].classList.contains('hidden');
+            
+            students.forEach(student => {
+                if (isHidden) {
+                    student.classList.remove('hidden');
+                } else {
+                    student.classList.add('hidden');
+                }
+            });
+            
+            // Toggle icon
+            if (isHidden) {
+                icon.setAttribute('data-lucide', 'minus');
+            } else {
+                icon.setAttribute('data-lucide', 'plus');
+            }
+            
+            // Reinitialize icons
+            lucide.createIcons();
         }
 
-        // Profile Dropdown Toggle
+        // Agent Filter Functionality
+    document.getElementById('agent-filter').addEventListener('change', function() {
+        const selectedAgent = this.value;
+        const allAgentGroups = document.querySelectorAll('.agent-group-header');
+        const allStudentRows = document.querySelectorAll('.student-row');
+        
+        if (selectedAgent === 'all') {
+            // Show all agent groups and their students
+            allAgentGroups.forEach(group => group.style.display = 'table-row');
+            allStudentRows.forEach(row => {
+                // Keep the hidden/shown state based on group expansion
+                row.style.display = 'table-row';
+            });
+        } else {
+            // Hide all groups first
+            allAgentGroups.forEach(group => group.style.display = 'none');
+            allStudentRows.forEach(row => row.style.display = 'none');
+            
+            // Show only selected agent group and students
+            const selectedGroup = document.querySelector(`[onclick="toggleAgentGroup('${selectedAgent}')"]`);
+            const selectedStudents = document.querySelectorAll(`.${selectedAgent}-students`);
+            
+            if (selectedGroup) {
+                selectedGroup.style.display = 'table-row';
+                selectedStudents.forEach(student => {
+                    student.style.display = 'table-row';
+                    student.classList.remove('hidden'); // Auto-expand when filtering
+                });
+                
+                // Update icon to minus (expanded)
+                const icon = document.getElementById(`${selectedAgent}-icon`);
+                if (icon) {
+                    icon.setAttribute('data-lucide', 'minus');
+                    lucide.createIcons();
+                }
+            }
+        }
+    });
+
+        // Kanban Board Agent Filter
+        function filterKanbanByAgent(agentId) {
+            const allCards = document.querySelectorAll('[data-student-id]');
+            
+            allCards.forEach(card => {
+                const agentBadge = card.querySelector('span[style*="background-color"]');
+                if (agentBadge) {
+                    const agentName = agentBadge.textContent.trim();
+                    
+                    if (agentId === 'all' || agentName.toLowerCase().replace(' ', '-') === agentId) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+            
+            // Update column counts after filtering
+            if (typeof updateColumnCounts === 'function') {
+                updateColumnCounts();
+            }
+        }
+
+        // View Toggle Functionality
+        const tableViewBtn = document.getElementById('table-view-btn');
+        const boardViewBtn = document.getElementById('board-view-btn');
+        const tableView = document.getElementById('table-view');
+        const boardView = document.getElementById('board-view');
+
+        // Initialize view toggle functionality
+        if (tableViewBtn && boardViewBtn && tableView && boardView) {
+            // Set initial state
+            tableView.classList.remove('hidden');
+            boardView.classList.add('hidden');
+            tableViewBtn.style.backgroundColor = '#ED2217';
+            tableViewBtn.style.color = 'white';
+            boardViewBtn.style.backgroundColor = '#F3F4F6';
+            boardViewBtn.style.color = '#6B7280';
+
+            // Load saved view preference
+            const savedViewMode = localStorage.getItem('studentViewMode');
+            if (savedViewMode === 'board') {
+                boardViewBtn.click();
+            }
+        }
+
+        tableViewBtn.addEventListener('click', () => {
+            tableView.classList.remove('hidden');
+            boardView.classList.add('hidden');
+            tableViewBtn.style.backgroundColor = '#ED2217';
+            tableViewBtn.style.color = 'white';
+            boardViewBtn.style.backgroundColor = '#F3F4F6';
+            boardViewBtn.style.color = '#6B7280';
+        });
+
+        boardViewBtn.addEventListener('click', () => {
+            tableView.classList.add('hidden');
+            boardView.classList.remove('hidden');
+            boardViewBtn.style.backgroundColor = '#ED2217';
+            boardViewBtn.style.color = 'white';
+            tableViewBtn.style.backgroundColor = '#F3F4F6';
+            tableViewBtn.style.color = '#6B7280';
+        });
+
         const profileMenu = document.getElementById('profile-menu');
         const profileDropdown = document.getElementById('profile-dropdown');
 
-        profileMenu.addEventListener('click', () => {
-            profileDropdown.classList.toggle('hidden');
-        });
+        // AI Assistant Toggle
+        const aiChatToggle = document.getElementById('ai-chat-toggle');
+        const aiChatPanel = document.getElementById('ai-chat-panel');
+        const aiChatClose = document.getElementById('ai-chat-close');
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!profileMenu.contains(e.target)) {
-                profileDropdown.classList.add('hidden');
-            }
-        });
-
-        // Modal Functions
-        const modal = document.getElementById('student-details-modal');
-        
-        function openModal() {
-            modal.classList.remove('hidden');
-        }
-        
-        function closeModal() {
-            modal.classList.add('hidden');
+        if (aiChatToggle && aiChatPanel) {
+            aiChatToggle.addEventListener('click', () => {
+                aiChatPanel.classList.toggle('hidden');
+            });
         }
 
-        // Add click event to View Details buttons
-        document.querySelectorAll('button').forEach(button => {
-            if (button.textContent === 'View Details') {
-                button.addEventListener('click', openModal);
-            }
-        });
+        if (aiChatClose && aiChatPanel) {
+            aiChatClose.addEventListener('click', () => {
+                aiChatPanel.classList.add('hidden');
+            });
+        }
 
-        // Close modal when clicking outside
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-
+        // Modal functionality
         // Add New Student Modal Functions
-        const addStudentModal = document.getElementById('add-student-modal');
-        const addStudentForm = document.getElementById('add-student-form');
-        const toast = document.getElementById('toast');
-
-        // Simulated user role check (replace with actual role check logic)
-        const isAdmin = true; // Set this based on actual user role
-
         function openAddStudentModal() {
-            addStudentModal.classList.remove('hidden');
-            if (isAdmin) {
-                document.getElementById('admin-section').classList.remove('hidden');
+            const modal = document.getElementById('add-student-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
             }
         }
 
         function closeAddStudentModal() {
-            addStudentModal.classList.add('hidden');
-            addStudentForm.reset();
-            document.getElementById('email-error').classList.add('hidden');
+            const modal = document.getElementById('add-student-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+            }
         }
 
-        function showToast() {
-            toast.classList.remove('hidden');
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 3000);
+        // Student Details Modal Functions
+        function openStudentDetailsModal(studentId) {
+            const modal = document.getElementById('student-details-modal');
+            if (modal) {
+                // Load student data based on studentId
+                loadStudentDetails(studentId);
+                modal.classList.remove('hidden');
+            }
+        }
+
+        function closeStudentDetailsModal() {
+            const modal = document.getElementById('student-details-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function loadStudentDetails(studentId) {
+            // Sample student data - in real app, this would come from API
+            const studentData = {
+                'sarah-johnson': {
+                    name: 'Sarah Johnson',
+                    email: 'sarah.johnson@example.com',
+                    phone: '+1 (555) 123-4567',
+                    country: 'USA',
+                    program: 'Computer Science',
+                    agent: 'John Smith',
+                    step: 'Initial Advising',
+                    progress: 80,
+                    joinDate: '2024-01-15',
+                    notes: 'Interested in AI and Machine Learning programs. Has strong academic background.',
+                    documents: ['Passport', 'Transcripts', 'IELTS Certificate']
+                },
+                'mike-wong': {
+                    name: 'Mike Wong',
+                    email: 'mike.wong@example.com',
+                    phone: '+61 400 123 456',
+                    country: 'Australia',
+                    program: 'Engineering',
+                    agent: 'John Smith',
+                    step: 'Docs Review',
+                    progress: 60,
+                    joinDate: '2024-02-01',
+                    notes: 'Engineering student with focus on renewable energy systems.',
+                    documents: ['Passport', 'Academic Records']
+                },
+                'emma-davis': {
+                    name: 'Emma Davis',
+                    email: 'emma.davis@example.com',
+                    phone: '+44 7700 900123',
+                    country: 'UK',
+                    program: 'Business Administration',
+                    agent: 'Sarah Wilson',
+                    step: 'Agreement & 1st Payment',
+                    progress: 45,
+                    joinDate: '2024-01-20',
+                    notes: 'MBA candidate with 3 years work experience in finance.',
+                    documents: ['Passport', 'Work Experience Letter', 'GMAT Scores']
+                }
+            };
+
+            const student = studentData[studentId] || studentData['sarah-johnson'];
+            
+            // Update modal content
+            document.getElementById('detail-student-name').textContent = student.name;
+            document.getElementById('detail-student-email').textContent = student.email;
+            document.getElementById('detail-student-phone').textContent = student.phone;
+            document.getElementById('detail-student-country').textContent = student.country;
+            document.getElementById('detail-student-program').textContent = student.program;
+            document.getElementById('detail-student-agent').textContent = student.agent;
+            document.getElementById('detail-student-step').textContent = student.step;
+            document.getElementById('detail-student-progress').style.width = student.progress + '%';
+            document.getElementById('detail-student-progress-text').textContent = student.progress + '%';
+            document.getElementById('detail-student-join-date').textContent = student.joinDate;
+            document.getElementById('detail-student-notes').textContent = student.notes;
+            
+            // Update documents list
+            const docsList = document.getElementById('detail-student-documents');
+            docsList.innerHTML = '';
+            student.documents.forEach(doc => {
+                const li = document.createElement('li');
+                li.className = 'flex items-center justify-between py-2 px-3 bg-gray-50 rounded-lg';
+                li.innerHTML = `
+                    <span class="text-sm text-gray-700">${doc}</span>
+                    <span class="text-xs text-green-600 bg-green-100 px-2 py-1 rounded-full">✓ Uploaded</span>
+                `;
+                docsList.appendChild(li);
+            });
+        }
+
+        const addStudentModal = document.getElementById('add-student-modal');
+        const addStudentForm = document.getElementById('add-student-form');
+
+        if (addStudentModal) {
+            addStudentModal.addEventListener('click', (e) => {
+                if (e.target === addStudentModal) {
+                    closeAddStudentModal();
+                }
+            });
+        }
+
+        if (addStudentForm) {
+            addStudentForm.addEventListener('submit', handleAddStudent);
+        }
+
+        // Student Details Modal event listeners
+        const studentDetailsModal = document.getElementById('student-details-modal');
+        if (studentDetailsModal) {
+            studentDetailsModal.addEventListener('click', (e) => {
+                if (e.target === studentDetailsModal) {
+                    closeStudentDetailsModal();
+                }
+            });
         }
 
         function handleAddStudent(event) {
@@ -949,78 +1360,18 @@
             }
         });
 
-        // Close modal when clicking outside
-        addStudentModal.addEventListener('click', (e) => {
-            if (e.target === addStudentModal) {
-                closeAddStudentModal();
-            }
-        });
+        // Profile dropdown functionality
+        if (profileMenu && profileDropdown) {
+            profileMenu.addEventListener('click', () => {
+                profileDropdown.classList.toggle('hidden');
+            });
 
-        // AI Assistant Chat Toggle
-        const aiChatToggle = document.getElementById('ai-chat-toggle');
-        const aiChatPanel = document.getElementById('ai-chat-panel');
-        const aiChatClose = document.getElementById('ai-chat-close');
-
-        aiChatToggle.addEventListener('click', () => {
-            aiChatPanel.classList.toggle('hidden');
-        });
-
-        aiChatClose.addEventListener('click', () => {
-            aiChatPanel.classList.add('hidden');
-        });
-
-        // Close chat panel when clicking outside
-        document.addEventListener('click', (e) => {
-            const aiAssistant = document.getElementById('ai-assistant');
-            if (!aiAssistant.contains(e.target)) {
-                aiChatPanel.classList.add('hidden');
-            }
-        });
-
-        // View Toggle Functionality
-        const tableViewBtn = document.getElementById('table-view-btn');
-        const boardViewBtn = document.getElementById('board-view-btn');
-        const tableView = document.getElementById('table-view');
-        const boardView = document.getElementById('board-view');
-
-        tableViewBtn.addEventListener('click', () => {
-            // Show table view
-            tableView.classList.remove('hidden');
-            tableView.classList.add('block');
-            boardView.classList.remove('block');
-            boardView.classList.add('hidden');
-            
-            // Update button styles
-            tableViewBtn.style.backgroundColor = '#ED2217';
-            tableViewBtn.style.color = 'white';
-            boardViewBtn.style.backgroundColor = '#F3F4F6';
-            boardViewBtn.style.color = '#6B7280';
-            
-            // Save preference
-            localStorage.setItem('studentViewMode', 'table');
-        });
-
-        boardViewBtn.addEventListener('click', () => {
-            // Show board view
-            boardView.classList.remove('hidden');
-            boardView.classList.add('block');
-            tableView.classList.remove('block');
-            tableView.classList.add('hidden');
-            
-            // Update button styles
-            boardViewBtn.style.backgroundColor = '#ED2217';
-            boardViewBtn.style.color = 'white';
-            tableViewBtn.style.backgroundColor = '#F3F4F6';
-            tableViewBtn.style.color = '#6B7280';
-            
-            // Save preference
-            localStorage.setItem('studentViewMode', 'board');
-        });
-
-        // Load saved view preference
-        const savedViewMode = localStorage.getItem('studentViewMode');
-        if (savedViewMode === 'board') {
-            boardViewBtn.click();
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!profileMenu.contains(e.target) && !profileDropdown.contains(e.target)) {
+                    profileDropdown.classList.add('hidden');
+                }
+            });
         }
 
         // Drag and Drop Functionality
@@ -1029,107 +1380,119 @@
         let draggedFromStep = null;
 
         // Add drag event listeners to all student cards
-        document.querySelectorAll('[draggable="true"]').forEach(card => {
-            card.addEventListener('dragstart', (e) => {
-                draggedElement = e.target;
-                draggedStudentId = e.target.getAttribute('data-student-id');
-                draggedFromStep = parseInt(e.target.getAttribute('data-step'));
-                e.target.style.opacity = '0.5';
-            });
+        function initializeDragAndDrop() {
+            document.querySelectorAll('[draggable="true"]').forEach(card => {
+                card.addEventListener('dragstart', (e) => {
+                    draggedElement = e.target;
+                    draggedStudentId = e.target.getAttribute('data-student-id');
+                    draggedFromStep = parseInt(e.target.getAttribute('data-step'));
+                    e.target.style.opacity = '0.5';
+                });
 
-            card.addEventListener('dragend', (e) => {
-                e.target.style.opacity = '1';
-                draggedElement = null;
-                draggedStudentId = null;
-                draggedFromStep = null;
+                card.addEventListener('dragend', (e) => {
+                    e.target.style.opacity = '1';
+                    draggedElement = null;
+                    draggedStudentId = null;
+                    draggedFromStep = null;
+                });
             });
-        });
+        }
 
         // Add drop event listeners to all drop zones
-        document.querySelectorAll('.drop-zone').forEach(zone => {
-            zone.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                const targetStep = parseInt(zone.getAttribute('data-step'));
-                
-                // Check if drop is valid (only forward one step or backward one step)
-                if (draggedFromStep && (targetStep === draggedFromStep + 1 || targetStep === draggedFromStep - 1)) {
-                    zone.style.backgroundColor = '#FEF2F2';
-                    zone.style.borderColor = '#ED2217';
-                    zone.style.borderWidth = '2px';
-                    zone.style.borderStyle = 'dashed';
-                } else if (draggedFromStep && targetStep !== draggedFromStep) {
-                    zone.style.backgroundColor = '#FEF2F2';
-                    zone.style.borderColor = '#EF4444';
-                    zone.style.borderWidth = '2px';
-                    zone.style.borderStyle = 'dashed';
-                }
-            });
-
-            zone.addEventListener('dragleave', (e) => {
-                zone.style.backgroundColor = '';
-                zone.style.borderColor = '';
-                zone.style.borderWidth = '';
-                zone.style.borderStyle = '';
-            });
-
-            zone.addEventListener('drop', (e) => {
-                e.preventDefault();
-                const targetStep = parseInt(zone.getAttribute('data-step'));
-                
-                // Reset zone styling
-                zone.style.backgroundColor = '';
-                zone.style.borderColor = '';
-                zone.style.borderWidth = '';
-                zone.style.borderStyle = '';
-                
-                // Validate move (only forward one step or backward one step)
-                if (draggedFromStep && (targetStep === draggedFromStep + 1 || targetStep === draggedFromStep - 1)) {
-                    // Move the student card
-                    if (draggedElement) {
-                        // Update the data-step attribute
-                        draggedElement.setAttribute('data-step', targetStep);
-                        
-                        // Remove empty state message if it exists
-                        const emptyMessage = zone.querySelector('.text-center.text-gray-400');
-                        if (emptyMessage) {
-                            emptyMessage.remove();
-                        }
-                        
-                        // Append to new column
-                        zone.appendChild(draggedElement);
-                        
-                        // Update column counts
-                        updateColumnCounts();
-                        
-                        // Show success message
-                        showMoveSuccessToast(targetStep);
-                        
-                        // Here you would typically send the update to your backend
-                        console.log(`Moved student ${draggedStudentId} to step ${targetStep}`);
+        function initializeDropZones() {
+            document.querySelectorAll('.drop-zone').forEach(zone => {
+                zone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    const targetStep = parseInt(zone.getAttribute('data-step'));
+                    
+                    // Check if drop is valid (only forward one step or backward one step)
+                    if (draggedFromStep && (targetStep === draggedFromStep + 1 || targetStep === draggedFromStep - 1)) {
+                        zone.style.backgroundColor = '#FEF2F2';
+                        zone.style.borderColor = '#ED2217';
+                        zone.style.borderWidth = '2px';
+                        zone.style.borderStyle = 'dashed';
+                    } else if (draggedFromStep && targetStep !== draggedFromStep) {
+                        zone.style.backgroundColor = '#FEF2F2';
+                        zone.style.borderColor = '#EF4444';
+                        zone.style.borderWidth = '2px';
+                        zone.style.borderStyle = 'dashed';
                     }
-                } else {
-                    // Show error for invalid move
-                    showMoveErrorToast();
-                }
+                });
+
+                zone.addEventListener('dragleave', (e) => {
+                    zone.style.backgroundColor = '';
+                    zone.style.borderColor = '';
+                    zone.style.borderWidth = '';
+                    zone.style.borderStyle = '';
+                });
+
+                zone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    const targetStep = parseInt(zone.getAttribute('data-step'));
+                    
+                    // Reset zone styling
+                    zone.style.backgroundColor = '';
+                    zone.style.borderColor = '';
+                    zone.style.borderWidth = '';
+                    zone.style.borderStyle = '';
+                    
+                    // Validate move (only forward one step or backward one step)
+                    if (draggedFromStep && (targetStep === draggedFromStep + 1 || targetStep === draggedFromStep - 1)) {
+                        // Move the student card
+                        if (draggedElement) {
+                            // Update the data-step attribute
+                            draggedElement.setAttribute('data-step', targetStep);
+                            
+                            // Remove empty state message if it exists
+                            const emptyMessage = zone.querySelector('.text-center.text-gray-400');
+                            if (emptyMessage) {
+                                emptyMessage.remove();
+                            }
+                            
+                            // Append to new column
+                            zone.appendChild(draggedElement);
+                            
+                            // Update column counts
+                            if (typeof updateColumnCounts === 'function') {
+                                updateColumnCounts();
+                            }
+                            
+                            // Show success message
+                            if (typeof showMoveSuccessToast === 'function') {
+                                showMoveSuccessToast(targetStep);
+                            }
+                            
+                            // Here you would typically send the update to your backend
+                            console.log(`Moved student ${draggedStudentId} to step ${targetStep}`);
+                        }
+                    } else {
+                        // Show error for invalid move
+                        if (typeof showMoveErrorToast === 'function') {
+                            showMoveErrorToast();
+                        }
+                    }
+                });
             });
-        });
+        }
 
         // Update column counts
         function updateColumnCounts() {
             for (let step = 1; step <= 9; step++) {
                 const column = document.querySelector(`[data-step="${step}"]`);
-                const cards = column.querySelectorAll('[data-student-id]');
-                const countBadge = column.parentElement.parentElement.querySelector('.rounded-full');
-                if (countBadge) {
-                    countBadge.textContent = cards.length;
-                }
-                
-                // Add/remove empty state message
-                const existingEmptyMessage = column.querySelector('.text-center.text-gray-400');
-                if (cards.length === 0 && !existingEmptyMessage) {
-                    column.innerHTML = '<div class="text-center text-gray-400 text-sm mt-20">No students at this stage</div>';
-                } else if (cards.length > 0 && existingEmptyMessage) {
-                    existingEmptyMessage.remove();
+                if (column) {
+                    const cards = column.querySelectorAll('[data-student-id]');
+                    const countBadge = column.parentElement.parentElement.querySelector('.rounded-full');
+                    if (countBadge) {
+                        countBadge.textContent = cards.length;
+                    }
+                    
+                    // Add/remove empty state message
+                    const existingEmptyMessage = column.querySelector('.text-center.text-gray-400');
+                    if (cards.length === 0 && !existingEmptyMessage) {
+                        column.innerHTML = '<div class="text-center text-gray-400 text-sm mt-20">No students at this stage</div>';
+                    } else if (cards.length > 0 && existingEmptyMessage) {
+                        existingEmptyMessage.remove();
+                    }
                 }
             }
         }
@@ -1147,27 +1510,78 @@
                 8: 'Pre-Departure',
                 9: 'Arrival'
             };
-            
-            const toast = document.createElement('div');
-            toast.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
-            toast.textContent = `Student moved to ${stepNames[step]}`;
-            document.body.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.remove();
-            }, 3000);
+            showToast(`Student moved to ${stepNames[step]}`);
         }
 
         function showMoveErrorToast() {
-            const toast = document.createElement('div');
-            toast.className = 'fixed top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
-            toast.textContent = 'Invalid move! Students can only move one step forward or backward.';
-            document.body.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.remove();
-            }, 3000);
+            showToast('Invalid move! Students can only move one step forward or backward.', 'error');
         }
+
+        // Initialize everything
+        initializeDragAndDrop();
+        initializeDropZones();
+
+        // Add agent filter listener for Kanban view
+        const agentFilterSelect = document.getElementById('agent-filter');
+        if (agentFilterSelect) {
+            agentFilterSelect.addEventListener('change', function() {
+                const currentView = document.getElementById('board-view').classList.contains('hidden') ? 'table' : 'board';
+                
+                if (currentView === 'board') {
+                    filterKanbanByAgent(this.value);
+                }
+            });
+        }
+
+        // Activity filter functionality
+        const activityFilterSelect = document.getElementById('activity-filter');
+        if (activityFilterSelect) {
+            activityFilterSelect.addEventListener('change', function() {
+                filterByActivity(this.value);
+            });
+        }
+
+        function filterByActivity(activityStatus) {
+            const allStudentRows = document.querySelectorAll('.student-row');
+            const allStudentCards = document.querySelectorAll('[data-student-id]');
+            
+            // Filter table rows
+            allStudentRows.forEach(row => {
+                const activityBadge = row.querySelector('.bg-green-100, .bg-yellow-100');
+                if (activityBadge) {
+                    const isActive = activityBadge.textContent.trim().includes('Active');
+                    
+                    if (activityStatus === 'all') {
+                        row.style.display = 'table-row';
+                    } else if (activityStatus === 'active' && isActive) {
+                        row.style.display = 'table-row';
+                    } else if (activityStatus === 'inactive' && !isActive) {
+                        row.style.display = 'table-row';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                }
+            });
+            
+            // Filter kanban cards
+            allStudentCards.forEach(card => {
+                const activityBadge = card.querySelector('.bg-green-100, .bg-yellow-100');
+                if (activityBadge) {
+                    const isActive = activityBadge.textContent.trim().includes('Active');
+                    
+                    if (activityStatus === 'all') {
+                        card.style.display = 'block';
+                    } else if (activityStatus === 'active' && isActive) {
+                        card.style.display = 'block';
+                    } else if (activityStatus === 'inactive' && !isActive) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+
     </script>
 </body>
 </html>

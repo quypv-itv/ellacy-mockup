@@ -92,10 +92,141 @@
                 <h2 class="text-xl font-semibold text-gray-800">Dashboard</h2>
             </div>
             <div class="flex items-center space-x-4">
-                <button class="relative">
-                    <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
-                    <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
-                </button>
+                <!-- Notification Dropdown -->
+                <div class="relative">
+                    <button id="notification-menu" class="relative hover:bg-gray-100 p-2 rounded-full transition-colors">
+                        <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
+                        <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                    </button>
+                    
+                    <!-- Notification Dropdown Menu -->
+                    <div id="notification-dropdown" class="hidden absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-lg border border-gray-200 z-50">
+                        <!-- Header -->
+                        <div class="p-4 border-b border-gray-200">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-semibold text-gray-900">Notifications</h3>
+                                <span class="text-xs text-white px-2 py-1 rounded-full" style="background-color: #ED2217;">5</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Notification Items -->
+                        <div class="max-h-96 overflow-y-auto">
+                            <!-- New Tasks Section -->
+                            <div class="p-3 border-b border-gray-100">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #FEF2F2;">
+                                        <i data-lucide="clipboard-list" class="w-4 h-4" style="color: #ED2217;"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between">
+                                            <p class="text-sm font-medium text-gray-900">New Tasks Assigned</p>
+                                            <span class="text-xs text-gray-500">2 min ago</span>
+                                        </div>
+                                        <p class="text-xs text-gray-600 mt-1">3 new tasks have been assigned to your team</p>
+                                        <div class="mt-2">
+                                            <button class="text-xs px-2 py-1 rounded" style="background-color: #FEF2F2; color: #ED2217;">View Tasks</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- New Students Section -->
+                            <div class="p-3 border-b border-gray-100">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #FEF2F2;">
+                                        <i data-lucide="user-plus" class="w-4 h-4" style="color: #ED2217;"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between">
+                                            <p class="text-sm font-medium text-gray-900">New Students Sign Up</p>
+                                            <span class="text-xs text-gray-500">15 min ago</span>
+                                        </div>
+                                        <p class="text-xs text-gray-600 mt-1">Sarah Johnson and 2 others have registered</p>
+                                        <div class="mt-2">
+                                            <button class="text-xs px-2 py-1 rounded" style="background-color: #FEF2F2; color: #ED2217;">View Students</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Events Section -->
+                            <div class="p-3 border-b border-gray-100">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #FEF2F2;">
+                                        <i data-lucide="calendar" class="w-4 h-4" style="color: #ED2217;"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between">
+                                            <p class="text-sm font-medium text-gray-900">Upcoming Events</p>
+                                            <span class="text-xs text-gray-500">1 hour ago</span>
+                                        </div>
+                                        <p class="text-xs text-gray-600 mt-1">University Fair - Tomorrow at 2:00 PM</p>
+                                        <p class="text-xs text-gray-500 mt-1">📍 Convention Center, Hall A</p>
+                                        <div class="mt-2 flex space-x-2">
+                                            <button onclick="addToGoogleCalendar('University Fair', '2025-01-11T14:00:00', '2025-01-11T17:00:00', 'Annual University Fair with international institutions', 'Convention Center, Hall A')" class="text-xs px-2 py-1 rounded hover:opacity-80" style="background-color: #FEF2F2; color: #ED2217;">
+                                                <i data-lucide="calendar-plus" class="w-3 h-3 inline mr-1"></i>Add to Calendar
+                                            </button>
+                                            <button onclick="viewInGoogleCalendar()" class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200">
+                                                <i data-lucide="external-link" class="w-3 h-3 inline mr-1"></i>View Calendar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Application Deadline -->
+                            <div class="p-3 border-b border-gray-100">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #FEF2F2;">
+                                        <i data-lucide="clock" class="w-4 h-4" style="color: #ED2217;"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between">
+                                            <p class="text-sm font-medium text-gray-900">Application Deadline</p>
+                                            <span class="text-xs text-gray-500">3 hours ago</span>
+                                        </div>
+                                        <p class="text-xs text-gray-600 mt-1">Mike Wong's application deadline is in 2 days</p>
+                                        <p class="text-xs text-gray-500 mt-1">📚 University of Toronto - MBA Program</p>
+                                        <div class="mt-2 flex space-x-2">
+                                            <button onclick="addToGoogleCalendar('Application Deadline - Mike Wong', '2025-01-12T23:59:00', '2025-01-12T23:59:00', 'Follow up on Mike Wong application deadline for University of Toronto MBA Program', 'Online')" class="text-xs px-2 py-1 rounded hover:opacity-80" style="background-color: #FEF2F2; color: #ED2217;">
+                                                <i data-lucide="calendar-plus" class="w-3 h-3 inline mr-1"></i>Add Reminder
+                                            </button>
+                                            <button class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200">
+                                                Follow Up
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Commission Update -->
+                            <div class="p-3">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #FEF2F2;">
+                                        <i data-lucide="dollar-sign" class="w-4 h-4" style="color: #ED2217;"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between">
+                                            <p class="text-sm font-medium text-gray-900">Commission Payment</p>
+                                            <span class="text-xs text-gray-500">1 day ago</span>
+                                        </div>
+                                        <p class="text-xs text-gray-600 mt-1">$2,500 commission has been approved</p>
+                                        <div class="mt-2">
+                                            <button class="text-xs px-2 py-1 rounded" style="background-color: #FEF2F2; color: #ED2217;">View Details</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Footer -->
+                        <div class="p-3 border-t border-gray-200">
+                            <button class="w-full text-center text-sm font-medium hover:opacity-80" style="color: #ED2217;">
+                                View All Notifications
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 <!-- Profile Dropdown -->
                 <div class="relative">
                     <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
@@ -119,6 +250,138 @@
 
         <!-- Dashboard Content -->
         <main class="p-6">
+            <!-- News + Events Banner Carousel -->
+            <div class="news-events-carousel mb-8 bg-gradient-to-r from-gray-300 to-gray-500 rounded-3xl shadow-sm overflow-hidden backdrop-blur-sm">
+                <div class="relative">
+                    <!-- Slides Container -->
+                    <div class="slides-container flex snap-x snap-mandatory overflow-x-auto scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                        <!-- Slide 1: University Fair Event -->
+                        <div class="slide min-w-full snap-start p-6 flex flex-col md:flex-row items-center gap-6">
+                            <div class="w-full md:w-1/3 relative group">
+                                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80" 
+                                     alt="University Fair" 
+                                     class="rounded-xl object-cover w-full h-48 transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg">
+                                <div class="absolute inset-0 bg-red-600 bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 rounded-xl"></div>
+                                <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-xs p-2 rounded-b-xl">
+                                    International Education Fair
+                                </div>
+                            </div>
+                            <div class="w-full md:w-2/3">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="calendar" class="w-5 h-5 mr-2" style="color: #ED2217;"></i>
+                                    <span class="text-sm font-medium" style="color: #ED2217;">Upcoming Event</span>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-2">University Fair - Tomorrow 2:00 PM</h3>
+                                <p class="text-gray-700 mb-3">Meet representatives from 50+ international universities. Great opportunity for your students!</p>
+                                <div class="flex space-x-2">
+                                    <button onclick="addToGoogleCalendar('University Fair', '2025-01-11T14:00:00', '2025-01-11T17:00:00', 'Annual University Fair with international institutions', 'Convention Center, Hall A')" class="text-xs px-3 py-1 rounded hover:opacity-80" style="background-color: #FEF2F2; color: #ED2217;">
+                                        <i data-lucide="calendar-plus" class="w-3 h-3 inline mr-1"></i>Add to Calendar
+                                    </button>
+                                    <a href="#" class="text-xs px-3 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200">
+                                        Learn more <i data-lucide="arrow-right" class="w-3 h-3 inline ml-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2: New Partnership News -->
+                        <div class="slide min-w-full snap-start p-6 flex flex-col md:flex-row items-center gap-6">
+                            <div class="w-full md:w-1/3 relative group">
+                                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80" 
+                                     alt="University Partnership" 
+                                     class="rounded-xl object-cover w-full h-48 transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg">
+                                <div class="absolute inset-0 bg-red-600 bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 rounded-xl"></div>
+                                <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-xs p-2 rounded-b-xl">
+                                    University of Toronto Campus
+                                </div>
+                            </div>
+                            <div class="w-full md:w-2/3">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="megaphone" class="w-5 h-5 mr-2" style="color: #ED2217;"></i>
+                                    <span class="text-sm font-medium" style="color: #ED2217;">Partnership News</span>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-2">New Partnership: University of Toronto</h3>
+                                <p class="text-gray-700 mb-3">Exciting news! We've partnered with University of Toronto for MBA and Engineering programs.</p>
+                                <div class="flex space-x-2">
+                                    <a href="#" class="text-xs px-3 py-1 rounded hover:opacity-80" style="background-color: #FEF2F2; color: #ED2217;">
+                                        View Programs <i data-lucide="arrow-right" class="w-3 h-3 inline ml-1"></i>
+                                    </a>
+                                    <a href="#" class="text-xs px-3 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200">
+                                        Share with Students
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3: Commission Update -->
+                        <div class="slide min-w-full snap-start p-6 flex flex-col md:flex-row items-center gap-6">
+                            <div class="w-full md:w-1/3 relative group">
+                                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80" 
+                                     alt="Commission Success" 
+                                     class="rounded-xl object-cover w-full h-48 transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg">
+                                <div class="absolute inset-0 bg-red-600 bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 rounded-xl"></div>
+                                <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-xs p-2 rounded-b-xl">
+                                    Commission Achievement
+                                </div>
+                            </div>
+                            <div class="w-full md:w-2/3">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="dollar-sign" class="w-5 h-5 mr-2" style="color: #ED2217;"></i>
+                                    <span class="text-sm font-medium" style="color: #ED2217;">Commission Update</span>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-2">Record Month: $15,000 in Commissions</h3>
+                                <p class="text-gray-700 mb-3">Congratulations! This month's commission earnings have reached a new record high.</p>
+                                <div class="flex space-x-2">
+                                    <a href="Agency-commission.html" class="text-xs px-3 py-1 rounded hover:opacity-80" style="background-color: #FEF2F2; color: #ED2217;">
+                                        View Details <i data-lucide="arrow-right" class="w-3 h-3 inline ml-1"></i>
+                                    </a>
+                                    <a href="#" class="text-xs px-3 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200">
+                                        Download Report
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4: Training Event -->
+                        <div class="slide min-w-full snap-start p-6 flex flex-col md:flex-row items-center gap-6">
+                            <div class="w-full md:w-1/3 relative group">
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300&q=80" 
+                                     alt="Training Session" 
+                                     class="rounded-xl object-cover w-full h-48 transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg">
+                                <div class="absolute inset-0 bg-red-600 bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 rounded-xl"></div>
+                                <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-xs p-2 rounded-b-xl">
+                                    Agent Training Session
+                                </div>
+                            </div>
+                            <div class="w-full md:w-2/3">
+                                <div class="flex items-center mb-2">
+                                    <i data-lucide="graduation-cap" class="w-5 h-5 mr-2" style="color: #ED2217;"></i>
+                                    <span class="text-sm font-medium" style="color: #ED2217;">Training Event</span>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-2">Agent Training: New Visa Regulations</h3>
+                                <p class="text-gray-700 mb-3">Join our training session on updated visa regulations for Canada and Australia - Friday 10:00 AM</p>
+                                <div class="flex space-x-2">
+                                    <button onclick="addToGoogleCalendar('Agent Training: New Visa Regulations', '2025-01-17T10:00:00', '2025-01-17T12:00:00', 'Training session on updated visa regulations for Canada and Australia', 'ApplyLead Office - Training Room')" class="text-xs px-3 py-1 rounded hover:opacity-80" style="background-color: #FEF2F2; color: #ED2217;">
+                                        <i data-lucide="calendar-plus" class="w-3 h-3 inline mr-1"></i>Add to Calendar
+                                    </button>
+                                    <a href="#" class="text-xs px-3 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200">
+                                        Register Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Dots -->
+                    <div class="flex justify-center space-x-2 p-4">
+                        <button class="w-2 h-2 rounded-full bg-gray-300 dot-button hover:bg-gray-400 transition-colors" data-slide="0"></button>
+                        <button class="w-2 h-2 rounded-full bg-gray-300 dot-button hover:bg-gray-400 transition-colors" data-slide="1"></button>
+                        <button class="w-2 h-2 rounded-full bg-gray-300 dot-button hover:bg-gray-400 transition-colors" data-slide="2"></button>
+                        <button class="w-2 h-2 rounded-full bg-gray-300 dot-button hover:bg-gray-400 transition-colors" data-slide="3"></button>
+                    </div>
+                </div>
+            </div>
+
             <!-- Top Stats Grid -->
             <div class="grid grid-cols-4 gap-4 mb-6">
                 <!-- Total Students -->
@@ -338,6 +601,59 @@
                         </a>
                     </div>
 
+                    <!-- New Agent Help Guide Card -->
+                    <div class="bg-white rounded-3xl shadow-md p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center mr-3" style="background-color: #FEF2F2;">
+                                <i data-lucide="book-open" class="w-5 h-5" style="color: #ED2217;"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold">New Agent Guide</h3>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4">Quick start documentation to help you navigate the ApplyLead platform effectively.</p>
+                        
+                        <!-- Quick Start Steps -->
+                        <div class="space-y-3 mb-4">
+                            <div class="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+                                <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold text-white" style="background-color: #ED2217;">1</div>
+                                <div>
+                                    <h4 class="text-sm font-medium">Platform Overview</h4>
+                                    <p class="text-xs text-gray-600">Learn about dashboard navigation and key features</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+                                <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold text-white" style="background-color: #ED2217;">2</div>
+                                <div>
+                                    <h4 class="text-sm font-medium">Student Management</h4>
+                                    <p class="text-xs text-gray-600">How to add, track, and manage student applications</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+                                <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold text-white" style="background-color: #ED2217;">3</div>
+                                <div>
+                                    <h4 class="text-sm font-medium">9-Step Process</h4>
+                                    <p class="text-xs text-gray-600">Understanding the application workflow stages</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+                                <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold text-white" style="background-color: #ED2217;">4</div>
+                                <div>
+                                    <h4 class="text-sm font-medium">Commission Tracking</h4>
+                                    <p class="text-xs text-gray-600">Monitor earnings and payment status</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions -->
+                        <div class="mt-4 space-y-2">
+                            <button onclick="startGuidedTour()" class="w-full text-white rounded-xl py-2 transition-colors hover:opacity-90" style="background-color: #ED2217;">
+                                <i data-lucide="map" class="w-4 h-4 inline mr-2"></i>Start Guided Tour
+                            </button>
+                            <button onclick="scheduleTraining()" class="w-full bg-gray-100 text-gray-700 rounded-xl py-2 hover:bg-gray-200 transition-colors">
+                                <i data-lucide="calendar" class="w-4 h-4 inline mr-2"></i>Schedule Training Session
+                            </button>
+                        </div>
+                    </div>
+
                     <!-- Recent Activity -->
                     <div class="bg-white rounded-3xl shadow-md p-6">
                         <h3 class="text-lg font-semibold mb-4">Recent Activity</h3>
@@ -448,20 +764,259 @@
             window.location.href = '../../login.html';
         }
 
-        // Profile Dropdown Toggle
+        // Profile dropdown toggle
         const profileMenu = document.getElementById('profile-menu');
         const profileDropdown = document.getElementById('profile-dropdown');
+        const notificationMenu = document.getElementById('notification-menu');
+        const notificationDropdown = document.getElementById('notification-dropdown');
 
         profileMenu.addEventListener('click', () => {
             profileDropdown.classList.toggle('hidden');
+            // Close notification dropdown if open
+            notificationDropdown.classList.add('hidden');
         });
 
-        // Close dropdown when clicking outside
+        // Notification dropdown toggle
+        notificationMenu.addEventListener('click', () => {
+            notificationDropdown.classList.toggle('hidden');
+            // Close profile dropdown if open
+            profileDropdown.classList.add('hidden');
+        });
+
+        // Close dropdowns when clicking outside
         document.addEventListener('click', (e) => {
-            if (!profileMenu.contains(e.target)) {
+            if (!profileMenu.contains(e.target) && !profileDropdown.contains(e.target)) {
                 profileDropdown.classList.add('hidden');
             }
+            if (!notificationMenu.contains(e.target) && !notificationDropdown.contains(e.target)) {
+                notificationDropdown.classList.add('hidden');
+            }
         });
+
+        // Google Calendar Integration Functions
+        function addToGoogleCalendar(title, startDate, endDate, description, location) {
+            // Format dates for Google Calendar (YYYYMMDDTHHMMSSZ)
+            const formatDate = (dateStr) => {
+                const date = new Date(dateStr);
+                return date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+            };
+
+            const startFormatted = formatDate(startDate);
+            const endFormatted = formatDate(endDate);
+
+            // Create Google Calendar URL
+            const baseUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE';
+            const params = new URLSearchParams({
+                text: title,
+                dates: `${startFormatted}/${endFormatted}`,
+                details: description,
+                location: location,
+                sf: true,
+                output: 'xml'
+            });
+
+            const calendarUrl = `${baseUrl}&${params.toString()}`;
+            
+            // Open in new tab
+            window.open(calendarUrl, '_blank');
+            
+            // Show success toast
+            showCalendarToast('Event added to Google Calendar!');
+        }
+
+        function viewInGoogleCalendar() {
+            // Open Google Calendar in new tab
+            window.open('https://calendar.google.com', '_blank');
+        }
+
+        // Calendar toast notification
+        function showCalendarToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed top-4 right-4 text-white px-4 py-2 rounded-lg shadow-lg z-50 flex items-center space-x-2';
+            toast.style.backgroundColor = '#ED2217';
+            
+            toast.innerHTML = `
+                <i data-lucide="calendar-check" class="w-4 h-4"></i>
+                <span>${message}</span>
+            `;
+            
+            document.body.appendChild(toast);
+            
+            // Initialize the icon
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // Add more event examples with calendar integration
+        function addTeamMeeting() {
+            addToGoogleCalendar(
+                'Team Meeting - Weekly Sync',
+                '2025-01-13T10:00:00',
+                '2025-01-13T11:00:00',
+                'Weekly team sync meeting to discuss student progress and upcoming tasks',
+                'ApplyLead Office - Conference Room A'
+            );
+        }
+
+        function addStudentInterview() {
+            addToGoogleCalendar(
+                'Student Interview - Sarah Johnson',
+                '2025-01-14T15:00:00',
+                '2025-01-14T16:00:00',
+                'Initial consultation interview with new student Sarah Johnson for MBA program guidance',
+                'Online - Zoom Meeting'
+            );
+        }
+
+        // New Agent Help Guide Functions
+        function openHelpModal(type) {
+            let title, content;
+            
+            switch(type) {
+                case 'video-tutorials':
+                    title = 'Video Tutorials';
+                    content = 'Access our comprehensive video library covering all platform features.';
+                    break;
+                case 'user-manual':
+                    title = 'User Manual';
+                    content = 'Download the complete ApplyLead Agent User Manual (PDF).';
+                    break;
+                case 'faq':
+                    title = 'Frequently Asked Questions';
+                    content = 'Find answers to common questions about using the platform.';
+                    break;
+                case 'contact-support':
+                    title = 'Live Support';
+                    content = 'Connect with our support team for immediate assistance.';
+                    break;
+            }
+            
+            // Create modal
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white rounded-xl p-6 max-w-md w-full mx-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold">${title}</h3>
+                        <button onclick="this.closest('.fixed').remove()" class="text-gray-400 hover:text-gray-600">
+                            <i data-lucide="x" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                    <p class="text-gray-600 mb-4">${content}</p>
+                    <div class="flex space-x-3">
+                        <button onclick="this.closest('.fixed').remove()" class="flex-1 bg-gray-100 text-gray-700 rounded-lg py-2 hover:bg-gray-200 transition-colors">Close</button>
+                        <button class="flex-1 text-white rounded-lg py-2 hover:opacity-90 transition-colors" style="background-color: #ED2217;">Open ${title}</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            lucide.createIcons();
+        }
+
+        function startGuidedTour() {
+            showCalendarToast('🎯 Guided tour starting! Follow the highlighted areas.');
+            // Here you would implement the actual guided tour logic
+        }
+
+        function scheduleTraining() {
+            addToGoogleCalendar(
+                'ApplyLead Platform Training Session',
+                '2025-01-15T14:00:00',
+                '2025-01-15T16:00:00',
+                'Comprehensive training session for new agents covering all platform features and best practices',
+                'ApplyLead Office - Training Room'
+            );
+        }
+
+        // Initialize help guide interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if this is a new agent (you could check localStorage or user data)
+            const isNewAgent = !localStorage.getItem('applylead_tour_completed');
+            
+            if (isNewAgent) {
+                // Show welcome message for new agents
+                setTimeout(() => {
+                    const welcomeToast = document.createElement('div');
+                    welcomeToast.className = 'fixed top-4 right-4 text-white px-4 py-3 rounded-lg shadow-lg z-50 max-w-sm';
+                    welcomeToast.style.backgroundColor = '#ED2217';
+                    
+                    welcomeToast.innerHTML = `
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="graduation-cap" class="w-5 h-5 mt-0.5"></i>
+                            <div>
+                                <p class="font-medium">Welcome to ApplyLead!</p>
+                                <p class="text-sm opacity-90">Check out the New Agent Guide to get started.</p>
+                            </div>
+                            <button onclick="this.closest('div').remove()" class="text-white hover:opacity-70">
+                                <i data-lucide="x" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(welcomeToast);
+                    lucide.createIcons();
+                    
+                    // Auto-remove after 8 seconds
+                    setTimeout(() => {
+                        if (welcomeToast.parentNode) {
+                            welcomeToast.remove();
+                        }
+                    }, 8000);
+                }, 2000);
+            }
+        });
+
+        // News + Events Carousel JavaScript
+        const newsCarousel = document.querySelector('.news-events-carousel');
+        const newsSlidesContainer = newsCarousel.querySelector('.slides-container');
+        const newsDots = newsCarousel.querySelectorAll('.dot-button');
+        
+        // Initialize first dot as active for news carousel
+        newsDots[0].classList.remove('bg-gray-300');
+        newsDots[0].style.backgroundColor = '#ED2217';
+        
+        // Dot navigation for news carousel
+        newsDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const slideIndex = parseInt(dot.getAttribute('data-slide'));
+                const slideWidth = newsSlidesContainer.querySelector('.slide').offsetWidth;
+                newsSlidesContainer.scrollTo({
+                    left: slideIndex * slideWidth,
+                    behavior: 'smooth'
+                });
+                
+                // Update active dot
+                newsDots.forEach(d => {
+                    d.classList.add('bg-gray-300');
+                    d.style.backgroundColor = '';
+                });
+                dot.classList.remove('bg-gray-300');
+                dot.style.backgroundColor = '#ED2217';
+            });
+        });
+        
+        // Auto-scroll for news carousel
+        let newsCurrentSlide = 0;
+        setInterval(() => {
+            newsCurrentSlide = (newsCurrentSlide + 1) % newsDots.length;
+            const slideWidth = newsSlidesContainer.querySelector('.slide').offsetWidth;
+            newsSlidesContainer.scrollTo({
+                left: newsCurrentSlide * slideWidth,
+                behavior: 'smooth'
+            });
+            
+            // Update active dot
+            newsDots.forEach(d => {
+                d.classList.add('bg-gray-300');
+                d.style.backgroundColor = '';
+            });
+            newsDots[newsCurrentSlide].classList.remove('bg-gray-300');
+            newsDots[newsCurrentSlide].style.backgroundColor = '#ED2217';
+        }, 5000); // Change slide every 5 seconds
 
         // Initialize Application Chart with 9-step process
         const ctx = document.getElementById('applicationChart').getContext('2d');
