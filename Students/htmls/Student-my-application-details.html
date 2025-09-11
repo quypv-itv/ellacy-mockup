@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,35 +12,43 @@
         html {
             scroll-behavior: smooth;
         }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #F3F4F6;
         }
+
         .sidebar {
             width: 250px;
             transition: all 0.3s;
         }
+
         .sidebar.collapsed {
             margin-left: -250px;
         }
+
         .main-content {
             transition: all 0.3s;
             margin-left: 250px;
             width: calc(100% - 250px);
         }
+
         .main-content.expanded {
             width: 100%;
             margin-left: 0;
         }
+
         .application-card {
             border-radius: 1.5rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
+
         .timeline-step {
             position: relative;
             padding-left: 2rem;
             margin-bottom: 1rem;
         }
+
         .timeline-step:not(:last-child)::before {
             content: '';
             position: absolute;
@@ -49,6 +58,7 @@
             width: 2px;
             background-color: #E5E7EB;
         }
+
         .timeline-dot {
             position: absolute;
             left: 0;
@@ -58,30 +68,37 @@
             border-radius: 50%;
             background-color: #9CA3AF;
         }
+
         .timeline-dot.completed {
             background-color: #ED2217;
         }
+
         .timeline-dot.current {
             background-color: #FFFFFF;
             border: 2px solid #ED2217;
             box-shadow: 0 0 0 3px rgba(237, 34, 23, 0.3);
         }
+
         .timeline-dot.current::after {
             content: '';
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 0.5rem; /* 8px */
-            height: 0.5rem; /* 8px */
+            width: 0.5rem;
+            /* 8px */
+            height: 0.5rem;
+            /* 8px */
             background-color: #ED2217;
             border-radius: 50%;
             transform: translate(-50%, -50%);
         }
+
         .timeline-dot.pending {
             background-color: #F59E0B;
         }
     </style>
 </head>
+
 <body class="bg-gray-50">
     <!-- Header with Navigation -->
     <header class="bg-white shadow-sm">
@@ -94,55 +111,80 @@
                         <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Student</span>
                     </a>
                 </div>
-                
+
                 <!-- Navigation Menu -->
                 <nav class="flex items-center space-x-3">
-                    <a href="Student-find-program.html" class="flex items-center text-gray-600 px-3 py-2 rounded-lg font-medium transition-colors" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
+                    <a href="Student-find-program.html"
+                        class="flex items-center text-gray-600 px-3 py-2 rounded-lg font-medium transition-colors"
+                        style="color: #000000;" onmouseover="this.style.color='#ED2217'"
+                        onmouseout="this.style.color='#000000'">
                         <i data-lucide="search" class="w-4 h-4 mr-2"></i>
                         Find Scholarships
                     </a>
-                    <a href="Student-favorites.html" class="flex items-center text-gray-600 px-3 py-2 rounded-lg font-medium transition-colors" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
+                    <a href="Student-favorites.html"
+                        class="flex items-center text-gray-600 px-3 py-2 rounded-lg font-medium transition-colors"
+                        style="color: #000000;" onmouseover="this.style.color='#ED2217'"
+                        onmouseout="this.style.color='#000000'">
                         <i data-lucide="heart" class="w-4 h-4 mr-2"></i>
                         Favorites (4)
                     </a>
-                    <a href="Student-my-application.html" class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-text" class="lucide lucide-file-text w-4 h-4 mr-2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+                    <a href="Student-my-application.html"
+                        class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            data-lucide="file-text" class="lucide lucide-file-text w-4 h-4 mr-2">
+                            <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+                            <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                            <path d="M10 9H8"></path>
+                            <path d="M16 13H8"></path>
+                            <path d="M16 17H8"></path>
+                        </svg>
                         My Applications (8)
                     </a>
-                    <a href="Student-payment.html" class="flex items-center px-3 py-2 rounded-lg font-medium transition-colors" style="color: #000000;" onmouseover="this.style.color='#ED2217'" onmouseout="this.style.color='#000000'">
+                    <a href="Student-payment.html"
+                        class="flex items-center px-3 py-2 rounded-lg font-medium transition-colors"
+                        style="color: #000000;" onmouseover="this.style.color='#ED2217'"
+                        onmouseout="this.style.color='#000000'">
                         <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
                         Payment
                     </a>
                 </nav>
-                
+
                 <!-- Right Side -->
                 <div class="flex items-center space-x-4">
-                    <a href="Student-messages.html" class="p-2 rounded-lg" title="Messages" style="color: #000000;" onmouseover="this.style.color='#ED2217'; this.style.backgroundColor='#F9F9F9'" onmouseout="this.style.color='#000000'; this.style.backgroundColor='transparent'">
+                    <a href="Student-messages.html" class="p-2 rounded-lg" title="Messages" style="color: #000000;"
+                        onmouseover="this.style.color='#ED2217'; this.style.backgroundColor='#F9F9F9'"
+                        onmouseout="this.style.color='#000000'; this.style.backgroundColor='transparent'">
                         <i data-lucide="mail" class="w-5 h-5"></i>
                     </a>
-                    
+
                     <button class="relative">
                         <i data-lucide="bell" class="w-6 h-6" style="color: #000000;"></i>
-                        <span class="absolute top-0 right-0 w-2 h-2 rounded-full" style="background-color: #ED2217;"></span>
+                        <span class="absolute top-0 right-0 w-2 h-2 rounded-full"
+                            style="background-color: #ED2217;"></span>
                     </button>
-                    
+
                     <!-- Profile Dropdown -->
                     <div class="relative">
-                        <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
-                                 alt="Profile" 
-                                 class="w-8 h-8 rounded-full object-cover">
+                        <button id="profile-menu"
+                            class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop"
+                                alt="Profile" class="w-8 h-8 rounded-full object-cover">
                         </button>
-                        
+
                         <!-- Dropdown Menu -->
-                        <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
-                            <a href="Student-profile.html" class="block px-4 py-2 text-sm hover:bg-gray-100" style="color: #000000;">
+                        <div id="profile-dropdown"
+                            class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                            <a href="Student-profile.html" class="block px-4 py-2 text-sm hover:bg-gray-100"
+                                style="color: #000000;">
                                 <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
                             </a>
-                            <a href="Student-profile.html" class="block px-4 py-2 text-sm hover:bg-gray-100" style="color: #000000;">
+                            <a href="Student-profile.html" class="block px-4 py-2 text-sm hover:bg-gray-100"
+                                style="color: #000000;">
                                 <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
                             </a>
-                            <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm hover:bg-gray-100" style="color: #000000;">
+                            <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm hover:bg-gray-100"
+                                style="color: #000000;">
                                 <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
                             </a>
                         </div>
@@ -162,7 +204,8 @@
         <!-- Main Content -->
         <main class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
             <!-- Back Button -->
-            <a href="Student-my-application.html" class="inline-flex items-center text-[#ED2217] hover:text-[#D61D13] mb-6">
+            <a href="Student-my-application.html"
+                class="inline-flex items-center text-[#ED2217] hover:text-[#D61D13] mb-6">
                 <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
                 Back to My Applications
             </a>
@@ -172,7 +215,8 @@
                 <div class="p-6 border-b border-gray-200">
                     <div class="flex justify-between items-start">
                         <div>
-                            <h2 id="programName" class="text-2xl font-bold text-gray-900">Master of Science in Mechanical Engineering</h2>
+                            <h2 id="programName" class="text-2xl font-bold text-gray-900">Master of Science in
+                                Mechanical Engineering</h2>
                             <p id="universityName" class="text-lg text-gray-600 mt-1">University of Melbourne</p>
                             <div class="flex items-center mt-2">
                                 <i data-lucide="map-pin" class="w-4 h-4 mr-1 text-gray-500"></i>
@@ -181,7 +225,8 @@
                                 <span id="intake" class="text-sm text-gray-600">Spring 2025</span>
                             </div>
                         </div>
-                        <span id="statusBadge" class="px-4 py-2 rounded-full text-sm font-medium" style="background-color: #ED2217; color: #FFFFFF;">
+                        <span id="statusBadge" class="px-4 py-2 rounded-full text-sm font-medium"
+                            style="background-color: #ED2217; color: #FFFFFF;">
                             In Progress
                         </span>
                     </div>
@@ -254,368 +299,39 @@
                         </div>
 
                         <div class="mt-8">
-                            <div class="flex justify-between items-center mb-4 cursor-pointer" onclick="toggleDocumentsDropdown()">
+                            <div class="flex justify-between items-center mb-4 cursor-pointer"
+                                onclick="toggleDocumentsDropdown()">
                                 <h4 class="font-medium text-gray-900">Uploaded Documents</h4>
-                                <i id="documents-chevron" data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform duration-200"></i>
+                                <i id="documents-chevron" data-lucide="chevron-down"
+                                    class="w-5 h-5 text-gray-500 transition-transform duration-200"></i>
                             </div>
                             <div id="documents-content" class="space-y-3">
-                                <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
-                                    <div class="flex items-center">
-                                        <div class="p-2 bg-gray-100 rounded-lg mr-3">
-                                            <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm font-medium text-gray-900">Academic Transcripts</p>
-                                            <p class="text-xs text-gray-500">PDF, 2.4 MB • Uploaded on Jan 12, 2025</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center space-x-2">
-                                        <button class="p-2 text-gray-500 hover:text-gray-700">
-                                            <i data-lucide="eye" class="w-4 h-4"></i>
-                                        </button>
-                                        <button class="p-2 text-gray-500 hover:text-gray-700">
-                                            <i data-lucide="download" class="w-4 h-4"></i>
-                                        </button>
-                                        <button class="p-2 text-[#ED2217] hover:text-[#D61D13]">
-                                            <i data-lucide="trash-2" class="w-4 h-4"></i>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
-                                    <div class="flex items-center">
-                                        <div class="p-2 bg-gray-100 rounded-lg mr-3">
-                                            <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm font-medium text-gray-900">English Proficiency Test</p>
-                                            <p class="text-xs text-gray-500">PDF, 1.2 MB • Uploaded on Jan 15, 2025</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center space-x-2">
-                                        <button class="p-2 text-gray-500 hover:text-gray-700">
-                                            <i data-lucide="eye" class="w-4 h-4"></i>
-                                        </button>
-                                        <button class="p-2 text-gray-500 hover:text-gray-700">
-                                            <i data-lucide="download" class="w-4 h-4"></i>
-                                        </button>
-                                        <button class="p-2 text-[#ED2217] hover:text-[#D61D13]">
-                                            <i data-lucide="trash-2" class="w-4 h-4"></i>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
-                                    <div class="flex items-center">
-                                        <div class="p-2 bg-gray-100 rounded-lg mr-3">
-                                            <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm font-medium text-gray-900">Passport Copy</p>
-                                            <p class="text-xs text-gray-500">PDF, 6.2 MB • Uploaded on Jan 31, 2025</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center space-x-2">
-                                        <button class="p-2 text-gray-500 hover:text-gray-700">
-                                            <i data-lucide="eye" class="w-4 h-4"></i>
-                                        </button>
-                                        <button class="p-2 text-gray-500 hover:text-gray-700">
-                                            <i data-lucide="download" class="w-4 h-4"></i>
-                                        </button>
-                                        <button class="p-2 text-[#ED2217] hover:text-[#D61D13]">
-                                            <i data-lucide="trash-2" class="w-4 h-4"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!-- Next Steps Section inside dropdown -->
-                                <div class="mt-6 pt-6 border-t border-gray-200">
-                                    <button id="openDocModal" class="w-full flex justify-center items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium text-white hover:bg-[#D61D13] transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'">
-                                        <i data-lucide="upload" class="w-4 h-4 mr-2"></i> Choose document from your profile
-                                    </button>
-                                </div>
-
-                                <!-- Document Selection Modal -->
-                                <div id="documentModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-                                    <div class="bg-white rounded-xl p-6 w-full max-w-2xl max-h-[80vh] overflow-y-auto">
-                                        <div class="flex justify-between items-center mb-4">
-                                            <div class="flex items-center space-x-2">
-                                                <h3 class="text-lg font-semibold text-gray-900">Select Document from Profile</h3>
-                                                <div class="relative group">
-                                                    <i data-lucide="help-circle" class="w-4 h-4 text-gray-400 hover:text-gray-500 cursor-help"></i>
-                                                    <div class="absolute left-0 mt-1 w-48 p-2 bg-gray-700 text-white text-xs rounded whitespace-normal opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none" style="z-index: 50;">
-                                                        To upload a new document, please upload it in your profile.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button id="closeDocModal" class="text-gray-400 hover:text-gray-500">
-                                                <i data-lucide="x" class="w-5 h-5"></i>
-                                            </button>
-                                        </div>
-                                        
-                                        <div class="space-y-3 mb-4">
-                                            <!-- Document Item -->
-                                            <label class="block">
-                                                <input type="checkbox" class="hidden document-checkbox" data-doc-id="doc1">
-                                                <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer document-item">
-                                                    <div class="flex items-center">
-                                                        <div class="flex items-center justify-center w-5 h-5 border-2 border-gray-300 rounded mr-3 flex-shrink-0">
-                                                            <i data-lucide="check" class="w-4 h-4 text-white check-icon"></i>
-                                                        </div>
-                                                        <div class="bg-red-50 p-2 rounded-lg mr-3">
-                                                            <i data-lucide="file-text" class="w-5 h-5 text-red-600"></i>
-                                                        </div>
-                                                        <div class="min-w-0">
-                                                            <p class="text-sm font-medium text-gray-900 truncate">High School Transcript</p>
-                                                            <p class="text-xs text-gray-500">PDF • 1.2 MB • Uploaded on Aug 15, 2025</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </label>
-
-                                            <!-- Document Item -->
-                                            <label class="block">
-                                                <input type="checkbox" class="hidden document-checkbox" data-doc-id="doc2">
-                                                <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer document-item">
-                                                    <div class="flex items-center">
-                                                        <div class="flex items-center justify-center w-5 h-5 border-2 border-gray-300 rounded mr-3 flex-shrink-0">
-                                                            <i data-lucide="check" class="w-4 h-4 text-white check-icon"></i>
-                                                        </div>
-                                                        <div class="bg-red-50 p-2 rounded-lg mr-3">
-                                                            <i data-lucide="file-text" class="w-5 h-5 text-red-600"></i>
-                                                        </div>
-                                                        <div class="min-w-0">
-                                                            <p class="text-sm font-medium text-gray-900 truncate">IELTS Test Results</p>
-                                                            <p class="text-xs text-gray-500">PDF • 0.8 MB • Uploaded on Aug 10, 2025</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </label>
-
-                                            <!-- Document Item -->
-                                            <label class="block">
-                                                <input type="checkbox" class="hidden document-checkbox" data-doc-id="doc3">
-                                                <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer document-item">
-                                                    <div class="flex items-center">
-                                                        <div class="flex items-center justify-center w-5 h-5 border-2 border-gray-300 rounded mr-3 flex-shrink-0">
-                                                            <i data-lucide="check" class="w-4 h-4 text-white check-icon"></i>
-                                                        </div>
-                                                        <div class="bg-red-50 p-2 rounded-lg mr-3">
-                                                            <i data-lucide="file-text" class="w-5 h-5 text-red-600"></i>
-                                                        </div>
-                                                        <div class="min-w-0">
-                                                            <p class="text-sm font-medium text-gray-900 truncate">Letter of Recommendation</p>
-                                                            <p class="text-xs text-gray-500">PDF • 0.5 MB • Uploaded on Aug 5, 2025</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </label>
-                                        </div>
-
-                                        <div class="flex justify-between items-center pt-4 border-t border-gray-200">
-                                            <span id="selectedCount" class="text-sm text-gray-500">0 documents selected</span>
-                                            <div class="space-x-3">
-                                                <button id="cancelDocSelect" class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
-                                                    Cancel
-                                                </button>
-                                                <button id="confirmDocSelect" class="px-4 py-2 text-sm font-medium text-white rounded-lg disabled:opacity-50" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'" disabled>
-                                                    Add Selected Documents (0)
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <style>
-                                    .document-checkbox:checked + .document-item {
-                                        border-color: #ED2217;
-                                        background-color: #FEF2F2;
-                                    }
-                                    .document-checkbox:checked + .document-item .check-icon {
-                                        color: white;
-                                        background-color: #ED2217;
-                                        border-radius: 3px;
-                                    }
-                                    
-                                    /* Help tooltip styles */
-                                    .relative.group .hidden {
-                                        display: none;
-                                    }
-                                    .relative.group:hover .hidden {
-                                        display: block;
-                                    }
-                                </style>
-
-                                <script>
-                                    document.addEventListener('DOMContentLoaded', function() {
-                                        const modal = document.getElementById('documentModal');
-                                        const openBtn = document.getElementById('openDocModal');
-                                        const closeBtn = document.getElementById('closeDocModal');
-                                        const cancelBtn = document.getElementById('cancelDocSelect');
-                                        const confirmBtn = document.getElementById('confirmDocSelect');
-                                        const checkboxes = document.querySelectorAll('.document-checkbox');
-                                        const selectedCountEl = document.getElementById('selectedCount');
-                                        
-                                        let selectedDocs = [];
-
-                                        // Update selected count and button state
-                                        function updateSelection() {
-                                            const checkedBoxes = Array.from(checkboxes).filter(checkbox => checkbox.checked);
-                                            const count = checkedBoxes.length;
-                                            
-                                            // Update count display
-                                            selectedCountEl.textContent = `${count} ${count === 1 ? 'document' : 'documents'} selected`;
-                                            
-                                            // Update confirm button
-                                            confirmBtn.textContent = `Add Selected Documents${count > 0 ? ` (${count})` : ''}`;
-                                            confirmBtn.disabled = count === 0;
-                                            
-                                            // Update selected docs array
-                                            selectedDocs = checkedBoxes.map(checkbox => ({
-                                                id: checkbox.dataset.docId,
-                                                name: checkbox.closest('label').querySelector('.text-gray-900').textContent
-                                            }));
-                                        }
-
-                                        // Open modal
-                                        openBtn.addEventListener('click', function() {
-                                            modal.classList.remove('hidden');
-                                            document.body.style.overflow = 'hidden';
-                                            // Reset selections when opening
-                                            checkboxes.forEach(cb => cb.checked = false);
-                                            updateSelection();
-                                        });
-
-                                        // Close modal
-                                        function closeModal() {
-                                            modal.classList.add('hidden');
-                                            document.body.style.overflow = 'auto';
-                                        }
-
-                                        closeBtn.addEventListener('click', closeModal);
-                                        cancelBtn.addEventListener('click', closeModal);
-                                        
-                                        // Close when clicking outside modal content
-                                        modal.addEventListener('click', function(e) {
-                                            if (e.target === modal) {
-                                                closeModal();
-                                            }
-                                        });
-
-                                        // Handle checkbox changes
-                                        checkboxes.forEach(checkbox => {
-                                            checkbox.addEventListener('change', updateSelection);
-                                            
-                                            // Also make the entire item clickable
-                                            const label = checkbox.closest('label');
-                                            label.addEventListener('click', function(e) {
-                                                // Don't toggle if clicking the actual checkbox
-                                                if (e.target === checkbox) return;
-                                                
-                                                // Toggle the checkbox
-                                                checkbox.checked = !checkbox.checked;
-                                                updateSelection();
-                                                
-                                                // Prevent event from bubbling up
-                                                e.preventDefault();
-                                                e.stopPropagation();
-                                            });
-                                        });
-
-                                        // Confirm selection
-                                        confirmBtn.addEventListener('click', function() {
-                                            if (selectedDocs.length > 0) {
-                                                // Here you would typically handle the selected documents
-                                                console.log('Selected documents:', selectedDocs);
-                                                
-                                                // Show success message with selected document names
-                                                const docNames = selectedDocs.map(doc => `• ${doc.name}`).join('\n');
-                                                alert(`The following documents have been added to your application:\n\n${docNames}`);
-                                                
-                                                // Close the modal
-                                                closeModal();
-                                            } else {
-                                                alert('Please select at least one document.');
-                                            }
-                                        });
-                                    });
-                                </script>
                             </div>
                         </div>
 
                         <!-- Contact Advisor Button -->
                         <div class="mt-6 pt-6 border-t border-gray-200 flex justify-end">
-                            <a href="#advisor-feedback" class="flex items-center px-4 py-2 border border-transparent rounded-lg text-white" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'">
+                            <a href="#advisor-feedback"
+                                class="flex items-center px-4 py-2 border border-transparent rounded-lg text-white"
+                                style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'"
+                                onmouseout="this.style.backgroundColor='#ED2217'">
                                 <i data-lucide="message-square" class="w-4 h-4 mr-2"></i>
                                 Contact Advisor
                             </a>
                         </div>
                     </div>
 
-                    <!-- Submission Requirements -->
+                    <!-- Student Question Area -->
                     <div class="bg-white rounded-2xl shadow-md p-6 mb-6">
-                        <div class="flex justify-between items-center mb-6">
-                            <h3 class="text-lg font-semibold text-gray-900">Submission Requirements</h3>
-                        </div>
-                        
-                        <div class="space-y-3">
-                            <!-- Passport Copy -->
-                            <div class="flex items-center justify-between p-3 border border-green-200 rounded-lg bg-green-50">
-                                <div class="flex items-center">
-                                    <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                                        <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm font-medium text-gray-900">Passport Copy</p>
-                                        <p class="text-xs text-gray-500">Uploaded on Jan 10, 2025</p>
-                                    </div>
-                                </div>
-                                <span class="text-xs text-green-600 font-medium">Completed</span>
-                            </div>
-                            
-                            <!-- Finance Acknowledgement -->
-                            <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
-                                <div class="flex items-center">
-                                    <div class="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center mr-3">
-                                        <i data-lucide="alert-circle" class="w-4 h-4 text-orange-600"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm font-medium text-gray-900">Finance Acknowledgement</p>
-                                        <p class="text-xs text-gray-500">Confirm your understanding of the financial requirements and responsibilities related to your application.</p>
-                                    </div>
-                                </div>
-                                <button class="px-3 py-1 bg-red-600 text-white text-xs rounded hover:bg-red-700">
-                                    Upload
-                                </button>
-                            </div>
-                            
-                            <!-- Authorization Consent -->
-                            <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
-                                <div class="flex items-center">
-                                    <div class="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center mr-3">
-                                        <i data-lucide="alert-circle" class="w-4 h-4 text-orange-600"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm font-medium text-gray-900">Authorization Consent</p>
-                                        <p class="text-xs text-gray-500">Provide your consent for the school to collect, process, and share your application information as part of the admission process.</p>
-                                    </div>
-                                </div>
-                                <button class="px-3 py-1 bg-red-600 text-white text-xs rounded hover:bg-red-700">
-                                    Upload
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Student Question Area -->
                         <div class="mt-6 pt-6 border-t border-gray-200">
                             <h4 class="text-sm font-semibold text-gray-900 mb-3">Ask a Question</h4>
                             <div class="space-y-3">
-                                <textarea 
-                                    placeholder="Type your question about the application requirements here..."
+                                <textarea placeholder="Type your question about the application requirements here..."
                                     class="w-full p-3 border border-gray-300 rounded-lg text-sm resize-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                    rows="3"
-                                ></textarea>
+                                    rows="3"></textarea>
                                 <div class="flex justify-end">
-                                    <button class="px-4 py-2 bg-red-600 text-white text-xs rounded-lg hover:bg-red-700 flex items-center">
+                                    <button
+                                        class="px-4 py-2 bg-red-600 text-white text-xs rounded-lg hover:bg-red-700 flex items-center">
                                         <i data-lucide="send" class="w-3 h-3 mr-1"></i>
                                         Send Question
                                     </button>
@@ -632,9 +348,8 @@
                             <div class="border border-gray-200 rounded-lg p-4">
                                 <div class="flex items-start justify-between mb-3">
                                     <div class="flex items-center">
-                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" 
-                                             alt="Advisor" 
-                                             class="w-8 h-8 rounded-full object-cover mr-3">
+                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face"
+                                            alt="Advisor" class="w-8 h-8 rounded-full object-cover mr-3">
                                         <div>
                                             <p class="text-sm font-medium text-gray-900">Dr. Sarah Johnson</p>
                                             <p class="text-xs text-gray-500">Academic Advisor</p>
@@ -644,7 +359,8 @@
                                 </div>
                                 <div class="p-0">
                                     <p class="text-sm text-gray-700">
-                                        Your academic transcripts look good overall. However, please ensure that the official seal is clearly visible on page 2. 
+                                        Your academic transcripts look good overall. However, please ensure that the
+                                        official seal is clearly visible on page 2.
                                         You may need to rescan this document with higher resolution.
                                     </p>
                                 </div>
@@ -658,9 +374,8 @@
                             <div class="border border-gray-200 rounded-lg p-4">
                                 <div class="flex items-start justify-between mb-3">
                                     <div class="flex items-center">
-                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" 
-                                             alt="Advisor" 
-                                             class="w-8 h-8 rounded-full object-cover mr-3">
+                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face"
+                                            alt="Advisor" class="w-8 h-8 rounded-full object-cover mr-3">
                                         <div>
                                             <p class="text-sm font-medium text-gray-900">Dr. Sarah Johnson</p>
                                             <p class="text-xs text-gray-500">Academic Advisor</p>
@@ -670,8 +385,9 @@
                                 </div>
                                 <div class="p-0">
                                     <p class="text-sm text-gray-700">
-                                        Excellent! Your English proficiency test results meet all requirements. 
-                                        The document is clear and properly certified. No further action needed for this document.
+                                        Excellent! Your English proficiency test results meet all requirements.
+                                        The document is clear and properly certified. No further action needed for this
+                                        document.
                                     </p>
                                 </div>
                                 <div class="flex items-center mt-3 text-xs text-gray-500">
@@ -684,9 +400,8 @@
                             <div class="border border-gray-200 rounded-lg p-4">
                                 <div class="flex items-start justify-between mb-3">
                                     <div class="flex items-center">
-                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" 
-                                             alt="Advisor" 
-                                             class="w-8 h-8 rounded-full object-cover mr-3">
+                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face"
+                                            alt="Advisor" class="w-8 h-8 rounded-full object-cover mr-3">
                                         <div>
                                             <p class="text-sm font-medium text-gray-900">Dr. Sarah Johnson</p>
                                             <p class="text-xs text-gray-500">Academic Advisor</p>
@@ -696,8 +411,10 @@
                                 </div>
                                 <div class="p-0">
                                     <p class="text-sm text-gray-700">
-                                        Please note that you still need to submit your Statement of Purpose and Letters of Recommendation. 
-                                        The deadline is approaching on March 15, 2025. Contact me if you need assistance with these documents.
+                                        Please note that you still need to submit your Statement of Purpose and Letters
+                                        of Recommendation.
+                                        The deadline is approaching on March 15, 2025. Contact me if you need assistance
+                                        with these documents.
                                     </p>
                                 </div>
                                 <div class="flex items-center mt-3 text-xs text-gray-500">
@@ -710,7 +427,8 @@
                             <div id="no-feedback" class="text-center py-8 text-gray-500 hidden">
                                 <i data-lucide="message-circle" class="w-12 h-12 mx-auto mb-3 text-gray-300"></i>
                                 <p class="text-sm">No feedback from advisors yet</p>
-                                <p class="text-xs text-gray-400 mt-1">Feedback will appear here as advisors review your documents</p>
+                                <p class="text-xs text-gray-400 mt-1">Feedback will appear here as advisors review your
+                                    documents</p>
                             </div>
                         </div>
                     </div>
@@ -720,133 +438,149 @@
                 <div class="w-full lg:w-1/3">
                     <div class="bg-white rounded-2xl shadow-md p-6 sticky top-6">
                         <h3 class="text-lg font-semibold text-gray-900 mb-4">Application Timeline</h3>
-                            <!-- Step 1: Scholarship Selection -->
-                            <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="initial-advising">
-                                <div class="timeline-dot completed"></div>
-                                <div class="pl-6">
-                                    <h4 class="font-medium text-gray-900">Initial Advising</h4>
-                                    <p class="text-sm text-gray-500">Kick-off advising session and pathway planning</p>
-                                    <p class="text-xs text-gray-400 mt-1">Completed on 15 Jan 2025</p>
-                                </div>
+                        <!-- Step 1: Scholarship Selection -->
+                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors"
+                            data-step="initial-advising">
+                            <div class="timeline-dot completed"></div>
+                            <div class="pl-6">
+                                <h4 class="font-medium text-gray-900">Initial Advising</h4>
+                                <p class="text-sm text-gray-500">Kick-off advising session and pathway planning</p>
                             </div>
+                        </div>
 
-                            <!-- Step 2: Document Submission -->
-                            <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="application-progress">
-                                <div class="timeline-dot current"></div>
-                                <div class="pl-6">
-                                    <h4 class="font-medium text-gray-900">Application In Progress</h4>
-                                    <p class="text-sm text-gray-500">Comprehensive review and advisor feedback on documents</p>
-                                    <p class="text-xs mt-1 text-[#ED2217]">In progress</p>
-                                </div>
+                        <!-- Step 2: Agreement Signing & Deposit -->
+                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors"
+                            data-step="agreement-signing-deposit">
+                            <div class="timeline-dot current"></div>
+                            <div class="pl-6">
+                                <h4 class="font-medium text-gray-900">Agreement Signing & Deposit</h4>
+                                <p class="text-sm text-gray-500">Comprehensive review and advisor feedback on documents
+                                </p>
                             </div>
+                        </div>
 
-                            <!-- Step 3: Application Submission -->
-                            <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="submitted-to-school">
-                                <div class="timeline-dot"></div>
-                                <div class="pl-6">
-                                    <h4 class="font-medium text-gray-500">Submitted to School</h4>
-                                    <p class="text-sm text-gray-400">Sign service agreement and complete the first payment</p>
-                                </div>
+                        <!-- Step 3: Application Preparation -->
+                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors"
+                            data-step="application-preparation">
+                            <div class="timeline-dot"></div>
+                            <div class="pl-6">
+                                <h4 class="font-medium">Application Preparation</h4>
+                                <p class="text-sm text-gray-500">Sign service agreement and complete the first payment
+                                </p>
+                                <p class="status-text text-xs mt-1"></p>
                             </div>
+                        </div>
 
-                            <!-- Step 4: Offer Letter -->
-                            <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="school-response">
-                                <div class="timeline-dot"></div>
-                                <div class="pl-6">
-                                    <h4 class="font-medium text-gray-500">School Response</h4>
-                                    <p class="text-sm text-gray-400">Finalize application materials and complete the second payment</p>
-                                </div>
+                        <!-- Step 4: Second Payment -->
+                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors"
+                            data-step="second-payment">
+                            <div class="timeline-dot"></div>
+                            <div class="pl-6">
+                                <h4 class="font-medium">Second Payment</h4>
+                                <p class="text-sm text-gray-500">Finalize application materials and complete the second
+                                    payment</p>
+                                <p class="status-text text-xs mt-1"></p>
                             </div>
+                        </div>
 
-                            <!-- Step 5: Payment -->
-                            <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="offer-letter">
-                                <div class="timeline-dot"></div>
-                                <div class="pl-6">
-                                    <h4 class="font-medium text-gray-500">Offered Letter Issued</h4>
-                                    <p class="text-sm text-gray-400">Submit application to the selected school</p>
-                                </div>
+                        <!-- Step 5: Offer Letter -->
+                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors"
+                            data-step="third-payment">
+                            <div class="timeline-dot"></div>
+                            <div class="pl-6">
+                                <h4 class="font-medium text-gray-900">Third Payment</h4>
+                                <p class="text-sm text-gray-500">Submit application to the selected school</p>
+                                <p class="status-text text-xs mt-1"></p>
                             </div>
+                        </div>
 
-                            <!-- Step 6: COE -->
-                            <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="committed">
-                                <div class="timeline-dot"></div>
-                                <div class="pl-6">
-                                    <h4 class="font-medium text-gray-500">Committed to School</h4>
-                                    <p class="text-sm text-gray-400">Receive and confirm your offer from the school</p>
-                                </div>
+                        <!-- Step 6: Visa Application -->
+                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors"
+                            data-step="visa-application">
+                            <div class="timeline-dot"></div>
+                            <div class="pl-6">
+                                <h4 class="font-medium">Visa Application</h4>
+                                <ul class="list-disc pl-5 text-sm text-gray-500 mt-1 space-y-1">
+                                    <li>Assign Visa Advisor from Ellacy Team</li>
+                                    <li>Provide students with a checklist for Visa Prep (Ellacy)</li>
+                                </ul>
+                                <p class="status-text text-xs mt-1"></p>
                             </div>
+                        </div>
 
-                            <!-- Step 7: Visa Application -->
-                            <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="visa-application">
-                                <div class="timeline-dot"></div>
-                                <div class="pl-6">
-                                    <h4 class="font-medium text-gray-500">Visa Application</h4>
-                                    <ul class="list-disc pl-5 text-sm text-gray-400 mt-1 space-y-1">
-                                        <li>Assign Visa Advisor from Ellacy Team</li>
-                                        <li>Provide students with a checklist for Visa Prep (Ellacy)</li>
-                                    </ul>
-                                </div>
+                        <!-- Step 7: Pre-departure -->
+                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors"
+                            data-step="pre-departure">
+                            <div class="timeline-dot"></div>
+                            <div class="pl-6">
+                                <h4 class="font-medium">Pre-Departure</h4>
+                                <ul class="list-disc pl-5 text-sm text-gray-500 mt-1 space-y-1">
+                                    <li>Pre-departure online training session</li>
+                                    <li>Help prepare travel schedule</li>
+                                    <li>Support with Insurance</li>
+                                    <li>Send student the Preparation Checklist for Department</li>
+                                    <li>Support student with pre-departure preparation</li>
+                                </ul>
                             </div>
+                        </div>
 
-                            <!-- Step 8: Pre-departure -->
-                            <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="pre-departure">
-                                <div class="timeline-dot"></div>
-                                <div class="pl-6">
-                                    <h4 class="font-medium text-gray-500">Pre-Departure</h4>
-                                    <ul class="list-disc pl-5 text-sm text-gray-400 mt-1 space-y-1">
-                                        <li>Pre-departure online training session</li>
-                                        <li>Help prepare travel schedule</li>
-                                        <li>Support with Insurance</li>
-                                        <li>Send student the Preparation Checklist for Department</li>
-                                        <li>Support student with pre-departure preparation</li>
-                                    </ul>
-                                </div>
+                        <!-- Step 8: Arrival -->
+                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors"
+                            data-step="arrival">
+                            <div class="timeline-dot"></div>
+                            <div class="pl-6">
+                                <h4 class="font-medium">Arrival</h4>
+                                <ul class="list-disc pl-5 text-sm text-gray-500 mt-1 space-y-1">
+                                    <li>Online meeting to advise and support in the first month in the foreign country
+                                    </li>
+                                    <li>Liaise with the school to provide support to student</li>
+                                </ul>
                             </div>
+                        </div>
 
-                            <!-- Step 9: Arrival -->
-                            <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="arrival">
-                                <div class="timeline-dot"></div>
-                                <div class="pl-6">
-                                    <h4 class="font-medium text-gray-500">Arrival</h4>
-                                    <ul class="list-disc pl-5 text-sm text-gray-400 mt-1 space-y-1">
-                                        <li>Online meeting to advise and support in the first month in the foreign country</li>
-                                        <li>Liaise with the school to provide support to student</li>
-                                    </ul>
-                                </div>
+                        <!-- Placceholder: Committed to School -->
+                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors"
+                            data-step="committed">
+                            <div class="timeline-dot"></div>
+                            <div class="pl-6">
+                                <h4 class="font-medium text-gray-900">Committed to School</h4>
+                                <p class="text-sm text-gray-500">Receive and confirm your offer from the school</p>
+                                <p class="status-text text-xs mt-1"></p>
                             </div>
                         </div>
                     </div>
+                </div>
 
                 <!-- Timeline steps continue here -->
 
-                            </dl>
-                        </div>
-
-                </div>
+                </dl>
             </div>
-        </main>
+
+    </div>
+    </div>
+    </main>
     </div>
 
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
-        
+
         // Toggle profile dropdown
         const profileMenu = document.getElementById('profile-menu');
         const profileDropdown = document.getElementById('profile-dropdown');
-        
+
         if (profileMenu && profileDropdown) {
-            profileMenu.addEventListener('click', function(e) {
+            profileMenu.addEventListener('click', function (e) {
                 e.stopPropagation();
                 profileDropdown.classList.toggle('hidden');
             });
-            
+
             // Close dropdown when clicking outside
-            document.addEventListener('click', function() {
+            document.addEventListener('click', function () {
                 profileDropdown.classList.add('hidden');
             });
         }
-        
+
         // Handle logout
         function handleLogout() {
             // Add logout functionality here
@@ -857,7 +591,7 @@
         function toggleDocumentsDropdown() {
             const content = document.getElementById('documents-content');
             const chevron = document.getElementById('documents-chevron');
-            
+
             if (content.style.display === 'none') {
                 content.style.display = 'block';
                 chevron.style.transform = 'rotate(0deg)';
@@ -867,25 +601,147 @@
             }
         }
 
-        // Handle timeline step clicks
-        document.addEventListener('DOMContentLoaded', function() {
+        // Function to toggle document sections based on header text
+        function toggleDocumentSections() {
+            const documentsHeader = document.querySelector('.mt-8 h4');
+            const documentsContainer = document.getElementById('documentsContainer');
+            const openDocModal = document.getElementById('openDocModal');
+
+            if (documentsHeader && documentsContainer) {
+                const isVisible = documentsHeader.textContent.trim() === 'Agreement Signing & Deposit';
+                documentsContainer.style.display = isVisible ? 'block' : 'none';
+                if (openDocModal) {
+                    openDocModal.style.display = isVisible ? 'flex' : 'none';
+                }
+            }
+        }
+
+        // Track current step in the timeline
+        let currentStep = 'agreement-signing-deposit'; // Default to step 2 (0-indexed)
+        const stepOrder = [
+            'initial-advising',
+            'agreement-signing-deposit',
+            'application-preparation',
+            'second-payment',
+            'third-payment',
+            'visa-application',
+            'pre-departure',
+            'arrival',
+            'committed'
+        ];
+
+        // Update timeline dots based on current step
+        function updateTimelineDots() {
+            const currentStepIndex = stepOrder.indexOf(currentStep);
             const timelineSteps = document.querySelectorAll('.timeline-step');
-            
+
+            timelineSteps.forEach((step) => {
+                const dot = step.querySelector('.timeline-dot');
+                const stepId = step.getAttribute('data-step');
+                const stepIndex = stepOrder.indexOf(stepId);
+                const title = step.querySelector('h4');
+                const description = step.querySelector('p:not(.status-text)');
+                const statusText = step.querySelector('.status-text');
+
+                // Reset all states
+                dot.className = 'timeline-dot';
+                if (title) title.className = 'font-medium';
+                if (description) description.className = 'text-sm text-gray-500';
+
+                if (stepIndex < currentStepIndex) {
+                    // Completed step
+                    dot.classList.add('completed');
+                    if (title) title.classList.add('text-gray-900');
+                    if (statusText) {
+                        statusText.className = 'text-xs mt-1 text-gray-500';
+                    }
+                } else if (stepIndex === currentStepIndex) {
+                    // Current step
+                    dot.classList.add('current');
+                    if (title) title.classList.add('text-gray-900');
+                    if (statusText) {
+                        statusText.className = 'text-xs mt-1 text-[#ED2217]';
+                    }
+                } else {
+                    // Future step
+                    if (title) title.classList.add('text-gray-500');
+                    if (statusText) {
+                        statusText.textContent = '';
+                        statusText.className = 'status-text text-xs mt-1';
+                    }
+                }
+            });
+
+            // Update the UI for the current step
+            updateUIForStep(currentStep);
+        }
+
+        // Handle timeline step click
+        function handleTimelineStepClick(stepId) {
+            currentStep = stepId;
+            updateTimelineDots();
+        }
+
+        // Handle timeline step clicks
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add click handlers to all timeline steps
+            const allTimelineSteps = document.querySelectorAll('.timeline-step');
+            allTimelineSteps.forEach(step => {
+                step.addEventListener('click', () => {
+                    const stepId = step.getAttribute('data-step');
+                    handleTimelineStepClick(stepId);
+                });
+            });
+
+            // Set up a mutation observer to watch for changes to the documents header
+            const observer = new MutationObserver(function (mutations) {
+                mutations.forEach(function (mutation) {
+                    if (mutation.type === 'characterData' || mutation.type === 'childList') {
+                        toggleDocumentSections();
+                    }
+                });
+            });
+
+            const documentsHeader = document.querySelector('.mt-8 h4');
+            if (documentsHeader) {
+                observer.observe(documentsHeader, {
+                    characterData: true,
+                    childList: true,
+                    subtree: true
+                });
+            }
+
+            const timelineSteps = document.querySelectorAll('.timeline-step');
+
+            // Initial setup
+            toggleDocumentSections();
+            updateTimelineDots();
+
             timelineSteps.forEach(step => {
-                step.addEventListener('click', function() {
+                step.addEventListener('click', function () {
                     // Remove active class from all steps
                     timelineSteps.forEach(s => {
                         s.classList.remove('bg-gray-50', 'ring-2', 'ring-[#ED2217]');
                     });
-                    
+
                     // Add active class to clicked step
                     this.classList.add('bg-gray-50', 'ring-2', 'ring-[#ED2217]');
-                    
-                    // Get the step ID
+
+                    // Get the step ID and update current step
                     const stepId = this.getAttribute('data-step');
-                    
-                    // Here you can add specific UI updates based on the step clicked
-                    updateUIForStep(stepId);
+                    const stepIndex = stepOrder.indexOf(stepId);
+                    const currentStepIndex = stepOrder.indexOf(currentStep);
+
+                    // Only allow clicking on current or previous steps
+                    if (stepIndex <= currentStepIndex + 1) {
+                        if (stepIndex > currentStepIndex) {
+                            currentStep = stepId;
+                            updateTimelineDots();
+                        }
+
+                        // Update UI for the clicked step
+                        updateUIForStep(stepId);
+                    }
                 });
             });
         });
@@ -895,283 +751,397 @@
             const documentsSection = document.querySelector('.mt-8');
             const documentsContent = document.getElementById('documents-content');
             const chevron = document.getElementById('documents-chevron');
-            
+
             // Scroll to documents section
             documentsSection.scrollIntoView({ behavior: 'smooth' });
-            
+
             // Show documents section if hidden
             if (documentsContent.style.display === 'none') {
                 documentsContent.style.display = 'block';
                 chevron.style.transform = 'rotate(0deg)';
             }
-            
+
             // Update the documents header and content based on the selected step
             const documentsHeader = document.querySelector('.mt-8 h4');
-            
+
             if (stepId === 'initial-advising') {
                 documentsHeader.textContent = 'Initial Advising';
                 documentsContent.innerHTML = `
-                    <div class="text-sm text-gray-700">
-                        <p>Your consultant will provide initial advising based on your selected program and review your background information, including academic performance, English proficiency, visa history, family background, and financial status. Please make sure your profile is complete to receive the best support. If your profile is not yet complete, please update all required information <a href="Student-profile.html" target="_blank" class="text-red-600 hover:text-red-800 underline">here</a>.</p>
+                    <div class="text-base text-gray-700">
+                        <p>Your consultant will provide intial advising based on your selected program and review your background information, including academic performance, English proficiency, visa history, family background, and financial status. Please make sure your profile is complete to receive the best support. If your profile is not yet complete, please update all required information <a href="Student-profile.html" target="_blank" class="text-red-600 hover:text-red-800 underline">here</a>.</p>
                     </div>
                 `;
-            } else if (stepId === 'application-progress') {
-                documentsHeader.textContent = 'Application In Progress';
+            } else if (stepId === 'agreement-signing-deposit') {
+                documentsHeader.textContent = 'Agreement Signing & Deposit';
                 documentsContent.innerHTML = `
-                <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
-                                    <div class="flex items-center">
-                                        <div class="p-2 bg-gray-100 rounded-lg mr-3">
-                                            <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm font-medium text-gray-900">Academic Transcripts</p>
-                                            <p class="text-xs text-gray-500">PDF, 2.4 MB • Uploaded on Jan 12, 2025</p>
+                    <div class="space-y-3">
+
+                        <li class="flex items-start">
+                                    <div class="flex-shrink-0 mt-0.5">
+                                        <div class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center">
+                                            <span class="text-red-600 font-medium text-base">1</span>
                                         </div>
                                     </div>
-                                    <div class="flex items-center space-x-2">
-                                        <button class="p-2 text-gray-500 hover:text-gray-700">
-                                            <i data-lucide="eye" class="w-4 h-4"></i>
-                                        </button>
-                                        <button class="p-2 text-gray-500 hover:text-gray-700">
-                                            <i data-lucide="download" class="w-4 h-4"></i>
-                                        </button>
-                                        <button class="p-2 text-[#ED2217] hover:text-[#D61D13]">
-                                            <i data-lucide="trash-2" class="w-4 h-4"></i>
-                                        </button>
+                                    <div class="ml-3">
+                                        <p class="text-base font-medium text-gray-900">Required Documents</p>
+                                        <p class="text-base text-gray-600">Provide all required personal documents: passport, transcripts/academic records, English proficiency certificate, CV, letters of recommendation (if any)… basically all the documents needed for the application.</p>
                                     </div>
+                                </li>
+
+                        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-2 bg-gray-100 rounded-lg mr-3">
+                                    <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
                                 </div>
-
-                                <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
-                                    <div class="flex items-center">
-                                        <div class="p-2 bg-gray-100 rounded-lg mr-3">
-                                            <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm font-medium text-gray-900">English Proficiency Test</p>
-                                            <p class="text-xs text-gray-500">PDF, 1.2 MB • Uploaded on Jan 15, 2025</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center space-x-2">
-                                        <button class="p-2 text-gray-500 hover:text-gray-700">
-                                            <i data-lucide="eye" class="w-4 h-4"></i>
-                                        </button>
-                                        <button class="p-2 text-gray-500 hover:text-gray-700">
-                                            <i data-lucide="download" class="w-4 h-4"></i>
-                                        </button>
-                                        <button class="p-2 text-[#ED2217] hover:text-[#D61D13]">
-                                            <i data-lucide="trash-2" class="w-4 h-4"></i>
-                                        </button>
-                                    </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Academic Transcripts</p>
+                                    <p class="text-xs text-gray-500">PDF, 2.4 MB • Uploaded on Jan 12, 2025</p>
                                 </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="p-2 text-gray-500 hover:text-gray-700">
+                                    <i data-lucide="eye" class="w-4 h-4"></i>
+                                </button>
+                                <button class="p-2 text-gray-500 hover:text-gray-700">
+                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                </button>
+                                <button class="p-2 text-[#ED2217] hover:text-[#D61D13]">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
 
-                                <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
-                                    <div class="flex items-center">
-                                        <div class="p-2 bg-gray-100 rounded-lg mr-3">
-                                            <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm font-medium text-gray-900">Passport Copy</p>
-                                            <p class="text-xs text-gray-500">PDF, 6.2 MB • Uploaded on Jan 31, 2025</p>
+                        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-2 bg-gray-100 rounded-lg mr-3">
+                                    <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">English Proficiency Test</p>
+                                    <p class="text-xs text-gray-500">PDF, 1.2 MB • Uploaded on Jan 15, 2025</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="p-2 text-gray-500 hover:text-gray-700">
+                                    <i data-lucide="eye" class="w-4 h-4"></i>
+                                </button>
+                                <button class="p-2 text-gray-500 hover:text-gray-700">
+                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                </button>
+                                <button class="p-2 text-[#ED2217] hover:text-[#D61D13]">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-2 bg-gray-100 rounded-lg mr-3">
+                                    <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Passport Copy</p>
+                                    <p class="text-xs text-gray-500">PDF, 6.2 MB • Uploaded on Jan 31, 2025</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="p-2 text-gray-500 hover:text-gray-700">
+                                    <i data-lucide="eye" class="w-4 h-4"></i>
+                                </button>
+                                <button class="p-2 text-gray-500 hover:text-gray-700">
+                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                </button>
+                                <button class="p-2 text-[#ED2217] hover:text-[#D61D13]">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-2 bg-gray-100 rounded-lg mr-3">
+                                    <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Finance Acknowledgement</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                            <button id="openDocModal" class="w-full flex justify-center items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium text-white hover:bg-[#D61D13] transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'">
+                                <i data-lucide="upload" class="w-4 h-4 mr-2"></i> Choose document from your profile
+                            </button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-2 bg-gray-100 rounded-lg mr-3">
+                                    <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Authorization Consent</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                            <button id="openDocModal" class="w-full flex justify-center items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium text-white hover:bg-[#D61D13] transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'">
+                                <i data-lucide="upload" class="w-4 h-4 mr-2"></i> Choose document from your profile
+                            </button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-2 bg-gray-100 rounded-lg mr-3">
+                                    <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">CV/Resume</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                            <button id="openDocModal" class="w-full flex justify-center items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium text-white hover:bg-[#D61D13] transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'">
+                                <i data-lucide="upload" class="w-4 h-4 mr-2"></i> Choose document from your profile
+                            </button>
+                            </div>
+                        </div>
+
+                        <li class="flex items-start">
+                                    <div class="flex-shrink-0 mt-0.5">
+                                        <div class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center">
+                                            <span class="text-red-600 font-medium text-sm">2</span>
                                         </div>
                                     </div>
-                                    <div class="flex items-center space-x-2">
-                                        <button class="p-2 text-gray-500 hover:text-gray-700">
-                                            <i data-lucide="eye" class="w-4 h-4"></i>
-                                        </button>
-                                        <button class="p-2 text-gray-500 hover:text-gray-700">
-                                            <i data-lucide="download" class="w-4 h-4"></i>
-                                        </button>
-                                        <button class="p-2 text-[#ED2217] hover:text-[#D61D13]">
-                                            <i data-lucide="trash-2" class="w-4 h-4"></i>
-                                        </button>
+                                    <div class="ml-3">
+                                        <p class="text-base font-medium text-gray-900">Review and Sign Agreement</p>
+                                        <p class="text-base text-gray-600">You will receive the Agreement from the Admission team. Please read carefully, confirm, and sign it on time.</p>
                                     </div>
-                                </div>
-                                <!-- Next Steps Section inside dropdown -->
-                                <div class="mt-6 pt-6 border-t border-gray-200">
-                                    <button id="openDocModal" class="w-full flex justify-center items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium text-white hover:bg-[#D61D13] transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'">
-                                        <i data-lucide="upload" class="w-4 h-4 mr-2"></i> Choose document from your profile
-                                    </button>
-                                </div>
-
-                                <!-- Document Selection Modal -->
-                                <div id="documentModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-                                    <div class="bg-white rounded-xl p-6 w-full max-w-2xl max-h-[80vh] overflow-y-auto">
-                                        <div class="flex justify-between items-center mb-4">
-                                            <div class="flex items-center space-x-2">
-                                                <h3 class="text-lg font-semibold text-gray-900">Select Document from Profile</h3>
-                                                <div class="relative group">
-                                                    <i data-lucide="help-circle" class="w-4 h-4 text-gray-400 hover:text-gray-500 cursor-help"></i>
-                                                    <div class="absolute left-0 mt-1 w-48 p-2 bg-gray-700 text-white text-xs rounded whitespace-normal opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none" style="z-index: 50;">
-                                                        To upload a new document, please upload it in your profile.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button id="closeDocModal" class="text-gray-400 hover:text-gray-500">
-                                                <i data-lucide="x" class="w-5 h-5"></i>
-                                            </button>
-                                        </div>
-                                        
-                                        <div class="space-y-3 mb-4">
-                                            <!-- Document Item -->
-                                            <label class="block">
-                                                <input type="checkbox" class="hidden document-checkbox" data-doc-id="doc1">
-                                                <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer document-item">
-                                                    <div class="flex items-center">
-                                                        <div class="flex items-center justify-center w-5 h-5 border-2 border-gray-300 rounded mr-3 flex-shrink-0">
-                                                            <i data-lucide="check" class="w-4 h-4 text-white check-icon"></i>
-                                                        </div>
-                                                        <div class="bg-red-50 p-2 rounded-lg mr-3">
-                                                            <i data-lucide="file-text" class="w-5 h-5 text-red-600"></i>
-                                                        </div>
-                                                        <div class="min-w-0">
-                                                            <p class="text-sm font-medium text-gray-900 truncate">High School Transcript</p>
-                                                            <p class="text-xs text-gray-500">PDF • 1.2 MB • Uploaded on Aug 15, 2025</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </label>
-
-                                            <!-- Document Item -->
-                                            <label class="block">
-                                                <input type="checkbox" class="hidden document-checkbox" data-doc-id="doc2">
-                                                <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer document-item">
-                                                    <div class="flex items-center">
-                                                        <div class="flex items-center justify-center w-5 h-5 border-2 border-gray-300 rounded mr-3 flex-shrink-0">
-                                                            <i data-lucide="check" class="w-4 h-4 text-white check-icon"></i>
-                                                        </div>
-                                                        <div class="bg-red-50 p-2 rounded-lg mr-3">
-                                                            <i data-lucide="file-text" class="w-5 h-5 text-red-600"></i>
-                                                        </div>
-                                                        <div class="min-w-0">
-                                                            <p class="text-sm font-medium text-gray-900 truncate">IELTS Test Results</p>
-                                                            <p class="text-xs text-gray-500">PDF • 0.8 MB • Uploaded on Aug 10, 2025</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </label>
-
-                                            <!-- Document Item -->
-                                            <label class="block">
-                                                <input type="checkbox" class="hidden document-checkbox" data-doc-id="doc3">
-                                                <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer document-item">
-                                                    <div class="flex items-center">
-                                                        <div class="flex items-center justify-center w-5 h-5 border-2 border-gray-300 rounded mr-3 flex-shrink-0">
-                                                            <i data-lucide="check" class="w-4 h-4 text-white check-icon"></i>
-                                                        </div>
-                                                        <div class="bg-red-50 p-2 rounded-lg mr-3">
-                                                            <i data-lucide="file-text" class="w-5 h-5 text-red-600"></i>
-                                                        </div>
-                                                        <div class="min-w-0">
-                                                            <p class="text-sm font-medium text-gray-900 truncate">Letter of Recommendation</p>
-                                                            <p class="text-xs text-gray-500">PDF • 0.5 MB • Uploaded on Aug 5, 2025</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </label>
-                                        </div>
-
-                                        <div class="flex justify-between items-center pt-4 border-t border-gray-200">
-                                            <span id="selectedCount" class="text-sm text-gray-500">0 documents selected</span>
-                                            <div class="space-x-3">
-                                                <button id="cancelDocSelect" class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
-                                                    Cancel
-                                                </button>
-                                                <button id="confirmDocSelect" class="px-4 py-2 text-sm font-medium text-white rounded-lg disabled:opacity-50" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'" disabled>
-                                                    Add Selected Documents (0)
-                                                </button>
-                                            </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="flex-shrink-0 mt-0.5">
+                                        <div class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center">
+                                            <span class="text-red-600 font-medium text-sm">3</span>
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="ml-3">
+                                        <p class="text-base font-medium text-gray-900">First Payment</p>
+                                        <p class="text-base text-gray-600">After the Agreement is approved and signed, make the first payment according to the Invoice sent by EGE. Ensure timely payment to avoid delays.</p>
+                                        <p class="text-base text-gray-600 mt-1">If you have already made the payment, please upload the receipt <a href="Student-payment.html" class="text-red-600 hover:underline" target="_blank">here</a>.</p>
+<div class="bg-white rounded-3xl shadow-md p-6 mb-6">
+                <h3 class="text-lg font-semibold mb-4">Outstanding Payments</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-600">Application Fee</span>
+                                <span>$50 USD</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-center space-y-3 h-full">
+                        <div class="text-sm text-gray-600 text-center">
+                            <p>Due Date: April 15, 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>                                    
+                                        </div>
+                                </li>
+                    </div>
+                `; lucide.createIcons(); // bắt buộc phải gọi lại sau khi DOM thay đổi
 
-                                <style>
-                                    .document-checkbox:checked + .document-item {
-                                        border-color: #ED2217;
-                                        background-color: #FEF2F2;
-                                    }
-                                    .document-checkbox:checked + .document-item .check-icon {
-                                        color: white;
-                                        background-color: #ED2217;
-                                        border-radius: 3px;
-                                    }
-                                    
-                                    /* Help tooltip styles */
-                                    .relative.group .hidden {
-                                        display: none;
-                                    }
-                                    .relative.group:hover .hidden {
-                                        display: block;
-                                    }
-                                </style>
-                `;
-            } else if (stepId === 'submitted-to-school') {
-                documentsHeader.textContent = 'Submitted to School';
+                const modal = document.getElementById('documentModal');
+                const openBtn = document.getElementById('openDocModal');
+                const closeBtn = document.getElementById('closeDocModal');
+                const cancelBtn = document.getElementById('cancelDocSelect');
+                const confirmBtn = document.getElementById('confirmDocSelect');
+                const checkboxes = document.querySelectorAll('.document-checkbox');
+                const selectedCountEl = document.getElementById('selectedCount');
+
+                let selectedDocs = [];
+
+                // Update selected count and button state
+                function updateSelection() {
+                    const checkedBoxes = Array.from(checkboxes).filter(checkbox => checkbox.checked);
+                    const count = checkedBoxes.length;
+
+                    // Update count display
+                    selectedCountEl.textContent = `${count} ${count === 1 ? 'document' : 'documents'} selected`;
+
+                    // Update confirm button
+                    confirmBtn.textContent = `Add Selected Documents${count > 0 ? ` (${count})` : ''}`;
+                    confirmBtn.disabled = count === 0;
+
+                    // Update selected docs array
+                    selectedDocs = checkedBoxes.map(checkbox => ({
+                        id: checkbox.dataset.docId,
+                        name: checkbox.closest('label').querySelector('.text-gray-900').textContent
+                    }));
+                }
+
+                // Open modal
+                openBtn.addEventListener('click', function () {
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                    // Reset selections when opening
+                    checkboxes.forEach(cb => cb.checked = false);
+                    updateSelection();
+                });
+
+                // Close modal
+                function closeModal() {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+
+                closeBtn.addEventListener('click', closeModal);
+                cancelBtn.addEventListener('click', closeModal);
+
+                // Close when clicking outside modal content
+                modal.addEventListener('click', function (e) {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+
+                // Handle checkbox changes
+                checkboxes.forEach(checkbox => {
+                    checkbox.addEventListener('change', updateSelection);
+
+                    // Also make the entire item clickable
+                    const label = checkbox.closest('label');
+                    label.addEventListener('click', function (e) {
+                        // Don't toggle if clicking the actual checkbox
+                        if (e.target === checkbox) return;
+
+                        // Toggle the checkbox
+                        checkbox.checked = !checkbox.checked;
+                        updateSelection();
+
+                        // Prevent event from bubbling up
+                        e.preventDefault();
+                        e.stopPropagation();
+                    });
+                });
+
+                // Confirm selection
+                confirmBtn.addEventListener('click', function () {
+                    if (selectedDocs.length > 0) {
+                        // Here you would typically handle the selected documents
+                        console.log('Selected documents:', selectedDocs);
+
+                        // Show success message with selected document names
+                        const docNames = selectedDocs.map(doc => `• ${doc.name}`).join('\n');
+                        alert(`The following documents have been added to your application:\n\n${docNames}`);
+
+                        // Close the modal
+                        closeModal();
+                    } else {
+                        alert('Please select at least one document.');
+                    }
+                });
+
+            } else if (stepId === 'application-preparation') {
+                documentsHeader.textContent = 'Application Preparation';
                 documentsContent.innerHTML = `
                     <div class="space-y-4">
-                        <div class="bg-green-50 border-l-4 border-green-400 p-4">
-                            <h3 class="text-sm font-medium text-green-800 mb-2">EGE Admission team:</h3>
-                            <ul class="text-sm text-green-700 space-y-1 pl-4">
+                            <ul class="space-y-4">
                                 <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Prepare and finalize Agreement with Student</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Collect and keep record of signed Agreement</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Issue Invoice to student at the beginning of the Step</span>
-                                </li>
-                            </ul>
+                            <li class="flex items-start">
+                                    <div class="flex-shrink-0 mt-0.5">
+                                        <div class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center">
+                                            <span class="text-red-600 font-medium text-base">1</span>
+                                        </div>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-base font-medium text-gray-900">Personal Statement</p>
+                                        <p class="text-base text-gray-600">share extracurricular activities, experiences, and academic goals.</p>
+                                    </div>
+                            </li>
+
+                        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-2 bg-gray-100 rounded-lg mr-3">
+                                    <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Extracurricular Activities</p>
+                                    <p class="text-xs text-gray-500">PDF, 2.4 MB • Uploaded on Jan 12, 2025</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="p-2 text-gray-500 hover:text-gray-700">
+                                    <i data-lucide="eye" class="w-4 h-4"></i>
+                                </button>
+                                <button class="p-2 text-gray-500 hover:text-gray-700">
+                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                </button>
+                                <button class="p-2 text-[#ED2217] hover:text-[#D61D13]">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
                         </div>
-                        
-                        <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
-                            <h3 class="text-sm font-medium text-blue-800 mb-2">EGE Head of Admission team:</h3>
-                            <ul class="text-sm text-blue-700 space-y-1 pl-4">
-                                <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Review Agreement</span>
-                                </li>
-                            </ul>
+
+                        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-2 bg-gray-100 rounded-lg mr-3">
+                                    <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Experiences</p>
+                                    <p class="text-xs text-gray-500">PDF, 1.2 MB • Uploaded on Jan 15, 2025</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="p-2 text-gray-500 hover:text-gray-700">
+                                    <i data-lucide="eye" class="w-4 h-4"></i>
+                                </button>
+                                <button class="p-2 text-gray-500 hover:text-gray-700">
+                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                </button>
+                                <button class="p-2 text-[#ED2217] hover:text-[#D61D13]">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
                         </div>
+
                         
-                        <div class="bg-purple-50 border-l-4 border-purple-400 p-4">
-                            <h3 class="text-sm font-medium text-purple-800 mb-2">EGE President/CEO:</h3>
-                            <ul class="text-sm text-purple-700 space-y-1 pl-4">
-                                <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Approve & sign Agreement</span>
-                                </li>
-                            </ul>
+                        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="p-2 bg-gray-100 rounded-lg mr-3">
+                                    <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Academic Goals</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                            <button id="openDocModal" class="w-full flex justify-center items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium text-white hover:bg-[#D61D13] transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'">
+                                <i data-lucide="upload" class="w-4 h-4 mr-2"></i> Choose document from your profile
+                            </button>
+                            </div>
                         </div>
-                        
-                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
-                            <h3 class="text-sm font-medium text-yellow-800 mb-2">EGE Accountant:</h3>
-                            <ul class="text-sm text-yellow-700 space-y-1 pl-4">
-                                <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Receive first payment from student</span>
                                 </li>
-                            </ul>
-                        </div>
-                        
-                        <div class="bg-red-50 border-l-4 border-red-400 p-4">
-                            <h3 class="text-sm font-medium text-red-800 mb-2">EGE BD team:</h3>
-                            <ul class="text-sm text-red-700 space-y-1 pl-4">
                                 <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Send student the EGE Welcome Package</span>
+                                    <div class="flex-shrink-0 mt-0.5">
+                                        <div class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center">
+                                            <span class="text-red-600 font-medium text-sm">2</span>
+                                        </div>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-base font-medium text-gray-900">Timely Response</p>
+                                        <p class="text-base text-gray-600">Respond quickly and accurately when staff requests additional information or documents to meet deadlines.</p>
+                                    </div>
                                 </li>
-                            </ul>
-                        </div>
-                        
-                        <div class="bg-indigo-50 border-l-4 border-indigo-400 p-4">
-                            <h3 class="text-sm font-medium text-indigo-800 mb-2">Consultant:</h3>
-                            <ul class="text-sm text-indigo-700 space-y-1 pl-4">
                                 <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Follow up and support throughout the process. Ensure Agreement is signed on time with student & payment is paid on time</span>
+                                    <div class="flex-shrink-0 mt-0.5">
+                                        <div class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center">
+                                            <span class="text-red-600 font-medium text-base">3</span>
+                                        </div>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-base font-medium text-gray-900">Consistent Communication</p>
+                                        <p class="text-base text-gray-600">Maintain regular communication with PD/SJ staff via email, messages, or calls to stay updated on the progress.</p>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -1210,7 +1180,7 @@
                 documentsHeader.textContent = 'Pre-Departure';
                 documentsContent.innerHTML = `
                     <div class="space-y-4">
-                        <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+                        <div class="bg-blue-50 border-l-4 border-red-400 p-4">
                             <h3 class="text-sm font-medium text-blue-800 mb-2">EGE Admission Team:</h3>
                             <ul class="text-sm text-blue-700 space-y-1 pl-4">
                                 <li class="flex items-start">
@@ -1247,32 +1217,68 @@
                 documentsHeader.textContent = 'Visa Application';
                 documentsContent.innerHTML = `
                     <div class="space-y-4">
+                        <div class="bg-white border border-gray-200 rounded-lg p-6">
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">Visa Application Process:</h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <div class="flex-shrink-0 mt-0.5">
+                                        <div class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center">
+                                            <span class="text-red-600 font-medium text-sm">1</span>
+                                        </div>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm font-medium text-gray-900">Complete DS-160 (or other forms)</p>
+                                        <p class="text-sm text-gray-600">Fill in your visa application form accurately, with support from the Admission team.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="flex-shrink-0 mt-0.5">
+                                        <div class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center">
+                                            <span class="text-red-600 font-medium text-sm">2</span>
+                                        </div>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm font-medium text-gray-900">Prepare for Interview</p>
+                                        <p class="text-sm text-gray-600">Practice and get ready for your visa interview with guidance from the Admission team.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="flex-shrink-0 mt-0.5">
+                                        <div class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center">
+                                            <span class="text-red-600 font-medium text-sm">3</span>
+                                        </div>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm font-medium text-gray-900">Stay in Contact</p>
+                                        <p class="text-sm text-gray-600">Respond quickly to your consultant and provide any additional information if requested.</p>
+                                    </div>
+                                </li>
+                                </li>
+                            </ul>
+                        </div>
+
+                         <div class="mt-4">
+                                            <a href="Student-visa-prep.html" target="_blank" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                                <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
+                                                Visa Preparation Information
+                                            </a>
+                                        </div>
+                    </div>
+                `;
+            } else if (stepId === 'committed') {
+                documentsHeader.textContent = 'Committed to School';
+                documentsContent.innerHTML = `
+                    <div class="space-y-4">
                         <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
                             <h3 class="text-sm font-medium text-blue-800 mb-2">EGE Admission Team:</h3>
                             <ul class="text-sm text-blue-700 space-y-1 pl-4">
                                 <li class="flex items-start">
                                     <span class="mr-2">•</span>
-                                    <span>Review visa application documents</span>
+                                    <span>Advise the students to finalize their programs and school</span>
                                 </li>
                                 <li class="flex items-start">
                                     <span class="mr-2">•</span>
-                                    <span>Instruct the visa application process</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Review DS-160 or other application form to be submitted to the Embassy</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Instruct the visa fee payment process</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Prepare for visa interview</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Track the visa application process</span>
+                                    <span>Support student with the acceptance process</span>
                                 </li>
                             </ul>
                         </div>
@@ -1282,15 +1288,171 @@
                             <ul class="text-sm text-green-700 space-y-1 pl-4">
                                 <li class="flex items-start">
                                     <span class="mr-2">•</span>
-                                    <span>Send student the Checklist of Visa application documents</span>
+                                    <span>Support with communication with student.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else if (stepId === 'third-payment') {
+                documentsHeader.textContent = 'Third Payment';
+                documentsContent.innerHTML = `
+                <div class="space-y-4">
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <div class="flex-shrink-0 mt-0.5">
+                                        <div class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center">
+                                            <span class="text-red-600 font-medium text-sm">1</span>
+                                        </div>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-base font-medium text-gray-900">Third Payment</p>
+                                        <p class="text-base text-gray-600">Make the third payment according to the instructions provided by EGE.</p>
+                                        <p class="text-base text-gray-600 mt-1">If you have already made the payment, please upload the receipt <a href="Student-payment.html" class="text-red-600 hover:underline" target="_blank">here</a>.</p>
+                                    <div class="bg-white rounded-3xl shadow-md p-6 mb-6">
+                <h3 class="text-lg font-semibold mb-4">Outstanding Payments</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-600">Visa Service Fee</span>
+                                <span>$50 USD</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-center space-y-3 h-full">
+                        <div class="text-sm text-gray-600 text-center">
+                            <p>Due Date: April 15, 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>                                    
+
+                                <li class="flex items-start">
+                                    <div class="flex-shrink-0 mt-0.5">
+                                        <div class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center">
+                                            <span class="text-red-600 font-medium text-base">2</span>
+                                        </div>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-base font-medium text-gray-900">Consistent Communication</p>
+                                        <p class="text-base text-gray-600">Maintain regular communication with PD/SJ staff via email, messages, or calls to stay updated on the progress.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else if (stepId === 'second-payment') {
+                documentsHeader.textContent = 'Second Payment';
+                documentsContent.innerHTML = `
+                    <div class="space-y-4">
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <div class="flex-shrink-0 mt-0.5">
+                                        <div class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center">
+                                            <span class="text-red-600 font-medium text-sm">1</span>
+                                        </div>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-base font-medium text-gray-900">Second Payment</p>
+                                        <p class="text-base text-gray-600">Make the second payment according to the instructions provided by EGE.</p>
+                                        <p class="text-base text-gray-600 mt-1">If you have already made the payment, please upload the receipt <a href="Student-payment.html" class="text-red-600 hover:underline" target="_blank">here</a>.</p>
+                                    <div class="bg-white rounded-3xl shadow-md p-6 mb-6">
+                <h3 class="text-lg font-semibold mb-4">Outstanding Payments</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-600">Notarization Fee</span>
+                                <span>$50 USD</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-center space-y-3 h-full">
+                        <div class="text-sm text-gray-600 text-center">
+                            <p>Due Date: April 15, 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>                                    
+
+                                <li class="flex items-start">
+                                    <div class="flex-shrink-0 mt-0.5">
+                                        <div class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center">
+                                            <span class="text-red-600 font-medium text-base">2</span>
+                                        </div>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-base font-medium text-gray-900">Consistent Communication</p>
+                                        <p class="text-base text-gray-600">Maintain regular communication with PD/SJ staff via email, messages, or calls to stay updated on the progress.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else if (stepId === 'arrival') {
+                documentsHeader.textContent = 'Arrival';
+                documentsContent.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+                            <h3 class="text-sm font-medium text-blue-800 mb-2">EGE Admission Team:</h3>
+                            <ul class="text-sm text-blue-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Online meeting to advise and support in the first month in the foreign country</span>
                                 </li>
                                 <li class="flex items-start">
                                     <span class="mr-2">•</span>
-                                    <span>Help collect Visa application documents from student. Ensure documents are collected on time</span>
+                                    <span>Liaise with the school to provide support to student</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-green-50 border-l-4 border-green-400 p-4">
+                            <h3 class="text-sm font-medium text-green-800 mb-2">Consultant:</h3>
+                            <ul class="text-sm text-green-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Continuous support and follow-up with student and family</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else if (stepId === 'pre-departure') {
+                documentsHeader.textContent = 'Pre-Departure';
+                documentsContent.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 border-l-4 border-red-400 p-4">
+                            <h3 class="text-sm font-medium text-blue-800 mb-2">EGE Admission Team:</h3>
+                            <ul class="text-sm text-blue-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Pre-departure online training session</span>
                                 </li>
                                 <li class="flex items-start">
                                     <span class="mr-2">•</span>
-                                    <span>Support with communication with student</span>
+                                    <span>Help prepare travel schedule</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Support with Insurance</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-green-50 border-l-4 border-green-400 p-4">
+                            <h3 class="text-sm font-medium text-green-800 mb-2">Consultant:</h3>
+                            <ul class="text-sm text-green-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Send student the Preparation Checklist for Department</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Support student with pre-departure preparation</span>
                                 </li>
                             </ul>
                         </div>
@@ -1325,8 +1487,8 @@
                         </div>
                     </div>
                 `;
-            } else if (stepId === 'offer-letter') {
-                documentsHeader.textContent = 'Offered Letter Issued';
+            } else if (stepId === 'third-payment') {
+                documentsHeader.textContent = 'Third Payment';
                 documentsContent.innerHTML = `
                     <div class="space-y-4">
                         <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
@@ -1372,81 +1534,14 @@
                         </div>
                     </div>
                 `;
-            } else if (stepId === 'school-response') {
-                documentsHeader.textContent = 'School Response';
-                documentsContent.innerHTML = `
-                    <div class="space-y-4">
-                        <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
-                            <h3 class="text-sm font-medium text-blue-800 mb-2">EGE Admission Team:</h3>
-                            <ul class="text-sm text-blue-700 space-y-1 pl-4">
-                                <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Review student's documents, finalize schools and programs</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Financial review (Total Cost of attendance, scholarship, Fees)</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Create Student Application Profile Sheet</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Prepare application for students for each school and program</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Instruct student to write Personal Statement (If applicable)</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Prepare scholarship application (If applicable)</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>In-depth advices for students throughout the preparation process</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Issue Invoice to student at the beginning of the Step</span>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
-                            <h3 class="text-sm font-medium text-yellow-800 mb-2">EGE Accountant:</h3>
-                            <ul class="text-sm text-yellow-700 space-y-1 pl-4">
-                                <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Receive second payment from student</span>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <div class="bg-green-50 border-l-4 border-green-400 p-4">
-                            <h3 class="text-sm font-medium text-green-800 mb-2">Consultant:</h3>
-                            <ul class="text-sm text-green-700 space-y-1 pl-4">
-                                <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Support with communication with student</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <span class="mr-2">•</span>
-                                    <span>Send out document checklist and help collect documents from students. Ensure documents are collected on time and payment is paid on time</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                `;
             } else {
                 const stepTitles = {
-                    'application-progress': 'Application Documents',
+                    'agreement-signing-deposit': 'Agreement Signing & Deposit',
                     'visa-application': 'Visa Application Documents',
                     'pre-departure': 'Pre-Departure Documents',
                     'arrival': 'Arrival Information',
                 };
-                
+
                 documentsHeader.textContent = stepTitles[stepId] || 'Uploaded Documents';
                 // Restore default documents content if needed
                 if (stepId !== 'initial-advising') {
@@ -1459,7 +1554,7 @@
         function loadApplicationDetails() {
             const urlParams = new URLSearchParams(window.location.search);
             const appId = urlParams.get('id');
-            
+
             // In a real application, you would fetch this data from an API
             const applicationData = {
                 '1': {
@@ -1495,5 +1590,225 @@
         // Load application details when the page loads
         document.addEventListener('DOMContentLoaded', loadApplicationDetails);
     </script>
+
+    <!-- Document Selection Modal -->
+    <div id="documentModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl p-6 w-full max-w-2xl max-h-[80vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <div class="flex items-center space-x-2">
+                    <h3 class="text-lg font-semibold text-gray-900">Select Document from Profile</h3>
+                    <div class="relative group">
+                        <i data-lucide="help-circle" class="w-4 h-4 text-gray-400 hover:text-gray-500 cursor-help"></i>
+                        <div class="absolute left-0 mt-1 w-48 p-2 bg-gray-700 text-white text-xs rounded whitespace-normal opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none"
+                            style="z-index: 50;">
+                            To upload a new document, please upload it in your profile.
+                        </div>
+                    </div>
+                </div>
+                <button id="closeDocModal" class="text-gray-400 hover:text-gray-500">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <div class="space-y-3 mb-4">
+                <!-- Document Item -->
+                <label class="block">
+                    <input type="checkbox" class="hidden document-checkbox" data-doc-id="doc1">
+                    <div
+                        class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer document-item">
+                        <div class="flex items-center">
+                            <div
+                                class="flex items-center justify-center w-5 h-5 border-2 border-gray-300 rounded mr-3 flex-shrink-0">
+                                <i data-lucide="check" class="w-4 h-4 text-white check-icon"></i>
+                            </div>
+                            <div class="bg-red-50 p-2 rounded-lg mr-3">
+                                <i data-lucide="file-text" class="w-5 h-5 text-red-600"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="text-sm font-medium text-gray-900 truncate">High School Transcript</p>
+                                <p class="text-xs text-gray-500">PDF • 1.2 MB • Uploaded on Aug 15, 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+
+                <!-- Document Item -->
+                <label class="block">
+                    <input type="checkbox" class="hidden document-checkbox" data-doc-id="doc2">
+                    <div
+                        class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer document-item">
+                        <div class="flex items-center">
+                            <div
+                                class="flex items-center justify-center w-5 h-5 border-2 border-gray-300 rounded mr-3 flex-shrink-0">
+                                <i data-lucide="check" class="w-4 h-4 text-white check-icon"></i>
+                            </div>
+                            <div class="bg-red-50 p-2 rounded-lg mr-3">
+                                <i data-lucide="file-text" class="w-5 h-5 text-red-600"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="text-sm font-medium text-gray-900 truncate">IELTS Test Results</p>
+                                <p class="text-xs text-gray-500">PDF • 0.8 MB • Uploaded on Aug 10, 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+
+                <!-- Document Item -->
+                <label class="block">
+                    <input type="checkbox" class="hidden document-checkbox" data-doc-id="doc3">
+                    <div
+                        class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer document-item">
+                        <div class="flex items-center">
+                            <div
+                                class="flex items-center justify-center w-5 h-5 border-2 border-gray-300 rounded mr-3 flex-shrink-0">
+                                <i data-lucide="check" class="w-4 h-4 text-white check-icon"></i>
+                            </div>
+                            <div class="bg-red-50 p-2 rounded-lg mr-3">
+                                <i data-lucide="file-text" class="w-5 h-5 text-red-600"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="text-sm font-medium text-gray-900 truncate">Letter of Recommendation</p>
+                                <p class="text-xs text-gray-500">PDF • 0.5 MB • Uploaded on Aug 5, 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+            </div>
+
+            <div class="flex justify-between items-center pt-4 border-t border-gray-200">
+                <span id="selectedCount" class="text-sm text-gray-500">0 documents selected</span>
+                <div class="space-x-3">
+                    <button id="cancelDocSelect"
+                        class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                        Cancel
+                    </button>
+                    <button id="confirmDocSelect"
+                        class="px-4 py-2 text-sm font-medium text-white rounded-lg disabled:opacity-50"
+                        style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'"
+                        onmouseout="this.style.backgroundColor='#ED2217'" disabled>
+                        Add Selected Documents (0)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .document-checkbox:checked+.document-item {
+            border-color: #ED2217;
+            background-color: #FEF2F2;
+        }
+
+        .document-checkbox:checked+.document-item .check-icon {
+            color: white;
+            background-color: #ED2217;
+            border-radius: 3px;
+        }
+
+        /* Help tooltip styles */
+        .relative.group .hidden {
+            display: none;
+        }
+
+        .relative.group:hover .hidden {
+            display: block;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const modal = document.getElementById('documentModal');
+            const openBtn = document.getElementById('openDocModal');
+            const closeBtn = document.getElementById('closeDocModal');
+            const cancelBtn = document.getElementById('cancelDocSelect');
+            const confirmBtn = document.getElementById('confirmDocSelect');
+            const checkboxes = document.querySelectorAll('.document-checkbox');
+            const selectedCountEl = document.getElementById('selectedCount');
+
+            let selectedDocs = [];
+
+            // Update selected count and button state
+            function updateSelection() {
+                const checkedBoxes = Array.from(checkboxes).filter(checkbox => checkbox.checked);
+                const count = checkedBoxes.length;
+
+                // Update count display
+                selectedCountEl.textContent = `${count} ${count === 1 ? 'document' : 'documents'} selected`;
+
+                // Update confirm button
+                confirmBtn.textContent = `Add Selected Documents${count > 0 ? ` (${count})` : ''}`;
+                confirmBtn.disabled = count === 0;
+
+                // Update selected docs array
+                selectedDocs = checkedBoxes.map(checkbox => ({
+                    id: checkbox.dataset.docId,
+                    name: checkbox.closest('label').querySelector('.text-gray-900').textContent
+                }));
+            }
+
+            // Open modal
+            openBtn.addEventListener('click', function () {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                // Reset selections when opening
+                checkboxes.forEach(cb => cb.checked = false);
+                updateSelection();
+            });
+
+            // Close modal
+            function closeModal() {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+
+            closeBtn.addEventListener('click', closeModal);
+            cancelBtn.addEventListener('click', closeModal);
+
+            // Close when clicking outside modal content
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Handle checkbox changes
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateSelection);
+
+                // Also make the entire item clickable
+                const label = checkbox.closest('label');
+                label.addEventListener('click', function (e) {
+                    // Don't toggle if clicking the actual checkbox
+                    if (e.target === checkbox) return;
+
+                    // Toggle the checkbox
+                    checkbox.checked = !checkbox.checked;
+                    updateSelection();
+
+                    // Prevent event from bubbling up
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            });
+
+            // Confirm selection
+            confirmBtn.addEventListener('click', function () {
+                if (selectedDocs.length > 0) {
+                    // Here you would typically handle the selected documents
+                    console.log('Selected documents:', selectedDocs);
+
+                    // Show success message with selected document names
+                    const docNames = selectedDocs.map(doc => `• ${doc.name}`).join('\n');
+                    alert(`The following documents have been added to your application:\n\n${docNames}`);
+
+                    // Close the modal
+                    closeModal();
+                } else {
+                    alert('Please select at least one document.');
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>

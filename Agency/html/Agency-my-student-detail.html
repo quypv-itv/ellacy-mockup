@@ -170,9 +170,9 @@
         <!-- Tab Content -->
         <div class="flex">
             <!-- Profile Tab -->
-            <div id="profile-content" class="tab-content w-full">
+            <div id="profile-content" class="tab-content w-full flex">
                 <!-- Sidebar Navigation -->
-                <div class="w-80 bg-white border-r border-gray-200 h-screen overflow-y-auto">
+                <div class="w-80 bg-white border-r border-gray-200 min-h-screen">
                     <div class="p-6">
                         <h3 class="text-lg font-semibold text-gray-900 mb-4">Profile Sections</h3>
                         <nav class="space-y-2">
@@ -182,21 +182,7 @@
                                         <i data-lucide="user" class="w-4 h-4 mr-3"></i>
                                         <span class="text-sm font-medium">Personal Information</span>
                                     </div>
-                                    <span class="text-xs px-2 py-1 bg-red-100 text-red-800 rounded-full">Missing</span>
-                                </div>
-                                <div class="ml-7 mt-2 space-y-1 text-xs text-gray-600">
-                                    <div class="flex justify-between">
-                                        <span>Personal Information</span>
-                                        <span class="text-red-600">Missing</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span>Address</span>
-                                        <span class="text-red-600">Missing</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span>Emergency Contact</span>
-                                        <span class="text-red-600">Missing</span>
-                                    </div>
+                                    <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Complete</span>
                                 </div>
                             </div>
                             <div onclick="showProfileSection('education')" class="sidebar-item cursor-pointer p-3 rounded-lg hover:bg-gray-50">
@@ -205,7 +191,7 @@
                                         <i data-lucide="graduation-cap" class="w-4 h-4 mr-3"></i>
                                         <span class="text-sm font-medium">Education Information</span>
                                     </div>
-                                    <span class="text-xs px-2 py-1 bg-red-100 text-red-800 rounded-full">Missing</span>
+                                    <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Complete</span>
                                 </div>
                             </div>
                             <div onclick="showProfileSection('tests')" class="sidebar-item cursor-pointer p-3 rounded-lg hover:bg-gray-50">
@@ -214,22 +200,34 @@
                                         <i data-lucide="file-check" class="w-4 h-4 mr-3"></i>
                                         <span class="text-sm font-medium">Test Scores</span>
                                     </div>
-                                    <span class="text-xs px-2 py-1 bg-orange-100 text-orange-800 rounded-full">Optional</span>
+                                    <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Complete</span>
                                 </div>
                             </div>
-                            <div onclick="showProfileSection('work')" class="sidebar-item cursor-pointer p-3 rounded-lg hover:bg-gray-50">
-                                <div class="flex items-center">
-                                    <i data-lucide="briefcase" class="w-4 h-4 mr-3"></i>
-                                    <span class="text-sm font-medium">Work & References</span>
+                            <div onclick="showProfileSection('visa')" class="sidebar-item cursor-pointer p-3 rounded-lg hover:bg-gray-50">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <i data-lucide="passport" class="w-4 h-4 mr-3"></i>
+                                        <span class="text-sm font-medium">Visa Background</span>
+                                    </div>
+                                    <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Complete</span>
+                                </div>
+                            </div>
+                            <div onclick="showProfileSection('family')" class="sidebar-item cursor-pointer p-3 rounded-lg hover:bg-gray-50">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <i data-lucide="users" class="w-4 h-4 mr-3"></i>
+                                        <span class="text-sm font-medium">Family Background</span>
+                                    </div>
+                                    <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Complete</span>
                                 </div>
                             </div>
                             <div onclick="showProfileSection('files')" class="sidebar-item cursor-pointer p-3 rounded-lg hover:bg-gray-50">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center">
                                         <i data-lucide="folder" class="w-4 h-4 mr-3"></i>
-                                        <span class="text-sm font-medium">Requirements & Files</span>
+                                        <span class="text-sm font-medium">Documents</span>
                                     </div>
-                                    <span class="text-xs px-2 py-1 bg-red-100 text-red-800 rounded-full">Missing</span>
+                                    <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Complete</span>
                                 </div>
                             </div>
                         </nav>
@@ -237,117 +235,380 @@
                 </div>
 
                 <!-- Main Profile Content -->
-                <div class="flex-1 p-6">
+                <div class="flex-1 p-6 bg-gray-50">
                     <div id="personal-section" class="profile-section">
                         <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                            <h2 class="text-xl font-semibold text-gray-900 mb-6">Personal Information</h2>
-                            <p class="text-sm text-gray-600 mb-6">Please enter student information accurately and correctly. The information you provide will be sent to the selected schools upon submission of their application.</p>
+                            <div class="flex items-center justify-between mb-6">
+                                <h2 class="text-xl font-semibold text-gray-900">Personal Information</h2>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded-full">Read Only</span>
+                                    <button class="text-sm px-3 py-1 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 flex items-center">
+                                        <i data-lucide="download" class="w-4 h-4 mr-1"></i>
+                                        Export PDF
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-6">Student profile information (Agent view - Read only access)</p>
                             
-                            <!-- Basic Information -->
+                            <!-- Section A: Student Profile -->
                             <div class="mb-8">
                                 <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center">
                                     <i data-lucide="user" class="w-5 h-5 mr-2"></i>
-                                    Basic Information
+                                    Student Profile
                                 </h3>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                                        <input type="text" value="Long" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">UID</label>
+                                        <p class="text-sm text-gray-900 font-mono">STU-2237004</p>
                                     </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Middle Name</label>
-                                        <input type="text" placeholder="Enter middle name" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Student Name</label>
+                                        <p class="text-sm text-gray-900">Long Le</p>
                                     </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Surname *</label>
-                                        <input type="text" value="Le" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
+                                        <p class="text-sm text-gray-900">March 15, 1998</p>
                                     </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Gender *</label>
-                                        <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
-                                            <option value="">Select gender</option>
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
-                                            <option value="other">Other</option>
-                                        </select>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Telephone</label>
+                                        <p class="text-sm text-gray-900">+84 1123456789</p>
                                     </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Date of Birth *</label>
-                                        <input type="date" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                        <p class="text-sm text-gray-900">baolong.le@ellacy.org</p>
                                     </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Birth Country *</label>
-                                        <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
-                                            <option value="">Select country</option>
-                                            <option value="vietnam">Vietnam</option>
-                                            <option value="usa">United States</option>
-                                            <option value="canada">Canada</option>
-                                        </select>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Skype ID</label>
+                                        <p class="text-sm text-gray-900">long.le.skype</p>
                                     </div>
-                                    <div class="md:col-span-2">
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Birth Place *</label>
-                                        <input type="text" placeholder="Enter birth place" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                    <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                                        <p class="text-sm text-gray-900">123 Nguyen Hue Street, District 1, Ho Chi Minh City, Vietnam</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Agent</label>
+                                        <p class="text-sm text-gray-900">John Smith</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Academic Advisor</label>
+                                        <p class="text-sm text-gray-900">Dr. Emily Davis</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Visa Advisor</label>
+                                        <p class="text-sm text-gray-900">Michael Johnson</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg md:col-span-3">
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Social Media Links</label>
+                                        <div class="flex flex-wrap gap-2">
+                                            <a href="https://linkedin.com/in/longle" class="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
+                                                <i data-lucide="linkedin" class="w-3 h-3 mr-1"></i>
+                                                LinkedIn
+                                            </a>
+                                            <a href="https://facebook.com/longle" class="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
+                                                <i data-lucide="facebook" class="w-3 h-3 mr-1"></i>
+                                                Facebook
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Contact Information -->
+                            <!-- Section B: Education Background -->
                             <div class="mb-8">
                                 <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center">
-                                    <i data-lucide="phone" class="w-5 h-5 mr-2"></i>
-                                    Contact Information
+                                    <i data-lucide="graduation-cap" class="w-5 h-5 mr-2"></i>
+                                    Education Background
                                 </h3>
-                                <p class="text-sm text-gray-600 mb-4">* Please be sure to include the student's overseas phone number.</p>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                                        <div class="flex">
-                                            <select class="px-3 py-2 border border-gray-300 rounded-l-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
-                                                <option value="+84">+84</option>
-                                                <option value="+1">+1</option>
-                                                <option value="+44">+44</option>
-                                            </select>
-                                            <input type="tel" value="1123456789" class="flex-1 px-3 py-2 border border-l-0 border-gray-300 rounded-r-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                
+                                <!-- Test Scores -->
+                                <div class="mb-6">
+                                    <h4 class="text-md font-medium text-gray-800 mb-3">Test Scores</h4>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">IELTS Score</label>
+                                            <p class="text-sm text-gray-900">7.5 (Dec 2023)</p>
+                                        </div>
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">SAT Score</label>
+                                            <p class="text-sm text-gray-900">1450 (Nov 2023)</p>
+                                        </div>
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">GRE Score</label>
+                                            <p class="text-sm text-gray-900">Not taken</p>
+                                        </div>
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Other Scores</label>
+                                            <p class="text-sm text-gray-900">AP Calculus: 5</p>
                                         </div>
                                     </div>
+                                </div>
+
+                                <!-- Academic History -->
+                                <div class="mb-6">
+                                    <h4 class="text-md font-medium text-gray-800 mb-3">Academic History</h4>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">High School</label>
+                                            <p class="text-sm text-gray-900">Le Hong Phong High School, Ho Chi Minh City</p>
+                                            <p class="text-xs text-gray-600 mt-1">GPA: 3.8/4.0</p>
+                                        </div>
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Awards/Honors</label>
+                                            <p class="text-sm text-gray-900">Valedictorian, National Math Olympiad Silver Medal</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Study Abroad Goals -->
+                                <div class="mb-6">
+                                    <h4 class="text-md font-medium text-gray-800 mb-3">Study Abroad Goals</h4>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Desired Study Level</label>
+                                            <p class="text-sm text-gray-900">Bachelor Degree</p>
+                                        </div>
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Maximum Annual Budget</label>
+                                            <p class="text-sm text-gray-900">$30,000-$40,000 USD</p>
+                                        </div>
+                                        <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Interested Schools/Universities</label>
+                                            <p class="text-sm text-gray-900">University of Toronto, McGill University, University of British Columbia</p>
+                                        </div>
+                                        <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Degree Programs of Interest</label>
+                                            <p class="text-sm text-gray-900">Computer Science, Software Engineering, Data Science</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Section C: Visa Background -->
+                            <div class="mb-8">
+                                <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                                    <i data-lucide="passport" class="w-5 h-5 mr-2"></i>
+                                    Visa Background
+                                </h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Previous Visa Applications</label>
+                                        <p class="text-sm text-gray-900">Tourist visa to Canada (2022)</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Visa Rejections</label>
+                                        <p class="text-sm text-gray-900">None</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Relatives/Friends Abroad</label>
+                                        <p class="text-sm text-gray-900">Uncle: Minh Le, Canadian citizen, Toronto</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Section D: Family Background -->
+                            <div class="mb-8">
+                                <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                                    <i data-lucide="users" class="w-5 h-5 mr-2"></i>
+                                    Family Background
+                                </h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Number of Family Members</label>
+                                        <p class="text-sm text-gray-900">4</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Parents Name</label>
+                                        <p class="text-sm text-gray-900">Duc Le, Lan Nguyen</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Parents Phone</label>
+                                        <p class="text-sm text-gray-900">+84 909 123 456</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Information Confirmation</label>
+                                        <p class="text-sm text-green-600 flex items-center">
+                                            <i data-lucide="check-circle" class="w-4 h-4 mr-1"></i>
+                                            Confirmed
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Section E: Referral Information -->
+                            <div class="mb-8">
+                                <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                                    <i data-lucide="user-plus" class="w-5 h-5 mr-2"></i>
+                                    Referral Information
+                                </h3>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Person who Introduced you to Ellacy</label>
+                                    <p class="text-sm text-gray-900">Ms. Sarah Johnson (School Counselor)</p>
+                                </div>
+                            </div>
+
+                            <!-- Section F: Uploaded Documents -->
+                            <div class="mb-8">
+                                <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                                    <i data-lucide="folder" class="w-5 h-5 mr-2"></i>
+                                    Uploaded Documents
+                                </h3>
+                                
+                                <!-- Required Documents -->
+                                <div class="mb-4">
+                                    <h4 class="text-md font-medium text-gray-800 mb-3">Required Documents</h4>
+                                    <div class="space-y-3">
+                                        <div class="flex items-center justify-between p-3 bg-green-50 border border-green-200 rounded-lg">
+                                            <div class="flex items-center">
+                                                <i data-lucide="file-text" class="w-5 h-5 text-green-600 mr-3"></i>
+                                                <div>
+                                                    <p class="text-sm font-medium text-gray-900">CV_Long_Le.pdf</p>
+                                                    <p class="text-xs text-gray-600">Uploaded: Feb 10, 2024</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">✓ Uploaded</span>
+                                                <button class="text-sm px-3 py-1 bg-gray-100 text-gray-700 rounded hover:bg-gray-200">
+                                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between p-3 bg-green-50 border border-green-200 rounded-lg">
+                                            <div class="flex items-center">
+                                                <i data-lucide="file-text" class="w-5 h-5 text-green-600 mr-3"></i>
+                                                <div>
+                                                    <p class="text-sm font-medium text-gray-900">Academic_Transcript.pdf</p>
+                                                    <p class="text-xs text-gray-600">Uploaded: Feb 12, 2024</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">✓ Uploaded</span>
+                                                <button class="text-sm px-3 py-1 bg-gray-100 text-gray-700 rounded hover:bg-gray-200">
+                                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between p-3 bg-green-50 border border-green-200 rounded-lg">
+                                            <div class="flex items-center">
+                                                <i data-lucide="file-text" class="w-5 h-5 text-green-600 mr-3"></i>
+                                                <div>
+                                                    <p class="text-sm font-medium text-gray-900">Passport_Copy.pdf</p>
+                                                    <p class="text-xs text-gray-600">Uploaded: Feb 8, 2024</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">✓ Uploaded</span>
+                                                <button class="text-sm px-3 py-1 bg-gray-100 text-gray-700 rounded hover:bg-gray-200">
+                                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Additional Documents -->
+                                <div>
+                                    <h4 class="text-md font-medium text-gray-800 mb-3">Additional Documents</h4>
+                                    <div class="space-y-3">
+                                        <div class="flex items-center justify-between p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                                            <div class="flex items-center">
+                                                <i data-lucide="file-text" class="w-5 h-5 text-blue-600 mr-3"></i>
+                                                <div>
+                                                    <p class="text-sm font-medium text-gray-900">IELTS_Certificate.pdf</p>
+                                                    <p class="text-xs text-gray-600">Uploaded: Jan 15, 2024</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <span class="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded-full">Additional</span>
+                                                <button class="text-sm px-3 py-1 bg-gray-100 text-gray-700 rounded hover:bg-gray-200">
+                                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Agent Actions -->
+                            <div class="border-t border-gray-200 pt-6">
+                                <h3 class="text-lg font-medium text-gray-900 mb-4">Agent Actions</h3>
+                                <div class="flex flex-wrap gap-3">
+                                    <button class="px-4 py-2 text-sm font-medium text-white rounded-lg hover:opacity-90" style="background-color: #ED2217;">
+                                        <i data-lucide="message-circle" class="w-4 h-4 mr-1"></i>
+                                        Message Student
+                                    </button>
+                                    <button class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200">
+                                        <i data-lucide="sticky-note" class="w-4 h-4 mr-1"></i>
+                                        Add Internal Note
+                                    </button>
+                                    <button class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200">
+                                        <i data-lucide="flag" class="w-4 h-4 mr-1"></i>
+                                        Flag Issue
+                                    </button>
+                                    <button class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200">
+                                        <i data-lucide="download" class="w-4 h-4 mr-1"></i>
+                                        Export Profile
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Other profile sections would be hidden initially -->
+                    <!-- Other profile sections -->
                     <div id="education-section" class="profile-section hidden">
                         <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                             <h2 class="text-xl font-semibold text-gray-900 mb-6">Education Information</h2>
-                            <p class="text-gray-600">Education information section content will be displayed here.</p>
+                            <p class="text-sm text-gray-600 mb-4">Education background information is already displayed in the Personal Information section above.</p>
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                <p class="text-sm text-blue-800">All education details including test scores, academic history, and study abroad goals are consolidated in the Personal Information section for better overview.</p>
+                            </div>
                         </div>
                     </div>
 
                     <div id="tests-section" class="profile-section hidden">
                         <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                             <h2 class="text-xl font-semibold text-gray-900 mb-6">Test Scores</h2>
-                            <p class="text-gray-600">Test scores section content will be displayed here.</p>
+                            <p class="text-sm text-gray-600 mb-4">Test scores information is already displayed in the Personal Information section.</p>
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                <p class="text-sm text-blue-800">IELTS, SAT, GRE scores and other test information are consolidated in the Personal Information section for better overview.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div id="work-section" class="profile-section hidden">
+                    <div id="visa-section" class="profile-section hidden">
                         <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                            <h2 class="text-xl font-semibold text-gray-900 mb-6">Work & References</h2>
-                            <p class="text-gray-600">Work and references section content will be displayed here.</p>
+                            <h2 class="text-xl font-semibold text-gray-900 mb-6">Visa Background</h2>
+                            <p class="text-sm text-gray-600 mb-4">Visa background information is already displayed in the Personal Information section.</p>
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                <p class="text-sm text-blue-800">Previous visa applications, rejections, and relatives abroad information are consolidated in the Personal Information section for better overview.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="family-section" class="profile-section hidden">
+                        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                            <h2 class="text-xl font-semibold text-gray-900 mb-6">Family Background</h2>
+                            <p class="text-sm text-gray-600 mb-4">Family background information is already displayed in the Personal Information section.</p>
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                <p class="text-sm text-blue-800">Family members, parents information, and financial background details are consolidated in the Personal Information section for better overview.</p>
+                            </div>
                         </div>
                     </div>
 
                     <div id="files-section" class="profile-section hidden">
                         <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                            <h2 class="text-xl font-semibold text-gray-900 mb-6">Requirements & Files</h2>
-                            <p class="text-gray-600">Requirements and files section content will be displayed here.</p>
+                            <h2 class="text-xl font-semibold text-gray-900 mb-6">Documents</h2>
+                            <p class="text-sm text-gray-600 mb-4">Uploaded documents information is already displayed in the Personal Information section.</p>
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                <p class="text-sm text-blue-800">Required and additional documents with download options are consolidated in the Personal Information section for better overview.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Find Scholarship Tab -->
-            <div id="scholarship-content" class="tab-content hidden w-full p-6">
+            <div id="scholarship-content" class="tab-content hidden w-full">
+                <div class="p-6">
                 <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                     <h2 class="text-xl font-semibold text-gray-900 mb-6">Find Scholarship</h2>
                     
@@ -381,7 +642,8 @@
             </div>
 
             <!-- Favorites Tab -->
-            <div id="favorites-content" class="tab-content hidden w-full p-6">
+            <div id="favorites-content" class="tab-content hidden w-full">
+                <div class="p-6">
                 <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                     <h2 class="text-xl font-semibold text-gray-900 mb-6">Favorite Scholarships</h2>
                     <p class="text-gray-600">Student's saved scholarships and programs will be displayed here.</p>
@@ -389,7 +651,8 @@
             </div>
 
             <!-- Payment Tab -->
-            <div id="payment-content" class="tab-content hidden w-full p-6">
+            <div id="payment-content" class="tab-content hidden w-full">
+                <div class="p-6">
                 <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                     <h2 class="text-xl font-semibold text-gray-900 mb-6">Payment Information</h2>
                     <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
@@ -402,7 +665,8 @@
             </div>
 
             <!-- Applications Tab -->
-            <div id="applications-content" class="tab-content hidden w-full p-6">
+            <div id="applications-content" class="tab-content hidden w-full">
+                <div class="p-6">
                 <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                     <h2 class="text-xl font-semibold text-gray-900 mb-6">Applications</h2>
                     
