@@ -721,7 +721,7 @@
                     <div class="bg-white rounded-2xl shadow-md p-6 sticky top-6">
                         <h3 class="text-lg font-semibold text-gray-900 mb-4">Application Timeline</h3>
                             <!-- Step 1: Scholarship Selection -->
-                            <div class="timeline-step">
+                            <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="initial-advising">
                                 <div class="timeline-dot completed"></div>
                                 <div class="pl-6">
                                     <h4 class="font-medium text-gray-900">Initial Advising</h4>
@@ -731,53 +731,53 @@
                             </div>
 
                             <!-- Step 2: Document Submission -->
-                            <div class="timeline-step">
+                            <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="application-progress">
                                 <div class="timeline-dot current"></div>
                                 <div class="pl-6">
-                                    <h4 class="font-medium text-gray-900">Docs Review and In-Depth Advisor</h4>
+                                    <h4 class="font-medium text-gray-900">Application In Progress</h4>
                                     <p class="text-sm text-gray-500">Comprehensive review and advisor feedback on documents</p>
-                                    <p class="text-xs mt-1" style="color: #ED2217;">In progress</p>
+                                    <p class="text-xs mt-1 text-[#ED2217]">In progress</p>
                                 </div>
                             </div>
 
                             <!-- Step 3: Application Submission -->
-                            <div class="timeline-step">
+                            <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="submitted-to-school">
                                 <div class="timeline-dot"></div>
                                 <div class="pl-6">
-                                    <h4 class="font-medium text-gray-500">Agreement Signing & First Payment</h4>
+                                    <h4 class="font-medium text-gray-500">Submitted to School</h4>
                                     <p class="text-sm text-gray-400">Sign service agreement and complete the first payment</p>
                                 </div>
                             </div>
 
                             <!-- Step 4: Offer Letter -->
-                            <div class="timeline-step">
+                            <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="school-response">
                                 <div class="timeline-dot"></div>
                                 <div class="pl-6">
-                                    <h4 class="font-medium text-gray-500">Application Preparation and Second Payment</h4>
+                                    <h4 class="font-medium text-gray-500">School Response</h4>
                                     <p class="text-sm text-gray-400">Finalize application materials and complete the second payment</p>
                                 </div>
                             </div>
 
                             <!-- Step 5: Payment -->
-                            <div class="timeline-step">
+                            <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="offer-letter">
                                 <div class="timeline-dot"></div>
                                 <div class="pl-6">
-                                    <h4 class="font-medium text-gray-500">School Application</h4>
+                                    <h4 class="font-medium text-gray-500">Offered Letter Issued</h4>
                                     <p class="text-sm text-gray-400">Submit application to the selected school</p>
                                 </div>
                             </div>
 
                             <!-- Step 6: COE -->
-                            <div class="timeline-step">
+                            <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="committed">
                                 <div class="timeline-dot"></div>
                                 <div class="pl-6">
-                                    <h4 class="font-medium text-gray-500">School Acceptance</h4>
+                                    <h4 class="font-medium text-gray-500">Committed to School</h4>
                                     <p class="text-sm text-gray-400">Receive and confirm your offer from the school</p>
                                 </div>
                             </div>
 
                             <!-- Step 7: Visa Application -->
-                            <div class="timeline-step">
+                            <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="visa-application">
                                 <div class="timeline-dot"></div>
                                 <div class="pl-6">
                                     <h4 class="font-medium text-gray-500">Visa Application</h4>
@@ -789,7 +789,7 @@
                             </div>
 
                             <!-- Step 8: Pre-departure -->
-                            <div class="timeline-step">
+                            <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="pre-departure">
                                 <div class="timeline-dot"></div>
                                 <div class="pl-6">
                                     <h4 class="font-medium text-gray-500">Pre-Departure</h4>
@@ -804,10 +804,10 @@
                             </div>
 
                             <!-- Step 9: Arrival -->
-                            <div class="timeline-step">
+                            <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="arrival">
                                 <div class="timeline-dot"></div>
                                 <div class="pl-6">
-                                    <h4 class="font-medium text-gray-500">Post-Departure</h4>
+                                    <h4 class="font-medium text-gray-500">Arrival</h4>
                                     <ul class="list-disc pl-5 text-sm text-gray-400 mt-1 space-y-1">
                                         <li>Online meeting to advise and support in the first month in the foreign country</li>
                                         <li>Liaise with the school to provide support to student</li>
@@ -864,6 +864,594 @@
             } else {
                 content.style.display = 'none';
                 chevron.style.transform = 'rotate(-90deg)';
+            }
+        }
+
+        // Handle timeline step clicks
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelineSteps = document.querySelectorAll('.timeline-step');
+            
+            timelineSteps.forEach(step => {
+                step.addEventListener('click', function() {
+                    // Remove active class from all steps
+                    timelineSteps.forEach(s => {
+                        s.classList.remove('bg-gray-50', 'ring-2', 'ring-[#ED2217]');
+                    });
+                    
+                    // Add active class to clicked step
+                    this.classList.add('bg-gray-50', 'ring-2', 'ring-[#ED2217]');
+                    
+                    // Get the step ID
+                    const stepId = this.getAttribute('data-step');
+                    
+                    // Here you can add specific UI updates based on the step clicked
+                    updateUIForStep(stepId);
+                });
+            });
+        });
+
+        // Update UI based on selected step
+        function updateUIForStep(stepId) {
+            const documentsSection = document.querySelector('.mt-8');
+            const documentsContent = document.getElementById('documents-content');
+            const chevron = document.getElementById('documents-chevron');
+            
+            // Scroll to documents section
+            documentsSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Show documents section if hidden
+            if (documentsContent.style.display === 'none') {
+                documentsContent.style.display = 'block';
+                chevron.style.transform = 'rotate(0deg)';
+            }
+            
+            // Update the documents header and content based on the selected step
+            const documentsHeader = document.querySelector('.mt-8 h4');
+            
+            if (stepId === 'initial-advising') {
+                documentsHeader.textContent = 'Initial Advising';
+                documentsContent.innerHTML = `
+                    <div class="text-sm text-gray-700">
+                        <p>Your consultant will provide initial advising based on your selected program and review your background information, including academic performance, English proficiency, visa history, family background, and financial status. Please make sure your profile is complete to receive the best support. If your profile is not yet complete, please update all required information <a href="Student-profile.html" target="_blank" class="text-red-600 hover:text-red-800 underline">here</a>.</p>
+                    </div>
+                `;
+            } else if (stepId === 'application-progress') {
+                documentsHeader.textContent = 'Application In Progress';
+                documentsContent.innerHTML = `
+                <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                                    <div class="flex items-center">
+                                        <div class="p-2 bg-gray-100 rounded-lg mr-3">
+                                            <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-900">Academic Transcripts</p>
+                                            <p class="text-xs text-gray-500">PDF, 2.4 MB • Uploaded on Jan 12, 2025</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="p-2 text-gray-500 hover:text-gray-700">
+                                            <i data-lucide="eye" class="w-4 h-4"></i>
+                                        </button>
+                                        <button class="p-2 text-gray-500 hover:text-gray-700">
+                                            <i data-lucide="download" class="w-4 h-4"></i>
+                                        </button>
+                                        <button class="p-2 text-[#ED2217] hover:text-[#D61D13]">
+                                            <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                                    <div class="flex items-center">
+                                        <div class="p-2 bg-gray-100 rounded-lg mr-3">
+                                            <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-900">English Proficiency Test</p>
+                                            <p class="text-xs text-gray-500">PDF, 1.2 MB • Uploaded on Jan 15, 2025</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="p-2 text-gray-500 hover:text-gray-700">
+                                            <i data-lucide="eye" class="w-4 h-4"></i>
+                                        </button>
+                                        <button class="p-2 text-gray-500 hover:text-gray-700">
+                                            <i data-lucide="download" class="w-4 h-4"></i>
+                                        </button>
+                                        <button class="p-2 text-[#ED2217] hover:text-[#D61D13]">
+                                            <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                                    <div class="flex items-center">
+                                        <div class="p-2 bg-gray-100 rounded-lg mr-3">
+                                            <i data-lucide="file-text" class="w-5 h-5 text-gray-500"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-900">Passport Copy</p>
+                                            <p class="text-xs text-gray-500">PDF, 6.2 MB • Uploaded on Jan 31, 2025</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="p-2 text-gray-500 hover:text-gray-700">
+                                            <i data-lucide="eye" class="w-4 h-4"></i>
+                                        </button>
+                                        <button class="p-2 text-gray-500 hover:text-gray-700">
+                                            <i data-lucide="download" class="w-4 h-4"></i>
+                                        </button>
+                                        <button class="p-2 text-[#ED2217] hover:text-[#D61D13]">
+                                            <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- Next Steps Section inside dropdown -->
+                                <div class="mt-6 pt-6 border-t border-gray-200">
+                                    <button id="openDocModal" class="w-full flex justify-center items-center px-4 py-2 border border-transparent rounded-lg text-sm font-medium text-white hover:bg-[#D61D13] transition-colors" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'">
+                                        <i data-lucide="upload" class="w-4 h-4 mr-2"></i> Choose document from your profile
+                                    </button>
+                                </div>
+
+                                <!-- Document Selection Modal -->
+                                <div id="documentModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+                                    <div class="bg-white rounded-xl p-6 w-full max-w-2xl max-h-[80vh] overflow-y-auto">
+                                        <div class="flex justify-between items-center mb-4">
+                                            <div class="flex items-center space-x-2">
+                                                <h3 class="text-lg font-semibold text-gray-900">Select Document from Profile</h3>
+                                                <div class="relative group">
+                                                    <i data-lucide="help-circle" class="w-4 h-4 text-gray-400 hover:text-gray-500 cursor-help"></i>
+                                                    <div class="absolute left-0 mt-1 w-48 p-2 bg-gray-700 text-white text-xs rounded whitespace-normal opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none" style="z-index: 50;">
+                                                        To upload a new document, please upload it in your profile.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button id="closeDocModal" class="text-gray-400 hover:text-gray-500">
+                                                <i data-lucide="x" class="w-5 h-5"></i>
+                                            </button>
+                                        </div>
+                                        
+                                        <div class="space-y-3 mb-4">
+                                            <!-- Document Item -->
+                                            <label class="block">
+                                                <input type="checkbox" class="hidden document-checkbox" data-doc-id="doc1">
+                                                <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer document-item">
+                                                    <div class="flex items-center">
+                                                        <div class="flex items-center justify-center w-5 h-5 border-2 border-gray-300 rounded mr-3 flex-shrink-0">
+                                                            <i data-lucide="check" class="w-4 h-4 text-white check-icon"></i>
+                                                        </div>
+                                                        <div class="bg-red-50 p-2 rounded-lg mr-3">
+                                                            <i data-lucide="file-text" class="w-5 h-5 text-red-600"></i>
+                                                        </div>
+                                                        <div class="min-w-0">
+                                                            <p class="text-sm font-medium text-gray-900 truncate">High School Transcript</p>
+                                                            <p class="text-xs text-gray-500">PDF • 1.2 MB • Uploaded on Aug 15, 2025</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+
+                                            <!-- Document Item -->
+                                            <label class="block">
+                                                <input type="checkbox" class="hidden document-checkbox" data-doc-id="doc2">
+                                                <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer document-item">
+                                                    <div class="flex items-center">
+                                                        <div class="flex items-center justify-center w-5 h-5 border-2 border-gray-300 rounded mr-3 flex-shrink-0">
+                                                            <i data-lucide="check" class="w-4 h-4 text-white check-icon"></i>
+                                                        </div>
+                                                        <div class="bg-red-50 p-2 rounded-lg mr-3">
+                                                            <i data-lucide="file-text" class="w-5 h-5 text-red-600"></i>
+                                                        </div>
+                                                        <div class="min-w-0">
+                                                            <p class="text-sm font-medium text-gray-900 truncate">IELTS Test Results</p>
+                                                            <p class="text-xs text-gray-500">PDF • 0.8 MB • Uploaded on Aug 10, 2025</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+
+                                            <!-- Document Item -->
+                                            <label class="block">
+                                                <input type="checkbox" class="hidden document-checkbox" data-doc-id="doc3">
+                                                <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer document-item">
+                                                    <div class="flex items-center">
+                                                        <div class="flex items-center justify-center w-5 h-5 border-2 border-gray-300 rounded mr-3 flex-shrink-0">
+                                                            <i data-lucide="check" class="w-4 h-4 text-white check-icon"></i>
+                                                        </div>
+                                                        <div class="bg-red-50 p-2 rounded-lg mr-3">
+                                                            <i data-lucide="file-text" class="w-5 h-5 text-red-600"></i>
+                                                        </div>
+                                                        <div class="min-w-0">
+                                                            <p class="text-sm font-medium text-gray-900 truncate">Letter of Recommendation</p>
+                                                            <p class="text-xs text-gray-500">PDF • 0.5 MB • Uploaded on Aug 5, 2025</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <div class="flex justify-between items-center pt-4 border-t border-gray-200">
+                                            <span id="selectedCount" class="text-sm text-gray-500">0 documents selected</span>
+                                            <div class="space-x-3">
+                                                <button id="cancelDocSelect" class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                                                    Cancel
+                                                </button>
+                                                <button id="confirmDocSelect" class="px-4 py-2 text-sm font-medium text-white rounded-lg disabled:opacity-50" style="background-color: #ED2217;" onmouseover="this.style.backgroundColor='#D61D13'" onmouseout="this.style.backgroundColor='#ED2217'" disabled>
+                                                    Add Selected Documents (0)
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <style>
+                                    .document-checkbox:checked + .document-item {
+                                        border-color: #ED2217;
+                                        background-color: #FEF2F2;
+                                    }
+                                    .document-checkbox:checked + .document-item .check-icon {
+                                        color: white;
+                                        background-color: #ED2217;
+                                        border-radius: 3px;
+                                    }
+                                    
+                                    /* Help tooltip styles */
+                                    .relative.group .hidden {
+                                        display: none;
+                                    }
+                                    .relative.group:hover .hidden {
+                                        display: block;
+                                    }
+                                </style>
+                `;
+            } else if (stepId === 'submitted-to-school') {
+                documentsHeader.textContent = 'Submitted to School';
+                documentsContent.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="bg-green-50 border-l-4 border-green-400 p-4">
+                            <h3 class="text-sm font-medium text-green-800 mb-2">EGE Admission team:</h3>
+                            <ul class="text-sm text-green-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Prepare and finalize Agreement with Student</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Collect and keep record of signed Agreement</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Issue Invoice to student at the beginning of the Step</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+                            <h3 class="text-sm font-medium text-blue-800 mb-2">EGE Head of Admission team:</h3>
+                            <ul class="text-sm text-blue-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Review Agreement</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-purple-50 border-l-4 border-purple-400 p-4">
+                            <h3 class="text-sm font-medium text-purple-800 mb-2">EGE President/CEO:</h3>
+                            <ul class="text-sm text-purple-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Approve & sign Agreement</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                            <h3 class="text-sm font-medium text-yellow-800 mb-2">EGE Accountant:</h3>
+                            <ul class="text-sm text-yellow-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Receive first payment from student</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-red-50 border-l-4 border-red-400 p-4">
+                            <h3 class="text-sm font-medium text-red-800 mb-2">EGE BD team:</h3>
+                            <ul class="text-sm text-red-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Send student the EGE Welcome Package</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-indigo-50 border-l-4 border-indigo-400 p-4">
+                            <h3 class="text-sm font-medium text-indigo-800 mb-2">Consultant:</h3>
+                            <ul class="text-sm text-indigo-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Follow up and support throughout the process. Ensure Agreement is signed on time with student & payment is paid on time</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else if (stepId === 'arrival') {
+                documentsHeader.textContent = 'Arrival';
+                documentsContent.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+                            <h3 class="text-sm font-medium text-blue-800 mb-2">EGE Admission Team:</h3>
+                            <ul class="text-sm text-blue-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Online meeting to advise and support in the first month in the foreign country</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Liaise with the school to provide support to student</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-green-50 border-l-4 border-green-400 p-4">
+                            <h3 class="text-sm font-medium text-green-800 mb-2">Consultant:</h3>
+                            <ul class="text-sm text-green-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Continuous support and follow-up with student and family</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else if (stepId === 'pre-departure') {
+                documentsHeader.textContent = 'Pre-Departure';
+                documentsContent.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+                            <h3 class="text-sm font-medium text-blue-800 mb-2">EGE Admission Team:</h3>
+                            <ul class="text-sm text-blue-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Pre-departure online training session</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Help prepare travel schedule</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Support with Insurance</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-green-50 border-l-4 border-green-400 p-4">
+                            <h3 class="text-sm font-medium text-green-800 mb-2">Consultant:</h3>
+                            <ul class="text-sm text-green-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Send student the Preparation Checklist for Department</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Support student with pre-departure preparation</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else if (stepId === 'visa-application') {
+                documentsHeader.textContent = 'Visa Application';
+                documentsContent.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+                            <h3 class="text-sm font-medium text-blue-800 mb-2">EGE Admission Team:</h3>
+                            <ul class="text-sm text-blue-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Review visa application documents</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Instruct the visa application process</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Review DS-160 or other application form to be submitted to the Embassy</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Instruct the visa fee payment process</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Prepare for visa interview</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Track the visa application process</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-green-50 border-l-4 border-green-400 p-4">
+                            <h3 class="text-sm font-medium text-green-800 mb-2">Consultant:</h3>
+                            <ul class="text-sm text-green-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Send student the Checklist of Visa application documents</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Help collect Visa application documents from student. Ensure documents are collected on time</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Support with communication with student</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else if (stepId === 'committed') {
+                documentsHeader.textContent = 'Committed to School';
+                documentsContent.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+                            <h3 class="text-sm font-medium text-blue-800 mb-2">EGE Admission Team:</h3>
+                            <ul class="text-sm text-blue-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Advise the students to finalize their programs and school</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Support student with the acceptance process</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-green-50 border-l-4 border-green-400 p-4">
+                            <h3 class="text-sm font-medium text-green-800 mb-2">Consultant:</h3>
+                            <ul class="text-sm text-green-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Support with communication with student.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else if (stepId === 'offer-letter') {
+                documentsHeader.textContent = 'Offered Letter Issued';
+                documentsContent.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+                            <h3 class="text-sm font-medium text-blue-800 mb-2">EGE Admission Team:</h3>
+                            <ul class="text-sm text-blue-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Final review and submit school application (And scholarship application if applicable)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Follow up with Application and update students if additional documents are required</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Update students about results</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Issue Invoice to student at the beginning of the Step</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                            <h3 class="text-sm font-medium text-yellow-800 mb-2">EGE Accountant:</h3>
+                            <ul class="text-sm text-yellow-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Receive third payment from student</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-green-50 border-l-4 border-green-400 p-4">
+                            <h3 class="text-sm font-medium text-green-800 mb-2">Consultant:</h3>
+                            <ul class="text-sm text-green-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Support with communication with student. Ensure documents are collected on time and payment is paid on time</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else if (stepId === 'school-response') {
+                documentsHeader.textContent = 'School Response';
+                documentsContent.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+                            <h3 class="text-sm font-medium text-blue-800 mb-2">EGE Admission Team:</h3>
+                            <ul class="text-sm text-blue-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Review student's documents, finalize schools and programs</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Financial review (Total Cost of attendance, scholarship, Fees)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Create Student Application Profile Sheet</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Prepare application for students for each school and program</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Instruct student to write Personal Statement (If applicable)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Prepare scholarship application (If applicable)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>In-depth advices for students throughout the preparation process</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Issue Invoice to student at the beginning of the Step</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                            <h3 class="text-sm font-medium text-yellow-800 mb-2">EGE Accountant:</h3>
+                            <ul class="text-sm text-yellow-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Receive second payment from student</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-green-50 border-l-4 border-green-400 p-4">
+                            <h3 class="text-sm font-medium text-green-800 mb-2">Consultant:</h3>
+                            <ul class="text-sm text-green-700 space-y-1 pl-4">
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Support with communication with student</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2">•</span>
+                                    <span>Send out document checklist and help collect documents from students. Ensure documents are collected on time and payment is paid on time</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else {
+                const stepTitles = {
+                    'application-progress': 'Application Documents',
+                    'visa-application': 'Visa Application Documents',
+                    'pre-departure': 'Pre-Departure Documents',
+                    'arrival': 'Arrival Information',
+                };
+                
+                documentsHeader.textContent = stepTitles[stepId] || 'Uploaded Documents';
+                // Restore default documents content if needed
+                if (stepId !== 'initial-advising') {
+                    // You can add default content for other steps here if needed
+                }
             }
         }
 

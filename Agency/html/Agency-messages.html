@@ -108,51 +108,113 @@
                 <div class="w-1/3 bg-white rounded-l-xl shadow-sm overflow-hidden">
                     <!-- Search Bar -->
                     <div class="p-4 border-b">
-                        <div class="relative">
+                        <div class="relative mb-2">
                             <i data-lucide="search" class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
                             <input type="text" placeholder="Search messages..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
                         </div>
+                        <!-- Message Filter Tabs -->
+                        <div class="flex w-full mt-2 space-x-1" id="messageTabs">
+                            <button data-tab="all" class="tab-button flex-1 px-1 py-2 text-xs sm:text-sm font-medium text-white rounded-lg whitespace-nowrap truncate text-center transition-colors" style="background-color: #ED2217;">
+                                All
+                            </button>
+                            <button data-tab="students" class="tab-button flex-1 px-1 py-2 text-xs sm:text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg whitespace-nowrap truncate text-center transition-colors">
+                                Students
+                            </button>
+                            <button data-tab="agents" class="tab-button flex-1 px-1 py-2 text-xs sm:text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg whitespace-nowrap truncate text-center transition-colors">
+                                Agents
+                            </button>
+                            <button data-tab="university" class="tab-button flex-1 px-1 py-2 text-xs sm:text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg whitespace-nowrap truncate text-center transition-colors">
+                                University
+                            </button>
+                            <button data-tab="ellacy-staff" class="tab-button flex-1 px-1 py-2 text-xs sm:text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg whitespace-nowrap truncate text-center transition-colors">
+                                Ellacy Staff
+                            </button>
+                        </div>
                     </div>
                     <!-- Chat List -->
-                    <div class="overflow-y-auto h-[calc(100vh-12rem)]">
-                        <!-- Active Chat -->
-                        <div class="p-4 border-l-4 cursor-pointer" style="background-color: #FEF2F2; border-left-color: #ED2217;">
-                            <div class="flex items-center space-x-3">
-                                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop" alt="Sarah Chen" class="w-12 h-12 rounded-full object-cover">
-                                <div class="flex-1">
-                                    <h4 class="font-medium text-gray-900">Sarah Chen</h4>
-                                    <p class="text-sm text-gray-500 truncate">Thanks for the update!</p>
-                                </div>
-                                <div class="text-right">
-                                    <span class="text-xs text-gray-500">2m ago</span>
-                                    <span class="block mt-1 w-6 h-6 text-white text-xs rounded-full flex items-center justify-center" style="background-color: #ED2217;">2</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Other Chats -->
-                        <div class="p-4 hover:bg-gray-50 cursor-pointer border-b">
-                            <div class="flex items-center space-x-3">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="David Kim" class="w-12 h-12 rounded-full object-cover">
-                                <div class="flex-1">
-                                    <h4 class="font-medium text-gray-900">David Kim</h4>
-                                    <p class="text-sm text-gray-500 truncate">When can we schedule the next meeting?</p>
-                                </div>
-                                <div class="text-right">
-                                    <span class="text-xs text-gray-500">1h ago</span>
+                    <div class="overflow-y-auto h-[calc(100vh-12rem)]" id="chatList">
+                        <!-- All Chats (default) -->
+                        <div class="chat-item" data-category="all">
+                            <div class="p-4 border-l-4 cursor-pointer hover:bg-gray-50" style="background-color: #FEF2F2; border-left-color: #ED2217;">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop" alt="Sarah Chen" class="w-12 h-12 rounded-full object-cover">
+                                    <div class="flex-1">
+                                        <h4 class="font-medium text-gray-900">Sarah Chen</h4>
+                                        <p class="text-sm text-gray-500 truncate">Thanks for the update!</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="text-xs text-gray-500">2h ago</span>
+                                        <span class="block w-2 h-2 bg-red-500 rounded-full ml-auto mt-1"></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="p-4 hover:bg-gray-50 cursor-pointer border-b">
-                            <div class="flex items-center space-x-3">
-                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Emily Wang" class="w-12 h-12 rounded-full object-cover">
-                                <div class="flex-1">
-                                    <h4 class="font-medium text-gray-900">Emily Wang</h4>
-                                    <p class="text-sm text-gray-500 truncate">I've submitted my application</p>
+                        <!-- Students -->
+                        <div class="chat-item hidden" data-category="students">
+                            <div class="p-4 border-l-4 cursor-pointer hover:bg-gray-50" style="border-left-color: #ffffff;">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="John Doe" class="w-12 h-12 rounded-full object-cover">
+                                    <div class="flex-1">
+                                        <h4 class="font-medium text-gray-900">John Doe</h4>
+                                        <p class="text-sm text-gray-500 truncate">Hi, I have a question about my application</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="text-xs text-gray-500">1h ago</span>
+                                    </div>
                                 </div>
-                                <div class="text-right">
-                                    <span class="text-xs text-gray-500">Yesterday</span>
+                            </div>
+                        </div>
+
+                        <!-- Agents -->
+                        <div class="chat-item hidden" data-category="agents">
+                            <div class="p-4 border-l-4 cursor-pointer hover:bg-gray-50" style="border-left-color: #ED2217;">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Emma Wilson" class="w-12 h-12 rounded-full object-cover">
+                                    <div class="flex-1">
+                                        <h4 class="font-medium text-gray-900">Emma Wilson</h4>
+                                        <p class="text-sm text-gray-500 truncate">Thanks for the update!</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="text-xs text-gray-500">2h ago</span>
+                                        <span class="block w-2 h-2 bg-red-500 rounded-full ml-auto mt-1"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- University -->
+                        <div class="chat-item hidden" data-category="university">
+                            <div class="p-4 border-l-4 cursor-pointer hover:bg-gray-50" style="border-left-color: #ffffff;">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
+                                        <i data-lucide="school" class="w-6 h-6 text-purple-600"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-medium text-gray-900">Harvard University</h4>
+                                        <p class="text-sm text-gray-500 truncate">Application deadline extended to Dec 15</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="text-xs text-gray-500">1d ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ellacy Staff -->
+                        <div class="chat-item hidden" data-category="ellacy-staff">
+                            <div class="p-4 border-l-4 cursor-pointer hover:bg-gray-50" style="border-left-color: #ffffff;">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center">
+                                        <i data-lucide="headset" class="w-6 h-6 text-pink-600"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-medium text-gray-900">Ellacy Support</h4>
+                                        <p class="text-sm text-gray-500 truncate">Your recent inquiry has been resolved</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="text-xs text-gray-500">2d ago</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -196,7 +258,7 @@
 
                         <!-- My Message -->
                         <div class="flex items-end justify-end space-x-2">
-                            <div class="max-w-md bg-blue-500 text-white rounded-2xl rounded-br-none p-4">
+                            <div class="max-w-md bg-red-500 text-white rounded-2xl rounded-br-none p-4">
                                 <p>Yes, I've received them. Everything looks good! I'll submit them to the university today.</p>
                                 <span class="text-xs text-red-100 mt-1 block">10:32 AM</span>
                             </div>
@@ -213,7 +275,7 @@
 
                         <!-- My Message -->
                         <div class="flex items-end justify-end space-x-2">
-                            <div class="max-w-md bg-blue-500 text-white rounded-2xl rounded-br-none p-4">
+                            <div class="max-w-md bg-red-500 text-white rounded-2xl rounded-br-none p-4">
                                 <p>You're welcome! I'll keep you updated on the application status.</p>
                                 <span class="text-xs text-red-100 mt-1 block">10:35 AM</span>
                             </div>
@@ -241,23 +303,69 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Profile Dropdown
+        // Toggle profile dropdown
         const profileMenu = document.getElementById('profile-menu');
         const profileDropdown = document.getElementById('profile-dropdown');
 
-        profileMenu.addEventListener('click', (e) => {
-            e.stopPropagation();
-            profileDropdown.classList.toggle('hidden');
-        });
+        if (profileMenu && profileDropdown) {
+            profileMenu.addEventListener('click', (e) => {
+                e.stopPropagation();
+                profileDropdown.classList.toggle('hidden');
+            });
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', () => {
-            profileDropdown.classList.add('hidden');
+            // Close dropdown when clicking outside
+            document.addEventListener('click', () => {
+                if (!profileDropdown.classList.contains('hidden')) {
+                    profileDropdown.classList.add('hidden');
+                }
+            });
+        }
+
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab-button');
+            const chatItems = document.querySelectorAll('.chat-item');
+            
+            // Show all chats by default
+            showChats('all');
+            
+            // Add click event to each tab
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active state from all tabs
+                    tabs.forEach(t => {
+                        t.classList.remove('text-white');
+                        t.style.backgroundColor = '';
+                        t.classList.add('text-gray-700', 'bg-gray-100', 'hover:bg-gray-200');
+                    });
+                    
+                    // Add active state to clicked tab
+                    this.classList.remove('text-gray-700', 'bg-gray-100', 'hover:bg-gray-200');
+                    this.classList.add('text-white');
+                    this.style.backgroundColor = '#ED2217';
+                    
+                    // Get the category to show
+                    const category = this.getAttribute('data-tab');
+                    showChats(category);
+                });
+            });
+            
+            // Function to show chats based on category
+            function showChats(category) {
+                chatItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            }
         });
 
         function handleLogout() {
-            // Add your logout logic here
-            window.location.href = '../../login.html';
+            // Add logout logic here
+            console.log('Logging out...');
+            // window.location.href = 'login.html';
         }
     </script>
 </body>
