@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DS-160 Form - APPLYLEAD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-white shadow-sm border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between">
+                    <div class="flex items-center">
+                        <a href="Student-Dashboard.html" class="flex items-center">
+                            <img src="../../ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-4">
+                            <span class="text-sm text-white bg-red-600 px-2 py-1 rounded-full">Student</span>
+                        </a>
+                        <div class="hidden md:block ml-6 border-l border-gray-200 pl-6">
+                            <h1 class="text-lg font-bold text-gray-900">DS-160 Online Nonimmigrant Visa Application</h1>
+                            <p class="text-xs text-gray-600">U.S. Department of State</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mobile title -->
+                <div class="md:hidden mt-4 text-left">
+                    <h1 class="text-lg font-bold text-gray-900">DS-160 Online Nonimmigrant Visa Application</h1>
+                    <p class="text-xs text-gray-600">U.S. Department of State</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <div class="space-y-6">
+                        <!-- Application Information -->
+                        <div class="bg-blue-50 border-l-4 border-red-400 p-4">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i data-lucide="info" class="h-5 w-5 text-red-400"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm text-red-700">
+                                        This is a simulated DS-160 form for demonstration purposes. The actual DS-160 form must be completed on the official U.S. Department of State website.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Content -->
+                        <form id="ds160Form" class="space-y-4">
+                            <!-- Personal Information Section -->
+                            <div class="bg-white p-4 rounded-lg border border-gray-200">
+                                <h2 class="text-lg font-medium text-gray-900 mb-3">Personal Information</h2>
+                                <div class="space-y-4">
+                                    <!-- Row 1: Full Name and Native Name -->
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">1. Full Name</label>
+                                            <input type="text" name="fullName" required 
+                                                class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Full Name in Native Language</label>
+                                            <input type="text" name="nativeName" required
+                                                class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                        </div>
+                                    </div>
+
+                                    <!-- Row 2: Date of Birth and Marital Status -->
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">2. Date of Birth</label>
+                                            <input type="date" name="dateOfBirth" required
+                                                class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">3. Marital Status</label>
+                                            <div class="grid grid-cols-2 gap-2 mt-1">
+                                                <label class="flex items-center text-sm">
+                                                    <input type="radio" name="maritalStatus" value="Single" checked
+                                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                    <span class="ml-2">Single</span>
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="radio" name="maritalStatus" value="Married"
+                                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                    <span class="ml-2">Married</span>
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="radio" name="maritalStatus" value="Widow"
+                                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                    <span class="ml-2">Widow</span>
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="radio" name="maritalStatus" value="Divorced"
+                                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                    <span class="ml-2">Divorced</span>
+                                                </label>
+                                                <label class="flex items-center text-sm">
+                                                    <input type="radio" name="maritalStatus" value="Separated"
+                                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                    <span class="ml-2">Separated</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Row 3: Sex and Nationality -->
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <!-- Sex -->
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">5. Sex</label>
+                                            <div class="flex space-x-4 mt-1">
+                                                <label class="inline-flex items-center">
+                                                    <input type="radio" name="sex" value="Male" checked
+                                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                    <span class="ml-2 text-sm text-gray-700">Male</span>
+                                                </label>
+                                                <label class="inline-flex items-center">
+                                                    <input type="radio" name="sex" value="Female"
+                                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                    <span class="ml-2 text-sm text-gray-700">Female</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <!-- Nationality -->
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">6. Nationality</label>
+                                            <div class="space-y-2">
+                                                <input type="text" name="nationality" value="Vietnam" required
+                                                    class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                <div class="text-sm">
+                                                    <p class="mb-2">Do you hold or have you held any nationality other than the one indicated above on nationality?</p>
+                                                    <div class="flex space-x-4">
+                                                        <label class="inline-flex items-center">
+                                                            <input type="radio" name="otherNationality" value="No" checked
+                                                                class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                            <span class="ml-2">No</span>
+                                                        </label>
+                                                        <label class="inline-flex items-center">
+                                                            <input type="radio" name="otherNationality" value="Yes"
+                                                                class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                            <span class="ml-2">Yes</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="text-sm">
+                                                    <p>Are you a permanent resident of a country/region other than your country/region of origin (nationality) above?</p>
+                                                    <div class="flex space-x-4">
+                                                        <label class="inline-flex items-center">
+                                                            <input type="radio" name="otherResident" value="No" checked
+                                                                class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                            <span class="ml-2">No</span>
+                                                        </label>
+                                                        <label class="inline-flex items-center">
+                                                            <input type="radio" name="otherResident" value="Yes"
+                                                                class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                            <span class="ml-2">Yes</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Row 4: ID Number and Permanent Address -->
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <!-- ID Number -->
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">7. ID No.</label>
+                                            <input type="text" name="idNumber" required
+                                                class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                        </div>
+
+                                        <!-- Permanent Address -->
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">8. Permanent Address</label>
+                                            <div class="space-y-2">
+                                                <div>
+                                                    <label class="block text-xs text-gray-500 mb-1">Province/City</label>
+                                                    <input type="text" name="permanentCity" required
+                                                        class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                </div>
+                                                <div class="grid grid-cols-2 gap-4">
+                                                    <div>
+                                                        <label class="block text-xs text-gray-500 mb-1">Country</label>
+                                                        <input type="text" name="permanentCountry" value="Vietnam" required
+                                                            class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                    </div>
+                                                    <div>
+                                                        <label class="block text-xs text-gray-500 mb-1">ZIP Code</label>
+                                                        <input type="text" name="permanentZip" value="700000" required
+                                                            class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Row 5: Current Address -->
+                                    <div class="space-y-2">
+                                        <div class="flex items-center">
+                                            <span class="text-sm font-medium text-gray-700 mr-4">9. Is current address similar to permanent address?</span>
+                                            <label class="inline-flex items-center mr-4">
+                                                <input type="radio" name="sameAsPermanent" value="Yes" checked
+                                                    class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300" onchange="toggleCurrentAddress(this)">
+                                                <span class="ml-2 text-sm">Yes</span>
+                                            </label>
+                                            <label class="inline-flex items-center">
+                                                <input type="radio" name="sameAsPermanent" value="No"
+                                                    class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300" onchange="toggleCurrentAddress(this)">
+                                                <span class="ml-2 text-sm">No</span>
+                                            </label>
+                                        </div>
+                                        
+                                        <div id="currentAddressSection" class="hidden border-t pt-4 mt-2">
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Current Address</label>
+                                            <div class="space-y-2">
+                                                <div>
+                                                    <label class="block text-xs text-gray-500 mb-1">Province/City</label>
+                                                    <input type="text" name="currentCity"
+                                                        class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                </div>
+                                                <div class="grid grid-cols-2 gap-4">
+                                                    <div>
+                                                        <label class="block text-xs text-gray-500 mb-1">Country</label>
+                                                        <input type="text" name="currentCountry" value="Vietnam"
+                                                            class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                    </div>
+                                                    <div>
+                                                        <label class="block text-xs text-gray-500 mb-1">ZIP Code</label>
+                                                        <input type="text" name="currentZip" value="700000"
+                                                            class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Row 6: Contact Information -->
+                                    <div class="space-y-2">
+                                        <label class="block text-sm font-medium text-gray-700">10. Contact Information</label>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                            <div>
+                                                <label class="block text-xs text-gray-500 mb-1">Home Phone</label>
+                                                <input type="tel" name="homePhone"
+                                                    class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                            </div>
+                                            <div>
+                                                <label class="block text-xs text-gray-500 mb-1">Work Phone</label>
+                                                <input type="tel" name="workPhone"
+                                                    class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                            </div>
+                                            <div>
+                                                <label class="block text-xs text-gray-500 mb-1">Work Fax</label>
+                                                <input type="tel" name="workFax"
+                                                    class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                            </div>
+                                            <div>
+                                                <label class="block text-xs text-gray-500 mb-1">Mobile</label>
+                                                <input type="tel" name="mobile" required
+                                                    class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Row 7: Passport Number -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">11. Passport No.</label>
+                                        <input type="text" name="passportNumber" required
+                                            class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                    </div>
+
+                                    <!-- Row 3: Place of Birth -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">4. Place of Birth</label>
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                            <div>
+                                                <label class="block text-xs text-gray-500 mb-1">Province/State/City</label>
+                                                <input type="text" name="birthCity" required
+                                                    class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                            </div>
+                                            <div>
+                                                <label class="block text-xs text-gray-500 mb-1">Country</label>
+                                                <input type="text" name="birthCountry" required
+                                                    class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="flex justify-between items-center pt-2">
+                                <div class="text-sm text-gray-500">
+                                    * Required fields
+                                </div>
+                                <div class="space-x-3">
+                                    <button type="button" class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                        Save
+                                    </button>
+                                    <button type="submit" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                        Next
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-gray-200 mt-8">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <p class="text-center text-sm text-gray-500">
+                    &copy; 2025 APPLYLEAD. All rights reserved.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Toggle current address visibility
+        function toggleCurrentAddress(radio) {
+            const currentAddressSection = document.getElementById('currentAddressSection');
+            if (radio.value === 'No') {
+                currentAddressSection.classList.remove('hidden');
+                // Make current address fields required
+                currentAddressSection.querySelectorAll('input').forEach(input => {
+                    input.required = true;
+                });
+            } else {
+                currentAddressSection.classList.add('hidden');
+                // Make current address fields not required
+                currentAddressSection.querySelectorAll('input').forEach(input => {
+                    input.required = false;
+                });
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,28 +15,42 @@
         body {
             font-family: 'Inter', sans-serif;
         }
+
         .form-step {
             display: none;
         }
+
         .form-step.active {
             display: block;
             animation: fadeIn 0.5s ease-in-out;
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .step-indicator {
             @apply flex-1 h-1.5 rounded-full bg-gray-200;
         }
+
         .step-indicator.active {
             @apply bg-red-600;
         }
+
         .step-indicator.completed {
             @apply bg-green-500;
         }
     </style>
 </head>
+
 <body class="bg-gray-50">
     <!-- Header -->
     <header class="bg-white shadow-sm">
@@ -48,54 +63,63 @@
                         <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Student</span>
                     </a>
                 </div>
-                
+
                 <!-- Navigation Menu -->
                 <nav class="flex items-center space-x-3">
-                    <a href="Student-find-program.html" class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors">
+                    <a href="Student-find-program.html"
+                        class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors">
                         <i data-lucide="search" class="w-4 h-4 mr-2"></i>
                         Find Scholarships
                     </a>
-                    <a href="Student-favorites.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                    <a href="Student-favorites.html"
+                        class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
                         <i data-lucide="heart" class="w-4 h-4 mr-2"></i>
                         Favorites (4)
                     </a>
-                    <a href="Student-my-application.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                    <a href="Student-my-application.html"
+                        class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
                         <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
                         My Applications (8)
                     </a>
-                    <a href="Student-payment.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                    <a href="Student-payment.html"
+                        class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
                         <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
                         Payment
                     </a>
                 </nav>
-                
+
                 <!-- Right Side -->
                 <div class="flex items-center space-x-4">
-                    <a href="Student-messages.html" class="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg" title="Messages">
+                    <a href="Student-messages.html"
+                        class="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg" title="Messages">
                         <i data-lucide="mail" class="w-5 h-5"></i>
                     </a>
-                    
+
                     <button class="relative">
                         <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
                         <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
                     </button>
                     <!-- Profile Dropdown -->
                     <div class="relative">
-                        <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
-                                 alt="Profile" 
-                                 class="w-8 h-8 rounded-full object-cover">
+                        <button id="profile-menu"
+                            class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop"
+                                alt="Profile" class="w-8 h-8 rounded-full object-cover">
                         </button>
-                        
+
                         <!-- Dropdown Menu -->
-                        <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
-                            <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        <div id="profile-dropdown"
+                            class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                            <a href="Student-profile.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
                             </a>
-                            <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <a href="Student-profile.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
                             </a>
-                            <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <a href="#" onclick="handleLogout()"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
                             </a>
                         </div>
@@ -107,369 +131,920 @@
 
     <!-- Main Content -->
     <main class="w-full max-w-full mx-auto px-4 sm:px-8 lg:px-12 py-8">
-        <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+        <div class="space-y-6">
             <h2 class="text-xl font-bold text-gray-900 mb-6">Personal Information</h2>
-            
+
             <form id="applicationForm" class="space-y-6">
-                <!-- Personal Information -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div>
-                        <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">FULL LEGAL NAME (as in passport) <span class="text-red-500">*</span></label>
-                        <input type="text" id="fullName" name="fullName" required readonly
-                            class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg"
-                            value="Nguyen Van A">
-                    </div>
-                    <div>
-                        <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Last Name<span class="text-red-500">*</span></label>
-                        <input type="text" id="lastname" name="lastname" required readonly
-                            class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg"
-                            value="Nguyen">
-                    </div>
-                    <div>
-                        <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">First Name<span class="text-red-500">*</span></label>
-                        <input type="text" id="firstname" name="firstname" required readonly
-                            class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg"
-                            value="A">
-                    </div>
-                    <div>
-                        <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Middle Name or Initial<span class="text-red-500"></span></label>
-                        <input type="text" id="middlename" name="middlename"
-                            class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg"
-                            value="Van">
-                    </div>
-                    <div>
-                        <label for="emergencyName" class="block text-sm font-medium text-gray-700 mb-1">Social Security Number <span class="text-red-500">*</span></label>
-                        <input type="text" id="emergencyName" name="emergencyName" required
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
-                    </div>
-                    <div>
-                        <label for="dateOfBirth" class="block text-sm font-medium text-gray-700 mb-1">Date of Birth <span class="text-red-500">*</span></label>
-                        <input type="date" id="dateOfBirth" name="dateOfBirth" required readonly
-                            class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg"
-                            value="2000-01-15">
-                    </div>
-                    <div>
-                        <label for="gender" class="block text-sm font-medium text-gray-700 mb-1">Gender <span class="text-red-500">*</span></label>
-                        <select id="gender" name="gender" required disabled
-                            class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg">
-                            <option value="">Select Gender</option>
-                            <option value="male" selected>Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="nationality" class="block text-sm font-medium text-gray-700 mb-1">Nationality <span class="text-red-500">*</span></label>
-                        <input type="text" id="nationality" name="nationality" required readonly
-                            class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg"
-                            value="Vietnamese">
-                    </div>
-                    <div>
-                        <label for="phoneNumber" class="block text-sm font-medium text-gray-700 mb-1">Phone Number <span class="text-red-500">*</span></label>
-                        <div class="flex">
-                            <select class="w-1/3 px-3 py-2 border border-r-0 border-gray-200 bg-gray-50 rounded-l-lg" disabled>
-                                <option>+1</option>
-                                <option>+44</option>
-                                <option>+61</option>
-                                <option>+65</option>
-                                <option selected>+84</option>
-                            </select>
-                            <input type="tel" id="phoneNumber" name="phoneNumber" required readonly
-                                class="w-full px-3 py-2 border border-l-0 border-gray-200 bg-gray-50 rounded-r-lg"
-                                value="901234567">
-                        </div>
-                    </div>
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address <span class="text-red-500">*</span></label>
-                        <input type="email" id="email" name="email" required readonly
-                            class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg"
-                            value="nguyenvana@example.com">
-                    </div>
-                </div>
-                
-                <!-- Place of Birth & Address -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div>
-                        <label for="cityOfBirth" class="block text-sm font-medium text-gray-700 mb-1">City of Birth <span class="text-red-500">*</span></label>
-                        <input type="text" id="cityOfBirth" name="cityOfBirth" required readonly
-                            class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg"
-                            value="Ho Chi Minh City">
-                    </div>
-                    <div>
-                        <label for="countryOfBirth" class="block text-sm font-medium text-gray-700 mb-1">Country of Birth <span class="text-red-500">*</span></label>
-                        <input type="text" id="countryOfBirth" name="countryOfBirth" required readonly
-                            class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg"
-                            value="Vietnam">
-                    </div>
-                    <div class="md:col-span-2">
-                        <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Address <span class="text-red-500">*</span></label>
-                        <input type="text" id="address" name="address" required readonly
-                            class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg"
-                            value="123 Main Street, District 1">
-                    </div>
-                    <div>
-                        <label for="city" class="block text-sm font-medium text-gray-700 mb-1">City <span class="text-red-500">*</span></label>
-                        <input type="text" id="city" name="city" required readonly
-                            class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg"
-                            value="Ho Chi Minh City">
-                    </div>
-                    <div>
-                        <label for="postalCode" class="block text-sm font-medium text-gray-700 mb-1">ZIP/Postal Code <span class="text-red-500">*</span></label>
-                        <input type="text" id="postalCode" name="postalCode" required readonly
-                            class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg"
-                            value="700000">
-                    </div>
-                </div>
-                
-                <!-- Note about address information -->
-                <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
-                    <div class="flex">
-                        <div class="flex-shrink-0">
-                            <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-sm text-red-700">
-                                Your personal information is pre-filled from your profile. 
-                                To update any information, please visit your <a href="Student-profile.html" class="font-medium text-red-700 underline hover:text-red-600">profile settings</a>.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Educational Information -->
-                <div class="mt-8">
-                    <h3 class="text-xl font-bold text-gray-900 mb-6">Educational Information</h3>
+                <div class="space-y-6">
+                    <!-- Personal Information -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <!-- Highest Level of Education -->
                         <div>
-                            <label for="educationLevel" class="block text-sm font-medium text-gray-700 mb-1">Highest Level of Education <span class="text-red-500">*</span></label>
-                            <select id="educationLevel" name="educationLevel" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
-                                <option value="">Select Education Level</option>
-                                <option value="high_school">High School</option>
-                                <option value="associate">Associate Degree</option>
-                                <option value="bachelor" selected>Bachelor's Degree</option>
-                                <option value="master">Master's Degree</option>
-                                <option value="phd">PhD/Doctorate</option>
-                                <option value="other">Other</option>
-                            </select>
+                            <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">FULL LEGAL NAME
+                                (as in passport) <span class="text-red-500">*</span></label>
+                            <input type="text" id="fullName" name="fullName" required readonly
+                                class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg"
+                                value="Nguyen Van A">
                         </div>
-                        
-                        <!-- Institution Name -->
                         <div>
-                            <label for="institutionName" class="block text-sm font-medium text-gray-700 mb-1">Institution Name <span class="text-red-500">*</span></label>
-                            <input type="text" id="institutionName" name="institutionName" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
-                                placeholder="e.g., National University of Singapore">
+                            <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Last Name<span
+                                    class="text-red-500">*</span></label>
+                            <input type="text" id="lastname" name="lastname" required readonly
+                                class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg" value="Nguyen">
                         </div>
-                        
-                        <!-- Field of Study -->
                         <div>
-                            <label for="fieldOfStudy" class="block text-sm font-medium text-gray-700 mb-1">Field of Study <span class="text-red-500">*</span></label>
-                            <input type="text" id="fieldOfStudy" name="fieldOfStudy" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
-                                placeholder="e.g., Computer Science, Business Administration">
+                            <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">First Name<span
+                                    class="text-red-500">*</span></label>
+                            <input type="text" id="firstname" name="firstname" required readonly
+                                class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg" value="A">
                         </div>
-                        
-                        <!-- Year of Graduation -->
                         <div>
-                            <label for="graduationYear" class="block text-sm font-medium text-gray-700 mb-1">Year of Graduation <span class="text-red-500">*</span></label>
-                            <input type="month" id="graduationYear" name="graduationYear" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                            <label for="middlename" class="block text-sm font-medium text-gray-700 mb-1">Middle Name or
+                                Initial<span class="text-red-500"></span></label>
+                            <input type="text" id="middlename" name="middlename"
+                                class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg" value="Van">
                         </div>
-                    </div>
-                </div>
 
-                <!-- Housing Information -->
-                <div class="mt-8">
-                    <h3 class="text-xl font-bold text-gray-900 mb-6">Housing Information</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <!-- Accommodation Type -->
                         <div>
-                            <label for="accommodationType" class="block text-sm font-medium text-gray-700 mb-1">Preferred Accommodation Type <span class="text-red-500">*</span></label>
-                            <select id="accommodationType" name="accommodationType" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
-                                <option value="">Select Accommodation Type</option>
-                                <option value="on_campus">On-Campus Dormitory</option>
-                                <option value="off_campus">Off-Campus Housing</option>
-                                <option value="homestay">Homestay</option>
-                                <option value="shared_apartment">Shared Apartment</option>
-                                <option value="private_apartment">Private Apartment</option>
-                            </select>
+                            <label for="otherNames" class="block text-sm font-medium text-gray-700 mb-1">Other names
+                                which may appear</label>
+                            <input type="text" id="otherNames" name="otherNames"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                placeholder="Enter other names if applicable">
                         </div>
-                        
-                        <!-- Move-in Date -->
+
                         <div>
-                            <label for="moveInDate" class="block text-sm font-medium text-gray-700 mb-1">Preferred Move-in Date <span class="text-red-500">*</span></label>
-                            <input type="date" id="moveInDate" name="moveInDate" required
+                            <label for="emergencyName" class="block text-sm font-medium text-gray-700 mb-1">Social
+                                Security Number <span class="text-red-500">*</span></label>
+                            <input type="text" id="emergencyName" name="emergencyName" required
                                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
                         </div>
-                        
-                        <!-- Special Requirements -->
+
                         <div class="md:col-span-2">
-                            <label for="specialRequirements" class="block text-sm font-medium text-gray-700 mb-1">Special Requirements</label>
-                            <textarea id="specialRequirements" name="specialRequirements" rows="3"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
-                                placeholder="Any special requirements (dietary restrictions, accessibility needs, etc.)"></textarea>
+                            <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Street Address or
+                                P.O. Box <span class="text-red-500">*</span></label>
+                            <input type="text" id="address" name="address" required readonly
+                                class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg"
+                                value="123 Main Street, District 1">
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Additional Contact Information -->
-                <div class="mt-6 pt-6 border-t">
-                    <h3 class="text-lg font-medium text-gray-900 mb-4">Additional Contact Information</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
                         <div>
-                            <label for="altPhoneNumber" class="block text-sm font-medium text-gray-700 mb-1">Alternative Phone Number</label>
-                            <input type="tel" id="altPhoneNumber" name="altPhoneNumber"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                            <label for="city" class="block text-sm font-medium text-gray-700 mb-1">City <span
+                                    class="text-red-500">*</span></label>
+                            <input type="text" id="city" name="city" required readonly
+                                class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg"
+                                value="Ho Chi Minh City">
                         </div>
+
                         <div>
-                            <label for="preferredContact" class="block text-sm font-medium text-gray-700 mb-1">Preferred Contact Method <span class="text-red-500">*</span></label>
-                            <select id="preferredContact" name="preferredContact" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
-                                <option value="">Select Preferred Method</option>
-                                <option value="email" selected>Email</option>
-                                <option value="phone">Phone Call</option>
-                                <option value="whatsapp">WhatsApp</option>
-                                <option value="sms">SMS</option>
-                            </select>
+                            <label for="nationality" class="block text-sm font-medium text-gray-700 mb-1">Nationality
+                                <span class="text-red-500">*</span></label>
+                            <input type="text" id="nationality" name="nationality" required readonly
+                                class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg"
+                                value="Vietnamese">
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Residency Information -->
-                <div class="mt-8">
-                    <h3 class="text-xl font-bold text-gray-900 mb-6">Residency Information</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <!-- Current Visa Status -->
+
+
                         <div>
-                            <label for="visaStatus" class="block text-sm font-medium text-gray-700 mb-1">Current Visa Status <span class="text-red-500">*</span></label>
-                            <select id="visaStatus" name="visaStatus" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
-                                <option value="">Select Visa Status</option>
-                                <option value="citizen">Citizen</option>
-                                <option value="pr">Permanent Resident</option>
-                                <option value="student_visa">Student Visa</option>
-                                <option value="work_visa">Work Visa</option>
-                                <option value="visitor">Visitor</option>
+                            <label for="postalCode" class="block text-sm font-medium text-gray-700 mb-1">ZIP/Postal Code
+                                <span class="text-red-500">*</span></label>
+                            <input type="text" id="postalCode" name="postalCode" required readonly
+                                class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg" value="700000">
+                        </div>
+
+                        <div>
+                            <label for="dateOfBirth" class="block text-sm font-medium text-gray-700 mb-1">Date of Birth
+                                <span class="text-red-500">*</span></label>
+                            <input type="date" id="dateOfBirth" name="dateOfBirth" required readonly
+                                class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg"
+                                value="2000-01-15">
+                        </div>
+
+                        <div>
+                            <label for="gender" class="block text-sm font-medium text-gray-700 mb-1">Gender <span
+                                    class="text-red-500">*</span></label>
+                            <select id="gender" name="gender" required disabled
+                                class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg">
+                                <option value="">Select Gender</option>
+                                <option value="male" selected>Male</option>
+                                <option value="female">Female</option>
                                 <option value="other">Other</option>
                             </select>
                         </div>
-                        
-                        <!-- Passport Number -->
+
                         <div>
-                            <label for="passportNumber" class="block text-sm font-medium text-gray-700 mb-1">Passport Number <span class="text-red-500">*</span></label>
-                            <input type="text" id="passportNumber" name="passportNumber" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
-                                placeholder="Enter passport number">
-                        </div>
-                        
-                        <!-- Passport Expiry Date -->
-                        <div>
-                            <label for="passportExpiry" class="block text-sm font-medium text-gray-700 mb-1">Passport Expiry Date <span class="text-red-500">*</span></label>
-                            <input type="date" id="passportExpiry" name="passportExpiry" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
-                        </div>
-                        
-                        <!-- Country of Residence -->
-                        <div>
-                            <label for="countryOfResidence" class="block text-sm font-medium text-gray-700 mb-1">Country of Residence <span class="text-red-500">*</span></label>
-                            <select id="countryOfResidence" name="countryOfResidence" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
-                                <option value="">Select Country</option>
-                                <option value="VN" selected>Vietnam</option>
-                                <option value="US">United States</option>
-                                <option value="UK">United Kingdom</option>
-                                <option value="CA">Canada</option>
-                                <option value="AU">Australia</option>
-                                <option value="SG">Singapore</option>
-                                <option value="JP">Japan</option>
-                                <option value="KR">South Korea</option>
-                                <option value="OT">Other</option>
-                            </select>
-                        </div>
-                        
-                        <!-- Years of Residence -->
-                        <div>
-                            <label for="yearsOfResidence" class="block text-sm font-medium text-gray-700 mb-1">Years of Residence <span class="text-red-500">*</span></label>
-                            <input type="number" id="yearsOfResidence" name="yearsOfResidence" min="0" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
-                                placeholder="Number of years">
-                        </div>
-                        
-                        <!-- Residency Status -->
-                        <div>
-                            <label for="residencyStatus" class="block text-sm font-medium text-gray-700 mb-1">Residency Status <span class="text-red-500">*</span></label>
-                            <select id="residencyStatus" name="residencyStatus" required
+                            <label for="maritalStatus" class="block text-sm font-medium text-gray-700 mb-1">Marital
+                                Status <span class="text-red-500">*</span></label>
+                            <select id="maritalStatus" name="maritalStatus" required
                                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
                                 <option value="">Select Status</option>
-                                <option value="resident">Resident</option>
-                                <option value="non_resident">Non-Resident</option>
-                                <option value="temporary">Temporary Resident</option>
-                                <option value="permanent">Permanent Resident</option>
-                                <option value="refugee">Refugee/Asylum Seeker</option>
+                                <option value="single">Single</option>
+                                <option value="married">Married</option>
                             </select>
+                        </div>
+
+                        <!-- US Citizen Question -->
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Are you a citizen of the United
+                                States? <span class="text-red-500">*</span></label>
+                            <div class="flex items-center space-x-6">
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="isUSCitizen" value="yes"
+                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300" required>
+                                    <span class="ml-2 text-gray-700">Yes</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="isUSCitizen" value="no"
+                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                    <span class="ml-2 text-gray-700">No</span>
+                                </label>
+                            </div>
+                            <div id="visaStatusContainer" class="mt-3 hidden">
+                                <label for="visaStatusDetail" class="block text-sm font-medium text-gray-700 mb-1">If
+                                    not, what is your visa status? <span class="text-red-500">*</span></label>
+                                <input type="text" id="visaStatusDetail" name="visaStatusDetail"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                    placeholder="Please specify your visa status">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="phoneNumber" class="block text-sm font-medium text-gray-700 mb-1">Phone Number
+                                <span class="text-red-500">*</span></label>
+                            <div class="flex">
+                                <select
+                                    class="w-1/3 px-3 py-2 border border-r-0 border-gray-200 bg-gray-50 rounded-l-lg"
+                                    disabled>
+                                    <option>+1</option>
+                                    <option>+44</option>
+                                    <option>+61</option>
+                                    <option>+65</option>
+                                    <option selected>+84</option>
+                                </select>
+                                <input type="tel" id="phoneNumber" name="phoneNumber" required readonly
+                                    class="w-full px-3 py-2 border border-l-0 border-gray-200 bg-gray-50 rounded-r-lg"
+                                    value="901234567">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Current Email
+                                Address <span class="text-red-500">*</span></label>
+                            <input type="email" id="email" name="email" required readonly
+                                class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg"
+                                value="nguyenvana@example.com">
+                        </div>
+
+                        <div>
+                            <label for="cityOfBirth" class="block text-sm font-medium text-gray-700 mb-1">City of Birth
+                                <span class="text-red-500">*</span></label>
+                            <input type="text" id="cityOfBirth" name="cityOfBirth" required readonly
+                                class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg"
+                                value="Ho Chi Minh City">
+                        </div>
+                        <div>
+                            <label for="countryOfBirth" class="block text-sm font-medium text-gray-700 mb-1">Country of
+                                Birth <span class="text-red-500">*</span></label>
+                            <input type="text" id="countryOfBirth" name="countryOfBirth" required readonly
+                                class="w-full px-3 py-2 border border-gray-200 bg-gray-50 rounded-lg" value="Vietnam">
+                        </div>
+                    </div>
+
+                    <!-- Note about address information -->
+                    <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-red-700">
+                                    Your personal information is pre-filled from your profile.
+                                    To update any information, please visit your <a href="Student-profile.html"
+                                        class="font-medium text-red-700 underline hover:text-red-600">profile
+                                        settings</a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ethnicity Information -->
+                    <div class="md:col-span-4 mt-4 pt-4 border-t border-gray-200">
+                        <p class="text-sm text-gray-600 mb-3">The following information is gathered for state and
+                            federal reporting requirements. Completion of this section is voluntary. All information
+                            given will be used in a nondiscriminatory manner, consistent with the civil rights laws.</p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-1 gap-x-4">
+                            <div class="flex items-center space-x-2">
+                                <input id="race1" name="race" type="radio" value="White (Non-Hispanic)"
+                                    class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                <label for="race1" class="text-sm text-gray-700">White (Non-Hispanic)</label>
+                            </div>
+
+                            <div class="flex items-center space-x-2">
+                                <input id="race2" name="race" type="radio" value="Black (Non-Hispanic)"
+                                    class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                <label for="race2" class="text-sm text-gray-700">Black (Non-Hispanic)</label>
+                            </div>
+
+                            <div class="flex items-center space-x-2">
+                                <input id="race3" name="race" type="radio" value="Hispanic"
+                                    class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                <label for="race3" class="text-sm text-gray-700">Hispanic</label>
+                            </div>
+
+                            <div class="flex items-center space-x-2">
+                                <input id="race4" name="race" type="radio" value="Asian or Pacific Islander"
+                                    class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                <label for="race4" class="text-sm text-gray-700">Asian or Pacific Islander</label>
+                            </div>
+
+                            <div class="flex items-center space-x-2">
+                                <input id="race5" name="race" type="radio" value="American Indian or Alaskan Native"
+                                    class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                <label for="race5" class="text-sm text-gray-700">American Indian or Alaskan
+                                    Native</label>
+                            </div>
+
+                            <div class="flex items-center space-x-2">
+                                <input id="race6" name="race" type="radio" value="Other"
+                                    class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                <label for="race6" class="text-sm text-gray-700">Other</label>
+                            </div>
+
+                            <div class="flex items-center space-x-2">
+                                <div class="flex items-center">
+                                    <input id="race7" name="race" type="radio" value="International"
+                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                    <label for="race7" class="ml-2 text-sm text-gray-700">International:</label>
+                                </div>
+                                <input type="text" id="internationalInput" name="internationalNationality"
+                                    class="px-2 py-1 border border-gray-300 rounded-md text-sm w-32 hidden"
+                                    placeholder="Nationality">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Legal and Academic History -->
+                    <div class="md:col-span-4 mt-6 space-y-4">
+                        <!-- Felony Conviction Question -->
+                        <div class="flex items-baseline space-x-2">
+                            <span class="text-sm font-medium text-gray-700">Have you ever been convicted of a felony?
+                            </span>
+                            <span class="text-red-500">*</span>
+                            <div class="flex space-x-4 ml-2">
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="felonyConviction" value="yes"
+                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300" required>
+                                    <span class="ml-2 text-gray-700 text-sm">Yes</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="felonyConviction" value="no"
+                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                    <span class="ml-2 text-gray-700 text-sm">No</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Academic Suspension Question -->
+                        <div class="flex items-baseline space-x-2">
+                            <span class="text-sm font-medium text-gray-700">Have you ever been suspended, dismissed, or
+                                forcibly withdrawn from an institution for non-academic reasons? </span>
+                            <span class="text-red-500">*</span>
+                            <div class="flex space-x-4 ml-2">
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="academicSuspension" value="yes"
+                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300" required>
+                                    <span class="ml-2 text-gray-700 text-sm">Yes</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="academicSuspension" value="no"
+                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                    <span class="ml-2 text-gray-700 text-sm">No</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Educational Information -->
+                    <div class="bg-white rounded-xl shadow-sm p-6 mt-8">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">Educational Information</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+                            <!-- Major Area of Study -->
+                            <div>
+                                <label for="majorField" class="block text-sm font-medium text-gray-700 mb-1">Major Area
+                                    of Study <span class="text-red-500">*</span></label>
+                                <input type="text" id="majorField" name="majorField" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                    placeholder="e.g., Computer Science">
+                            </div>
+
+                            <!-- Degree Plan -->
+                            <div>
+                                <p class="block text-sm font-medium text-gray-700 mb-2">Do you plan to earn a degree?
+                                    <span class="text-red-500">*</span>
+                                </p>
+                                <div class="flex space-x-6">
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="degreePlan" value="yes" required
+                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                        <span class="ml-2 text-gray-700">Yes</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="degreePlan" value="no"
+                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                        <span class="ml-2 text-gray-700">No</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Teaching Certificate -->
+                            <div>
+                                <p class="block text-sm font-medium text-gray-700 mb-2">Do you plan to earn a teaching
+                                    certificate? <span class="text-red-500">*</span></p>
+                                <div class="flex space-x-6">
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="teachingCertificate" value="yes" required
+                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                        <span class="ml-2 text-gray-700">Yes</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="teachingCertificate" value="no"
+                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                        <span class="ml-2 text-gray-700">No</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div>
+                                <label for="majorField" class="block text-sm font-medium text-gray-700 mb-1">Mode of
+                                    admission<span class="text-red-500">*</span></label>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="space-y-3">
+                                        <div class="flex items-center">
+                                            <input id="admission-highschool" name="admissionType" type="radio"
+                                                value="highschool" required
+                                                class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                            <label for="admission-highschool"
+                                                class="ml-3 block text-sm font-medium text-gray-700">
+                                                High school graduate
+                                            </label>
+                                        </div>
+
+                                        <div class="flex items-center">
+                                            <input id="admission-transfer" name="admissionType" type="radio"
+                                                value="transfer"
+                                                class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                            <label for="admission-transfer"
+                                                class="ml-3 block text-sm font-medium text-gray-700">
+                                                Transfer student
+                                            </label>
+                                        </div>
+
+                                        <div class="flex items-center">
+                                            <input id="admission-ged" name="admissionType" type="radio" value="ged"
+                                                class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                            <label for="admission-ged"
+                                                class="ml-3 block text-sm font-medium text-gray-700">
+                                                GED (year received)
+                                            </label>
+                                            <input type="number" id="gedYear" name="gedYear" min="1900" max="2100"
+                                                class="ml-3 w-24 px-2 py-1 border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500 text-sm"
+                                                placeholder="Year" enabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-y-3">
+                                        <div class="flex items-center">
+                                            <input id="admission-second-degree" name="admissionType" type="radio"
+                                                value="second_degree"
+                                                class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                            <label for="admission-second-degree"
+                                                class="ml-3 block text-sm font-medium text-gray-700">
+                                                Second undergraduate degree
+                                            </label>
+                                        </div>
+
+                                        <div class="flex items-center">
+                                            <input id="admission-readmission" name="admissionType" type="radio"
+                                                value="readmission"
+                                                class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                            <label for="admission-readmission"
+                                                class="ml-3 block text-sm font-medium text-gray-700">
+                                                Readmission as former student
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Left: High school attended -->
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">High school attended
+                                        <span class="text-red-500">*</span></label>
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <div>
+                                            <input type="text" id="highSchoolName" name="highSchoolName" required
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                                placeholder="School name">
+                                        </div>
+                                        <div>
+                                            <input type="text" id="highSchoolCity" name="highSchoolCity" required
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                                placeholder="City">
+                                        </div>
+                                        <div>
+                                            <input type="text" id="highSchoolState" name="highSchoolState" required
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                                placeholder="State">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Right: Date of Graduation -->
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Date of Graduation:
+                                        <span class="text-red-500">*</span></label>
+                                    <input type="month" id="highSchoolGradDate" name="highSchoolGradDate" required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- SAT/ACT Taken? -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Have you taken the SAT or ACT? <span class="text-red-500">*</span>
+                                </label>
+                                <div class="flex items-center space-x-6">
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="takenSATACT" value="yes" required
+                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                        <span class="ml-2 text-gray-700">Yes</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="takenSATACT" value="no"
+                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                        <span class="ml-2 text-gray-700">No</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Test Date -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Date taken or planned <span class="text-red-500">*</span>
+                                </label>
+                                <input type="month" id="testDate" name="testDate" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                            </div>
+
+                            <!-- TOEFL Taken? -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Have you taken the TOEFL? <span class="text-red-500">*</span>
+                                </label>
+                                <div class="flex items-center space-x-6">
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="takenSATACT" value="yes" required
+                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                        <span class="ml-2 text-gray-700">Yes</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="takenSATACT" value="no"
+                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                        <span class="ml-2 text-gray-700">No</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Test Date -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Date taken or planned <span class="text-red-500">*</span>
+                                </label>
+                                <input type="month" id="testDate" name="testDate" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                            </div>
+
+                            <!-- College/University Information -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+                                <!-- Currently Enrolled -->
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">
+                                        Are you currently enrolled in a college or university? <span
+                                            class="text-red-500">*</span>
+                                    </label>
+                                    <div class="flex items-center space-x-6">
+                                        <label class="inline-flex items-center">
+                                            <input type="radio" name="isCurrentlyEnrolled" value="yes" required
+                                                class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                            <span class="ml-2 text-gray-700">Yes</span>
+                                        </label>
+                                        <label class="inline-flex items-center">
+                                            <input type="radio" name="isCurrentlyEnrolled" value="no"
+                                                class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                            <span class="ml-2 text-gray-700">No</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Last Semester Date -->
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">
+                                        If yes, when will be your last semester? <span class="text-red-500">*</span>
+                                    </label>
+                                    <input type="month" id="lastSemesterDate" name="lastSemesterDate" required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                </div>
+
+                                <!-- Semester Hours -->
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700">
+                                        How many semester hours have you earned? <span class="text-red-500">*</span>
+                                    </label>
+                                    <input type="number" id="semesterHours" name="semesterHours" min="0" step="0.5"
+                                        required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                        placeholder="Enter number of semester hours">
+                                </div>
+                            </div>
+
+                            <!-- College/University Education History -->
+                            <div class="mt-6 col-span-full">
+                                <h4 class="text-lg font-medium text-gray-900 mb-4">College/University Education History
+                                </h4>
+
+                                <div id="educationEntries" class="space-y-4">
+                                    <!-- First row will be added by default -->
+                                    <div
+                                        class="education-entry grid grid-cols-1 md:grid-cols-5 gap-4 items-end p-4 bg-gray-50 rounded-lg">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Name of
+                                                College/University <span class="text-red-500">*</span></label>
+                                            <input type="text" name="collegeName[]" required
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">City & State
+                                                <span class="text-red-500">*</span></label>
+                                            <input type="text" name="collegeLocation[]" required
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Dates (from–to)
+                                                <span class="text-red-500">*</span></label>
+                                            <div class="grid grid-cols-2 gap-2">
+                                                <input type="month" name="collegeStartDate[]" required
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                                    placeholder="Start date">
+                                                <input type="month" name="collegeEndDate[]" required
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                                    placeholder="End date">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Credits
+                                                Earned</label>
+                                            <input type="number" name="creditsEarned[]" min="0" step="0.5"
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                                placeholder="Credits">
+                                        </div>
+                                        <div class="flex items-end space-x-2">
+                                            <div class="flex-1">
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Degree
+                                                    Earned</label>
+                                                <input type="text" name="degreeEarned[]"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                                    placeholder="e.g., Bachelor of Science">
+                                            </div>
+                                            <button type="button" onclick="removeEducationEntry(this)"
+                                                class="p-2 text-red-600 hover:text-red-800">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                    viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd"
+                                                        d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4">
+                                    <button type="button" onclick="addEducationEntry()"
+                                        class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                        Add More
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Add this script at the bottom of your file, before the closing </body> tag -->
+                            <script>
+                                function addEducationEntry() {
+                                    const container = document.getElementById('educationEntries');
+                                    const newEntry = container.firstElementChild.cloneNode(true);
+
+                                    // Clear all input values in the new entry
+                                    newEntry.querySelectorAll('input').forEach(input => {
+                                        input.value = '';
+                                    });
+
+                                    container.appendChild(newEntry);
+                                }
+
+                                function removeEducationEntry(button) {
+                                    const container = document.getElementById('educationEntries');
+                                    if (container.children.length > 1) {
+                                        button.closest('.education-entry').remove();
+                                    } else {
+                                        alert('You need to have at least one education entry.');
+                                    }
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <!-- Housing Information -->
+                <div class="bg-white rounded-xl shadow-sm p-6 mt-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-6">Housing Information</h3>
+                    <!-- Housing Preference -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            While attending, where do you plan to live? <span class="text-red-500">*</span>
+                        </label>
+                        <div class="flex flex-wrap gap-6">
+                            <div class="flex items-center">
+                                <input id="residenceHall" name="housingPreference" type="radio" value="residence_hall"
+                                    required class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                <label for="residenceHall" class="ml-2 text-sm font-medium text-gray-700">
+                                    In residence hall
+                                </label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="withParents" name="housingPreference" type="radio" value="with_parents"
+                                    class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                <label for="withParents" class="ml-2 text-sm font-medium text-gray-700">
+                                    At home with parents
+                                </label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="offCampus" name="housingPreference" type="radio" value="off_campus"
+                                    class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                <label for="offCampus" class="ml-2 text-sm font-medium text-gray-700">
+                                    Off-campus
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Authorization Statement -->
-                <div class="mt-8 p-6 bg-gray-50 rounded-lg">
-                    <h3 class="text-lg font-bold text-gray-900 mb-4">Authorization Statement</h3>
-                    <div class="space-y-4">
-                        <p class="text-sm text-gray-700">
-                            By submitting this application, I certify that all information provided is true, complete, and accurate to the best of my knowledge. 
-                            I understand that any false or misleading information may result in the rejection of my application or termination of enrollment.
-                        </p>
-                        <p class="text-sm text-gray-700">
-                            I authorize the institution to verify the information provided and to obtain any additional information necessary to process my application 
-                            from educational institutions, employers, or other relevant sources.
-                        </p>
-                        <div class="mt-4">
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" id="authorizationAgreement" name="authorizationAgreement" required
-                                    class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
-                                <span class="ml-2 text-sm text-gray-700">
-                                    I have read and agree to the <a href="#" class="text-red-600 hover:text-red-800 underline">Terms and Conditions</a> and 
-                                    <a href="#" class="text-red-600 hover:text-red-800 underline">Privacy Policy</a> <span class="text-red-500">*</span>
-                                </span>
-                            </label>
+                <div class="bg-white rounded-xl shadow-sm p-6 mt-8">
+                    <div class="p-6 bg-gray-50 rounded-lg">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Authorization Statement</h3>
+                        <div class="space-y-4">
+                            <p class="text-sm text-gray-700">
+                                Failure to complete, sign, and date this portion will result in your application review
+                                being
+                                delayed.
+                            </p>
+                            <p class="text-sm text-gray-700">
+                                certify that this information is complete and correct to the best of my knowledge. If my
+                                application is accepted, I agree to abide by the policies, rules and
+                                regulations at Angelo State University. I authorize the university to verify the
+                                information I
+                                have provided. I further understand that this information will be relied
+                                upon by the officials of the university in determining my admission and residence status
+                                for
+                                tuition purposes and that the submission of false information is
+                                grounds for rejection of my application, withdrawal of an offer of acceptance,
+                                cancellation of
+                                enrollment, and/or disciplinary action. I also authorize the university
+                                to electronically access my Texas Success Initiative Assessment and I authorize Angelo
+                                State
+                                University to release any requested information to the US
+                                Department of Homeland Security upon official notification.
+                            </p>
+                            <div class="mt-4">
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox" id="authorizationAgreement" name="authorizationAgreement"
+                                        required
+                                        class="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500">
+                                    <span class="ml-2 text-sm text-gray-700">
+                                        I have read and agree to the <a href="#"
+                                            class="text-red-600 hover:text-red-800 underline">Terms and
+                                            Conditions</a> and
+                                        <a href="#" class="text-red-600 hover:text-red-800 underline">Privacy
+                                            Policy</a> <span class="text-red-500">*</span>
+                                    </span>
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Navigation Buttons -->
-                <div class="flex justify-between pt-6 border-t mt-8">
-                    <button type="button" class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                        Save as Draft
-                    </button>
-                    <button type="button" id="nextBtn" class="px-6 py-2 bg-red-600 text-white rounded-lg font-medium hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                        Summit
-                    </button>
+                <!-- Residency Information -->
+                <div class="bg-white rounded-xl shadow-sm p-6 mt-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-6">Residency Information</h3>
+                    <!-- U.S. Citizenship Information -->
+                    <div class="bg-white rounded-xl shadow-sm p-6 mt-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- U.S. Citizen Question -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Are you a U.S. Citizen? <span class="text-red-500">*</span>
+                                </label>
+                                <div class="flex space-x-6">
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="isUSCitizen" value="yes" required
+                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                        <span class="ml-2 text-gray-700">Yes</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="isUSCitizen" value="no"
+                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                        <span class="ml-2 text-gray-700">No</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Country of Citizenship (Conditional) -->
+                            <div id="citizenshipCountryField" class="hidden">
+                                <label for="citizenshipCountry" class="block text-sm font-medium text-gray-700 mb-1">
+                                    If not, of what country are you a citizen? <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="citizenshipCountry" name="citizenshipCountry"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                    placeholder="Enter country name">
+                            </div>
+
+                            <!-- Permanent Resident Status -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Do you hold Permanent Residence status for the U.S.? (Valid I-551) <span
+                                        class="text-red-500">*</span>
+                                </label>
+                                <div class="flex space-x-6">
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="hasPermanentResidence" value="yes" required
+                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                        <span class="ml-2 text-gray-700">Yes</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="hasPermanentResidence" value="no"
+                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                        <span class="ml-2 text-gray-700">No</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Permanent Resident Card Details -->
+                            <div id="permanentResidentFields"
+                                class="hidden md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="residentCardIssuedDate"
+                                        class="block text-sm font-medium text-gray-700 mb-1">
+                                        Date permanent resident card issued <span class="text-red-500">*</span>
+                                    </label>
+                                    <input type="date" id="residentCardIssuedDate" name="residentCardIssuedDate"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                </div>
+                                <div>
+                                    <label for="residentCardNumber"
+                                        class="block text-sm font-medium text-gray-700 mb-1">
+                                        Resident Card Number <span class="text-red-500">*</span>
+                                    </label>
+                                    <input type="text" id="residentCardNumber" name="residentCardNumber"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                        placeholder="Enter card number">
+                                </div>
+                            </div>
+
+                            <!-- Country of Legal Residence -->
+                            <div class="md:col-span-2">
+                                <label for="legalResidenceCountry" class="block text-sm font-medium text-gray-700 mb-1">
+                                    Country of legal residence <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="legalResidenceCountry" name="legalResidenceCountry" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                    placeholder="Enter country name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add this JavaScript at the bottom of your file, before the closing </body> tag -->
+                    <script>
+                        // Show/hide fields based on U.S. citizenship status
+                        document.querySelectorAll('input[name="isUSCitizen"]').forEach(radio => {
+                            radio.addEventListener('change', function () {
+                                const citizenshipCountryField = document.getElementById('citizenshipCountryField');
+                                if (this.value === 'no') {
+                                    citizenshipCountryField.classList.remove('hidden');
+                                    citizenshipCountryField.querySelector('input').setAttribute('required', '');
+                                } else {
+                                    citizenshipCountryField.classList.add('hidden');
+                                    citizenshipCountryField.querySelector('input').removeAttribute('required');
+                                }
+                            });
+                        });
+
+                        // Show/hide permanent resident fields
+                        document.querySelectorAll('input[name="hasPermanentResidence"]').forEach(radio => {
+                            radio.addEventListener('change', function () {
+                                const permanentResidentFields = document.getElementById('permanentResidentFields');
+                                const requiredFields = permanentResidentFields.querySelectorAll('input');
+
+                                if (this.value === 'yes') {
+                                    permanentResidentFields.classList.remove('hidden');
+                                    requiredFields.forEach(field => field.setAttribute('required', ''));
+                                } else {
+                                    permanentResidentFields.classList.add('hidden');
+                                    requiredFields.forEach(field => field.removeAttribute('required'));
+                                }
+                            });
+                        });
+                    </script>
+
+                    <!-- Oath of Residency -->
+                    <div class="space-y-4">
+                        <p class="text-sm text-gray-700">
+                            I understand that information submitted herein will be relied upon by university officials
+                            to determine my status for admission and residency eligibility. I authorize the university
+                            to verify the information I have provided. I agree to notify the proper officials of the
+                            institution of any changes in the information provided. I certify that the information on
+                            this application is complete and correct and understand that the submission of false
+                            information is grounds for rejection of my application, withdrawal of any offer of
+                            acceptance, cancellation of enrollment, or appropriate disciplinary action.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+                            <div>
+                                <label for="signature" class="block text-sm font-medium text-gray-700 mb-1">
+                                    Signature <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="signature" name="signature" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                    placeholder="Type your full name as signature">
+                            </div>
+                            <div>
+                                <label for="signatureDate" class="block text-sm font-medium text-gray-700 mb-1">
+                                    Date <span class="text-red-500">*</span>
+                                </label>
+                                <input type="date" id="signatureDate" name="signatureDate" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-            </form>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flex justify-between pt-6 border-t mt-8">
+            <button type="button"
+                class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                Save as Draft
+            </button>
+            <button type="button" id="nextBtn"
+                class="px-6 py-2 bg-red-600 text-white rounded-lg font-medium hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                Summit
+            </button>
+        </div>
+        </div>
+        </form>
         </div>
     </main>
 
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
-        
+
         // Get URL parameters
         const urlParams = new URLSearchParams(window.location.search);
         const programName = urlParams.get('program');
         const universityName = urlParams.get('university');
-        
+
         // Pre-fill program and university if provided in URL
         if (programName) {
             document.title = `Application for ${programName} - APPLYLEAD`;
         }
-        
+
         // Form navigation
-        document.getElementById('nextBtn').addEventListener('click', function() {
+        document.getElementById('nextBtn').addEventListener('click', function () {
             // Add form validation here
             const form = document.getElementById('applicationForm');
             if (form.checkValidity()) {
@@ -479,6 +1054,32 @@
                 form.reportValidity();
             }
         });
+
+        // Show/hide visa status detail based on US citizen status
+        const isUSCitizenRadio = document.querySelectorAll('input[name="isUSCitizen"]');
+        const visaStatusContainer = document.getElementById('visaStatusContainer');
+
+        isUSCitizenRadio.forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (radio.value === 'no') {
+                    visaStatusContainer.classList.remove('hidden');
+                } else {
+                    visaStatusContainer.classList.add('hidden');
+                }
+            });
+        });
+
+        // Show/hide international input field
+        document.querySelectorAll('input[name="race"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                const internationalInput = document.getElementById('internationalInput');
+                internationalInput.classList.toggle('hidden', this.value !== 'International');
+                if (this.value !== 'International') {
+                    internationalInput.value = '';
+                }
+            });
+        });
     </script>
 </body>
+
 </html>
