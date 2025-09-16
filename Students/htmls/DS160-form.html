@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
     </style>
 </head>
+
 <body class="bg-gray-50">
     <div class="min-h-screen flex flex-col">
         <!-- Header -->
@@ -36,9 +40,21 @@
             </div>
         </header>
 
+         <!-- Progress Bar -->
+         <div class="bg-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div class="h-full bg-red-600 rounded-full" style="width: 33%"></div>
+                </div>
+                <div class="py-2 text-right">
+                    <span class="text-xs font-medium text-gray-600">Step 1 of 3</span>
+                </div>
+            </div>
+        </div>
+
         <!-- Main Content -->
         <main class="flex-grow">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div class="bg-white rounded-xl shadow-sm p-6">
                     <div class="space-y-6">
                         <!-- Application Information -->
@@ -49,7 +65,8 @@
                                 </div>
                                 <div class="ml-3">
                                     <p class="text-sm text-red-700">
-                                        This is a simulated DS-160 form for demonstration purposes. The actual DS-160 form must be completed on the official U.S. Department of State website.
+                                        This is a simulated DS-160 form for demonstration purposes. The actual DS-160
+                                        form must be completed on the official U.S. Department of State website.
                                     </p>
                                 </div>
                             </div>
@@ -59,53 +76,56 @@
                         <form id="ds160Form" class="space-y-4">
                             <!-- Personal Information Section -->
                             <div class="bg-white p-4 rounded-lg border border-gray-200">
-                                <h2 class="text-lg font-medium text-gray-900 mb-3">Personal Information</h2>
                                 <div class="space-y-4">
-                                    <!-- Row 1: Full Name and Native Name -->
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <!-- Row 1: Full Name, Native Name, and Date of Birth -->
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                         <div>
-                                            <label class="block text-sm font-medium text-gray-700 mb-1">1. Full Name</label>
-                                            <input type="text" name="fullName" required 
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">1. Full
+                                                Name</label>
+                                            <input type="text" name="fullName" required
                                                 class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
                                         </div>
                                         <div>
-                                            <label class="block text-sm font-medium text-gray-700 mb-1">Full Name in Native Language</label>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Full Name in
+                                                Native Language</label>
                                             <input type="text" name="nativeName" required
+                                                class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">2. Date of
+                                                Birth</label>
+                                            <input type="date" name="dateOfBirth" required
                                                 class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
                                         </div>
                                     </div>
 
-                                    <!-- Row 2: Date of Birth and Marital Status -->
+                                    <!-- Row 2: Marital Status -->
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div>
-                                            <label class="block text-sm font-medium text-gray-700 mb-1">2. Date of Birth</label>
-                                            <input type="date" name="dateOfBirth" required
-                                                class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700 mb-1">3. Marital Status</label>
-                                            <div class="grid grid-cols-2 gap-2 mt-1">
-                                                <label class="flex items-center text-sm">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">3. Marital
+                                                Status</label>
+                                            <div class="flex flex-wrap gap-4 mt-1">
+                                                <label class="flex items-center text-sm whitespace-nowrap">
                                                     <input type="radio" name="maritalStatus" value="Single" checked
                                                         class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
                                                     <span class="ml-2">Single</span>
                                                 </label>
-                                                <label class="flex items-center text-sm">
+                                                <label class="flex items-center text-sm whitespace-nowrap">
                                                     <input type="radio" name="maritalStatus" value="Married"
                                                         class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
                                                     <span class="ml-2">Married</span>
                                                 </label>
-                                                <label class="flex items-center text-sm">
+                                                <label class="flex items-center text-sm whitespace-nowrap">
                                                     <input type="radio" name="maritalStatus" value="Widow"
                                                         class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
                                                     <span class="ml-2">Widow</span>
                                                 </label>
-                                                <label class="flex items-center text-sm">
+                                                <label class="flex items-center text-sm whitespace-nowrap">
                                                     <input type="radio" name="maritalStatus" value="Divorced"
                                                         class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
                                                     <span class="ml-2">Divorced</span>
                                                 </label>
-                                                <label class="flex items-center text-sm">
+                                                <label class="flex items-center text-sm whitespace-nowrap">
                                                     <input type="radio" name="maritalStatus" value="Separated"
                                                         class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
                                                     <span class="ml-2">Separated</span>
@@ -114,18 +134,35 @@
                                         </div>
                                     </div>
 
-                                    <!-- Row 3: Sex and Nationality -->
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <!-- Row 4, 5 & 6: Place of Birth, Sex and Nationality -->
+                                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                                        <!-- Place of Birth -->
+                                        <div class="md:col-span-2">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">4. Place of Birth</label>
+                                            <div class="grid grid-cols-1 md:grid-cols-5 gap-2">
+                                                <div class="md:col-span-2">
+                                                    <label class="block text-xs text-gray-500 mb-1">Country</label>
+                                                    <input type="text" name="birthCountry" required
+                                                        class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                </div>
+                                                <div class="md:col-span-3">
+                                                    <label class="block text-xs text-gray-500 mb-1">Province/State/City</label>
+                                                    <input type="text" name="birthCity" required
+                                                        class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <!-- Sex -->
-                                        <div>
+                                        <div class="md:col-span-1">
                                             <label class="block text-sm font-medium text-gray-700 mb-1">5. Sex</label>
-                                            <div class="flex space-x-4 mt-1">
-                                                <label class="inline-flex items-center">
+                                            <div class="space-y-2">
+                                                <label class="flex items-center">
                                                     <input type="radio" name="sex" value="Male" checked
                                                         class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
                                                     <span class="ml-2 text-sm text-gray-700">Male</span>
                                                 </label>
-                                                <label class="inline-flex items-center">
+                                                <label class="flex items-center">
                                                     <input type="radio" name="sex" value="Female"
                                                         class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
                                                     <span class="ml-2 text-sm text-gray-700">Female</span>
@@ -134,74 +171,79 @@
                                         </div>
 
                                         <!-- Nationality -->
-                                        <div>
+                                        <div class="md:col-span-1">
                                             <label class="block text-sm font-medium text-gray-700 mb-1">6. Nationality</label>
-                                            <div class="space-y-2">
-                                                <input type="text" name="nationality" value="Vietnam" required
-                                                    class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
-                                                <div class="text-sm">
-                                                    <p class="mb-2">Do you hold or have you held any nationality other than the one indicated above on nationality?</p>
-                                                    <div class="flex space-x-4">
-                                                        <label class="inline-flex items-center">
-                                                            <input type="radio" name="otherNationality" value="No" checked
-                                                                class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
-                                                            <span class="ml-2">No</span>
-                                                        </label>
-                                                        <label class="inline-flex items-center">
-                                                            <input type="radio" name="otherNationality" value="Yes"
-                                                                class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
-                                                            <span class="ml-2">Yes</span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="text-sm">
-                                                    <p>Are you a permanent resident of a country/region other than your country/region of origin (nationality) above?</p>
-                                                    <div class="flex space-x-4">
-                                                        <label class="inline-flex items-center">
-                                                            <input type="radio" name="otherResident" value="No" checked
-                                                                class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
-                                                            <span class="ml-2">No</span>
-                                                        </label>
-                                                        <label class="inline-flex items-center">
-                                                            <input type="radio" name="otherResident" value="Yes"
-                                                                class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
-                                                            <span class="ml-2">Yes</span>
-                                                        </label>
-                                                    </div>
-                                                </div>
+                                            <input type="text" name="nationality" value="Vietnam" required
+                                                class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                        </div>
+                                    </div>
+
+                                    <!-- Nationality Questions -->
+                                    <div class="col-span-3 mt-4">
+                                        <div class="text-sm">
+                                            <p class="mb-2">Do you hold or have you held any nationality other than the one indicated above on nationality?</p>
+                                            <div class="flex space-x-4">
+                                                <label class="inline-flex items-center">
+                                                    <input type="radio" name="otherNationality" value="No" checked
+                                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                    <span class="ml-2">No</span>
+                                                </label>
+                                                <label class="inline-flex items-center">
+                                                    <input type="radio" name="otherNationality" value="Yes"
+                                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                    <span class="ml-2">Yes</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="text-sm mt-4">
+                                            <p>Are you a permanent resident of a country/region other than your country/region of origin (nationality) above?</p>
+                                            <div class="flex space-x-4 mt-2">
+                                                <label class="inline-flex items-center">
+                                                    <input type="radio" name="otherResident" value="No" checked
+                                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                    <span class="ml-2">No</span>
+                                                </label>
+                                                <label class="inline-flex items-center">
+                                                    <input type="radio" name="otherResident" value="Yes"
+                                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                    <span class="ml-2">Yes</span>
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
 
                                     <!-- Row 4: ID Number and Permanent Address -->
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
                                         <!-- ID Number -->
-                                        <div>
+                                        <div class="md:col-span-1">
                                             <label class="block text-sm font-medium text-gray-700 mb-1">7. ID No.</label>
                                             <input type="text" name="idNumber" required
                                                 class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
                                         </div>
 
                                         <!-- Permanent Address -->
-                                        <div>
+                                        <div class="md:col-span-4">
                                             <label class="block text-sm font-medium text-gray-700 mb-1">8. Permanent Address</label>
-                                            <div class="space-y-2">
+                                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                                                <div>
+                                                    <label class="block text-xs text-gray-500 mb-1">Address</label>
+                                                    <input type="text" name="permanentAddress" required
+                                                        class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                </div>
                                                 <div>
                                                     <label class="block text-xs text-gray-500 mb-1">Province/City</label>
                                                     <input type="text" name="permanentCity" required
                                                         class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
                                                 </div>
-                                                <div class="grid grid-cols-2 gap-4">
-                                                    <div>
-                                                        <label class="block text-xs text-gray-500 mb-1">Country</label>
-                                                        <input type="text" name="permanentCountry" value="Vietnam" required
-                                                            class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
-                                                    </div>
-                                                    <div>
-                                                        <label class="block text-xs text-gray-500 mb-1">ZIP Code</label>
-                                                        <input type="text" name="permanentZip" value="700000" required
-                                                            class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
-                                                    </div>
+                                                <div>
+                                                    <label class="block text-xs text-gray-500 mb-1">Country</label>
+                                                    <input type="text" name="permanentCountry" value="Vietnam" required
+                                                        class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                </div>
+                                                <div>
+                                                    <label class="block text-xs text-gray-500 mb-1">ZIP Code</label>
+                                                    <input type="text" name="permanentZip" value="700000" required
+                                                        class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
                                                 </div>
                                             </div>
                                         </div>
@@ -210,24 +252,29 @@
                                     <!-- Row 5: Current Address -->
                                     <div class="space-y-2">
                                         <div class="flex items-center">
-                                            <span class="text-sm font-medium text-gray-700 mr-4">9. Is current address similar to permanent address?</span>
+                                            <span class="text-sm font-medium text-gray-700 mr-4">9. Is current address
+                                                similar to permanent address?</span>
                                             <label class="inline-flex items-center mr-4">
                                                 <input type="radio" name="sameAsPermanent" value="Yes" checked
-                                                    class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300" onchange="toggleCurrentAddress(this)">
+                                                    class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300"
+                                                    onchange="toggleCurrentAddress(this)">
                                                 <span class="ml-2 text-sm">Yes</span>
                                             </label>
                                             <label class="inline-flex items-center">
                                                 <input type="radio" name="sameAsPermanent" value="No"
-                                                    class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300" onchange="toggleCurrentAddress(this)">
+                                                    class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300"
+                                                    onchange="toggleCurrentAddress(this)">
                                                 <span class="ml-2 text-sm">No</span>
                                             </label>
                                         </div>
-                                        
+
                                         <div id="currentAddressSection" class="hidden border-t pt-4 mt-2">
-                                            <label class="block text-sm font-medium text-gray-700 mb-2">Current Address</label>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Current
+                                                Address</label>
                                             <div class="space-y-2">
                                                 <div>
-                                                    <label class="block text-xs text-gray-500 mb-1">Province/City</label>
+                                                    <label
+                                                        class="block text-xs text-gray-500 mb-1">Province/City</label>
                                                     <input type="text" name="currentCity"
                                                         class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
                                                 </div>
@@ -249,7 +296,8 @@
 
                                     <!-- Row 6: Contact Information -->
                                     <div class="space-y-2">
-                                        <label class="block text-sm font-medium text-gray-700">10. Contact Information</label>
+                                        <label class="block text-sm font-medium text-gray-700">10. Contact
+                                            Information</label>
                                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                                             <div>
                                                 <label class="block text-xs text-gray-500 mb-1">Home Phone</label>
@@ -274,47 +322,453 @@
                                         </div>
                                     </div>
 
-                                    <!-- Row 7: Passport Number -->
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-1">11. Passport No.</label>
-                                        <input type="text" name="passportNumber" required
-                                            class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
-                                    </div>
-
-                                    <!-- Row 3: Place of Birth -->
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-1">4. Place of Birth</label>
-                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <!-- Row 7: Passport Information -->
+                                    <div class="space-y-4">
+                                        <!-- Passport Number and Lost/Stolen Status -->
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                             <div>
-                                                <label class="block text-xs text-gray-500 mb-1">Province/State/City</label>
-                                                <input type="text" name="birthCity" required
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">11. Passport No.</label>
+                                                <input type="text" name="passportNumber" required
                                                     class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
                                             </div>
                                             <div>
-                                                <label class="block text-xs text-gray-500 mb-1">Country</label>
-                                                <input type="text" name="birthCountry" required
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Have you ever lost your passport or stolen?</label>
+                                                <div class="flex space-x-4 mt-1">
+                                                    <label class="inline-flex items-center">
+                                                        <input type="radio" name="passportLostStolen" value="No" checked
+                                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                        <span class="ml-2 text-sm text-gray-700">No</span>
+                                                    </label>
+                                                    <label class="inline-flex items-center">
+                                                        <input type="radio" name="passportLostStolen" value="Yes"
+                                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                        <span class="ml-2 text-sm text-gray-700">Yes</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Place of Issue -->
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">12. Place of Issue</label>
+                                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                                <div>
+                                                    <label class="block text-xs text-gray-500 mb-1">Place of Issue</label>
+                                                    <input type="text" name="passportIssuePlace" required
+                                                        class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                </div>
+                                                <div>
+                                                    <label class="block text-xs text-gray-500 mb-1">Province/City</label>
+                                                    <input type="text" name="passportIssueCity" required
+                                                        class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                </div>
+                                                <div>
+                                                    <label class="block text-xs text-gray-500 mb-1">Country</label>
+                                                    <input type="text" name="passportIssueCountry" required
+                                                        class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Date of Issuance and Expiration -->
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">13. Date of Issuance</label>
+                                                <input type="date" name="passportIssueDate" required
+                                                    class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">14. Date of Expiration</label>
+                                                <input type="date" name="passportExpiryDate" required
                                                     class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <!-- Action Buttons -->
-                            <div class="flex justify-between items-center pt-2">
-                                <div class="text-sm text-gray-500">
-                                    * Required fields
-                                </div>
-                                <div class="space-x-3">
-                                    <button type="button" class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                                        Save
-                                    </button>
-                                    <button type="submit" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                                        Next
-                                    </button>
-                                </div>
+                                        <!-- Trip Information -->
+                                        <div class="space-y-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">15. What is the purpose of the trip?</label>
+                                                <input type="text" name="tripPurpose" required
+                                                    class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                            </div>
+                                            
+                                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                                <!-- Travel Plans -->
+                                                <div class="space-y-1">
+                                                    <label class="block text-sm font-medium text-gray-700">16. Have you made specific travel plans?</label>
+                                                    <div class="flex space-x-2">
+                                                        <label class="inline-flex items-center">
+                                                            <input type="radio" name="hasTravelPlans" value="No" checked
+                                                                class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                            <span class="ml-1 text-sm text-gray-700">No</span>
+                                                        </label>
+                                                        <label class="inline-flex items-center">
+                                                            <input type="radio" name="hasTravelPlans" value="Yes"
+                                                                class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                            <span class="ml-1 text-sm text-gray-700">Yes</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Arrival Date -->
+                                                <div>
+                                                    <label class="block text-xs text-gray-500 mb-1">Intended Date of Arrival</label>
+                                                    <input type="date" name="intendedArrivalDate"
+                                                        class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                </div>
+                                                
+                                                <!-- Length of Stay -->
+                                                <div class="space-y-1">
+                                                    <label class="block text-sm font-medium text-gray-700">17.Intended Length of Stay in U.S.</label>
+                                                    <input type="text" name="lengthOfStay"
+                                                    class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- U.S. Address -->
+                                    <div class="space-y-4">
+                                        <h3 class="text-sm font-medium text-gray-700">18. Address the applicant will stay in the U.S.</h3>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div>
+                                                <label class="block text-xs text-gray-500 mb-1">Street Address</label>
+                                                <input type="text" name="usStreetAddress"
+                                                    class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                            </div>
+                                            <div>
+                                                <label class="block text-xs text-gray-500 mb-1">City</label>
+                                                <input type="text" name="usCity"
+                                                    class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                            </div>
+                                            <div>
+                                                <label class="block text-xs text-gray-500 mb-1">State/Province</label>
+                                                <input type="text" name="usState"
+                                                    class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                            </div>
+                                            <div>
+                                                <label class="block text-xs text-gray-500 mb-1">ZIP/Postal Code</label>
+                                                <input type="text" name="usZipCode"
+                                                    class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Person Paying for Trip -->
+                                    <div class="space-y-4">
+                                        <h3 class="text-sm font-medium text-gray-700">19. Person Paying for Your Trip</h3>
+                                        <div class="space-y-4">
+                                            <div class="flex flex-wrap items-center gap-4">
+                                                <label class="inline-flex items-center">
+                                                    <input type="radio" name="tripPayer" value="Self" checked
+                                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                    <span class="ml-2 text-sm text-gray-700">Self</span>
+                                                </label>
+                                                <label class="inline-flex items-center">
+                                                    <input type="radio" name="tripPayer" value="Other Person"
+                                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                    <span class="ml-2 text-sm text-gray-700">Other Person</span>
+                                                </label>
+                                                <label class="inline-flex items-center">
+                                                    <input type="radio" name="tripPayer" value="Company/Organization"
+                                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                    <span class="ml-2 text-sm text-gray-700">Company/Organization</span>
+                                                </label>
+                                            </div>
+                                            
+                                            <div id="payerDetails" class="space-y-4">
+                                                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                                                    <div class="md:col-span-2">
+                                                        <label class="block text-xs text-gray-500 mb-1">Name of organization/person paying for the trip</label>
+                                                        <input type="text" name="payerName"
+                                                            class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                    </div>
+                                                    <div>
+                                                        <label class="block text-xs text-gray-500 mb-1">Phone number</label>
+                                                        <input type="tel" name="payerPhone"
+                                                            class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                    </div>
+                                                    <div>
+                                                        <label class="block text-xs text-gray-500 mb-1">Email</label>
+                                                        <input type="email" name="payerEmail"
+                                                            class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-xs text-gray-500 mb-1">Relationship to the applicant</label>
+                                                    <input type="text" name="payerRelationship"
+                                                        class="block w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Address Verification -->
+                                        <div class="space-y-4">
+                                            <h3 class="text-sm font-medium text-gray-700">20. Is the address of the party paying for your trip the same as your Home or Mailing Address?</h3>
+                                            <div class="flex items-center space-x-6">
+                                                <label class="inline-flex items-center">
+                                                    <input type="radio" name="sameAddress" value="Yes" checked
+                                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                    <span class="ml-2 text-sm text-gray-700">Yes</span>
+                                                </label>
+                                                <label class="inline-flex items-center">
+                                                    <input type="radio" name="sameAddress" value="No"
+                                                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                    <span class="ml-2 text-sm text-gray-700">No, please specify:</span>
+                                                    <input type="text" name="payerAddress"
+                                                        class="ml-2 w-full text-sm text-gray-900 bg-gray-50 p-2 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500"
+                                                        placeholder="Enter address">
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Traveling Companions -->
+                                    <div class="space-y-4">
+                                        <h3 class="text-sm font-medium text-gray-700">21. Are there other persons traveling with you?</h3>
+                                        <div class="space-y-4">
+                                            <div class="flex flex-wrap items-start gap-4">
+                                                <div class="flex items-center space-x-6">
+                                                    <label class="inline-flex items-center">
+                                                        <input type="radio" name="hasTravelCompanions" value="No" checked
+                                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                        <span class="ml-2 text-sm text-gray-700">No</span>
+                                                    </label>
+                                                    <label class="inline-flex items-center">
+                                                        <input type="radio" name="hasTravelCompanions" value="Yes"
+                                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                        <span class="ml-2 text-sm text-gray-700">Yes</span>
+                                                    </label>
+                                                </div>
+                                                
+                                                <div id="companionFields" class="hidden flex-1">
+                                                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 bg-gray-50 p-3 rounded-lg">
+                                                        <div>
+                                                            <label class="block text-xs text-gray-500 mb-1">Name</label>
+                                                            <input type="text" name="companionName"
+                                                                class="block w-full text-xs text-gray-900 bg-white p-1.5 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                        </div>
+                                                        <div>
+                                                            <label class="block text-xs text-gray-500 mb-1">Relationship</label>
+                                                            <input type="text" name="companionRelationship"
+                                                                class="block w-full text-xs text-gray-900 bg-white p-1.5 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                        </div>
+                                                        <div>
+                                                            <label class="block text-xs text-gray-500 mb-1">Email</label>
+                                                            <input type="email" name="companionEmail"
+                                                                class="block w-full text-xs text-gray-900 bg-white p-1.5 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- U.S. Visa History -->
+                                    <div class="space-y-4">
+                                        <h3 class="text-sm font-medium text-gray-700">22. Have you ever been issued a U.S. visa?</h3>
+                                        <div class="space-y-4">
+                                            <div class="flex flex-wrap items-start gap-4">
+                                                <div class="flex items-center space-x-6">
+                                                    <label class="inline-flex items-center">
+                                                        <input type="radio" name="hasUSVisa" value="No" checked
+                                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                        <span class="ml-2 text-sm text-gray-700">No</span>
+                                                    </label>
+                                                    <label class="inline-flex items-center">
+                                                        <input type="radio" name="hasUSVisa" value="Yes"
+                                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                        <span class="ml-2 text-sm text-gray-700">Yes</span>
+                                                    </label>
+                                                </div>
+                                                
+                                                <div id="visaDetails" class="hidden flex-1">
+                                                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-gray-50 p-3 rounded-lg">
+                                                        <div class="col-span-1">
+                                                            <label class="block text-xs text-gray-500 mb-1">Visa No.</label>
+                                                            <input type="text" name="visaNumber"
+                                                                class="block w-full text-xs text-gray-900 bg-white p-1.5 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500"
+                                                                placeholder="Visa number">
+                                                        </div>
+                                                        <div class="col-span-1">
+                                                            <label class="block text-xs text-gray-500 mb-1">Type</label>
+                                                            <input type="text" name="visaType"
+                                                                class="block w-full text-xs text-gray-900 bg-white p-1.5 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500"
+                                                                placeholder="e.g., B1/B2, F1">
+                                                        </div>
+                                                        <div class="col-span-1">
+                                                            <label class="block text-xs text-gray-500 mb-1">When?</label>
+                                                            <input type="date" name="visaIssueDate"
+                                                                class="block w-full text-xs text-gray-900 bg-white p-1.5 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                        </div>
+                                                        <div class="col-span-1">
+                                                            <label class="block text-xs text-gray-500 mb-1">Where?</label>
+                                                            <input type="text" name="visaIssuedAt"
+                                                                class="block w-full text-xs text-gray-900 bg-white p-1.5 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500"
+                                                                placeholder="e.g., Hanoi">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- U.S. Travel History -->
+                                    <div class="space-y-4">
+                                        <h3 class="text-sm font-medium text-gray-700">23. Have you ever been in the U.S.?</h3>
+                                        <div class="space-y-4">
+                                            <div class="flex flex-wrap items-start gap-4">
+                                                <div class="flex items-center space-x-6">
+                                                    <label class="inline-flex items-center">
+                                                        <input type="radio" name="hasBeenToUS" value="No" checked
+                                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                        <span class="ml-2 text-sm text-gray-700">No</span>
+                                                    </label>
+                                                    <label class="inline-flex items-center">
+                                                        <input type="radio" name="hasBeenToUS" value="Yes"
+                                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                        <span class="ml-2 text-sm text-gray-700">Yes</span>
+                                                    </label>
+                                                </div>
+                                                
+                                                <div id="usTravelDetails" class="hidden flex-1">
+                                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 bg-gray-50 p-3 rounded-lg">
+                                                        <div class="col-span-1">
+                                                            <label class="block text-xs text-gray-500 mb-1">When?</label>
+                                                            <input type="date" name="lastVisitDate"
+                                                                class="block w-full text-xs text-gray-900 bg-white p-1.5 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                        </div>
+                                                        <div class="col-span-1">
+                                                            <label class="block text-xs text-gray-500 mb-1">How long?</label>
+                                                            <input type="text" name="stayDuration"
+                                                                class="block w-full text-xs text-gray-900 bg-white p-1.5 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500"
+                                                                placeholder="e.g., 2 weeks">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Immigration Petition -->
+                                    <div class="space-y-4">
+                                        <h3 class="text-sm font-medium text-gray-700">Has anyone ever filed an immigrant petition on your behalf with the United States Citizenship and Immigration Services (USCIS)?</h3>
+                                        <div class="space-y-4">
+                                            <div class="flex flex-wrap items-start gap-4">
+                                                <div class="flex items-center space-x-6">
+                                                    <label class="inline-flex items-center">
+                                                        <input type="radio" name="hasImmigrantPetition" value="No" checked
+                                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                        <span class="ml-2 text-sm text-gray-700">No</span>
+                                                    </label>
+                                                    <label class="inline-flex items-center">
+                                                        <input type="radio" name="hasImmigrantPetition" value="Yes"
+                                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                        <span class="ml-2 text-sm text-gray-700">Yes</span>
+                                                    </label>
+                                                </div>
+                                                
+                                                <div id="petitionDetails" class="hidden flex-1">
+                                                    <div class="space-y-3 bg-gray-50 p-3 rounded-lg">
+                                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                                            <div class="col-span-1">
+                                                                <label class="block text-xs text-gray-500 mb-1">Petitioner</label>
+                                                                <input type="text" name="petitionerName"
+                                                                    class="block w-full text-xs text-gray-900 bg-white p-1.5 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500"
+                                                                    placeholder="Name/organization">
+                                                            </div>
+                                                            <div class="col-span-1">
+                                                                <label class="block text-xs text-gray-500 mb-1">Petition type</label>
+                                                                <input type="text" name="petitionType"
+                                                                    class="block w-full text-xs text-gray-900 bg-white p-1.5 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500"
+                                                                    placeholder="e.g., I-130">
+                                                            </div>
+                                                        </div>
+                                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                                            <div class="col-span-1">
+                                                                <label class="block text-xs text-gray-500 mb-1">Date filed</label>
+                                                                <input type="date" name="petitionDate"
+                                                                    class="block w-full text-xs text-gray-900 bg-white p-1.5 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                            </div>
+                                                            <div class="col-span-1">
+                                                                <label class="block text-xs text-gray-500 mb-1">Status</label>
+                                                                <input type="text" name="petitionStatus"
+                                                                    class="block w-full text-xs text-gray-900 bg-white p-1.5 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500"
+                                                                    placeholder="e.g., Pending">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Visa Refusal History -->
+                                    <div class="space-y-4">
+                                        <h3 class="text-sm font-medium text-gray-700">24. Have you ever been refused a U.S. visa, or been refused admission to the United States, or withdrawn your application for admission at the port of entry?</h3>
+                                        <div class="space-y-4">
+                                            <div class="flex flex-wrap items-start gap-4">
+                                                <div class="flex items-center space-x-6">
+                                                    <label class="inline-flex items-center">
+                                                        <input type="radio" name="visaRefusal" value="No" checked
+                                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                        <span class="ml-2 text-sm text-gray-700">No</span>
+                                                    </label>
+                                                    <label class="inline-flex items-center">
+                                                        <input type="radio" name="visaRefusal" value="Yes"
+                                                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300">
+                                                        <span class="ml-2 text-sm text-gray-700">Yes</span>
+                                                    </label>
+                                                </div>
+                                                
+                                                <div id="visaRefusalDetails" class="hidden flex-1">
+                                                    <div class="space-y-3 bg-gray-50 p-3 rounded-lg">
+                                                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                                                            <div class="col-span-1">
+                                                                <label class="block text-xs text-gray-500 mb-1">Visa type</label>
+                                                                <input type="text" name="refusedVisaType"
+                                                                    class="block w-full text-xs text-gray-900 bg-white p-1.5 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500"
+                                                                    placeholder="e.g., B1/B2, F1">
+                                                            </div>
+                                                            <div class="col-span-1">
+                                                                <label class="block text-xs text-gray-500 mb-1">When?</label>
+                                                                <input type="date" name="refusalDate"
+                                                                    class="block w-full text-xs text-gray-900 bg-white p-1.5 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500">
+                                                            </div>
+                                                            <div class="col-span-1">
+                                                                <label class="block text-xs text-gray-500 mb-1">Location</label>
+                                                                <input type="text" name="refusalLocation"
+                                                                    class="block w-full text-xs text-gray-900 bg-white p-1.5 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500"
+                                                                    placeholder="e.g., U.S. Embassy Hanoi">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-2">
+                                                            <label class="block text-xs text-gray-500 mb-1">Reasons for being rejected</label>
+                                                            <textarea name="rejectionReasons" rows="2"
+                                                                class="block w-full text-xs text-gray-900 bg-white p-1.5 rounded border border-gray-300 focus:ring-red-500 focus:border-red-500"
+                                                                placeholder="Please provide details about the rejection"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Action Buttons -->
+                                    <div class="flex justify-between items-center pt-2">
+                                        <div class="space-x-3">
+                                            <button type="button"
+                                                class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                                Save
+                                            </button>
+                                            <a href="DS160-form-2.html"
+                                                class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                                Next <i class="fas fa-arrow-right ml-2"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -351,6 +805,84 @@
                 });
             }
         }
+
+        // Handle traveling companions
+        document.querySelectorAll('input[name="hasTravelCompanions"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const companionFields = document.getElementById('companionFields');
+                if (this.value === 'Yes') {
+                    companionFields.classList.remove('hidden');
+                } else {
+                    companionFields.classList.add('hidden');
+                }
+            });
+        });
+
+        // Add new companion fields
+        document.getElementById('addCompanion')?.addEventListener('click', function() {
+            const companionFields = document.getElementById('companionFields');
+            const newFields = companionFields.querySelector('.grid').cloneNode(true);
+            // Clear input values
+            newFields.querySelectorAll('input').forEach(input => input.value = '');
+            companionFields.insertBefore(newFields, this);
+        });
+
+        // Handle U.S. visa history
+        document.querySelectorAll('input[name="hasUSVisa"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const visaDetails = document.getElementById('visaDetails');
+                if (this.value === 'Yes') {
+                    visaDetails.classList.remove('hidden');
+                } else {
+                    visaDetails.classList.add('hidden');
+                }
+            });
+        });
+
+        // Add another visa
+        document.getElementById('addAnotherVisa')?.addEventListener('click', function() {
+            const visaDetails = document.getElementById('visaDetails');
+            const visaFields = visaDetails.querySelector('.grid').cloneNode(true);
+            // Clear input values
+            visaFields.querySelectorAll('input').forEach(input => input.value = '');
+            visaDetails.insertBefore(visaFields, this);
+        });
+
+        // Handle U.S. travel history
+        document.querySelectorAll('input[name="hasBeenToUS"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const usTravelDetails = document.getElementById('usTravelDetails');
+                if (this.value === 'Yes') {
+                    usTravelDetails.classList.remove('hidden');
+                } else {
+                    usTravelDetails.classList.add('hidden');
+                }
+            });
+        });
+
+        // Handle immigration petition
+        document.querySelectorAll('input[name="hasImmigrantPetition"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const petitionDetails = document.getElementById('petitionDetails');
+                if (this.value === 'Yes') {
+                    petitionDetails.classList.remove('hidden');
+                } else {
+                    petitionDetails.classList.add('hidden');
+                }
+            });
+        });
+
+        // Handle visa refusal
+        document.querySelectorAll('input[name="visaRefusal"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const visaRefusalDetails = document.getElementById('visaRefusalDetails');
+                if (this.value === 'Yes') {
+                    visaRefusalDetails.classList.remove('hidden');
+                } else {
+                    visaRefusalDetails.classList.add('hidden');
+                }
+            });
+        });
     </script>
 </body>
 </html>

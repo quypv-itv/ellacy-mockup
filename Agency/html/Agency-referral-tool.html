@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referral Tools - APPLYLEAD</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .brand-red {
+            background-color: #d82128;
+        }
+        .brand-red-light {
+            background-color: #FEF2F2;
+        }
+        .text-brand-red {
+            color: #d82128;
+        }
+        .border-brand-red {
+            border-color: #d82128;
+        }
+        .hover\:bg-brand-red:hover {
+            background-color: #d82128;
+        }
+    </style>
+</head>
+<body style="background-color: #F9F9F9;">
+    <!-- Sidebar -->
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
+        <div class="p-6">
+            <img src="../../ApplyLead_logo.png" alt="ApplyLead" class="h-9 mb-2">
+            <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Agent</span>
+        </div>
+        <nav class="mt">
+            <a href="Agency-dashboard.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>
+                Dashboard
+            </a>
+            <a href="Agency-my-students.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="users" class="w-5 h-5 mr-3"></i>
+                My Students
+            </a>
+            <a href="Agent-Application.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>
+                Applications
+            </a>
+            <a href="Agency-tasks.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="check-square" class="w-5 h-5 mr-3"></i>
+                Tasks
+            </a>
+            <a href="Agency-scholarships.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="graduation-cap" class="w-5 h-5 mr-3"></i>
+                Scholarships
+            </a>
+            <a href="Agency-commission.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="dollar-sign" class="w-5 h-5 mr-3"></i>
+                Commissions
+            </a>
+            <a href="Agency-profile.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="settings" class="w-5 h-5 mr-3"></i>
+                Account Settings
+            </a>
+            <a href="#" class="flex items-center px-6 py-3 text-white" style="background-color: #d82128;">
+                <i data-lucide="link" class="w-5 h-5 mr-3"></i>
+                Referral Tools
+            </a>
+            <a href="Agency-messages.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>
+                Messages
+            </a>
+            <a href="Agency-admin-management.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="users-2" class="w-5 h-5 mr-3"></i>
+                Team Management
+            </a>
+        </nav>
+        <div class="mt-auto px-6 py-4 border-t border-gray-200">
+            <p class="text-sm text-gray-600 text-center">© 2025 APPLYLEAD. All rights reserved.</p>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="ml-64">
+        <!-- Top Bar -->
+        <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6">
+            <h2 class="text-xl font-semibold text-gray-800">Referral Tools</h2>
+            <div class="flex items-center space-x-4">
+                <button class="relative">
+                    <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
+                    <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                </button>
+                <!-- Profile Dropdown -->
+                <div class="relative">
+                    <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
+                             alt="Profile" 
+                             class="w-8 h-8 rounded-full object-cover">
+                    </button>
+                    
+                    <!-- Dropdown Menu -->
+                    <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                        <a href="Agency-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
+                        </a>
+                        <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <main class="p-6">
+            <!-- Link & QR Generator Panel -->
+            <div class="bg-white rounded-2xl shadow-sm p-6 mb-6">
+                <h3 class="text-lg font-semibold mb-6 flex items-center">
+                    <i data-lucide="link" class="w-5 h-5 mr-2 text-brand-red"></i>
+                    Link & QR Generator
+                </h3>
+                
+                <form id="referral-form" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Campaign Selection -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Campaign *</label>
+                            <select id="campaign-select" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" required>
+                                <option value="">Select a campaign...</option>
+                                <option value="FB_JUL25">FB_JUL25 Ads</option>
+                                <option value="HN_SUMMER_2025">HN Summer Event 2025</option>
+                                <option value="PARTNER_ABC">Partner ABC</option>
+                                <option value="WEBINAR_SEP25">Webinar September 2025</option>
+                            </select>
+                        </div>
+
+                        <!-- UTM Medium -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">UTM Medium (Optional)</label>
+                            <input type="text" id="utm-medium" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="e.g., social, email, print">
+                        </div>
+
+                        <!-- UTM Content -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">UTM Content (Optional)</label>
+                            <input type="text" id="utm-content" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" placeholder="e.g., banner, text-link">
+                        </div>
+
+                        <!-- Auto-filled UTM Source -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">UTM Source (Auto-filled)</label>
+                            <input type="text" id="utm-source" class="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg" value="agent_VNHN-A1003" readonly>
+                        </div>
+                    </div>
+
+                    <!-- Generate Button -->
+                    <div class="flex justify-center">
+                        <button type="submit" class="px-8 py-3 text-white font-medium rounded-lg transition-colors hover:opacity-90" style="background-color: #d82128;">
+                            <i data-lucide="link" class="w-5 h-5 inline-block mr-2"></i>
+                            Generate Link & QR
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Output Section -->
+                <div id="output-section" class="hidden mt-8 pt-6 border-t border-gray-200">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Short Link Output -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Generated Short Link</label>
+                            <div class="flex items-center space-x-2">
+                                <input type="text" id="generated-link" class="flex-1 px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg font-mono text-sm" readonly>
+                                <button type="button" onclick="copyGeneratedLink()" class="px-4 py-2 text-white rounded-lg transition-colors hover:opacity-90" style="background-color: #d82128;">
+                                    <i data-lucide="copy" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- QR Code Preview -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">QR Code Preview</label>
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0">
+                                    <div id="qr-preview" class="w-32 h-32 bg-white border-2 border-gray-300 rounded-lg flex items-center justify-center">
+                                        <div class="w-24 h-24 bg-black" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMyIgeT0iMyIgd2lkdGg9IjUiIGhlaWdodD0iNSIgZmlsbD0iYmxhY2siLz4KPHJlY3QgeD0iMTYiIHk9IjMiIHdpZHRoPSI1IiBoZWlnaHQ9IjUiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9IjMiIHk9IjE2IiB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K'); background-size: contain; background-repeat: no-repeat; background-position: center;"></div>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="space-y-2">
+                                        <button type="button" onclick="downloadQR('png')" class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-blue-700 bg-blue-100 rounded-lg hover:bg-blue-200 mr-2">
+                                            <i data-lucide="download" class="w-3 h-3 mr-1"></i>
+                                            Download PNG
+                                        </button>
+                                        <button type="button" onclick="downloadQR('svg')" class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-green-700 bg-green-100 rounded-lg hover:bg-green-200">
+                                            <i data-lucide="download" class="w-3 h-3 mr-1"></i>
+                                            Download SVG
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Referral History Table -->
+            <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+                <div class="p-6 border-b border-gray-200">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold flex items-center">
+                            <i data-lucide="history" class="w-5 h-5 mr-2 text-brand-red"></i>
+                            Referral History
+                        </h3>
+                        <div class="flex items-center space-x-2">
+                            <select class="px-3 py-1.5 text-sm border border-gray-300 rounded-lg">
+                                <option>All Campaigns</option>
+                                <option>FB_JUL25 Ads</option>
+                                <option>HN Summer Event 2025</option>
+                                <option>Partner ABC</option>
+                            </select>
+                            <button class="px-3 py-1.5 text-sm text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200">
+                                <i data-lucide="download" class="w-4 h-4 inline-block mr-1"></i>
+                                Export
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Created At</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Campaign</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Short Link</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Clicks</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Signups</th>
+                                <th class="px-6 py-4 text-right text-sm font-semibold text-gray-600">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 text-sm text-gray-600">2025-09-16</td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                        FB_JUL25 Ads
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <code class="text-sm bg-gray-100 px-2 py-1 rounded font-mono">ell.ac/r/FBJUL25_A1003</code>
+                                </td>
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900">134</td>
+                                <td class="px-6 py-4 text-sm font-medium text-green-600">18</td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="flex items-center justify-end space-x-2">
+                                        <button onclick="copyLink('ell.ac/r/FBJUL25_A1003')" class="p-1 text-gray-400 hover:text-gray-600" title="Copy Link">
+                                            <i data-lucide="copy" class="w-4 h-4"></i>
+                                        </button>
+                                        <button onclick="viewQR('FBJUL25_A1003')" class="p-1 text-gray-400 hover:text-gray-600" title="View QR">
+                                            <i data-lucide="qr-code" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 text-sm text-gray-600">2025-09-10</td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        HN Summer 2025
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <code class="text-sm bg-gray-100 px-2 py-1 rounded font-mono">ell.ac/r/EVTHN25_A1003</code>
+                                </td>
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900">87</td>
+                                <td class="px-6 py-4 text-sm font-medium text-green-600">9</td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="flex items-center justify-end space-x-2">
+                                        <button onclick="copyLink('ell.ac/r/EVTHN25_A1003')" class="p-1 text-gray-400 hover:text-gray-600" title="Copy Link">
+                                            <i data-lucide="copy" class="w-4 h-4"></i>
+                                        </button>
+                                        <button onclick="viewQR('EVTHN25_A1003')" class="p-1 text-gray-400 hover:text-gray-600" title="View QR">
+                                            <i data-lucide="qr-code" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 text-sm text-gray-600">2025-09-05</td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                                        Partner ABC
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <code class="text-sm bg-gray-100 px-2 py-1 rounded font-mono">ell.ac/r/PABC_A1003</code>
+                                </td>
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900">52</td>
+                                <td class="px-6 py-4 text-sm font-medium text-green-600">7</td>
+                                <td class="px-6 py-4 text-right">
+                                    <div class="flex items-center justify-end space-x-2">
+                                        <button onclick="copyLink('ell.ac/r/PABC_A1003')" class="p-1 text-gray-400 hover:text-gray-600" title="Copy Link">
+                                            <i data-lucide="copy" class="w-4 h-4"></i>
+                                        </button>
+                                        <button onclick="viewQR('PABC_A1003')" class="p-1 text-gray-400 hover:text-gray-600" title="View QR">
+                                            <i data-lucide="qr-code" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- QR Code Modal -->
+    <div id="qr-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <div class="bg-white rounded-2xl shadow-xl max-w-md w-full mx-4">
+            <!-- Modal Header -->
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-semibold text-gray-900 flex items-center">
+                        <i data-lucide="qr-code" class="w-5 h-5 mr-2 text-brand-red"></i>
+                        QR Code Details
+                    </h3>
+                    <button onclick="closeQRModal()" class="text-gray-400 hover:text-gray-600">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Modal Content -->
+            <div class="p-6">
+                <!-- QR Code Display -->
+                <div class="flex justify-center mb-6">
+                    <div class="w-48 h-48 bg-white border-2 border-gray-300 rounded-lg flex items-center justify-center">
+                        <div id="modal-qr-code" class="w-40 h-40 bg-black" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMyIgeT0iMyIgd2lkdGg9IjUiIGhlaWdodD0iNSIgZmlsbD0iYmxhY2siLz4KPHJlY3QgeD0iMTYiIHk9IjMiIHdpZHRoPSI1IiBoZWlnaHQ9IjUiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9IjMiIHk9IjE2IiB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K'); background-size: contain; background-repeat: no-repeat; background-position: center;"></div>
+                    </div>
+                </div>
+                
+                <!-- URL Information -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Referral URL</label>
+                    <div class="flex items-center space-x-2">
+                        <input type="text" id="modal-url" class="flex-1 px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg font-mono text-sm" readonly>
+                        <button onclick="copyModalURL()" class="px-3 py-2 text-white rounded-lg transition-colors hover:opacity-90" style="background-color: #d82128;" title="Copy URL">
+                            <i data-lucide="copy" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Campaign Info -->
+                <div class="mb-6">
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-medium text-gray-700">Campaign:</span>
+                            <span id="modal-campaign" class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                FB_JUL25 Ads
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-medium text-gray-700">Clicks:</span>
+                            <span id="modal-clicks" class="text-sm font-semibold text-gray-900">134</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-medium text-gray-700">Signups:</span>
+                            <span id="modal-signups" class="text-sm font-semibold text-green-600">18</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="downloadModalQR('png')" class="flex items-center justify-center px-4 py-2 text-blue-700 bg-blue-100 rounded-lg hover:bg-blue-200 transition-colors">
+                        <i data-lucide="download" class="w-4 h-4 mr-2"></i>
+                        Download PNG
+                    </button>
+                    
+                    <button onclick="shareQR()" class="flex items-center justify-center px-4 py-2 text-purple-700 bg-purple-100 rounded-lg hover:bg-purple-200 transition-colors">
+                        <i data-lucide="share-2" class="w-4 h-4 mr-2"></i>
+                        Share QR
+                    </button>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Assistant -->
+    <div id="ai-assistant" class="fixed bottom-6 right-6 z-50">
+        <button id="ai-chat-toggle" class="w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-white transition-transform hover:scale-105" style="background-color: #d82128;">
+            <i data-lucide="bot" class="w-6 h-6"></i>
+        </button>
+        
+        <!-- AI Chat Panel -->
+        <div id="ai-chat-panel" class="hidden absolute bottom-16 right-0 w-80 bg-white rounded-2xl shadow-xl border border-gray-200">
+            <!-- Chat Header -->
+            <div class="p-4 border-b border-gray-200 rounded-t-2xl" style="background-color: #d82128;">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center">
+                            <i data-lucide="bot" class="w-4 h-4" style="color: #d82128;"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-medium text-sm">Referral Assistant</h3>
+                            <p class="text-red-100 text-xs">Online</p>
+                        </div>
+                    </div>
+                    <button id="ai-chat-close" class="text-white hover:text-red-100">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Chat Messages -->
+            <div class="h-64 overflow-y-auto p-4 space-y-4">
+                <!-- AI Message -->
+                <div class="flex items-start space-x-2">
+                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium text-white" style="background-color: #d82128;">
+                        AI
+                    </div>
+                    <div class="bg-gray-100 rounded-2xl px-3 py-2 max-w-xs">
+                        <p class="text-sm text-gray-800">Hi! I can help you optimize your referral campaigns. Need tips on improving conversion rates?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chat Input -->
+            <div class="p-4 border-t border-gray-200">
+                <div class="flex items-center space-x-2">
+                    <input type="text" placeholder="Ask about referral optimization..." class="flex-1 px-3 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2" style="--tw-ring-color: #d82128;">
+                    <button class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #d82128;">
+                        <i data-lucide="send" class="w-4 h-4 text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Profile menu functionality
+        const profileMenu = document.getElementById('profile-menu');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileMenu.addEventListener('click', () => {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!profileMenu.contains(event.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // Handle logout
+        function handleLogout() {
+            console.log('Logging out...');
+        }
+
+        // Referral form functionality
+        document.getElementById('referral-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            generateReferralLink();
+        });
+
+        function generateReferralLink() {
+            const campaign = document.getElementById('campaign-select').value;
+            const utmMedium = document.getElementById('utm-medium').value;
+            const utmContent = document.getElementById('utm-content').value;
+            
+            if (!campaign) {
+                showToast('Please select a campaign', 'error');
+                return;
+            }
+
+            // Generate short link
+            const shortCode = campaign.substring(0, 6).toUpperCase() + '_A1003';
+            const generatedLink = `https://ell.ac/r/${shortCode}`;
+            
+            // Show output section
+            document.getElementById('output-section').classList.remove('hidden');
+            document.getElementById('generated-link').value = generatedLink;
+            
+            showToast('Referral link generated successfully!');
+        }
+
+        function copyGeneratedLink() {
+            const link = document.getElementById('generated-link').value;
+            copyToClipboard(link);
+        }
+
+        function copyLink(link) {
+            copyToClipboard(`https://${link}`);
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Link copied to clipboard!');
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showToast('Link copied to clipboard!');
+            });
+        }
+
+        function downloadQR(format) {
+            showToast(`QR Code ${format.toUpperCase()} downloaded successfully!`);
+        }
+
+        function viewQR(code) {
+            // Get referral data based on code
+            const referralData = getReferralData(code);
+            
+            // Update modal content
+            document.getElementById('modal-url').value = `https://ell.ac/r/${code}`;
+            document.getElementById('modal-campaign').textContent = referralData.campaign;
+            document.getElementById('modal-campaign').className = `inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${referralData.badgeClass}`;
+            document.getElementById('modal-clicks').textContent = referralData.clicks;
+            document.getElementById('modal-signups').textContent = referralData.signups;
+            
+            // Show modal
+            document.getElementById('qr-modal').classList.remove('hidden');
+            
+            // Re-initialize icons for the modal
+            lucide.createIcons();
+        }
+        
+        function getReferralData(code) {
+            const referralMap = {
+                'FBJUL25_A1003': {
+                    campaign: 'FB_JUL25 Ads',
+                    badgeClass: 'bg-blue-100 text-blue-800',
+                    clicks: '134',
+                    signups: '18'
+                },
+                'EVTHN25_A1003': {
+                    campaign: 'HN Summer 2025',
+                    badgeClass: 'bg-green-100 text-green-800',
+                    clicks: '87',
+                    signups: '9'
+                },
+                'PABC_A1003': {
+                    campaign: 'Partner ABC',
+                    badgeClass: 'bg-purple-100 text-purple-800',
+                    clicks: '52',
+                    signups: '7'
+                }
+            };
+            
+            return referralMap[code] || {
+                campaign: 'Unknown Campaign',
+                badgeClass: 'bg-gray-100 text-gray-800',
+                clicks: '0',
+                signups: '0'
+            };
+        }
+        
+        function closeQRModal() {
+            document.getElementById('qr-modal').classList.add('hidden');
+        }
+        
+        function copyModalURL() {
+            const url = document.getElementById('modal-url').value;
+            copyToClipboard(url);
+        }
+        
+        function downloadModalQR(format) {
+            showToast(`QR Code ${format.toUpperCase()} downloaded successfully!`);
+        }
+        
+        function shareQR() {
+            const url = document.getElementById('modal-url').value;
+            if (navigator.share) {
+                navigator.share({
+                    title: 'ApplyLead Referral Link',
+                    text: 'Check out this education opportunity!',
+                    url: url
+                }).then(() => {
+                    showToast('QR code shared successfully!');
+                }).catch(() => {
+                    // Fallback to copy
+                    copyToClipboard(url);
+                    showToast('Link copied to clipboard for sharing!');
+                });
+            } else {
+                // Fallback to copy
+                copyToClipboard(url);
+                showToast('Link copied to clipboard for sharing!');
+            }
+        }
+        
+        function printQR() {
+            // Create a new window for printing
+            const printWindow = window.open('', '_blank');
+            const url = document.getElementById('modal-url').value;
+            const campaign = document.getElementById('modal-campaign').textContent;
+            
+            printWindow.document.write(`
+                <html>
+                    <head>
+                        <title>QR Code - ${campaign}</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+                            .qr-container { margin: 20px 0; }
+                            .qr-code { width: 200px; height: 200px; margin: 0 auto; border: 2px solid #ccc; }
+                            .url { font-family: monospace; background: #f5f5f5; padding: 10px; margin: 10px 0; }
+                        </style>
+                    </head>
+                    <body>
+                        <h2>ApplyLead Referral QR Code</h2>
+                        <p><strong>Campaign:</strong> ${campaign}</p>
+                        <div class="qr-container">
+                            <div class="qr-code" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMyIgeT0iMyIgd2lkdGg9IjUiIGhlaWdodD0iNSIgZmlsbD0iYmxhY2siLz4KPHJlY3QgeD0iMTYiIHk9IjMiIHdpZHRoPSI1IiBoZWlnaHQ9IjUiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9IjMiIHk9IjE2IiB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K'); background-size: contain; background-repeat: no-repeat; background-position: center;"></div>
+                        </div>
+                        <div class="url">${url}</div>
+                        <p><em>Scan this QR code to access the referral link</em></p>
+                    </body>
+                </html>
+            `);
+            
+            printWindow.document.close();
+            printWindow.print();
+            showToast('Print dialog opened!');
+        }
+
+        // Toast notification function
+        function showToast(message, type = 'success') {
+            const existingToast = document.getElementById('toast');
+            if (existingToast) {
+                existingToast.remove();
+            }
+
+            const toast = document.createElement('div');
+            toast.id = 'toast';
+            const bgColor = type === 'error' ? 'bg-red-500' : 'bg-green-500';
+            toast.className = `fixed top-4 right-4 ${bgColor} text-white px-4 py-2 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300`;
+            toast.textContent = message;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-x-full');
+            }, 100);
+            
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // AI Assistant functionality
+        const aiChatToggle = document.getElementById('ai-chat-toggle');
+        const aiChatPanel = document.getElementById('ai-chat-panel');
+        const aiChatClose = document.getElementById('ai-chat-close');
+
+        aiChatToggle.addEventListener('click', () => {
+            aiChatPanel.classList.toggle('hidden');
+        });
+
+        aiChatClose.addEventListener('click', () => {
+            aiChatPanel.classList.add('hidden');
+        });
+
+        // Close chat panel when clicking outside
+        document.addEventListener('click', (e) => {
+            const aiAssistant = document.getElementById('ai-assistant');
+            if (!aiAssistant.contains(e.target)) {
+                aiChatPanel.classList.add('hidden');
+            }
+        });
+        
+        // Close QR modal when clicking outside
+        document.addEventListener('click', (e) => {
+            const qrModal = document.getElementById('qr-modal');
+            const modalContent = qrModal.querySelector('.bg-white');
+            if (e.target === qrModal && !modalContent.contains(e.target)) {
+                closeQRModal();
+            }
+        });
+        
+        // Close QR modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeQRModal();
+            }
+        });
+    </script>
+</body>
+</html>

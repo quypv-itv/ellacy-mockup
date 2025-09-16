@@ -23,13 +23,13 @@ document.addEventListener('DOMContentLoaded', function() {
         tab.addEventListener('click', () => {
             // Remove active classes
             tabs.forEach(t => {
-                t.classList.remove('bg-blue-50', 'text-blue-600');
+                t.classList.remove('bg-blue-50', 'text-red-400');
                 t.classList.add('text-gray-500');
             });
 
             // Add active class to clicked tab
             tab.classList.remove('text-gray-500');
-            tab.classList.add('bg-blue-50', 'text-blue-600');
+            tab.classList.add('bg-blue-50', 'text-red-400');
 
             // Hide all tab contents
             Object.values(tabContents).forEach(content => {

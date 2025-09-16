@@ -22,8 +22,10 @@
         <!-- Sidebar -->
         <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
             <div class="p-6">
-                <h1 class="text-2xl font-bold text-gray-800">APPLYLEAD</h1>
-                <p class="text-sm text-gray-500">Admin</p>
+                <img src="../../ApplyLead_logo.png" alt="ApplyLead" class="h-9 mb-2">
+                <div class="inline-flex items-center px-2 py-1 rounded text-xs font-medium text-white" style="background-color: #d82128;">
+                    Admin
+                </div>
             </div>
             <nav class="mt-6">
                 <a href="CRM-dashboard.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
@@ -58,6 +60,10 @@
                     <i data-lucide="check-circle" class="w-5 h-5 mr-3"></i>
                     Tasks
                 </a>
+                <a href="CRM-Campaigns.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="brick-wall-shield" class="w-5 h-5 mr-3"></i>
+                    Campaigns
+                </a>
                 <a href="CRM-report.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
                     <i data-lucide="bar-chart" class="w-5 h-5 mr-3"></i>
                     Reports
@@ -70,11 +76,8 @@
                     <i data-lucide="shield" class="w-5 h-5 mr-3"></i>
                     User Admin
                 </a>
-                <a href="CRM-AI-Assistant.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
-                    <i data-lucide="bot" class="w-5 h-5 mr-3"></i>
-                    AI Assistant
-                </a>
-                <a href="CRM-Setting.html" class="flex items-center px-6 py-3 text-blue-600 bg-blue-50">
+                
+                <a href="CRM-Setting.html" class="flex items-center px-6 py-3 text-white" style="background-color: #d82128;">
                     <i data-lucide="settings" class="w-5 h-5 mr-3"></i>
                     Settings
                 </a>
@@ -116,7 +119,7 @@
                                 <h3 class="text-lg font-medium text-gray-900">Settings</h3>
                             </div>
                             <nav class="space-y-1" aria-label="Settings">
-                                <button onclick="switchTab('general')" class="tab-btn w-full flex items-center px-4 py-3 text-sm font-medium text-blue-600 bg-blue-50 border-l-4 border-blue-600">
+                                <button onclick="switchTab('general')" class="tab-btn w-full flex items-center px-4 py-3 text-sm font-medium text-white border-l-4" style="background-color: #d82128; border-color: #d82128;">
                                     <i data-lucide="settings" class="w-5 h-5 mr-3"></i>
                                     General Settings
                                 </button>
@@ -136,6 +139,10 @@
                                     <i data-lucide="code" class="w-5 h-5 mr-3"></i>
                                     API & Integration
                                 </button>
+                                <button onclick="switchTab('uid')" class="tab-btn w-full flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 border-l-4 border-transparent">
+                                    <i data-lucide="hash" class="w-5 h-5 mr-3"></i>
+                                    UID Schema Settings
+                                </button>
                             </nav>
                         </div>
                     </div>
@@ -150,7 +157,7 @@
                                     <!-- Language -->
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700">Default Language</label>
-                                        <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                        <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
                                             <option value="en">English</option>
                                             <option value="vi">Vietnamese</option>
                                         </select>
@@ -158,7 +165,7 @@
                                     <!-- Timezone -->
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700">Timezone</label>
-                                        <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                        <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
                                             <option value="UTC+7">Asia/Ho_Chi_Minh (UTC+7)</option>
                                             <option value="UTC+8">Asia/Singapore (UTC+8)</option>
                                         </select>
@@ -166,7 +173,7 @@
                                     <!-- Date Format -->
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700">Date Format</label>
-                                        <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                        <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
                                             <option value="DD/MM/YYYY">DD/MM/YYYY</option>
                                             <option value="MM/DD/YYYY">MM/DD/YYYY</option>
                                             <option value="YYYY-MM-DD">YYYY-MM-DD</option>
@@ -175,7 +182,7 @@
                                     <!-- Max Upload Size -->
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700">Max File Upload Size</label>
-                                        <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                        <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
                                             <option value="5">5 MB</option>
                                             <option value="10">10 MB</option>
                                             <option value="20">20 MB</option>
@@ -184,7 +191,7 @@
                                 </div>
                                 <!-- Save Button -->
                                 <div class="flex justify-end">
-                                    <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                    <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" style="background-color: #d82128;" onmouseover="this.style.backgroundColor='#DC1F1A'" onmouseout="this.style.backgroundColor='#d82128'">
                                         Save Changes
                                     </button>
                                 </div>
@@ -212,7 +219,7 @@
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2 users</td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">All permissions</td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <button class="text-blue-600 hover:text-blue-900">Edit</button>
+                                                    <button class="hover:text-red-900" style="color: #d82128;">Edit</button>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -220,7 +227,7 @@
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">5 users</td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">View, Edit, Approve</td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <button class="text-blue-600 hover:text-blue-900">Edit</button>
+                                                    <button class="hover:text-red-900" style="color: #d82128;">Edit</button>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -228,7 +235,7 @@
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">3 users</td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">View, Approve payments</td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <button class="text-blue-600 hover:text-blue-900">Edit</button>
+                                                    <button class="hover:text-red-900" style="color: #d82128;">Edit</button>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -236,7 +243,7 @@
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">8 users</td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">View, Reply messages</td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <button class="text-blue-600 hover:text-blue-900">Edit</button>
+                                                    <button class="hover:text-red-900" style="color: #d82128;">Edit</button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -244,7 +251,7 @@
                                 </div>
                                 <!-- Add Role Button -->
                                 <div class="flex justify-end">
-                                    <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                    <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" style="background-color: #d82128;" onmouseover="this.style.backgroundColor='#DC1F1A'" onmouseout="this.style.backgroundColor='#d82128'">
                                         Add New Role
                                     </button>
                                 </div>
@@ -259,10 +266,10 @@
                                 <div class="space-y-4">
                                     <div class="flex items-center justify-between">
                                         <div class="flex items-center">
-                                            <input type="checkbox" checked class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                            <input type="checkbox" checked class="h-4 w-4 focus:ring-red-500 border-gray-300 rounded" style="color: #d82128;">
                                             <label class="ml-2 block text-sm text-gray-900">New application submitted</label>
                                         </div>
-                                        <select class="block w-32 pl-3 pr-10 py-2 text-sm border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 rounded-md">
+                                        <select class="block w-32 pl-3 pr-10 py-2 text-sm border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 rounded-md">
                                             <option>Email</option>
                                             <option>In-app</option>
                                             <option>Both</option>
@@ -270,10 +277,10 @@
                                     </div>
                                     <div class="flex items-center justify-between">
                                         <div class="flex items-center">
-                                            <input type="checkbox" checked class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                            <input type="checkbox" checked class="h-4 w-4 focus:ring-red-500 border-gray-300 rounded" style="color: #d82128;">
                                             <label class="ml-2 block text-sm text-gray-900">Scholarship expiring</label>
                                         </div>
-                                        <select class="block w-32 pl-3 pr-10 py-2 text-sm border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 rounded-md">
+                                        <select class="block w-32 pl-3 pr-10 py-2 text-sm border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 rounded-md">
                                             <option>Email</option>
                                             <option>In-app</option>
                                             <option>Both</option>
@@ -281,10 +288,10 @@
                                     </div>
                                     <div class="flex items-center justify-between">
                                         <div class="flex items-center">
-                                            <input type="checkbox" checked class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                            <input type="checkbox" checked class="h-4 w-4 focus:ring-red-500 border-gray-300 rounded" style="color: #d82128;">
                                             <label class="ml-2 block text-sm text-gray-900">Agent flagged</label>
                                         </div>
-                                        <select class="block w-32 pl-3 pr-10 py-2 text-sm border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 rounded-md">
+                                        <select class="block w-32 pl-3 pr-10 py-2 text-sm border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 rounded-md">
                                             <option>Email</option>
                                             <option>In-app</option>
                                             <option>Both</option>
@@ -296,22 +303,22 @@
                                     <h4 class="text-sm font-medium text-gray-900 mb-4">Reminder Frequency</h4>
                                     <div class="space-y-2">
                                         <div class="flex items-center">
-                                            <input type="radio" name="reminder" value="daily" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300">
+                                            <input type="radio" name="reminder" value="daily" class="h-4 w-4 focus:ring-red-500 border-gray-300" style="color: #d82128;">
                                             <label class="ml-2 block text-sm text-gray-900">Daily</label>
                                         </div>
                                         <div class="flex items-center">
-                                            <input type="radio" name="reminder" value="weekly" checked class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300">
+                                            <input type="radio" name="reminder" value="weekly" checked class="h-4 w-4 focus:ring-red-500 border-gray-300" style="color: #d82128;">
                                             <label class="ml-2 block text-sm text-gray-900">Weekly</label>
                                         </div>
                                         <div class="flex items-center">
-                                            <input type="radio" name="reminder" value="critical" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300">
+                                            <input type="radio" name="reminder" value="critical" class="h-4 w-4 focus:ring-red-500 border-gray-300" style="color: #d82128;">
                                             <label class="ml-2 block text-sm text-gray-900">Critical Only</label>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Save Button -->
                                 <div class="flex justify-end">
-                                    <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                    <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" style="background-color: #d82128;" onmouseover="this.style.backgroundColor='#DC1F1A'" onmouseout="this.style.backgroundColor='#d82128'">
                                         Save Changes
                                     </button>
                                 </div>
@@ -344,18 +351,18 @@
                                 <!-- Welcome Message -->
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700">Dashboard Welcome Message</label>
-                                    <textarea rows="3" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter welcome message">Welcome to APPLYLEAD - Your Education Management Platform</textarea>
+                                    <textarea rows="3" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm" placeholder="Enter welcome message">Welcome to APPLYLEAD - Your Education Management Platform</textarea>
                                 </div>
                                 <!-- AI Assistant Tips -->
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center">
-                                        <input type="checkbox" checked class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                        <input type="checkbox" checked class="h-4 w-4 focus:ring-red-500 border-gray-300 rounded" style="color: #d82128;">
                                         <label class="ml-2 block text-sm text-gray-900">Show AI Assistant Welcome Tips</label>
                                     </div>
                                 </div>
                                 <!-- Save Button -->
                                 <div class="flex justify-end">
-                                    <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                    <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" style="background-color: #d82128;" onmouseover="this.style.backgroundColor='#DC1F1A'" onmouseout="this.style.backgroundColor='#d82128'">
                                         Save Changes
                                     </button>
                                 </div>
@@ -381,7 +388,7 @@
                                 <!-- Webhook Configuration -->
                                 <div>
                                     <h4 class="text-sm font-medium text-gray-900 mb-4">Webhook Endpoints</h4>
-                                    <input type="url" placeholder="https://" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                    <input type="url" placeholder="https://" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm">
                                 </div>
                                 <!-- Integration Options -->
                                 <div>
@@ -389,38 +396,295 @@
                                     <div class="space-y-4">
                                         <div class="flex items-center justify-between">
                                             <div class="flex items-center">
-                                                <input type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                                <input type="checkbox" class="h-4 w-4 focus:ring-red-500 border-gray-300 rounded" style="color: #d82128;">
                                                 <label class="ml-2 block text-sm text-gray-900">Ellacy Foundation Sync</label>
                                             </div>
-                                            <button class="text-sm text-blue-600 hover:text-blue-900">Configure</button>
+                                            <button class="text-sm hover:text-red-900" style="color: #d82128;">Configure</button>
                                         </div>
                                         <div class="flex items-center justify-between">
                                             <div class="flex items-center">
-                                                <input type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                                <input type="checkbox" class="h-4 w-4 focus:ring-red-500 border-gray-300 rounded" style="color: #d82128;">
                                                 <label class="ml-2 block text-sm text-gray-900">Agent Portal Integration</label>
                                             </div>
-                                            <button class="text-sm text-blue-600 hover:text-blue-900">Configure</button>
+                                            <button class="text-sm hover:text-red-900" style="color: #d82128;">Configure</button>
                                         </div>
                                         <div class="flex items-center justify-between">
                                             <div class="flex items-center">
-                                                <input type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                                <input type="checkbox" class="h-4 w-4 focus:ring-red-500 border-gray-300 rounded" style="color: #d82128;">
                                                 <label class="ml-2 block text-sm text-gray-900">Payment Gateway</label>
                                             </div>
-                                            <button class="text-sm text-blue-600 hover:text-blue-900">Configure</button>
+                                            <button class="text-sm hover:text-red-900" style="color: #d82128;">Configure</button>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Save Button -->
                                 <div class="flex justify-end">
-                                    <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                    <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" style="background-color: #d82128;" onmouseover="this.style.backgroundColor='#DC1F1A'" onmouseout="this.style.backgroundColor='#d82128'">
                                         Save Changes
                                     </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- UID Schema Settings Tab -->
+                        <div id="uid-tab" class="tab-content hidden bg-white rounded-lg shadow-sm p-6">
+                            <h3 class="text-lg font-medium text-gray-900 mb-6">UID Schema Settings</h3>
+                            <p class="text-sm text-gray-600 mb-6">Define and manage the UID generation rules for Students, Agents, and Staff. Ensure all users receive unique identifiers following a consistent structure.</p>
+                            
+                            <div class="space-y-8">
+                                <!-- Configuration Options -->
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                                    <!-- Country Code -->
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h4 class="text-sm font-medium text-gray-900 mb-3">Country Code</h4>
+                                        <input type="text" id="country-code" value="VN" maxlength="2" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm font-mono" oninput="updatePreview()">
+                                        <p class="text-xs text-gray-500 mt-1">2-letter country code (default: VN)</p>
+                                    </div>
+
+                                    <!-- Sequence Length -->
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <h4 class="text-sm font-medium text-gray-900 mb-3">Sequence Length</h4>
+                                        <input type="number" id="sequence-length" value="4" min="3" max="8" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm" oninput="updatePreview()">
+                                        <p class="text-xs text-gray-500 mt-1">Number of digits for sequence (3-8 digits)</p>
+                                    </div>
+                                </div>
+
+                                <!-- Region Codes -->
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <h4 class="text-sm font-medium text-gray-900">Region Codes</h4>
+                                        <button onclick="addRegionCode()" class="px-3 py-1 text-xs font-medium text-white rounded-md" style="background-color: #d82128;">
+                                            Add Region
+                                        </button>
+                                    </div>
+                                    <div id="region-codes" class="space-y-2">
+                                        <div class="flex items-center space-x-2 region-item">
+                                            <input type="text" value="HN" maxlength="2" class="w-16 px-2 py-1 border border-gray-300 rounded text-xs font-mono" oninput="updatePreview()">
+                                            <span class="text-sm text-gray-600">Hanoi</span>
+                                            <button onclick="removeRegionCode(this)" class="text-red-500 hover:text-red-700">
+                                                <i data-lucide="x" class="w-4 h-4"></i>
+                                            </button>
+                                        </div>
+                                        <div class="flex items-center space-x-2 region-item">
+                                            <input type="text" value="SG" maxlength="2" class="w-16 px-2 py-1 border border-gray-300 rounded text-xs font-mono" oninput="updatePreview()">
+                                            <span class="text-sm text-gray-600">Ho Chi Minh City</span>
+                                            <button onclick="removeRegionCode(this)" class="text-red-500 hover:text-red-700">
+                                                <i data-lucide="x" class="w-4 h-4"></i>
+                                            </button>
+                                        </div>
+                                        <div class="flex items-center space-x-2 region-item">
+                                            <input type="text" value="DN" maxlength="2" class="w-16 px-2 py-1 border border-gray-300 rounded text-xs font-mono" oninput="updatePreview()">
+                                            <span class="text-sm text-gray-600">Da Nang</span>
+                                            <button onclick="removeRegionCode(this)" class="text-red-500 hover:text-red-700">
+                                                <i data-lucide="x" class="w-4 h-4"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Entity Types & Prefixes -->
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <h4 class="text-sm font-medium text-gray-900">Entity Types & Prefixes</h4>
+                                        <button onclick="addEntityType()" class="px-3 py-1 text-xs font-medium text-white rounded-md" style="background-color: #d82128;">
+                                            Add Entity
+                                        </button>
+                                    </div>
+                                    <div id="entity-types" class="space-y-2">
+                                        <div class="flex items-center space-x-2 entity-item">
+                                            <input type="text" value="S" maxlength="1" class="w-12 px-2 py-1 border border-gray-300 rounded text-xs font-mono" oninput="updatePreview()">
+                                            <span class="text-sm text-gray-600 w-20">Student</span>
+                                            <button onclick="removeEntityType(this)" class="text-red-500 hover:text-red-700">
+                                                <i data-lucide="x" class="w-4 h-4"></i>
+                                            </button>
+                                        </div>
+                                        <div class="flex items-center space-x-2 entity-item">
+                                            <input type="text" value="A" maxlength="1" class="w-12 px-2 py-1 border border-gray-300 rounded text-xs font-mono" oninput="updatePreview()">
+                                            <span class="text-sm text-gray-600 w-20">Agent</span>
+                                            <button onclick="removeEntityType(this)" class="text-red-500 hover:text-red-700">
+                                                <i data-lucide="x" class="w-4 h-4"></i>
+                                            </button>
+                                        </div>
+                                        <div class="flex items-center space-x-2 entity-item">
+                                            <input type="text" value="Y" maxlength="1" class="w-12 px-2 py-1 border border-gray-300 rounded text-xs font-mono" oninput="updatePreview()">
+                                            <span class="text-sm text-gray-600 w-20">Staff</span>
+                                            <button onclick="removeEntityType(this)" class="text-red-500 hover:text-red-700">
+                                                <i data-lucide="x" class="w-4 h-4"></i>
+                                            </button>
+                                        </div>
+                                        <div class="flex items-center space-x-2 entity-item">
+                                            <input type="text" value="X" maxlength="1" class="w-12 px-2 py-1 border border-gray-300 rounded text-xs font-mono" oninput="updatePreview()">
+                                            <span class="text-sm text-gray-600 w-20">Executive</span>
+                                            <button onclick="removeEntityType(this)" class="text-red-500 hover:text-red-700">
+                                                <i data-lucide="x" class="w-4 h-4"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Sponsor Chain Flags -->
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h4 class="text-sm font-medium text-gray-900 mb-3">Sponsor Chain Flags</h4>
+                                    <div class="space-y-3">
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center">
+                                                <input type="checkbox" id="l2-flag" checked class="h-4 w-4 focus:ring-red-500 border-gray-300 rounded" style="color: #d82128;" onchange="updatePreview()">
+                                                <label for="l2-flag" class="ml-2 text-sm text-gray-900">L2 - Level 2 sponsor code</label>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center">
+                                                <input type="checkbox" id="l1-flag" checked class="h-4 w-4 focus:ring-red-500 border-gray-300 rounded" style="color: #d82128;" onchange="updatePreview()">
+                                                <label for="l1-flag" class="ml-2 text-sm text-gray-900">L1 - Level 1 sponsor code</label>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center">
+                                                <input type="checkbox" id="la-flag" checked class="h-4 w-4 focus:ring-red-500 border-gray-300 rounded" style="color: #d82128;" onchange="updatePreview()">
+                                                <label for="la-flag" class="ml-2 text-sm text-gray-900">LA - Direct agent/sponsor code</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- UID Preview Generator -->
+                                <div class="bg-blue-50 border border-blue-200 p-6 rounded-lg">
+                                    <h4 class="text-lg font-medium text-gray-900 mb-4">UID Preview Generator</h4>
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Entity Type</label>
+                                            <select id="preview-entity" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm" onchange="updatePreview()">
+                                                <option value="S">Student (S)</option>
+                                                <option value="A">Agent (A)</option>
+                                                <option value="Y">Staff (Y)</option>
+                                                <option value="X">Executive (X)</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Region</label>
+                                            <select id="preview-region" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm" onchange="updatePreview()">
+                                                <option value="HN">Hanoi (HN)</option>
+                                                <option value="SG">Ho Chi Minh (SG)</option>
+                                                <option value="DN">Da Nang (DN)</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Chain Selection</label>
+                                            <div class="flex items-center space-x-2 pt-2">
+                                                <input type="checkbox" id="preview-l2" checked class="h-4 w-4 focus:ring-red-500 border-gray-300 rounded" style="color: #d82128;" onchange="updatePreview()">
+                                                <label for="preview-l2" class="text-xs">L2</label>
+                                                <input type="checkbox" id="preview-l1" checked class="h-4 w-4 focus:ring-red-500 border-gray-300 rounded" style="color: #d82128;" onchange="updatePreview()">
+                                                <label for="preview-l1" class="text-xs">L1</label>
+                                                <input type="checkbox" id="preview-la" checked class="h-4 w-4 focus:ring-red-500 border-gray-300 rounded" style="color: #d82128;" onchange="updatePreview()">
+                                                <label for="preview-la" class="text-xs">LA</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-md border-2 border-dashed border-gray-300">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Generated UID Preview:</label>
+                                                <div id="uid-preview" class="text-2xl font-mono font-bold text-gray-900">VNHN-SL2L1LA1001</div>
+                                            </div>
+                                            <button onclick="copyUIDPreview()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md text-sm font-medium flex items-center">
+                                                <i data-lucide="copy" class="w-4 h-4 mr-2"></i>
+                                                Copy
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Validation & Guardrails -->
+                                <div class="bg-yellow-50 border border-yellow-200 p-4 rounded-lg">
+                                    <h4 class="text-sm font-medium text-gray-900 mb-3">Validation & Guardrails</h4>
+                                    <div class="space-y-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Regex Pattern Validation</label>
+                                            <input type="text" id="regex-pattern" value="^[A-Z]{2}[A-Z]{2}-[A-Z](L2|L1|LA)*[0-9]{4}$" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm font-mono">
+                                            <p class="text-xs text-gray-500 mt-1">Define regex pattern to ensure UID format is valid</p>
+                                        </div>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Reserved Range Start</label>
+                                                <input type="number" id="reserved-start" value="0" min="0" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Reserved Range End</label>
+                                                <input type="number" id="reserved-end" value="999" min="0" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm">
+                                            </div>
+                                        </div>
+                                        <p class="text-xs text-yellow-700">Reserved ranges (e.g., 0000-0999) will be blocked for testing purposes</p>
+                                    </div>
+                                </div>
+
+                                <!-- Admin Actions -->
+                                <div class="flex flex-wrap gap-3 pt-4 border-t border-gray-200">
+                                    <button type="button" onclick="saveUIDSchema()" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" style="background-color: #d82128;" onmouseover="this.style.backgroundColor='#DC1F1A'" onmouseout="this.style.backgroundColor='#d82128'">
+                                        <i data-lucide="save" class="w-4 h-4 mr-2"></i>
+                                        Save Schema
+                                    </button>
+                                    <button type="button" onclick="generateSampleUIDs()" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                        <i data-lucide="shuffle" class="w-4 h-4 mr-2"></i>
+                                        Generate Samples
+                                    </button>
+                                
+                                  
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </main>
+        </div>
+    </div>
+
+    <!-- AI Assistant Floating Button -->
+    <div id="ai-assistant" class="fixed bottom-6 right-6" style="z-index: 10000;">
+        <button id="ai-toggle" class="w-14 h-14 rounded-full text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center" style="background-color: #d82128;">
+            <i data-lucide="message-circle" class="w-6 h-6"></i>
+        </button>
+        
+        <!-- AI Chat Panel -->
+        <div id="ai-chat-panel" class="hidden absolute bottom-16 right-0 w-80 h-96 bg-white rounded-lg shadow-xl border border-gray-200">
+            <!-- Chat Header -->
+            <div class="flex items-center justify-between p-4 border-b border-gray-200" style="background-color: #d82128;">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-3">
+                        <i data-lucide="bot" class="w-4 h-4" style="color: #d82128;"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium text-white">AI Assistant</h3>
+                        <p class="text-xs text-red-100">Online</p>
+                    </div>
+                </div>
+                <button id="ai-close" class="text-white hover:text-red-100">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            
+            <!-- Chat Messages -->
+            <div id="chat-messages" class="flex-1 p-4 h-64 overflow-y-auto">
+                <div class="mb-4">
+                    <div class="flex items-start">
+                        <div class="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center mr-2 mt-1">
+                            <i data-lucide="bot" class="w-3 h-3" style="color: #d82128;"></i>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
+                            <p class="text-sm text-gray-800">Hello! I can help you configure system settings, optimize security permissions, customize branding, and set up integrations. What would you like to configure?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chat Input -->
+            <div class="p-4 border-t border-gray-200">
+                <div class="flex items-center">
+                    <input type="text" id="chat-input" placeholder="Ask about settings..." class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                    <button id="send-message" class="ml-2 p-2 rounded-lg text-white" style="background-color: #d82128;">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -467,18 +731,378 @@
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 if (btn.textContent.trim().toLowerCase().includes(tabName.replace('-', ' '))) {
                     btn.classList.remove('text-gray-600', 'hover:bg-gray-50', 'border-transparent');
-                    btn.classList.add('text-blue-600', 'bg-blue-50', 'border-blue-600');
+                    btn.classList.add('text-white');
+                    btn.style.backgroundColor = '#d82128';
+                    btn.style.borderColor = '#d82128';
                 } else {
-                    btn.classList.remove('text-blue-600', 'bg-blue-50', 'border-blue-600');
+                    btn.classList.remove('text-white');
                     btn.classList.add('text-gray-600', 'hover:bg-gray-50', 'border-transparent');
+                    btn.style.backgroundColor = '';
+                    btn.style.borderColor = '';
                 }
             });
+        }
+
+        // AI Assistant functionality
+        const aiToggle = document.getElementById('ai-toggle');
+        const aiChatPanel = document.getElementById('ai-chat-panel');
+        const aiClose = document.getElementById('ai-close');
+        const chatInput = document.getElementById('chat-input');
+        const sendMessage = document.getElementById('send-message');
+        const chatMessages = document.getElementById('chat-messages');
+
+        if (aiToggle && aiChatPanel) {
+            aiToggle.addEventListener('click', () => {
+                aiChatPanel.classList.toggle('hidden');
+            });
+
+            if (aiClose) {
+                aiClose.addEventListener('click', () => {
+                    aiChatPanel.classList.add('hidden');
+                });
+            }
+
+            // Handle chat input
+            if (chatInput && sendMessage) {
+                function sendChatMessage() {
+                    const message = chatInput.value.trim();
+                    if (message) {
+                        // Add user message
+                        const userMessageDiv = document.createElement('div');
+                        userMessageDiv.className = 'mb-4 flex justify-end';
+                        userMessageDiv.innerHTML = `
+                            <div class="rounded-lg p-3 max-w-xs" style="background-color: #d82128;">
+                                <p class="text-sm text-white">${message}</p>
+                            </div>
+                        `;
+                        chatMessages.appendChild(userMessageDiv);
+
+                        // Add AI response
+                        setTimeout(() => {
+                            const aiMessageDiv = document.createElement('div');
+                            aiMessageDiv.className = 'mb-4';
+                            aiMessageDiv.innerHTML = `
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center mr-2 mt-1">
+                                        <i data-lucide="bot" class="w-3 h-3" style="color: #d82128;"></i>
+                                    </div>
+                                    <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
+                                        <p class="text-sm text-gray-800">I can help you configure system preferences, manage user permissions, customize branding elements, and set up API integrations for optimal platform performance.</p>
+                                    </div>
+                                </div>
+                            `;
+                            chatMessages.appendChild(aiMessageDiv);
+                            chatMessages.scrollTop = chatMessages.scrollHeight;
+                            lucide.createIcons();
+                        }, 1000);
+
+                        chatInput.value = '';
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }
+                }
+
+                sendMessage.addEventListener('click', sendChatMessage);
+                chatInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        sendChatMessage();
+                    }
+                });
+            }
         }
 
         // Handle logout
         function handleLogout() {
             window.location.href = '../../login.html';
         }
+
+        // UID Schema Settings Functions
+        function updatePreview() {
+            const countryCode = document.getElementById('country-code').value.toUpperCase();
+            const sequenceLength = parseInt(document.getElementById('sequence-length').value);
+            
+            // Get selected entity and region from preview controls
+            const entityType = document.getElementById('preview-entity').value;
+            const regionCode = document.getElementById('preview-region').value;
+            
+            // Get chain flags from preview controls
+            const l2Checked = document.getElementById('preview-l2').checked;
+            const l1Checked = document.getElementById('preview-l1').checked;
+            const laChecked = document.getElementById('preview-la').checked;
+            
+            // Build chain part
+            let chainPart = '';
+            if (l2Checked) chainPart += 'L2';
+            if (l1Checked) chainPart += 'L1';
+            if (laChecked) chainPart += 'LA';
+            
+            // Generate sequence number
+            const sequence = '1001'.padStart(sequenceLength, '0');
+            
+            // Build UID
+            const uid = `${countryCode}${regionCode}-${entityType}${chainPart}${sequence}`;
+            
+            document.getElementById('uid-preview').textContent = uid;
+            
+            // Update region dropdown options based on current region codes
+            updateRegionDropdown();
+        }
+
+        function updateRegionDropdown() {
+            const regionSelect = document.getElementById('preview-region');
+            const currentValue = regionSelect.value;
+            regionSelect.innerHTML = '';
+            
+            // Get all region codes from the configuration
+            const regionItems = document.querySelectorAll('#region-codes .region-item input[type="text"]');
+            regionItems.forEach(input => {
+                if (input.value.trim()) {
+                    const option = document.createElement('option');
+                    option.value = input.value.toUpperCase();
+                    const label = input.nextElementSibling.textContent;
+                    option.textContent = `${label} (${input.value.toUpperCase()})`;
+                    regionSelect.appendChild(option);
+                }
+            });
+            
+            // Restore previous selection if still available
+            if (currentValue && [...regionSelect.options].some(opt => opt.value === currentValue)) {
+                regionSelect.value = currentValue;
+            }
+        }
+
+        function addRegionCode() {
+            const regionCodesContainer = document.getElementById('region-codes');
+            const newRegionDiv = document.createElement('div');
+            newRegionDiv.className = 'flex items-center space-x-2 region-item';
+            newRegionDiv.innerHTML = `
+                <input type="text" value="" maxlength="2" class="w-16 px-2 py-1 border border-gray-300 rounded text-xs font-mono" oninput="updatePreview()" placeholder="XX">
+                <input type="text" placeholder="Region Name" class="text-sm text-gray-600 border border-gray-300 rounded px-2 py-1">
+                <button onclick="removeRegionCode(this)" class="text-red-500 hover:text-red-700">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            `;
+            regionCodesContainer.appendChild(newRegionDiv);
+            lucide.createIcons();
+        }
+
+        function removeRegionCode(button) {
+            if (document.querySelectorAll('.region-item').length > 1) {
+                button.closest('.region-item').remove();
+                updatePreview();
+            } else {
+                alert('At least one region code must be configured.');
+            }
+        }
+
+        function addEntityType() {
+            const entityTypesContainer = document.getElementById('entity-types');
+            const newEntityDiv = document.createElement('div');
+            newEntityDiv.className = 'flex items-center space-x-2 entity-item';
+            newEntityDiv.innerHTML = `
+                <input type="text" value="" maxlength="1" class="w-12 px-2 py-1 border border-gray-300 rounded text-xs font-mono" oninput="updatePreview()" placeholder="X">
+                <input type="text" placeholder="Entity Name" class="text-sm text-gray-600 w-20 border border-gray-300 rounded px-2 py-1">
+                <button onclick="removeEntityType(this)" class="text-red-500 hover:text-red-700">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            `;
+            entityTypesContainer.appendChild(newEntityDiv);
+            lucide.createIcons();
+        }
+
+        function removeEntityType(button) {
+            if (document.querySelectorAll('.entity-item').length > 1) {
+                button.closest('.entity-item').remove();
+                updatePreview();
+            } else {
+                alert('At least one entity type must be configured.');
+            }
+        }
+
+        function copyUIDPreview() {
+            const uidText = document.getElementById('uid-preview').textContent;
+            navigator.clipboard.writeText(uidText).then(() => {
+                // Show success feedback
+                const button = event.target.closest('button');
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i data-lucide="check" class="w-4 h-4 mr-2"></i>Copied!';
+                button.classList.add('bg-green-100', 'text-green-700');
+                button.classList.remove('bg-gray-100', 'text-gray-700');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('bg-green-100', 'text-green-700');
+                    button.classList.add('bg-gray-100', 'text-gray-700');
+                    lucide.createIcons();
+                }, 2000);
+            }).catch(() => {
+                alert('Failed to copy UID to clipboard');
+            });
+        }
+
+        function saveUIDSchema() {
+            // Collect all configuration data
+            const schema = {
+                countryCode: document.getElementById('country-code').value.toUpperCase(),
+                sequenceLength: parseInt(document.getElementById('sequence-length').value),
+                regionCodes: [],
+                entityTypes: [],
+                sponsorFlags: {
+                    l2: document.getElementById('l2-flag').checked,
+                    l1: document.getElementById('l1-flag').checked,
+                    la: document.getElementById('la-flag').checked
+                },
+                validation: {
+                    regexPattern: document.getElementById('regex-pattern').value,
+                    reservedStart: parseInt(document.getElementById('reserved-start').value),
+                    reservedEnd: parseInt(document.getElementById('reserved-end').value)
+                }
+            };
+            
+            // Collect region codes
+            document.querySelectorAll('#region-codes .region-item').forEach(item => {
+                const code = item.querySelector('input[type="text"]').value.toUpperCase();
+                const name = item.querySelector('span').textContent || item.querySelectorAll('input')[1]?.value || '';
+                if (code) {
+                    schema.regionCodes.push({ code, name });
+                }
+            });
+            
+            // Collect entity types
+            document.querySelectorAll('#entity-types .entity-item').forEach(item => {
+                const prefix = item.querySelector('input[type="text"]').value.toUpperCase();
+                const name = item.querySelector('span').textContent || item.querySelectorAll('input')[1]?.value || '';
+                if (prefix) {
+                    schema.entityTypes.push({ prefix, name });
+                }
+            });
+            
+            // Simulate save (in real implementation, this would be an API call)
+            console.log('Saving UID Schema:', schema);
+            
+            // Show success message
+            showToast('UID Schema saved successfully!', 'success');
+        }
+
+        function generateSampleUIDs() {
+            const samples = [];
+            const countryCode = document.getElementById('country-code').value.toUpperCase();
+            const sequenceLength = parseInt(document.getElementById('sequence-length').value);
+            
+            // Get region codes and entity types
+            const regions = [];
+            document.querySelectorAll('#region-codes .region-item input[type="text"]').forEach(input => {
+                if (input.value.trim()) regions.push(input.value.toUpperCase());
+            });
+            
+            const entities = [];
+            document.querySelectorAll('#entity-types .entity-item input[type="text"]').forEach(input => {
+                if (input.value.trim()) entities.push(input.value.toUpperCase());
+            });
+            
+            // Generate 5 sample UIDs
+            for (let i = 0; i < 5; i++) {
+                const region = regions[Math.floor(Math.random() * regions.length)];
+                const entity = entities[Math.floor(Math.random() * entities.length)];
+                const sequence = String(1001 + i).padStart(sequenceLength, '0');
+                const chainPart = Math.random() > 0.5 ? 'L2L1LA' : 'L1LA';
+                
+                samples.push(`${countryCode}${region}-${entity}${chainPart}${sequence}`);
+            }
+            
+            // Display samples in a modal or alert
+            alert('Sample UIDs:\n\n' + samples.join('\n'));
+        }
+
+        function resetCounters() {
+            if (confirm('Are you sure you want to reset all sequence counters? This action cannot be undone.')) {
+                // Simulate counter reset
+                console.log('Resetting UID counters');
+                showToast('Sequence counters have been reset', 'success');
+            }
+        }
+
+        function exportSchema() {
+            // Collect schema data
+            const schema = {
+                countryCode: document.getElementById('country-code').value.toUpperCase(),
+                sequenceLength: parseInt(document.getElementById('sequence-length').value),
+                regionCodes: [],
+                entityTypes: [],
+                sponsorFlags: {
+                    l2: document.getElementById('l2-flag').checked,
+                    l1: document.getElementById('l1-flag').checked,
+                    la: document.getElementById('la-flag').checked
+                },
+                validation: {
+                    regexPattern: document.getElementById('regex-pattern').value,
+                    reservedStart: parseInt(document.getElementById('reserved-start').value),
+                    reservedEnd: parseInt(document.getElementById('reserved-end').value)
+                },
+                exportedAt: new Date().toISOString()
+            };
+            
+            // Collect region codes
+            document.querySelectorAll('#region-codes .region-item').forEach(item => {
+                const code = item.querySelector('input[type="text"]').value.toUpperCase();
+                const name = item.querySelector('span').textContent || item.querySelectorAll('input')[1]?.value || '';
+                if (code) {
+                    schema.regionCodes.push({ code, name });
+                }
+            });
+            
+            // Collect entity types
+            document.querySelectorAll('#entity-types .entity-item').forEach(item => {
+                const prefix = item.querySelector('input[type="text"]').value.toUpperCase();
+                const name = item.querySelector('span').textContent || item.querySelectorAll('input')[1]?.value || '';
+                if (prefix) {
+                    schema.entityTypes.push({ prefix, name });
+                }
+            });
+            
+            // Create and download JSON file
+            const dataStr = JSON.stringify(schema, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'uid-schema-config.json';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            
+            showToast('Schema configuration exported successfully!', 'success');
+        }
+
+        function showToast(message, type = 'info') {
+            // Create toast notification
+            const toast = document.createElement('div');
+            toast.className = `fixed top-4 right-4 px-6 py-3 rounded-lg shadow-lg text-white z-50 transition-all duration-300`;
+            toast.style.backgroundColor = type === 'success' ? '#10B981' : type === 'error' ? '#EF4444' : '#3B82F6';
+            toast.textContent = message;
+            
+            document.body.appendChild(toast);
+            
+            // Remove toast after 3 seconds
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (document.body.contains(toast)) {
+                        document.body.removeChild(toast);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Initialize UID preview on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update preview when page loads
+            setTimeout(() => {
+                updatePreview();
+            }, 100);
+        });
     </script>
 </body>
 </html>                    </div>

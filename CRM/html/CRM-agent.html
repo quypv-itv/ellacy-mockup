@@ -19,10 +19,14 @@
         <!-- Sidebar -->
         <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
             <div class="p-6">
-                <h1 class="text-2xl font-bold text-gray-800">APPLYLEAD</h1>
-                <p class="text-sm text-gray-500">Admin</p>
+                <div class="flex items-center mb-2">
+                    <img src="../../ApplyLead_logo.png" alt="ApplyLead" class="h-9">
+                </div>
+                <div class="flex items-center">
+                    <span class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">Admin</span>
+                </div>
             </div>
-            <nav class="mt-6">
+            <nav class="mt">
                 <a href="CRM-dashboard.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
                     <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>
                     Dashboard
@@ -31,7 +35,7 @@
                     <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>
                     Applications
                 </a>
-                <a href="CRM-agent.html" class="flex items-center px-6 py-3 text-blue-600 bg-blue-50">
+                <a href="CRM-agent.html" class="flex items-center px-6 py-3 text-white" style="background-color: #d82128;">
                     <i data-lucide="users" class="w-5 h-5 mr-3"></i>
                     Agents
                 </a>
@@ -45,19 +49,23 @@
                 </a>
                 <a href="CRM-students.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
                     <i data-lucide="user" class="w-5 h-5 mr-3"></i>
-                    Users / Students
+                    Students
                 </a>
                 <a href="CRM-payment.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
                     <i data-lucide="credit-card" class="w-5 h-5 mr-3"></i>
-                    Payments / Disbursement
+                    Payments
                 </a>
                 <a href="CRM-tasks.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
                     <i data-lucide="check-circle" class="w-5 h-5 mr-3"></i>
-                    Tasks / Workflows
+                    Tasks
+                </a>
+                <a href="CRM-Campaigns.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="brick-wall-shield" class="w-5 h-5 mr-3"></i>
+                    Campaigns
                 </a>
                 <a href="CRM-report.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
                     <i data-lucide="bar-chart" class="w-5 h-5 mr-3"></i>
-                    Reports & Analytics
+                    Reports
                 </a>
                 <a href="CRM-messages.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
                     <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>
@@ -67,15 +75,14 @@
                     <i data-lucide="shield" class="w-5 h-5 mr-3"></i>
                     User Admin
                 </a>
-                <a href="CRM-AI-Assistant.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
-                    <i data-lucide="bot" class="w-5 h-5 mr-3"></i>
-                    AI Assistant
-                </a>
                 <a href="CRM-Setting.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
                     <i data-lucide="settings" class="w-5 h-5 mr-3"></i>
                     Settings
                 </a>
             </nav>
+            <div class="mt-auto px-6 py-4 border-t border-gray-200">
+                <p class="text-sm text-gray-600 text-center">Designed & developed by Innotech Viet Nam</p>
+            </div>
         </aside>
 
         <!-- Main Content -->
@@ -105,7 +112,51 @@
                 <!-- Filter Bar -->
                 <div class="bg-white border-b sticky top-0">
                     <div class="p-4">
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+                            <!-- UID Search -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">UID</label>
+                                <div class="relative">
+                                    <input type="text" placeholder="e.g., VNHN-A1001" class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500 pl-10 font-mono">
+                                    <i data-lucide="hash" class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+                                </div>
+                            </div>
+
+                            <!-- Source Type Filter -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Source Type</label>
+                                <select class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="">All Sources</option>
+                                    <option value="campaign">Campaign</option>
+                                    <option value="event">Event</option>
+                                    <option value="partner">Partner</option>
+                                    <option value="social">Social</option>
+                                </select>
+                            </div>
+
+                            <!-- Campaign Token -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Campaign Token</label>
+                                <select class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="">All Campaigns</option>
+                                    <option value="edu-fair-2024">Education Fair 2024</option>
+                                    <option value="social-media">Social Media</option>
+                                    <option value="partner-referral">Partner Referral</option>
+                                    <option value="direct-signup">Direct Signup</option>
+                                </select>
+                            </div>
+
+                            <!-- Region Code -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Region Code</label>
+                                <select class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="">All Regions</option>
+                                    <option value="HN">Hanoi (HN)</option>
+                                    <option value="SG">Ho Chi Minh (SG)</option>
+                                    <option value="DN">Da Nang (DN)</option>
+                                </select>
+                            </div>
+
                             <!-- Status Filter -->
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
@@ -113,29 +164,7 @@
                                     <option value="">All Status</option>
                                     <option value="active">Active</option>
                                     <option value="inactive">Inactive</option>
-                                    <option value="pending">Pending Approval</option>
-                                </select>
-                            </div>
-
-                            <!-- Country/Region Filter -->
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Country/Region</label>
-                                <select class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
-                                    <option value="">All Countries</option>
-                                    <option value="vn">Vietnam</option>
-                                    <option value="th">Thailand</option>
-                                    <option value="my">Malaysia</option>
-                                    <option value="id">Indonesia</option>
-                                </select>
-                            </div>
-
-                            <!-- Agency Type Filter -->
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Agency Type</label>
-                                <select class="w-full rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
-                                    <option value="">All Types</option>
-                                    <option value="individual">Individual</option>
-                                    <option value="company">Company</option>
+                                    <option value="pending">Pending</option>
                                 </select>
                             </div>
 
@@ -153,7 +182,7 @@
 
                 <!-- Action Buttons -->
                 <div class="p-6 pb-0">
-                    <button onclick="openAddAgentModal()" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    <button onclick="openAddAgentModal()" class="inline-flex items-center px-4 py-2 bg-red-400 text-white text-sm font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                         <i data-lucide="plus" class="w-4 h-4 mr-1.5"></i>
                         Add Agent
                     </button>
@@ -166,12 +195,15 @@
                             <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
                                     <tr>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">UID</th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Agency Name</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Agent Owner</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Applications Submitted</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Commission Paid</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Source</th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Students</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Applications</th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                                     </tr>
                                 </thead>
@@ -179,35 +211,51 @@
                                     <!-- Sample Agent Row -->
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-mono font-medium text-gray-900">VNHN-A1001</div>
+                                            <div class="text-xs text-gray-500">L2L1LA</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <div class="flex-shrink-0 h-10 w-10">
                                                     <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
                                                 </div>
                                                 <div class="ml-4">
                                                     <div class="text-sm font-medium text-gray-900">Global Education</div>
-                                                    <div class="text-sm text-gray-500">contact@globaledu.com</div>
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">Company</div>
+                                            <div class="text-sm text-gray-900">Sarah Johnson</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">contact@globaledu.com</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900">Vietnam</div>
                                         </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">78</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">$45,200</td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">Education Fair 2024</div>
+                                            <div class="text-xs text-gray-500">Campaign</div>
+                                        </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">45</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">78</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm">
-                                            <button class="text-blue-600 hover:text-blue-900 mr-3">View Profile</button>
-                                            <button class="text-gray-600 hover:text-gray-900">Edit</button>
+                                            <button class="text-red-400 hover:text-blue-900 mr-3">View</button>
+                                            <button class="text-gray-600 hover:text-gray-900 mr-3">Edit</button>
+                                            <button class="text-gray-600 hover:text-gray-900 mr-3">Deactivate</button>
+                                            <button class="text-gray-600 hover:text-gray-900">Message</button>
                                         </td>
                                     </tr>
 
                                     <!-- More Agent Rows -->
                                     <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-mono font-medium text-gray-900">VNSG-A1002</div>
+                                            <div class="text-xs text-gray-500">L1LA</div>
+                                        </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <div class="flex-shrink-0 h-10 w-10">
@@ -215,24 +263,32 @@
                                                 </div>
                                                 <div class="ml-4">
                                                     <div class="text-sm font-medium text-gray-900">John Smith</div>
-                                                    <div class="text-sm text-gray-500">john.smith@example.com</div>
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">Individual</div>
+                                            <div class="text-sm text-gray-900">John Smith</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">Thailand</div>
+                                            <div class="text-sm text-gray-900">john.smith@example.com</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">Vietnam</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">25</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">$12,500</td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">Social Media</div>
+                                            <div class="text-xs text-gray-500">Social</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Pending</span>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">12</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">25</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm">
-                                            <button class="text-blue-600 hover:text-blue-900 mr-3">View Profile</button>
-                                            <button class="text-gray-600 hover:text-gray-900">Edit</button>
+                                            <button class="text-red-400 hover:text-blue-900 mr-3">View</button>
+                                            <button class="text-gray-600 hover:text-gray-900 mr-3">Edit</button>
+                                            <button class="text-gray-600 hover:text-gray-900 mr-3">Deactivate</button>
+                                            <button class="text-gray-600 hover:text-gray-900">Message</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -274,6 +330,56 @@
                     </div>
                 </div>
             </main>
+        </div>
+    </div>
+
+    <!-- AI Assistant Floating Button -->
+    <div id="ai-assistant" class="fixed bottom-6 right-6 z-50">
+        <button id="ai-toggle" class="w-14 h-14 rounded-full text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center" style="background-color: #d82128;">
+            <i data-lucide="message-circle" class="w-6 h-6"></i>
+        </button>
+        
+        <!-- AI Chat Panel -->
+        <div id="ai-chat-panel" class="hidden absolute bottom-16 right-0 w-80 h-96 bg-white rounded-lg shadow-xl border border-gray-200">
+            <!-- Chat Header -->
+            <div class="flex items-center justify-between p-4 border-b border-gray-200" style="background-color: #d82128;">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-3">
+                        <i data-lucide="bot" class="w-4 h-4" style="color: #d82128;"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium text-white">AI Assistant</h3>
+                        <p class="text-xs text-red-100">Online</p>
+                    </div>
+                </div>
+                <button id="ai-close" class="text-white hover:text-red-100">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            
+            <!-- Chat Messages -->
+            <div id="chat-messages" class="flex-1 p-4 h-64 overflow-y-auto">
+                <div class="mb-4">
+                    <div class="flex items-start">
+                        <div class="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center mr-2 mt-1">
+                            <i data-lucide="bot" class="w-3 h-3" style="color: #d82128;"></i>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
+                            <p class="text-sm text-gray-800">Hello! I can help you analyze agent performance, commission tracking, and partnership optimization. What would you like to know?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chat Input -->
+            <div class="p-4 border-t border-gray-200">
+                <div class="flex items-center">
+                    <input type="text" id="chat-input" placeholder="Ask about agents..." class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                    <button id="send-message" class="ml-2 p-2 rounded-lg text-white" style="background-color: #d82128;">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -357,7 +463,7 @@
                         <button onclick="closeAddAgentModal()" class="inline-flex items-center px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                             Cancel
                         </button>
-                        <button class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        <button class="inline-flex items-center px-4 py-2 bg-red-400 text-white text-sm font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                             Create Agent
                         </button>
                     </div>
@@ -374,7 +480,13 @@
                     <!-- Modal Header -->
                     <div class="px-6 py-4 border-b flex items-center justify-between sticky top-0 bg-white z-10">
                         <div class="flex items-center space-x-4">
-                            <h3 class="text-lg font-semibold text-gray-900">Agent Profile</h3>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">Agent Profile</h3>
+                                <div class="flex items-center space-x-3 mt-1">
+                                    <div class="text-sm font-mono font-medium text-blue-600">VNHN-A1001</div>
+                                    <div class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">L2L1LA</div>
+                                </div>
+                            </div>
                             <div class="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">Active</div>
                         </div>
                         <div class="flex items-center space-x-3">
@@ -393,7 +505,7 @@
                         <!-- Tabs -->
                         <div class="px-6 py-2 border-b bg-white sticky top-[0.5rem] z-10">
                             <nav class="flex space-x-4">
-                                <button role="tab" data-tab="profile" class="rounded-lg px-4 py-2 text-sm font-medium bg-blue-50 text-blue-600">
+                                <button role="tab" data-tab="profile" class="rounded-lg px-4 py-2 text-sm font-medium bg-blue-50 text-red-400">
                                     Profile
                                 </button>
                                 <button role="tab" data-tab="students" class="rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50">
@@ -461,6 +573,35 @@
                                     </div>
                                 </div>
 
+                                <!-- Source Attribution Panel -->
+                                <div>
+                                    <h4 class="text-base font-medium text-gray-900 mb-4">Source Attribution</h4>
+                                    <div class="bg-blue-50 p-4 rounded-lg space-y-3">
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-700">First-touch Campaign</p>
+                                                <p class="text-sm text-blue-800">Education Fair 2024</p>
+                                                <p class="text-xs text-gray-500">January 15, 2024</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-700">Last-touch Campaign</p>
+                                                <p class="text-sm text-blue-800">Social Media Outreach</p>
+                                                <p class="text-xs text-gray-500">March 10, 2024</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-700">Partner Association</p>
+                                            <p class="text-sm text-blue-800">Vietnam Education Partners Network</p>
+                                            <p class="text-xs text-gray-500">Tier 1 Partnership</p>
+                                        </div>
+                                        <div class="flex items-center space-x-2">
+                                            <span class="px-2 py-1 text-xs font-medium rounded bg-green-100 text-green-800">Campaign</span>
+                                            <span class="px-2 py-1 text-xs font-medium rounded bg-blue-100 text-blue-800">Partner Referral</span>
+                                            <span class="px-2 py-1 text-xs font-medium rounded bg-purple-100 text-purple-800">Social Media</span>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <!-- Internal Notes -->
                                 <div>
                                     <h4 class="text-base font-medium text-gray-900 mb-4">Internal Notes</h4>
@@ -477,7 +618,7 @@
                                     <div class="grid grid-cols-3 gap-4">
                                         <div class="bg-blue-50 p-4 rounded-lg">
                                             <p class="text-sm text-gray-500 mb-1">Total Students</p>
-                                            <p class="text-2xl font-semibold text-blue-600">45</p>
+                                            <p class="text-2xl font-semibold text-red-400">45</p>
                                         </div>
                                         <div class="bg-green-50 p-4 rounded-lg">
                                             <p class="text-sm text-gray-500 mb-1">Active Applications</p>
@@ -531,8 +672,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex items-center space-x-2">
-                                                    <button class="text-sm text-blue-600 hover:text-blue-700">View</button>
-                                                    <button class="text-sm text-blue-600 hover:text-blue-700">Download</button>
+                                                    <button class="text-sm text-red-400 hover:text-blue-700">View</button>
+                                                    <button class="text-sm text-red-400 hover:text-blue-700">Download</button>
                                                 </div>
                                             </div>
 
@@ -546,8 +687,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex items-center space-x-2">
-                                                    <button class="text-sm text-blue-600 hover:text-blue-700">View</button>
-                                                    <button class="text-sm text-blue-600 hover:text-blue-700">Download</button>
+                                                    <button class="text-sm text-red-400 hover:text-blue-700">View</button>
+                                                    <button class="text-sm text-red-400 hover:text-blue-700">Download</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -557,7 +698,7 @@
                                     <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
                                         <i data-lucide="upload" class="w-8 h-8 text-gray-400 mx-auto mb-2"></i>
                                         <p class="text-sm text-gray-500 mb-1">Upload a new document</p>
-                                        <button class="text-sm text-blue-600 font-medium hover:text-blue-700">Browse Files</button>
+                                        <button class="text-sm text-red-400 font-medium hover:text-blue-700">Browse Files</button>
                                     </div>
                                 </div>
                             </div>
@@ -574,8 +715,8 @@
                                         </div>
                                         <div class="bg-blue-50 p-4 rounded-lg">
                                             <p class="text-sm text-gray-500 mb-1">Pending Payment</p>
-                                            <p class="text-2xl font-semibold text-blue-600">$5,800</p>
-                                            <p class="text-xs text-blue-600 mt-1">3 payments pending</p>
+                                            <p class="text-2xl font-semibold text-red-400">$5,800</p>
+                                            <p class="text-xs text-red-400 mt-1">3 payments pending</p>
                                         </div>
                                         <div class="bg-purple-50 p-4 rounded-lg">
                                             <p class="text-sm text-gray-500 mb-1">Average per Student</p>
@@ -587,7 +728,7 @@
                                     <div class="bg-white rounded-lg border">
                                         <div class="px-4 py-3 border-b flex items-center justify-between">
                                             <h4 class="font-medium">Payment History</h4>
-                                            <button class="text-sm text-blue-600 hover:text-blue-700">Export</button>
+                                            <button class="text-sm text-red-400 hover:text-blue-700">Export</button>
                                         </div>
                                         <table class="min-w-full divide-y divide-gray-200">
                                             <thead class="bg-gray-50">
@@ -713,6 +854,79 @@
             document.body.style.overflow = 'auto';
         }
 
+        // AI Assistant functionality
+        const aiToggle = document.getElementById('ai-toggle');
+        const aiChatPanel = document.getElementById('ai-chat-panel');
+        const aiClose = document.getElementById('ai-close');
+        const chatInput = document.getElementById('chat-input');
+        const sendMessage = document.getElementById('send-message');
+        const chatMessages = document.getElementById('chat-messages');
+
+        aiToggle.addEventListener('click', () => {
+            aiChatPanel.classList.toggle('hidden');
+        });
+
+        aiClose.addEventListener('click', () => {
+            aiChatPanel.classList.add('hidden');
+        });
+
+        function addMessage(message, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'mb-4';
+            
+            if (isUser) {
+                messageDiv.innerHTML = `
+                    <div class="flex items-start justify-end">
+                        <div class="rounded-lg p-3 max-w-xs text-white" style="background-color: #d82128;">
+                            <p class="text-sm">${message}</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="flex items-start">
+                        <div class="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center mr-2 mt-1">
+                            <i data-lucide="bot" class="w-3 h-3" style="color: #d82128;"></i>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
+                            <p class="text-sm text-gray-800">${message}</p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            lucide.createIcons();
+        }
+
+        function handleSendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                addMessage(message, true);
+                chatInput.value = '';
+                
+                // Simulate AI response
+                setTimeout(() => {
+                    const responses = [
+                        "Global Education has a 95% success rate with 45 active students. They're performing exceptionally well in undergraduate placements.",
+                        "I notice 2 agents are pending approval. John Smith from Thailand shows strong potential with 25 applications already submitted.",
+                        "Commission analysis shows top performers earn 12% average rate. Would you like me to suggest bonus tier adjustments?",
+                        "Agent network health is strong with 85% active status. Consider expanding in Malaysia and Indonesia markets."
+                    ];
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    addMessage(randomResponse);
+                }, 1000);
+            }
+        }
+
+        sendMessage.addEventListener('click', handleSendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleSendMessage();
+            }
+        });
+
         // Add Agent Modal
         const addAgentModal = document.getElementById('add-agent-modal');
 
@@ -749,11 +963,11 @@
 
                 // Update tab styles
                 tabs.forEach(t => {
-                    t.classList.remove('bg-blue-50', 'text-blue-600');
+                    t.classList.remove('bg-blue-50', 'text-red-400');
                     t.classList.add('text-gray-500');
                 });
                 tab.classList.remove('text-gray-500');
-                tab.classList.add('bg-blue-50', 'text-blue-600');
+                tab.classList.add('bg-blue-50', 'text-red-400');
 
                 // Show/hide tab panels
                 Object.values(tabPanels).forEach(panel => {
