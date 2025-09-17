@@ -196,9 +196,9 @@
                                         <button class="text-red-400 hover:text-blue-900 mr-2" onclick="openScholarshipDetail()">
                                             <i data-lucide="eye" class="w-4 h-4"></i>
                                         </button>
-                                        <button class="text-gray-600 hover:text-gray-900 mr-2" onclick="openEditScholarshipModal()">
+                                        <!-- <button class="text-gray-600 hover:text-gray-900 mr-2" onclick="openEditScholarshipModal()">
                                             <i data-lucide="edit" class="w-4 h-4"></i>
-                                        </button>
+                                        </button> -->
                                         <button class="text-gray-600 hover:text-gray-900">
                                             <i data-lucide="archive" class="w-4 h-4"></i>
                                         </button>
@@ -262,125 +262,651 @@
         </div>
     </div>
 
-    <!-- Add/Edit Scholarship Modal -->
+    <!-- Add/Edit Scholarship Modal (Extended) -->
     <div id="scholarshipModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
-        <div class="relative top-20 mx-auto p-5 border w-3/4 shadow-lg rounded-md bg-white">
-            <div class="flex justify-between items-center pb-3">
+        <div class="relative top-10 mx-auto p-6 border w-4/5 max-w-6xl shadow-lg rounded-md bg-white max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center pb-4 border-b border-gray-200">
                 <h3 class="text-xl font-semibold" id="modalTitle">Add New Scholarship</h3>
                 <button onclick="closeScholarshipModal()" class="text-gray-400 hover:text-gray-500">
                     <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
             </div>
-            <div class="grid grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Scholarship Name</label>
-                    <input type="text" class="w-full rounded-md border-gray-300">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Source</label>
-                    <select class="w-full rounded-md border-gray-300">
-                        <option>Ellacy Foundation</option>
-                        <option>Partner Institution</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Award Value</label>
-                    <input type="text" class="w-full rounded-md border-gray-300" placeholder="e.g. $5,000 or 50%">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Number of Awards</label>
-                    <input type="number" class="w-full rounded-md border-gray-300">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Application Deadline</label>
-                    <input type="date" class="w-full rounded-md border-gray-300">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Auto-Match</label>
-                    <div class="flex items-center mt-2">
-                        <input type="checkbox" class="rounded border-gray-300 text-red-400">
-                        <span class="ml-2 text-sm text-gray-600">Enable auto-matching with eligible students</span>
+
+            <!-- Preview Card -->
+            <div class="mt-6 mb-6 bg-gray-50 rounded-lg p-4 border border-gray-200">
+                <div class="flex items-center">
+                    <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center mr-4">
+                        <i data-lucide="building" class="w-8 h-8 text-gray-400"></i>
                     </div>
-                </div>
-                <div class="col-span-2">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Eligibility Criteria</label>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm text-gray-600 mb-1">Minimum GPA</label>
-                            <input type="number" step="0.1" class="w-full rounded-md border-gray-300">
+                    <div class="flex-1">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <h4 id="preview-program-name" class="text-lg font-semibold text-gray-900">Program Name</h4>
+                            <span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">Canada College</span>
+                            <span class="px-2 py-1 text-xs rounded-full bg-purple-100 text-purple-800">Public School</span>
                         </div>
-                        <div>
-                            <label class="block text-sm text-gray-600 mb-1">Minimum IELTS</label>
-                            <input type="number" step="0.5" class="w-full rounded-md border-gray-300">
-                        </div>
+                        <p id="preview-degree-level" class="text-sm text-gray-500">Associate degree - Arts, Design & Architecture</p>
                     </div>
-                </div>
-                <div class="col-span-2">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                    <textarea rows="4" class="w-full rounded-md border-gray-300"></textarea>
                 </div>
             </div>
-            <div class="flex justify-end mt-4 space-x-3">
+
+            <!-- Basic Fields Section -->
+            <div class="mb-6">
+                <h4 class="text-lg font-medium text-gray-900 mb-4">Basic Information</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Scholarship Name <span class="text-red-500">*</span></label>
+                        <input id="scholarship-name-input" type="text" class="w-full rounded-md border-gray-300" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Source <span class="text-red-500">*</span></label>
+                        <select class="w-full rounded-md border-gray-300" required>
+                            <option value="">Select Source</option>
+                            <option>Ellacy Foundation</option>
+                            <option>Partner Institution</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Institution <span class="text-red-500">*</span></label>
+                        <select class="w-full rounded-md border-gray-300" required>
+                            <option value="">Select Institution</option>
+                            <option>University of Melbourne</option>
+                            <option>University of Sydney</option>
+                            <option>Imperial College London</option>
+                            <option>University of Toronto</option>
+                            <option>Canada College</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Award Value <span class="text-red-500">*</span></label>
+                        <input type="text" class="w-full rounded-md border-gray-300" placeholder="e.g. $5,000 or 50%" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Number of Awards</label>
+                        <input type="number" class="w-full rounded-md border-gray-300" min="1">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Application Deadline <span class="text-red-500">*</span></label>
+                        <input type="date" class="w-full rounded-md border-gray-300" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                        <select class="w-full rounded-md border-gray-300">
+                            <option>Draft</option>
+                            <option>Active</option>
+                            <option>Expired</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Attachments</label>
+                        <input type="file" class="w-full rounded-md border-gray-300" multiple accept=".pdf,.doc,.docx,.jpg,.png">
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" class="rounded border-gray-300 text-red-400" style="color: #d82128;">
+                        <span class="ml-2 text-sm text-gray-600">Enable Auto-Match Tagging</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program & Institution Context -->
+            <div class="mb-6">
+                <h4 class="text-lg font-medium text-gray-900 mb-4">Program & Institution Context</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Institution Logo</label>
+                        <input type="file" class="w-full rounded-md border-gray-300" accept=".jpg,.png,.svg">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Institution Type Tags</label>
+                        <select multiple class="w-full rounded-md border-gray-300" size="3">
+                            <option>Canada College</option>
+                            <option>Public School</option>
+                            <option>Private Institution</option>
+                            <option>University</option>
+                            <option>Community College</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Program Duration</label>
+                        <input type="text" class="w-full rounded-md border-gray-300" placeholder="e.g. Duration: 2 years">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Program Name <span class="text-red-500">*</span></label>
+                        <input id="program-name-input" type="text" class="w-full rounded-md border-gray-300" placeholder="e.g. 3D Animation and Videogame Art" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Degree Level & Field</label>
+                        <select id="degree-level-input" class="w-full rounded-md border-gray-300">
+                            <option value="">Select Degree Level</option>
+                            <option>Certificate - Arts, Design & Architecture</option>
+                            <option>Diploma - Arts, Design & Architecture</option>
+                            <option>Associate degree - Arts, Design & Architecture</option>
+                            <option>Bachelor - Arts, Design & Architecture</option>
+                            <option>Master - Arts, Design & Architecture</option>
+                            <option>Bachelor - Business & Management</option>
+                            <option>Master - Business & Management</option>
+                            <option>Bachelor - Engineering & Technology</option>
+                            <option>Master - Engineering & Technology</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Intake Period</label>
+                        <select class="w-full rounded-md border-gray-300">
+                            <option>2025 Jan</option>
+                            <option>2025 May</option>
+                            <option>2025 Sep</option>
+                            <option>2026 Jan</option>
+                            <option>2026 May</option>
+                            <option>2026 Sep</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabbed Information Section -->
+            <div class="mb-6">
+                <h4 class="text-lg font-medium text-gray-900 mb-4">Detailed Information</h4>
+                
+                <!-- Tab Navigation -->
+                <div class="border-b border-gray-200 mb-4">
+                    <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                        <button class="add-scholarship-tab-link border-b-2 border-red-500 py-3 text-sm font-medium text-red-600" data-tab="fees" style="border-color: #d82128; color: #d82128;">Fees</button>
+                        <button class="add-scholarship-tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300" data-tab="requirements">Requirements</button>
+                        <button class="add-scholarship-tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300" data-tab="course">Course Detail</button>
+                    </nav>
+                </div>
+
+                <!-- Tab Panels -->
+                <div class="max-h-64 overflow-y-auto">
+                    <!-- Fees Tab -->
+                    <section id="add-scholarship-tab-fees" class="add-scholarship-tab-panel">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Tuition Cost</label>
+                                <div class="flex space-x-2">
+                                    <input type="number" class="flex-1 rounded-md border-gray-300" placeholder="9912">
+                                    <select class="w-24 rounded-md border-gray-300">
+                                        <option>USD</option>
+                                        <option>CAD</option>
+                                        <option>AUD</option>
+                                        <option>GBP</option>
+                                    </select>
+                                    <select class="w-24 rounded-md border-gray-300">
+                                        <option>Annual</option>
+                                        <option>Semester</option>
+                                        <option>Monthly</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Monthly Living Cost</label>
+                                <div class="flex space-x-2">
+                                    <input type="number" class="flex-1 rounded-md border-gray-300" placeholder="1459">
+                                    <select class="w-24 rounded-md border-gray-300">
+                                        <option>USD</option>
+                                        <option>CAD</option>
+                                        <option>AUD</option>
+                                        <option>GBP</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Application Fee</label>
+                                <div class="flex space-x-2">
+                                    <input type="number" class="flex-1 rounded-md border-gray-300" placeholder="250">
+                                    <select class="w-24 rounded-md border-gray-300">
+                                        <option>USD</option>
+                                        <option>CAD</option>
+                                        <option>AUD</option>
+                                        <option>GBP</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Application Deadline</label>
+                                <input type="date" class="w-full rounded-md border-gray-300">
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Requirements Tab -->
+                    <section id="add-scholarship-tab-requirements" class="add-scholarship-tab-panel hidden">
+                        <div class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Minimum GPA</label>
+                                    <input type="number" step="0.1" class="w-full rounded-md border-gray-300" placeholder="3.0">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Minimum IELTS</label>
+                                    <input type="number" step="0.5" class="w-full rounded-md border-gray-300" placeholder="6.5">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Minimum TOEFL iBT</label>
+                                    <input type="number" class="w-full rounded-md border-gray-300" placeholder="80">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Minimum Duolingo</label>
+                                    <input type="number" class="w-full rounded-md border-gray-300" placeholder="105">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Academic Requirements</label>
+                                <textarea class="w-full rounded-md border-gray-300" rows="3" placeholder="High school diploma or equivalent, relevant prerequisite courses..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Portfolio Requirements</label>
+                                <textarea class="w-full rounded-md border-gray-300" rows="3" placeholder="Submit a portfolio showcasing artistic abilities..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Course Detail Tab -->
+                    <section id="add-scholarship-tab-course" class="add-scholarship-tab-panel hidden">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Program Overview</label>
+                                <textarea class="w-full rounded-md border-gray-300" rows="4" placeholder="Comprehensive program description..."></textarea>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Core Courses</label>
+                                    <textarea class="w-full rounded-md border-gray-300" rows="4" placeholder="List core courses, one per line..."></textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Specialization Tracks</label>
+                                    <textarea class="w-full rounded-md border-gray-300" rows="4" placeholder="List specialization options..."></textarea>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Semester Breakdown</label>
+                                <textarea class="w-full rounded-md border-gray-300" rows="4" placeholder="Year 1 - Semester 1: ..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex justify-end pt-4 border-t border-gray-200 space-x-3">
                 <button onclick="closeScholarshipModal()" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200">Cancel</button>
-                <button class="px-4 py-2 bg-red-400 text-white rounded-lg hover:bg-blue-700">Save Scholarship</button>
+                <button onclick="saveScholarship()" class="px-4 py-2 text-white rounded-lg hover:opacity-90 flex items-center" style="background-color: #d82128;">
+                    <i data-lucide="save" class="w-4 h-4 mr-2"></i>
+                    Save Scholarship
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Scholarship Detail Modal -->
-    <div id="scholarshipDetailModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
-        <div class="relative top-20 mx-auto p-5 border w-3/4 shadow-lg rounded-md bg-white">
-            <div class="flex justify-between items-center pb-3">
-                <h3 class="text-xl font-semibold">Merit Scholarship 2025</h3>
-                <button onclick="closeScholarshipDetail()" class="text-gray-400 hover:text-gray-500">
-                    <i data-lucide="x" class="w-6 h-6"></i>
-                </button>
-            </div>
-            <div class="border-b pb-4">
-                <div class="grid grid-cols-3 gap-4">
+    <!-- Scholarship Detail Drawer -->
+    <div id="scholarshipDetailModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden">
+        <div class="absolute right-0 h-full w-3/5 bg-white shadow-xl">
+            <div class="p-6 h-full flex flex-col">
+                <div class="flex justify-between items-center mb-6">
                     <div>
-                        <label class="text-sm text-gray-500">Source</label>
-                        <p class="font-medium">Ellacy Foundation</p>
+                        <h3 id="scholarship-drawer-title" class="text-lg font-semibold text-gray-900">Scholarship Details</h3>
+                        <p id="scholarship-drawer-subtitle" class="text-sm text-gray-500 hidden">Make changes to scholarship information</p>
                     </div>
-                    <div>
-                        <label class="text-sm text-gray-500">Award Value</label>
-                        <p class="font-medium">Up to $5,000</p>
-                    </div>
-                    <div>
-                        <label class="text-sm text-gray-500">Status</label>
-                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                            Active
-                        </span>
+                    <div class="flex items-center space-x-2">
+                        <button id="scholarship-edit-toggle-btn" onclick="toggleScholarshipEditMode()" class="px-3 py-1 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center">
+                            <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
+                            Edit
+                        </button>
+                        <button id="scholarship-save-btn" onclick="saveScholarship()" class="hidden px-3 py-1 text-sm text-white rounded-lg flex items-center" style="background-color: #d82128;">
+                            <i data-lucide="save" class="w-4 h-4 mr-1"></i>
+                            Save Changes
+                        </button>
+                        <button id="scholarship-cancel-btn" onclick="cancelScholarshipEdit()" class="hidden px-3 py-1 text-sm border border-gray-300 rounded-lg hover:bg-gray-50">
+                            Cancel
+                        </button>
+                        <button onclick="closeScholarshipDetail()" class="text-gray-500 hover:text-gray-700">
+                            <i data-lucide="x" class="w-5 h-5"></i>
+                        </button>
                     </div>
                 </div>
-            </div>
-            <div class="mt-4">
-                <h4 class="font-medium mb-2">Assigned Students (3/10)</h4>
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Student Name</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Program</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Assigned Date</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                            <td class="px-6 py-4 text-sm">John Doe</td>
-                            <td class="px-6 py-4 text-sm">BBA - University of Melbourne</td>
-                            <td class="px-6 py-4 text-sm">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                    Accepted
-                                </span>
-                            </td>
-                            <td class="px-6 py-4 text-sm">Jan 15, 2025</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="mt-4">
-                <button onclick="closeScholarshipDetail()" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200">Close</button>
+
+                <!-- Institution Header Card -->
+                <div class="mb-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://ui-avatars.com/api/?name=Canada+College&background=0D8ABC&color=fff" alt="Canada College" class="h-16 w-16 rounded-lg">
+                        <div class="ml-4 flex-1">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <div class="scholarship-view-mode">
+                                    <h4 class="text-xl font-semibold text-gray-900">3D Animation and Videogame Art</h4>
+                                </div>
+                                <div class="scholarship-edit-mode hidden">
+                                    <input type="text" class="text-xl font-semibold text-gray-900 border-gray-300 rounded" value="3D Animation and Videogame Art">
+                                </div>
+                                <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Active</span>
+                                <span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">Canada College</span>
+                                <span class="px-2 py-1 text-xs rounded-full bg-purple-100 text-purple-800">Public School</span>
+                            </div>
+                            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                <div class="scholarship-view-mode">
+                                    <span>Associate degree - Arts, Design & Architecture</span>
+                                </div>
+                                <div class="scholarship-edit-mode hidden">
+                                    <input type="text" class="text-sm text-gray-500 border-gray-300 rounded" value="Associate degree - Arts, Design & Architecture">
+                                </div>
+                                <span>•</span>
+                                <div class="scholarship-view-mode">
+                                    <span>Duration: 2 years</span>
+                                </div>
+                                <div class="scholarship-edit-mode hidden">
+                                    <input type="text" class="text-sm text-gray-500 border-gray-300 rounded" value="Duration: 2 years">
+                                </div>
+                                <span>•</span>
+                                <div class="scholarship-view-mode">
+                                    <select class="text-sm border-gray-300 rounded bg-white">
+                                        <option selected>2026 Jan</option>
+                                        <option>2026 May</option>
+                                        <option>2026 Sep</option>
+                                    </select>
+                                </div>
+                                <div class="scholarship-edit-mode hidden">
+                                    <select class="text-sm border-gray-300 rounded">
+                                        <option selected>2026 Jan</option>
+                                        <option>2026 May</option>
+                                        <option>2026 Sep</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabs Navigation -->
+                <div class="mb-4 border-b border-gray-200">
+                    <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                        <button class="scholarship-tab-link border-b-2 border-red-500 py-3 text-sm font-medium text-red-600" data-tab="fees">Fees</button>
+                        <button class="scholarship-tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300" data-tab="requirements">Requirements</button>
+                        <button class="scholarship-tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300" data-tab="course">Course Detail</button>
+                    </nav>
+                </div>
+
+                <!-- Tab Panels -->
+                <div class="flex-1 overflow-y-auto">
+                    <!-- Fees Tab -->
+                    <section id="scholarship-tab-fees" class="scholarship-tab-panel">
+                        <div class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-gray-50 rounded-lg p-4">
+                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Tuition Cost</h5>
+                                    <div class="scholarship-view-mode">
+                                        <p class="text-2xl font-bold text-gray-900">$9,912 USD</p>
+                                        <p class="text-sm text-gray-500">Annual</p>
+                                    </div>
+                                    <div class="scholarship-edit-mode hidden">
+                                        <input type="text" class="text-2xl font-bold text-gray-900 border-gray-300 rounded mb-2" value="$9,912 USD">
+                                        <input type="text" class="text-sm text-gray-500 border-gray-300 rounded" value="Annual">
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 rounded-lg p-4">
+                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Monthly Living Cost</h5>
+                                    <div class="scholarship-view-mode">
+                                        <p class="text-2xl font-bold text-gray-900">$1,459 USD</p>
+                                        <p class="text-sm text-gray-500">Per month</p>
+                                    </div>
+                                    <div class="scholarship-edit-mode hidden">
+                                        <input type="text" class="text-2xl font-bold text-gray-900 border-gray-300 rounded mb-2" value="$1,459 USD">
+                                        <input type="text" class="text-sm text-gray-500 border-gray-300 rounded" value="Per month">
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 rounded-lg p-4">
+                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Application Fee</h5>
+                                    <div class="scholarship-view-mode">
+                                        <p class="text-2xl font-bold text-gray-900">$250 USD</p>
+                                        <p class="text-sm text-gray-500">One-time</p>
+                                    </div>
+                                    <div class="scholarship-edit-mode hidden">
+                                        <input type="text" class="text-2xl font-bold text-gray-900 border-gray-300 rounded mb-2" value="$250 USD">
+                                        <input type="text" class="text-sm text-gray-500 border-gray-300 rounded" value="One-time">
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 rounded-lg p-4">
+                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Application Deadline</h5>
+                                    <div class="scholarship-view-mode">
+                                        <p class="text-2xl font-bold text-gray-900">Nov 15, 2025</p>
+                                        <p class="text-sm text-red-500 flex items-center">
+                                            <i data-lucide="alert-triangle" class="w-4 h-4 mr-1"></i>
+                                            28 days remaining
+                                        </p>
+                                    </div>
+                                    <div class="scholarship-edit-mode hidden">
+                                        <input type="date" class="text-lg font-bold text-gray-900 border-gray-300 rounded mb-2" value="2025-11-15">
+                                        <p class="text-sm text-red-500 flex items-center">
+                                            <i data-lucide="alert-triangle" class="w-4 h-4 mr-1"></i>
+                                            28 days remaining
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Scholarship Award Information -->
+                            <div class="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                                <h5 class="text-sm font-medium text-blue-900 mb-3">Scholarship Award</h5>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div>
+                                        <p class="text-xs text-blue-700">Award Value</p>
+                                        <div class="scholarship-view-mode">
+                                            <p class="text-lg font-semibold text-blue-900">Up to $5,000</p>
+                                        </div>
+                                        <div class="scholarship-edit-mode hidden">
+                                            <input type="text" class="text-lg font-semibold text-blue-900 border-blue-300 rounded" value="Up to $5,000">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-blue-700">Available Spots</p>
+                                        <div class="scholarship-view-mode">
+                                            <p class="text-lg font-semibold text-blue-900">7 remaining</p>
+                                        </div>
+                                        <div class="scholarship-edit-mode hidden">
+                                            <input type="number" class="text-lg font-semibold text-blue-900 border-blue-300 rounded" value="7">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-blue-700">Source</p>
+                                        <div class="scholarship-view-mode">
+                                            <p class="text-lg font-semibold text-blue-900">Ellacy Foundation</p>
+                                        </div>
+                                        <div class="scholarship-edit-mode hidden">
+                                            <select class="text-lg font-semibold text-blue-900 border-blue-300 rounded">
+                                                <option selected>Ellacy Foundation</option>
+                                                <option>Partner Institution</option>
+                                                <option>Government</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Requirements Tab -->
+                    <section id="scholarship-tab-requirements" class="scholarship-tab-panel hidden">
+                        <div class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-gray-50 rounded-lg p-4">
+                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Academic Requirements</h5>
+                                    <div class="scholarship-view-mode">
+                                        <ul class="text-sm text-gray-700 space-y-2">
+                                            <li class="flex items-center">
+                                                <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
+                                                GPA 3.0+ (85%+)
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
+                                                High school diploma or equivalent
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
+                                                Art portfolio submission
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="scholarship-edit-mode hidden">
+                                        <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="4">GPA 3.0+ (85%+)
+High school diploma or equivalent
+Art portfolio submission</textarea>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 rounded-lg p-4">
+                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Language Requirements</h5>
+                                    <div class="scholarship-view-mode">
+                                        <ul class="text-sm text-gray-700 space-y-2">
+                                            <li class="flex items-center">
+                                                <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
+                                                IELTS: 6.5 overall (6.0 minimum per band)
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
+                                                TOEFL iBT: 80 overall
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
+                                                Duolingo: 105 overall
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="scholarship-edit-mode hidden">
+                                        <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="4">IELTS: 6.5 overall (6.0 minimum per band)
+TOEFL iBT: 80 overall
+Duolingo: 105 overall</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <h5 class="text-sm font-medium text-gray-900 mb-3">Portfolio Requirements</h5>
+                                <div class="scholarship-view-mode">
+                                    <p class="text-sm text-gray-700 mb-3">Submit a portfolio showcasing your artistic abilities and creativity in digital media:</p>
+                                    <ul class="text-sm text-gray-700 space-y-2">
+                                        <li class="flex items-center">
+                                            <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
+                                            10-15 original artworks (digital or traditional)
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
+                                            Artist statement (500 words max)
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
+                                            Optional: Animation reel or game design samples
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="scholarship-edit-mode hidden">
+                                    <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="6">Submit a portfolio showcasing your artistic abilities and creativity in digital media:
+
+10-15 original artworks (digital or traditional)
+Artist statement (500 words max)
+Optional: Animation reel or game design samples</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Course Detail Tab -->
+                    <section id="scholarship-tab-course" class="scholarship-tab-panel hidden">
+                        <div class="space-y-6">
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <h5 class="text-sm font-medium text-gray-900 mb-3">Program Overview</h5>
+                                <div class="scholarship-view-mode">
+                                    <p class="text-sm text-gray-700">This comprehensive 2-year program combines traditional art fundamentals with cutting-edge digital animation and game design techniques. Students will master industry-standard software and develop a professional portfolio.</p>
+                                </div>
+                                <div class="scholarship-edit-mode hidden">
+                                    <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="3">This comprehensive 2-year program combines traditional art fundamentals with cutting-edge digital animation and game design techniques. Students will master industry-standard software and develop a professional portfolio.</textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-gray-50 rounded-lg p-4">
+                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Core Courses</h5>
+                                    <div class="scholarship-view-mode">
+                                        <ul class="text-sm text-gray-700 space-y-1">
+                                            <li>• Digital Art Fundamentals</li>
+                                            <li>• 3D Modeling & Texturing</li>
+                                            <li>• Character Animation</li>
+                                            <li>• Game Engine Basics</li>
+                                            <li>• Visual Effects</li>
+                                            <li>• Portfolio Development</li>
+                                        </ul>
+                                    </div>
+                                    <div class="scholarship-edit-mode hidden">
+                                        <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="6">Digital Art Fundamentals
+3D Modeling & Texturing
+Character Animation
+Game Engine Basics
+Visual Effects
+Portfolio Development</textarea>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 rounded-lg p-4">
+                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Specialization Tracks</h5>
+                                    <div class="scholarship-view-mode">
+                                        <ul class="text-sm text-gray-700 space-y-1">
+                                            <li>• Game Art & Design</li>
+                                            <li>• 3D Animation</li>
+                                            <li>• Visual Effects</li>
+                                            <li>• Motion Graphics</li>
+                                        </ul>
+                                    </div>
+                                    <div class="scholarship-edit-mode hidden">
+                                        <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="4">Game Art & Design
+3D Animation
+Visual Effects
+Motion Graphics</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <h5 class="text-sm font-medium text-gray-900 mb-3">Semester Breakdown</h5>
+                                <div class="scholarship-view-mode">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <h6 class="font-medium text-gray-800 mb-2">Year 1</h6>
+                                            <p class="text-sm text-gray-600">Semester 1: Art fundamentals, digital tools</p>
+                                            <p class="text-sm text-gray-600">Semester 2: 3D basics, character design</p>
+                                        </div>
+                                        <div>
+                                            <h6 class="font-medium text-gray-800 mb-2">Year 2</h6>
+                                            <p class="text-sm text-gray-600">Semester 3: Advanced animation, specialization</p>
+                                            <p class="text-sm text-gray-600">Semester 4: Capstone project, portfolio</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="scholarship-edit-mode hidden">
+                                    <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="4">Year 1 - Semester 1: Art fundamentals, digital tools
+Year 1 - Semester 2: 3D basics, character design
+Year 2 - Semester 3: Advanced animation, specialization
+Year 2 - Semester 4: Capstone project, portfolio</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Admin Actions -->
+                <div class="mt-6 pt-4 border-t border-gray-200">
+                    <div class="flex flex-wrap gap-2">
+                        <button class="px-3 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center">
+                            <i data-lucide="upload" class="w-4 h-4 mr-1"></i>
+                            Upload Documents
+                        </button>
+                        <button class="px-3 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center">
+                            <i data-lucide="link" class="w-4 h-4 mr-1"></i>
+                            Associate Records
+                        </button>
+                        <button class="px-3 py-2 text-sm text-white rounded-lg flex items-center" style="background-color: #d82128;">
+                            <i data-lucide="user-plus" class="w-4 h-4 mr-1"></i>
+                            Assign to Student
+                        </button>
+                        <button class="px-3 py-2 text-sm border border-red-300 text-red-600 rounded-lg hover:bg-red-50 flex items-center">
+                            <i data-lucide="archive" class="w-4 h-4 mr-1"></i>
+                            Archive Scholarship
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -393,23 +919,350 @@
         function openAddScholarshipModal() {
             document.getElementById('modalTitle').textContent = 'Add New Scholarship';
             document.getElementById('scholarshipModal').classList.remove('hidden');
+            
+            // Reset preview card
+            document.getElementById('preview-program-name').textContent = 'Program Name';
+            document.getElementById('preview-degree-level').textContent = 'Associate degree - Arts, Design & Architecture';
+            
+            // Initialize tab functionality for add modal
+            initializeAddScholarshipTabs();
         }
 
         function openEditScholarshipModal() {
             document.getElementById('modalTitle').textContent = 'Edit Scholarship';
-            document.getElementById('scholarshipModal').classList.remove('hidden');
+            
+            // Pre-populate form with existing data (in a real app, this would come from the selected row)
+            const modal = document.getElementById('scholarshipModal');
+            
+            // Get form inputs
+            const inputs = modal.querySelectorAll('input, select, textarea');
+            
+            // Sample data to populate (this would normally come from the selected scholarship)
+            const scholarshipData = {
+                name: 'Merit Scholarship 2025',
+                source: 'Ellacy Foundation',
+                awardValue: 'Up to $5,000',
+                numberOfAwards: '10',
+                deadline: '2025-12-31',
+                autoMatch: true,
+                minGPA: '3.0',
+                minIELTS: '6.5',
+                description: 'This scholarship is awarded to outstanding students who demonstrate academic excellence and leadership potential. Recipients will receive financial support to pursue their educational goals at partner institutions.'
+            };
+            
+            // Populate the form fields
+            inputs.forEach(input => {
+                const label = input.previousElementSibling?.textContent?.toLowerCase() || 
+                             input.closest('div')?.querySelector('label')?.textContent?.toLowerCase() || '';
+                
+                if (label.includes('scholarship name')) {
+                    input.value = scholarshipData.name;
+                } else if (label.includes('source')) {
+                    input.value = scholarshipData.source;
+                } else if (label.includes('award value')) {
+                    input.value = scholarshipData.awardValue;
+                } else if (label.includes('number of awards')) {
+                    input.value = scholarshipData.numberOfAwards;
+                } else if (label.includes('deadline')) {
+                    input.value = scholarshipData.deadline;
+                } else if (label.includes('auto-match') && input.type === 'checkbox') {
+                    input.checked = scholarshipData.autoMatch;
+                } else if (label.includes('minimum gpa')) {
+                    input.value = scholarshipData.minGPA;
+                } else if (label.includes('minimum ielts')) {
+                    input.value = scholarshipData.minIELTS;
+                } else if (label.includes('description')) {
+                    input.value = scholarshipData.description;
+                }
+            });
+            
+            // Update button text for edit mode
+            const saveButton = modal.querySelector('button[class*="bg-red-400"]');
+            if (saveButton) {
+                saveButton.innerHTML = '<i data-lucide="save" class="w-4 h-4 mr-1.5"></i>Update Scholarship';
+            }
+            
+            modal.classList.remove('hidden');
+            
+            // Re-initialize Lucide icons for the new button
+            lucide.createIcons();
         }
 
         function closeScholarshipModal() {
-            document.getElementById('scholarshipModal').classList.add('hidden');
+            const modal = document.getElementById('scholarshipModal');
+            modal.classList.add('hidden');
+            
+            // Reset form fields
+            const inputs = modal.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                if (input.type === 'checkbox') {
+                    input.checked = false;
+                } else if (input.type === 'file') {
+                    input.value = '';
+                } else {
+                    input.value = '';
+                    if (input.tagName === 'SELECT') {
+                        input.selectedIndex = 0;
+                    }
+                }
+            });
+            
+            // Reset button text to default
+            const saveButton = modal.querySelector('button[onclick="saveScholarship()"]');
+            if (saveButton) {
+                saveButton.innerHTML = '<i data-lucide="save" class="w-4 h-4 mr-2"></i>Save Scholarship';
+            }
+            
+            // Reset title to default
+            document.getElementById('modalTitle').textContent = 'Add New Scholarship';
+            
+            // Reset preview card
+            document.getElementById('preview-program-name').textContent = 'Program Name';
+            document.getElementById('preview-degree-level').textContent = 'Associate degree - Arts, Design & Architecture';
+            
+            // Reset to first tab
+            switchAddScholarshipTab('fees');
+            
+            // Re-initialize Lucide icons
+            lucide.createIcons();
         }
 
+        // Save scholarship function with validation
+        function saveScholarship() {
+            // Get required fields
+            const scholarshipName = document.getElementById('scholarship-name-input').value.trim();
+            const programName = document.getElementById('program-name-input').value.trim();
+            const source = document.querySelector('select[required]').value;
+            const institution = document.querySelectorAll('select[required]')[1].value;
+            const awardValue = document.querySelector('input[placeholder*="$5,000"]').value.trim();
+            const deadline = document.querySelector('input[type="date"][required]').value;
+            
+            // Validation
+            const requiredFields = [
+                { value: scholarshipName, name: 'Scholarship Name' },
+                { value: programName, name: 'Program Name' },
+                { value: source, name: 'Source' },
+                { value: institution, name: 'Institution' },
+                { value: awardValue, name: 'Award Value' },
+                { value: deadline, name: 'Application Deadline' }
+            ];
+            
+            const missingFields = requiredFields.filter(field => !field.value);
+            
+            if (missingFields.length > 0) {
+                const fieldNames = missingFields.map(field => field.name).join(', ');
+                showNotification(`Please fill in required fields: ${fieldNames}`, 'error');
+                return;
+            }
+            
+            // Simulate saving
+            showNotification('Scholarship saved successfully!', 'success');
+            closeScholarshipModal();
+        }
+
+        // Scholarship detail drawer functionality
+        let isScholarshipEditMode = false;
+
         function openScholarshipDetail() {
+            setScholarshipViewMode();
             document.getElementById('scholarshipDetailModal').classList.remove('hidden');
         }
 
         function closeScholarshipDetail() {
             document.getElementById('scholarshipDetailModal').classList.add('hidden');
+            setScholarshipViewMode(); // Reset to view mode when closing
+        }
+
+        function setScholarshipViewMode() {
+            isScholarshipEditMode = false;
+            
+            // Update header
+            document.getElementById('scholarship-drawer-title').textContent = 'Scholarship Details';
+            document.getElementById('scholarship-drawer-subtitle').classList.add('hidden');
+            
+            // Show/hide buttons
+            document.getElementById('scholarship-edit-toggle-btn').classList.remove('hidden');
+            document.getElementById('scholarship-save-btn').classList.add('hidden');
+            document.getElementById('scholarship-cancel-btn').classList.add('hidden');
+            
+            // Show view mode, hide edit mode
+            document.querySelectorAll('.scholarship-view-mode').forEach(el => el.classList.remove('hidden'));
+            document.querySelectorAll('.scholarship-edit-mode').forEach(el => el.classList.add('hidden'));
+        }
+
+        function setScholarshipEditMode() {
+            isScholarshipEditMode = true;
+            
+            // Update header
+            document.getElementById('scholarship-drawer-title').textContent = 'Edit Scholarship';
+            document.getElementById('scholarship-drawer-subtitle').classList.remove('hidden');
+            
+            // Show/hide buttons
+            document.getElementById('scholarship-edit-toggle-btn').classList.add('hidden');
+            document.getElementById('scholarship-save-btn').classList.remove('hidden');
+            document.getElementById('scholarship-cancel-btn').classList.remove('hidden');
+            
+            // Hide view mode, show edit mode
+            document.querySelectorAll('.scholarship-view-mode').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.scholarship-edit-mode').forEach(el => el.classList.remove('hidden'));
+        }
+
+        function toggleScholarshipEditMode() {
+            if (isScholarshipEditMode) {
+                setScholarshipViewMode();
+            } else {
+                setScholarshipEditMode();
+            }
+        }
+
+        function saveScholarship() {
+            // Here you would collect all form data and send to server
+            // For now, simulate saving
+            showNotification('Scholarship updated successfully!', 'success');
+            setScholarshipViewMode();
+        }
+
+        function cancelScholarshipEdit() {
+            // Reset form to original values (in a real app, you'd restore from saved data)
+            setScholarshipViewMode();
+        }
+
+        // Tab switching for scholarship detail
+        function switchScholarshipTab(tabName) {
+            // Hide all tab panels
+            document.querySelectorAll('.scholarship-tab-panel').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+            
+            // Remove active state from all tab links
+            document.querySelectorAll('.scholarship-tab-link').forEach(link => {
+                link.classList.remove('border-red-500', 'text-red-600');
+                link.classList.add('border-transparent', 'text-gray-600');
+            });
+            
+            // Show selected tab panel
+            const selectedPanel = document.getElementById(`scholarship-tab-${tabName}`);
+            if (selectedPanel) {
+                selectedPanel.classList.remove('hidden');
+            }
+            
+            // Set active state for selected tab link
+            const selectedLink = document.querySelector(`[data-tab="${tabName}"]`);
+            if (selectedLink) {
+                selectedLink.classList.remove('border-transparent', 'text-gray-600');
+                selectedLink.classList.add('border-red-500', 'text-red-600');
+            }
+        }
+
+        // Add Scholarship Modal Tab Functions
+        function initializeAddScholarshipTabs() {
+            document.querySelectorAll('.add-scholarship-tab-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    const tabName = this.getAttribute('data-tab');
+                    switchAddScholarshipTab(tabName);
+                });
+            });
+        }
+
+        function switchAddScholarshipTab(tabName) {
+            // Hide all tab panels
+            document.querySelectorAll('.add-scholarship-tab-panel').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+            
+            // Remove active state from all tab links
+            document.querySelectorAll('.add-scholarship-tab-link').forEach(link => {
+                link.classList.remove('border-red-500', 'text-red-600');
+                link.classList.add('border-transparent', 'text-gray-600');
+                link.style.borderColor = '';
+                link.style.color = '';
+            });
+            
+            // Show selected tab panel
+            const selectedPanel = document.getElementById(`add-scholarship-tab-${tabName}`);
+            if (selectedPanel) {
+                selectedPanel.classList.remove('hidden');
+            }
+            
+            // Set active state for selected tab link
+            const selectedLink = document.querySelector(`[data-tab="${tabName}"]`);
+            if (selectedLink) {
+                selectedLink.classList.remove('border-transparent', 'text-gray-600');
+                selectedLink.classList.add('border-red-500', 'text-red-600');
+                selectedLink.style.borderColor = '#d82128';
+                selectedLink.style.color = '#d82128';
+            }
+        }
+
+        // Update preview card when form fields change
+        function updatePreviewCard() {
+            const programName = document.getElementById('program-name-input').value || 'Program Name';
+            const degreeLevel = document.getElementById('degree-level-input').value || 'Associate degree - Arts, Design & Architecture';
+            
+            document.getElementById('preview-program-name').textContent = programName;
+            document.getElementById('preview-degree-level').textContent = degreeLevel;
+        }
+
+        // Initialize scholarship tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.scholarship-tab-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    const tabName = this.getAttribute('data-tab');
+                    switchScholarshipTab(tabName);
+                });
+            });
+
+            // Add event listeners for preview card updates
+            const programNameInput = document.getElementById('program-name-input');
+            const degreeLevelInput = document.getElementById('degree-level-input');
+            
+            if (programNameInput) {
+                programNameInput.addEventListener('input', updatePreviewCard);
+            }
+            if (degreeLevelInput) {
+                degreeLevelInput.addEventListener('change', updatePreviewCard);
+            }
+        });
+
+        // Notification function
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg transform transition-all duration-300 translate-x-full`;
+            
+            if (type === 'success') {
+                notification.classList.add('bg-green-500', 'text-white');
+            } else if (type === 'error') {
+                notification.classList.add('bg-red-500', 'text-white');
+            } else {
+                notification.classList.add('bg-blue-500', 'text-white');
+            }
+            
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <span>${message}</span>
+                    <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-white hover:text-gray-200">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            lucide.createIcons();
+            
+            // Slide in
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Auto remove after 3 seconds
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
         }
 
         // Initialize Select2 for dropdowns

@@ -188,7 +188,7 @@
                                         <button class="text-red-400 hover:text-blue-900" onclick="openInstitutionDetail()">
                                             <i data-lucide="eye" class="w-4 h-4"></i>
                                         </button>
-                                        <button class="text-red-400 hover:text-blue-900">
+                                        <button class="text-red-400 hover:text-blue-900" onclick="openInstitutionEdit()">
                                             <i data-lucide="edit" class="w-4 h-4"></i>
                                         </button>
                                         <button class="text-red-400 hover:text-blue-900">
@@ -207,160 +207,529 @@
 
             <!-- Institution Detail Drawer -->
             <div id="institution-detail" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden">
-                <div class="absolute right-0 h-full w-2/5 bg-white shadow-xl">
-                    <div class="p-6">
+                <div class="absolute right-0 h-full w-3/5 bg-white shadow-xl">
+                    <div class="p-6 h-full flex flex-col">
                         <div class="flex justify-between items-center mb-6">
-                            <h3 class="text-lg font-semibold text-gray-900">Institution Details</h3>
-                            <button onclick="closeInstitutionDetail()" class="text-gray-500 hover:text-gray-700">
-                                <i data-lucide="x" class="w-5 h-5"></i>
-                            </button>
-                        </div>
-                        
-                        <!-- Institution Profile -->
-                        <div class="mb-8">
-                            <div class="flex items-center mb-4">
-                                <img src="https://ui-avatars.com/api/?name=University+of+Toronto&background=0D8ABC&color=fff" 
-                                     alt="University of Toronto" 
-                                     class="h-16 w-16 rounded-lg">
-                                <div class="ml-4">
-                                    <h4 class="text-xl font-semibold text-gray-900">University of Toronto</h4>
-                                    <p class="text-sm text-gray-500">Public University • Canada</p>
-                                </div>
+                            <div>
+                                <h3 id="drawer-title" class="text-lg font-semibold text-gray-900">Institution Details</h3>
+                                <p id="drawer-subtitle" class="text-sm text-gray-500 hidden">Make changes to institution information</p>
                             </div>
-                            
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <p class="text-sm font-medium text-gray-500">Contact Info</p>
-                                    <p class="text-sm text-gray-900">info@utoronto.ca</p>
-                                    <p class="text-sm text-gray-900">+1 (416) 978-2011</p>
-                                </div>
-                                <div>
-                                    <p class="text-sm font-medium text-gray-500">Partnership Type</p>
-                                    <p class="text-sm text-gray-900">MOA Partner</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Programs List -->
-                        <div>
-                            <div class="flex justify-between items-center mb-4">
-                                <h4 class="font-semibold text-gray-900">Programs</h4>
-                                <button class="text-sm text-red-400 hover:text-blue-700 flex items-center">
-                                    <i data-lucide="plus" class="w-4 h-4 mr-1"></i>
-                                    Add Program
+                            <div class="flex items-center space-x-2">
+                                <button id="edit-toggle-btn" onclick="toggleEditMode()" class="hidden px-3 py-1 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center">
+                                    <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
+                                    Edit
+                                </button>
+                                <button id="save-btn" onclick="saveInstitution()" class="hidden px-3 py-1 text-sm text-white rounded-lg flex items-center" style="background-color: #d82128;">
+                                    <i data-lucide="save" class="w-4 h-4 mr-1"></i>
+                                    Save Changes
+                                </button>
+                                <button id="cancel-btn" onclick="cancelEdit()" class="hidden px-3 py-1 text-sm border border-gray-300 rounded-lg hover:bg-gray-50">
+                                    Cancel
+                                </button>
+                                <button onclick="closeInstitutionDetail()" class="text-gray-500 hover:text-gray-700">
+                                    <i data-lucide="x" class="w-5 h-5"></i>
                                 </button>
                             </div>
+                        </div>
 
-                            <div class="space-y-4">
-                                <!-- Program Item -->
-                                <div class="p-4 bg-gray-50 rounded-lg">
-                                    <div class="flex justify-between items-start">
-                                        <div>
-                                            <h5 class="text-sm font-medium text-gray-900">Bachelor of Computer Science</h5>
-                                            <p class="text-sm text-gray-500">Undergraduate • Computer Science</p>
-                                            <p class="text-sm text-gray-500 mt-1">Tuition: $45,000 - $55,000 / year</p>
-                                        </div>
-                                        <div class="flex space-x-2">
-                                            <button class="text-gray-400 hover:text-gray-600">
-                                                <i data-lucide="edit" class="w-4 h-4"></i>
-                                            </button>
-                                            <button class="text-gray-400 hover:text-gray-600">
-                                                <i data-lucide="trash" class="w-4 h-4"></i>
-                                            </button>
-                                        </div>
+                        <!-- Basic Information -->
+                        <div class="mb-6">
+                            <div class="flex items-center mb-4">
+                                <img src="https://ui-avatars.com/api/?name=University+of+Toronto&background=0D8ABC&color=fff" alt="University of Toronto" class="h-16 w-16 rounded-lg">
+                                <div class="ml-4">
+                                    <div class="flex items-center space-x-3">
+                                        <h4 class="text-xl font-semibold text-gray-900">University of Toronto</h4>
+                                        <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Active</span>
+                                        <span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">Public</span>
                                     </div>
-                                    <div class="mt-3 flex flex-wrap gap-2">
-                                        <span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">IELTS: 6.5</span>
-                                        <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">GPA: 3.0</span>
-                                        <span class="px-2 py-1 text-xs rounded-full bg-purple-100 text-purple-800">Fall 2024</span>
+                                    <p class="text-sm text-gray-500">Toronto, Canada • Established 1827</p>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-gray-50 rounded-lg p-4">
+                                    <p class="text-xs text-gray-500">Location</p>
+                                    <div class="view-mode">
+                                        <p class="text-sm font-medium text-gray-900">Toronto, ON, Canada</p>
+                                        <p class="text-xs text-gray-500">27 King's College Cir, Toronto, ON M5S</p>
+                                    </div>
+                                    <div class="edit-mode hidden">
+                                        <input type="text" class="w-full text-sm font-medium border-gray-300 rounded mb-2" value="Toronto, ON, Canada">
+                                        <input type="text" class="w-full text-xs border-gray-300 rounded" value="27 King's College Cir, Toronto, ON M5S">
                                     </div>
                                 </div>
+                                <div class="bg-gray-50 rounded-lg p-4">
+                                    <p class="text-xs text-gray-500">Student Population</p>
+                                    <div class="view-mode">
+                                        <p class="text-sm font-medium text-gray-900">97,000+</p>
+                                        <p class="text-xs text-gray-500">Undergraduate & Graduate</p>
+                                    </div>
+                                    <div class="edit-mode hidden">
+                                        <input type="text" class="w-full text-sm font-medium border-gray-300 rounded mb-2" value="97,000+">
+                                        <input type="text" class="w-full text-xs border-gray-300 rounded" value="Undergraduate & Graduate">
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 rounded-lg p-4">
+                                    <p class="text-xs text-gray-500">Website</p>
+                                    <div class="view-mode">
+                                        <a href="#" class="text-sm font-medium text-blue-600 hover:underline">www.utoronto.ca</a>
+                                        <p class="text-xs text-gray-500">Official site</p>
+                                    </div>
+                                    <div class="edit-mode hidden">
+                                        <input type="url" class="w-full text-sm font-medium border-gray-300 rounded mb-2" value="www.utoronto.ca">
+                                        <input type="text" class="w-full text-xs border-gray-300 rounded" value="Official site">
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 rounded-lg p-4">
+                                    <p class="text-xs text-gray-500">Point of Contact</p>
+                                    <div class="view-mode">
+                                        <p class="text-sm font-medium text-gray-900">Jane Smith</p>
+                                        <p class="text-xs text-gray-500">jane@utoronto.ca • +1 (416) 978-2011</p>
+                                    </div>
+                                    <div class="edit-mode hidden">
+                                        <input type="text" class="w-full text-sm font-medium border-gray-300 rounded mb-2" value="Jane Smith">
+                                        <div class="flex space-x-2">
+                                            <input type="email" class="flex-1 text-xs border-gray-300 rounded" value="jane@utoronto.ca">
+                                            <input type="tel" class="flex-1 text-xs border-gray-300 rounded" value="+1 (416) 978-2011">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 rounded-lg p-4">
+                                    <p class="text-xs text-gray-500">Partner Type</p>
+                                    <div class="view-mode">
+                                        <p class="text-sm font-medium text-gray-900">MOA • Strategic</p>
+                                        <p class="text-xs text-gray-500">Direct Partnership</p>
+                                    </div>
+                                    <div class="edit-mode hidden">
+                                        <select class="w-full text-sm font-medium border-gray-300 rounded mb-2">
+                                            <option value="moa-strategic" selected>MOA • Strategic</option>
+                                            <option value="moa">MOA</option>
+                                            <option value="referral">Referral</option>
+                                            <option value="strategic">Strategic</option>
+                                        </select>
+                                        <input type="text" class="w-full text-xs border-gray-300 rounded" value="Direct Partnership">
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 rounded-lg p-4">
+                                    <p class="text-xs text-gray-500">Established Year</p>
+                                    <div class="view-mode">
+                                        <p class="text-sm font-medium text-gray-900">1827</p>
+                                        <p class="text-xs text-gray-500">Historic Institution</p>
+                                    </div>
+                                    <div class="edit-mode hidden">
+                                        <input type="number" class="w-full text-sm font-medium border-gray-300 rounded mb-2" value="1827">
+                                        <input type="text" class="w-full text-xs border-gray-300 rounded" value="Historic Institution">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tabs Navigation -->
+                        <div class="mb-4 border-b border-gray-200">
+                            <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                                <button class="tab-link border-b-2 border-red-500 py-3 text-sm font-medium text-red-600" data-tab="overview">Overview</button>
+                                <button class="tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300" data-tab="programs">Programs</button>
+                                <button class="tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300" data-tab="admissions">Admissions</button>
+                                <button class="tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300" data-tab="campus">Campus Life</button>
+                            </nav>
+                        </div>
+
+                        <!-- Tab Panels -->
+                        <div class="flex-1 overflow-y-auto">
+                            <!-- Overview Tab -->
+                            <section id="tab-overview" class="tab-panel">
+                                <div class="space-y-6">
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">About</h4>
+                                        <p class="text-sm text-gray-700">The University of Toronto is a world-renowned public research university known for its academic excellence, innovation, and diverse community. It offers a comprehensive range of programs and has a strong global reputation.</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">Mission Statement</h4>
+                                        <p class="text-sm text-gray-700">To be an internationally significant research university, with undergraduate, graduate and professional programs of excellent quality.</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">Quick Stats</h4>
+                                        <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                                            <div class="bg-white border rounded-lg p-4">
+                                                <p class="text-xs text-gray-500">Founded</p>
+                                                <p class="text-lg font-semibold">1827</p>
+                                            </div>
+                                            <div class="bg-white border rounded-lg p-4">
+                                                <p class="text-xs text-gray-500">Students</p>
+                                                <p class="text-lg font-semibold">97k+</p>
+                                            </div>
+                                            <div class="bg-white border rounded-lg p-4">
+                                                <p class="text-xs text-gray-500">Faculty</p>
+                                                <p class="text-lg font-semibold">14k+</p>
+                                            </div>
+                                            <div class="bg-white border rounded-lg p-4">
+                                                <p class="text-xs text-gray-500">Scholarships</p>
+                                                <p class="text-lg font-semibold">120+</p>
+                                            </div>
+                                            <div class="bg-white border rounded-lg p-4">
+                                                <p class="text-xs text-gray-500">Campus Size</p>
+                                                <p class="text-lg font-semibold">180 ha</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Programs Tab -->
+                            <section id="tab-programs" class="tab-panel hidden">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h4 class="font-semibold text-gray-900">Programs</h4>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="text-sm border px-3 py-1 rounded-lg hover:bg-gray-50 flex items-center">
+                                            <i data-lucide="link" class="w-4 h-4 mr-1"></i>
+                                            Link Scholarships
+                                        </button>
+                                        <button class="text-sm text-white px-3 py-1 rounded-lg flex items-center" style="background-color:#d82128;">
+                                            <i data-lucide="plus" class="w-4 h-4 mr-1"></i>
+                                            Add Program
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-4">
+                                    <!-- Program Item -->
+                                    <div class="p-4 bg-gray-50 rounded-lg">
+                                        <div class="flex justify-between items-start">
+                                            <div>
+                                                <h5 class="text-sm font-medium text-gray-900">Bachelor of Computer Science</h5>
+                                                <p class="text-sm text-gray-500">Undergraduate • Computer Science</p>
+                                                <p class="text-sm text-gray-500 mt-1">Tuition: $45,000 - $55,000 / year</p>
+                                                <p class="text-xs text-gray-500 mt-1">Application Deadline: March 1, 2025</p>
+                                            </div>
+                                            <div class="flex space-x-2">
+                                                <button class="text-gray-400 hover:text-gray-600">
+                                                    <i data-lucide="edit" class="w-4 h-4"></i>
+                                                </button>
+                                                <button class="text-gray-400 hover:text-gray-600">
+                                                    <i data-lucide="archive" class="w-4 h-4"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 flex flex-wrap gap-2">
+                                            <span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">IELTS: 6.5</span>
+                                            <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">GPA: 3.0</span>
+                                            <span class="px-2 py-1 text-xs rounded-full bg-purple-100 text-purple-800">Fall 2025</span>
+                                            <span class="px-2 py-1 text-xs rounded-full bg-orange-100 text-orange-800">Spring 2025</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Additional Program -->
+                                    <div class="p-4 bg-gray-50 rounded-lg">
+                                        <div class="flex justify-between items-start">
+                                            <div>
+                                                <h5 class="text-sm font-medium text-gray-900">Master of Business Administration</h5>
+                                                <p class="text-sm text-gray-500">Graduate • Business</p>
+                                                <p class="text-sm text-gray-500 mt-1">Tuition: $65,000 - $75,000 / year</p>
+                                                <p class="text-xs text-gray-500 mt-1">Application Deadline: January 15, 2025</p>
+                                            </div>
+                                            <div class="flex space-x-2">
+                                                <button class="text-gray-400 hover:text-gray-600">
+                                                    <i data-lucide="edit" class="w-4 h-4"></i>
+                                                </button>
+                                                <button class="text-gray-400 hover:text-gray-600">
+                                                    <i data-lucide="archive" class="w-4 h-4"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 flex flex-wrap gap-2">
+                                            <span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">IELTS: 7.0</span>
+                                            <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">GPA: 3.5</span>
+                                            <span class="px-2 py-1 text-xs rounded-full bg-purple-100 text-purple-800">Fall 2025</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Admissions Tab -->
+                            <section id="tab-admissions" class="tab-panel hidden">
+                                <div class="space-y-6">
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-3">Admission Requirements</h4>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div class="bg-gray-50 rounded-lg p-4">
+                                                <h5 class="text-sm font-medium text-gray-900 mb-2">English Language</h5>
+                                                <ul class="text-sm text-gray-700 space-y-1">
+                                                    <li>• IELTS: 6.5 overall (6.0 minimum per band)</li>
+                                                    <li>• TOEFL iBT: 100 overall (22 minimum per section)</li>
+                                                    <li>• Duolingo: 120 overall</li>
+                                                </ul>
+                                            </div>
+                                            <div class="bg-gray-50 rounded-lg p-4">
+                                                <h5 class="text-sm font-medium text-gray-900 mb-2">Academic Requirements</h5>
+                                                <ul class="text-sm text-gray-700 space-y-1">
+                                                    <li>• Undergraduate: GPA 3.0+ (85%+)</li>
+                                                    <li>• Graduate: GPA 3.5+ (B+ average)</li>
+                                                    <li>• Relevant prerequisite courses</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-3">Required Documents</h4>
+                                        <div class="bg-gray-50 rounded-lg p-4">
+                                            <ul class="text-sm text-gray-700 space-y-2">
+                                                <li>• Official transcripts and certificates</li>
+                                                <li>• English language test scores</li>
+                                                <li>• Statement of purpose / Personal statement</li>
+                                                <li>• Letters of recommendation (2-3)</li>
+                                                <li>• Resume/CV</li>
+                                                <li>• Portfolio (for applicable programs)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-3">International Student Requirements</h4>
+                                        <div class="bg-gray-50 rounded-lg p-4">
+                                            <ul class="text-sm text-gray-700 space-y-2">
+                                                <li>• Proof of financial support (CAD $60,000+ per year)</li>
+                                                <li>• Study permit application</li>
+                                                <li>• Medical examination (if required)</li>
+                                                <li>• Visa support letter provided upon admission</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Campus Life Tab -->
+                            <section id="tab-campus" class="tab-panel hidden">
+                                <div class="space-y-6">
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-3">Student Activities</h4>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div class="bg-gray-50 rounded-lg p-4">
+                                                <h5 class="text-sm font-medium text-gray-900 mb-2">Clubs & Organizations</h5>
+                                                <ul class="text-sm text-gray-700 space-y-1">
+                                                    <li>• 800+ student clubs and organizations</li>
+                                                    <li>• Academic and professional societies</li>
+                                                    <li>• Cultural and international student groups</li>
+                                                    <li>• Volunteer and community service groups</li>
+                                                </ul>
+                                            </div>
+                                            <div class="bg-gray-50 rounded-lg p-4">
+                                                <h5 class="text-sm font-medium text-gray-900 mb-2">Sports & Recreation</h5>
+                                                <ul class="text-sm text-gray-700 space-y-1">
+                                                    <li>• Varsity Blues athletics program</li>
+                                                    <li>• Intramural and recreational sports</li>
+                                                    <li>• Athletic Centre with modern facilities</li>
+                                                    <li>• Outdoor recreation programs</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-3">Campus Facilities</h4>
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                            <div class="bg-gray-50 rounded-lg p-4">
+                                                <h5 class="text-sm font-medium text-gray-900 mb-2">Academic</h5>
+                                                <ul class="text-sm text-gray-700 space-y-1">
+                                                    <li>• Robarts Research Library</li>
+                                                    <li>• 40+ specialized libraries</li>
+                                                    <li>• Research laboratories</li>
+                                                    <li>• Computer labs</li>
+                                                </ul>
+                                            </div>
+                                            <div class="bg-gray-50 rounded-lg p-4">
+                                                <h5 class="text-sm font-medium text-gray-900 mb-2">Housing</h5>
+                                                <ul class="text-sm text-gray-700 space-y-1">
+                                                    <li>• 12 residence buildings</li>
+                                                    <li>• Graduate housing available</li>
+                                                    <li>• Family housing options</li>
+                                                    <li>• Off-campus housing support</li>
+                                                </ul>
+                                            </div>
+                                            <div class="bg-gray-50 rounded-lg p-4">
+                                                <h5 class="text-sm font-medium text-gray-900 mb-2">Services</h5>
+                                                <ul class="text-sm text-gray-700 space-y-1">
+                                                    <li>• Health & Wellness Centre</li>
+                                                    <li>• Career Centre</li>
+                                                    <li>• International Student Centre</li>
+                                                    <li>• Accessibility Services</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <!-- Admin Actions -->
+                        <div class="mt-6 pt-4 border-t border-gray-200">
+                            <div class="flex flex-wrap gap-2">
+                                <button class="px-3 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center">
+                                    <i data-lucide="upload" class="w-4 h-4 mr-1"></i>
+                                    Upload Brochures
+                                </button>
+                                <button class="px-3 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center">
+                                    <i data-lucide="link" class="w-4 h-4 mr-1"></i>
+                                    Link Scholarships
+                                </button>
+                                <button class="px-3 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center">
+                                    <i data-lucide="users" class="w-4 h-4 mr-1"></i>
+                                    Associate Advisors
+                                </button>
+                                <button class="px-3 py-2 text-sm border border-red-300 text-red-600 rounded-lg hover:bg-red-50 flex items-center">
+                                    <i data-lucide="archive" class="w-4 h-4 mr-1"></i>
+                                    Archive Institution
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Add Institution Modal -->
+            <!-- Add Institution Enhanced Flow Modal -->
             <div id="add-institution-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden">
-                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] bg-white rounded-lg shadow-xl">
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] bg-white rounded-lg shadow-xl">
                     <div class="p-6">
-                        <div class="flex justify-between items-center mb-6">
-                            <h3 class="text-lg font-semibold text-gray-900">Add New Institution</h3>
-                            <button onclick="closeAddInstitutionModal()" class="text-gray-500 hover:text-gray-700">
-                                <i data-lucide="x" class="w-5 h-5"></i>
-                            </button>
+                        <!-- Step Indicator -->
+                        <div class="mb-6">
+                            <div class="flex items-center justify-center space-x-4">
+                                <div class="flex items-center">
+                                    <div id="step-1-indicator" class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium text-white" style="background-color: #d82128;">1</div>
+                                    <span class="ml-2 text-sm font-medium text-gray-900">Initial Info</span>
+                                </div>
+                                <div class="w-16 h-1 bg-gray-200">
+                                    <div id="progress-1-2" class="h-1 bg-gray-200 transition-all duration-300"></div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div id="step-2-indicator" class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm font-medium text-gray-500">2</div>
+                                    <span class="ml-2 text-sm font-medium text-gray-500">AI Fetch</span>
+                                </div>
+                                <div class="w-16 h-1 bg-gray-200">
+                                    <div id="progress-2-3" class="h-1 bg-gray-200 transition-all duration-300"></div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div id="step-3-indicator" class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm font-medium text-gray-500">3</div>
+                                    <span class="ml-2 text-sm font-medium text-gray-500">Review & Save</span>
+                                </div>
+                            </div>
                         </div>
 
-                        <form class="space-y-4">
-                            <div class="grid grid-cols-2 gap-4">
+                        <!-- Step 1: Initial Form -->
+                        <div id="step-1" class="step-content">
+                            <div class="flex justify-between items-center mb-6">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Institution Name</label>
-                                    <input type="text" class="w-full rounded-lg border-gray-300" required>
+                                    <h3 class="text-lg font-semibold text-gray-900">Add New Institution</h3>
+                                    <p class="text-sm text-gray-500">Enter basic information to get started</p>
+                                </div>
+                                <button onclick="closeAddInstitutionModal()" class="text-gray-500 hover:text-gray-700">
+                                    <i data-lucide="x" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+
+                            <form id="initial-form" class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Institution Name <span class="text-red-500">*</span></label>
+                                    <input id="institution-name" type="text" class="w-full rounded-lg border-gray-300" placeholder="e.g., University of Toronto" required>
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Country</label>
-                                    <select class="w-full rounded-lg border-gray-300" required>
-                                        <option value="">Select Country</option>
-                                        <option value="au">Australia</option>
-                                        <option value="ca">Canada</option>
-                                        <option value="uk">United Kingdom</option>
-                                        <option value="us">United States</option>
-                                    </select>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Institution Website URL <span class="text-red-500">*</span></label>
+                                    <input id="institution-url" type="url" class="w-full rounded-lg border-gray-300" placeholder="https://www.university.edu" required>
+                                    <p class="text-xs text-gray-500 mt-1">Used to automatically fetch information about the university</p>
                                 </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">City</label>
-                                    <input type="text" class="w-full rounded-lg border-gray-300" required>
+                                <div class="flex justify-end space-x-3 pt-4">
+                                    <button type="button" onclick="closeAddInstitutionModal()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">Cancel</button>
+                                    <button type="button" onclick="fetchInstitutionInfo()" class="px-4 py-2 text-white rounded-lg text-sm font-medium hover:opacity-90 flex items-center" style="background-color: #d82128;">
+                                        <i data-lucide="zap" class="w-4 h-4 mr-2"></i>
+                                        Fetch Info
+                                    </button>
                                 </div>
+                            </form>
+                        </div>
+
+                        <!-- Step 2: AI-Assisted Data Fetch -->
+                        <div id="step-2" class="step-content hidden">
+                            <div class="flex justify-between items-center mb-6">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Type</label>
-                                    <select class="w-full rounded-lg border-gray-300" required>
-                                        <option value="">Select Type</option>
-                                        <option value="university">University</option>
-                                        <option value="college">College</option>
-                                        <option value="partner">Partner</option>
-                                    </select>
+                                    <h3 class="text-lg font-semibold text-gray-900">Fetching Information</h3>
+                                    <p class="text-sm text-gray-500">AI is gathering data from the university website</p>
                                 </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Contact Name</label>
-                                    <input type="text" class="w-full rounded-lg border-gray-300" required>
+                                <button onclick="closeAddInstitutionModal()" class="text-gray-500 hover:text-gray-700">
+                                    <i data-lucide="x" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+
+                            <div class="text-center py-12">
+                                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style="background-color: #FEF2F2;">
+                                    <div class="animate-spin w-8 h-8 border-2 border-red-200 border-t-red-600 rounded-full"></div>
                                 </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Contact Email</label>
-                                    <input type="email" class="w-full rounded-lg border-gray-300" required>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Partner Type</label>
-                                    <select class="w-full rounded-lg border-gray-300" required>
-                                        <option value="">Select Partner Type</option>
-                                        <option value="referral">Referral</option>
-                                        <option value="moa">MOA</option>
-                                        <option value="strategic">Strategic</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Logo</label>
-                                    <div class="mt-1 flex items-center">
-                                        <span class="inline-block h-12 w-12 rounded-lg overflow-hidden bg-gray-100">
-                                            <svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                                            </svg>
-                                        </span>
-                                        <button type="button" class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                            Upload
-                                        </button>
+                                <h4 class="text-lg font-medium text-gray-900 mb-2">Fetching information...</h4>
+                                <p id="fetch-status" class="text-sm text-gray-500">Fetching information from <span class="font-medium">university website</span>...</p>
+                                
+                                <div class="mt-6 max-w-md mx-auto">
+                                    <div class="bg-gray-100 rounded-lg p-4 text-left">
+                                        <h5 class="text-sm font-medium text-gray-900 mb-2">Gathering data for:</h5>
+                                        <ul class="text-sm text-gray-600 space-y-1">
+                                            <li class="flex items-center">
+                                                <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
+                                                Logo and branding
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
+                                                Location and contact info
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i data-lucide="loader" class="w-4 h-4 text-blue-500 mr-2 animate-spin"></i>
+                                                Overview and description
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i data-lucide="clock" class="w-4 h-4 text-gray-400 mr-2"></i>
+                                                Programs and courses
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i data-lucide="clock" class="w-4 h-4 text-gray-400 mr-2"></i>
+                                                Admission requirements
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
+
+                                <button onclick="skipToManualEntry()" class="mt-6 text-sm text-gray-500 hover:text-gray-700 underline">
+                                    Skip and enter manually
+                                </button>
                             </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Notes</label>
-                                <textarea class="w-full rounded-lg border-gray-300" rows="3"></textarea>
+                        </div>
+
+                        <!-- Step 3: Review & Edit -->
+                        <div id="step-3" class="step-content hidden">
+                            <div class="flex justify-between items-center mb-6">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900">Review & Edit Institution</h3>
+                                    <p class="text-sm text-gray-500">
+                                        <i data-lucide="zap" class="w-4 h-4 inline mr-1 text-yellow-500"></i>
+                                        AI-scraped content. Please verify before saving.
+                                    </p>
+                                </div>
+                                <button onclick="closeAddInstitutionModal()" class="text-gray-500 hover:text-gray-700">
+                                    <i data-lucide="x" class="w-5 h-5"></i>
+                                </button>
                             </div>
-                            <div class="flex justify-end space-x-3">
-                                <button type="button" onclick="closeAddInstitutionModal()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">Cancel</button>
-                                <button type="submit" class="px-4 py-2 bg-red-400 text-white rounded-lg text-sm font-medium hover:bg-blue-700">Save Institution</button>
+
+                            <!-- This will be populated with the editable institution detail view -->
+                            <div id="review-content" class="max-h-96 overflow-y-auto">
+                                <!-- Content will be dynamically populated -->
                             </div>
-                        </form>
+
+                            <div class="flex justify-between pt-4 border-t border-gray-200">
+                                <button onclick="goBackToStep2()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 flex items-center">
+                                    <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
+                                    Back
+                                </button>
+                                <div class="space-x-3">
+                                    <button onclick="closeAddInstitutionModal()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">Cancel</button>
+                                    <button onclick="saveNewInstitution()" class="px-4 py-2 text-white rounded-lg text-sm font-medium hover:opacity-90 flex items-center" style="background-color: #d82128;">
+                                        <i data-lucide="save" class="w-4 h-4 mr-2"></i>
+                                        Save Institution
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -442,21 +811,593 @@
         }
 
         // Institution detail drawer functionality
+        let isEditMode = false;
+
         function openInstitutionDetail() {
+            setViewMode();
+            document.getElementById('institution-detail').classList.remove('hidden');
+        }
+
+        function openInstitutionEdit() {
+            setEditMode();
             document.getElementById('institution-detail').classList.remove('hidden');
         }
 
         function closeInstitutionDetail() {
             document.getElementById('institution-detail').classList.add('hidden');
+            setViewMode(); // Reset to view mode when closing
         }
 
-        // Add institution modal functionality
+        function setViewMode() {
+            isEditMode = false;
+            
+            // Update header
+            document.getElementById('drawer-title').textContent = 'Institution Details';
+            document.getElementById('drawer-subtitle').classList.add('hidden');
+            
+            // Show/hide buttons
+            document.getElementById('edit-toggle-btn').classList.remove('hidden');
+            document.getElementById('save-btn').classList.add('hidden');
+            document.getElementById('cancel-btn').classList.add('hidden');
+            
+            // Show view mode, hide edit mode
+            document.querySelectorAll('.view-mode').forEach(el => el.classList.remove('hidden'));
+            document.querySelectorAll('.edit-mode').forEach(el => el.classList.add('hidden'));
+        }
+
+        function setEditMode() {
+            isEditMode = true;
+            
+            // Update header
+            document.getElementById('drawer-title').textContent = 'Edit Institution';
+            document.getElementById('drawer-subtitle').classList.remove('hidden');
+            
+            // Show/hide buttons
+            document.getElementById('edit-toggle-btn').classList.add('hidden');
+            document.getElementById('save-btn').classList.remove('hidden');
+            document.getElementById('cancel-btn').classList.remove('hidden');
+            
+            // Show edit mode, hide view mode
+            document.querySelectorAll('.view-mode').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.edit-mode').forEach(el => el.classList.remove('hidden'));
+        }
+
+        function toggleEditMode() {
+            if (isEditMode) {
+                setViewMode();
+            } else {
+                setEditMode();
+            }
+        }
+
+        function saveInstitution() {
+            // Here you would typically send the data to the server
+            // For now, we'll just show a success message and switch back to view mode
+            
+            // Simulate saving
+            setTimeout(() => {
+                setViewMode();
+                showNotification('Institution updated successfully!', 'success');
+            }, 500);
+        }
+
+        function cancelEdit() {
+            // Reset form values to original state (in a real app, you'd restore from saved data)
+            setViewMode();
+        }
+
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 px-6 py-3 rounded-lg text-white z-50 transition-all duration-300 transform translate-x-full`;
+            notification.style.backgroundColor = type === 'success' ? '#10B981' : type === 'error' ? '#EF4444' : '#3B82F6';
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Slide in
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Slide out and remove
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Enhanced Add Institution Flow
+        let currentStep = 1;
+        let fetchedData = {};
+
         function openAddInstitutionModal() {
+            resetAddInstitutionFlow();
             document.getElementById('add-institution-modal').classList.remove('hidden');
         }
 
         function closeAddInstitutionModal() {
             document.getElementById('add-institution-modal').classList.add('hidden');
+            resetAddInstitutionFlow();
+        }
+
+        function resetAddInstitutionFlow() {
+            currentStep = 1;
+            fetchedData = {};
+            
+            // Reset step indicators
+            updateStepIndicators(1);
+            
+            // Show step 1, hide others
+            document.getElementById('step-1').classList.remove('hidden');
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-3').classList.add('hidden');
+            
+            // Clear form
+            document.getElementById('institution-name').value = '';
+            document.getElementById('institution-url').value = '';
+        }
+
+        function updateStepIndicators(activeStep) {
+            // Reset all indicators
+            for (let i = 1; i <= 3; i++) {
+                const indicator = document.getElementById(`step-${i}-indicator`);
+                const isActive = i === activeStep;
+                const isCompleted = i < activeStep;
+                
+                if (isCompleted) {
+                    indicator.style.backgroundColor = '#10B981'; // Green
+                    indicator.classList.remove('bg-gray-200');
+                    indicator.innerHTML = '<i data-lucide="check" class="w-4 h-4 text-white"></i>';
+                } else if (isActive) {
+                    indicator.style.backgroundColor = '#d82128'; // Red
+                    indicator.classList.remove('bg-gray-200');
+                    indicator.textContent = i;
+                } else {
+                    indicator.style.backgroundColor = '';
+                    indicator.classList.add('bg-gray-200');
+                    indicator.textContent = i;
+                }
+            }
+            
+            // Update progress bars
+            document.getElementById('progress-1-2').style.backgroundColor = activeStep > 1 ? '#d82128' : '#e5e7eb';
+            document.getElementById('progress-2-3').style.backgroundColor = activeStep > 2 ? '#d82128' : '#e5e7eb';
+            
+            // Re-initialize Lucide icons
+            lucide.createIcons();
+        }
+
+        function fetchInstitutionInfo() {
+            const name = document.getElementById('institution-name').value;
+            const url = document.getElementById('institution-url').value;
+            
+            if (!name || !url) {
+                showNotification('Please fill in all required fields', 'error');
+                return;
+            }
+            
+            // Validate URL format
+            try {
+                new URL(url);
+            } catch {
+                showNotification('Please enter a valid URL', 'error');
+                return;
+            }
+            
+            // Move to step 2
+            currentStep = 2;
+            updateStepIndicators(2);
+            document.getElementById('step-1').classList.add('hidden');
+            document.getElementById('step-2').classList.remove('hidden');
+            
+            // Update status
+            document.getElementById('fetch-status').innerHTML = `Fetching information from <span class="font-medium">${url}</span>...`;
+            
+            // Simulate AI fetching process
+            simulateAIFetch(name, url);
+        }
+
+        function simulateAIFetch(name, url) {
+            const steps = [
+                { text: 'Analyzing website structure...', delay: 1000 },
+                { text: 'Extracting institution information...', delay: 1500 },
+                { text: 'Processing academic programs...', delay: 1200 },
+                { text: 'Gathering admission requirements...', delay: 1000 },
+                { text: 'Finalizing data collection...', delay: 800 }
+            ];
+            
+            let currentStepIndex = 0;
+            
+            function updateProgress() {
+                if (currentStepIndex < steps.length) {
+                    document.getElementById('fetch-status').innerHTML = steps[currentStepIndex].text;
+                    
+                    // Update checklist
+                    const items = document.querySelectorAll('#step-2 .bg-gray-100 li');
+                    if (items[currentStepIndex + 2]) {
+                        const icon = items[currentStepIndex + 2].querySelector('i');
+                        icon.setAttribute('data-lucide', 'check');
+                        icon.classList.remove('text-blue-500', 'animate-spin', 'text-gray-400');
+                        icon.classList.add('text-green-500');
+                        lucide.createIcons();
+                    }
+                    
+                    currentStepIndex++;
+                    setTimeout(updateProgress, steps[currentStepIndex - 1].delay);
+                } else {
+                    // Simulation complete, move to step 3
+                    fetchedData = generateMockData(name, url);
+                    goToStep3();
+                }
+            }
+            
+            updateProgress();
+        }
+
+        function generateMockData(name, url) {
+            return {
+                name: name,
+                url: url,
+                logo: 'https://ui-avatars.com/api/?name=' + encodeURIComponent(name) + '&background=0D8ABC&color=fff',
+                location: 'Toronto, ON, Canada',
+                address: '27 King\'s College Circle, Toronto, ON M5S 3M2',
+                studentPopulation: '97,000+',
+                establishedYear: '1827',
+                type: 'Public University',
+                partnerType: 'Strategic',
+                contactName: 'Jane Smith',
+                contactEmail: 'admissions@' + url.replace('https://', '').replace('www.', ''),
+                contactPhone: '+1 (416) 978-2011',
+                overview: `${name} is a world-renowned public research university known for its academic excellence, innovation, and diverse community. It offers a comprehensive range of programs and has a strong global reputation.`,
+                mission: 'To be an internationally significant research university, with undergraduate, graduate and professional programs of excellent quality.',
+                programs: [
+                    {
+                        name: 'Bachelor of Computer Science',
+                        level: 'Undergraduate',
+                        field: 'Computer Science',
+                        tuition: '$45,000 - $55,000 / year',
+                        deadline: 'March 1, 2025',
+                        requirements: ['IELTS: 6.5', 'GPA: 3.0', 'Fall 2025', 'Spring 2025']
+                    },
+                    {
+                        name: 'Master of Business Administration',
+                        level: 'Graduate',
+                        field: 'Business',
+                        tuition: '$65,000 - $75,000 / year',
+                        deadline: 'January 15, 2025',
+                        requirements: ['IELTS: 7.0', 'GPA: 3.5', 'Fall 2025']
+                    }
+                ]
+            };
+        }
+
+        function goToStep3() {
+            currentStep = 3;
+            updateStepIndicators(3);
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-3').classList.remove('hidden');
+            
+            // Populate review content
+            populateReviewContent();
+        }
+
+        function populateReviewContent() {
+            const reviewContent = document.getElementById('review-content');
+            reviewContent.innerHTML = `
+                <!-- Basic Information -->
+                <div class="mb-6">
+                    <div class="flex items-center mb-4">
+                        <img src="${fetchedData.logo || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(fetchedData.name) + '&background=0D8ABC&color=fff'}" alt="${fetchedData.name}" class="h-16 w-16 rounded-lg">
+                        <div class="ml-4">
+                            <div class="flex items-center space-x-3">
+                                <input type="text" class="text-xl font-semibold text-gray-900 border-gray-300 rounded" value="${fetchedData.name}">
+                                <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Active</span>
+                                <span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">Public</span>
+                                <i data-lucide="zap" class="w-4 h-4 text-yellow-500" title="AI-generated content"></i>
+                            </div>
+                            <input type="text" class="text-sm text-gray-500 border-gray-300 rounded mt-1" value="${fetchedData.location} • Established ${fetchedData.establishedYear}">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <p class="text-xs text-gray-500">Location</p>
+                            <div class="edit-mode">
+                                <input type="text" class="w-full text-sm font-medium border-gray-300 rounded mb-2" value="${fetchedData.location}">
+                                <input type="text" class="w-full text-xs border-gray-300 rounded" value="${fetchedData.address}">
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <p class="text-xs text-gray-500">Student Population</p>
+                            <div class="edit-mode">
+                                <input type="text" class="w-full text-sm font-medium border-gray-300 rounded mb-2" value="${fetchedData.studentPopulation}">
+                                <input type="text" class="w-full text-xs border-gray-300 rounded" value="Undergraduate & Graduate">
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <p class="text-xs text-gray-500">Website</p>
+                            <div class="edit-mode">
+                                <input type="url" class="w-full text-sm font-medium border-gray-300 rounded mb-2" value="${fetchedData.url}">
+                                <input type="text" class="w-full text-xs border-gray-300 rounded" value="Official site">
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <p class="text-xs text-gray-500">Point of Contact</p>
+                            <div class="edit-mode">
+                                <input type="text" class="w-full text-sm font-medium border-gray-300 rounded mb-2" value="${fetchedData.contactName}">
+                                <div class="flex space-x-2">
+                                    <input type="email" class="flex-1 text-xs border-gray-300 rounded" value="${fetchedData.contactEmail}">
+                                    <input type="tel" class="flex-1 text-xs border-gray-300 rounded" value="${fetchedData.contactPhone}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <p class="text-xs text-gray-500">Partner Type</p>
+                            <div class="edit-mode">
+                                <select class="w-full text-sm font-medium border-gray-300 rounded mb-2">
+                                    <option value="moa-strategic" ${fetchedData.partnerType === 'Strategic' ? 'selected' : ''}>MOA • Strategic</option>
+                                    <option value="moa">MOA</option>
+                                    <option value="referral">Referral</option>
+                                    <option value="strategic">Strategic</option>
+                                </select>
+                                <input type="text" class="w-full text-xs border-gray-300 rounded" value="Direct Partnership">
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <p class="text-xs text-gray-500">Established Year</p>
+                            <div class="edit-mode">
+                                <input type="number" class="w-full text-sm font-medium border-gray-300 rounded mb-2" value="${fetchedData.establishedYear}">
+                                <input type="text" class="w-full text-xs border-gray-300 rounded" value="Historic Institution">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabs Navigation -->
+                <div class="mb-4 border-b border-gray-200">
+                    <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                        <button class="tab-link-review border-b-2 border-red-500 py-3 text-sm font-medium text-red-600" data-tab="overview">Overview</button>
+                        <button class="tab-link-review border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300" data-tab="programs">Programs</button>
+                        <button class="tab-link-review border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300" data-tab="admissions">Admissions</button>
+                        <button class="tab-link-review border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300" data-tab="campus">Campus Life</button>
+                    </nav>
+                </div>
+
+                <!-- Tab Panels -->
+                <div class="flex-1 overflow-y-auto">
+                    <!-- Overview Tab -->
+                    <section id="tab-review-overview" class="tab-panel-review">
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-2 flex items-center">
+                                    About
+                                    <i data-lucide="zap" class="w-4 h-4 ml-2 text-yellow-500"></i>
+                                </h4>
+                                <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="3">${fetchedData.overview}</textarea>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-2 flex items-center">
+                                    Mission Statement
+                                    <i data-lucide="zap" class="w-4 h-4 ml-2 text-yellow-500"></i>
+                                </h4>
+                                <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="2">${fetchedData.mission}</textarea>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-2">Quick Stats</h4>
+                                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                                    <div class="bg-white border rounded-lg p-4">
+                                        <p class="text-xs text-gray-500">Founded</p>
+                                        <input type="text" class="text-lg font-semibold border-gray-300 rounded w-full" value="${fetchedData.establishedYear}">
+                                    </div>
+                                    <div class="bg-white border rounded-lg p-4">
+                                        <p class="text-xs text-gray-500">Students</p>
+                                        <input type="text" class="text-lg font-semibold border-gray-300 rounded w-full" value="${fetchedData.studentPopulation}">
+                                    </div>
+                                    <div class="bg-white border rounded-lg p-4">
+                                        <p class="text-xs text-gray-500">Faculty</p>
+                                        <input type="text" class="text-lg font-semibold border-gray-300 rounded w-full" value="14k+">
+                                    </div>
+                                    <div class="bg-white border rounded-lg p-4">
+                                        <p class="text-xs text-gray-500">Scholarships</p>
+                                        <input type="text" class="text-lg font-semibold border-gray-300 rounded w-full" value="120+">
+                                    </div>
+                                    <div class="bg-white border rounded-lg p-4">
+                                        <p class="text-xs text-gray-500">Campus Size</p>
+                                        <input type="text" class="text-lg font-semibold border-gray-300 rounded w-full" value="180 ha">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Programs Tab -->
+                    <section id="tab-review-programs" class="tab-panel-review hidden">
+                        <div class="flex justify-between items-center mb-4">
+                            <h4 class="font-semibold text-gray-900 flex items-center">
+                                Programs
+                                <i data-lucide="zap" class="w-4 h-4 ml-2 text-yellow-500"></i>
+                                <span class="ml-2 text-sm font-normal text-gray-500">(${fetchedData.programs.length} programs detected)</span>
+                            </h4>
+                            <div class="flex items-center space-x-2">
+                                <button class="text-sm border px-3 py-1 rounded-lg hover:bg-gray-50 flex items-center">
+                                    <i data-lucide="link" class="w-4 h-4 mr-1"></i>
+                                    Link Scholarships
+                                </button>
+                                <button class="text-sm text-white px-3 py-1 rounded-lg flex items-center" style="background-color:#d82128;">
+                                    <i data-lucide="plus" class="w-4 h-4 mr-1"></i>
+                                    Add Program
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            ${fetchedData.programs.map(program => `
+                                <div class="p-4 bg-gray-50 rounded-lg">
+                                    <div class="flex justify-between items-start">
+                                        <div class="flex-1">
+                                            <input type="text" class="w-full text-sm font-medium text-gray-900 border-gray-300 rounded mb-2" value="${program.name}">
+                                            <div class="grid grid-cols-2 gap-2 mb-2">
+                                                <input type="text" class="text-sm text-gray-500 border-gray-300 rounded" value="${program.level} • ${program.field}">
+                                                <input type="text" class="text-sm text-gray-500 border-gray-300 rounded" value="${program.tuition}">
+                                            </div>
+                                            <input type="text" class="w-full text-xs text-gray-500 border-gray-300 rounded" value="Application Deadline: ${program.deadline}">
+                                        </div>
+                                        <div class="flex space-x-2 ml-4">
+                                            <button class="text-gray-400 hover:text-gray-600">
+                                                <i data-lucide="edit" class="w-4 h-4"></i>
+                                            </button>
+                                            <button class="text-gray-400 hover:text-gray-600">
+                                                <i data-lucide="archive" class="w-4 h-4"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3 flex flex-wrap gap-2">
+                                        ${program.requirements.map(req => `
+                                            <input type="text" class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800 border-0" value="${req}">
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </section>
+
+                    <!-- Admissions Tab -->
+                    <section id="tab-review-admissions" class="tab-panel-review hidden">
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-3 flex items-center">
+                                    Admission Requirements
+                                    <i data-lucide="zap" class="w-4 h-4 ml-2 text-yellow-500"></i>
+                                </h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-gray-50 rounded-lg p-4">
+                                        <h5 class="text-sm font-medium text-gray-900 mb-2">English Language</h5>
+                                        <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="4">• IELTS: 6.5 overall (6.0 minimum per band)
+• TOEFL iBT: 100 overall (22 minimum per section)
+• Duolingo: 120 overall</textarea>
+                                    </div>
+                                    <div class="bg-gray-50 rounded-lg p-4">
+                                        <h5 class="text-sm font-medium text-gray-900 mb-2">Academic Requirements</h5>
+                                        <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="4">• Undergraduate: GPA 3.0+ (85%+)
+• Graduate: GPA 3.5+ (B+ average)
+• Relevant prerequisite courses</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Campus Life Tab -->
+                    <section id="tab-review-campus" class="tab-panel-review hidden">
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-3 flex items-center">
+                                    Student Activities
+                                    <i data-lucide="zap" class="w-4 h-4 ml-2 text-yellow-500"></i>
+                                </h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-gray-50 rounded-lg p-4">
+                                        <h5 class="text-sm font-medium text-gray-900 mb-2">Clubs & Organizations</h5>
+                                        <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="4">• 800+ student clubs and organizations
+• Academic and professional societies
+• Cultural and international student groups
+• Volunteer and community service groups</textarea>
+                                    </div>
+                                    <div class="bg-gray-50 rounded-lg p-4">
+                                        <h5 class="text-sm font-medium text-gray-900 mb-2">Sports & Recreation</h5>
+                                        <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="4">• Varsity Blues athletics program
+• Intramural and recreational sports
+• Athletic Centre with modern facilities
+• Outdoor recreation programs</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            `;
+            
+            // Add tab switching functionality for review content
+            document.querySelectorAll('.tab-link-review').forEach(link => {
+                link.addEventListener('click', function() {
+                    const tabName = this.getAttribute('data-tab');
+                    switchReviewTab(tabName);
+                });
+            });
+            
+            lucide.createIcons();
+        }
+
+        function switchReviewTab(tabName) {
+            // Hide all tab panels
+            document.querySelectorAll('.tab-panel-review').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+            
+            // Remove active state from all tab links
+            document.querySelectorAll('.tab-link-review').forEach(link => {
+                link.classList.remove('border-red-500', 'text-red-600');
+                link.classList.add('border-transparent', 'text-gray-600');
+            });
+            
+            // Show selected tab panel
+            const selectedPanel = document.getElementById(`tab-review-${tabName}`);
+            if (selectedPanel) {
+                selectedPanel.classList.remove('hidden');
+            }
+            
+            // Set active state for selected tab link
+            const selectedLink = document.querySelector(`[data-tab="${tabName}"]`);
+            if (selectedLink) {
+                selectedLink.classList.remove('border-transparent', 'text-gray-600');
+                selectedLink.classList.add('border-red-500', 'text-red-600');
+            }
+        }
+
+        function skipToManualEntry() {
+            // Generate minimal mock data for manual entry
+            const name = document.getElementById('institution-name').value;
+            const url = document.getElementById('institution-url').value;
+            
+            fetchedData = {
+                name: name,
+                url: url,
+                logo: '',
+                location: '',
+                address: '',
+                studentPopulation: '',
+                establishedYear: '',
+                type: 'University',
+                partnerType: 'Strategic',
+                contactName: '',
+                contactEmail: '',
+                contactPhone: '',
+                overview: '',
+                mission: '',
+                programs: []
+            };
+            
+            goToStep3();
+        }
+
+        function goBackToStep2() {
+            currentStep = 2;
+            updateStepIndicators(2);
+            document.getElementById('step-3').classList.add('hidden');
+            document.getElementById('step-2').classList.remove('hidden');
+        }
+
+        function saveNewInstitution() {
+            // Here you would collect all the form data and send to server
+            // For now, simulate saving
+            showNotification('Institution saved successfully!', 'success');
+            closeAddInstitutionModal();
+            
+            // In a real app, you would refresh the institutions table here
         }
 
         // Handle logout
@@ -536,6 +1477,43 @@
             if (e.key === 'Enter') {
                 handleSendMessage();
             }
+        });
+
+        // Tab switching functionality
+        function switchTab(tabName) {
+            // Hide all tab panels
+            document.querySelectorAll('.tab-panel').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+            
+            // Remove active state from all tab links
+            document.querySelectorAll('.tab-link').forEach(link => {
+                link.classList.remove('border-red-500', 'text-red-600');
+                link.classList.add('border-transparent', 'text-gray-600');
+            });
+            
+            // Show selected tab panel
+            const selectedPanel = document.getElementById(`tab-${tabName}`);
+            if (selectedPanel) {
+                selectedPanel.classList.remove('hidden');
+            }
+            
+            // Set active state for selected tab link
+            const selectedLink = document.querySelector(`[data-tab="${tabName}"]`);
+            if (selectedLink) {
+                selectedLink.classList.remove('border-transparent', 'text-gray-600');
+                selectedLink.classList.add('border-red-500', 'text-red-600');
+            }
+        }
+
+        // Add event listeners for tab links
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.tab-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    const tabName = this.getAttribute('data-tab');
+                    switchTab(tabName);
+                });
+            });
         });
 
         // Initialize Select2 for dropdowns
