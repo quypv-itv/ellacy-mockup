@@ -524,24 +524,63 @@
 
                                 <!-- Sponsor Chain Flags -->
                                 <div class="bg-gray-50 p-4 rounded-lg">
-                                    <h4 class="text-sm font-medium text-gray-900 mb-3">Sponsor Chain Flags</h4>
-                                    <div class="space-y-3">
-                                        <div class="flex items-center justify-between">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <h4 class="text-sm font-medium text-gray-900">Sponsor Chain Flags</h4>
+                                        <button onclick="openAddFlagModal()" class="px-3 py-1 text-white text-xs rounded-lg hover:opacity-90" style="background-color: #d82128;">
+                                            <i data-lucide="plus" class="w-3 h-3 mr-1 inline"></i>
+                                            Add Flag
+                                        </button>
+                                    </div>
+                                    <div id="sponsor-flags-list" class="space-y-2">
+                                        <div class="flex items-center justify-between p-2 bg-white rounded border">
                                             <div class="flex items-center">
                                                 <input type="checkbox" id="l2-flag" checked class="h-4 w-4 focus:ring-red-500 border-gray-300 rounded" style="color: #d82128;" onchange="updatePreview()">
-                                                <label for="l2-flag" class="ml-2 text-sm text-gray-900">L2 - Level 2 sponsor code</label>
+                                                <div class="ml-3">
+                                                    <span class="text-sm font-medium text-gray-900">L2</span>
+                                                    <p class="text-xs text-gray-500">Level 2 sponsor code</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-1">
+                                                <button onclick="editFlag('L2')" class="p-1 text-gray-400 hover:text-gray-600">
+                                                    <i data-lucide="edit" class="w-3 h-3"></i>
+                                                </button>
+                                                <button onclick="deleteFlag('L2')" class="p-1 text-gray-400 hover:text-red-600">
+                                                    <i data-lucide="trash-2" class="w-3 h-3"></i>
+                                                </button>
                                             </div>
                                         </div>
-                                        <div class="flex items-center justify-between">
+                                        <div class="flex items-center justify-between p-2 bg-white rounded border">
                                             <div class="flex items-center">
                                                 <input type="checkbox" id="l1-flag" checked class="h-4 w-4 focus:ring-red-500 border-gray-300 rounded" style="color: #d82128;" onchange="updatePreview()">
-                                                <label for="l1-flag" class="ml-2 text-sm text-gray-900">L1 - Level 1 sponsor code</label>
+                                                <div class="ml-3">
+                                                    <span class="text-sm font-medium text-gray-900">L1</span>
+                                                    <p class="text-xs text-gray-500">Level 1 sponsor code</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-1">
+                                                <button onclick="editFlag('L1')" class="p-1 text-gray-400 hover:text-gray-600">
+                                                    <i data-lucide="edit" class="w-3 h-3"></i>
+                                                </button>
+                                                <button onclick="deleteFlag('L1')" class="p-1 text-gray-400 hover:text-red-600">
+                                                    <i data-lucide="trash-2" class="w-3 h-3"></i>
+                                                </button>
                                             </div>
                                         </div>
-                                        <div class="flex items-center justify-between">
+                                        <div class="flex items-center justify-between p-2 bg-white rounded border">
                                             <div class="flex items-center">
                                                 <input type="checkbox" id="la-flag" checked class="h-4 w-4 focus:ring-red-500 border-gray-300 rounded" style="color: #d82128;" onchange="updatePreview()">
-                                                <label for="la-flag" class="ml-2 text-sm text-gray-900">LA - Direct agent/sponsor code</label>
+                                                <div class="ml-3">
+                                                    <span class="text-sm font-medium text-gray-900">LA</span>
+                                                    <p class="text-xs text-gray-500">Direct agent/sponsor code</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-1">
+                                                <button onclick="editFlag('LA')" class="p-1 text-gray-400 hover:text-gray-600">
+                                                    <i data-lucide="edit" class="w-3 h-3"></i>
+                                                </button>
+                                                <button onclick="deleteFlag('LA')" class="p-1 text-gray-400 hover:text-red-600">
+                                                    <i data-lucide="trash-2" class="w-3 h-3"></i>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -685,6 +724,45 @@
                     </button>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Flag Modal -->
+    <div id="flagModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
+        <div class="relative top-20 mx-auto p-6 border w-96 shadow-lg rounded-md bg-white">
+            <div class="flex justify-between items-center pb-3">
+                <h3 class="text-lg font-semibold" id="flagModalTitle">Add Sponsor Chain Flag</h3>
+                <button onclick="closeFlagModal()" class="text-gray-400 hover:text-gray-500">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            
+            <form id="flagForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Flag Code *</label>
+                    <input type="text" id="flagCode" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500" placeholder="e.g., L3, LX" maxlength="3" required>
+                    <p class="text-xs text-gray-500 mt-1">2-3 characters, uppercase letters/numbers</p>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Description *</label>
+                    <input type="text" id="flagDescription" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500" placeholder="e.g., Level 3 sponsor code" required>
+                </div>
+                
+                <div class="flex items-center">
+                    <input type="checkbox" id="flagEnabled" checked class="h-4 w-4 focus:ring-red-500 border-gray-300 rounded" style="color: #d82128;">
+                    <label for="flagEnabled" class="ml-2 text-sm text-gray-900">Enabled by default</label>
+                </div>
+                
+                <div class="flex justify-end space-x-3 pt-4">
+                    <button type="button" onclick="closeFlagModal()" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-4 py-2 text-white rounded-md text-sm font-medium hover:opacity-90" style="background-color: #d82128;">
+                        <span id="flagSubmitText">Add Flag</span>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -1073,6 +1151,137 @@
             URL.revokeObjectURL(url);
             
             showToast('Schema configuration exported successfully!', 'success');
+        }
+
+        // Sponsor Chain Flags CRUD Functions
+        let currentEditingFlag = null;
+        
+        function openAddFlagModal() {
+            currentEditingFlag = null;
+            document.getElementById('flagModalTitle').textContent = 'Add Sponsor Chain Flag';
+            document.getElementById('flagSubmitText').textContent = 'Add Flag';
+            document.getElementById('flagCode').value = '';
+            document.getElementById('flagDescription').value = '';
+            document.getElementById('flagEnabled').checked = true;
+            document.getElementById('flagCode').disabled = false;
+            document.getElementById('flagModal').classList.remove('hidden');
+        }
+        
+        function editFlag(flagCode) {
+            currentEditingFlag = flagCode;
+            document.getElementById('flagModalTitle').textContent = 'Edit Sponsor Chain Flag';
+            document.getElementById('flagSubmitText').textContent = 'Update Flag';
+            
+            // Get current flag data (in real app, this would come from server)
+            const flagData = getCurrentFlagData(flagCode);
+            document.getElementById('flagCode').value = flagData.code;
+            document.getElementById('flagDescription').value = flagData.description;
+            document.getElementById('flagEnabled').checked = flagData.enabled;
+            document.getElementById('flagCode').disabled = true; // Don't allow code change when editing
+            
+            document.getElementById('flagModal').classList.remove('hidden');
+        }
+        
+        function getCurrentFlagData(code) {
+            const flagMap = {
+                'L2': { code: 'L2', description: 'Level 2 sponsor code', enabled: true },
+                'L1': { code: 'L1', description: 'Level 1 sponsor code', enabled: true },
+                'LA': { code: 'LA', description: 'Direct agent/sponsor code', enabled: true }
+            };
+            return flagMap[code] || { code: '', description: '', enabled: true };
+        }
+        
+        function deleteFlag(flagCode) {
+            if (confirm(`Are you sure you want to delete flag "${flagCode}"?`)) {
+                // Remove flag from UI
+                const flagElement = document.querySelector(`input[id="${flagCode.toLowerCase()}-flag"]`).closest('.flex.items-center.justify-between');
+                flagElement.remove();
+                
+                // Update preview
+                updatePreview();
+                showToast(`Flag "${flagCode}" deleted successfully!`, 'success');
+            }
+        }
+        
+        function closeFlagModal() {
+            document.getElementById('flagModal').classList.add('hidden');
+            currentEditingFlag = null;
+        }
+        
+        // Handle flag form submission
+        document.getElementById('flagForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const code = document.getElementById('flagCode').value.toUpperCase().trim();
+            const description = document.getElementById('flagDescription').value.trim();
+            const enabled = document.getElementById('flagEnabled').checked;
+            
+            // Validation
+            if (!code || !description) {
+                showToast('Please fill in all required fields', 'error');
+                return;
+            }
+            
+            if (!/^[A-Z0-9]{2,3}$/.test(code)) {
+                showToast('Flag code must be 2-3 uppercase letters/numbers', 'error');
+                return;
+            }
+            
+            // Check for duplicate (only when adding)
+            if (!currentEditingFlag && document.getElementById(`${code.toLowerCase()}-flag`)) {
+                showToast('Flag code already exists', 'error');
+                return;
+            }
+            
+            if (currentEditingFlag) {
+                // Update existing flag
+                updateExistingFlag(code, description, enabled);
+                showToast(`Flag "${code}" updated successfully!`, 'success');
+            } else {
+                // Add new flag
+                addNewFlag(code, description, enabled);
+                showToast(`Flag "${code}" added successfully!`, 'success');
+            }
+            
+            closeFlagModal();
+            updatePreview();
+        });
+        
+        function addNewFlag(code, description, enabled) {
+            const flagsList = document.getElementById('sponsor-flags-list');
+            const newFlagHtml = `
+                <div class="flex items-center justify-between p-2 bg-white rounded border">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="${code.toLowerCase()}-flag" ${enabled ? 'checked' : ''} class="h-4 w-4 focus:ring-red-500 border-gray-300 rounded" style="color: #d82128;" onchange="updatePreview()">
+                        <div class="ml-3">
+                            <span class="text-sm font-medium text-gray-900">${code}</span>
+                            <p class="text-xs text-gray-500">${description}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-1">
+                        <button onclick="editFlag('${code}')" class="p-1 text-gray-400 hover:text-gray-600">
+                            <i data-lucide="edit" class="w-3 h-3"></i>
+                        </button>
+                        <button onclick="deleteFlag('${code}')" class="p-1 text-gray-400 hover:text-red-600">
+                            <i data-lucide="trash-2" class="w-3 h-3"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            flagsList.insertAdjacentHTML('beforeend', newFlagHtml);
+            lucide.createIcons(); // Re-initialize icons
+        }
+        
+        function updateExistingFlag(code, description, enabled) {
+            const flagElement = document.getElementById(`${code.toLowerCase()}-flag`);
+            const flagContainer = flagElement.closest('.flex.items-center.justify-between');
+            
+            // Update checkbox state
+            flagElement.checked = enabled;
+            
+            // Update description
+            const descElement = flagContainer.querySelector('.text-xs.text-gray-500');
+            descElement.textContent = description;
         }
 
         function showToast(message, type = 'info') {

@@ -365,16 +365,16 @@
                                 <!-- School Name (Clickable) -->
                                 <h2 class="text-xl font-bold mb-2 flex justify-between">
                                     <button class="school-name-btn text-gray-900 hover:text-red-600 hover:underline cursor-pointer transition-colors" 
-                                            data-school="university-of-toronto">
-                                        University of Toronto
+                                            data-school="tiffin-university">
+                                        Tiffin University
                                     </button>
                                     <p class="text-lg font-semibold mb-4">(Mockup for complete profile)</p>
                                 </h2>
                                 
                                 <!-- Institution Type Tags -->
                                 <div class="flex flex-wrap gap-2 mb-2">
-                                    <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs font-medium">Canada College</span>
-                                    <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs font-medium">Private School</span>
+                                    <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs font-medium">US University</span>
+                                    <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs font-medium">Private University</span>
                                 </div>
                                 
                                 <!-- Program Duration -->
@@ -832,31 +832,31 @@
                 schoolSummary: 'The University of British Columbia is a globally recognized research university located in Vancouver, Canada. Known for its strong programs in technology, business, and sciences, UBC consistently ranks among the top 40 universities worldwide. The campus offers state-of-the-art facilities, diverse student community, and excellent career support services.'
             },
             2: {
-                name: 'Bachelor of Engineering',
-                university: 'University of Toronto',
-                location: 'Toronto, Canada',
+                name: 'Bachelor of Computer Science',
+                university: 'Tiffin University',
+                location: 'Tiffin, Ohio, USA',
                 duration: '4 Years',
                 level: 'Bachelor\'s',
                 intake: 'Fall 2025',
                 language: 'English',
-                tuition: '$45,000 - $50,000',
-                appFee: '$200',
-                deadline: 'February 1, 2025',
-                description: 'The Bachelor of Engineering program at University of Toronto offers a comprehensive engineering education with specializations in mechanical, electrical, computer, and civil engineering. Students gain hands-on experience through laboratory work, design projects, and industry partnerships.',
-                officialLink: 'https://www.utoronto.ca/programs/engineering',
+                tuition: '$28,000 - $32,000',
+                appFee: '$50',
+                deadline: 'Rolling Admissions',
+                description: 'The Bachelor of Computer Science program at Tiffin University offers comprehensive training in software development, programming, and computer systems. Students gain hands-on experience through practical projects, internships, and industry partnerships with a focus on real-world applications.',
+                officialLink: 'https://www.tiffin.edu/academics/school-of-science-tech-health/computer-science-software-development/',
                 // Institution Details
-                schoolId: 'UOT-002',
-                yearFounded: '1827',
-                institutionType: 'Public',
+                schoolId: 'TU-001',
+                yearFounded: '1888',
+                institutionType: 'Private',
                 // Cost and Tuition Details
                 programLength: '48 months',
-                costOfLiving: '$18,000/year',
+                costOfLiving: '$12,000/year',
                 // Scholarship Program Offer
-                scholarshipAmount: '$15,000',
+                scholarshipAmount: '$8,000',
                 scholarshipCoverage: 'Partial Tuition',
-                scholarshipSummary: 'Excellence scholarship for outstanding students pursuing engineering degrees. Available for domestic and international students with strong academic performance.',
+                scholarshipSummary: 'Merit-based scholarship for outstanding students pursuing computer science degrees. Available for domestic and international students with strong academic performance and 98% of students receive financial aid.',
                 // School Summary
-                schoolSummary: 'The University of Toronto is Canada\'s leading institution of higher learning and research. Founded in 1827, it is consistently ranked as one of the top universities globally. UofT offers world-class engineering programs with cutting-edge research facilities and strong industry connections.'
+                schoolSummary: 'Tiffin University is a private university located in Tiffin, Ohio. Founded in 1888, TU is committed to transforming lives through education. With a 20:1 student-faculty ratio and over 3,000 students, TU offers personalized attention and challenging academic programs that enhance global competencies for success in a diverse world.'
             }
         };
 
@@ -991,7 +991,7 @@
             document.querySelectorAll('.school-name-btn').forEach(button => {
                 button.addEventListener('click', function() {
                     const school = this.getAttribute('data-school');
-                    if (school === 'university-of-toronto') {
+                    if (school === 'tiffin-university') {
                         torontoModal.classList.remove('hidden');
                         document.body.style.overflow = 'hidden';
                     } else if (school === 'berkeley-city-college') {
@@ -1708,9 +1708,9 @@
                     location: 'Vancouver, Canada'
                 },
                 '2': {
-                    name: 'Bachelor of Engineering', 
-                    university: 'University of Toronto',
-                    location: 'Toronto, Canada'
+                    name: 'Bachelor of Computer Science', 
+                    university: 'Tiffin University',
+                    location: 'Tiffin, Ohio, USA'
                 }
             };
             
@@ -1724,9 +1724,9 @@
                     name: 'University of British Columbia',
                     location: 'Vancouver, Canada'
                 },
-                'uoft': {
-                    name: 'University of Toronto',
-                    location: 'Toronto, Canada'
+                'tiffin-university': {
+                    name: 'Tiffin University',
+                    location: 'Tiffin, Ohio, USA'
                 }
             };
             
@@ -1864,17 +1864,17 @@
         });
     </script>
 
-    <!-- University of Toronto Details Modal -->
+    <!-- Tiffin University Details Modal -->
     <div id="torontoModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-2xl p-8 max-w-4xl w-full mx-4 shadow-xl max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-start mb-6">
                 <div>
                     <h3 class="text-2xl font-bold text-gray-900">
                         <a href="Student-program-details-2.html" target="_blank" class="hover:text-red-600 transition-colors cursor-pointer" onclick="document.getElementById('torontoModal').classList.add('hidden'); document.body.style.overflow = 'auto';">
-                            University of Toronto
+                            Tiffin University
                         </a>
                     </h3>
-                    <p class="text-gray-600">Toronto, Ontario, Canada</p>
+                    <p class="text-gray-600">Tiffin, Ohio, USA</p>
                 </div>
                 <button id="closeTorontoModal" class="text-gray-400 hover:text-gray-600">
                     <i data-lucide="x" class="w-6 h-6"></i>
@@ -1884,8 +1884,8 @@
             <div class="grid md:grid-cols-2 gap-8">
                 <div>
                     <div class="aspect-w-16 aspect-h-9 mb-6">
-                        <img src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=800&h=450&fit=crop" 
-                             alt="University of Toronto Campus" 
+                        <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=450&fit=crop" 
+                             alt="Tiffin University Campus" 
                              class="w-full h-auto rounded-lg object-cover">
                     </div>
                     
@@ -1893,9 +1893,9 @@
                         <div>
                             <h4 class="font-semibold text-gray-900 mb-2">About</h4>
                             <p class="text-gray-600 text-sm leading-relaxed">
-                                The University of Toronto is a globally top-ranked public research university in Toronto, Ontario, Canada. 
-                                Founded in 1827, U of T has evolved into Canada's leading institution of learning, discovery and knowledge creation. 
-                                We're proud to be one of the world's top research-intensive universities, driven to invent and innovate.
+                                Tiffin University is a private university located in Tiffin, Ohio. Founded in 1888, TU is committed to transforming lives through education. 
+                                Follow a path. Blaze a trail. We challenge students to enhance their global competencies and skills for success in a diverse world. 
+                                With a 20:1 student-faculty ratio, we provide personalized attention and exceptional educational experiences.
                             </p>
                         </div>
                         
@@ -1904,15 +1904,19 @@
                             <ul class="space-y-2 text-sm text-gray-600">
                                 <li class="flex items-start">
                                     <i data-lucide="award" class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
-                                    <span>#1 in Canada, #18 in the World (QS World University Rankings 2024)</span>
+                                    <span>Founded in 1888 - Over 135 years of educational excellence</span>
                                 </li>
                                 <li class="flex items-start">
                                     <i data-lucide="users" class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
-                                    <span>95,000+ students from over 170 countries</span>
+                                    <span>3,000+ students with 20:1 student-faculty ratio</span>
                                 </li>
                                 <li class="flex items-start">
                                     <i data-lucide="graduation-cap" class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
-                                    <span>700+ undergraduate and 200+ graduate programs</span>
+                                    <span>50+ undergraduate and graduate programs</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="dollar-sign" class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
+                                    <span>98% of students receive financial aid</span>
                                 </li>
                             </ul>
                         </div>
@@ -1953,15 +1957,15 @@
                         <ul class="space-y-2 text-sm">
                             <li class="flex items-start">
                                 <i data-lucide="award" class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
-                                <span>Lester B. Pearson International Scholarship</span>
+                                <span>Tiffin University Merit Scholarship</span>
                             </li>
                             <li class="flex items-start">
                                 <i data-lucide="award" class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
-                                <span>University of Toronto Scholars Program</span>
+                                <span>International Student Excellence Award</span>
                             </li>
                             <li class="flex items-start">
                                 <i data-lucide="award" class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
-                                <span>President's Scholars of Excellence Program</span>
+                                <span>STEM Achievement Scholarship</span>
                             </li>
                         </ul>
                     </div>
@@ -2082,7 +2086,7 @@
             // Toronto Modal
             const torontoModal = document.getElementById('torontoModal');
             const closeTorontoModal = document.getElementById('closeTorontoModal');
-            const torontoButtons = document.querySelectorAll('[data-school="university-of-toronto"]');
+            const torontoButtons = document.querySelectorAll('[data-school="tiffin-university"]');
 
             // Open Toronto modal
             torontoButtons.forEach(button => {
