@@ -124,6 +124,29 @@
                                         </div>
                                     </div>
                                     <p class="mt-1 text-sm text-gray-500">Completed on 09/01/2025</p>
+                                    <div class="mt-2 border-t border-gray-100 pt-2">
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-xs font-medium text-gray-500">Advisor Notes:</span>
+                                            <button type="button" 
+                                                    class="view-notes-btn text-xs text-red-600 hover:text-red-800" 
+                                                    data-session="1">
+                                                View All
+                                            </button>
+                                        </div>
+                                        <div class="mt-1 max-h-20 overflow-y-auto text-xs text-gray-600 bg-gray-50 p-2 rounded advisor-notes" 
+                                             id="session-1-notes">
+                                            <p>• Reviewed student's academic background and visa requirements</p>
+                                            <p>• Discussed potential interview questions and appropriate responses</p>
+                                            <p>• Advised on required documentation for the visa application</p>
+                                            <p>• Recommended practicing mock interviews before the next session</p>
+                                            <div class="more-notes hidden">
+                                                <p>• Reviewed financial documentation and proof of funds</p>
+                                                <p>• Discussed potential red flags in the application</p>
+                                                <p>• Provided tips for the visa interview day</p>
+                                                <p>• Recommended bringing additional supporting documents</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="flex items-start">
@@ -139,6 +162,29 @@
                                         </div>
                                     </div>
                                     <p class="mt-1 text-sm text-gray-500">Completed on 09/08/2025</p>
+                                    <div class="mt-2 border-t border-gray-100 pt-2">
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-xs font-medium text-gray-500">Advisor Notes:</span>
+                                            <button type="button" 
+                                                    class="view-notes-btn text-xs text-red-600 hover:text-red-800" 
+                                                    data-session="2">
+                                                View All
+                                            </button>
+                                        </div>
+                                        <div class="mt-1 max-h-20 overflow-y-auto text-xs text-gray-600 bg-gray-50 p-2 rounded advisor-notes" 
+                                             id="session-2-notes">
+                                            <p>• Conducted mock interview with student</p>
+                                            <p>• Noted areas for improvement in student's responses</p>
+                                            <p>• Provided feedback on body language and communication style</p>
+                                            <p>• Reviewed and verified all required documents are in order</p>
+                                            <div class="more-notes hidden">
+                                                <p>• Discussed potential follow-up questions and responses</p>
+                                                <p>• Advised on how to handle difficult questions</p>
+                                                <p>• Recommended practicing with a timer to simulate the actual interview</p>
+                                                <p>• Provided additional resources for further preparation</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="flex items-start">
@@ -153,7 +199,16 @@
                                             <span class="font-medium text-gray-900 ml-1">Michael Chen</span>
                                         </div>
                                     </div>
-                                    <p class="mt-1 text-sm text-gray-500">Scheduled for 09/15/2025</p>
+                                    <div class="mt-1 flex items-center justify-between">
+                                        <p class="text-sm text-gray-500">Scheduled for 09/15/2025</p>
+                                        <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Ellacy+Visa+Session+3&details=3rd+visa+preparation+session+with+Michael+Chen&location=Online&dates=20250915T100000Z/20250915T110000Z" 
+                                           target="_blank" 
+                                           rel="noopener noreferrer"
+                                           class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                            <i data-lucide="calendar" class="h-3.5 w-3.5 mr-1"></i>
+                                            Add to Calendar
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="flex items-start">
@@ -289,6 +344,28 @@
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle view all notes toggle
+            document.querySelectorAll('.view-notes-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const sessionId = this.getAttribute('data-session');
+                    const notesContainer = document.getElementById(`session-${sessionId}-notes`);
+                    const moreNotes = notesContainer.querySelector('.more-notes');
+                    
+                    if (this.textContent === 'View All') {
+                        moreNotes.classList.remove('hidden');
+                        notesContainer.style.maxHeight = 'none';
+                        this.textContent = 'Show Less';
+                    } else {
+                        moreNotes.classList.add('hidden');
+                        notesContainer.style.maxHeight = '5rem';
+                        this.textContent = 'View All';
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
