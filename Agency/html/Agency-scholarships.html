@@ -49,9 +49,9 @@
                 <i data-lucide="settings" class="w-5 h-5 mr-3"></i>
                 Account Settings
             </a>
-            <a href="Agency-referral-tool.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
-                <i data-lucide="wrench" class="w-5 h-5 mr-3"></i>
-                Referral Tool
+            <a href="Agency-campaigns.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="brick-wall-shield" class="w-5 h-5 mr-3"></i>
+                Campaigns
             </a>
             <a href="Agency-messages.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
                 <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>
@@ -104,6 +104,31 @@
             <div class="w-64 flex-shrink-0 mr-6">
                 <div class="bg-white rounded-xl shadow-sm p-4">
                     <h3 class="font-medium mb-4">Filters</h3>
+                    
+                    <!-- Scholarship Tier Dropdown -->
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Scholarship Tier</label>
+                        <select class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500">                            
+                            <option>All Scholarship Tier</option>
+                            <option value="scholarship-guarantee">Scholarship Guarantee</option>
+                            <option value="elite-admission">Elite Admission Scholarship</option>
+                            <option value="ivy-global">Ivy Global Student Scholarship</option>
+                        </select>
+                    </div>
+
+                    <!-- Scholarship type -->
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Scholarship Type</label>
+                        <select class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                            <option>All Scholarships Type</option>
+                            <option>Merit-based</option>
+                            <option>Need-based</option>
+                            <option>Entrance</option>
+                            <option>Research</option>
+                            <option>Athletic</option>
+                            <option>Diversity & inclusion</option>
+                        </select>
+                    </div> 
                     
                     <!-- Destination Country -->
                     <div class="mb-4">
@@ -165,6 +190,10 @@
                             <option>Expired</option>
                         </select>
                     </div>
+                    <!-- Reset Filter -->
+                    <button class="w-full px-4 py-2 text-gray-600 border rounded-xl hover:bg-gray-50">
+                        Reset Filters
+                    </button>
                 </div>
             </div>
 
@@ -257,25 +286,131 @@
                     </div>
                     
                     <div class="prose max-w-none">
-                        <h3>Description</h3>
-                        <p>The Global Leadership Scholarship is designed for exceptional students who demonstrate strong leadership potential and academic excellence...</p>
-                        
-                        <h3>Requirements</h3>
-                        <ul>
-                            <li>Minimum GPA of 3.2</li>
-                            <li>IELTS score of 6.5 or higher</li>
-                            <li>Demonstrated leadership experience</li>
-                            <li>Two letters of recommendation</li>
-                        </ul>
-                        
-                        <h3>Ideal Candidate Profile</h3>
-                        <p>This scholarship is perfect for students who:</p>
-                        <ul>
-                            <li>Are pursuing STEM fields</li>
-                            <li>Have leadership experience</li>
-                            <li>Show community involvement</li>
-                        </ul>
+                        <!-- Tab Navigation -->
+                        <div class="flex border-b border-gray-200 mb-4">
+                            <button onclick="switchTab('fees-tab')" class="px-4 py-2 font-medium border-b-2 border-transparent hover:border-red-500 focus:outline-none" id="fees-tab-btn">
+                                Fees
+                            </button>
+                            <button onclick="switchTab('requirements-tab')" class="px-4 py-2 font-medium border-b-2 border-transparent hover:border-red-500 focus:outline-none" id="requirements-tab-btn">
+                                Requirements
+                            </button>
+                            <button onclick="switchTab('course-detail-tab')" class="px-4 py-2 font-medium border-b-2 border-transparent hover:border-red-500 focus:outline-none" id="course-detail-tab-btn">
+                                Course Detail
+                            </button>
+                        </div>
+
+                        <!-- Tab Contents -->
+                        <div id="fees-tab" class="tab-content">
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Application Fee</span>
+                                    <span class="font-semibold" id="applicationFee2">$100</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Tuition (per year)</span>
+                                    <span class="font-semibold" id="tuitionFee2">$25,000 - $30,000</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Books & Supplies</span>
+                                    <span class="font-semibold" id="booksSupplies2">$800</span>
+                                </div>
+                                <hr class="my-4">
+                                <div class="flex justify-between items-center text-red-600">
+                                    <span>Scholarship up to $30,000</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="requirements-tab" class="tab-content hidden">
+                            <div class="space-y-4">
+                                <div class="bg-white rounded-lg p-4 border">
+                                    <h4 class="font-semibold mb-2 text-black">Academic Requirements</h4>
+                                    <ul class="list-disc list-inside text-sm text-gray-700 space-y-1" id="academicRequirements2">
+                                        <li>Minimum GPA of 3.7/4.0 or equivalent</li>
+                                        <li>Bachelor's degree in relevant field</li>
+                                        <li>Academic excellence demonstrated through transcripts</li>
+                                        <li>Dean's list or honor roll recognition preferred</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-white rounded-lg p-4 border">
+                                    <h4 class="font-semibold mb-2 text-black">Language Requirements</h4>
+                                    <ul class="list-disc list-inside text-sm text-gray-700 space-y-1" id="languageRequirements2">
+                                        <li>IELTS: 7.0 overall (no band below 6.5)</li>
+                                        <li>TOEFL iBT: 100 overall</li>
+                                        <li>Duolingo: 125 overall</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-white rounded-lg p-4 border">
+                                    <h4 class="font-semibold mb-2 text-black">Required Documents</h4>
+                                    <ul class="list-disc list-inside text-sm text-gray-700 space-y-1" id="requiredDocuments2">
+                                        <li>Academic transcripts with grade verification</li>
+                                        <li>Two academic letters of recommendation</li>
+                                        <li>Personal statement highlighting achievements</li>
+                                        <li>Portfolio of academic work (if applicable)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="course-detail-tab" class="tab-content hidden">
+                            <div class="space-y-4">
+                                <div>
+                                    <h4 class="font-semibold mb-2">Scholarship Overview</h4>
+                                    <p class="text-gray-600 text-sm leading-relaxed" id="programOverview2">
+                                        Merit-based scholarship program designed for academically outstanding students who have demonstrated exceptional performance in their undergraduate studies.
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">Core Courses</h4>
+                                    <ul class="list-disc list-inside text-sm text-gray-600 space-y-1" id="coreCourses2">
+                                        <li>Advanced Research Methodologies</li>
+                                        <li>Leadership in Academic Excellence</li>
+                                        <li>Scholarly Communication</li>
+                                        <li>Independent Study Project</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500">Duration</p>
+                                    <p class="font-semibold" id="programDuration2">2 years full-time</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500">Semester breakdown</p>
+                                    <p class="font-semibold" id="semesterBreakdown2">4 semesters over 2 years</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500">Specialization tracks</p>
+                                    <p class="font-semibold" id="specializationTracks2">Research Focus, Academic Leadership, Scholarly Publications</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    
+                    <script>
+                        // Set default tab to active
+                        document.addEventListener('DOMContentLoaded', function() {
+                            switchTab('fees-tab');
+                        });
+
+                        function switchTab(tabId) {
+                            // Hide all tab contents
+                            document.querySelectorAll('.tab-content').forEach(tab => {
+                                tab.classList.add('hidden');
+                            });
+                            
+                            // Remove active class from all tab buttons
+                            document.querySelectorAll('[id$="-tab-btn"]').forEach(btn => {
+                                btn.classList.remove('border-red-500', 'text-red-600');
+                                btn.classList.add('border-transparent', 'text-gray-600');
+                            });
+                            
+                            // Show selected tab content
+                            document.getElementById(tabId).classList.remove('hidden');
+                            
+                            // Add active class to clicked tab button
+                            document.getElementById(tabId + '-btn').classList.remove('border-transparent', 'text-gray-600');
+                            document.getElementById(tabId + '-btn').classList.add('border-red-500', 'text-red-600');
+                        }
+                    </script>
                     
                     <div class="mt-6 flex space-x-3">
                         <button onclick="suggestToStudent()" class="px-4 py-2 text-white rounded-lg transition-colors hover:opacity-90" style="background-color: #d82128;">
@@ -284,7 +419,7 @@
                         <button onclick="openTaskModal()" class="px-4 py-2 text-white rounded-lg transition-colors hover:opacity-90" style="background-color: #d82128;">
                             Create Task
                         </button>
-                        <a href="#" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
+                        <a href="Agency-sholarships-details.html" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50" target="_blank">
                             Official Website
                         </a>
                     </div>
