@@ -65,7 +65,7 @@
             Team Management
         </a>
         <div class="mt-auto px-6 py-4 border-t border-gray-200">
-            <p class="text-sm text-gray-600 text-center">© 2025 APPLYLEAD. All rights reserved.</p>
+            <p class="text-sm text-gray-600 text-center"> 2025 APPLYLEAD. All rights reserved.</p>
         </div>
     </nav>
 </aside>
@@ -204,19 +204,19 @@
             <div class="grid grid-cols-2 gap-6 mb-6">
                 <div>
                     <h4 class="text-sm font-medium text-gray-500 mb-1">Student</h4>
-                    <p class="text-gray-900">Sarah Chen</p>
+                    <p id="modal-student-name" class="text-gray-900">Sarah Chen</p>
                 </div>
                 <div>
                     <h4 class="text-sm font-medium text-gray-500 mb-1">Program</h4>
-                    <p class="text-gray-900">MSc in Marketing</p>
+                    <p id="modal-program-name" class="text-gray-900">MSc in Marketing</p>
                 </div>
                 <div>
                     <h4 class="text-sm font-medium text-gray-500 mb-1">University</h4>
-                    <p class="text-gray-900">University of Sydney</p>
+                    <p id="modal-university-name" class="text-gray-900">University of Sydney</p>
                 </div>
                 <div>
                     <h4 class="text-sm font-medium text-gray-500 mb-1">Status</h4>
-                    <span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Under Review</span>
+                    <span id="modal-status-badge" class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Under Review</span>
                 </div>
             </div>
 
@@ -340,7 +340,7 @@
                         <!-- Sample Row 1 -->
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4">
-                                <a href="#" class="text-blue-600 hover:text-blue-800">Sarah Chen</a>
+                                <a href="Agent-Application-details.html" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800">Sarah Chen</a>
                             </td>
                             <td class="px-6 py-4">MSc in Marketing – University of Sydney</td>
                             <td class="px-6 py-4">
@@ -363,7 +363,7 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex space-x-2">
-                                    <button onclick="openApplicationModal()" class="hover:opacity-80" style="color: #d82128;">View</button>
+                                    <button onclick="openApplicationModal({ name: 'Sarah Chen', program: 'MSc in Marketing', university: 'University of Sydney', statusText: 'Under Review', statusClass: 'bg-yellow-100 text-yellow-800' })" class="hover:opacity-80" style="color: #d82128;">View</button>
                                     <button class="text-gray-600 hover:text-gray-800">Send Reminder</button>
                                 </div>
                             </td>
@@ -371,7 +371,7 @@
                         <!-- Sample Row 2 -->
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4">
-                                <a href="#" class="text-blue-600 hover:text-blue-800">John Smith</a>
+                                <a href="Agent-Application-details.html" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800">John Smith</a>
                             </td>
                             <td class="px-6 py-4">Bachelor of Business – University of Melbourne</td>
                             <td class="px-6 py-4">
@@ -394,7 +394,7 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex space-x-2">
-                                    <button onclick="openApplicationModal()" class="hover:opacity-80" style="color: #d82128;">View</button>
+                                    <button onclick="openApplicationModal({ name: 'John Smith', program: 'Bachelor of Business', university: 'University of Melbourne', statusText: 'Missing Docs', statusClass: 'bg-red-100 text-red-800' })" class="hover:opacity-80" style="color: #d82128;">View</button>
                                     <button class="text-gray-600 hover:text-gray-800">Upload Docs</button>
                                 </div>
                             </td>
@@ -472,7 +472,16 @@
         // Application Modal
         const applicationModal = document.getElementById('application-modal');
 
-        function openApplicationModal() {
+        function openApplicationModal(student) {
+            // Populate modal with student data
+            document.getElementById('modal-student-name').textContent = student.name;
+            document.getElementById('modal-program-name').textContent = student.program;
+            document.getElementById('modal-university-name').textContent = student.university;
+
+            const statusBadge = document.getElementById('modal-status-badge');
+            statusBadge.textContent = student.statusText;
+            statusBadge.className = `px-2 py-1 text-xs font-medium rounded-full ${student.statusClass}`;
+
             applicationModal.classList.remove('hidden');
         }
 
@@ -587,3 +596,5 @@
             }
         });
     </script>
+
+</body>

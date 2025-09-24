@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,11 +15,40 @@
         body {
             font-family: 'Inter', sans-serif;
         }
+
         .gradient-bg {
             background: linear-gradient(to right top, #EDE5D6, #9ED5C5, #ffffff);
         }
     </style>
+    <!-- Add Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <style>
+        /* Add custom styles for Select2 */
+        .select2-container--default .select2-selection--single {
+            height: 40px;
+            border: 1px solid #d1d5db !important;
+            border-radius: 0.5rem !important;
+            padding: 0.4rem 0.75rem;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 38px;
+            right: 8px;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 24px;
+            padding-left: 0;
+        }
+        .select2-container--default.select2-container--focus .select2-selection--single {
+            border-color: #ef4444 !important;
+            box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2) !important;
+        }
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: #fecaca;
+            color: #b91c1c;
+        }
+    </style>
 </head>
+
 <body class="bg-gray-50">
     <!-- Main Content -->
     <div class="min-h-screen">
@@ -33,54 +63,63 @@
                             <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Student</span>
                         </a>
                     </div>
-                    
+
                     <!-- Navigation Menu -->
                     <nav class="flex items-center space-x-3">
-                        <a href="Student-find-program.html" class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <a href="Student-find-program.html"
+                            class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors">
                             <i data-lucide="search" class="w-4 h-4 mr-2"></i>
                             Find Scholarships
                         </a>
-                        <a href="Student-favorites.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <a href="Student-favorites.html"
+                            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
                             <i data-lucide="heart" class="w-4 h-4 mr-2"></i>
                             Favorites (4)
                         </a>
-                        <a href="Student-my-application.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <a href="Student-my-application.html"
+                            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
                             <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
                             My Applications (8)
                         </a>
-                        <a href="Student-payment.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <a href="Student-payment.html"
+                            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
                             <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
                             Payment
                         </a>
                     </nav>
-                    
+
                     <!-- Right Side -->
                     <div class="flex items-center space-x-4">
-                        <a href="Student-messages.html" class="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg" title="Messages">
+                        <a href="Student-messages.html"
+                            class="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg" title="Messages">
                             <i data-lucide="mail" class="w-5 h-5"></i>
                         </a>
-                        
+
                         <button class="relative">
                             <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
                             <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
                         </button>
                         <!-- Profile Dropdown -->
                         <div class="relative">
-                            <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
-                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
-                                     alt="Profile" 
-                                     class="w-8 h-8 rounded-full object-cover">
+                            <button id="profile-menu"
+                                class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop"
+                                    alt="Profile" class="w-8 h-8 rounded-full object-cover">
                             </button>
-                            
+
                             <!-- Dropdown Menu -->
-                            <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
-                                <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <div id="profile-dropdown"
+                                class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                                <a href="Student-profile.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                     <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
                                 </a>
-                                <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <a href="Student-profile.html"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                     <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
                                 </a>
-                                <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <a href="#" onclick="handleLogout()"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                     <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
                                 </a>
                             </div>
@@ -96,20 +135,28 @@
             <!-- Country Selection Tabs -->
             <div class="mb-4">
                 <div class="flex gap-2 overflow-x-auto pb-2">
-                    <button class="flex items-center px-4 py-2 text-white rounded-lg text-sm font-medium whitespace-nowrap" style="background-color: #d82128;">
+                    <button
+                        class="flex items-center px-4 py-2 text-white rounded-lg text-sm font-medium whitespace-nowrap"
+                        style="background-color: #d82128;">
                         <i data-lucide="award" class="w-4 h-4 mr-2 text-yellow-600"></i>
                         Scholarships
                     </button>
-                    <button class="flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 whitespace-nowrap">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAyMCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjE0IiBmaWxsPSIjMDAyODY4Ii8+CjxyZWN0IHk9IjEiIHdpZHRoPSIyMCIgaGVpZ2h0PSIxIiBmaWxsPSJ3aGl0ZSIvPgo8cmVjdCB5PSIzIiB3aWR0aD0iMjAiIGhlaWdodD0iMSIgZmlsbD0iI0ZGMDAwMCIvPgo8cmVjdCB5PSI1IiB3aWR0aD0iMjAiIGhlaWdodD0iMSIgZmlsbD0id2hpdGUiLz4KPHJlY3QgeT0iNyIgd2lkdGg9IjIwIiBoZWlnaHQ9IjEiIGZpbGw9IiNGRjAwMDAiLz4KPHJlY3QgeT0iOSIgd2lkdGg9IjIwIiBoZWlnaHQ9IjEiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHk9IjExIiB3aWR0aD0iMjAiIGhlaWdodD0iMSIgZmlsbD0iI0ZGMDAwMCIvPgo8cmVjdCB5PSIxMyIgd2lkdGg9IjIwIiBoZWlnaHQ9IjEiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHdpZHRoPSI4IiBoZWlnaHQ9IjciIGZpbGw9IiMwMDI4NjgiLz4KPC9zdmc+" alt="USA Flag" class="w-5 h-3 mr-2">
+                    <button
+                        class="flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 whitespace-nowrap">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAyMCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjE0IiBmaWxsPSIjMDAyODY4Ii8+CjxyZWN0IHk9IjEiIHdpZHRoPSIyMCIgaGVpZ2h0PSIxIiBmaWxsPSJ3aGl0ZSIvPgo8cmVjdCB5PSIzIiB3aWR0aD0iMjAiIGhlaWdodD0iMSIgZmlsbD0id2hpdGUiLz4KPC9zdmc+"
+                            alt="USA Flag" class="w-5 h-3 mr-2">
                         United States
                     </button>
-                    <button class="flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 whitespace-nowrap">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAyMCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjE0IiBmaWxsPSIjRkYwMDAwIi8+CjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjE0IiBmaWxsPSJ3aGl0ZSIvPgo8cmVjdCB4PSI4IiB3aWR0aD0iNCIgaGVpZ2h0PSIxNCIgZmlsbD0id2hpdGUiLz4KPC9zdmc+" alt="Canada Flag" class="w-5 h-3 mr-2">
+                    <button
+                        class="flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 whitespace-nowrap">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAyMCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjE0IiBmaWxsPSIjRkYwMDAwIi8+CjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjE0IiBmaWxsPSJ3aGl0ZSIvPgo8cmVjdCB4PSI4IiB3aWR0aD0iNCIgaGVpZ2h0PSIxNCIgZmlsbD0id2hpdGUiLz4KPC9zdmc+"
+                            alt="Canada Flag" class="w-5 h-3 mr-2">
                         Canada
                     </button>
-                    <button class="flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 whitespace-nowrap">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAyMCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjE0IiBmaWxsPSIjMDA4MUNGIi8+CjxyZWN0IHk9IjciIHdpZHRoPSIyMCIgaGVpZ2h0PSI3IiBmaWxsPSIjMDA4MUNGIi8+CjxyZWN0IHdpZHRoPSIxMCIgaGVpZ2h0PSI3IiBmaWxsPSIjMDAyODY4Ii8+Cjxwb2x5Z29uIHBvaW50cz0iMTAsNyAxMi41LDEwIDcuNSwxMCIgZmlsbD0id2hpdGUiLz4KPC9zdmc+" alt="Australia Flag" class="w-5 h-3 mr-2">
+                    <button
+                        class="flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 whitespace-nowrap">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAyMCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjE0IiBmaWxsPSIjMDA4MUNGIi8+CjxyZWN0IHk9IjciIHdpZHRoPSIyMCIgaGVpZ2h0PSI3IiBmaWxsPSIjMDA4MUNGIi8+CjxyZWN0IHdpZHRoPSIxMCIgaGVpZ2h0PSI3IiBmaWxsPSIjMDAyODY4Ii8+Cjxwb2x5Z29uIHBvaW50cz0iMTAsNyAxMi41LDEwIDcuNSwxMCIgZmlsbD0id2hpdGUiLz4KPC9zdmc+"
+                            alt="Australia Flag" class="w-5 h-3 mr-2">
                         Australia
                     </button>
                 </div>
@@ -121,20 +168,22 @@
                 <div class="flex gap-0 mb-4 bg-white rounded-xl border overflow-hidden">
                     <!-- Program Tier Dropdown -->
                     <div class="w-80">
-                        <select class="w-full px-4 py-3 bg-transparent border-0 focus:ring-0 focus:outline-none text-gray-700 border-r">
+                        <select
+                            class="w-full px-4 py-3 bg-transparent border-0 focus:ring-0 focus:outline-none text-gray-700 border-r">
                             <option value="">Select Scholarship Tier</option>
                             <option value="scholarship-guarantee">Scholarship Guarantee</option>
                             <option value="elite-admission">Elite Admission Scholarship</option>
                             <option value="ivy-global">Ivy Global Student Scholarship</option>
                         </select>
                     </div>
-                    
+
                     <!-- Search Input -->
                     <div class="relative flex-1">
-                        <input type="text" 
-                               placeholder="Search area of study (i.e business or accounting)" 
-                               class="w-full px-4 py-3 pl-4 bg-transparent border-0 focus:ring-0 focus:outline-none">
-                        <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-white px-4 py-1 rounded text-sm font-medium" style="background-color: #d82128;">
+                        <input type="text" placeholder="Search area of study (i.e business or accounting)"
+                            class="w-full px-4 py-3 pl-4 bg-transparent border-0 focus:ring-0 focus:outline-none">
+                        <button
+                            class="absolute right-3 top-1/2 transform -translate-y-1/2 text-white px-4 py-1 rounded text-sm font-medium"
+                            style="background-color: #d82128;">
                             Search Now!
                         </button>
                     </div>
@@ -146,84 +195,118 @@
                 <div class="w-72">
                     <div class="bg-white rounded-3xl shadow-md p-6">
                         <h2 class="text-lg font-semibold mb-4">Filters</h2>
-                        
+
                         <!-- State Filter -->
                         <div class="mb-4">
-                            <button class="filter-toggle w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg" data-filter="state">
+                            <button
+                                class="filter-toggle w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                                data-filter="state">
                                 <span class="text-gray-700">State<span class="text-gray-500">(15)</span></span>
                                 <i data-lucide="chevron-down" class="w-4 h-4 text-gray-500 transition-transform"></i>
                             </button>
-                            <div class="filter-content hidden mt-2 p-3 bg-gray-50 rounded-lg max-h-48 overflow-y-auto" data-filter="state">
+                            <div class="filter-content hidden mt-2 p-3 bg-gray-50 rounded-lg max-h-48 overflow-y-auto"
+                                data-filter="state">
                                 <div class="mb-2">
-                                    <input type="text" placeholder="Search" class="w-full px-3 py-2 text-sm border rounded-lg">
+                                    <input type="text" placeholder="Search"
+                                        class="w-full px-3 py-2 text-sm border rounded-lg">
                                 </div>
                                 <div class="space-y-2">
-                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span class="text-sm">California</span></label>
-                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span class="text-sm">Florida</span></label>
-                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span class="text-sm">Illinois</span></label>
-                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span class="text-sm">Indiana</span></label>
-                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span class="text-sm">Massachusetts</span></label>
-                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span class="text-sm">Missouri</span></label>
-                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span class="text-sm">Montana</span></label>
+                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span
+                                            class="text-sm">California</span></label>
+                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span
+                                            class="text-sm">Florida</span></label>
+                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span
+                                            class="text-sm">Illinois</span></label>
+                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span
+                                            class="text-sm">Indiana</span></label>
+                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span
+                                            class="text-sm">Massachusetts</span></label>
+                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span
+                                            class="text-sm">Missouri</span></label>
+                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span
+                                            class="text-sm">Montana</span></label>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Cities Filter -->
                         <div class="mb-4">
-                            <button class="filter-toggle w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg" data-filter="cities">
+                            <button
+                                class="filter-toggle w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                                data-filter="cities">
                                 <span class="text-gray-700">Cities<span class="text-gray-500">(30)</span></span>
                                 <i data-lucide="chevron-down" class="w-4 h-4 text-gray-500 transition-transform"></i>
                             </button>
-                            <div class="filter-content hidden mt-2 p-3 bg-gray-50 rounded-lg max-h-48 overflow-y-auto" data-filter="cities">
+                            <div class="filter-content hidden mt-2 p-3 bg-gray-50 rounded-lg max-h-48 overflow-y-auto"
+                                data-filter="cities">
                                 <div class="mb-2">
-                                    <input type="text" placeholder="Search" class="w-full px-3 py-2 text-sm border rounded-lg">
+                                    <input type="text" placeholder="Search"
+                                        class="w-full px-3 py-2 text-sm border rounded-lg">
                                 </div>
                                 <div class="space-y-2">
-                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span class="text-sm">New York</span></label>
-                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span class="text-sm">Los Angeles</span></label>
-                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span class="text-sm">Chicago</span></label>
-                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span class="text-sm">Boston</span></label>
+                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span
+                                            class="text-sm">New York</span></label>
+                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span
+                                            class="text-sm">Los Angeles</span></label>
+                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span
+                                            class="text-sm">Chicago</span></label>
+                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span
+                                            class="text-sm">Boston</span></label>
                                 </div>
                             </div>
                         </div>
 
                         <!-- University Filter -->
                         <div class="mb-4">
-                            <button class="filter-toggle w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg" data-filter="university">
+                            <button
+                                class="filter-toggle w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                                data-filter="university">
                                 <span class="text-gray-700">University<span class="text-gray-500">(40)</span></span>
                                 <i data-lucide="chevron-down" class="w-4 h-4 text-gray-500 transition-transform"></i>
                             </button>
-                            <div class="filter-content hidden mt-2 p-3 bg-gray-50 rounded-lg max-h-48 overflow-y-auto" data-filter="university">
+                            <div class="filter-content hidden mt-2 p-3 bg-gray-50 rounded-lg max-h-48 overflow-y-auto"
+                                data-filter="university">
                                 <div class="mb-2">
-                                    <input type="text" placeholder="Search" class="w-full px-3 py-2 text-sm border rounded-lg">
+                                    <input type="text" placeholder="Search"
+                                        class="w-full px-3 py-2 text-sm border rounded-lg">
                                 </div>
                                 <div class="space-y-2">
-                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span class="text-sm">Harvard University</span></label>
-                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span class="text-sm">MIT</span></label>
-                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span class="text-sm">Stanford University</span></label>
+                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span
+                                            class="text-sm">Harvard University</span></label>
+                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span
+                                            class="text-sm">MIT</span></label>
+                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span
+                                            class="text-sm">Stanford University</span></label>
                                 </div>
                             </div>
                         </div>
 
                         <!-- School Types Filter -->
                         <div class="mb-4">
-                            <button class="filter-toggle w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg" data-filter="school-types">
+                            <button
+                                class="filter-toggle w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                                data-filter="school-types">
                                 <span class="text-gray-700">School Types</span>
                                 <i data-lucide="chevron-down" class="w-4 h-4 text-gray-500 transition-transform"></i>
                             </button>
-                            <div class="filter-content hidden mt-2 p-3 bg-gray-50 rounded-lg" data-filter="school-types">
+                            <div class="filter-content hidden mt-2 p-3 bg-gray-50 rounded-lg"
+                                data-filter="school-types">
                                 <div class="space-y-2">
-                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span class="text-sm">Public</span></label>
-                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span class="text-sm">Private</span></label>
-                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span class="text-sm">Community College</span></label>
+                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span
+                                            class="text-sm">Public</span></label>
+                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span
+                                            class="text-sm">Private</span></label>
+                                    <label class="flex items-center"><input type="checkbox" class="mr-2"><span
+                                            class="text-sm">Community College</span></label>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Tuition Filter -->
                         <div class="mb-6">
-                            <button class="filter-toggle w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg" data-filter="tuition">
+                            <button
+                                class="filter-toggle w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                                data-filter="tuition">
                                 <span class="text-gray-700">Tuition (USD)</span>
                                 <i data-lucide="chevron-down" class="w-4 h-4 text-gray-500 transition-transform"></i>
                             </button>
@@ -244,7 +327,7 @@
                         </button>
                     </div>
                 </div>
-           
+
                 <!-- Results Section -->
                 <div class="flex-1 space-y-6"><!-- Results Section -->
 
@@ -252,100 +335,155 @@
                     <div class="bg-white rounded-3xl shadow-md p-6 hover:shadow-lg transition-shadow program-card-3">
                         <div class="flex items-start mb-4">
                             <!-- Institution Logo -->
-                            <div class="w-36 h-36 bg-gray-200 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                                <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=144&h=144&fit=crop" alt="University of Berkeley" class="w-32 h-32 rounded-lg object-cover">
+                            <div
+                                class="w-36 h-36 bg-gray-200 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                                <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=144&h=144&fit=crop"
+                                    alt="University of Berkeley" class="w-32 h-32 rounded-lg object-cover">
                             </div>
-                            
+
                             <div class="flex-1">
                                 <!-- School Name (Clickable) -->
                                 <h2 class="text-xl font-bold mb-2 flex justify-between">
-                                    <button class="school-name-btn text-gray-900 hover:text-red-600 hover:underline cursor-pointer transition-colors" 
-                                            data-school="university-of-california-berkeley">
+                                    <button
+                                        class="school-name-btn text-gray-900 hover:text-red-600 hover:underline cursor-pointer transition-colors"
+                                        data-school="university-of-california-berkeley">
                                         University of Berkeley
                                     </button>
                                     <p class="text-lg font-semibold mb-4">(Mockup for incomplete profile)</p>
                                 </h2>
-                                
+
                                 <!-- Institution Type Tags -->
                                 <div class="flex flex-wrap gap-2 mb-2">
-                                    <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs font-medium">World Top 5</span>
-                                    <span class="px-2 py-1 bg-green-100 text-green-600 rounded text-xs font-medium">Russell Group</span>
-                                    <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs font-medium">Research Intensive</span>
+                                    <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs font-medium">World
+                                        Top 5</span>
+                                    <span
+                                        class="px-2 py-1 bg-green-100 text-green-600 rounded text-xs font-medium">Russell
+                                        Group</span>
+                                    <span
+                                        class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs font-medium">Research
+                                        Intensive</span>
                                 </div>
-                                
+
                                 <!-- Program Duration -->
                                 <p class="text-sm text-gray-500 mb-1">Duration: 1 year</p>
-                                
-                                <!-- Scholarship Type Dropdown -->
-                                <div class="mb-3">
-                                    <label class="text-sm text-gray-600 mb-1 block">Scholarship Type:</label>
-                                    <div class="relative inline-block">
-                                        <select class="appearance-none bg-white border border-gray-300 rounded-lg px-3 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 w-full max-w-xs">
-                                            <option value="rhodes" selected>Rhodes Scholarship</option>
-                                            <option value="chevening">Chevening Scholarship</option>
-                                            <option value="commonwealth">Commonwealth Scholarship</option>
-                                        </select>
-                                        <i data-lucide="chevron-down" class="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none"></i>
+
+                                <!-- Scholarship Type and Field of Study Dropdowns -->
+                                <div class="flex flex-wrap gap-4 mb-3">
+                                    <!-- Scholarship Type Dropdown -->
+                                    <div class="flex-1 max-w-[200px]">
+                                        <label class="text-sm text-gray-600 mb-1 block">Scholarship Type:</label>
+                                        <div class="relative">
+                                            <select
+                                                class="appearance-none bg-white border border-gray-300 rounded-lg px-3 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 w-full">
+                                                <option value="rhodes" selected>Rhodes Scholarship</option>
+                                                <option value="chevening">Chevening Scholarship</option>
+                                                <option value="commonwealth">Commonwealth Scholarship</option>
+                                            </select>
+                                            <i data-lucide="chevron-down"
+                                                class="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none"></i>
+                                        </div>
+                                    </div>
+
+                                    <!-- Field of Study Dropdown -->
+                                    <div class="flex-1 max-w-[200px]">
+                                        <label class="text-sm text-gray-600 mb-1 block cursor-pointer" id="fieldOfStudyLabel">Field of Study:</label>
+                                        <div class="relative">
+                                            <input type="text" placeholder="Search field of study..." 
+                                                class="search-field-of-study w-full px-3 py-2 mb-1 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                                                id="fieldOfStudySearch">
+                                            <div class="field-of-study-dropdown absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg hidden">
+                                                <input type="hidden" name="field-of-study" id="fieldOfStudyValue">
+                                                <ul class="py-1 max-h-60 overflow-auto">
+                                                    <li data-value="computer-science" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Computer Science</li>
+                                                    <li data-value="business" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Business Administration</li>
+                                                    <li data-value="engineering" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Engineering</li>
+                                                    <li data-value="medicine" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Medicine</li>
+                                                    <li data-value="law" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Law</li>
+                                                    <li data-value="arts" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Arts & Humanities</li>
+                                                    <li data-value="science" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Natural Sciences</li>
+                                                    <li data-value="social-sciences" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Social Sciences</li>
+                                                </ul>
+                                                <div id="noResults1" class="hidden px-4 py-2 text-sm text-gray-500 border-t border-gray-200">No results for that search.</div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                
+
                                 <!-- Intake Period Dropdown -->
                                 <div class="flex items-center gap-4 mb-4">
                                     <div class="relative">
-                                        <select class="appearance-none bg-gray-50 border rounded-lg px-3 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
+                                        <select
+                                            class="appearance-none bg-gray-50 border rounded-lg px-3 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
                                             <option value="2025-oct">October 2025</option>
                                             <option value="2026-oct">October 2026</option>
                                         </select>
-                                        <i data-lucide="chevron-down" class="absolute right-2 top-2.5 w-4 h-4 text-gray-500"></i>
+                                        <i data-lucide="chevron-down"
+                                            class="absolute right-2 top-2.5 w-4 h-4 text-gray-500"></i>
                                     </div>
-                                    
+
                                     <!-- Action Buttons -->
                                     <div class="flex items-center gap-3">
-                                        <button class="text-red-600 hover:text-red-700 flex items-center text-sm font-medium">
+                                        <button
+                                            class="text-red-600 hover:text-red-700 flex items-center text-sm font-medium">
                                             <i data-lucide="heart" class="w-4 h-4 mr-1"></i>
                                             Add to Favorites
                                         </button>
-                                        <button class="text-white px-4 py-2 rounded-lg text-sm font-medium" style="background-color: #d82128;" onmouseover="this.style.backgroundColor='#d82128'" onmouseout="this.style.backgroundColor='#d82128'">
+                                        <button class="text-white px-4 py-2 rounded-lg text-sm font-medium"
+                                            style="background-color: #d82128;"
+                                            onmouseover="this.style.backgroundColor='#d82128'"
+                                            onmouseout="this.style.backgroundColor='#d82128'">
                                             Apply Now
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Scholarship Section -->
                         <div class="border-t pt-4">
                             <div class="flex border-b mb-4">
-                                <button class="tab-btn px-4 py-2 text-sm font-medium text-red-600 border-b-2 border-red-600" data-tab="fees" data-card="3">Fees</button>
-                                <button class="tab-btn px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700" data-tab="requirements" data-card="3">Requirements</button>
-                                <button class="tab-btn px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700" data-tab="course-detail" data-card="3">Course Detail</button>
+                                <button
+                                    class="tab-btn px-4 py-2 text-sm font-medium text-red-600 border-b-2 border-red-600"
+                                    data-tab="fees" data-card="3">Fees</button>
+                                <button class="tab-btn px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700"
+                                    data-tab="requirements" data-card="3">Requirements</button>
+                                <button class="tab-btn px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700"
+                                    data-tab="course-detail" data-card="3">Course Detail</button>
                             </div>
-                            
+
                             <!-- Fees Tab Content -->
                             <div class="tab-content" data-tab="fees" data-card="3" id="feesContent3">
                                 <div class="space-y-6 text-center py-8">
-                                    <p class="text-gray-600 mb-6">To view details, please complete all the required fields in the profile.</p>
-                                    <a href="Student-profile.html" target="_blank" class="inline-flex items-center px-6 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                    <p class="text-gray-600 mb-6">To view details, please complete all the required
+                                        fields in the profile.</p>
+                                    <a href="Student-profile.html" target="_blank"
+                                        class="inline-flex items-center px-6 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                                         Go to your profile
                                     </a>
                                 </div>
                             </div>
-                            
+
                             <!-- Requirements Tab Content -->
-                            <div class="tab-content hidden" data-tab="requirements" data-card="3" id="requirementsContent3">
+                            <div class="tab-content hidden" data-tab="requirements" data-card="3"
+                                id="requirementsContent3">
                                 <div class="space-y-6 text-center py-8">
-                                    <p class="text-gray-600 mb-6">To view details, please complete all the required fields in the profile.</p>
-                                    <a href="Student-profile.html" target="_blank" class="inline-flex items-center px-6 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                    <p class="text-gray-600 mb-6">To view details, please complete all the required
+                                        fields in the profile.</p>
+                                    <a href="Student-profile.html" target="_blank"
+                                        class="inline-flex items-center px-6 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                                         Go to your profile
                                     </a>
                                 </div>
                             </div>
-                            
+
                             <!-- Course Detail Tab Content -->
-                            <div class="tab-content hidden" data-tab="course-detail" data-card="3" id="courseDetailContent3">
+                            <div class="tab-content hidden" data-tab="course-detail" data-card="3"
+                                id="courseDetailContent3">
                                 <div class="space-y-6 text-center py-8">
-                                    <p class="text-gray-600 mb-6">To view details, please complete all the required fields in the profile.</p>
-                                    <a href="Student-profile.html" target="_blank" class="inline-flex items-center px-6 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                    <p class="text-gray-600 mb-6">To view details, please complete all the required
+                                        fields in the profile.</p>
+                                    <a href="Student-profile.html" target="_blank"
+                                        class="inline-flex items-center px-6 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                                         Go to your profile
                                     </a>
                                 </div>
@@ -357,84 +495,122 @@
                     <div class="bg-white rounded-3xl shadow-md p-6 hover:shadow-lg transition-shadow">
                         <div class="flex items-start mb-4">
                             <!-- Institution Logo -->
-                            <div class="w-36 h-36 bg-gray-200 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                                <img src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=144&h=144&fit=crop" alt="University Logo" class="w-32 h-32 rounded-lg object-cover">
+                            <div
+                                class="w-36 h-36 bg-gray-200 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                                <img src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=144&h=144&fit=crop"
+                                    alt="University Logo" class="w-32 h-32 rounded-lg object-cover">
                             </div>
-                            
+
                             <div class="flex-1">
                                 <!-- School Name (Clickable) -->
                                 <h2 class="text-xl font-bold mb-2 flex justify-between">
-                                    <button class="school-name-btn text-gray-900 hover:text-red-600 hover:underline cursor-pointer transition-colors" 
-                                            data-school="tiffin-university">
+                                    <button
+                                        class="school-name-btn text-gray-900 hover:text-red-600 hover:underline cursor-pointer transition-colors"
+                                        data-school="tiffin-university">
                                         Tiffin University
                                     </button>
                                     <p class="text-lg font-semibold mb-4">(Mockup for complete profile)</p>
                                 </h2>
-                                
+
                                 <!-- Institution Type Tags -->
                                 <div class="flex flex-wrap gap-2 mb-2">
-                                    <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs font-medium">US University</span>
-                                    <span class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs font-medium">Private University</span>
+                                    <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs font-medium">US
+                                        University</span>
+                                    <span
+                                        class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs font-medium">Private
+                                        University</span>
                                 </div>
-                                
+
                                 <!-- Program Duration -->
                                 <p class="text-sm text-gray-500 mb-1">Duration: 4 years</p>
-                                
-                                
-                                <!-- Scholarship Type Dropdown -->
-                                <div class="mb-3">
-                                    <label class="text-sm text-gray-600 mb-1 block">Scholarship Type:</label>
-                                    <div class="relative inline-block">
-                                        <select class="scholarship-dropdown appearance-none bg-white border border-gray-300 rounded-lg px-3 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 w-full max-w-xs" data-card="2">
-                                            <option value="merit-based" selected>Merit-based</option>
-                                            <option value="need-based">Need-based</option>
-                                            <option value="entrance">Entrance</option>
-                                            <option value="research">Research</option>
-                                            <option value="athletic">Athletic</option>
-                                            <option value="diversity-inclusion">Diversity & Inclusion</option>
-                                        </select>
-                                        <i data-lucide="chevron-down" class="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none"></i>
+
+                                <!-- Scholarship Type and Field of Study Dropdowns -->
+                                <div class="flex flex-wrap gap-4 mb-3">
+                                    <!-- Scholarship Type Dropdown -->
+                                    <div class="flex-1 max-w-[200px]">
+                                        <label class="text-sm text-gray-600 mb-1 block">Scholarship Type:</label>
+                                        <div class="relative">
+                                            <select
+                                                class="appearance-none bg-white border border-gray-300 rounded-lg px-3 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 w-full">
+                                                <option value="rhodes" selected>Rhodes Scholarship</option>
+                                                <option value="chevening">Chevening Scholarship</option>
+                                                <option value="commonwealth">Commonwealth Scholarship</option>
+                                            </select>
+                                            <i data-lucide="chevron-down"
+                                                class="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none"></i>
+                                        </div>
+                                    </div>
+
+                                    <!-- Field of Study Dropdown -->
+                                    <div class="flex-1 max-w-[200px]">
+                                        <label class="text-sm text-gray-600 mb-1 block cursor-pointer" id="fieldOfStudyLabel2">Field of Study:</label>
+                                        <div class="relative">
+                                            <input type="text" placeholder="Search field of study..." 
+                                                class="search-field-of-study w-full px-3 py-2 mb-1 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                                                id="fieldOfStudySearch2">
+                                            <div class="field-of-study-dropdown absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg hidden">
+                                                <input type="hidden" name="field-of-study-2" id="fieldOfStudyValue2">
+                                                <ul class="py-1 max-h-60 overflow-auto">
+                                                    <li data-value="computer-science" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Computer Science</li>
+                                                    <li data-value="business" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Business Administration</li>
+                                                    <li data-value="engineering" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Engineering</li>
+                                                    <li data-value="medicine" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Medicine</li>
+                                                    <li data-value="law" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Law</li>
+                                                    <li data-value="arts" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Arts & Humanities</li>
+                                                    <li data-value="science" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Natural Sciences</li>
+                                                    <li data-value="social-sciences" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Social Sciences</li>
+                                                </ul>
+                                                <div id="noResults2" class="hidden px-4 py-2 text-sm text-gray-500 border-t border-gray-200">No results for that search.</div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                
+
                                 <!-- Intake Period Dropdown -->
                                 <div class="flex items-center gap-4 mb-4">
                                     <div class="relative">
-                                        <select class="appearance-none bg-gray-50 border rounded-lg px-3 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
+                                        <select
+                                            class="appearance-none bg-gray-50 border rounded-lg px-3 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
                                             <option value="2025-sep">2025 Sep</option>
                                             <option value="2026-jan">2026 Jan</option>
                                             <option value="2026-sep">2026 Sep</option>
                                         </select>
-                                        <i data-lucide="chevron-down" class="absolute right-2 top-2.5 w-4 h-4 text-gray-500"></i>
+                                        <i data-lucide="chevron-down"
+                                            class="absolute right-2 top-2.5 w-4 h-4 text-gray-500"></i>
                                     </div>
-                                    
+
                                     <!-- Action Buttons -->
                                     <div class="flex items-center gap-3">
-                                        <button class="text-red-600 hover:text-red-700 flex items-center text-sm font-medium">
+                                        <button
+                                            class="text-red-600 hover:text-red-700 flex items-center text-sm font-medium">
                                             <i data-lucide="heart" class="w-4 h-4 mr-1"></i>
                                             Add to Favorites
                                         </button>
-                                        <a href="Student-application-form.html?program=MSc%20in%20Computer%20Science&university=University%20of%20Toronto" 
-                                           target="_blank"
-                                           class="inline-block text-white px-4 py-2 rounded-lg text-sm font-medium" 
-                                           style="background-color: #d82128;" 
-                                           onmouseover="this.style.backgroundColor='#d82128'" 
-                                           onmouseout="this.style.backgroundColor='#d82128'">
+                                        <a href="Student-application-form.html?program=MSc%20in%20Computer%20Science&university=University%20of%20Toronto"
+                                            target="_blank"
+                                            class="inline-block text-white px-4 py-2 rounded-lg text-sm font-medium"
+                                            style="background-color: #d82128;"
+                                            onmouseover="this.style.backgroundColor='#d82128'"
+                                            onmouseout="this.style.backgroundColor='#d82128'">
                                             Apply Now
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Tabbed Information Section -->
                         <div class="border-t pt-4">
                             <div class="flex border-b mb-4">
-                                <button class="tab-btn px-4 py-2 text-sm font-medium text-red-600 border-b-2 border-red-600" data-tab="fees" data-card="2">Fees</button>
-                                <button class="tab-btn px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700" data-tab="requirements" data-card="2">Requirements</button>
-                                <button class="tab-btn px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700" data-tab="course-detail" data-card="2">Course Detail</button>
+                                <button
+                                    class="tab-btn px-4 py-2 text-sm font-medium text-red-600 border-b-2 border-red-600"
+                                    data-tab="fees" data-card="2">Fees</button>
+                                <button class="tab-btn px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700"
+                                    data-tab="requirements" data-card="2">Requirements</button>
+                                <button class="tab-btn px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700"
+                                    data-tab="course-detail" data-card="2">Course Detail</button>
                             </div>
-                            
+
                             <!-- Fees Tab Content -->
                             <div class="tab-content" data-tab="fees" data-card="2">
                                 <div class="space-y-4">
@@ -456,13 +632,14 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Requirements Tab Content -->
                             <div class="tab-content hidden" data-tab="requirements" data-card="2">
                                 <div class="space-y-4">
                                     <div class="bg-white rounded-lg p-4 border">
                                         <h4 class="font-semibold mb-2 text-black">Academic Requirements</h4>
-                                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1" id="academicRequirements2">
+                                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1"
+                                            id="academicRequirements2">
                                             <li>Minimum GPA of 3.7/4.0 or equivalent</li>
                                             <li>Bachelor's degree in relevant field</li>
                                             <li>Academic excellence demonstrated through transcripts</li>
@@ -471,7 +648,8 @@
                                     </div>
                                     <div class="bg-white rounded-lg p-4 border">
                                         <h4 class="font-semibold mb-2 text-black">Language Requirements</h4>
-                                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1" id="languageRequirements2">
+                                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1"
+                                            id="languageRequirements2">
                                             <li>IELTS: 7.0 overall (no band below 6.5)</li>
                                             <li>TOEFL iBT: 100 overall</li>
                                             <li>Duolingo: 125 overall</li>
@@ -479,7 +657,8 @@
                                     </div>
                                     <div class="bg-white rounded-lg p-4 border">
                                         <h4 class="font-semibold mb-2 text-black">Required Documents</h4>
-                                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1" id="requiredDocuments2">
+                                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1"
+                                            id="requiredDocuments2">
                                             <li>Academic transcripts with grade verification</li>
                                             <li>Two academic letters of recommendation</li>
                                             <li>Personal statement highlighting achievements</li>
@@ -488,19 +667,22 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Course Detail Tab Content -->
                             <div class="tab-content hidden" data-tab="course-detail" data-card="2">
                                 <div class="space-y-4">
                                     <div>
                                         <h4 class="font-semibold mb-2">Scholarship Overview</h4>
                                         <p class="text-gray-600 text-sm leading-relaxed" id="programOverview2">
-                                            Merit-based scholarship program designed for academically outstanding students who have demonstrated exceptional performance in their undergraduate studies.
+                                            Merit-based scholarship program designed for academically outstanding
+                                            students who have demonstrated exceptional performance in their
+                                            undergraduate studies.
                                         </p>
                                     </div>
                                     <div>
                                         <h4 class="font-semibold mb-2">Core Courses</h4>
-                                        <ul class="list-disc list-inside text-sm text-gray-600 space-y-1" id="coreCourses2">
+                                        <ul class="list-disc list-inside text-sm text-gray-600 space-y-1"
+                                            id="coreCourses2">
                                             <li>Advanced Research Methodologies</li>
                                             <li>Leadership in Academic Excellence</li>
                                             <li>Scholarly Communication</li>
@@ -517,7 +699,8 @@
                                     </div>
                                     <div>
                                         <p class="text-sm text-gray-500">Specialization tracks</p>
-                                        <p class="font-semibold" id="specializationTracks2">Research Focus, Academic Leadership, Scholarly Publications</p>
+                                        <p class="font-semibold" id="specializationTracks2">Research Focus, Academic
+                                            Leadership, Scholarly Publications</p>
                                     </div>
                                 </div>
                             </div>
@@ -527,7 +710,6 @@
             </div>
         </main>
     </div>
-
 
     <!-- JavaScript for page functionality -->
 
@@ -547,7 +729,7 @@
                     <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
             </div>
-            
+
             <!-- Modal Content Grid -->
             <div class="grid md:grid-cols-2 gap-6 mb-6">
                 <!-- Institution Details -->
@@ -630,7 +812,8 @@
                     <div>
                         <h5 class="font-medium mb-2">Summary about the scholarship program</h5>
                         <p class="text-sm text-gray-600" id="modalScholarshipSummary">
-                            Merit-based scholarship for international students with excellent academic records. Renewable for the duration of the program based on maintaining GPA requirements.
+                            Merit-based scholarship for international students with excellent academic records.
+                            Renewable for the duration of the program based on maintaining GPA requirements.
                         </p>
                     </div>
                 </div>
@@ -640,7 +823,10 @@
             <div class="bg-purple-50 rounded-2xl p-4 mb-6">
                 <h4 class="font-semibold mb-3 text-purple-800">Summary about the schools</h4>
                 <p class="text-sm text-gray-600" id="modalSchoolSummary">
-                    The University of British Columbia is a globally recognized research university located in Vancouver, Canada. Known for its strong programs in technology, business, and sciences, UBC consistently ranks among the top 40 universities worldwide. The campus offers state-of-the-art facilities, diverse student community, and excellent career support services.
+                    The University of British Columbia is a globally recognized research university located in
+                    Vancouver, Canada. Known for its strong programs in technology, business, and sciences, UBC
+                    consistently ranks among the top 40 universities worldwide. The campus offers state-of-the-art
+                    facilities, diverse student community, and excellent career support services.
                 </p>
             </div>
 
@@ -649,7 +835,11 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-3">Scholarship Overview</h3>
                     <p class="text-gray-600" id="modalDescription">
-                        The Master of Science in Data Science program at UBC provides students with comprehensive training in data science methodologies, statistical analysis, machine learning algorithms, and big data technologies. This program is designed for students who want to develop expertise in extracting insights from complex datasets and applying data-driven solutions to real-world problems.
+                        The Master of Science in Data Science program at UBC provides students with comprehensive
+                        training in data science methodologies, statistical analysis, machine learning algorithms, and
+                        big data technologies. This program is designed for students who want to develop expertise in
+                        extracting insights from complex datasets and applying data-driven solutions to real-world
+                        problems.
                     </p>
                 </div>
 
@@ -701,21 +891,25 @@
                     <h3 class="text-lg font-semibold mb-3">Career Prospects</h3>
                     <div class="flex flex-wrap gap-2" id="modalCareers">
                         <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Data Scientist</span>
-                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Machine Learning Engineer</span>
+                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Machine Learning
+                            Engineer</span>
                         <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Business Analyst</span>
-                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Research Scientist</span>
+                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Research
+                            Scientist</span>
                         <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Data Engineer</span>
                     </div>
                 </div>
 
                 <!-- Action Buttons -->
                 <div class="flex justify-between items-center pt-6 border-t">
-                    <a href="#" id="modalOfficialLink" class="hover:underline flex items-center hover:opacity-80" style="color: #d82128;">
+                    <a href="#" id="modalOfficialLink" class="hover:underline flex items-center hover:opacity-80"
+                        style="color: #d82128;">
                         <i data-lucide="external-link" class="w-4 h-4 mr-1"></i>
                         Visit Official Website
                     </a>
                     <div class="flex space-x-3">
-                        <button class="px-4 py-2 border rounded-xl hover:bg-red-50" style="border-color: #d82128; color: #d82128;">
+                        <button class="px-4 py-2 border rounded-xl hover:bg-red-50"
+                            style="border-color: #d82128; color: #d82128;">
                             Save Program
                         </button>
                         <button class="text-sm font-medium hover:opacity-80" style="color: #d82128;">Apply Now</button>
@@ -730,26 +924,26 @@
         lucide.createIcons({ icons: lucide.icons });
 
         // Profile dropdown functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Profile dropdown
             const profileButton = document.getElementById('profileButton');
             const profileDropdown = document.getElementById('profileDropdown');
-            
+
             if (profileButton && profileDropdown) {
-                profileButton.addEventListener('click', function() {
+                profileButton.addEventListener('click', function () {
                     profileDropdown.classList.toggle('hidden');
                 });
 
                 // Close dropdown when clicking outside
-                document.addEventListener('click', function(event) {
+                document.addEventListener('click', function (event) {
                     if (!profileButton.contains(event.target) && !profileDropdown.contains(event.target)) {
                         profileDropdown.classList.add('hidden');
                     }
                 });
-                
+
                 // Close dropdown when clicking on a menu item
                 profileDropdown.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', function() {
+                    link.addEventListener('click', function () {
                         profileDropdown.classList.add('hidden');
                     });
                 });
@@ -760,43 +954,154 @@
             const closeBerkeleyModal = document.getElementById('closeBerkeleyModal');
             const schoolNameButtons = document.querySelectorAll('.school-name-btn');
 
-            // Open modal when clicking on school name
-            if (schoolNameButtons.length > 0 && berkeleyModal) {
-                schoolNameButtons.forEach(button => {
-                    button.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        if (this.getAttribute('data-school') === 'university-of-oxford') {
-                            berkeleyModal.classList.remove('hidden');
-                            document.body.style.overflow = 'hidden';
-                            return false;
-                        }
+            // University of Toronto Modal
+            const torontoModal = document.getElementById('schoolModalToronto');
+            const closeTorontoModalBtn = document.getElementById('closeTorontoModal');
+
+            // Handle school name clicks
+            document.querySelectorAll('.school-name-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    const school = this.getAttribute('data-school');
+                    if (school === 'tiffin-university') {
+                        torontoModal.classList.remove('hidden');
+                        document.body.style.overflow = 'hidden';
+                    } else if (school === 'berkeley-city-college') {
+                        berkeleyModal.classList.remove('hidden');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+
+            // Close Toronto Modal
+            if (closeTorontoModalBtn) {
+                closeTorontoModalBtn.addEventListener('click', function () {
+                    torontoModal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                });
+            }
+
+            // Close Toronto Modal when clicking outside
+            torontoModal.addEventListener('click', function (e) {
+                if (e.target === torontoModal) {
+                    torontoModal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Toronto Tab Functionality
+            const torontoTabButtons = document.querySelectorAll('.toronto-tab-btn');
+            torontoTabButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const tabId = this.getAttribute('data-tab');
+
+                    // Update active tab
+                    torontoTabButtons.forEach(btn => {
+                        btn.classList.remove('border-red-600', 'text-red-600');
+                        btn.classList.add('text-gray-500', 'hover:text-gray-700');
                     });
+                    this.classList.add('border-red-600', 'text-red-600');
+                    this.classList.remove('text-gray-500', 'hover:text-gray-700');
+
+                    // Show corresponding tab content
+                    document.querySelectorAll('.toronto-tab-content').forEach(content => {
+                        content.classList.add('hidden');
+                    });
+                    document.getElementById(`toronto-${tabId}-tab`).classList.remove('hidden');
+                });
+            });
+            const schoolNameBtns = document.querySelectorAll('.school-name-btn');
+            const schoolTabBtns = document.querySelectorAll('.school-tab-btn');
+            const schoolTabContents = document.querySelectorAll('.school-tab-content');
+
+            console.log('School modal element:', schoolModal);
+            console.log('Close button:', closeSchoolModalBtn);
+            console.log('School name buttons found:', schoolNameBtns.length);
+
+            // Handle school name clicks
+            schoolNameBtns.forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    console.log('School name clicked!');
+                    const schoolId = btn.getAttribute('data-school');
+                    console.log('School ID:', schoolId);
+
+                    // Show school modal
+                    if (schoolModal) {
+                        console.log('Opening school modal');
+                        schoolModal.classList.remove('hidden');
+
+                        // Reset to overview tab
+                        showSchoolTab('overview');
+
+                        lucide.createIcons();
+                    } else {
+                        console.error('School modal not found');
+                    }
+                });
+            });
+
+            // Handle school tab switching
+            schoolTabBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const tabId = btn.getAttribute('data-tab');
+                    showSchoolTab(tabId);
+                });
+            });
+
+            function showSchoolTab(tabId) {
+                // Remove active state from all tabs
+                schoolTabBtns.forEach(tab => {
+                    tab.classList.remove('border-b-2', 'border-red-600', 'text-red-600');
+                    tab.classList.add('text-gray-500');
                 });
 
-                // Close modal when clicking close button
-                if (closeBerkeleyModal) {
-                    closeBerkeleyModal.addEventListener('click', function() {
-                        berkeleyModal.classList.add('hidden');
-                        document.body.style.overflow = 'auto';
-                    });
+                // Add active state to clicked tab
+                const activeTab = document.querySelector(`[data-tab="${tabId}"].school-tab-btn`);
+                if (activeTab) {
+                    activeTab.classList.add('border-b-2', 'border-red-600', 'text-red-600');
+                    activeTab.classList.remove('text-gray-500');
                 }
 
-                // Close modal when clicking outside content
-                window.addEventListener('click', function(event) {
-                    if (event.target === berkeleyModal) {
-                        berkeleyModal.classList.add('hidden');
-                        document.body.style.overflow = 'auto';
+                // Hide all tab contents
+                schoolTabContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+
+                // Show selected tab content
+                const activeContent = document.getElementById(`${tabId}-tab`);
+                if (activeContent) {
+                    activeContent.classList.remove('hidden');
+                }
+            }
+
+            // Close school modal
+            if (closeSchoolModalBtn) {
+                closeSchoolModalBtn.addEventListener('click', function () {
+                    schoolModal.classList.add('hidden');
+                    document.body.style.overflow = ''; // Reset overflow when modal is closed
+                });
+            }
+
+            // Close school modal when clicking outside
+            if (schoolModal) {
+                schoolModal.addEventListener('click', function (e) {
+                    if (e.target === schoolModal) {
+                        schoolModal.classList.add('hidden');
+                        document.body.style.overflow = ''; // Reset overflow when clicking outside
                     }
                 });
             }
+
+            // Close school modal with Escape key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && schoolModal && !schoolModal.classList.contains('hidden')) {
+                    schoolModal.classList.add('hidden');
+                }
+            });
         });
+    </script>
 
-        // Handle logout
-        function handleLogout() {
-            window.location.href = '../../login.html';
-        }
-
+    <script>
         // Program Details Modal functionality
         const programModal = document.getElementById('programModal');
         const closeModalBtn = document.getElementById('closeModal');
@@ -864,20 +1169,20 @@
         console.log('Setting up event listeners for buttons:', viewDetailsBtns.length); // Debug log
         viewDetailsBtns.forEach((btn, index) => {
             console.log('Adding listener to button', index, btn); // Debug log
-            btn.addEventListener('click', function(e) {
+            btn.addEventListener('click', function (e) {
                 e.preventDefault();
                 console.log('View Details clicked!'); // Debug log
                 const programId = btn.getAttribute('data-program-id');
                 console.log('Program ID:', programId); // Debug log
                 const program = programData[programId];
                 console.log('Program data:', program); // Debug log
-                
+
                 if (program) {
                     // Update modal header
                     document.getElementById('modalProgramName').textContent = program.name;
                     document.getElementById('modalUniversityName').textContent = program.university;
                     document.getElementById('modalLocation').textContent = program.location;
-                    
+
                     function updateScholarshipData(scholarshipType) {
                         const data = scholarshipData[scholarshipType];
                         if (data) {
@@ -889,29 +1194,29 @@
                             document.getElementById('subtotal').textContent = data.subtotal;
                             document.getElementById('scholarshipDiscount').textContent = data.scholarshipDiscount;
                             document.getElementById('finalCost').textContent = data.finalCost;
-                            
+
                             // Update Requirements data
                             const academicReqs = document.getElementById('academicRequirements');
                             academicReqs.innerHTML = data.academicRequirements.map(req => `<li>${req}</li>`).join('');
-                            
+
                             const languageReqs = document.getElementById('languageRequirements');
                             languageReqs.innerHTML = data.languageRequirements.map(req => `<li>${req}</li>`).join('');
-                            
+
                             const requiredDocs = document.getElementById('requiredDocuments');
                             requiredDocs.innerHTML = data.requiredDocuments.map(doc => `<li>${doc}</li>`).join('');
-                            
+
                             // Update Course Detail data
                             document.getElementById('programOverview').textContent = data.programOverview;
-                            
+
                             const coreCoursesList = document.getElementById('coreCourses');
                             coreCoursesList.innerHTML = data.coreCourses.map(course => `<li>${course}</li>`).join('');
-                            
+
                             document.getElementById('programDuration').textContent = data.programDuration;
                             document.getElementById('semesterBreakdown').textContent = data.semesterBreakdown;
                             document.getElementById('specializationTracks').textContent = data.specializationTracks;
                         }
                     }
-                    
+
                     // Update Institution Details
                     document.getElementById('modalSchoolId').textContent = program.schoolId;
                     document.getElementById('modalYearFounded').textContent = program.yearFounded;
@@ -920,30 +1225,30 @@
                     document.getElementById('modalLevel').textContent = program.level;
                     document.getElementById('modalIntake').textContent = program.intake;
                     document.getElementById('modalLanguage').textContent = program.language;
-                    
+
                     // Update Cost and Tuition
                     document.getElementById('modalAppFee').textContent = program.appFee;
                     document.getElementById('modalProgramLength').textContent = program.programLength;
                     document.getElementById('modalCostOfLiving').textContent = program.costOfLiving;
                     document.getElementById('modalTuition').textContent = program.tuition;
                     document.getElementById('modalDeadline').textContent = program.deadline;
-                    
+
                     // Update Scholarship Program Offer
                     document.getElementById('modalScholarshipAmount').textContent = program.scholarshipAmount;
                     document.getElementById('modalScholarshipCoverage').textContent = program.scholarshipCoverage;
                     document.getElementById('modalScholarshipSummary').textContent = program.scholarshipSummary;
-                    
+
                     // Update School Summary
                     document.getElementById('modalSchoolSummary').textContent = program.schoolSummary;
-                    
+
                     // Update other fields
                     document.getElementById('modalDescription').textContent = program.description;
                     document.getElementById('modalOfficialLink').href = program.officialLink;
                 }
-                
+
                 programModal.classList.remove('hidden');
                 console.log('Modal should be visible now'); // Debug log
-                
+
                 // Re-initialize icons for modal content
                 setTimeout(() => {
                     lucide.createIcons();
@@ -978,178 +1283,323 @@
         }
 
         // School Modal Functionality - Wrap in DOMContentLoaded to ensure elements exist
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Berkeley City College Modal
             const schoolModal = document.getElementById('schoolModal');
             const closeSchoolModalBtn = document.getElementById('closeSchoolModal');
-            
-            // University of Toronto Modal
-            const torontoModal = document.getElementById('schoolModalToronto');
-            const closeTorontoModalBtn = document.getElementById('closeTorontoModal');
-            
-            // Handle school name clicks
-            document.querySelectorAll('.school-name-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const school = this.getAttribute('data-school');
-                    if (school === 'tiffin-university') {
-                        torontoModal.classList.remove('hidden');
-                        document.body.style.overflow = 'hidden';
-                    } else if (school === 'berkeley-city-college') {
-                        schoolModal.classList.remove('hidden');
-                        document.body.style.overflow = 'hidden';
+            const schoolNameButtons = document.querySelectorAll('.school-name-btn');
+
+            console.log('School name buttons found:', schoolNameBtns.length);
+
+            // Program data
+            const programs = {
+                '1': {
+                    name: 'MSc in Data Science',
+                    university: 'University of British Columbia',
+                    location: 'Vancouver, Canada'
+                },
+                '2': {
+                    name: 'Bachelor of Computer Science',
+                    university: 'Tiffin University',
+                    location: 'Tiffin, Ohio, USA'
+                }
+            };
+
+            // School data
+            const schools = {
+                'berkeley-city-college': {
+                    name: 'Berkeley City College (BCC)',
+                    location: 'Berkeley, California, USA'
+                },
+                'ubc': {
+                    name: 'University of British Columbia',
+                    location: 'Vancouver, Canada'
+                },
+                'tiffin-university': {
+                    name: 'Tiffin University',
+                    location: 'Tiffin, Ohio, USA'
+                }
+            };
+
+            // Add click listeners to View Details buttons
+            viewDetailsBtns.forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const programId = btn.getAttribute('data-program-id');
+                    const program = programs[programId];
+
+                    if (program && modal) {
+                        // Update modal content
+                        const nameEl = document.getElementById('modalProgramName');
+                        const uniEl = document.getElementById('modalUniversityName');
+                        const locEl = document.getElementById('modalLocation');
+
+                        if (nameEl) nameEl.textContent = program.name;
+                        if (uniEl) uniEl.textContent = program.university;
+                        if (locEl) locEl.textContent = program.location;
+
+                        // Show modal
+                        modal.classList.remove('hidden');
+                        lucide.createIcons();
                     }
                 });
             });
-            
-            // Close Toronto Modal
-            if (closeTorontoModalBtn) {
-                closeTorontoModalBtn.addEventListener('click', function() {
-                    torontoModal.classList.add('hidden');
-                    document.body.style.overflow = '';
-                });
-            }
-            
-            // Close Toronto Modal when clicking outside
-            torontoModal.addEventListener('click', function(e) {
-                if (e.target === torontoModal) {
-                    torontoModal.classList.add('hidden');
-                    document.body.style.overflow = '';
-                }
-            });
-            
-            // Toronto Tab Functionality
-            const torontoTabButtons = document.querySelectorAll('.toronto-tab-btn');
-            torontoTabButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const tabId = this.getAttribute('data-tab');
-                    
-                    // Update active tab
-                    torontoTabButtons.forEach(btn => {
-                        btn.classList.remove('border-red-600', 'text-red-600');
-                        btn.classList.add('text-gray-500', 'hover:text-gray-700');
-                    });
-                    this.classList.add('border-red-600', 'text-red-600');
-                    this.classList.remove('text-gray-500', 'hover:text-gray-700');
-                    
-                    // Show corresponding tab content
-                    document.querySelectorAll('.toronto-tab-content').forEach(content => {
-                        content.classList.add('hidden');
-                    });
-                    document.getElementById(`toronto-${tabId}-tab`).classList.remove('hidden');
-                });
-            });
-            const schoolNameBtns = document.querySelectorAll('.school-name-btn');
-            const schoolTabBtns = document.querySelectorAll('.school-tab-btn');
-            const schoolTabContents = document.querySelectorAll('.school-tab-content');
-            
-            console.log('School modal element:', schoolModal);
-            console.log('Close button:', closeSchoolModalBtn);
-            console.log('School name buttons found:', schoolNameBtns.length);
 
-            // Handle school name clicks
+            // Add click listeners to school names
             schoolNameBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
+                btn.addEventListener('click', function (e) {
                     e.preventDefault();
                     console.log('School name clicked!');
                     const schoolId = btn.getAttribute('data-school');
                     console.log('School ID:', schoolId);
-                    
-                    // Show school modal
-                    if (schoolModal) {
-                        console.log('Opening school modal');
+                    const school = schools[schoolId];
+
+                    if (school && schoolModal) {
+                        // Update school modal content
+                        const nameEl = document.getElementById('schoolName');
+                        const locEl = document.getElementById('schoolLocation');
+
+                        if (nameEl) nameEl.textContent = school.name;
+                        if (locEl) locEl.textContent = school.location;
+
+                        // Show school modal
                         schoolModal.classList.remove('hidden');
-                        
-                        // Reset to overview tab
-                        showSchoolTab('overview');
-                        
+                        console.log('School modal should be visible');
                         lucide.createIcons();
-                    } else {
-                        console.error('School modal not found');
                     }
                 });
             });
 
-            // Handle school tab switching
-            schoolTabBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const tabId = btn.getAttribute('data-tab');
-                    showSchoolTab(tabId);
+            // Close program modal
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function () {
+                    modal.classList.add('hidden');
                 });
-            });
-
-            function showSchoolTab(tabId) {
-                // Remove active state from all tabs
-                schoolTabBtns.forEach(tab => {
-                    tab.classList.remove('border-b-2', 'border-red-600', 'text-red-600');
-                    tab.classList.add('text-gray-500');
-                });
-                
-                // Add active state to clicked tab
-                const activeTab = document.querySelector(`[data-tab="${tabId}"].school-tab-btn`);
-                if (activeTab) {
-                    activeTab.classList.remove('text-gray-500');
-                    activeTab.classList.add('border-b-2', 'border-red-600', 'text-red-600');
-                }
-                
-                // Hide all tab contents
-                schoolTabContents.forEach(content => {
-                    content.classList.add('hidden');
-                });
-                
-                // Show selected tab content
-                const activeContent = document.getElementById(`${tabId}-tab`);
-                if (activeContent) {
-                    activeContent.classList.remove('hidden');
-                }
             }
 
             // Close school modal
-            if (closeSchoolModalBtn) {
-                closeSchoolModalBtn.addEventListener('click', function() {
+            if (closeSchoolBtn) {
+                closeSchoolBtn.addEventListener('click', function () {
                     schoolModal.classList.add('hidden');
-                    document.body.style.overflow = ''; // Reset overflow when modal is closed
                 });
             }
 
-            // Close school modal when clicking outside
-            if (schoolModal) {
-                schoolModal.addEventListener('click', function(e) {
-                    if (e.target === schoolModal) {
-                        schoolModal.classList.add('hidden');
-                        document.body.style.overflow = ''; // Reset overflow when clicking outside
+            // Close on outside click
+            if (modal) {
+                modal.addEventListener('click', function (e) {
+                    if (e.target === modal) {
+                        modal.classList.add('hidden');
                     }
                 });
             }
 
-            // Close school modal with Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && schoolModal && !schoolModal.classList.contains('hidden')) {
-                    schoolModal.classList.add('hidden');
+            if (schoolModal) {
+                schoolModal.addEventListener('click', function (e) {
+                    if (e.target === schoolModal) {
+                        schoolModal.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Handle profile completion modal
+            const profileModal = document.getElementById('profileCompletionModal');
+            const closeProfileModal = document.getElementById('closeProfileModal');
+
+            // Function to show profile completion modal
+            function showProfileModal() {
+                if (profileModal) {
+                    profileModal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            // Close modal when clicking the close button
+            if (closeProfileModal) {
+                closeProfileModal.addEventListener('click', function () {
+                    if (profileModal) {
+                        profileModal.classList.add('hidden');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+
+            // Close modal when clicking outside
+            if (profileModal) {
+                profileModal.addEventListener('click', function (e) {
+                    if (e.target === profileModal) {
+                        profileModal.classList.add('hidden');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+
+            // Add event listeners to Program Card 3 buttons
+            const programCard3 = document.querySelector('.program-card-3');
+            if (programCard3) {
+                // School name button
+                const schoolNameBtn = programCard3.querySelector('.school-name-btn');
+                // School name click handler is now managed by the Berkeley modal code
+
+                // Add to Favorites and Apply Now buttons
+                const actionButtons = programCard3.querySelectorAll('button');
+                actionButtons.forEach(button => {
+                    const buttonText = button.textContent.trim();
+                    if (buttonText === 'Add to Favorites' || buttonText === 'Apply Now') {
+                        button.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            showProfileModal();
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const fieldOfStudyLabel = document.getElementById('fieldOfStudyLabel');
+            const searchInput = document.getElementById('fieldOfStudySearch');
+            const dropdown = document.querySelector('.field-of-study-dropdown');
+            const dropdownItems = dropdown ? dropdown.querySelectorAll('li') : [];
+            const hiddenInput = document.getElementById('fieldOfStudyValue');
+            const noResults1 = document.getElementById('noResults1');
+
+            // Show dropdown when clicking label or search input
+            fieldOfStudyLabel.addEventListener('click', function(e) {
+                e.preventDefault();
+                searchInput.focus();
+                dropdown.classList.remove('hidden');
+            });
+
+            searchInput.addEventListener('focus', function() {
+                dropdown.classList.remove('hidden');
+            });
+
+            // Handle item selection
+            dropdownItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const value = this.getAttribute('data-value');
+                    const text = this.textContent;
+                    searchInput.value = text;
+                    if (hiddenInput) hiddenInput.value = value;
+                    dropdown.classList.add('hidden');
+                });
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.field-of-study-dropdown') && e.target !== searchInput && e.target !== fieldOfStudyLabel) {
+                    dropdown.classList.add('hidden');
                 }
             });
+
+            // Filter items when typing
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                let hasVisibleItems = false;
+                
+                dropdownItems.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        hasVisibleItems = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide no results message
+                if (noResults1) {
+                    noResults1.classList.toggle('hidden', hasVisibleItems || !searchTerm);
+                }
+            });
+
+            // Second field of study dropdown
+            const fieldOfStudyLabel2 = document.getElementById('fieldOfStudyLabel2');
+            const searchInput2 = document.getElementById('fieldOfStudySearch2');
+            const dropdown2 = document.querySelectorAll('.field-of-study-dropdown')[1];
+            const dropdownItems2 = dropdown2 ? dropdown2.querySelectorAll('li') : [];
+            const hiddenInput2 = document.getElementById('fieldOfStudyValue2');
+            const noResults2 = document.getElementById('noResults2');
+
+            if (fieldOfStudyLabel2 && searchInput2 && dropdown2) {
+                // Show dropdown when clicking label or search input
+                fieldOfStudyLabel2.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    searchInput2.focus();
+                    dropdown2.classList.remove('hidden');
+                });
+
+                searchInput2.addEventListener('focus', function() {
+                    dropdown2.classList.remove('hidden');
+                });
+
+                // Handle item selection
+                dropdownItems2.forEach(item => {
+                    item.addEventListener('click', function() {
+                        const value = this.getAttribute('data-value');
+                        const text = this.textContent;
+                        searchInput2.value = text;
+                        if (hiddenInput2) hiddenInput2.value = value;
+                        dropdown2.classList.add('hidden');
+                    });
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.field-of-study-dropdown') && e.target !== searchInput2 && e.target !== fieldOfStudyLabel2) {
+                        dropdown2.classList.add('hidden');
+                    }
+                });
+
+                // Filter items when typing
+                searchInput2.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    let hasVisibleItems = false;
+                    
+                    dropdownItems2.forEach(item => {
+                        const text = item.textContent.toLowerCase();
+                        if (text.includes(searchTerm)) {
+                            item.style.display = 'block';
+                            hasVisibleItems = true;
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                    
+                    // Show/hide no results message
+                    if (noResults2) {
+                        noResults2.classList.toggle('hidden', hasVisibleItems || !searchTerm);
+                    }
+                });
+            }
         });
     </script>
 
     <!-- AI Assistant Floating Button -->
     <div id="aiAssistantButton" class="fixed bottom-6 right-6 z-50">
-        <button class="text-white rounded-full p-4 shadow-lg transition-all duration-300 hover:scale-110" style="background-color: rgb(237, 34, 23);" onmouseover="this.style.backgroundColor='#d82128'" onmouseout="this.style.backgroundColor='#d82128'">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="message-circle" class="lucide lucide-message-circle w-6 h-6"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg>
+        <button class="text-white rounded-full p-4 shadow-lg transition-all duration-300 hover:scale-110"
+            style="background-color: rgb(237, 34, 23);" onmouseover="this.style.backgroundColor='#d82128'"
+            onmouseout="this.style.backgroundColor='#d82128'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                data-lucide="message-circle" class="lucide lucide-message-circle w-6 h-6">
+                <path
+                    d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719">
+                </path>
+            </svg>
         </button>
     </div>
 
     <!-- AI Assistant Chat Panel -->
     <div id="aiChatOverlay" class="fixed z-50 hidden">
-        <div class="fixed bottom-0 left-0 right-0 md:right-6 md:bottom-6 md:left-auto md:w-96 bg-white rounded-t-3xl md:rounded-3xl shadow-2xl transform transition-transform duration-300 translate-y-full" id="aiChatPanel">
+        <div class="fixed bottom-0 left-0 right-0 md:right-6 md:bottom-6 md:left-auto md:w-96 bg-white rounded-3xl shadow-2xl transform transition-transform duration-300 translate-y-full"
+            id="aiChatPanel">
             <!-- Chat Header -->
-            <div class="flex items-center justify-between p-4 border-b border-gray-200">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background-color: #FEE2E2;">
-                        <i data-lucide="bot" class="w-5 h-5" style="color: #d82128;"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-semibold text-gray-900">AI Assistant</h3>
-                        <p class="text-sm text-green-600">Online</p>
-                    </div>
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h3 class="text-lg font-semibold" id="aiChatTitle">AI Assistant</h3>
+                    <p class="text-sm text-green-600" id="aiChatStatus">Online</p>
                 </div>
                 <button id="closeChatBtn" class="p-2 hover:bg-gray-100 rounded-full">
                     <i data-lucide="x" class="w-5 h-5 text-gray-500"></i>
@@ -1159,11 +1609,12 @@
             <!-- Chat Messages -->
             <div class="h-96 overflow-y-auto p-4 space-y-4" id="chatMessages">
                 <div class="flex items-start space-x-3">
-                    <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: #FEE2E2;">
-                        <i data-lucide="bot" class="w-4 h-4" style="color: #d82128;"></i>
+                    <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="bot" class="w-4 h-4 text-gray-600"></i>
                     </div>
                     <div class="bg-gray-100 rounded-2xl rounded-tl-md p-3 max-w-xs">
-                        <p class="text-sm text-gray-800">Hi! I can help you find the perfect program. What are you looking for?</p>
+                        <p class="text-sm text-gray-800">Hi! I can help you find the perfect program. What are you
+                            looking for?</p>
                     </div>
                 </div>
             </div>
@@ -1171,8 +1622,12 @@
             <!-- Chat Input -->
             <div class="p-4 border-t border-gray-200">
                 <div class="flex items-center space-x-2">
-                    <input type="text" id="chatInput" placeholder="Type your message..." class="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:border-transparent" style="--tw-ring-color: #d82128;">
-                    <button id="sendMessageBtn" class="text-white rounded-full p-2 transition-colors" style="background-color: #d82128;" onmouseover="this.style.backgroundColor='#d82128'" onmouseout="this.style.backgroundColor='#d82128'">
+                    <input type="text" id="chatInput" placeholder="Type your message..."
+                        class="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-red-500"
+                        style="--tw-ring-color: #d82128;">
+                    <button id="sendMessageBtn" class="text-white rounded-full p-2 transition-colors"
+                        style="background-color: #d82128;" onmouseover="this.style.backgroundColor='#d82128'"
+                        onmouseout="this.style.backgroundColor='#d82128'">
                         <i data-lucide="send" class="w-5 h-5"></i>
                     </button>
                 </div>
@@ -1191,7 +1646,7 @@
         const chatMessages = document.getElementById('chatMessages');
 
         // Open chat
-        aiButton.addEventListener('click', function() {
+        aiButton.addEventListener('click', function () {
             chatOverlay.classList.remove('hidden');
             setTimeout(() => {
                 chatPanel.classList.remove('translate-y-full');
@@ -1208,7 +1663,7 @@
         }
 
         closeChatBtn.addEventListener('click', closeChat);
-        chatOverlay.addEventListener('click', function(e) {
+        chatOverlay.addEventListener('click', function (e) {
             if (e.target === chatOverlay) {
                 closeChat();
             }
@@ -1258,35 +1713,35 @@
         }
 
         sendMessageBtn.addEventListener('click', sendMessage);
-        chatInput.addEventListener('keypress', function(e) {
+        chatInput.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 sendMessage();
             }
         });
 
         // Tab functionality
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (e.target.classList.contains('tab-btn')) {
                 const clickedTab = e.target.getAttribute('data-tab');
                 const cardId = e.target.getAttribute('data-card');
-                
+
                 // Remove active state from all tabs in this card
                 const tabButtons = document.querySelectorAll(`[data-card="${cardId}"].tab-btn`);
                 tabButtons.forEach(btn => {
                     btn.classList.remove('text-red-600', 'border-b-2', 'border-red-600');
                     btn.classList.add('text-gray-500');
                 });
-                
+
                 // Add active state to clicked tab
                 e.target.classList.remove('text-gray-500');
                 e.target.classList.add('text-red-600', 'border-b-2', 'border-red-600');
-                
+
                 // Hide all tab content in this card
                 const tabContents = document.querySelectorAll(`[data-card="${cardId}"].tab-content`);
                 tabContents.forEach(content => {
                     content.classList.add('hidden');
                 });
-                
+
                 // Show selected tab content
                 const activeContent = document.querySelector(`[data-tab="${clickedTab}"][data-card="${cardId}"].tab-content`);
                 if (activeContent) {
@@ -1296,13 +1751,13 @@
         });
 
         // Filter dropdown functionality
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (e.target.closest('.filter-toggle')) {
                 const button = e.target.closest('.filter-toggle');
                 const filterType = button.getAttribute('data-filter');
-                const content = document.querySelector(`[data-filter="${filterType}"].filter-content`);
+                const content = document.querySelector(`.filter-content[data-filter="${filterType}"]`);
                 const chevron = button.querySelector('[data-lucide="chevron-down"]');
-                
+
                 if (content.classList.contains('hidden')) {
                     content.classList.remove('hidden');
                     chevron.style.transform = 'rotate(180deg)';
@@ -1404,7 +1859,7 @@
                 requirements: {
                     academic: [
                         'High school diploma or equivalent',
-                        'Minimum GPA of 3.2/4.0 in final year',
+                        'Minimum GPA of 2.8/4.0 or equivalent',
                         'Strong performance in entrance examinations',
                         'Completion of prerequisite courses'
                     ],
@@ -1511,7 +1966,7 @@
                         'Team Leadership and Communication'
                     ],
                     duration: '4 years with athletic commitment',
-                    semesters: '8 semesters with seasonal training',
+                    semesters: '8 semesters over 4 years',
                     specializations: 'Team Sports, Individual Sports, Sports Management'
                 }
             },
@@ -1562,9 +2017,9 @@
         function updateScholarshipData(scholarshipType, cardNumber) {
             const data = scholarshipData[scholarshipType];
             if (!data) return;
-            
+
             const suffix = cardNumber === '1' ? '' : cardNumber;
-            
+
             // Update fees content
             const applicationFeeEl = document.getElementById(`applicationFee${suffix}`);
             const tuitionFeeEl = document.getElementById(`tuitionFee${suffix}`);
@@ -1573,7 +2028,7 @@
             const subtotalEl = document.getElementById(`subtotal${suffix}`);
             const scholarshipDiscountEl = document.getElementById(`scholarshipDiscount${suffix}`);
             const finalCostEl = document.getElementById(`finalCost${suffix}`);
-            
+
             if (applicationFeeEl) applicationFeeEl.textContent = data.fees.applicationFee;
             if (tuitionFeeEl) tuitionFeeEl.textContent = data.fees.tuition;
             if (livingExpensesEl) livingExpensesEl.textContent = data.fees.livingExpenses;
@@ -1586,12 +2041,12 @@
                 const final = total - discount;
                 finalCostEl.textContent = `$${final.toLocaleString()}`;
             }
-            
+
             // Update requirements content
             const academicReqEl = document.getElementById(`academicRequirements${suffix}`);
             const languageReqEl = document.getElementById(`languageRequirements${suffix}`);
             const documentsReqEl = document.getElementById(`requiredDocuments${suffix}`);
-            
+
             if (academicReqEl) {
                 academicReqEl.innerHTML = data.requirements.academic.map(req => `<li>${req}</li>`).join('');
             }
@@ -1601,14 +2056,14 @@
             if (documentsReqEl) {
                 documentsReqEl.innerHTML = data.requirements.documents.map(doc => `<li>${doc}</li>`).join('');
             }
-            
+
             // Update course details content
             const programOverviewEl = document.getElementById(`programOverview${suffix}`);
             const coreCoursesEl = document.getElementById(`coreCourses${suffix}`);
             const programDurationEl = document.getElementById(`programDuration${suffix}`);
             const semesterBreakdownEl = document.getElementById(`semesterBreakdown${suffix}`);
             const specializationTracksEl = document.getElementById(`specializationTracks${suffix}`);
-            
+
             if (programOverviewEl) programOverviewEl.textContent = data.courseDetails.overview;
             if (coreCoursesEl) {
                 coreCoursesEl.innerHTML = data.courseDetails.coreCourses.map(course => `<li>${course}</li>`).join('');
@@ -1619,16 +2074,16 @@
         }
 
         // Simple tab functionality for scholarship sections
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Initialize tab functionality for all scholarship sections
             const tabButtons = document.querySelectorAll('.tab-btn');
-            
+
             tabButtons.forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     const tabId = this.getAttribute('data-tab');
                     const cardId = this.getAttribute('data-card');
                     const section = this.closest('.border-t.pt-4');
-                    
+
                     if (section) {
                         showTab(section, tabId);
                     }
@@ -1640,21 +2095,19 @@
                 const tabButtons = section.querySelectorAll('.tab-btn');
                 tabButtons.forEach(btn => {
                     btn.classList.remove('text-red-600', 'border-b-2', 'border-red-600');
-                    btn.classList.add('text-gray-500', 'hover:text-gray-700');
+                    btn.classList.add('text-gray-500');
                 });
-                
                 const activeButton = section.querySelector(`.tab-btn[data-tab="${tabId}"]`);
                 if (activeButton) {
-                    activeButton.classList.remove('text-gray-500', 'hover:text-gray-700');
                     activeButton.classList.add('text-red-600', 'border-b-2', 'border-red-600');
+                    activeButton.classList.remove('text-gray-500');
                 }
-                
-                // Show active tab content
+
+                // Show corresponding tab content
                 const tabContents = section.querySelectorAll('.tab-content');
                 tabContents.forEach(content => {
                     content.classList.add('hidden');
                 });
-                
                 const activeContent = section.querySelector(`.tab-content[data-tab="${tabId}"]`);
                 if (activeContent) {
                     activeContent.classList.remove('hidden');
@@ -1670,7 +2123,7 @@
             // Add event listeners for scholarship dropdown changes
             const scholarshipDropdowns = document.querySelectorAll('.scholarship-dropdown');
             scholarshipDropdowns.forEach(dropdown => {
-                dropdown.addEventListener('change', function() {
+                dropdown.addEventListener('change', function () {
                     const scholarshipType = this.value;
                     const cardNumber = this.getAttribute('data-card');
                     updateScholarshipData(scholarshipType, cardNumber);
@@ -1685,21 +2138,21 @@
             });
         });
     </script>
-    
+
     <!-- Working Modal Script -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const modal = document.getElementById('programModal');
             const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
             const closeBtn = document.getElementById('closeModal');
-            
+
             // School modal elements
             const schoolModal = document.getElementById('schoolModal');
             const schoolNameBtns = document.querySelectorAll('.school-name-btn');
             const closeSchoolBtn = document.getElementById('closeSchoolModal');
-            
+
             console.log('School name buttons found:', schoolNameBtns.length);
-            
+
             // Program data
             const programs = {
                 '1': {
@@ -1708,12 +2161,12 @@
                     location: 'Vancouver, Canada'
                 },
                 '2': {
-                    name: 'Bachelor of Computer Science', 
+                    name: 'Bachelor of Computer Science',
                     university: 'Tiffin University',
                     location: 'Tiffin, Ohio, USA'
                 }
             };
-            
+
             // School data
             const schools = {
                 'berkeley-city-college': {
@@ -1729,48 +2182,48 @@
                     location: 'Tiffin, Ohio, USA'
                 }
             };
-            
+
             // Add click listeners to View Details buttons
             viewDetailsBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
+                btn.addEventListener('click', function (e) {
                     e.preventDefault();
                     const programId = btn.getAttribute('data-program-id');
                     const program = programs[programId];
-                    
+
                     if (program && modal) {
                         // Update modal content
                         const nameEl = document.getElementById('modalProgramName');
                         const uniEl = document.getElementById('modalUniversityName');
                         const locEl = document.getElementById('modalLocation');
-                        
+
                         if (nameEl) nameEl.textContent = program.name;
                         if (uniEl) uniEl.textContent = program.university;
                         if (locEl) locEl.textContent = program.location;
-                        
+
                         // Show modal
                         modal.classList.remove('hidden');
                         lucide.createIcons();
                     }
                 });
             });
-            
+
             // Add click listeners to school names
             schoolNameBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
+                btn.addEventListener('click', function (e) {
                     e.preventDefault();
-                    console.log('School name clicked');
+                    console.log('School name clicked!');
                     const schoolId = btn.getAttribute('data-school');
                     console.log('School ID:', schoolId);
                     const school = schools[schoolId];
-                    
+
                     if (school && schoolModal) {
                         // Update school modal content
                         const nameEl = document.getElementById('schoolName');
                         const locEl = document.getElementById('schoolLocation');
-                        
+
                         if (nameEl) nameEl.textContent = school.name;
                         if (locEl) locEl.textContent = school.location;
-                        
+
                         // Show school modal
                         schoolModal.classList.remove('hidden');
                         console.log('School modal should be visible');
@@ -1778,32 +2231,32 @@
                     }
                 });
             });
-            
+
             // Close program modal
             if (closeBtn) {
-                closeBtn.addEventListener('click', function() {
+                closeBtn.addEventListener('click', function () {
                     modal.classList.add('hidden');
                 });
             }
-            
+
             // Close school modal
             if (closeSchoolBtn) {
-                closeSchoolBtn.addEventListener('click', function() {
+                closeSchoolBtn.addEventListener('click', function () {
                     schoolModal.classList.add('hidden');
                 });
             }
-            
+
             // Close on outside click
             if (modal) {
-                modal.addEventListener('click', function(e) {
+                modal.addEventListener('click', function (e) {
                     if (e.target === modal) {
                         modal.classList.add('hidden');
                     }
                 });
             }
-            
+
             if (schoolModal) {
-                schoolModal.addEventListener('click', function(e) {
+                schoolModal.addEventListener('click', function (e) {
                     if (e.target === schoolModal) {
                         schoolModal.classList.add('hidden');
                     }
@@ -1824,7 +2277,7 @@
 
             // Close modal when clicking the close button
             if (closeProfileModal) {
-                closeProfileModal.addEventListener('click', function() {
+                closeProfileModal.addEventListener('click', function () {
                     if (profileModal) {
                         profileModal.classList.add('hidden');
                         document.body.style.overflow = '';
@@ -1834,7 +2287,7 @@
 
             // Close modal when clicking outside
             if (profileModal) {
-                profileModal.addEventListener('click', function(e) {
+                profileModal.addEventListener('click', function (e) {
                     if (e.target === profileModal) {
                         profileModal.classList.add('hidden');
                         document.body.style.overflow = '';
@@ -1854,7 +2307,7 @@
                 actionButtons.forEach(button => {
                     const buttonText = button.textContent.trim();
                     if (buttonText === 'Add to Favorites' || buttonText === 'Apply Now') {
-                        button.addEventListener('click', function(e) {
+                        button.addEventListener('click', function (e) {
                             e.preventDefault();
                             showProfileModal();
                         });
@@ -1870,7 +2323,9 @@
             <div class="flex justify-between items-start mb-6">
                 <div>
                     <h3 class="text-2xl font-bold text-gray-900">
-                        <a href="Student-program-details-2.html" target="_blank" class="hover:text-red-600 transition-colors cursor-pointer" onclick="document.getElementById('torontoModal').classList.add('hidden'); document.body.style.overflow = 'auto';">
+                        <a href="Student-program-details-2.html" target="_blank"
+                            class="hover:text-red-600 transition-colors cursor-pointer"
+                            onclick="document.getElementById('torontoModal').classList.add('hidden'); document.body.style.overflow = 'auto';">
                             Tiffin University
                         </a>
                     </h3>
@@ -1880,25 +2335,27 @@
                     <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
             </div>
-            
+
             <div class="grid md:grid-cols-2 gap-8">
                 <div>
                     <div class="aspect-w-16 aspect-h-9 mb-6">
-                        <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=450&fit=crop" 
-                             alt="Tiffin University Campus" 
-                             class="w-full h-auto rounded-lg object-cover">
+                        <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=450&fit=crop"
+                            alt="Tiffin University Campus" class="w-full h-auto rounded-lg object-cover">
                     </div>
-                    
+
                     <div class="space-y-4">
                         <div>
                             <h4 class="font-semibold text-gray-900 mb-2">About</h4>
                             <p class="text-gray-600 text-sm leading-relaxed">
-                                Tiffin University is a private university located in Tiffin, Ohio. Founded in 1888, TU is committed to transforming lives through education. 
-                                Follow a path. Blaze a trail. We challenge students to enhance their global competencies and skills for success in a diverse world. 
-                                With a 20:1 student-faculty ratio, we provide personalized attention and exceptional educational experiences.
+                                Tiffin University is a private university located in Tiffin, Ohio. Founded in 1888, TU
+                                is committed to transforming lives through education.
+                                Follow a path. Blaze a trail. We challenge students to enhance their global competencies
+                                and skills for success in a diverse world.
+                                With a 20:1 student-faculty ratio, we provide personalized attention and exceptional
+                                educational experiences.
                             </p>
                         </div>
-                        
+
                         <div>
                             <h4 class="font-semibold text-gray-900 mb-2">Quick Facts</h4>
                             <ul class="space-y-2 text-sm text-gray-600">
@@ -1911,38 +2368,43 @@
                                     <span>3,000+ students with 20:1 student-faculty ratio</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <i data-lucide="graduation-cap" class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
+                                    <i data-lucide="graduation-cap"
+                                        class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
                                     <span>50+ undergraduate and graduate programs</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <i data-lucide="dollar-sign" class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
+                                    <i data-lucide="dollar-sign"
+                                        class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
                                     <span>98% of students receive financial aid</span>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="space-y-6">
                     <div class="bg-gray-50 p-4 rounded-lg">
                         <h4 class="font-semibold text-gray-900 mb-3">Scholarships Available</h4>
                         <ul class="space-y-3">
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <i data-lucide="check-circle"
+                                    class="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"></i>
                                 <div>
                                     <p class="font-medium">Computer Science</p>
                                     <p class="text-sm text-gray-500">Bachelor of Science (BSc)</p>
                                 </div>
                             </li>
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <i data-lucide="check-circle"
+                                    class="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"></i>
                                 <div>
                                     <p class="font-medium">Engineering Science</p>
                                     <p class="text-sm text-gray-500">Bachelor of Applied Science (BASc)</p>
                                 </div>
                             </li>
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <i data-lucide="check-circle"
+                                    class="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"></i>
                                 <div>
                                     <p class="font-medium">Business Administration</p>
                                     <p class="text-sm text-gray-500">Bachelor of Business Administration (BBA)</p>
@@ -1950,10 +2412,11 @@
                             </li>
                         </ul>
                     </div>
-                    
+
                     <div class="bg-red-50 p-4 rounded-lg">
                         <h4 class="font-semibold text-red-700 mb-2">Scholarship Opportunities</h4>
-                        <p class="text-sm text-red-600 mb-3">Eligible students may qualify for the following scholarships:</p>
+                        <p class="text-sm text-red-600 mb-3">Eligible students may qualify for the following
+                            scholarships:</p>
                         <ul class="space-y-2 text-sm">
                             <li class="flex items-start">
                                 <i data-lucide="award" class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
@@ -1980,7 +2443,9 @@
             <div class="flex justify-between items-start mb-6">
                 <div>
                     <h3 class="text-2xl font-bold text-gray-900">
-                        <a href="Student-program-details.html" target="_blank" class="hover:text-red-600 transition-colors cursor-pointer" onclick="document.getElementById('berkeleyModal').classList.add('hidden'); document.body.style.overflow = 'auto';">
+                        <a href="Student-program-details.html" target="_blank"
+                            class="hover:text-red-600 transition-colors cursor-pointer"
+                            onclick="document.getElementById('berkeleyModal').classList.add('hidden'); document.body.style.overflow = 'auto';">
                             University of Berkeley
                         </a>
                     </h3>
@@ -1990,25 +2455,26 @@
                     <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
             </div>
-            
+
             <div class="grid md:grid-cols-2 gap-8">
                 <div>
                     <div class="aspect-w-16 aspect-h-9 mb-6">
-                        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&h=450&fit=crop" 
-                             alt="University of Berkeley Campus" 
-                             class="w-full h-auto rounded-lg object-cover">
+                        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&h=450&fit=crop"
+                            alt="University of Berkeley Campus" class="w-full h-auto rounded-lg object-cover">
                     </div>
-                    
+
                     <div class="space-y-4">
                         <div>
                             <h4 class="font-semibold text-gray-900 mb-2">About</h4>
                             <p class="text-gray-600 text-sm leading-relaxed">
-                                The University of Berkeley is a public land-grant research university in Berkeley, California. 
-                                Founded in 1868, it is the flagship campus of the University of California system and is consistently 
+                                The University of Berkeley is a public land-grant research university in Berkeley,
+                                California.
+                                Founded in 1868, it is the flagship campus of the University of California system and is
+                                consistently
                                 ranked among the top public universities in the world.
                             </p>
                         </div>
-                        
+
                         <div>
                             <h4 class="font-semibold text-gray-900 mb-2">Quick Facts</h4>
                             <ul class="space-y-2 text-sm text-gray-600">
@@ -2021,34 +2487,38 @@
                                     <span>45,000+ students from over 100 countries</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <i data-lucide="graduation-cap" class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
+                                    <i data-lucide="graduation-cap"
+                                        class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
                                     <span>350+ degree programs across 14 colleges and schools</span>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="space-y-6">
                     <div class="bg-gray-50 p-4 rounded-lg">
                         <h4 class="font-semibold text-gray-900 mb-3">Scholarships Available</h4>
                         <ul class="space-y-3">
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <i data-lucide="check-circle"
+                                    class="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"></i>
                                 <div>
                                     <p class="font-medium">Computer Science</p>
                                     <p class="text-sm text-gray-500">Master of Science (M.S.)</p>
                                 </div>
                             </li>
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <i data-lucide="check-circle"
+                                    class="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"></i>
                                 <div>
                                     <p class="font-medium">Business Administration</p>
                                     <p class="text-sm text-gray-500">Master of Business Administration (MBA)</p>
                                 </div>
                             </li>
                             <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <i data-lucide="check-circle"
+                                    class="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"></i>
                                 <div>
                                     <p class="font-medium">Electrical Engineering</p>
                                     <p class="text-sm text-gray-500">Master of Engineering (M.Eng)</p>
@@ -2056,10 +2526,11 @@
                             </li>
                         </ul>
                     </div>
-                    
+
                     <div class="bg-red-50 p-4 rounded-lg">
                         <h4 class="font-semibold text-red-700 mb-2">Scholarship Opportunities</h4>
-                        <p class="text-sm text-red-600 mb-3">Eligible students may qualify for the following scholarships:</p>
+                        <p class="text-sm text-red-600 mb-3">Eligible students may qualify for the following
+                            scholarships:</p>
                         <ul class="space-y-2 text-sm">
                             <li class="flex items-start">
                                 <i data-lucide="award" class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
@@ -2082,7 +2553,7 @@
 
     <!-- Modal JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Toronto Modal
             const torontoModal = document.getElementById('torontoModal');
             const closeTorontoModal = document.getElementById('closeTorontoModal');
@@ -2090,7 +2561,7 @@
 
             // Open Toronto modal
             torontoButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
+                button.addEventListener('click', function (e) {
                     e.preventDefault();
                     e.stopPropagation();
                     torontoModal.classList.remove('hidden');
@@ -2100,7 +2571,7 @@
 
             // Close Toronto modal
             if (closeTorontoModal) {
-                closeTorontoModal.addEventListener('click', function() {
+                closeTorontoModal.addEventListener('click', function () {
                     torontoModal.classList.add('hidden');
                     document.body.style.overflow = 'auto';
                 });
@@ -2113,7 +2584,7 @@
 
             // Open Berkeley modal
             berkeleyButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
+                button.addEventListener('click', function (e) {
                     e.preventDefault();
                     e.stopPropagation();
                     berkeleyModal.classList.remove('hidden');
@@ -2123,14 +2594,14 @@
 
             // Close Berkeley modal
             if (closeBerkeleyModal) {
-                closeBerkeleyModal.addEventListener('click', function() {
+                closeBerkeleyModal.addEventListener('click', function () {
                     berkeleyModal.classList.add('hidden');
                     document.body.style.overflow = 'auto';
                 });
             }
 
             // Close modals when clicking outside
-            window.addEventListener('click', function(event) {
+            window.addEventListener('click', function (event) {
                 if (event.target === torontoModal) {
                     torontoModal.classList.add('hidden');
                     document.body.style.overflow = 'auto';
@@ -2143,8 +2614,42 @@
         });
     </script>
 
+    <!-- Add these scripts before the closing body tag -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    // Initialize Select2 for all field of study dropdowns
+    $(document).ready(function() {
+        $('.field-of-study-select').select2({
+            placeholder: 'Select Field of Study',
+            allowClear: true,
+            width: '100%',
+            minimumResultsForSearch: 0, // Always show search
+            dropdownParent: $('body') // Ensure dropdown appears above other elements
+        });
+
+        // External search functionality
+        $('.search-field-of-study').on('input', function() {
+            const searchTerm = $(this).val().toLowerCase();
+            const $select = $(this).next('.field-of-study-select');
+            
+            // Open the dropdown
+            $select.select2('open');
+            
+            // Set the search term in Select2's search box
+            $('.select2-search__field').val(searchTerm).trigger('input');
+        });
+
+        // Style the search box
+        $(document).on('select2:open', function() {
+            $('.select2-search__field').addClass('text-sm rounded focus:ring-2 focus:ring-red-500 focus:border-transparent');
+        });
+    });
+</script>
+
     <!-- Profile Completion Modal -->
-    <div id="profileCompletionModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div id="profileCompletionModal"
+        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-2xl p-6 max-w-md w-full mx-4 shadow-xl">
             <div class="text-center">
                 <div class="mb-4">
@@ -2153,21 +2658,40 @@
                 <h3 class="text-lg font-semibold text-gray-900 mb-2">Profile Incomplete</h3>
                 <p class="text-gray-600 mb-6">To continue, please complete all the required fields in the profile.</p>
                 <div class="flex gap-3">
-                    <button id="closeProfileModal" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+                    <button id="closeProfileModal"
+                        class="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
                         Cancel
                     </button>
-                    <a href="Student-profile.html" target="_blank" class="go-to-profile flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-center">
+                    <a href="Student-profile.html" target="_blank"
+                        class="go-to-profile flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-center">
                         Go to your profile
                     </a>
                 </div>
                 <script>
                     // Add click event to close modal when profile link is clicked
-                    document.querySelector('.go-to-profile').addEventListener('click', function() {
+                    document.querySelector('.go-to-profile').addEventListener('click', function () {
                         document.getElementById('profileCompletionModal').classList.add('hidden');
+                    });
+                </script>
+                <script>
+                    // Toggle filter sections
+                    document.querySelectorAll('.filter-toggle').forEach(button => {
+                        button.addEventListener('click', function() {
+                            const filterType = this.getAttribute('data-filter');
+                            const content = document.querySelector(`.filter-content[data-filter="${filterType}"]`);
+                            const icon = this.querySelector('i');
+                            
+                            // Toggle content visibility
+                            content.classList.toggle('hidden');
+                            
+                            // Rotate chevron icon
+                            icon.classList.toggle('rotate-180');
+                        });
                     });
                 </script>
             </div>
         </div>
     </div>
 </body>
+
 </html>
