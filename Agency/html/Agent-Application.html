@@ -70,16 +70,85 @@
     </nav>
 </aside>
 
+    <!-- Filter Drawer Backdrop -->
+    <div id="filter-backdrop"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 opacity-0 pointer-events-none transition-opacity duration-300">
+    </div>
+
+    <!-- Filter Drawer -->
+    <aside id="filter-drawer"
+        class="fixed top-0 right-0 h-full w-96 bg-white shadow-xl transform translate-x-full transition-transform duration-300 z-50 flex flex-col">
+        <div class="flex items-center justify-between p-4 border-b">
+            <h3 class="text-lg font-semibold">Filter Applications</h3>
+            <button id="close-filter" class="text-gray-500 hover:text-gray-700">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <div class="flex-1 overflow-y-auto p-4 space-y-6">
+            <!-- Status Filter -->
+            <div>
+                <h4 class="text-sm font-medium text-gray-700 mb-2">Status</h4>
+                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                    <option>All Status</option>
+                    <option>Initial Advising</option>
+                    <option>Application In Progress</option>
+                    <option>Submitted to School</option>
+                    <option>School Response</option>
+                    <option>Offer Letter Issued</option>
+                    <option>Committed to School</option>
+                    <option>Visa Application</option>
+                    <option>Pre-departure</option>
+                    <option>Arrival</option>
+                </select>
+            </div>
+
+            <!-- Country Filter -->
+            <div>
+                <h4 class="text-sm font-medium text-gray-700 mb-2">Country</h4>
+                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                    <option>All Countries</option>
+                    <option>United States</option>
+                    <option>United Kingdom</option>
+                    <option>Canada</option>
+                    <option>Viet Nam</option>
+                    <option>Australia</option>
+                </select>
+            </div>
+
+            <!-- Intake Filter -->
+            <div>
+                <h4 class="text-sm font-medium text-gray-700 mb-2">Intake</h4>
+                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                    <option>All Intakes</option>
+                    <option>Fall 2024</option>
+                    <option>Spring 2025</option>
+                    <option>Summer 2025</option>
+                    <option>Fall 2025</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Drawer Footer -->
+        <div class="p-4 border-t flex justify-end space-x-3">
+            <button id="reset-filters"
+                class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                Reset
+            </button>
+            <button id="apply-filters"
+                class="px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors hover:opacity-90"
+                style="background-color: #d82128;">
+                Apply Filters
+            </button>
+        </div>
+    </aside>
+
     <!-- Main Content -->
     <div class="ml-64">
         <!-- Top Bar -->
         <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6">
             <h2 class="text-xl font-semibold text-gray-800">Applications</h2>
             <div class="flex items-center space-x-4">
-                <button class="flex items-center space-x-2 text-white px-4 py-2 rounded-xl transition-colors hover:opacity-90" style="background-color: #d82128;">
-                    <i data-lucide="download" class="w-4 h-4"></i>
-                    <span>Export</span>
-                </button>
                 <button class="relative">
                     <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
                     <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
@@ -87,16 +156,18 @@
                 <!-- Profile Dropdown -->
                 <div class="relative">
                     <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
-                             alt="Profile" 
-                             class="w-8 h-8 rounded-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop"
+                            alt="Profile" class="w-8 h-8 rounded-full object-cover">
                     </button>
+
                     <!-- Dropdown Menu -->
-                    <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                    <div id="profile-dropdown"
+                        class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
                         <a href="Agency-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                             <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
                         </a>
-                        <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        <a href="#" onclick="handleLogout()"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                             <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
                         </a>
                     </div>
@@ -104,39 +175,27 @@
             </div>
         </header>
 
-        <!-- Filter Toolbar -->
-        <div class="p-6">
-            <div class="grid grid-cols-5 gap-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                    <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                        <option value="all">All Status</option>
-                        <option value="submitted">Submitted</option>
-                        <option value="under_review">Under Review</option>
-                        <option value="accepted">Accepted</option>
-                        <option value="rejected">Rejected</option>
-                    </select>
+        <!-- View Toggle Buttons -->
+        <div class="mt-4 flex items-center justify-between px-6">
+            <div class="flex-1 flex items-center space-x-2 max-w-3xl">
+                <div class="relative w-full max-w-2xl">
+                    <i data-lucide="search" class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                    <input id="student-search" type="text" placeholder="Search by student name or email"
+                        class="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-red-500 focus:border-red-500">
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Student Name</label>
-                    <input type="text" placeholder="Search student..." 
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Program/Country</label>
-                    <input type="text" placeholder="Filter by program or country..." 
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Date Range</label>
-                    <input type="date" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                </div>
-                <div class="flex items-end">
-                    <label class="flex items-center space-x-2 cursor-pointer">
-                        <input type="checkbox" class="rounded border-gray-300 focus:ring-2" style="color: #d82128; --tw-ring-color: #d82128;">
-                        <span class="text-sm text-gray-700">Missing Documents Only</span>
-                    </label>
-                </div>
+                <button id="filter-toggle"
+                    class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-xl transition-colors hover:opacity-90"
+                    style="background-color: #d82128;">
+                    <i data-lucide="filter" class="w-4 h-4 text-white"></i>
+                </button>
+            </div>
+            <div class="flex items-center justify-end gap-2">
+                <button data-view="table" class="view-toggle px-3 py-2 text-sm font-medium rounded-lg bg-red-600 text-white">
+                    <i data-lucide="list" class="w-4 h-4 inline-block mr-1"></i> Table
+                </button>
+                <button data-view="board" class="view-toggle px-3 py-2 text-sm font-medium rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200">
+                    <i data-lucide="columns" class="w-4 h-4 inline-block mr-1"></i> Board
+                </button>
             </div>
         </div>
 
@@ -176,12 +235,12 @@
                         </div>
                         <p class="text-xs font-medium">Documents</p>
                     </div>
-                    <!-- Step 3: Program -->
+                    <!-- Step 3: Scholarship -->
                     <div class="text-center">
                         <div class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center mx-auto mb-2">
                             <i data-lucide="check" class="w-5 h-5"></i>
                         </div>
-                        <p class="text-xs font-medium">Program</p>
+                        <p class="text-xs font-medium">Scholarship</p>
                     </div>
                     <!-- Step 4: Submission -->
                     <div class="text-center">
@@ -207,12 +266,12 @@
                     <p id="modal-student-name" class="text-gray-900">Sarah Chen</p>
                 </div>
                 <div>
-                    <h4 class="text-sm font-medium text-gray-500 mb-1">Program</h4>
-                    <p id="modal-program-name" class="text-gray-900">MSc in Marketing</p>
+                    <h4 class="text-sm font-medium text-gray-500 mb-1">Scholarship</h4>
+                    <p id="modal-program-name" class="text-gray-900">Merit Scholarship</p>
                 </div>
                 <div>
                     <h4 class="text-sm font-medium text-gray-500 mb-1">University</h4>
-                    <p id="modal-university-name" class="text-gray-900">University of Sydney</p>
+                    <p id="modal-university-name" class="text-gray-900">Tiffin University</p>
                 </div>
                 <div>
                     <h4 class="text-sm font-medium text-gray-500 mb-1">Status</h4>
@@ -293,7 +352,7 @@
                                 <i data-lucide="check-circle" class="w-4 h-4 text-yellow-600"></i>
                             </div>
                             <div>
-                                <p class="text-sm font-medium">Confirm program selection with student</p>
+                                <p class="text-sm font-medium">Confirm scholarship selection with student</p>
                                 <p class="text-xs text-gray-500">System generated • Due tomorrow</p>
                             </div>
                         </div>
@@ -320,14 +379,15 @@
         </div>
     </div>
 
-        <!-- Applications Table -->
+        <!-- Table View (existing) -->
+        <div id="table-view" class="block">
         <div class="p-6">
             <div class="bg-white rounded-xl shadow-sm overflow-hidden">
                 <table class="w-full">
                     <thead class="bg-gray-50 border-b border-gray-200">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Student Name</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Program Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Scholarship Name</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Progress</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
@@ -340,9 +400,9 @@
                         <!-- Sample Row 1 -->
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4">
-                                <a href="Agent-Application-details.html" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800">Sarah Chen</a>
+                                <a href="Agent-Application-details.html" target="_blank" rel="noopener noreferrer" class="text-red-600 hover:text-red-800">Sarah Chen</a>
                             </td>
-                            <td class="px-6 py-4">MSc in Marketing – University of Sydney</td>
+                            <td class="px-6 py-4">Merit Scholarship – Tiffin University</td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center space-x-2">
                                     <div class="flex-grow h-1.5 bg-gray-200 rounded-full overflow-hidden">
@@ -363,17 +423,23 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex space-x-2">
-                                    <button onclick="openApplicationModal({ name: 'Sarah Chen', program: 'MSc in Marketing', university: 'University of Sydney', statusText: 'Under Review', statusClass: 'bg-yellow-100 text-yellow-800' })" class="hover:opacity-80" style="color: #d82128;">View</button>
-                                    <button class="text-gray-600 hover:text-gray-800">Send Reminder</button>
+                                    <button onclick="openApplicationModal({ name: 'Sarah Chen', program: 'MSc in Marketing', university: 'University of Sydney', statusText: 'Under Review', statusClass: 'bg-yellow-100 text-yellow-800' })" class="text-red-400 hover:text-red-700 mr-3 group relative">
+                                        <i data-lucide="eye" class="w-5 h-5"></i>
+                                        <span class="invisible group-hover:visible absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap">View Details</span>
+                                    </button>
+                                    <button class="text-red-400 hover:text-red-700 group relative">
+                                        <i data-lucide="send" class="w-5 h-5"></i>
+                                        <span class="invisible group-hover:visible absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap">Send Reminder</span>
+                                    </button>
                                 </div>
                             </td>
                         </tr>
                         <!-- Sample Row 2 -->
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4">
-                                <a href="Agent-Application-details.html" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800">John Smith</a>
+                                <a href="Agent-Application-details.html" target="_blank" rel="noopener noreferrer" class="text-red-600 hover:text-red-800">John Smith</a>
                             </td>
-                            <td class="px-6 py-4">Bachelor of Business – University of Melbourne</td>
+                            <td class="px-6 py-4">Green Future Scholarship – Tiffin University</td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center space-x-2">
                                     <div class="flex-grow h-1.5 bg-gray-200 rounded-full overflow-hidden">
@@ -394,8 +460,14 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex space-x-2">
-                                    <button onclick="openApplicationModal({ name: 'John Smith', program: 'Bachelor of Business', university: 'University of Melbourne', statusText: 'Missing Docs', statusClass: 'bg-red-100 text-red-800' })" class="hover:opacity-80" style="color: #d82128;">View</button>
-                                    <button class="text-gray-600 hover:text-gray-800">Upload Docs</button>
+                                    <button onclick="openApplicationModal({ name: 'John Smith', program: 'Bachelor of Business', university: 'University of Melbourne', statusText: 'Missing Docs', statusClass: 'bg-red-100 text-red-800' })" class="text-red-400 hover:text-red-700 mr-3 group relative">
+                                        <i data-lucide="eye" class="w-5 h-5"></i>
+                                        <span class="invisible group-hover:visible absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap">View Details</span>
+                                    </button>
+                                    <button class="text-red-400 hover:text-red-700 group relative">
+                                        <i data-lucide="upload" class="w-5 h-5"></i>
+                                        <span class="invisible group-hover:visible absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap">Upload Documents</span>
+                                    </button>
                                 </div>
                             </td>
                         </tr>
@@ -403,71 +475,412 @@
                 </table>
             </div>
         </div>
-    </div>
+        </div>
 
-    <!-- AI Assistant Floating Button -->
-    <div id="ai-assistant" class="fixed bottom-6 right-6 z-50">
-        <!-- Floating Button -->
-        <button id="ai-chat-toggle" class="w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110" style="background-color: #d82128;">
-            <i data-lucide="message-circle" class="w-6 h-6 text-white"></i>
-        </button>
-        
-        <!-- Chat Panel -->
-        <div id="ai-chat-panel" class="hidden absolute bottom-16 right-0 w-80 h-96 bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col">
-            <!-- Chat Header -->
-            <div class="flex items-center justify-between p-4 border-b border-gray-200 rounded-t-2xl" style="background-color: #FEF2F2;">
-                <div class="flex items-center space-x-3">
-                    <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #d82128;">
-                        <i data-lucide="bot" class="w-4 h-4 text-white"></i>
+        <!-- Kanban Board View (new) -->
+        <div id="board-view" class="hidden mt-6 px-6">
+            <div class="overflow-x-auto">
+                <div class="flex space-x-4 min-w-max pb-4">
+                    <!-- Step 1: Initial Advising -->
+                    <div class="flex-shrink-0 w-72">
+                        <div class="bg-white rounded-2xl shadow-sm">
+                            <div class="p-4 border-b border-gray-200">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-semibold text-gray-900">Initial Advising</h3>
+                                    <span id="count-initial_advising" class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">2</span>
+                                </div>
+                            </div>
+                            <div id="col-initial_advising" class="p-4 space-y-3 min-h-96 dropzone" data-status="initial_advising">
+                                <!-- Example Card -->
+                                <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move" draggable="true" data-app-id="app-2" data-status="initial_advising">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <a href="Agent-Application-details.html" target="_blank" rel="noopener noreferrer" class="font-medium text-sm text-red-600 hover:text-red-800">John Smith</a>
+                                        <span class="status-badge text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-800">Initial Advising</span>
+                                    </div>
+                                    <div class="text-xs text-gray-500">Green Future Scholarship – Tiffin University</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="font-medium text-gray-900">AI Assistant</h3>
-                        <div class="flex items-center space-x-1">
-                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                            <span class="text-xs text-gray-500">Online</span>
+
+                    <!-- Step 2: Application In Progress -->
+                    <div class="flex-shrink-0 w-72">
+                        <div class="bg-white rounded-2xl shadow-sm">
+                            <div class="p-4 border-b border-gray-200">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-semibold text-gray-900">Application In Progress</h3>
+                                    <span id="count-application_in_progress" class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">1</span>
+                                </div>
+                            </div>
+                            <div id="col-application_in_progress" class="p-4 space-y-3 min-h-96 dropzone" data-status="application_in_progress">
+                                <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move" draggable="true" data-app-id="app-1" data-status="application_in_progress">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <a href="Agent-Application-details.html" target="_blank" rel="noopener noreferrer" class="font-medium text-sm text-red-600 hover:text-red-800">Sarah Chen</a>
+                                        <span class="status-badge text-xs px-2 py-1 rounded-full bg-red-100 text-red-800">Application In Progress</span>
+                                    </div>
+                                    <div class="text-xs text-gray-500">Merit Scholarship – Tiffin University</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Submitted to School -->
+                    <div class="flex-shrink-0 w-72">
+                        <div class="bg-white rounded-2xl shadow-sm">
+                            <div class="p-4 border-b border-gray-200">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-semibold text-gray-900">Submitted to School</h3>
+                                    <span id="count-submitted_to_school" class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                </div>
+                            </div>
+                            <div id="col-submitted_to_school" class="p-4 space-y-3 min-h-96 dropzone" data-status="submitted_to_school"></div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: School Response -->
+                    <div class="flex-shrink-0 w-72">
+                        <div class="bg-white rounded-2xl shadow-sm">
+                            <div class="p-4 border-b border-gray-200">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-semibold text-gray-900">School Response</h3>
+                                    <span id="count-school_response" class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                </div>
+                            </div>
+                            <div id="col-school_response" class="p-4 space-y-3 min-h-96 dropzone" data-status="school_response"></div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Offer Letter Issued -->
+                    <div class="flex-shrink-0 w-72">
+                        <div class="bg-white rounded-2xl shadow-sm">
+                            <div class="p-4 border-b border-gray-200">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-semibold text-gray-900">Offer Letter Issued</h3>
+                                    <span id="count-offer_letter_issued" class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                </div>
+                            </div>
+                            <div id="col-offer_letter_issued" class="p-4 space-y-3 min-h-96 dropzone" data-status="offer_letter_issued"></div>
+                        </div>
+                    </div>
+
+                    <!-- Step 6: Committed to School -->
+                    <div class="flex-shrink-0 w-72">
+                        <div class="bg-white rounded-2xl shadow-sm">
+                            <div class="p-4 border-b border-gray-200">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-semibold text-gray-900">Committed to School</h3>
+                                    <span id="count-committed_to_school" class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                </div>
+                            </div>
+                            <div id="col-committed_to_school" class="p-4 space-y-3 min-h-96 dropzone" data-status="committed_to_school"></div>
+                        </div>
+                    </div>
+
+                    <!-- Step 7: Visa Application -->
+                    <div class="flex-shrink-0 w-72">
+                        <div class="bg-white rounded-2xl shadow-sm">
+                            <div class="p-4 border-b border-gray-200">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-semibold text-gray-900">Visa Application</h3>
+                                    <span id="count-visa_application" class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                </div>
+                            </div>
+                            <div id="col-visa_application" class="p-4 space-y-3 min-h-96 dropzone" data-status="visa_application"></div>
+                        </div>
+                    </div>
+
+                    <!-- Step 8: Pre-Departure -->
+                    <div class="flex-shrink-0 w-72">
+                        <div class="bg-white rounded-2xl shadow-sm">
+                            <div class="p-4 border-b border-gray-200">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-semibold text-gray-900">Pre-Departure</h3>
+                                    <span id="count-pre_departure" class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                </div>
+                            </div>
+                            <div id="col-pre_departure" class="p-4 space-y-3 min-h-96 dropzone" data-status="pre_departure"></div>
+                        </div>
+                    </div>
+
+                    <!-- Step 9: Arrival -->
+                    <div class="flex-shrink-0 w-72">
+                        <div class="bg-white rounded-2xl shadow-sm">
+                            <div class="p-4 border-b border-gray-200">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-semibold text-gray-900">Arrival</h3>
+                                    <span id="count-arrival" class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                </div>
+                            </div>
+                            <div id="col-arrival" class="p-4 space-y-3 min-h-96 dropzone" data-status="arrival"></div>
                         </div>
                     </div>
                 </div>
-                <button id="ai-chat-close" class="text-gray-400 hover:text-gray-600">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
-            </div>
-            
-            <!-- Chat Messages -->
-            <div class="flex-1 p-4 overflow-y-auto space-y-3">
-                <!-- AI Message -->
-                <div class="flex items-start space-x-2">
-                    <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: #FEF2F2;">
-                        <i data-lucide="bot" class="w-3 h-3" style="color: #d82128;"></i>
-                    </div>
-                    <div class="bg-gray-100 rounded-2xl px-3 py-2 max-w-xs">
-                        <p class="text-sm text-gray-800">Hello! I can help you track application progress and manage documents. What would you like to know?</p>
-                    </div>
-                </div>
-                
-                <!-- User Message Example -->
-                <div class="flex items-start space-x-2 justify-end">
-                    <div class="rounded-2xl px-3 py-2 max-w-xs" style="background-color: #d82128;">
-                        <p class="text-sm text-white">Show applications with missing documents</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Chat Input -->
-            <div class="p-4 border-t border-gray-200">
-                <div class="flex items-center space-x-2">
-                    <input type="text" placeholder="Type your message..." class="flex-1 px-3 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2" style="--tw-ring-color: #d82128;">
-                    <button class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #d82128;">
-                        <i data-lucide="send" class="w-4 h-4 text-white"></i>
-                    </button>
-                </div>
             </div>
         </div>
-    </div>
+
+        <script>
+        // Simple View Toggle using Tailwind 'hidden' classes and multiple toggle buttons
+        (function() {
+            const table = document.getElementById('table-view');
+            const board = document.getElementById('board-view');
+            const buttons = document.querySelectorAll('.view-toggle');
+
+            function setActive(isBoard) {
+                if (!table || !board) return;
+                if (isBoard) {
+                    table.classList.add('hidden');
+                    board.classList.remove('hidden');
+                } else {
+                    table.classList.remove('hidden');
+                    board.classList.add('hidden');
+                }
+                // update button styles
+                buttons.forEach(btn => {
+                    const wantBoard = btn.getAttribute('data-view') === 'board';
+                    btn.classList.toggle('bg-red-600', wantBoard === isBoard);
+                    btn.classList.toggle('text-white', wantBoard === isBoard);
+                    btn.classList.toggle('bg-gray-100', wantBoard !== isBoard);
+                    btn.classList.toggle('text-gray-600', wantBoard !== isBoard);
+                });
+                localStorage.setItem('viewMode', isBoard ? 'board' : 'table');
+            }
+
+            // Bind clicks
+            buttons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const view = btn.getAttribute('data-view');
+                    setActive(view === 'board');
+                });
+            });
+
+            // Initialize
+            const saved = localStorage.getItem('viewMode');
+            setActive(saved === 'board');
+        })();
+        </script>
+
+        <!-- DnD for Kanban Board -->
+        <script>
+        (function initKanbanDnD() {
+            const boardRoot = document.getElementById('board-view');
+            if (!boardRoot) return;
+
+            const dropzones = boardRoot.querySelectorAll('.dropzone');
+            const statusOrder = [
+                'initial_advising',
+                'application_in_progress',
+                'submitted_to_school',
+                'school_response',
+                'offer_letter_issued',
+                'committed_to_school',
+                'visa_application',
+                'pre_departure',
+                'arrival'
+            ];
+
+            function updateCounts() {
+                statusOrder.forEach(status => {
+                    const col = document.getElementById(`col-${status}`);
+                    const countSpan = document.getElementById(`count-${status}`);
+                    if (col && countSpan) {
+                        const count = col.querySelectorAll('[draggable="true"]').length;
+                        countSpan.textContent = count;
+                    }
+                });
+            }
+
+            function updateBadgeAppearance(card, status) {
+                const badge = card.querySelector('.status-badge');
+                if (!badge) return;
+                // reset
+                badge.className = 'status-badge text-xs px-2 py-1 rounded-full';
+                switch (status) {
+                    case 'initial_advising':
+                        badge.textContent = 'Initial Advising';
+                        badge.classList.add('bg-gray-100','text-gray-800');
+                        break;
+                    case 'application_in_progress':
+                        badge.textContent = 'Application In Progress';
+                        badge.classList.add('bg-red-100','text-red-800');
+                        break;
+                    case 'submitted_to_school':
+                        badge.textContent = 'Submitted to School';
+                        badge.classList.add('bg-yellow-100','text-yellow-800');
+                        break;
+                    case 'school_response':
+                        badge.textContent = 'School Response';
+                        badge.classList.add('bg-amber-100','text-amber-800');
+                        break;
+                    case 'offer_letter_issued':
+                        badge.textContent = 'Offer Letter Issued';
+                        badge.classList.add('bg-purple-100','text-purple-800');
+                        break;
+                    case 'committed_to_school':
+                        badge.textContent = 'Committed to School';
+                        badge.classList.add('bg-indigo-100','text-indigo-800');
+                        break;
+                    case 'visa_application':
+                        badge.textContent = 'Visa Application';
+                        badge.classList.add('bg-teal-100','text-teal-800');
+                        break;
+                    case 'pre_departure':
+                        badge.textContent = 'Pre-Departure';
+                        badge.classList.add('bg-sky-100','text-sky-800');
+                        break;
+                    case 'arrival':
+                        badge.textContent = 'Arrival';
+                        badge.classList.add('bg-green-100','text-green-800');
+                        break;
+                }
+            }
+
+            let draggedCard = null;
+
+            // Make existing cards draggable and bind events
+            boardRoot.querySelectorAll('[draggable="true"]').forEach(card => {
+                card.addEventListener('dragstart', (e) => {
+                    draggedCard = card;
+                    e.dataTransfer.effectAllowed = 'move';
+                    setTimeout(() => card.classList.add('opacity-50'), 0);
+                });
+                card.addEventListener('dragend', () => {
+                    if (draggedCard) draggedCard.classList.remove('opacity-50');
+                    draggedCard = null;
+                });
+            });
+
+            // Bind dropzones
+            dropzones.forEach(zone => {
+                zone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    zone.classList.add('ring-2','ring-gray-300');
+                    e.dataTransfer.dropEffect = 'move';
+                });
+                zone.addEventListener('dragleave', () => {
+                    zone.classList.remove('ring-2','ring-gray-300');
+                });
+                zone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    zone.classList.remove('ring-2','ring-gray-300');
+                    if (!draggedCard) return;
+                    // Move card
+                    zone.appendChild(draggedCard);
+                    const newStatus = zone.getAttribute('data-status');
+                    draggedCard.setAttribute('data-status', newStatus);
+                    updateBadgeAppearance(draggedCard, newStatus);
+                    updateCounts();
+                });
+            });
+
+            // Initialize counts on load
+            updateCounts();
+        })();
+        </script>
 
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
+
+        // Filter Drawer Functionality
+        const filterToggle = document.getElementById('filter-toggle');
+        const filterDrawer = document.getElementById('filter-drawer');
+        const filterBackdrop = document.getElementById('filter-backdrop');
+        const closeFilter = document.getElementById('close-filter');
+        const applyFiltersBtn = document.getElementById('apply-filters');
+        const resetFiltersBtn = document.getElementById('reset-filters');
+        const studentSearch = document.getElementById('student-search');
+
+        // Open drawer
+        function openFilterDrawer() {
+            filterDrawer.classList.remove('translate-x-full');
+            filterBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+            filterBackdrop.classList.add('opacity-100');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close drawer
+        function closeFilterDrawer() {
+            filterDrawer.classList.add('translate-x-full');
+            filterBackdrop.classList.add('opacity-0', 'pointer-events-none');
+            filterBackdrop.classList.remove('opacity-100');
+            document.body.style.overflow = '';
+        }
+
+        // Event Listeners
+        if (filterToggle) filterToggle.addEventListener('click', openFilterDrawer);
+        if (closeFilter) closeFilter.addEventListener('click', closeFilterDrawer);
+        if (filterBackdrop) filterBackdrop.addEventListener('click', closeFilterDrawer);
+
+        // Close with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeFilterDrawer();
+            }
+        });
+
+        // Search functionality
+        if (studentSearch) {
+            studentSearch.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                console.log('Searching for:', searchTerm);
+                // Add your search/filter logic here
+            });
+        }
+
+        // Apply filters
+        if (applyFiltersBtn) {
+            applyFiltersBtn.addEventListener('click', () => {
+                // Get all filter values
+                const filters = {
+                    status: document.querySelector('#filter-drawer select:nth-of-type(1)').value,
+                    country: document.querySelector('#filter-drawer select:nth-of-type(2)').value,
+                    programLevel: document.querySelector('#filter-drawer select:nth-of-type(3)').value,
+                    intake: document.querySelector('#filter-drawer select:nth-of-type(4)').value
+                };
+                
+                console.log('Applying filters:', filters);
+                closeFilterDrawer();
+                showToast('Filters applied successfully', 'success');
+            });
+        }
+
+        // Reset filters
+        if (resetFiltersBtn) {
+            resetFiltersBtn.addEventListener('click', () => {
+                const selects = filterDrawer.querySelectorAll('select');
+                selects.forEach(select => {
+                    select.selectedIndex = 0; // Reset to first option
+                });
+                showToast('Filters reset', 'info');
+            });
+        }
+
+        // Show toast notification
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            const bgColor = type === 'success' ? 'bg-green-500' : 'bg-blue-500';
+            
+            toast.className = `fixed top-4 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300`;
+            toast.textContent = message;
+
+            document.body.appendChild(toast);
+
+            // Slide in
+            setTimeout(() => {
+                toast.classList.remove('translate-x-full');
+            }, 100);
+
+            // Slide out and remove
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (document.body.contains(toast)) {
+                        document.body.removeChild(toast);
+                    }
+                }, 300);
+            }, 3000);
+        }
 
         // Application Modal
         const applicationModal = document.getElementById('application-modal');
@@ -497,13 +910,13 @@
         });
 
         // Handle status filter changes
-        document.querySelector('select').addEventListener('change', (e) => {
+        document.getElementById('status-filter').addEventListener('change', (e) => {
             console.log('Filter by status:', e.target.value);
             // Here you would typically filter the table
         });
 
         // Handle missing documents filter
-        document.querySelector('input[type="checkbox"]').addEventListener('change', (e) => {
+        document.getElementById('missing-docs-only').addEventListener('change', (e) => {
             console.log('Show missing documents only:', e.target.checked);
             // Here you would typically filter the table
         });
@@ -512,19 +925,25 @@
         const profileMenu = document.getElementById('profile-menu');
         const profileDropdown = document.getElementById('profile-dropdown');
 
-        profileMenu.addEventListener('click', (e) => {
-            e.stopPropagation();
-            profileDropdown.classList.toggle('hidden');
-        });
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle dropdown on profile button click
+            profileMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+                profileDropdown.classList.toggle('hidden');
+            });
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', () => {
-            profileDropdown.classList.add('hidden');
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!profileMenu.contains(e.target) && !profileDropdown.contains(e.target)) {
+                    profileDropdown.classList.add('hidden');
+                }
+            });
         });
 
         function handleLogout() {
             // Add your logout logic here
-            window.location.href = '../../login.html';
+            console.log('Logging out...');
+            // window.location.href = 'login.html'; // Uncomment this to redirect to login page
         }
 
         // Task Management Functions
@@ -596,5 +1015,4 @@
             }
         });
     </script>
-
 </body>

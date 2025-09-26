@@ -88,7 +88,7 @@
             </a>
         </nav>
         <div class="mt-auto px-6 py-4 border-t border-gray-200">
-            <p class="text-sm text-gray-600 text-center">© 2025 APPLYLEAD. All rights reserved.</p>
+            <p class="text-sm text-gray-600 text-center"> 2025 APPLYLEAD. All rights reserved.</p>
         </div>
     </aside>
     <!-- Main Content -->
@@ -169,7 +169,7 @@
                                                 <span class="text-xs text-gray-500">1 hour ago</span>
                                             </div>
                                             <p class="text-xs text-gray-600 mt-1">University Fair - Tomorrow at 2:00 PM</p>
-                                            <p class="text-xs text-gray-500 mt-1">📍 Convention Center, Hall A</p>
+                                            <p class="text-xs text-gray-500 mt-1"> Convention Center, Hall A</p>
                                             <div class="mt-2 flex space-x-2">
                                                 <button onclick="addToGoogleCalendar('University Fair', '2025-01-11T14:00:00', '2025-01-11T17:00:00', 'Annual University Fair with international institutions', 'Convention Center, Hall A')" class="text-xs px-2 py-1 rounded hover:opacity-80" style="background-color: #FEF2F2; color: #d82128;">
                                                     <i data-lucide="calendar-plus" class="w-3 h-3 inline mr-1"></i>Add to Calendar
@@ -194,7 +194,7 @@
                                                 <span class="text-xs text-gray-500">3 hours ago</span>
                                             </div>
                                             <p class="text-xs text-gray-600 mt-1">Mike Wong's application deadline is in 2 days</p>
-                                            <p class="text-xs text-gray-500 mt-1">📚 University of Toronto - MBA Program</p>
+                                            <p class="text-xs text-gray-500 mt-1"> University of Toronto - MBA Program</p>
                                             <div class="mt-2 flex space-x-2">
                                                 <button onclick="addToGoogleCalendar('Application Deadline - Mike Wong', '2025-01-12T23:59:00', '2025-01-12T23:59:00', 'Follow up on Mike Wong application deadline for University of Toronto MBA Program', 'Online')" class="text-xs px-2 py-1 rounded hover:opacity-80" style="background-color: #FEF2F2; color: #d82128;">
                                                     <i data-lucide="calendar-plus" class="w-3 h-3 inline mr-1"></i>Add Reminder
@@ -259,95 +259,116 @@
 
         <!-- Main Content Area -->
         <main class="flex-1 overflow-y-auto p-6">
-            <!-- Filter Bar -->
-            <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
-                    <!-- Campaign Type Filter -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Type</label>
-                        <select
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500">
-                            <option value="">All Types</option>
-                            <option value="event">Event</option>
-                            <option value="ads">Ads</option>
-                            <option value="partner">Partner</option>
-                            <option value="social">Social</option>
-                            <option value="website">Website</option>
-                        </select>
-                    </div>
+            <!-- Filter Drawer Backdrop -->
+            <div id="filter-backdrop" class="fixed inset-0 bg-black bg-opacity-50 z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
 
-                    <!-- Status Filter -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                        <select
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500">
-                            <option value="">All Status</option>
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
-                            <option value="expired">Expired</option>
-                        </select>
+            <!-- Filter Drawer -->
+            <div id="filter-drawer" class="fixed top-0 right-0 h-full w-96 bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out z-50 overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-medium text-gray-900">Filters</h3>
+                        <button id="close-filter" class="text-gray-400 hover:text-gray-500">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
                     </div>
+                    
+                    <div class="space-y-6">
+                        <!-- Campaign Type Filter -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Type</label>
+                            <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500">
+                                <option value="">All Types</option>
+                                <option value="event">Event</option>
+                                <option value="ads">Ads</option>
+                                <option value="partner">Partner</option>
+                                <option value="social">Social</option>
+                                <option value="website">Website</option>
+                            </select>
+                        </div>
 
-                    <!-- Partner Filter -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Partner</label>
-                        <select
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500">
-                            <option value="">All Partners</option>
-                            <option value="ellacy">Ellacy Foundation</option>
-                            <option value="agent1">Agent Partner 1</option>
-                            <option value="agent2">Agent Partner 2</option>
-                        </select>
-                    </div>
+                        <!-- Status Filter -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                            <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500">
+                                <option value="">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="expired">Expired</option>
+                            </select>
+                        </div>
 
-                    <!-- Region Filter -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Region</label>
-                        <select
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500">
-                            <option value="">All Regions</option>
-                            <option value="HN">Hanoi (HN)</option>
-                            <option value="SG">Singapore (SG)</option>
-                            <option value="US">United States (US)</option>
-                        </select>
-                    </div>
+                        <!-- Partner Filter -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Partner</label>
+                            <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500">
+                                <option value="">All Partners</option>
+                                <option value="ellacy">Ellacy Foundation</option>
+                                <option value="agent1">Agent Partner 1</option>
+                                <option value="agent2">Agent Partner 2</option>
+                            </select>
+                        </div>
 
-                    <!-- Date Range -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
-                        <input type="date"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500">
-                    </div>
+                        <!-- Region Filter -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Region</label>
+                            <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500">
+                                <option value="">All Regions</option>
+                                <option value="HN">Hanoi (HN)</option>
+                                <option value="SG">Singapore (SG)</option>
+                                <option value="US">United States (US)</option>
+                            </select>
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">End Date</label>
-                        <input type="date"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500">
-                    </div>
-                </div>
-
-                <!-- Search and Actions -->
-                <div class="flex items-center justify-between mt-4">
-                    <div class="flex items-center space-x-4">
-                        <div class="relative">
-                            <i data-lucide="search"
-                                class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-                            <input type="text" placeholder="Search campaigns or tokens..."
-                                class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 w-80">
+                        <!-- Date Range -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Date Range</label>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs text-gray-500 mb-1">Start Date</label>
+                                    <input type="date" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500">
+                                </div>
+                                <div>
+                                    <label class="block text-xs text-gray-500 mb-1">End Date</label>
+                                    <input type="date" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500">
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
+                
+                <!-- Drawer Footer -->
+                <div class="p-4 border-t flex justify-end space-x-3">
+                    <button id="reset-filters" class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                        Reset
+                    </button>
+                    <button id="apply-filters" class="px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors hover:opacity-90" style="background-color: #d82128;">
+                        Apply Filters
+                    </button>
+                </div>
+            </div>
 
+            <!-- Search and Actions -->
+            <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <i data-lucide="search" class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            <input type="text" placeholder="Search campaigns or tokens..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 w-80">
+                        </div>
+                        <button id="filter-toggle" class="inline-flex items-center px-4 py-2 border border-red-400 text-red-400 rounded-lg hover:bg-red-50 transition-colors">
+                            <i data-lucide="filter" class="w-4 h-4 mr-2"></i>
+                            Filter
+                        </button>
+                    </div>
+                    
                     <div class="flex items-center space-x-3">
                         <!-- Bulk Actions -->
-                        <button
-                            class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">
+                        <button class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">
                             <i data-lucide="download" class="w-4 h-4 mr-2"></i>
                             Export CSV
                         </button>
-
-                        <button onclick="openCreateCampaignModal()"
-                            class="inline-flex items-center px-4 py-2 text-white rounded-lg text-sm font-medium hover:bg-red-700"
-                            style="background-color: #d82128;">
+                       
+                        <button onclick="openCreateCampaignModal()" class="inline-flex items-center px-4 py-2 text-white rounded-lg text-sm font-medium hover:bg-red-700" style="background-color: #d82128;">
                             <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
                             New Campaign
                         </button>
@@ -1575,6 +1596,80 @@
             // Add your logout logic here
             console.log('Logging out...');
             // window.location.href = '/logout';
+        }
+    </script>
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+        
+        // Filter Drawer Functionality
+        const filterToggle = document.getElementById('filter-toggle');
+        const filterDrawer = document.getElementById('filter-drawer');
+        const filterBackdrop = document.getElementById('filter-backdrop');
+        const closeFilter = document.getElementById('close-filter');
+        const applyFiltersBtn = document.getElementById('apply-filters');
+        const resetFiltersBtn = document.getElementById('reset-filters');
+
+        // Open drawer
+        function openFilterDrawer() {
+            filterDrawer.classList.remove('translate-x-full');
+            filterBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+            filterBackdrop.classList.add('opacity-100');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close drawer
+        function closeFilterDrawer() {
+            filterDrawer.classList.add('translate-x-full');
+            filterBackdrop.classList.add('opacity-0', 'pointer-events-none');
+            filterBackdrop.classList.remove('opacity-100');
+            document.body.style.overflow = '';
+        }
+
+        // Event Listeners
+        if (filterToggle) filterToggle.addEventListener('click', openFilterDrawer);
+        if (closeFilter) closeFilter.addEventListener('click', closeFilterDrawer);
+        if (filterBackdrop) filterBackdrop.addEventListener('click', closeFilterDrawer);
+
+        // Close with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeFilterDrawer();
+            }
+        });
+
+        // Apply filters
+        if (applyFiltersBtn) {
+            applyFiltersBtn.addEventListener('click', () => {
+                // Here you would typically apply the filters to your data
+                closeFilterDrawer();
+                showToast('Filters applied successfully', 'success');
+            });
+        }
+
+        // Reset filters
+        if (resetFiltersBtn) {
+            resetFiltersBtn.addEventListener('click', () => {
+                const selects = filterDrawer.querySelectorAll('select');
+                const inputs = filterDrawer.querySelectorAll('input[type="date"]');
+                
+                selects.forEach(select => {
+                    select.selectedIndex = 0; // Reset to first option
+                });
+                
+                inputs.forEach(input => {
+                    input.value = ''; // Clear date inputs
+                });
+                
+                // Here you would typically reset any filtered data
+                showToast('Filters reset', 'info');
+            });
+        }
+
+        // Toast notification function
+        function showToast(message, type = 'info') {
+            // You can implement a toast notification here if needed
+            console.log(`${type.toUpperCase()}: ${message}`);
         }
     </script>
 </body>

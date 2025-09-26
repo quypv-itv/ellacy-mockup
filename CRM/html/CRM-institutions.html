@@ -106,53 +106,79 @@
                 </div>
             </header>
 
-            <!-- Main Content Area -->
-            <main class="flex-1 overflow-y-auto p-6">
-                <!-- Filter & Search Bar -->
-                <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
-                    <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Country / Region</label>
-                            <select class="w-full rounded-lg border-gray-300">
-                                <option value="">All Countries</option>
-                                <option value="au">Australia</option>
-                                <option value="uk">United Kingdom</option>
-                                <option value="us">United States</option>
-                            </select>
+            <!-- Filter & Search Bar -->
+            <div class="p-6">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <i data-lucide="search" class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            <input type="text" placeholder="Search institutions..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-red-400 focus:border-red-400 w-64">
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Partnership Type</label>
-                            <select class="w-full rounded-lg border-gray-300">
-                                <option value="">All Types</option>
-                                <option value="direct">Direct</option>
-                                <option value="3rd-party">3rd-party</option>
-                                <option value="moa">MOA</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                            <select class="w-full rounded-lg border-gray-300">
-                                <option value="">All Status</option>
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Search</label>
-                            <div class="relative">
-                                <input type="text" placeholder="Search institutions..." class="w-full rounded-lg border-gray-300 pl-10">
-                                <i data-lucide="search" class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
-                            </div>
-                        </div>
-                        <div class="flex items-end">
-                            <button onclick="openAddInstitutionModal()" class="w-full bg-red-400 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center justify-center">
-                                <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
-                                Add Institution
-                            </button>
-                        </div>
+                        <button id="filter-toggle" class="inline-flex items-center px-4 py-2 border border-red-400 text-red-400 rounded-lg hover:bg-red-50 transition-colors">
+                            <i data-lucide="filter" class="w-4 h-4 mr-2"></i>
+                            Filters
+                        </button>
+                    </div>
+                    <button onclick="openAddInstitutionModal()" class="inline-flex items-center px-4 py-2 bg-red-400 text-white text-sm font-medium rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        <i data-lucide="plus" class="w-4 h-4 mr-1.5"></i>
+                        Add Institution
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter Drawer Backdrop -->
+            <div id="filter-backdrop" class="fixed inset-0 bg-black bg-opacity-50 z-40 opacity-0 pointer-events-none transition-opacity duration-300">
+            </div>
+
+            <!-- Filter Drawer -->
+            <div id="filter-drawer" class="fixed top-0 right-0 h-full w-96 bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out z-50 overflow-y-auto">
+                <div class="p-4 border-b flex justify-between items-center sticky top-0 bg-white z-10">
+                    <h3 class="text-lg font-medium text-gray-900">Filters</h3>
+                    <button id="close-filter" class="text-gray-400 hover:text-red-400">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+                <div class="p-4 space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Country / Region</label>
+                        <select class="w-full rounded-lg border-gray-300">
+                            <option value="">All Countries</option>
+                            <option value="au">Australia</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="us">United States</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Partnership Type</label>
+                        <select class="w-full rounded-lg border-gray-300">
+                            <option value="">All Types</option>
+                            <option value="direct">Direct</option>
+                            <option value="3rd-party">3rd-party</option>
+                            <option value="moa">MOA</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                        <select class="w-full rounded-lg border-gray-300">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
                     </div>
                 </div>
+                <!-- Drawer Footer -->
+                <div class="p-4 border-t flex justify-end space-x-3 sticky bottom-0 bg-white">
+                    <button id="reset-filters" class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                        Reset
+                    </button>
+                    <button id="apply-filters" class="px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors hover:opacity-90" style="background-color: #d82128;">
+                        Apply Filters
+                    </button>
+                </div>
+            </div>
 
+            <!-- Main Content Area -->
+            <main class="flex-1 overflow-y-auto px-6 pb-6">
                 <!-- Institutions Table -->
                 <div class="bg-white rounded-lg shadow-sm overflow-hidden">
                     <table class="min-w-full divide-y divide-gray-200">
@@ -239,9 +265,9 @@
                                 <div class="ml-4">
                                     <div class="flex items-center space-x-3">
                                         <h4 class="text-xl font-semibold text-gray-900">Tiffin University</h4>
-                                        <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Active</span>
-                                        <span class="px-2 py-1 text-xs rounded-full bg-purple-100 text-purple-800">Private</span>
-                                        <span class="px-2 py-1 text-xs rounded-full bg-orange-100 text-orange-800">Strategic</span>
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-purple-800">Private</span>
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-100 text-orange-800">Strategic</span>
                                     </div>
                                     <p class="text-sm text-gray-500">Tiffin, Ohio, USA • Established 1888</p>
                                 </div>
@@ -1069,7 +1095,7 @@
             return {
                 name: name,
                 url: url,
-                logo: 'https://ui-avatars.com/api/?name=' + encodeURIComponent(name) + '&background=0D8ABC&color=fff',
+                logo: 'https://ui-avatars.com/api/?name=' + encodeURIComponent(name) + '&background=d82128&color=fff',
                 location: 'Toronto, ON, Canada',
                 address: '27 King\'s College Circle, Toronto, ON M5S 3M2',
                 studentPopulation: '97,000+',
@@ -1549,6 +1575,64 @@
                 minimumResultsForSearch: 6
             });
         });
+    </script>
+    <script>
+        // Filter Drawer Functionality
+        const filterToggle = document.getElementById('filter-toggle');
+        const filterDrawer = document.getElementById('filter-drawer');
+        const filterBackdrop = document.getElementById('filter-backdrop');
+        const closeFilter = document.getElementById('close-filter');
+        const applyFiltersBtn = document.getElementById('apply-filters');
+        const resetFiltersBtn = document.getElementById('reset-filters');
+
+        // Open drawer
+        function openFilterDrawer() {
+            filterDrawer.classList.remove('translate-x-full');
+            filterBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+            filterBackdrop.classList.add('opacity-100');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close drawer
+        function closeFilterDrawer() {
+            filterDrawer.classList.add('translate-x-full');
+            filterBackdrop.classList.add('opacity-0', 'pointer-events-none');
+            filterBackdrop.classList.remove('opacity-100');
+            document.body.style.overflow = '';
+        }
+
+        // Event Listeners
+        if (filterToggle) filterToggle.addEventListener('click', openFilterDrawer);
+        if (closeFilter) closeFilter.addEventListener('click', closeFilterDrawer);
+        if (filterBackdrop) filterBackdrop.addEventListener('click', closeFilterDrawer);
+
+        // Close with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeFilterDrawer();
+            }
+        });
+
+        // Apply filters
+        if (applyFiltersBtn) {
+            applyFiltersBtn.addEventListener('click', () => {
+                // Here you would typically apply the filters to your data
+                closeFilterDrawer();
+                showNotification('Filters applied successfully', 'success');
+            });
+        }
+
+        // Reset filters
+        if (resetFiltersBtn) {
+            resetFiltersBtn.addEventListener('click', () => {
+                const selects = filterDrawer.querySelectorAll('select');
+                selects.forEach(select => {
+                    select.selectedIndex = 0; // Reset to first option
+                });
+                // Here you would typically reset any filtered data
+                showNotification('Filters reset', 'info');
+            });
+        }
     </script>
 </body>
 </html>

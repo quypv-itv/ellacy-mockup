@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,28 +15,132 @@
         body {
             font-family: 'Inter', sans-serif;
         }
+
         .brand-red {
             background-color: #d82128;
         }
+
         .brand-red-light {
             background-color: #FEF2F2;
         }
+
         .text-brand-red {
             color: #d82128;
         }
+
         .border-brand-red {
             border-color: #d82128;
         }
+
         .hover\:bg-brand-red:hover {
             background-color: #d82128;
         }
     </style>
 </head>
+
 <body style="background-color: #F9F9F9;">
+    <!-- Filter Drawer Backdrop -->
+    <div id="filter-backdrop"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 opacity-0 pointer-events-none transition-opacity duration-300">
+    </div>
+
+    <!-- Filter Drawer -->
+    <aside id="filter-drawer"
+        class="fixed top-0 right-0 h-full w-96 bg-white shadow-xl transform translate-x-full transition-transform duration-300 z-50 flex flex-col">
+        <div class="flex items-center justify-between p-4 border-b">
+            <h3 class="text-lg font-semibold">Filter Students</h3>
+            <button id="close-filter" class="text-gray-500 hover:text-gray-700">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <div class="flex-1 overflow-y-auto p-4 space-y-6">
+            <!-- Status Filter -->
+            <div>
+                <h4 class="text-sm font-medium text-gray-700 mb-2">Status</h4>
+                <select
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <option>All Status</option>
+                    <option>Initial Advising</option>
+                    <option>Application In Progress</option>
+                    <option>Submitted to School</option>
+                    <option>School Response</option>
+                    <option>Offered Letter Issued</option>
+                    <option>Committed to School</option>
+                    <option>Visa Application</option>
+                    <option>Pre-departure</option>
+                    <option>Arrival</option>
+                </select>
+            </div>
+
+            <!-- Country Filter -->
+            <div>
+                <h4 class="text-sm font-medium text-gray-700 mb-2">Country</h4>
+                <select
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <option>All Countries</option>
+                    <option>United States</option>
+                    <option>United Kingdom</option>
+                    <option>Canada</option>
+                    <option>Viet Nam</option>
+                    <option>Australia</option>
+                </select>
+            </div>
+
+            <!-- Intake Filter -->
+            <div>
+                <h4 class="text-sm font-medium text-gray-700 mb-2">Intake</h4>
+                <select
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <option>All Intakes</option>
+                    <option>Fall 2024</option>
+                    <option>Spring 2025</option>
+                    <option>Summer 2025</option>
+                    <option>Fall 2025</option>
+                    <option>Spring 2026</option>
+                </select>
+            </div>
+
+            <!-- Agent Filter -->
+            <div>
+                <h4 class="text-sm font-medium text-gray-700 mb-2">Agent</h4>
+                <select
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <option>All Agents</option>
+                    <option>John Smith</option>
+                    <option>Emily Davis</option>
+                </select>
+            </div>
+
+            <!-- Activity Filter -->
+            <div>
+                <h4 class="text-sm font-medium text-gray-700 mb-2">Activity</h4>
+                <select
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <option>All Activity</option>
+                    <option>Active Student</option>
+                    <option>Inactive Student</option>
+                </select>
+            </div>
+            <!-- Drawer Footer -->
+            <div class="p-4 border-t flex justify-end space-x-3">
+                <button id="reset-filters"
+                    class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                    Reset
+                </button>
+                <button id="apply-filters"
+                    class="px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors hover:opacity-90"
+                    style="background-color: #d82128;">
+                    Apply Filters
+                </button>
+            </div>
+        </div>
+    </aside>
+
     <!-- Sidebar -->
     <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
         <div class="p-6">
-             <img src="../../ApplyLead_logo.png" alt="ApplyLead" class="h-9 mb-2">
+            <img src="../../ApplyLead_logo.png" alt="ApplyLead" class="h-9 mb-2">
             <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Agent</span>
         </div>
         <nav class="mt">
@@ -81,7 +186,7 @@
             </a>
         </nav>
         <div class="mt-auto px-6 py-4 border-t border-gray-200">
-            <p class="text-sm text-gray-600 text-center">© 2025 APPLYLEAD. All rights reserved.</p>
+            <p class="text-sm text-gray-600 text-center">&copy; 2025 APPLYLEAD. All rights reserved.</p>
         </div>
     </aside>
 
@@ -98,17 +203,18 @@
                 <!-- Profile Dropdown -->
                 <div class="relative">
                     <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
-                             alt="Profile" 
-                             class="w-8 h-8 rounded-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop"
+                            alt="Profile" class="w-8 h-8 rounded-full object-cover">
                     </button>
-                    
+
                     <!-- Dropdown Menu -->
-                    <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                    <div id="profile-dropdown"
+                        class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
                         <a href="Agency-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                             <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
                         </a>
-                        <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        <a href="#" onclick="handleLogout()"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                             <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
                         </a>
                     </div>
@@ -121,66 +227,37 @@
             <!-- Search and Filters -->
             <div class="mb-6 space-y-4">
                 <div class="flex items-center justify-between">
-                    <div class="relative flex-1 max-w-lg">
-                        <i data-lucide="search" class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
-                        <input type="text" 
-                               placeholder="Search by student name or email" 
-                               class="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <div class="relative flex-1 max-w-2xl">
+                        <div class="flex items-center space-x-2">
+                            <div class="relative flex-1">
+                                <i data-lucide="search"
+                                    class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                                <input type="text" placeholder="Search by student name or email"
+                                    class="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <button id="filter-toggle"
+                                class="flex items-center justify-center w-10 h-10 rounded-xl transition-colors hover:opacity-90"
+                                style="background-color: #d82128;">
+                                <i data-lucide="filter" class="w-4 h-4 text-white"></i>
+                            </button>
+                        </div>
                     </div>
-                    <button onclick="openAddStudentModal()" class="text-white px-4 py-2 rounded-xl transition-colors hover:opacity-90" style="background-color: #d82128;">
+                    <button onclick="openAddStudentModal()"
+                        class="text-white px-4 py-2 rounded-xl transition-colors hover:opacity-90 flex items-center"
+                        style="background-color: #d82128;">
                         <i data-lucide="plus" class="w-5 h-5 inline-block mr-1"></i>
-                        Add New Student
+                        <span>Add New Student</span>
                     </button>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <select class="rounded-lg border border-gray-300 px-3 py-2 text-sm">
-                        <option>All Status</option>
-                        <option>Initial Advising</option>
-                        <option>Application In Progress</option>
-                        <option>Submitted to School</option>
-                        <option>School Response</option>
-                        <option>Offered Letter Issued</option>
-                        <option>Committed to School</option>
-                        <option>Visa Application</option>
-                        <option>Pre-departure</option>
-                        <option>Arrival</option>
-                    </select>
-                 
-                    <select class="rounded-lg border border-gray-300 px-3 py-2 text-sm">
-                        <option>All Countries</option>
-                        <option>Canada</option>
-                        <option>Viet Nam</option>
-                        <option>Australia</option>
-                    </select>
-                    <select class="rounded-lg border border-gray-300 px-3 py-2 text-sm">
-                        <option>All Intakes</option>
-                        <option>Fall 2024</option>
-                        <option>Spring 2025</option>
-                        <option>Fall 2025</option>
-                    </select>
-                    <select id="agent-filter" class="rounded-lg border border-gray-300 px-3 py-2 text-sm">
-                        <option value="all">All Agents</option>
-                        <option value="john-smith">John Smith</option>
-                        <option value="emily-davis">Emily Davis</option>
-                        <option value="michael-chen">Michael Chen</option>
-                    </select>
-                    <select id="activity-filter" class="rounded-lg border border-gray-300 px-3 py-2 text-sm">
-                        <option value="all">All Activity</option>
-                        <option value="active">Active Students</option>
-                        <option value="inactive">Inactive Students</option>
-                    </select>
-                    <!-- View Toggle Buttons -->
-                    <div class="flex items-center space-x-2 ml-4">
-                        <button id="table-view-btn" class="px-3 py-2 text-sm font-medium rounded-lg transition-colors" style="background-color: #d82128; color: white;">
-                            <i data-lucide="list" class="w-4 h-4 inline-block mr-1"></i>
-                            
-                        </button>
-                        <button id="board-view-btn" class="px-3 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
-                            <i data-lucide="columns" class="w-4 h-4 inline-block mr-1"></i>
-                            
-                        </button>
-                    </div>
-                </div>
+                <!-- View Toggle Buttons -->
+                <!--<div class="flex items-center space-x-2 ml-4">
+                            <button id="table-view-btn" class="px-3 py-2 text-sm font-medium rounded-lg transition-colors" style="background-color: #d82128; color: white;">
+                                <i data-lucide="list" class="w-4 h-4 inline-block mr-1"></i>
+                            </button>
+                            <button id="board-view-btn" class="px-3 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                                <i data-lucide="columns" class="w-4 h-4 inline-block mr-1"></i>
+                            </button>
+                </div>-->
             </div>
 
             <!-- Table View -->
@@ -189,516 +266,631 @@
                 <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
                     <div class="overflow-x-auto">
                         <table class="w-full" style="min-width: 1500px;">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 min-w-[250px]">Agent / Student Name</th>
-                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 min-w-[120px]">UID</th>
-                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 min-w-[200px]">Email</th>
-                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 min-w-[150px]">Source</th>
-                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 min-w-[180px]">Program Interest</th>
-                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 min-w-[200px]">Application Status</th>
-                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 min-w-[180px]">Last Activity</th>
-                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 min-w-[100px]">Progress</th>
-                                <th class="px-6 py-4 text-right text-sm font-semibold text-gray-600 min-w-[120px]">Actions</th>
-                            </tr>
-                        </thead>
-                    <tbody class="divide-y divide-gray-100" id="students-table-body">
-                        <!-- Agent Group 1: John Smith -->
-                        <tr class="bg-gray-100 agent-group-header cursor-pointer hover:bg-gray-200" onclick="toggleAgentGroup('john-smith')">
-                            <td class="px-6 py-3" colspan="9">
-                                <div class="flex items-center">
-                                    <i id="john-smith-icon" data-lucide="plus" class="w-4 h-4 mr-2 text-gray-600"></i>
-                                    <span class="text-sm font-semibold text-gray-800">John Smith (2 students)</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <!-- Student Row 1 - Under John Smith -->
-                        <tr class="hover:bg-gray-50 student-row john-smith-students hidden">
-                            <td class="px-6 py-4">
-                                <div class="flex items-center pl-6">
-                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&fit=crop" 
-                                         class="w-8 h-8 rounded-full mr-3">
-                                    <span class="text-sm font-medium">Sarah Chen</span>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span class="text-sm font-mono text-gray-700">VNHN-S1001</span>
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-600">sarah.chen@example.com</td>
-                            <td class="px-6 py-4">
-                                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                    FB Ads – JUL25
-                                </span>
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-600">Canada – Business</td>
-                            <td class="px-6 py-4">
-                                <div class="flex flex-col space-y-1">
-                                    <div class="text-xs font-medium text-gray-700">Step 6: School Acceptance</div>
-                                    <div class="flex items-center space-x-1">
-                                        <div class="flex space-x-1">
-                                            <div class="w-2 h-2 rounded-full" style="background-color: #d82128;"></div>
-                                            <div class="w-2 h-2 rounded-full" style="background-color: #d82128;"></div>
-                                            <div class="w-2 h-2 rounded-full" style="background-color: #d82128;"></div>
-                                            <div class="w-2 h-2 rounded-full" style="background-color: #d82128;"></div>
-                                            <div class="w-2 h-2 rounded-full" style="background-color: #d82128;"></div>
-                                            <div class="w-2 h-2 rounded-full" style="background-color: #d82128;"></div>
-                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
-                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
-                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 min-w-[250px]">
+                                        Agent / Student Name</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 min-w-[120px]">
+                                        UID</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 min-w-[200px]">
+                                        Email</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 min-w-[150px]">
+                                        Source</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 min-w-[180px]">
+                                        Program Interest</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 min-w-[200px]">
+                                        Application Status</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 min-w-[180px]">
+                                        Last Activity</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600 min-w-[100px]">
+                                        Progress</th>
+                                    <th class="px-6 py-4 text-right text-sm font-semibold text-gray-600 min-w-[120px]">
+                                        Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100" id="students-table-body">
+                                <!-- Agent Group 1: John Smith -->
+                                <tr class="bg-gray-100 agent-group-header cursor-pointer hover:bg-gray-200"
+                                    onclick="toggleAgentGroup('john-smith')">
+                                    <td class="px-6 py-3" colspan="9">
+                                        <div class="flex items-center">
+                                            <i id="john-smith-icon" data-lucide="minus"
+                                                class="w-4 h-4 mr-2 text-gray-600"></i>
+                                            <span class="text-sm font-semibold text-gray-800">John Smith (2
+                                                students)</span>
                                         </div>
-                                        <span class="text-xs text-gray-500 ml-2">6/9</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-600">
-                                <div class="flex items-center space-x-2">
-                                    <span>Uploaded transcript – 2 days ago</span>
-                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                        <div class="w-2 h-2 bg-green-400 rounded-full mr-1"></div>
-                                        Active
-                                    </span>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="w-full bg-gray-200 rounded-full h-2">
-                                    <div class="h-2 rounded-full" style="background-color: #d82128; width: 80%"></div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 text-right">
-                                <div class="flex items-center justify-end space-x-2">
-                                    <button onclick="window.location.href='Agency-my-student-detail.html?student=Sarah Chen'" class="p-1 hover:opacity-80" style="color: #d82128;" title="View Details">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                        </svg>
-                                    </button>
-                                    <button onclick="deleteStudent('Sarah Chen', 'sarah.chen@example.com')" class="text-red-600 hover:text-red-800 p-1" title="Delete Student">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <!-- Student Row 2 - Under John Smith -->
-                        <tr class="hover:bg-gray-50 student-row john-smith-students hidden">
-                            <td class="px-6 py-4">
-                                <div class="flex items-center pl-6">
-                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop" 
-                                         class="w-8 h-8 rounded-full mr-3">
-                                    <span class="text-sm font-medium">Mike Wong</span>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span class="text-sm font-mono text-gray-700">VNHN-S1002</span>
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-600">mike.wong@example.com</td>
-                            <td class="px-6 py-4">
-                                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                    Event HN 2025
-                                </span>
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-600">Australia – Engineering</td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center">
-                                    <span class="text-sm text-gray-600 mr-2">60%</span>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="h-2 rounded-full" style="background-color: #d82128; width: 60%"></div>
-                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                    </td>
+                                </tr>
+                                <!-- Student Row 1 - Under John Smith -->
+                                <tr class="hover:bg-gray-50 student-row john-smith-students">
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center pl-6">
+                                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&fit=crop"
+                                                class="w-8 h-8 rounded-full mr-3">
+                                            <span class="text-sm font-medium">Sarah Chen</span>
                                         </div>
-                                        <span class="text-xs text-gray-500 ml-2">2/9</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-600">
-                                <div class="flex items-center space-x-2">
-                                    <span>Updated profile – 5 days ago</span>
-                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                                        <div class="w-2 h-2 bg-yellow-400 rounded-full mr-1"></div>
-                                        Inactive
-                                    </span>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="w-full bg-gray-200 rounded-full h-2">
-                                    <div class="h-2 rounded-full" style="background-color: #d82128; width: 60%"></div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 text-right">
-                                <div class="flex items-center justify-end space-x-2">
-                                    <button onclick="window.location.href='Agency-my-student-detail.html?student=mike-wong'" class="p-1 hover:opacity-80" style="color: #d82128;" title="View Details">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                        </svg>
-                                    </button>
-                                    <button onclick="deleteStudent('Mike Wong', 'mike.wong@example.com')" class="text-red-600 hover:text-red-800 p-1" title="Delete Student">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <!-- Agent Group 2: Emily Davis -->
-                        <tr class="bg-gray-100 agent-group-header cursor-pointer hover:bg-gray-200" onclick="toggleAgentGroup('emily-davis')">
-                            <td class="px-6 py-3" colspan="9">
-                                <div class="flex items-center">
-                                    <i id="emily-davis-icon" data-lucide="plus" class="w-4 h-4 mr-2 text-gray-600"></i>
-                                    <span class="text-sm font-semibold text-gray-800">Emily Davis (1 student)</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <!-- Student Row 3 - Under Emily Davis -->
-                        <tr class="hover:bg-gray-50 student-row emily-davis-students hidden">
-                            <td class="px-6 py-4">
-                                <div class="flex items-center pl-6">
-                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop" 
-                                         class="w-8 h-8 rounded-full mr-3">
-                                    <span class="text-sm font-medium">David Kim</span>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span class="text-sm font-mono text-gray-700">VNHN-S1003</span>
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-600">david.kim@example.com</td>
-                            <td class="px-6 py-4">
-                                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                                    Partner ABC
-                                </span>
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-600">UK – Medicine</td>
-                            <td class="px-6 py-4">
-                                <div class="flex flex-col space-y-1">
-                                    <div class="text-xs font-medium text-gray-700">Step 4: Application Prep</div>
-                                    <div class="flex items-center space-x-1">
-                                        <div class="flex space-x-1">
-                                            <div class="w-2 h-2 rounded-full" style="background-color: #d82128;"></div>
-                                            <div class="w-2 h-2 rounded-full" style="background-color: #d82128;"></div>
-                                            <div class="w-2 h-2 rounded-full" style="background-color: #d82128;"></div>
-                                            <div class="w-2 h-2 rounded-full" style="background-color: #d82128;"></div>
-                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
-                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
-                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
-                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
-                                            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
-                                        </div>
-                                        <span class="text-xs text-gray-500 ml-2">4/9</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-600">
-                                <div class="flex items-center space-x-2">
-                                    <span>Submitted documents – 1 day ago</span>
-                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                        <div class="w-2 h-2 bg-green-400 rounded-full mr-1"></div>
-                                        Active
-                                    </span>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="w-full bg-gray-200 rounded-full h-2">
-                                    <div class="h-2 rounded-full" style="background-color: #d82128; width: 45%"></div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 text-right">
-                                <div class="flex items-center justify-end space-x-2">
-                                    <button onclick="window.location.href='Agency-my-student-detail.html?student=emma-davis'" class="p-1 hover:opacity-80" style="color: #d82128;" title="View Details">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                        </svg>
-                                    </button>
-                                    <button onclick="deleteStudent('David Kim', 'david.kim@example.com')" class="text-red-600 hover:text-red-800 p-1" title="Delete Student">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                    </table>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Kanban Board View -->
-            <div id="board-view" class="hidden">
-                <div class="overflow-x-auto">
-                    <div class="flex space-x-4 min-w-max pb-4">
-                        <!-- Step 1: Initial Advising -->
-                        <div class="flex-shrink-0 w-72">
-                            <div class="bg-white rounded-2xl shadow-sm">
-                                <div class="p-4 border-b border-gray-200">
-                                    <div class="flex items-center justify-between">
-                                        <h3 class="font-semibold text-gray-900">Initial Advising</h3>
-                                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">2</span>
-                                    </div>
-                                </div>
-                                <div class="p-4 space-y-3 min-h-96">
-                                    <!-- Student Card -->
-                                    <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move" draggable="true" data-student-id="1" data-step="1">
-                                        <div class="flex items-center justify-between mb-2">
-                                            <div class="flex items-center space-x-3">
-                                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop" class="w-8 h-8 rounded-full">
-                                                <div class="flex-1">
-                                                    <div class="font-medium text-sm text-gray-900">John Smith</div>
-                                                    <div class="text-xs text-gray-500">USA – Computer Science</div>
-                                                </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="text-sm font-mono text-gray-700">VNHN-S1001</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">sarah.chen@example.com</td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                            FB Ads JUL25
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">Canada – Business</td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex flex-col space-y-1">
+                                            <div class="text-xs font-medium text-gray-700">Step 6: School Acceptance
                                             </div>
-                                            <span class="text-xs px-2 py-1 rounded-full text-white" style="background-color: #3B82F6;">John Smith</span>
+                                            <div class="flex items-center space-x-1">
+                                                <div class="flex space-x-1">
+                                                    <div class="w-2 h-2 rounded-full"
+                                                        style="background-color: #d82128;"></div>
+                                                    <div class="w-2 h-2 rounded-full"
+                                                        style="background-color: #d82128;"></div>
+                                                    <div class="w-2 h-2 rounded-full"
+                                                        style="background-color: #d82128;"></div>
+                                                    <div class="w-2 h-2 rounded-full"
+                                                        style="background-color: #d82128;"></div>
+                                                    <div class="w-2 h-2 rounded-full"
+                                                        style="background-color: #d82128;"></div>
+                                                    <div class="w-2 h-2 rounded-full"
+                                                        style="background-color: #d82128;"></div>
+                                                    <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                                    <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                                    <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                                </div>
+                                                <span class="text-xs text-gray-500 ml-2">6/9</span>
+                                            </div>
                                         </div>
-                                        <div class="flex items-center justify-between mb-2">
-                                            <div class="text-xs text-gray-500">Last activity: 1 day ago</div>
-                                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">
+                                        <div class="flex items-center space-x-2">
+                                            <span>Uploaded transcript – 2 days ago</span>
+                                            <span
+                                                class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
                                                 <div class="w-2 h-2 bg-green-400 rounded-full mr-1"></div>
                                                 Active
                                             </span>
                                         </div>
-                                        <div class="flex items-center justify-between">
-                                            <div class="flex space-x-1">
-                                                <button class="text-xs px-2 py-1 rounded" style="background-color: #FEF2F2; color: #d82128;" title="Send Message">
-                                                    <i data-lucide="message-circle" class="w-3 h-3"></i>
-                                                </button>
-                                                <button onclick="window.location.href='Agency-my-student-detail.html?student=sarah-johnson'" class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200" title="View Details">
-                                                    <i data-lucide="eye" class="w-3 h-3"></i>
-                                                </button>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="h-2 rounded-full" style="background-color: #d82128; width: 80%">
                                             </div>
                                         </div>
-                                    </div>
-                                    
-                                    <!-- Another Student Card -->
-                                    <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move" draggable="true" data-student-id="2" data-step="1">
-                                        <div class="flex items-center justify-between mb-2">
-                                            <div class="flex items-center space-x-3">
-                                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop" class="w-8 h-8 rounded-full">
-                                                <div class="flex-1">
-                                                    <div class="font-medium text-sm text-gray-900">Lisa Wang</div>
-                                                    <div class="text-xs text-gray-500">Canada – Business</div>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <div class="flex items-center justify-end space-x-2">
+                                            <a href="Agency-my-student-detail.html?student=Sarah Chen" target="_blank" rel="noopener noreferrer"
+                                                class="p-1 hover:opacity-80" style="color: #d82128;"
+                                                title="View Details">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                                    </path>
+                                                </svg>
+                                            </a>
+                                            <button onclick="deleteStudent('Sarah Chen', 'sarah.chen@example.com')"
+                                                class="text-red-600 hover:text-red-800 p-1" title="Delete Student">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                                    </path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- Student Row 2 - Under John Smith -->
+                                <tr class="hover:bg-gray-50 student-row john-smith-students">
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center pl-6">
+                                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop"
+                                                class="w-8 h-8 rounded-full mr-3">
+                                            <span class="text-sm font-medium">Mike Wong</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="text-sm font-mono text-gray-700">VNHN-S1002</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">mike.wong@example.com</td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                            Event HN 2025
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">Australia – Engineering</td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex flex-col space-y-1">
+                                            <div class="text-xs font-medium text-gray-700">Step 2: Application In Progress
+                                            </div>
+                                            <div class="flex items-center space-x-1">
+                                                <div class="flex space-x-1">
+                                                    <div class="w-2 h-2 rounded-full"
+                                                        style="background-color: #d82128;"></div>
+                                                    <div class="w-2 h-2 rounded-full"
+                                                        style="background-color: #d82128;"></div>
+                                                    <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                                    <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                                    <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                                    <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                                    <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                                    <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                                    <div class="w-2 h-2 rounded-full bg-gray-300"></div>
                                                 </div>
+                                                <span class="text-xs text-gray-500 ml-2">2/9</span>
                                             </div>
-                                            <span class="text-xs px-2 py-1 rounded-full text-white" style="background-color: #10B981;">Emily Davis</span>
                                         </div>
-                                        <div class="flex items-center justify-between mb-2">
-                                            <div class="text-xs text-gray-500">Last activity: 3 days ago</div>
-                                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">
+                                        <div class="flex items-center space-x-2">
+                                            <span>Updated profile – 5 days ago</span>
+                                            <span
+                                                class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
                                                 <div class="w-2 h-2 bg-yellow-400 rounded-full mr-1"></div>
                                                 Inactive
                                             </span>
                                         </div>
-                                        <div class="flex items-center justify-between">
-                                            <div class="flex space-x-1">
-                                                <button class="text-xs px-2 py-1 rounded" style="background-color: #FEF2F2; color: #d82128;" title="Send Message">
-                                                    <i data-lucide="message-circle" class="w-3 h-3"></i>
-                                                </button>
-                                                <button onclick="window.location.href='Agency-my-student-detail.html?student=sarah-johnson'" class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200" title="View Details">
-                                                    <i data-lucide="eye" class="w-3 h-3"></i>
-                                                </button>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="h-2 rounded-full" style="background-color: #d82128; width: 60%">
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <div class="flex items-center justify-end space-x-2">
+                                            <a href="Agency-my-student-detail.html?student=mike-wong" target="_blank" rel="noopener noreferrer"
+                                                class="p-1 hover:opacity-80" style="color: #d82128;"
+                                                title="View Details">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                                    </path>
+                                                </svg>
+                                            </a>
+                                            <button onclick="deleteStudent('Mike Wong', 'mike.wong@example.com')"
+                                                class="text-red-600 hover:text-red-800 p-1" title="Delete Student">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                                    </path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
 
-                        <!-- Step 2: Application In Progress -->
-                        <div class="flex-shrink-0 w-72">
-                            <div class="bg-white rounded-2xl shadow-sm">
-                                <div class="p-4 border-b border-gray-200">
-                                    <div class="flex items-center justify-between">
-                                        <h3 class="font-semibold text-gray-900">Application In Progress</h3>
-                                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">1</span>
-                                    </div>
-                                </div>
-                                <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="2">
-                                    <!-- Student Card -->
-                                    <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move" draggable="true" data-student-id="3" data-step="2">
-                                        <div class="flex items-center justify-between mb-2">
-                                            <div class="flex items-center space-x-3">
-                                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop" class="w-8 h-8 rounded-full">
-                                                <div class="flex-1">
-                                                    <div class="font-medium text-sm text-gray-900">Mike Wong</div>
-                                                    <div class="text-xs text-gray-500">Australia – Engineering</div>
+                                <!-- Agent Group 2: Emily Davis -->
+                                <tr class="bg-gray-100 agent-group-header cursor-pointer hover:bg-gray-200"
+                                    onclick="toggleAgentGroup('emily-davis')">
+                                    <td class="px-6 py-3" colspan="9">
+                                        <div class="flex items-center">
+                                            <i id="emily-davis-icon" data-lucide="minus"
+                                                class="w-4 h-4 mr-2 text-gray-600"></i>
+                                            <span class="text-sm font-semibold text-gray-800">Emily Davis (1
+                                                student)</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- Student Row 3 - Under Emily Davis -->
+                                <tr class="hover:bg-gray-50 student-row emily-davis-students">
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center pl-6">
+                                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop"
+                                                class="w-8 h-8 rounded-full mr-3">
+                                            <span class="text-sm font-medium">David Kim</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="text-sm font-mono text-gray-700">VNHN-S1003</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">david.kim@example.com</td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                                            Partner ABC
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">UK – Medicine</td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex flex-col space-y-1">
+                                            <div class="text-xs font-medium text-gray-700">Step 4: Application Prep
+                                            </div>
+                                            <div class="flex items-center space-x-1">
+                                                <div class="flex space-x-1">
+                                                    <div class="w-2 h-2 rounded-full"
+                                                        style="background-color: #d82128;"></div>
+                                                    <div class="w-2 h-2 rounded-full"
+                                                        style="background-color: #d82128;"></div>
+                                                    <div class="w-2 h-2 rounded-full"
+                                                        style="background-color: #d82128;"></div>
+                                                    <div class="w-2 h-2 rounded-full"
+                                                        style="background-color: #d82128;"></div>
+                                                    <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                                    <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                                    <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                                    <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+                                                    <div class="w-2 h-2 rounded-full bg-gray-300"></div>
                                                 </div>
-                                            </div>
-                                            <span class="text-xs px-2 py-1 rounded-full text-white" style="background-color: #3B82F6;">John Smith</span>
-                                        </div>
-                                        <div class="text-xs text-gray-500 mb-2">Last activity: 5 days ago</div>
-                                        <div class="flex items-center justify-between">
-                                            <div class="flex space-x-1">
-                                                <button class="text-xs px-2 py-1 rounded" style="background-color: #FEF2F2; color: #d82128;" title="Send Message">
-                                                    <i data-lucide="message-circle" class="w-3 h-3"></i>
-                                                </button>
-                                                <button onclick="window.location.href='Agency-my-student-detail.html?student=sarah-johnson'" class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200" title="View Details">
-                                                    <i data-lucide="eye" class="w-3 h-3"></i>
-                                                </button>
+                                                <span class="text-xs text-gray-500 ml-2">4/9</span>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Step 3: Submitted to School -->
-                        <div class="flex-shrink-0 w-72">
-                            <div class="bg-white rounded-2xl shadow-sm">
-                                <div class="p-4 border-b border-gray-200">
-                                    <div class="flex items-center justify-between">
-                                        <h3 class="font-semibold text-gray-900">Submitted to School</h3>
-                                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">1</span>
-                                    </div>
-                                </div>
-                                <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="3">
-                                    <div class="text-center text-gray-400 text-sm mt-20">
-                                        No students at this stage
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Step 4: School Response -->
-                        <div class="flex-shrink-0 w-72">
-                            <div class="bg-white rounded-2xl shadow-sm">
-                                <div class="p-4 border-b border-gray-200">
-                                    <div class="flex items-center justify-between">
-                                        <h3 class="font-semibold text-gray-900">School Response</h3>
-                                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
-                                    </div>
-                                </div>
-                                <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="4">
-                                    <div class="text-center text-gray-400 text-sm mt-20">
-                                        No students at this stage
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Step 5: Offered Letter Issued -->
-                        <div class="flex-shrink-0 w-72">
-                            <div class="bg-white rounded-2xl shadow-sm">
-                                <div class="p-4 border-b border-gray-200">
-                                    <div class="flex items-center justify-between">
-                                        <h3 class="font-semibold text-gray-900">Offered Letter Issued</h3>
-                                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
-                                    </div>
-                                </div>
-                                <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="5">
-                                    <div class="text-center text-gray-400 text-sm mt-20">
-                                        No students at this stage
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Step 6: Committed to School -->
-                        <div class="flex-shrink-0 w-72">
-                            <div class="bg-white rounded-2xl shadow-sm">
-                                <div class="p-4 border-b border-gray-200">
-                                    <div class="flex items-center justify-between">
-                                        <h3 class="font-semibold text-gray-900">Committed to School</h3>
-                                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
-                                    </div>
-                                </div>
-                                <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="6">
-                                    <!-- Student Card -->
-                                    <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move" draggable="true" data-student-id="4" data-step="6">
-                                        <div class="flex items-center justify-between mb-2">
-                                            <div class="flex items-center space-x-3">
-                                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&fit=crop" class="w-8 h-8 rounded-full">
-                                                <div class="flex-1">
-                                                    <div class="font-medium text-sm text-gray-900">Sarah Chen</div>
-                                                    <div class="text-xs text-gray-500">Canada – Business</div>
-                                                </div>
-                                            </div>
-                                            <span class="text-xs px-2 py-1 rounded-full text-white" style="background-color: #3B82F6;">John Smith</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">
+                                        <div class="flex items-center space-x-2">
+                                            <span>Submitted documents – 1 day ago</span>
+                                            <span
+                                                class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                                <div class="w-2 h-2 bg-green-400 rounded-full mr-1"></div>
+                                                Active
+                                            </span>
                                         </div>
-                                        <div class="text-xs text-gray-500 mb-2">Last activity: 2 days ago</div>
-                                        <div class="flex items-center justify-between">
-                                            <div class="flex space-x-1">
-                                                <button class="text-xs px-2 py-1 rounded" style="background-color: #FEF2F2; color: #d82128;" title="Send Message">
-                                                    <i data-lucide="message-circle" class="w-3 h-3"></i>
-                                                </button>
-                                                <button onclick="window.location.href='Agency-my-student-detail.html?student=sarah-johnson'" class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200" title="View Details">
-                                                    <i data-lucide="eye" class="w-3 h-3"></i>
-                                                </button>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="h-2 rounded-full" style="background-color: #d82128; width: 45%">
                                             </div>
                                         </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <div class="flex items-center justify-end space-x-2">
+                                            <a href="Agency-my-student-detail.html?student=emma-davis" target="_blank" rel="noopener noreferrer"
+                                                class="p-1 hover:opacity-80" style="color: #d82128;"
+                                                title="View Details">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                                    </path>
+                                                </svg>
+                                            </a>
+                                            <button onclick="deleteStudent('David Kim', 'david.kim@example.com')"
+                                                class="text-red-600 hover:text-red-800 p-1" title="Delete Student">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                                    </path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <!-- Kanban Board View -->
+    <div id="board-view" class="hidden">
+        <div class="overflow-x-auto">
+            <div class="flex space-x-4 min-w-max pb-4">
+                <!-- Step 1: Initial Advising -->
+                <div class="flex-shrink-0 w-72">
+                    <div class="bg-white rounded-2xl shadow-sm">
+                        <div class="p-4 border-b border-gray-200">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-semibold text-gray-900">Initial Advising</h3>
+                                <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">2</span>
+                            </div>
+                        </div>
+                        <div class="p-4 space-y-3 min-h-96">
+                            <!-- Student Card -->
+                            <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move"
+                                draggable="true" data-student-id="1" data-step="1">
+                                <div class="flex items-center justify-between mb-2">
+                                    <div class="flex items-center space-x-3">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop"
+                                            class="w-8 h-8 rounded-full">
+                                        <div class="flex-1">
+                                            <div class="font-medium text-sm text-gray-900">John Smith</div>
+                                            <div class="text-xs text-gray-500">USA – Computer Science</div>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs px-2 py-1 rounded-full text-white"
+                                        style="background-color: #3B82F6;">John Smith</span>
+                                </div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <div class="text-xs text-gray-500">Last activity: 1 day ago</div>
+                                    <span
+                                        class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        <div class="w-2 h-2 bg-green-400 rounded-full mr-1"></div>
+                                        Active
+                                    </span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex space-x-1">
+                                        <button class="text-xs px-2 py-1 rounded"
+                                            style="background-color: #FEF2F2; color: #d82128;" title="Send Message">
+                                            <i data-lucide="message-circle" class="w-3 h-3"></i>
+                                        </button>
+                                        <a href="Agency-my-student-detail.html?student=sarah-johnson" target="_blank" rel="noopener noreferrer"
+                                            class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200"
+                                            title="View Details">
+                                            <i data-lucide="eye" class="w-3 h-3"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Step 7: Visa Application -->
-                        <div class="flex-shrink-0 w-72">
-                            <div class="bg-white rounded-2xl shadow-sm">
-                                <div class="p-4 border-b border-gray-200">
-                                    <div class="flex items-center justify-between">
-                                        <h3 class="font-semibold text-gray-900">Visa Application</h3>
-                                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                            <!-- Another Student Card -->
+                            <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move"
+                                draggable="true" data-student-id="2" data-step="1">
+                                <div class="flex items-center justify-between mb-2">
+                                    <div class="flex items-center space-x-3">
+                                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop"
+                                            class="w-8 h-8 rounded-full">
+                                        <div class="flex-1">
+                                            <div class="font-medium text-sm text-gray-900">Lisa Wang</div>
+                                            <div class="text-xs text-gray-500">Canada – Business</div>
+                                        </div>
                                     </div>
+                                    <span class="text-xs px-2 py-1 rounded-full text-white"
+                                        style="background-color: #10B981;">Emily Davis</span>
                                 </div>
-                                <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="7">
-                                    <div class="text-center text-gray-400 text-sm mt-20">
-                                        No students at this stage
-                                    </div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <div class="text-xs text-gray-500">Last activity: 3 days ago</div>
+                                    <span
+                                        class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                        <div class="w-2 h-2 bg-yellow-400 rounded-full mr-1"></div>
+                                        Inactive
+                                    </span>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- Step 8: Pre-departure -->
-                        <div class="flex-shrink-0 w-72">
-                            <div class="bg-white rounded-2xl shadow-sm">
-                                <div class="p-4 border-b border-gray-200">
-                                    <div class="flex items-center justify-between">
-                                        <h3 class="font-semibold text-gray-900">Pre-departure</h3>
-                                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
-                                    </div>
-                                </div>
-                                <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="8">
-                                    <div class="text-center text-gray-400 text-sm mt-20">
-                                        No students at this stage
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Step 9: Arrival -->
-                        <div class="flex-shrink-0 w-72">
-                            <div class="bg-white rounded-2xl shadow-sm">
-                                <div class="p-4 border-b border-gray-200">
-                                    <div class="flex items-center justify-between">
-                                        <h3 class="font-semibold text-gray-900">Arrival</h3>
-                                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
-                                    </div>
-                                </div>
-                                <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="9">
-                                    <div class="text-center text-gray-400 text-sm mt-20">
-                                        No students at this stage
+                                <div class="flex items-center justify-between">
+                                    <div class="flex space-x-1">
+                                        <button class="text-xs px-2 py-1 rounded"
+                                            style="background-color: #FEF2F2; color: #d82128;" title="Send Message">
+                                            <i data-lucide="message-circle" class="w-3 h-3"></i>
+                                        </button>
+                                        <a href="Agency-my-student-detail.html?student=sarah-johnson" target="_blank" rel="noopener noreferrer"
+                                            class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200"
+                                            title="View Details">
+                                            <i data-lucide="eye" class="w-3 h-3"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Step 2: Application In Progress -->
+                <div class="flex-shrink-0 w-72">
+                    <div class="bg-white rounded-2xl shadow-sm">
+                        <div class="p-4 border-b border-gray-200">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-semibold text-gray-900">Application In Progress</h3>
+                                <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">1</span>
+                            </div>
+                        </div>
+                        <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="2">
+                            <!-- Student Card -->
+                            <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move"
+                                draggable="true" data-student-id="3" data-step="2">
+                                <div class="flex items-center justify-between mb-2">
+                                    <div class="flex items-center space-x-3">
+                                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop"
+                                            class="w-8 h-8 rounded-full">
+                                        <div class="flex-1">
+                                            <div class="font-medium text-sm text-gray-900">Mike Wong</div>
+                                            <div class="text-xs text-gray-500">Australia – Engineering</div>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs px-2 py-1 rounded-full text-white"
+                                        style="background-color: #3B82F6;">John Smith</span>
+                                </div>
+                                <div class="text-xs text-gray-500 mb-2">Last activity: 5 days ago</div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex space-x-1">
+                                        <button class="text-xs px-2 py-1 rounded"
+                                            style="background-color: #FEF2F2; color: #d82128;" title="Send Message">
+                                            <i data-lucide="message-circle" class="w-3 h-3"></i>
+                                        </button>
+                                        <a href="Agency-my-student-detail.html?student=sarah-johnson" target="_blank" rel="noopener noreferrer"
+                                            class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200"
+                                            title="View Details">
+                                            <i data-lucide="eye" class="w-3 h-3"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Submitted to School -->
+                <div class="flex-shrink-0 w-72">
+                    <div class="bg-white rounded-2xl shadow-sm">
+                        <div class="p-4 border-b border-gray-200">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-semibold text-gray-900">Submitted to School</h3>
+                                <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">1</span>
+                            </div>
+                        </div>
+                        <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="3">
+                            <div class="text-center text-gray-400 text-sm mt-20">
+                                No students at this stage
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: School Response -->
+                <div class="flex-shrink-0 w-72">
+                    <div class="bg-white rounded-2xl shadow-sm">
+                        <div class="p-4 border-b border-gray-200">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-semibold text-gray-900">School Response</h3>
+                                <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                            </div>
+                        </div>
+                        <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="4">
+                            <div class="text-center text-gray-400 text-sm mt-20">
+                                No students at this stage
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Offered Letter Issued -->
+                <div class="flex-shrink-0 w-72">
+                    <div class="bg-white rounded-2xl shadow-sm">
+                        <div class="p-4 border-b border-gray-200">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-semibold text-gray-900">Offered Letter Issued</h3>
+                                <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                            </div>
+                        </div>
+                        <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="5">
+                            <div class="text-center text-gray-400 text-sm mt-20">
+                                No students at this stage
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 6: Committed to School -->
+                <div class="flex-shrink-0 w-72">
+                    <div class="bg-white rounded-2xl shadow-sm">
+                        <div class="p-4 border-b border-gray-200">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-semibold text-gray-900">Committed to School</h3>
+                                <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                            </div>
+                        </div>
+                        <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="6">
+                            <!-- Student Card -->
+                            <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move"
+                                draggable="true" data-student-id="4" data-step="6">
+                                <div class="flex items-center justify-between mb-2">
+                                    <div class="flex items-center space-x-3">
+                                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&fit=crop"
+                                            class="w-8 h-8 rounded-full">
+                                        <div class="flex-1">
+                                            <div class="font-medium text-sm text-gray-900">Sarah Chen</div>
+                                            <div class="text-xs text-gray-500">Canada – Business</div>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs px-2 py-1 rounded-full text-white"
+                                        style="background-color: #3B82F6;">John Smith</span>
+                                </div>
+                                <div class="text-xs text-gray-500 mb-2">Last activity: 2 days ago</div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex space-x-1">
+                                        <button class="text-xs px-2 py-1 rounded"
+                                            style="background-color: #FEF2F2; color: #d82128;" title="Send Message">
+                                            <i data-lucide="message-circle" class="w-3 h-3"></i>
+                                        </button>
+                                        <a href="Agency-my-student-detail.html?student=sarah-johnson" target="_blank" rel="noopener noreferrer"
+                                            class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200"
+                                            title="View Details">
+                                            <i data-lucide="eye" class="w-3 h-3"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 7: Visa Application -->
+                <div class="flex-shrink-0 w-72">
+                    <div class="bg-white rounded-2xl shadow-sm">
+                        <div class="p-4 border-b border-gray-200">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-semibold text-gray-900">Visa Application</h3>
+                                <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                            </div>
+                        </div>
+                        <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="7">
+                            <div class="text-center text-gray-400 text-sm mt-20">
+                                No students at this stage
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 8: Pre-departure -->
+                <div class="flex-shrink-0 w-72">
+                    <div class="bg-white rounded-2xl shadow-sm">
+                        <div class="p-4 border-b border-gray-200">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-semibold text-gray-900">Pre-departure</h3>
+                                <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                            </div>
+                        </div>
+                        <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="8">
+                            <div class="text-center text-gray-400 text-sm mt-20">
+                                No students at this stage
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 9: Arrival -->
+                <div class="flex-shrink-0 w-72">
+                    <div class="bg-white rounded-2xl shadow-sm">
+                        <div class="p-4 border-b border-gray-200">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-semibold text-gray-900">Arrival</h3>
+                                <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                            </div>
+                        </div>
+                        <div class="p-4 space-y-3 min-h-96 drop-zone" data-step="9">
+                            <div class="text-center text-gray-400 text-sm mt-20">
+                                No students at this stage
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </main>
+        </div>
+    </div>
+    </main>
     </div>
 
     <!-- AI Assistant Floating Button -->
     <div id="ai-assistant" class="fixed bottom-6 right-6 z-50">
         <!-- Floating Button -->
-        <button id="ai-chat-toggle" class="w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110" style="background-color: #d82128;">
+        <button id="ai-chat-toggle"
+            class="w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
+            style="background-color: #d82128;">
             <i data-lucide="message-circle" class="w-6 h-6 text-white"></i>
         </button>
-        
+
         <!-- Chat Panel -->
-        <div id="ai-chat-panel" class="hidden absolute bottom-16 right-0 w-80 h-96 bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col">
+        <div id="ai-chat-panel"
+            class="hidden absolute bottom-16 right-0 w-80 h-96 bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col">
             <!-- Chat Header -->
-            <div class="flex items-center justify-between p-4 border-b border-gray-200 rounded-t-2xl" style="background-color: #FEF2F2;">
+            <div class="flex items-center justify-between p-4 border-b border-gray-200 rounded-t-2xl"
+                style="background-color: #FEF2F2;">
                 <div class="flex items-center space-x-3">
-                    <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #d82128;">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center"
+                        style="background-color: #d82128;">
                         <i data-lucide="bot" class="w-4 h-4 text-white"></i>
                     </div>
                     <div>
@@ -713,19 +905,21 @@
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
-            
+
             <!-- Chat Messages -->
             <div class="flex-1 p-4 overflow-y-auto space-y-3">
                 <!-- AI Message -->
                 <div class="flex items-start space-x-2">
-                    <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: #FEF2F2;">
+                    <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
+                        style="background-color: #FEF2F2;">
                         <i data-lucide="bot" class="w-3 h-3" style="color: #d82128;"></i>
                     </div>
                     <div class="bg-gray-100 rounded-2xl px-3 py-2 max-w-xs">
-                        <p class="text-sm text-gray-800">Hello! I can help you manage your students and track their progress. What would you like to know?</p>
+                        <p class="text-sm text-gray-800">Hello! I can help you manage your students and track their
+                            progress. What would you like to know?</p>
                     </div>
                 </div>
-                
+
                 <!-- User Message Example -->
                 <div class="flex items-start space-x-2 justify-end">
                     <div class="rounded-2xl px-3 py-2 max-w-xs" style="background-color: #d82128;">
@@ -733,12 +927,15 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Chat Input -->
             <div class="p-4 border-t border-gray-200">
                 <div class="flex items-center space-x-2">
-                    <input type="text" placeholder="Type your message..." class="flex-1 px-3 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2" style="--tw-ring-color: #d82128;">
-                    <button class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #d82128;">
+                    <input type="text" placeholder="Type your message..."
+                        class="flex-1 px-3 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2"
+                        style="--tw-ring-color: #d82128;">
+                    <button class="w-8 h-8 rounded-full flex items-center justify-center"
+                        style="background-color: #d82128;">
                         <i data-lucide="send" class="w-4 h-4 text-white"></i>
                     </button>
                 </div>
@@ -747,12 +944,13 @@
     </div>
 
     <!-- Student Details Modal -->
-    <div id="student-details-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div id="student-details-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
         <div class="bg-white rounded-3xl w-full max-w-3xl max-h-[90vh] overflow-y-auto">
             <div class="p-6 border-b">
                 <div class="flex items-center justify-between">
                     <h3 class="text-xl font-semibold">Student Details</h3>
-                    <button onclick="closeStudentDetailsModal()" class="text-gray-400 hover:text-gray-600">
+                    <button onclick="closeStudentDetailsModal()" class="text-gray-400 hover:text-gray-500">
                         <i data-lucide="x" class="w-6 h-6"></i>
                     </button>
                 </div>
@@ -786,7 +984,8 @@
                     <h4 class="text-lg font-medium mb-4">Application History</h4>
                     <div class="space-y-4">
                         <div class="flex items-start space-x-3">
-                            <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                            <div
+                                class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
                                 <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
                             </div>
                             <div>
@@ -796,7 +995,8 @@
                             </div>
                         </div>
                         <div class="flex items-start space-x-3">
-                            <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                            <div
+                                class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
                                 <i data-lucide="file" class="w-4 h-4 text-blue-600"></i>
                             </div>
                             <div>
@@ -812,9 +1012,8 @@
                 <div class="mb-6">
                     <h4 class="text-lg font-medium mb-4">Assigned Agent Member</h4>
                     <div class="flex items-center space-x-3">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" 
-                             alt="Agent Profile" 
-                             class="w-10 h-10 rounded-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop"
+                            alt="Agent Profile" class="w-10 h-10 rounded-full object-cover">
                         <div>
                             <p class="text-sm font-medium">John Smith</p>
                             <p class="text-xs text-gray-500">Senior Education Consultant</p>
@@ -842,7 +1041,9 @@
                     <button class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                         Send Reminder
                     </button>
-                    <button class="px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors hover:opacity-90" style="background-color: #d82128;">
+                    <button
+                        class="px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors hover:opacity-90"
+                        style="background-color: #d82128;">
                         Open in Application Manager
                     </button>
                 </div>
@@ -851,10 +1052,12 @@
     </div>
 
     <!-- Add New Student Modal -->
-    <div id="add-student-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+    <div id="add-student-modal"
+        class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
         <div class="relative top-20 mx-auto p-8 border-0 w-[600px] shadow-xl rounded-3xl bg-white">
             <!-- Email validation error -->
-            <div id="email-error" class="hidden absolute -top-16 left-0 right-0 mx-auto w-fit bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded-lg">
+            <div id="email-error"
+                class="hidden absolute -top-16 left-0 right-0 mx-auto w-fit bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded-lg">
                 This email is already registered in the system.
             </div>
             <div class="flex justify-between items-center mb-6">
@@ -871,7 +1074,7 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Heard Us From *</label>
                         <div class="relative">
                             <select name="heardFrom" required
-                                    class="w-full px-3 py-2 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none">
+                                class="w-full px-3 py-2 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none">
                                 <option value="">Select how you heard about us</option>
                                 <option value="social_media">Social Media</option>
                                 <option value="referral">Friend/Family Referral</option>
@@ -881,33 +1084,39 @@
                                 <option value="advertisement">Advertisement</option>
                                 <option value="other">Other</option>
                             </select>
-                            <i data-lucide="megaphone" class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2"></i>
+                            <i data-lucide="megaphone"
+                                class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                            <i data-lucide="chevron-down"
+                                class="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2"></i>
                         </div>
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
                         <input type="text" name="fullName" required
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2" style="--tw-ring-color: #d82128;">
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2"
+                            style="--tw-ring-color: #d82128;">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
                         <input type="email" name="email" required
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2" style="--tw-ring-color: #d82128;">
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2"
+                            style="--tw-ring-color: #d82128;">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
                         <input type="tel" name="phone"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2" style="--tw-ring-color: #d82128;">
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2"
+                            style="--tw-ring-color: #d82128;">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Country of Interest *</label>
                         <select name="country" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2" style="--tw-ring-color: #d82128;">
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2"
+                            style="--tw-ring-color: #d82128;">
                             <option value="">Select a country</option>
                             <option value="usa">United States</option>
                             <option value="uk">United Kingdom</option>
@@ -920,13 +1129,15 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Intended Field of Study *</label>
                         <input type="text" name="fieldOfStudy" required
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2" style="--tw-ring-color: #d82128;">
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2"
+                            style="--tw-ring-color: #d82128;">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Intake Period *</label>
                         <select name="intakePeriod" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2" style="--tw-ring-color: #d82128;">
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2"
+                            style="--tw-ring-color: #d82128;">
                             <option value="">Select intake period</option>
                             <option value="fall2025">Fall 2025</option>
                             <option value="spring2026">Spring 2026</option>
@@ -938,7 +1149,7 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Agent Name *</label>
                         <div class="relative">
                             <select name="Agent Name" required
-                                    class="w-full px-3 py-2 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none">
+                                class="w-full px-3 py-2 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none">
                                 <option value="">Select an agent</option>
                                 <option value="john-smith">John Smith</option>
                                 <option value="sarah-wilson">Sarah Wilson</option>
@@ -946,15 +1157,18 @@
                                 <option value="michael-lee">Michael Lee</option>
                                 <option value="david-chen">David Chen</option>
                             </select>
-                            <i data-lucide="user-check" class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2"></i>
+                            <i data-lucide="user-check"
+                                class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                            <i data-lucide="chevron-down"
+                                class="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2"></i>
                         </div>
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Notes</label>
                         <textarea name="notes" rows="3"
-                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2" style="--tw-ring-color: #d82128;"></textarea>
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2"
+                            style="--tw-ring-color: #d82128;"></textarea>
                     </div>
 
                     <!-- Optional Section for Agent Admin -->
@@ -963,27 +1177,30 @@
                             <h4 class="text-sm font-medium text-gray-900">Admin Options</h4>
                             <span class="text-xs text-gray-500">Only visible to admin users</span>
                         </div>
-                        
+
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Assign to Staff Member</label>
                             <div class="relative">
                                 <select name="assignedStaff" id="assignedStaff"
-                                        class="w-full px-3 py-2 pl-10 border border-gray-300 rounded-lg focus:ring-2 appearance-none" style="--tw-ring-color: #d82128;">
+                                    class="w-full px-3 py-2 pl-10 border border-gray-300 rounded-lg focus:ring-2 appearance-none"
+                                    style="--tw-ring-color: #d82128;">
                                     <option value="">Select staff member</option>
                                     <option value="john" data-role="Senior Agent">John Smith</option>
                                     <option value="sarah" data-role="Education Consultant">Sarah Johnson</option>
                                     <option value="michael" data-role="Junior Agent">Michael Lee</option>
                                     <option value="emma" data-role="Senior Consultant">Emma Wilson</option>
                                 </select>
-                                <i data-lucide="users" class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
-                                <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2"></i>
+                                <i data-lucide="users"
+                                    class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                                <i data-lucide="chevron-down"
+                                    class="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2"></i>
                             </div>
                             <p id="selected-staff-info" class="hidden mt-2 text-xs text-gray-500"></p>
                         </div>
 
                         <div class="flex items-start space-x-2">
                             <input type="checkbox" id="notify-staff" name="notifyStaff"
-                                   class="mt-1 rounded border-gray-300" style="color: #d82128; --tw-ring-color: #d82128;">
+                                class="mt-1 rounded border-gray-300" style="color: #d82128; --tw-ring-color: #d82128;">
                             <label for="notify-staff" class="text-sm text-gray-600">
                                 Send email notification to assigned staff member
                             </label>
@@ -994,11 +1211,12 @@
                 <!-- Form Actions -->
                 <div class="flex justify-end space-x-4 pt-4">
                     <button type="button" onclick="closeAddStudentModal()"
-                            class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                        class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                         Cancel
                     </button>
                     <button type="submit"
-                            class="px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors hover:opacity-90" style="background-color: #d82128;">
+                        class="px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors hover:opacity-90"
+                        style="background-color: #d82128;">
                         Save & Continue
                     </button>
                 </div>
@@ -1007,7 +1225,8 @@
     </div>
 
     <!-- Student Details Modal -->
-    <div id="student-details-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+    <div id="student-details-modal"
+        class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
         <div class="relative top-10 mx-auto p-8 border-0 w-[700px] shadow-xl rounded-3xl bg-white">
             <div class="flex justify-between items-center mb-6">
                 <h3 class="text-xl font-semibold text-gray-900">Student Details</h3>
@@ -1015,7 +1234,7 @@
                     <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
             </div>
-            
+
             <!-- Student Info -->
             <div class="grid grid-cols-2 gap-6 mb-6">
                 <div>
@@ -1056,7 +1275,8 @@
             <div class="mb-6">
                 <label class="block text-sm font-medium text-gray-700 mb-2">Application Progress</label>
                 <div class="w-full bg-gray-200 rounded-full h-3">
-                    <div id="detail-student-progress" class="h-3 rounded-full" style="background-color: #d82128; width: 0%"></div>
+                    <div id="detail-student-progress" class="h-3 rounded-full"
+                        style="background-color: #d82128; width: 0%"></div>
                 </div>
                 <p id="detail-student-progress-text" class="text-sm text-gray-600 mt-1">0%</p>
             </div>
@@ -1077,12 +1297,12 @@
 
             <!-- Actions -->
             <div class="flex justify-end space-x-4">
-                <button onclick="closeStudentDetailsModal()" 
-                        class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+                <button onclick="closeStudentDetailsModal()"
+                    class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
                     Close
                 </button>
-                <button class="px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors hover:opacity-90" 
-                        style="background-color: #d82128;">
+                <button class="px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors hover:opacity-90"
+                    style="background-color: #d82128;">
                     Edit Student
                 </button>
             </div>
@@ -1103,7 +1323,7 @@
             const students = document.querySelectorAll(`.${agentId}-students`);
             const icon = document.getElementById(`${agentId}-icon`);
             const isHidden = students[0] && students[0].classList.contains('hidden');
-            
+
             students.forEach(student => {
                 if (isHidden) {
                     student.classList.remove('hidden');
@@ -1111,66 +1331,66 @@
                     student.classList.add('hidden');
                 }
             });
-            
+
             // Toggle icon
             if (isHidden) {
                 icon.setAttribute('data-lucide', 'minus');
             } else {
                 icon.setAttribute('data-lucide', 'plus');
             }
-            
+
             // Reinitialize icons
             lucide.createIcons();
         }
 
         // Agent Filter Functionality
-    document.getElementById('agent-filter').addEventListener('change', function() {
-        const selectedAgent = this.value;
-        const allAgentGroups = document.querySelectorAll('.agent-group-header');
-        const allStudentRows = document.querySelectorAll('.student-row');
-        
-        if (selectedAgent === 'all') {
-            // Show all agent groups and their students
-            allAgentGroups.forEach(group => group.style.display = 'table-row');
-            allStudentRows.forEach(row => {
-                // Keep the hidden/shown state based on group expansion
-                row.style.display = 'table-row';
-            });
-        } else {
-            // Hide all groups first
-            allAgentGroups.forEach(group => group.style.display = 'none');
-            allStudentRows.forEach(row => row.style.display = 'none');
-            
-            // Show only selected agent group and students
-            const selectedGroup = document.querySelector(`[onclick="toggleAgentGroup('${selectedAgent}')"]`);
-            const selectedStudents = document.querySelectorAll(`.${selectedAgent}-students`);
-            
-            if (selectedGroup) {
-                selectedGroup.style.display = 'table-row';
-                selectedStudents.forEach(student => {
-                    student.style.display = 'table-row';
-                    student.classList.remove('hidden'); // Auto-expand when filtering
+        document.getElementById('agent-filter').addEventListener('change', function () {
+            const selectedAgent = this.value;
+            const allAgentGroups = document.querySelectorAll('.agent-group-header');
+            const allStudentRows = document.querySelectorAll('.student-row');
+
+            if (selectedAgent === 'all') {
+                // Show all agent groups and their students
+                allAgentGroups.forEach(group => group.style.display = 'table-row');
+                allStudentRows.forEach(row => {
+                    // Keep the hidden/shown state based on group expansion
+                    row.style.display = 'table-row';
                 });
-                
-                // Update icon to minus (expanded)
-                const icon = document.getElementById(`${selectedAgent}-icon`);
-                if (icon) {
-                    icon.setAttribute('data-lucide', 'minus');
-                    lucide.createIcons();
+            } else {
+                // Hide all groups first
+                allAgentGroups.forEach(group => group.style.display = 'none');
+                allStudentRows.forEach(row => row.style.display = 'none');
+
+                // Show only selected agent group and students
+                const selectedGroup = document.querySelector(`[onclick="toggleAgentGroup('${selectedAgent}')"]`);
+                const selectedStudents = document.querySelectorAll(`.${selectedAgent}-students`);
+
+                if (selectedGroup) {
+                    selectedGroup.style.display = 'table-row';
+                    selectedStudents.forEach(student => {
+                        student.style.display = 'table-row';
+                        student.classList.remove('hidden'); // Auto-expand when filtering
+                    });
+
+                    // Update icon to minus (expanded)
+                    const icon = document.getElementById(`${selectedAgent}-icon`);
+                    if (icon) {
+                        icon.setAttribute('data-lucide', 'minus');
+                        lucide.createIcons();
+                    }
                 }
             }
-        }
-    });
+        });
 
         // Kanban Board Agent Filter
         function filterKanbanByAgent(agentId) {
             const allCards = document.querySelectorAll('[data-student-id]');
-            
+
             allCards.forEach(card => {
                 const agentBadge = card.querySelector('span[style*="background-color"]');
                 if (agentBadge) {
                     const agentName = agentBadge.textContent.trim();
-                    
+
                     if (agentId === 'all' || agentName.toLowerCase().replace(' ', '-') === agentId) {
                         card.style.display = 'block';
                     } else {
@@ -1178,7 +1398,7 @@
                     }
                 }
             });
-            
+
             // Update column counts after filtering
             if (typeof updateColumnCounts === 'function') {
                 updateColumnCounts();
@@ -1324,7 +1544,7 @@
             };
 
             const student = studentData[studentId] || studentData['sarah-johnson'];
-            
+
             // Update modal content
             document.getElementById('detail-student-name').textContent = student.name;
             document.getElementById('detail-student-email').textContent = student.email;
@@ -1337,7 +1557,7 @@
             document.getElementById('detail-student-progress-text').textContent = student.progress + '%';
             document.getElementById('detail-student-join-date').textContent = student.joinDate;
             document.getElementById('detail-student-notes').textContent = student.notes;
-            
+
             // Update documents list
             const docsList = document.getElementById('detail-student-documents');
             docsList.innerHTML = '';
@@ -1419,7 +1639,7 @@
             const selectedOption = e.target.options[e.target.selectedIndex];
             const role = selectedOption.getAttribute('data-role');
             const staffName = selectedOption.text;
-            
+
             if (e.target.value) {
                 selectedStaffInfo.textContent = `${staffName} - ${role}`;
                 selectedStaffInfo.classList.remove('hidden');
@@ -1472,7 +1692,7 @@
                 zone.addEventListener('dragover', (e) => {
                     e.preventDefault();
                     const targetStep = parseInt(zone.getAttribute('data-step'));
-                    
+
                     // Check if drop is valid (only forward one step or backward one step)
                     if (draggedFromStep && (targetStep === draggedFromStep + 1 || targetStep === draggedFromStep - 1)) {
                         zone.style.backgroundColor = '#FEF2F2';
@@ -1497,39 +1717,39 @@
                 zone.addEventListener('drop', (e) => {
                     e.preventDefault();
                     const targetStep = parseInt(zone.getAttribute('data-step'));
-                    
+
                     // Reset zone styling
                     zone.style.backgroundColor = '';
                     zone.style.borderColor = '';
                     zone.style.borderWidth = '';
                     zone.style.borderStyle = '';
-                    
+
                     // Validate move (only forward one step or backward one step)
                     if (draggedFromStep && (targetStep === draggedFromStep + 1 || targetStep === draggedFromStep - 1)) {
                         // Move the student card
                         if (draggedElement) {
                             // Update the data-step attribute
                             draggedElement.setAttribute('data-step', targetStep);
-                            
+
                             // Remove empty state message if it exists
                             const emptyMessage = zone.querySelector('.text-center.text-gray-400');
                             if (emptyMessage) {
                                 emptyMessage.remove();
                             }
-                            
+
                             // Append to new column
                             zone.appendChild(draggedElement);
-                            
+
                             // Update column counts
                             if (typeof updateColumnCounts === 'function') {
                                 updateColumnCounts();
                             }
-                            
+
                             // Show success message
                             if (typeof showMoveSuccessToast === 'function') {
                                 showMoveSuccessToast(targetStep);
                             }
-                            
+
                             // Here you would typically send the update to your backend
                             console.log(`Moved student ${draggedStudentId} to step ${targetStep}`);
                         }
@@ -1553,7 +1773,7 @@
                     if (countBadge) {
                         countBadge.textContent = cards.length;
                     }
-                    
+
                     // Add/remove empty state message
                     const existingEmptyMessage = column.querySelector('.text-center.text-gray-400');
                     if (cards.length === 0 && !existingEmptyMessage) {
@@ -1592,9 +1812,9 @@
         // Add agent filter listener for Kanban view
         const agentFilterSelect = document.getElementById('agent-filter');
         if (agentFilterSelect) {
-            agentFilterSelect.addEventListener('change', function() {
+            agentFilterSelect.addEventListener('change', function () {
                 const currentView = document.getElementById('board-view').classList.contains('hidden') ? 'table' : 'board';
-                
+
                 if (currentView === 'board') {
                     filterKanbanByAgent(this.value);
                 }
@@ -1604,7 +1824,7 @@
         // Activity filter functionality
         const activityFilterSelect = document.getElementById('activity-filter');
         if (activityFilterSelect) {
-            activityFilterSelect.addEventListener('change', function() {
+            activityFilterSelect.addEventListener('change', function () {
                 filterByActivity(this.value);
             });
         }
@@ -1612,13 +1832,13 @@
         function filterByActivity(activityStatus) {
             const allStudentRows = document.querySelectorAll('.student-row');
             const allStudentCards = document.querySelectorAll('[data-student-id]');
-            
+
             // Filter table rows
             allStudentRows.forEach(row => {
                 const activityBadge = row.querySelector('.bg-green-100, .bg-yellow-100');
                 if (activityBadge) {
                     const isActive = activityBadge.textContent.trim().includes('Active');
-                    
+
                     if (activityStatus === 'all') {
                         row.style.display = 'table-row';
                     } else if (activityStatus === 'active' && isActive) {
@@ -1630,13 +1850,13 @@
                     }
                 }
             });
-            
+
             // Filter kanban cards
             allStudentCards.forEach(card => {
                 const activityBadge = card.querySelector('.bg-green-100, .bg-yellow-100');
                 if (activityBadge) {
                     const isActive = activityBadge.textContent.trim().includes('Active');
-                    
+
                     if (activityStatus === 'all') {
                         card.style.display = 'block';
                     } else if (activityStatus === 'active' && isActive) {
@@ -1695,12 +1915,12 @@
             document.body.appendChild(modal);
 
             // Handle cancel
-            modal.querySelector('#cancel-delete').addEventListener('click', function() {
+            modal.querySelector('#cancel-delete').addEventListener('click', function () {
                 document.body.removeChild(modal);
             });
 
             // Handle confirm delete
-            modal.querySelector('#confirm-delete').addEventListener('click', function() {
+            modal.querySelector('#confirm-delete').addEventListener('click', function () {
                 // Show loading state
                 const confirmBtn = modal.querySelector('#confirm-delete');
                 confirmBtn.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Deleting...';
@@ -1739,7 +1959,7 @@
             });
 
             // Close modal when clicking outside
-            modal.addEventListener('click', function(e) {
+            modal.addEventListener('click', function (e) {
                 if (e.target === modal) {
                     document.body.removeChild(modal);
                 }
@@ -1754,9 +1974,9 @@
                 const agentClass = agentName.toLowerCase().replace(' ', '-');
                 const studentRows = document.querySelectorAll(`.${agentClass}-students`);
                 const visibleStudents = Array.from(studentRows).filter(row => row.style.display !== 'none').length;
-                
+
                 group.querySelector('span').textContent = `${agentName} (${visibleStudents} student${visibleStudents !== 1 ? 's' : ''})`;
-                
+
                 // Hide agent group if no students
                 if (visibleStudents === 0) {
                     group.style.display = 'none';
@@ -1768,17 +1988,17 @@
         function showToast(message, type = 'info') {
             const toast = document.createElement('div');
             const bgColor = type === 'success' ? 'bg-green-500' : type === 'error' ? 'bg-red-500' : 'bg-blue-500';
-            
+
             toast.className = `fixed top-4 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300`;
             toast.textContent = message;
-            
+
             document.body.appendChild(toast);
-            
+
             // Slide in
             setTimeout(() => {
                 toast.classList.remove('translate-x-full');
             }, 100);
-            
+
             // Slide out and remove
             setTimeout(() => {
                 toast.classList.add('translate-x-full');
@@ -1790,5 +2010,77 @@
             }, 3000);
         }
     </script>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Filter Drawer Functionality
+        const filterToggle = document.getElementById('filter-toggle');
+        const filterDrawer = document.getElementById('filter-drawer');
+        const filterBackdrop = document.getElementById('filter-backdrop');
+        const closeFilter = document.getElementById('close-filter');
+        const applyFiltersBtn = document.getElementById('apply-filters');
+        const resetFiltersBtn = document.getElementById('reset-filters');
+
+        // Open drawer
+        function openFilterDrawer() {
+            filterDrawer.classList.remove('translate-x-full');
+            filterBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+            filterBackdrop.classList.add('opacity-100');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close drawer
+        function closeFilterDrawer() {
+            filterDrawer.classList.add('translate-x-full');
+            filterBackdrop.classList.add('opacity-0', 'pointer-events-none');
+            filterBackdrop.classList.remove('opacity-100');
+            document.body.style.overflow = '';
+        }
+
+        // Event Listeners
+        if (filterToggle) filterToggle.addEventListener('click', openFilterDrawer);
+        if (closeFilter) closeFilter.addEventListener('click', closeFilterDrawer);
+        if (filterBackdrop) filterBackdrop.addEventListener('click', closeFilterDrawer);
+
+        // Close with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeFilterDrawer();
+            }
+        });
+
+        // Apply filters
+        if (applyFiltersBtn) {
+            applyFiltersBtn.addEventListener('click', () => {
+                // Here you would typically apply the filters to your data
+                closeFilterDrawer();
+                showToast('Filters applied successfully', 'success');
+            });
+        }
+
+        // Reset filters
+        if (resetFiltersBtn) {
+            resetFiltersBtn.addEventListener('click', () => {
+                const selects = filterDrawer.querySelectorAll('select');
+                selects.forEach(select => {
+                    select.selectedIndex = 0; // Reset to first option
+                });
+                // Here you would typically reset any filtered data
+                showToast('Filters reset', 'info');
+            });
+        }
+
+        // Show toast function
+        function showToast(message, type = 'info') {
+            // You can implement a toast notification here
+            console.log(`${type}: ${message}`);
+        }
+
+        // Rest of your existing JavaScript...
+    </script>
+
 </body>
+
 </html>

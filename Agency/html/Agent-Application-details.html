@@ -146,14 +146,14 @@
                 Team Management
             </a>
             <div class="mt-auto px-6 py-4 border-t border-gray-200">
-                <p class="text-sm text-gray-600 text-center"> 2025 APPLYLEAD. All rights reserved.</p>
+                <p class="text-sm text-gray-600 text-center">@ 2025 APPLYLEAD. All rights reserved.</p>
             </div>
         </nav>
     </aside>
     <!-- Main Content -->
     <div class="min-h-screen ml-64">
-         <!-- Header with Navigation -->
-         <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6">
+        <!-- Header with Navigation -->
+        <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6">
             <h2 class="text-xl font-semibold text-gray-800">Applications Details</h2>
             <div class="flex items-center space-x-4">
                 <button class="relative">
@@ -162,16 +162,14 @@
                 </button>
                 <!-- Profile Dropdown -->
                 <div class="relative">
-                    <button id="profile-menu"
-                        class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
+                    <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
                         <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop"
                             alt="Profile" class="w-8 h-8 rounded-full object-cover">
                     </button>
                     <!-- Dropdown Menu -->
                     <div id="profile-dropdown"
                         class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
-                        <a href="Agency-profile.html"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        <a href="Agency-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                             <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
                         </a>
                         <a href="#" onclick="handleLogout()"
@@ -197,7 +195,8 @@
                     <div class="flex-1">
                         <div class="flex items-start space-x-4">
                             <div class="flex-shrink-0">
-                                <div class="h-16 w-16 rounded-full bg-red-100 flex items-center justify-center text-red-600 text-2xl font-semibold">
+                                <div
+                                    class="h-16 w-16 rounded-full bg-red-100 flex items-center justify-center text-red-600 text-2xl font-semibold">
                                     SC
                                 </div>
                             </div>
@@ -205,7 +204,8 @@
                                 <h2 class="text-xl font-semibold text-gray-900">Sarah Chen</h2>
                                 <p class="text-gray-600">Application ID: #APP-2024-00123</p>
                                 <div class="mt-1">
-                                    <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                    <span
+                                        class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
                                         Under Review
                                     </span>
                                 </div>
@@ -246,11 +246,11 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 min-w-max">
                                 <div class="whitespace-nowrap">
                                     <h4 class="text-sm font-medium text-gray-500">Program</h4>
-                                    <p class="mt-1 text-gray-900">MSc in Marketing</p>
+                                    <p class="mt-1 text-gray-900">Business Administration</p>
                                 </div>
                                 <div class="whitespace-nowrap">
                                     <h4 class="text-sm font-medium text-gray-500">University</h4>
-                                    <p class="mt-1 text-gray-900">University of Sydney</p>
+                                    <p class="mt-1 text-gray-900">Tiffin University</p>
                                 </div>
                                 <div class="whitespace-nowrap">
                                     <h4 class="text-sm font-medium text-gray-500">Intake</h4>
@@ -270,165 +270,924 @@
 
                     <!-- Documents Section -->
                     <div class="bg-white rounded-2xl shadow-md p-6">
-                        <div class="flex items-center justify-between mb-6">
-                            <h3 class="text-lg font-semibold text-gray-900">Application Documents</h3>
-                            <button type="button" class="text-sm text-red-600 hover:text-red-700 font-medium">
-                                Upload New
-                            </button>
-                        </div>
-
-                        <!-- Step-specific document content panels -->
+                        <!-- Initial Advising Step -->
                         <div id="docs-initial-advising" class="docs-panel space-y-4 hidden">
-                            <div class="text-sm text-gray-600">Initial advising checklist and discovery documents.</div>
-                            <div class="border border-gray-200 rounded-lg p-4">
-                                <div class="flex justify-between items-start">
-                                    <div class="flex items-start space-x-3">
-                                        <div class="p-2 rounded-lg bg-red-50">
-                                            <i data-lucide="file-text" class="w-5 h-5 text-red-600"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="text-sm font-medium text-gray-900">Student Intake Form</h4>
-                                            <p class="text-sm text-gray-500">PDF • 180 KB</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex space-x-2">
-                                        <button class="text-gray-400 hover:text-gray-500"><i data-lucide="download" class="w-5 h-5"></i></button>
-                                        <button class="text-gray-400 hover:text-red-500"><i data-lucide="trash-2" class="w-5 h-5"></i></button>
-                                    </div>
-                                </div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-6">Initial Advising</h3>
+                            <div class="text-base text-gray-700">
+                                <p>At this step, you need to review the student's information such as academic
+                                    performance, English proficiency, visa history, family background, and financial
+                                    status. Please review the student's profile and remind them to update any required
+                                    details if the profile is not complete. You can <a
+                                        href="Agency-my-student-detail.html" target="_blank"
+                                        class="text-red-600 hover:text-red-700 font-medium">click here</a> to quickly
+                                    view the student's profile.</p>
                             </div>
                         </div>
 
                         <div id="docs-application-in-progress" class="docs-panel space-y-4">
-                            <div class="text-sm text-gray-600">Core application documents currently in progress.</div>
-                            <div class="border border-gray-200 rounded-lg p-4">
-                                <div class="flex justify-between items-start">
-                                    <div class="flex items-start space-x-3">
-                                        <div class="p-2 rounded-lg bg-red-50">
-                                            <i data-lucide="file-text" class="w-5 h-5 text-red-600"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="text-sm font-medium text-gray-900">Statement of Purpose</h4>
-                                            <p class="text-sm text-gray-500">PDF • 250 KB</p>
-                                            <p class="text-xs text-gray-400 mt-1">Uploaded: March 15, 2024</p>
-                                        </div>
+                            <!-- Application In Progress Step -->
+                            <h3 class="text-lg font-semibold text-gray-900 mb-6">Application Documents</h3>
+                            <!-- Document Item 1 -->
+                            <div class="flex items-center justify-between p-4 border rounded-xl">
+                                <div class="flex items-center">
+                                    <i data-lucide="file-text" class="w-5 h-5 text-red-600 mr-3"></i>
+                                    <div>
+                                        <p class="font-medium">CV/Resume</p>
+                                        <p class="text-sm text-gray-500">cv_resume.pdf • 250 KB</p>
+                                        <p class="text-xs text-gray-400 mt-1">Uploaded: March 15, 2024</p>
                                     </div>
-                                    <div class="flex space-x-2">
-                                        <button class="text-gray-400 hover:text-gray-500"><i data-lucide="download" class="w-5 h-5"></i></button>
-                                        <button class="text-gray-400 hover:text-red-500"><i data-lucide="trash-2" class="w-5 h-5"></i></button>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-red-50"
+                                        title="Preview">
+                                        <i data-lucide="eye" class="w-4 h-4"></i>
+                                    </button>
+                                    <button class="p-2 text-gray-500 hover:text-gray-600 rounded-full hover:bg-gray-100"
+                                        title="Download">
+                                        <i data-lucide="download" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Document Item 2 -->
+                            <div class="flex items-center justify-between p-4 border rounded-xl">
+                                <div class="flex items-center">
+                                    <i data-lucide="file-text" class="w-5 h-5 text-red-600 mr-3"></i>
+                                    <div>
+                                        <p class="font-medium">Academic Transcript</p>
+                                        <p class="text-sm text-gray-500">id_passport_copy.pdf • 120 KB</p>
+                                        <p class="text-xs text-gray-400 mt-1">Uploaded: March 15, 2024</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-red-50"
+                                        title="Preview">
+                                        <i data-lucide="eye" class="w-4 h-4"></i>
+                                    </button>
+                                    <button class="p-2 text-gray-500 hover:text-gray-600 rounded-full hover:bg-gray-100"
+                                        title="Download">
+                                        <i data-lucide="download" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Document Item 3 -->
+                            <div class="flex items-center justify-between p-4 border rounded-xl">
+                                <div class="flex items-center">
+                                    <i data-lucide="file-text" class="w-5 h-5 text-gray-400 mr-3"></i>
+                                    <div>
+                                        <p class="font-medium">ID/Passport Copy</p>
+                                        <p class="text-sm text-gray-500">Not uploaded yet</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="relative">
+                                        <input type="file" id="transcriptUpload" class="hidden"
+                                            accept=".pdf,.doc,.docx">
+                                        <button onclick="document.getElementById('transcriptUpload').click()"
+                                            class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-gray-100"
+                                            title="Upload file">
+                                            <i data-lucide="upload" class="w-4 h-4"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="border border-gray-200 rounded-lg p-4">
-                                <div class="flex justify-between items-start">
-                                    <div class="flex items-start space-x-3">
-                                        <div class="p-2 rounded-lg bg-red-50">
-                                            <i data-lucide="file" class="w-5 h-5 text-red-600"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="text-sm font-medium text-gray-900">Recommendation Letters</h4>
-                                            <p class="text-sm text-gray-500">2 files</p>
-                                        </div>
+                            <!-- Document Item 4 -->
+                            <div class="flex items-center justify-between p-4 border rounded-xl">
+                                <div class="flex items-center">
+                                    <i data-lucide="file-text" class="w-5 h-5 text-red-600 mr-3"></i>
+                                    <div>
+                                        <p class="font-medium">English Proficiency Test</p>
+                                        <p class="text-sm text-gray-500">english_proficiency_test.pdf • 50 KB</p>
+                                        <p class="text-xs text-gray-400 mt-1">Uploaded: March 20, 2024</p>
                                     </div>
-                                    <div class="flex space-x-2">
-                                        <button class="text-gray-400 hover:text-gray-500"><i data-lucide="download" class="w-5 h-5"></i></button>
-                                        <button class="text-gray-400 hover:text-red-500"><i data-lucide="trash-2" class="w-5 h-5"></i></button>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-red-50"
+                                        title="Preview">
+                                        <i data-lucide="eye" class="w-4 h-4"></i>
+                                    </button>
+                                    <button class="p-2 text-gray-500 hover:text-gray-600 rounded-full hover:bg-gray-100"
+                                        title="Download">
+                                        <i data-lucide="download" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Document Item 5 -->
+                            <div class="flex items-center justify-between p-4 border rounded-xl">
+                                <div class="flex items-center">
+                                    <i data-lucide="file-text" class="w-5 h-5 text-red-600 mr-3"></i>
+                                    <div>
+                                        <p class="font-medium">Financial Documents</p>
+                                        <p class="text-sm text-gray-500">financial_documents.pdf • 20 KB</p>
+                                        <p class="text-xs text-gray-400 mt-1">Uploaded: March 28, 2024</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-red-50"
+                                        title="Preview">
+                                        <i data-lucide="eye" class="w-4 h-4"></i>
+                                    </button>
+                                    <button class="p-2 text-gray-500 hover:text-gray-600 rounded-full hover:bg-gray-100"
+                                        title="Download">
+                                        <i data-lucide="download" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Document Item 6 -->
+                            <div class="flex items-center justify-between p-4 border rounded-xl">
+                                <div class="flex items-center">
+                                    <i data-lucide="file-text" class="w-5 h-5 text-gray-400 mr-3"></i>
+                                    <div>
+                                        <p class="font-medium">Recommendation Letters</p>
+                                        <p class="text-sm text-gray-500">Not uploaded yet</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="relative">
+                                        <input type="file" id="transcriptUpload" class="hidden"
+                                            accept=".pdf,.doc,.docx">
+                                        <button onclick="document.getElementById('transcriptUpload').click()"
+                                            class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-gray-100"
+                                            title="Upload file">
+                                            <i data-lucide="upload" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Document Item 7 -->
+                            <div class="flex items-center justify-between p-4 border rounded-xl">
+                                <div class="flex items-center">
+                                    <i data-lucide="file-text" class="w-5 h-5 text-gray-400 mr-3"></i>
+                                    <div>
+                                        <p class="font-medium">Statement of Purpose</p>
+                                        <p class="text-sm text-gray-500">Not uploaded yet</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="relative">
+                                        <input type="file" id="transcriptUpload" class="hidden"
+                                            accept=".pdf,.doc,.docx">
+                                        <button onclick="document.getElementById('transcriptUpload').click()"
+                                            class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-gray-100"
+                                            title="Upload file">
+                                            <i data-lucide="upload" class="w-4 h-4"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Submitted to School Step -->
                         <div id="docs-submitted-to-school" class="docs-panel space-y-4 hidden">
-                            <div class="text-sm text-gray-600">Submitted package summary and confirmations.</div>
-                            <div class="border border-gray-200 rounded-lg p-4">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-6">Submitted to School</h3>
+                            <div class="space-y-4">
+                                <ul class="space-y-4">
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0 mt-0.5">
+                                            <div
+                                                class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center">
+                                                <span class="text-red-600 font-medium text-base">1</span>
+                                            </div>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-base font-medium text-gray-900">Check student
+                                                email/notifications regularly</p>
+                                            <p class="text-base text-gray-600">Monitor the system so you can spot any
+                                                school request for additional documents and alert the student right
+                                                away.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="space-y-4">
+                                <ul class="space-y-4">
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0 mt-0.5">
+                                            <div
+                                                class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center">
+                                                <span class="text-red-600 font-medium text-base">2</span>
+                                            </div>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-base font-medium text-gray-900">Prepare or request digital
+                                                copies/scans</p>
+                                            <p class="text-base text-gray-600">Make sure all key papers (transcripts,
+                                                diplomas, financial proof, etc.) are ready or ask the student to upload
+                                                them promptly when the school asks.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="space-y-4">
+                                <ul class="space-y-4">
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0 mt-0.5">
+                                            <div
+                                                class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center">
+                                                <span class="text-red-600 font-medium text-base">3</span>
+                                            </div>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-base font-medium text-gray-900">Stay in contact with the
+                                                student</p>
+                                            <p class="text-base text-gray-600">Confirm when extra documents are
+                                                submitted and keep the student updated on the application status.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- School Response Step -->
+                        <div id="docs-school-response" class="docs-panel space-y-4 hidden">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-6">School Response</h3>
+                            <div class="space-y-4">
+                                <ul class="space-y-4">
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0 mt-0.5">
+                                            <div
+                                                class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center">
+                                                <span class="text-red-600 font-medium text-base">1</span>
+                                            </div>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-base font-medium text-gray-900">Track school responses &
+                                                extra document requests</p>
+                                            <p class="text-base text-gray-600">Check each school’s status until every
+                                                result is received.</p>
+                                            <p class="text-base text-gray-600">Notify the student and guide them to
+                                                upload any additional documents immediately when requested.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="space-y-4">
+                                <ul class="space-y-4">
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0 mt-0.5">
+                                            <div
+                                                class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center">
+                                                <span class="text-red-600 font-medium text-base">2</span>
+                                            </div>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-base font-medium text-gray-900">Communicate results to
+                                                student</p>
+                                            <p class="text-base text-gray-600">Inform the student of the admission
+                                                outcomes once available.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="space-y-4">
+                                <ul class="space-y-4">
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0 mt-0.5">
+                                            <div
+                                                class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center">
+                                                <span class="text-red-600 font-medium text-base">3</span>
+                                            </div>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-base font-medium text-gray-900">Liaise with consultant</p>
+                                            <p class="text-base text-gray-600">Share updates and notes to ensure all
+                                                documents are collected on time.</p>
+                                            <p class="text-base text-gray-600">Confirm that deadlines are monitored
+                                                until all schools have reported their results.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!--Offer Letter Issued Step -->
+                        <div id="docs-offered-letter-issued" class="docs-panel space-y-6">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-6">Offer Letter Status</h3>
+
+                            <!-- Document Information -->
+                            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                                <div class="p-6">
+                                    <div class="flex items-start space-x-4 mb-6">
+                                        <div class="p-3 rounded-lg bg-red-50">
+                                            <i data-lucide="file-badge" class="w-6 h-6 text-red-600"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h4 class="text-lg font-semibold text-gray-900">Offer Letter</h4>
+                                            <div class="mt-2 space-y-1 text-sm text-gray-600">
+                                                <p>Student: Sarah Chen</p>
+                                                <p>School & Program: Tiffin University - Business Administration</p>
+                                                <p>Issued Date: September 15, 2025</p>
+                                            </div>
+                                            <div class="mt-3 p-3 bg-gray-50 rounded-lg">
+                                                <div class="flex items-center justify-between">
+                                                    <div class="flex items-center space-x-3">
+                                                        <i data-lucide="file-text"
+                                                            class="w-5 h-5 text-red-600 mr-2"></i>
+                                                        <span
+                                                            class="font-medium">Offer_Letter_Sarah_Chen_2025.pdf</span>
+                                                    </div>
+                                                    <div class="flex items-center space-x-2">
+                                                        <button
+                                                            class="text-gray-500 hover:text-red-600 p-1 rounded-full hover:bg-gray-100">
+                                                            <i data-lucide="eye" class="w-4 h-4"></i>
+                                                        </button>
+                                                        <button
+                                                            class="text-gray-500 hover:text-red-600 p-1 rounded-full hover:bg-gray-100">
+                                                            <i data-lucide="download" class="w-4 h-4"></i>
+                                                        </button>
+                                                        <span class="text-sm text-gray-500">1.8 MB</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Agent Actions -->
+                                    <div class="mt-8">
+                                        <h4 class="text-md font-semibold text-gray-900 mb-4">Agent Actions</h4>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50">
+                                                <h5 class="font-medium text-gray-900 flex items-center">
+                                                    <i data-lucide="eye" class="w-4 h-4 mr-2 text-red-600"></i>
+                                                    View / Download Offer Letter
+                                                </h5>
+                                                <p class="text-sm text-gray-600 mt-1">View or download the PDF to check
+                                                    details.</p>
+                                            </div>
+                                            <div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50">
+                                                <h5 class="font-medium text-gray-900 flex items-center">
+                                                    <i data-lucide="check-circle" class="w-4 h-4 mr-2 text-red-600"></i>
+                                                    Verify Details
+                                                </h5>
+                                                <p class="text-sm text-gray-600 mt-1">Verify personal information and
+                                                    program details are correct.</p>
+                                            </div>
+                                            <div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50">
+                                                <h5 class="font-medium text-gray-900 flex items-center">
+                                                    <i data-lucide="message-square"
+                                                        class="w-4 h-4 mr-2 text-red-600"></i>
+                                                    Add Internal Notes
+                                                </h5>
+                                                <p class="text-sm text-gray-600 mt-1">Add feedback about steps (e.g.,
+                                                    acceptance deadline, deposit requirements).</p>
+                                            </div>
+                                            <div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50">
+                                                <h5 class="font-medium text-gray-900 flex items-center">
+                                                    <i data-lucide="bell" class="w-4 h-4 mr-2 text-red-600"></i>
+                                                    Notify Student
+                                                </h5>
+                                                <p class="text-sm text-gray-600 mt-1">Send reminders or messages to the
+                                                    student if issues are found or confirmation is needed.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Timeline -->
+                                    <div class="mt-8">
+                                        <h4 class="text-md font-semibold text-gray-900 mb-4">Timeline</h4>
+                                        <div class="space-y-4">
+                                            <div class="flex items-start">
+                                                <div class="flex-shrink-0 w-2 h-2 mt-1.5 rounded-full bg-red-500"></div>
+                                                <div class="ml-3">
+                                                    <p class="text-sm font-medium text-gray-900">Issued on September 15,
+                                                        2025</p>
+                                                    <p class="text-sm text-gray-600">Date the offer letter was issued by
+                                                        the school</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start">
+                                                <div class="flex-shrink-0 w-2 h-2 mt-1.5 rounded-full bg-red-500"></div>
+                                                <div class="ml-3">
+                                                    <p class="text-sm font-medium text-gray-900">Acceptance deadline:
+                                                        November 15, 2025</p>
+                                                    <p class="text-sm text-gray-600">Deadline for the student to confirm
+                                                        acceptance (if any)</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Committed to school step -->
+                        <div id="docs-committed-to-school" class="docs-panel space-y-6">
+                            <!-- Header Section -->
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-lg font-semibold text-gray-900">Commitment Status</h3>
+                                <span
+                                    class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-50 text-red-700 border border-red-200">
+                                    <i data-lucide="clock" class="w-4 h-4 mr-1"></i>
+                                    Pending Student Confirmation
+                                </span>
+                            </div>
+
+                            <!-- Student & School Info -->
+                            <div class="bg-white rounded-lg border border-gray-200 p-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="text-sm font-medium text-gray-600">Student</h4>
+                                        <p class="mt-1 text-gray-900 font-medium">Sarah Chen</p>
+                                        <p class="text-sm text-gray-500">ID: SC2025001</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-medium text-gray-600">School & Program</h4>
+                                        <p class="mt-1 text-gray-900 font-medium">Tiffin University</p>
+                                        <p class="text-sm text-gray-600">Bachelor of Business Administration</p>
+                                    </div>
+                                </div>
+
+                                <!-- Documents Section -->
+                                <div class="mt-6 space-y-4">
+                                    <h4 class="text-sm font-medium text-gray-700">Documents</h4>
+
+                                    <!-- Offer Letter -->
+                                    <div
+                                        class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="p-2 rounded-lg bg-red-50">
+                                                <i data-lucide="file-text" class="w-5 h-5 text-red-600"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-900">Offer Letter</p>
+                                                <p class="text-xs text-gray-500">Tiffin_OfferLetter_SC2025001.pdf
+                                                    (1.2MB)</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex space-x-1">
+                                            <button
+                                                class="text-gray-500 hover:text-red-600 p-1 rounded-full hover:bg-gray-100">
+                                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                            </button>
+                                            <button
+                                                class="text-gray-500 hover:text-red-600 p-1 rounded-full hover:bg-gray-100">
+                                                <i data-lucide="download" class="w-4 h-4"></i>
+                                            </button>
+                                            <span class="text-sm text-gray-500">1.8 MB</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Student Acceptance -->
+                                    <div
+                                        class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="p-2 rounded-lg bg-red-50">
+                                                <i data-lucide="file-text" class="w-5 h-5 text-red-400"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-900">Student Acceptance Letter
+                                                </p>
+                                                <p class="text-xs text-gray-500">Not uploaded yet</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-sm text-gray-400">-</span>
+                                    </div>
+                                </div>
+
+                                <!-- Deadline -->
+                                <div class="mt-6 p-4 bg-red-50 rounded-lg border border-red-100">
+                                    <div class="flex items-center space-x-2">
+                                        <i data-lucide="alert-circle" class="w-5 h-5 text-red-600"></i>
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-900">Acceptance Deadline</p>
+                                            <p class="text-sm text-red-700 font-medium">November 15, 2025 (45 days
+                                                remaining)</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Agent Tasks -->
+                                <div class="mt-8">
+                                    <h4 class="text-sm font-medium text-gray-700 mb-3">Agent Tasks</h4>
+                                    <div class="space-y-4">
+                                        <!-- Task 1 -->
+                                        <div class="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50">
+                                            <div
+                                                class="flex-shrink-0 w-6 h-6 rounded-full bg-red-100 flex items-center justify-center">
+                                                <span class="text-xs font-medium text-red-600">1</span>
+                                            </div>
+                                            <div class="flex-1">
+                                                <p class="text-sm font-medium text-gray-900">Track Student Confirmation
+                                                </p>
+                                                <p class="text-sm text-gray-600">Monitor student's response to the
+                                                    acceptance email and document upload.</p>
+                                                <div class="flex items-center mt-2 space-x-2">
+                                                    <span
+                                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 border border-red-200">
+                                                        <i data-lucide="mail" class="w-3 h-3 mr-1"></i>
+                                                        Email: Pending
+                                                    </span>
+                                                    <span
+                                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 border border-red-200">
+                                                        <i data-lucide="upload" class="w-3 h-3 mr-1"></i>
+                                                        Document: Missing
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Task 2 -->
+                                        <div
+                                            class="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 border-t border-gray-100">
+                                            <div
+                                                class="flex-shrink-0 w-6 h-6 rounded-full bg-red-100 flex items-center justify-center">
+                                                <span class="text-xs font-medium text-red-600">2</span>
+                                            </div>
+                                            <div class="flex-1">
+                                                <p class="text-sm font-medium text-gray-900">Verify and Record Decision
+                                                </p>
+                                                <p class="text-sm text-gray-600">Confirm school/program matches the
+                                                    offer and student's choice.</p>
+                                                <button
+                                                    class="mt-2 inline-flex items-center text-sm font-medium text-red-600 hover:text-red-800">
+                                                    <i data-lucide="check-circle" class="w-4 h-4 mr-1"></i>
+                                                    Mark as Committed
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Task 3 -->
+                                        <div
+                                            class="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 border-t border-gray-100">
+                                            <div
+                                                class="flex-shrink-0 w-6 h-6 rounded-full bg-red-100 flex items-center justify-center">
+                                                <span class="text-xs font-medium text-red-600">3</span>
+                                            </div>
+                                            <div class="flex-1">
+                                                <div
+                                                    class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                                                    <div>
+                                                        <p class="text-sm font-medium text-gray-900">Send Reminder</p>
+                                                        <p class="text-sm text-gray-600">Send a reminder to the student
+                                                            about the upcoming deadline.</p>
+                                                    </div>
+                                                    <button
+                                                        class="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-md whitespace-nowrap transition-colors">
+                                                        <i data-lucide="bell" class="w-3.5 h-3.5 mr-1 inline"></i>
+                                                        Send Reminder
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Visa Application -->
+                        <div id="docs-visa-application" class="docs-panel space-y-6">
+                            <!-- Header Section -->
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-lg font-semibold text-gray-900">Visa Application Status</h3>
+                                <span
+                                    class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-50 text-red-700 border border-red-200">
+                                    <i data-lucide="clock" class="w-4 h-4 mr-1"></i>
+                                    In Progress
+                                </span>
+                            </div>
+
+                            <!-- Visa Advisor & Status -->
+                            <div class="bg-white rounded-lg border border-gray-200 p-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="text-sm font-medium text-gray-600">Visa Advisor</h4>
+                                        <p class="mt-1 text-gray-900 font-medium">John Smith</p>
+                                        <p class="text-sm text-gray-600">john.smith@example.com</p>
+                                        <p class="text-sm text-gray-600">+1 (555) 123-4567</p>
+                                        <button class="mt-2 text-sm font-medium text-red-600 hover:text-red-800">
+                                            <i data-lucide="edit" class="w-4 h-4 mr-1 inline"></i>
+                                            Change Advisor
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-medium text-gray-600">Visa Progress</h4>
+                                        <div class="mt-2 space-y-3">
+                                            <div class="flex items-center">
+                                                <span class="w-3 h-3 rounded-full bg-red-500 mr-2"></span>
+                                                <a href="Agent-DS160.html" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-700 hover:text-red-600 hover:underline">DS-160 Form</a>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <span class="w-3 h-3 rounded-full bg-red-500 mr-2"></span>
+                                                <a href="Agent-visa-prep.html" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-700 hover:text-red-600 hover:underline">Visa Preparation Information</a>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <i data-lucide="calendar" class="w-4 h-4 text-gray-500 mr-2"></i>
+                                                <span class="text-sm text-gray-700">Interview: Not Scheduled</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Deadlines & Actions -->
+                                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="text-sm font-medium text-gray-700 mb-3">Upcoming Deadlines</h4>
+                                        <div class="space-y-3">
+                                            <div class="p-3 bg-red-50 border border-red-100 rounded-lg">
+                                                <div class="flex items-center">
+                                                    <i data-lucide="alert-triangle"
+                                                        class="w-5 h-5 text-red-600 mr-2"></i>
+                                                    <div>
+                                                        <p class="text-sm font-medium text-gray-900">DS-160 Submission
+                                                        </p>
+                                                        <p class="text-sm text-red-700">Due: October 15, 2025</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pre-departure Step-->
+                        <div id="docs-pre-departure" class="docs-panel space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Training Session -->
+                                <div class="border border-gray-200 rounded-xl p-5 bg-white">
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Pre-departure Training</h3>
+                                    <div class="space-y-4">
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center">
+                                                <i data-lucide="calendar" class="w-5 h-5 text-red-600 mr-2"></i>
+                                                <span class="text-sm font-medium text-gray-900">Next Session:</span>
+                                            </div>
+                                            <span class="px-3 py-1 bg-red-50 text-red-800 text-sm rounded-full border border-red-100">
+                                                Not Scheduled
+                                            </span>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center">
+                                                <i data-lucide="users" class="w-5 h-5 text-red-600 mr-2"></i>
+                                                <span class="text-sm font-medium text-gray-900">Status:</span>
+                                            </div>
+                                            <span class="px-3 py-1 bg-gray-100 text-gray-900 text-sm rounded-full border border-gray-200">
+                                                Pending
+                                            </span>
+                                        </div>
+                                        <div class="pt-4 border-t border-gray-100">
+                                            <button class="text-sm font-medium text-red-600 hover:text-red-800 flex items-center">
+                                                <i data-lucide="calendar-plus" class="w-4 h-4 mr-1"></i>
+                                                Schedule Session
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Travel Schedule -->
+                                <div class="border border-gray-200 rounded-xl p-5 bg-white">
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Travel Schedule</h3>
+                                    <div class="space-y-4">
+                                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                                            <div class="flex items-start space-x-3 mb-3">
+                                                <i data-lucide="plane" class="w-5 h-5 text-red-600 mt-0.5"></i>
+                                                <div class="flex-1">
+                                                    <div class="flex justify-between items-start">
+                                                        <div>
+                                                            <p class="text-sm font-medium text-gray-900">Flight Details</p>
+                                                            <p class="text-sm text-gray-600">Not yet shared</p>
+                                                        </div>
+                                                        <span class="px-2 py-1 bg-gray-100 text-gray-900 text-xs rounded border border-gray-200">
+                                                            Pending
+                                                        </span>
+                                                    </div>
+                                                    <div class="mt-3">
+                                                        <button class="text-xs font-medium text-red-600 hover:text-red-800 flex items-center">
+                                                            <i data-lucide="message-square" class="w-3.5 h-3.5 mr-1"></i>
+                                                            Request Details
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Insurance Status -->
+                                <div class="border border-gray-200 rounded-xl p-5 bg-white">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <h3 class="text-lg font-semibold text-gray-900">Insurance Status</h3>
+                                        <span class="px-3 py-1 bg-red-50 text-red-800 text-xs font-medium rounded-full border border-red-100">
+                                            Action Required
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="space-y-4">
+                                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                                            <div class="flex flex-col space-y-3">
+                                                <div class="flex items-start justify-between">
+                                                    <div class="flex items-start space-x-3">
+                                                        <div class="p-2 bg-red-50 rounded-lg">
+                                                            <i data-lucide="shield-check" class="w-5 h-5 text-red-600"></i>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-sm font-medium text-gray-900">Insurance Coverage</p>
+                                                            <p class="text-sm text-gray-600 mt-1">Not yet provided</p>
+                                                        </div>
+                                                    </div>
+                                                    <span class="px-2 py-1 bg-red-50 text-red-700 text-xs font-medium rounded border border-red-100">
+                                                        Required
+                                                    </span>
+                                                </div>
+                                                
+                                                <div class="flex flex-wrap gap-3 pt-2 border-t border-gray-100">
+                                                    <button class="flex items-center text-sm font-medium text-red-600 hover:text-red-800 transition-colors">
+                                                        <i data-lucide="message-square" class="w-4 h-4 mr-1.5"></i>
+                                                        Request Info
+                                                    </button>
+                                                    <button class="flex items-center text-sm font-medium text-gray-600 hover:text-gray-800 transition-colors">
+                                                        <i data-lucide="upload" class="w-4 h-4 mr-1.5"></i>
+                                                        Upload Proof
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Arrival -->
+                        <div id="docs-arrival" class="docs-panel space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Arrival Details -->
+                                <div class="border border-gray-200 rounded-xl p-5 bg-white">
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Arrival Details</h3>
+                                    <div class="space-y-4">
+                                        <div class="flex items-start justify-between">
+                                            <div class="flex items-center">
+                                                <i data-lucide="calendar" class="w-5 h-5 text-red-600 mr-2"></i>
+                                                <span class="text-sm font-medium text-gray-900">Arrival Status:</span>
+                                            </div>
+                                            <span class="px-3 py-1 bg-red-50 text-red-800 text-xs font-medium rounded-full border border-red-100">
+                                                Confirmed - Sep 20, 2025
+                                            </span>
+                                        </div>
+                                        
+                                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-100 space-y-3">
+                                            <div class="flex items-start">
+                                                <i data-lucide="clock" class="w-4 h-4 text-red-600 mt-0.5 mr-2"></i>
+                                                <div>
+                                                    <p class="text-sm font-medium text-gray-900">Flight Details</p>
+                                                    <p class="text-sm text-gray-700">DL 1234 - Arrived at 15:30 (EST)</p>
+                                                    <p class="text-xs text-gray-500">Detroit Metro Airport (DTW)</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start">
+                                                <i data-lucide="map-pin" class="w-4 h-4 text-red-600 mt-0.5 mr-2"></i>
+                                                <div>
+                                                    <p class="text-sm font-medium text-gray-900">Campus Address</p>
+                                                    <p class="text-sm text-gray-700">155 Miami St, Tiffin, OH 44883</p>
+                                                    <p class="text-xs text-gray-500">Dorm: Franks Hall, Room 205</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start">
+                                                <i data-lucide="phone" class="w-4 h-4 text-red-600 mt-0.5 mr-2"></i>
+                                                <div>
+                                                    <p class="text-sm font-medium text-gray-900">Emergency Contact</p>
+                                                    <p class="text-sm text-gray-700">Sarah Johnson (Aunt)</p>
+                                                    <p class="text-xs text-gray-500">+1 (419) 555-0187</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- School Liaison -->
+                                <div class="border border-gray-200 rounded-xl p-5 bg-white">
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Tiffin University</h3>
+                                    <div class="space-y-4">
+                                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                                            <div class="flex items-center space-x-3 mb-3">
+                                                <div class="p-2 bg-red-50 rounded-lg">
+                                                    <i data-lucide="user-check" class="w-5 h-5 text-red-600"></i>
+                                                </div>
+                                                <div>
+                                                    <p class="text-sm font-medium text-gray-900">International Student Office</p>
+                                                    <p class="text-xs text-gray-500">Primary Contact</p>
+                                                </div>
+                                            </div>
+                                            <div class="space-y-2 pl-11">
+                                                <div class="flex items-center text-sm">
+                                                    <i data-lucide="user" class="w-4 h-4 text-red-600 mr-2"></i>
+                                                    <span class="text-gray-700">Dr. Michael Chen</span>
+                                                </div>
+                                                <div class="flex items-center text-sm">
+                                                    <i data-lucide="mail" class="w-4 h-4 text-red-600 mr-2"></i>
+                                                    <span class="text-gray-700">mchen@tiffin.edu</span>
+                                                </div>
+                                                <div class="flex items-center text-sm">
+                                                    <i data-lucide="phone" class="w-4 h-4 text-red-600 mr-2"></i>
+                                                    <span class="text-gray-700">+1 (419) 555-0123 ext. 456</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- First Month Check-in -->
+                                <div class="border border-gray-200 rounded-xl p-5 bg-white">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <h3 class="text-lg font-semibold text-gray-900">First Month Check-in</h3>
+                                        <span class="px-3 py-1 bg-red-50 text-red-800 text-xs font-medium rounded-full border border-red-100">
+                                            Scheduled: Oct 10
+                                        </span>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                                            <div class="grid grid-cols-2 gap-4">
+                                                <div>
+                                                    <p class="text-xs font-medium text-gray-500 mb-1">Date</p>
+                                                    <p class="text-sm text-gray-900">Oct 10, 2025</p>
+                                                </div>
+                                                <div>
+                                                    <p class="text-xs font-medium text-gray-500 mb-1">Time</p>
+                                                    <p class="text-sm text-gray-900">14:00 - 14:45 (EST)</p>
+                                                </div>
+                                            </div>
+                                            <div class="mt-4 pt-4 border-t border-gray-100">
+                                                <button class="text-sm font-medium text-red-600 hover:text-red-800 flex items-center">
+                                                    <i data-lucide="video" class="w-4 h-4 mr-1"></i>
+                                                    Join Meeting
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Current Status -->
+                                <div class="border border-gray-200 rounded-xl p-5 bg-white">
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Current Status</h3>
+                                    <div class="space-y-3">
+                                        <div class="flex items-start p-3 bg-red-50 rounded-lg border border-red-100">
+                                            <i data-lucide="alert-circle" class="w-5 h-5 text-red-600 mr-2 mt-0.5"></i>
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-900">Housing Issue</p>
+                                                <p class="text-sm text-gray-700">AC not working in dorm room</p>
+                                                <p class="text-xs text-gray-500 mt-1">Reported: Sep 20 - In Progress</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start p-3 bg-gray-50 rounded-lg border border-gray-100">
+                                            <i data-lucide="check-circle" class="w-5 h-5 text-gray-600 mr-2 mt-0.5"></i>
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-900">Orientation</p>
+                                                <p class="text-sm text-gray-700">Completed on Sep 22</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feedback Section -->
+                    <div class="bg-white rounded-2xl shadow-md p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Feedback for Student</h3>
+                            <button id="toggle-feedback-form"
+                                class="text-red-600 hover:text-red-700 text-sm font-medium flex items-center">
+                                <i data-lucide="plus" class="w-4 h-4 mr-1"></i> Add Feedback
+                            </button>
+                        </div>
+
+                        <!-- Feedback Form (Initially Hidden) -->
+                        <div id="feedback-form" class="hidden mb-6">
+                            <textarea id="feedback-message" rows="3"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                                placeholder="Type your feedback here..."></textarea>
+                            <div class="flex justify-end mt-2 space-x-3">
+                                <button id="cancel-feedback"
+                                    class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200">
+                                    Cancel
+                                </button>
+                                <button id="submit-feedback"
+                                    class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700">
+                                    Send Feedback
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Feedback List -->
+                        <div id="feedback-list" class="space-y-4">
+                            <!-- Feedback items will be dynamically added here -->
+                            <div class="p-4 bg-gray-50 rounded-lg">
                                 <div class="flex justify-between items-start">
                                     <div class="flex items-start space-x-3">
-                                        <div class="p-2 rounded-lg bg-red-50">
-                                            <i data-lucide="check-circle" class="w-5 h-5 text-red-600"></i>
+                                        <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center">
+                                            <i data-lucide="user" class="w-4 h-4 text-red-600"></i>
                                         </div>
                                         <div>
-                                            <h4 class="text-sm font-medium text-gray-900">Submission Confirmation</h4>
-                                            <p class="text-sm text-gray-500">PDF • 120 KB</p>
+                                            <p class="text-sm text-gray-700">Please submit your English test results by
+                                                the end of this week.</p>
+                                            <p class="text-xs text-gray-500 mt-1">You - Sep 25, 2024 10:30 AM</p>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="docs-school-response" class="docs-panel space-y-4 hidden">
-                            <div class="text-sm text-gray-600">School feedback and additional requests.</div>
-                            <div class="border border-gray-200 rounded-lg p-4">
-                                <div class="flex items-start space-x-3">
-                                    <div class="p-2 rounded-lg bg-red-50"><i data-lucide="mail" class="w-5 h-5 text-red-600"></i></div>
-                                    <div>
-                                        <h4 class="text-sm font-medium text-gray-900">School Email</h4>
-                                        <p class="text-sm text-gray-500">Awaiting response</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="docs-offered-letter-issued" class="docs-panel space-y-4 hidden">
-                            <div class="text-sm text-gray-600">Offer letter and acceptance steps.</div>
-                            <div class="border border-gray-200 rounded-lg p-4">
-                                <div class="flex items-start space-x-3">
-                                    <div class="p-2 rounded-lg bg-red-50"><i data-lucide="file-badge" class="w-5 h-5 text-red-600"></i></div>
-                                    <div>
-                                        <h4 class="text-sm font-medium text-gray-900">Offer Letter</h4>
-                                        <p class="text-sm text-gray-500">Pending</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="docs-committed-to-school" class="docs-panel space-y-4 hidden">
-                            <div class="text-sm text-gray-600">Deposit receipt and commitment forms.</div>
-                            <div class="border border-gray-200 rounded-lg p-4">
-                                <div class="flex items-start space-x-3">
-                                    <div class="p-2 rounded-lg bg-red-50"><i data-lucide="banknote" class="w-5 h-5 text-red-600"></i></div>
-                                    <div>
-                                        <h4 class="text-sm font-medium text-gray-900">Deposit Receipt</h4>
-                                        <p class="text-sm text-gray-500">Pending</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="docs-visa-application" class="docs-panel space-y-4 hidden">
-                            <div class="text-sm text-gray-600">Visa forms and supporting documents.</div>
-                            <div class="border border-gray-200 rounded-lg p-4">
-                                <div class="flex items-start space-x-3">
-                                    <div class="p-2 rounded-lg bg-red-50"><i data-lucide="passport" class="w-5 h-5 text-red-600"></i></div>
-                                    <div>
-                                        <h4 class="text-sm font-medium text-gray-900">DS-160 Form</h4>
-                                        <p class="text-sm text-gray-500">In Progress</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="docs-pre-departure" class="docs-panel space-y-4 hidden">
-                            <div class="text-sm text-gray-600">Pre-departure checklist and orientation.</div>
-                            <div class="border border-gray-200 rounded-lg p-4">
-                                <div class="flex items-start space-x-3">
-                                    <div class="p-2 rounded-lg bg-red-50"><i data-lucide="plane" class="w-5 h-5 text-red-600"></i></div>
-                                    <div>
-                                        <h4 class="text-sm font-medium text-gray-900">Flight Details</h4>
-                                        <p class="text-sm text-gray-500">Pending</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="docs-arrival" class="docs-panel space-y-4 hidden">
-                            <div class="text-sm text-gray-600">Arrival documents and onboarding.</div>
-                            <div class="border border-gray-200 rounded-lg p-4">
-                                <div class="flex items-start space-x-3">
-                                    <div class="p-2 rounded-lg bg-red-50"><i data-lucide="map-pin" class="w-5 h-5 text-red-600"></i></div>
-                                    <div>
-                                        <h4 class="text-sm font-medium text-gray-900">Arrival Confirmation</h4>
-                                        <p class="text-sm text-gray-500">Pending</p>
-                                    </div>
+                                    <button class="text-gray-400 hover:text-red-600">
+                                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -441,7 +1200,8 @@
                         <h3 class="text-lg font-semibold text-gray-900 mb-4">Application Timeline</h3>
 
                         <!-- Timeline Step 1: Initial Advising -->
-                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="initial-advising">
+                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors"
+                            data-step="initial-advising">
                             <div class="timeline-dot completed"></div>
                             <div class="pl-6">
                                 <h4 class="font-medium">Initial Advising</h4>
@@ -450,7 +1210,8 @@
                         </div>
 
                         <!-- Timeline Step 2: Application In Progress -->
-                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors current" data-step="application-in-progress">
+                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors current"
+                            data-step="application-in-progress">
                             <div class="timeline-dot current"></div>
                             <div class="pl-6">
                                 <h4 class="font-medium">Application In Progress</h4>
@@ -459,7 +1220,8 @@
                         </div>
 
                         <!-- Timeline Step 3: Submitted to School -->
-                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="submitted-to-school">
+                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors"
+                            data-step="submitted-to-school">
                             <div class="timeline-dot"></div>
                             <div class="pl-6">
                                 <h4 class="font-medium">Submitted to School</h4>
@@ -468,7 +1230,8 @@
                         </div>
 
                         <!-- Timeline Step 4: School Response -->
-                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="school-response">
+                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors"
+                            data-step="school-response">
                             <div class="timeline-dot"></div>
                             <div class="pl-6">
                                 <h4 class="font-medium">School Response</h4>
@@ -477,7 +1240,8 @@
                         </div>
 
                         <!-- Timeline Step 5: Offer Letter Issued -->
-                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="offered-letter-issued">
+                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors"
+                            data-step="offered-letter-issued">
                             <div class="timeline-dot"></div>
                             <div class="pl-6">
                                 <h4 class="font-medium">Offer Letter Issued</h4>
@@ -486,7 +1250,8 @@
                         </div>
 
                         <!-- Timeline Step 6: Committed to School -->
-                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="committed-to-school">
+                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors"
+                            data-step="committed-to-school">
                             <div class="timeline-dot"></div>
                             <div class="pl-6">
                                 <h4 class="font-medium">Committed to School</h4>
@@ -495,7 +1260,8 @@
                         </div>
 
                         <!-- Timeline Step 7: Visa Application -->
-                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="visa-application">
+                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors"
+                            data-step="visa-application">
                             <div class="timeline-dot"></div>
                             <div class="pl-6">
                                 <h4 class="font-medium">Visa Application</h4>
@@ -504,7 +1270,8 @@
                         </div>
 
                         <!-- Timeline Step 8: Pre-Departure -->
-                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="pre-departure">
+                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors"
+                            data-step="pre-departure">
                             <div class="timeline-dot"></div>
                             <div class="pl-6">
                                 <h4 class="font-medium">Pre-Departure</h4>
@@ -513,7 +1280,8 @@
                         </div>
 
                         <!-- Timeline Step 9: Arrival -->
-                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors" data-step="arrival">
+                        <div class="timeline-step cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors"
+                            data-step="arrival">
                             <div class="timeline-dot"></div>
                             <div class="pl-6">
                                 <h4 class="font-medium">Arrival</h4>
@@ -521,6 +1289,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </main>
@@ -529,6 +1298,90 @@
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
+
+        // Feedback functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleBtn = document.getElementById('toggle-feedback-form');
+            const feedbackForm = document.getElementById('feedback-form');
+            const cancelBtn = document.getElementById('cancel-feedback');
+            const submitBtn = document.getElementById('submit-feedback');
+            const feedbackMessage = document.getElementById('feedback-message');
+            const feedbackList = document.getElementById('feedback-list');
+
+            // Toggle feedback form
+            toggleBtn?.addEventListener('click', () => {
+                feedbackForm.classList.toggle('hidden');
+                const isVisible = !feedbackForm.classList.contains('hidden');
+                toggleBtn.innerHTML = isVisible
+                    ? '<i data-lucide="x" class="w-4 h-4 mr-1"></i> Cancel'
+                    : '<i data-lucide="plus" class="w-4 h-4 mr-1"></i> Add Feedback';
+                lucide.createIcons();
+            });
+
+            // Cancel feedback
+            cancelBtn?.addEventListener('click', () => {
+                feedbackForm.classList.add('hidden');
+                feedbackMessage.value = '';
+                toggleBtn.innerHTML = '<i data-lucide="plus" class="w-4 h-4 mr-1"></i> Add Feedback';
+                lucide.createIcons();
+            });
+
+            // Submit feedback
+            submitBtn?.addEventListener('click', () => {
+                const message = feedbackMessage.value.trim();
+                if (message) {
+                    const now = new Date();
+                    const timeString = now.toLocaleString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        hour12: true
+                    });
+
+                    const feedbackItem = `
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <div class="flex justify-between items-start">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center">
+                                        <i data-lucide="user" class="w-4 h-4 text-red-600"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-700">${message}</p>
+                                        <p class="text-xs text-gray-500 mt-1">You - ${timeString}</p>
+                                    </div>
+                                </div>
+                                <button class="delete-feedback text-gray-400 hover:text-red-600">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+
+                    feedbackList.insertAdjacentHTML('afterbegin', feedbackItem);
+                    feedbackMessage.value = '';
+                    feedbackForm.classList.add('hidden');
+                    toggleBtn.innerHTML = '<i data-lucide="plus" class="w-4 h-4 mr-1"></i> Add Feedback';
+                    lucide.createIcons();
+
+                    // Add event listener to the new delete button
+                    const deleteBtn = feedbackList.querySelector('.delete-feedback');
+                    if (deleteBtn) {
+                        deleteBtn.addEventListener('click', (e) => {
+                            e.target.closest('.p-4').remove();
+                        });
+                    }
+                }
+            });
+
+            // Add event delegation for delete buttons
+            feedbackList?.addEventListener('click', (e) => {
+                if (e.target.closest('.delete-feedback') || e.target.classList.contains('delete-feedback')) {
+                    e.target.closest('.p-4').remove();
+                }
+            });
+        });
 
         // Handle logout
         function handleLogout() {
@@ -571,31 +1424,31 @@
                 steps.forEach((step, index) => {
                     const dot = step.querySelector('.timeline-dot');
                     if (!dot) return;
-                    
+
                     // Reset all dots
                     dot.classList.remove('completed', 'current');
-                    
+
                     // Update dot states based on position
                     if (index < clickedStepIndex) {
                         dot.classList.add('completed');
                     } else if (index === clickedStepIndex) {
                         dot.classList.add('current');
                     }
-                    
+
                     // Update step styles
                     step.classList.remove('bg-red-50');
                     if (index === clickedStepIndex) {
                         step.classList.add('bg-red-50');
                     }
                 });
-                
+
                 currentStepIndex = clickedStepIndex;
             }
 
             function showDocsFor(stepId) {
                 // Hide all panels
                 panels.forEach(p => p.classList.add('hidden'));
-                
+
                 // Show the selected panel
                 const target = document.getElementById(`docs-${stepId}`);
                 if (target) target.classList.remove('hidden');
@@ -604,7 +1457,7 @@
                 const stepElements = Array.from(steps);
                 const currentStep = document.querySelector(`.timeline-step[data-step="${stepId}"]`);
                 const currentIndex = stepElements.indexOf(currentStep);
-                
+
                 if (currentIndex !== -1) {
                     updateTimelineState(currentIndex);
                 }
