@@ -94,7 +94,7 @@
                     <div class="relative ml-4" id="profile-menu">
                         <button class="flex items-center">
                             <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                alt="Admin profile" class="w-8 h-8 rounded-full object-cover">
+                                alt="Admin profile" class="w-8 h-8 rounded-full">
                         </button>
                         <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2">
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
@@ -120,7 +120,7 @@
                         </button>
                     </div>
                     <button onclick="openAddInstitutionModal()" class="inline-flex items-center px-4 py-2 bg-red-400 text-white text-sm font-medium rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                        <i data-lucide="plus" class="w-4 h-4 mr-1.5"></i>
+                        <i data-lucide="plus" class="w-4 h-4 mr-1"></i>
                         Add Institution
                     </button>
                 </div>
@@ -769,13 +769,15 @@
                                 <!-- Content will be dynamically populated -->
                             </div>
 
-                            <div class="flex justify-between pt-4 border-t border-gray-200">
+                            <div class="flex justify-between items-center pt-4 border-t border-gray-200">
                                 <button onclick="goBackToStep2()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 flex items-center">
                                     <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
                                     Back
                                 </button>
-                                <div class="space-x-3">
-                                    <button onclick="closeAddInstitutionModal()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">Cancel</button>
+                                <div class="flex space-x-3">
+                                    <button onclick="closeAddInstitutionModal()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">
+                                        Cancel
+                                    </button>
                                     <button onclick="saveNewInstitution()" class="px-4 py-2 text-white rounded-lg text-sm font-medium hover:opacity-90 flex items-center" style="background-color: #d82128;">
                                         <i data-lucide="save" class="w-4 h-4 mr-2"></i>
                                         Save Institution
@@ -1095,36 +1097,49 @@
             return {
                 name: name,
                 url: url,
-                logo: 'https://ui-avatars.com/api/?name=' + encodeURIComponent(name) + '&background=d82128&color=fff',
-                location: 'Toronto, ON, Canada',
-                address: '27 King\'s College Circle, Toronto, ON M5S 3M2',
-                studentPopulation: '97,000+',
-                establishedYear: '1827',
-                type: 'Public University',
-                partnerType: 'Strategic',
-                contactName: 'Jane Smith',
-                contactEmail: 'admissions@' + url.replace('https://', '').replace('www.', ''),
-                contactPhone: '+1 (416) 978-2011',
-                overview: `${name} is a world-renowned public research university known for its academic excellence, innovation, and diverse community. It offers a comprehensive range of programs and has a strong global reputation.`,
-                mission: 'To be an internationally significant research university, with undergraduate, graduate and professional programs of excellent quality.',
-                programs: [
-                    {
-                        name: 'Bachelor of Computer Science',
-                        level: 'Undergraduate',
-                        field: 'Computer Science',
-                        tuition: '$45,000 - $55,000 / year',
-                        deadline: 'March 1, 2025',
-                        requirements: ['IELTS: 6.5', 'GPA: 3.0', 'Fall 2025', 'Spring 2025']
+                logo: 'https://via.placeholder.com/150',
+                location: {
+                    address: '',
+                    city: '',
+                    country: '',
+                    coordinates: {
+                        lat: null,
+                        lng: null
                     },
-                    {
-                        name: 'Master of Business Administration',
-                        level: 'Graduate',
-                        field: 'Business',
-                        tuition: '$65,000 - $75,000 / year',
-                        deadline: 'January 15, 2025',
-                        requirements: ['IELTS: 7.0', 'GPA: 3.5', 'Fall 2025']
-                    }
-                ]
+                    mapEmbedUrl: ''
+                },
+                address: '',
+                studentPopulation: '',
+                establishedYear: '',
+                type: 'University',
+                partnerType: 'Strategic',
+                contactName: '',
+                contactEmail: '',
+                contactPhone: '',
+                overview: '',
+                mission: '',
+                programs: [],
+                campusGallery: [],
+                costAndTuition: {
+                    tuitionFee: {
+                        domestic: '',
+                        international: ''
+                    },
+                    applicationFee: '',
+                    scholarships: [],
+                    financialAid: {
+                        available: false,
+                        description: ''
+                    },
+                    paymentPlans: []
+                },
+                quickStats: {
+                    studentToFacultyRatio: '',
+                    acceptanceRate: '',
+                    averageClassSize: '',
+                    graduationRate: '',
+                    internationalStudents: ''
+                }
             };
         }
 
@@ -1152,7 +1167,7 @@
                                 <span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">Public</span>
                                 <i data-lucide="zap" class="w-4 h-4 text-yellow-500" title="AI-generated content"></i>
                             </div>
-                            <input type="text" class="text-sm text-gray-500 border-gray-300 rounded mt-1" value="${fetchedData.location} • Established ${fetchedData.establishedYear}">
+                            <input type="text" class="text-sm text-gray-500 border-gray-300 rounded mt-1" value="${fetchedData.location.city}, ${fetchedData.location.country} • Established ${fetchedData.establishedYear}">
                         </div>
                     </div>
 
@@ -1160,8 +1175,8 @@
                         <div class="bg-gray-50 rounded-lg p-4">
                             <p class="text-xs text-gray-500">Location</p>
                             <div class="edit-mode">
-                                <input type="text" class="w-full text-sm font-medium border-gray-300 rounded mb-2" value="${fetchedData.location}">
-                                <input type="text" class="w-full text-xs border-gray-300 rounded" value="${fetchedData.address}">
+                                <input type="text" class="w-full text-sm font-medium border-gray-300 rounded mb-2" value="${fetchedData.location.address}">
+                                <input type="text" class="w-full text-xs border-gray-300 rounded" value="${fetchedData.location.city}, ${fetchedData.location.country}">
                             </div>
                         </div>
                         <div class="bg-gray-50 rounded-lg p-4">
@@ -1412,26 +1427,84 @@
         }
 
         function skipToManualEntry() {
-            // Generate minimal mock data for manual entry
-            const name = document.getElementById('institution-name').value;
-            const url = document.getElementById('institution-url').value;
+            // Generate sample data for manual entry
+            const name = document.getElementById('institution-name').value || 'University of Technology';
+            const url = document.getElementById('institution-url').value || 'https://www.utech.edu';
             
             fetchedData = {
                 name: name,
                 url: url,
-                logo: '',
-                location: '',
-                address: '',
-                studentPopulation: '',
-                establishedYear: '',
+                logo: 'https://via.placeholder.com/150',
+                location: {
+                    address: '123 University Avenue',
+                    city: 'New York',
+                    country: 'United States',
+                    coordinates: {
+                        lat: 40.7128,
+                        lng: -74.0060
+                    },
+                    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215209105331!2d-73.9878446845937!3d40.74844047932881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzU0LjQiTiA3M8KwNTknMTguNyJX!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus'
+                },
+                address: '123 University Avenue, New York, NY 10001',
+                studentPopulation: '25,000+',
+                establishedYear: '1950',
                 type: 'University',
                 partnerType: 'Strategic',
-                contactName: '',
-                contactEmail: '',
-                contactPhone: '',
-                overview: '',
-                mission: '',
-                programs: []
+                contactName: 'John Smith',
+                contactEmail: 'admissions@utech.edu',
+                contactPhone: '+1 (212) 555-0123',
+                overview: 'A leading technological university known for its innovative programs and research initiatives. We prepare students for successful careers in the digital age through hands-on learning and industry partnerships.',
+                mission: 'To empower students through technology, innovation, and academic excellence, fostering the next generation of leaders and problem solvers.',
+                programs: [
+                    {
+                        name: 'Bachelor of Science in Computer Science',
+                        level: 'Undergraduate',
+                        field: 'Computer Science',
+                        duration: '4 years',
+                        tuition: '$45,000 per year',
+                        requirements: ['High School Diploma', 'SAT/ACT scores', 'Letters of recommendation']
+                    },
+                    {
+                        name: 'Master of Business Administration',
+                        level: 'Graduate',
+                        field: 'Business Administration',
+                        duration: '2 years',
+                        tuition: '$60,000 per year',
+                        requirements: ['Bachelor\'s degree', 'GMAT/GRE scores', 'Work experience', 'Recommendation letters']
+                    }
+                ],
+                campusGallery: [
+                    'https://via.placeholder.com/800x400?text=Main+Campus',
+                    'https://via.placeholder.com/800x400?text=Library',
+                    'https://via.placeholder.com/800x400?text=Student+Center'
+                ],
+                costAndTuition: {
+                    tuitionFee: {
+                        domestic: '$15,000 per semester',
+                        international: '$25,000 per semester'
+                    },
+                    applicationFee: '$75',
+                    scholarships: [
+                        { name: 'Merit Scholarship', amount: '$10,000', requirements: 'GPA 3.5+' },
+                        { name: 'International Student Grant', amount: '$5,000', requirements: 'Non-US citizens only' }
+                    ],
+                    financialAid: {
+                        available: true,
+                        description: 'Various federal and state financial aid options available for eligible students.'
+                    },
+                    paymentPlans: [
+                        'Full payment (5% discount)',
+                        'Semester payment plan',
+                        'Monthly installment plan (12 months)'
+                    ]
+                },
+                quickStats: {
+                    studentToFacultyRatio: '15:1',
+                    acceptanceRate: '65%',
+                    averageClassSize: '25 students',
+                    graduationRate: '85%',
+                    internationalStudents: '25%'
+                }
             };
             
             goToStep3();

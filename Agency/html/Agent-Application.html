@@ -213,7 +213,7 @@
             <div class="mb-6">
                 <div class="flex items-center justify-between mb-4">
                     <h4 class="font-medium">Application Progress</h4>
-                    <span class="text-sm" style="color: #d82128;">3/5 Steps Completed</span>
+                    <span class="text-sm" style="color: #d82128;">3/9 Steps Completed</span>
                 </div>
                 <!-- Progress Bar -->
                 <div class="h-2 w-full bg-gray-200 rounded-full mb-4">
@@ -275,7 +275,7 @@
                 </div>
                 <div>
                     <h4 class="text-sm font-medium text-gray-500 mb-1">Status</h4>
-                    <span id="modal-status-badge" class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Under Review</span>
+                    <span id="modal-status-badge" class="whitespace-nowrap inline-flex items-center px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Under Review</span>
                 </div>
             </div>
 
@@ -387,6 +387,7 @@
                     <thead class="bg-gray-50 border-b border-gray-200">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Student Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Agent</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Scholarship Name</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Progress</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country</th>
@@ -402,18 +403,19 @@
                             <td class="px-6 py-4">
                                 <a href="Agent-Application-details.html" target="_blank" rel="noopener noreferrer" class="text-red-600 hover:text-red-800">Sarah Chen</a>
                             </td>
+                            <td class="px-6 py-4 text-sm text-gray-900">John Smith</td>
                             <td class="px-6 py-4">Merit Scholarship – Tiffin University</td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center space-x-2">
                                     <div class="flex-grow h-1.5 bg-gray-200 rounded-full overflow-hidden">
                                         <div class="h-full rounded-full" style="width: 60%; background-color: #d82128;"></div>
                                     </div>
-                                    <span class="text-sm text-gray-600">3/5</span>
+                                    <span class="text-sm text-gray-600">3/9</span>
                                 </div>
                             </td>
                             <td class="px-6 py-4">Australia</td>
                             <td class="px-6 py-4">
-                                <span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Under Review</span>
+                                <span class="whitespace-nowrap inline-flex items-center px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Under Review</span>
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500">2 hours ago</td>
                             <td class="px-6 py-4">
@@ -423,7 +425,7 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex space-x-2">
-                                    <button onclick="openApplicationModal({ name: 'Sarah Chen', program: 'MSc in Marketing', university: 'University of Sydney', statusText: 'Under Review', statusClass: 'bg-yellow-100 text-yellow-800' })" class="text-red-400 hover:text-red-700 mr-3 group relative">
+                                    <button onclick="window.open('Agent-Application-details.html', '_blank')" class="text-red-400 hover:text-red-700 mr-3 group relative">
                                         <i data-lucide="eye" class="w-5 h-5"></i>
                                         <span class="invisible group-hover:visible absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap">View Details</span>
                                     </button>
@@ -437,20 +439,21 @@
                         <!-- Sample Row 2 -->
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4">
-                                <a href="Agent-Application-details.html" target="_blank" rel="noopener noreferrer" class="text-red-600 hover:text-red-800">John Smith</a>
+                                <a href="Agent-Application-details.html" target="_blank" rel="noopener noreferrer" class="text-red-600 hover:text-red-800">Mike Wong</a>
                             </td>
+                            <td class="px-6 py-4 text-sm text-gray-900">John Smith</td>
                             <td class="px-6 py-4">Green Future Scholarship – Tiffin University</td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center space-x-2">
                                     <div class="flex-grow h-1.5 bg-gray-200 rounded-full overflow-hidden">
                                         <div class="h-full rounded-full" style="width: 40%; background-color: #d82128;"></div>
                                     </div>
-                                    <span class="text-sm text-gray-600">2/5</span>
+                                    <span class="text-sm text-gray-600">2/9</span>
                                 </div>
                             </td>
                             <td class="px-6 py-4">Australia</td>
                             <td class="px-6 py-4">
-                                <span class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">Missing Docs</span>
+                                <span class="whitespace-nowrap inline-flex items-center px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">Missing Docs</span>
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500">1 day ago</td>
                             <td class="px-6 py-4">
@@ -460,13 +463,51 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex space-x-2">
-                                    <button onclick="openApplicationModal({ name: 'John Smith', program: 'Bachelor of Business', university: 'University of Melbourne', statusText: 'Missing Docs', statusClass: 'bg-red-100 text-red-800' })" class="text-red-400 hover:text-red-700 mr-3 group relative">
+                                    <button onclick="window.open('Agent-Application-details.html', '_blank')" class="text-red-400 hover:text-red-700 mr-3 group relative">
                                         <i data-lucide="eye" class="w-5 h-5"></i>
                                         <span class="invisible group-hover:visible absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap">View Details</span>
                                     </button>
                                     <button class="text-red-400 hover:text-red-700 group relative">
                                         <i data-lucide="upload" class="w-5 h-5"></i>
                                         <span class="invisible group-hover:visible absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap">Upload Documents</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Sample Row 3 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4">
+                                <a href="Agent-Application-details.html" target="_blank" rel="noopener noreferrer" class="text-red-600 hover:text-red-800">David Kim</a>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-900">Emily Davis</td>
+                            <td class="px-6 py-4">International Excellence Scholarship – Tiffin University</td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="flex-grow h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                                        <div class="h-full rounded-full" style="width: 70%; background-color: #d82128;"></div>
+                                    </div>
+                                    <span class="text-sm text-gray-600">5/9</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">Canada</td>
+                            <td class="px-6 py-4">
+                                <span class="whitespace-nowrap inline-flex items-center px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">In Review</span>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-500">5 hours ago</td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex items-center text-yellow-600">
+                                    <i data-lucide="clock" class="w-4 h-4 mr-1"></i> Pending
+                                </span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="flex space-x-2">
+                                    <button onclick="window.open('Agent-Application-details.html', '_blank')" class="text-red-400 hover:text-red-700 mr-3 group relative">
+                                        <i data-lucide="eye" class="w-5 h-5"></i>
+                                        <span class="invisible group-hover:visible absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap">View Details</span>
+                                    </button>
+                                    <button class="text-red-400 hover:text-red-700 group relative">
+                                        <i data-lucide="send" class="w-5 h-5"></i>
+                                        <span class="invisible group-hover:visible absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap">Send Reminder</span>
                                     </button>
                                 </div>
                             </td>
@@ -494,10 +535,11 @@
                                 <!-- Example Card -->
                                 <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move" draggable="true" data-app-id="app-2" data-status="initial_advising">
                                     <div class="flex items-center justify-between mb-2">
-                                        <a href="Agent-Application-details.html" target="_blank" rel="noopener noreferrer" class="font-medium text-sm text-red-600 hover:text-red-800">John Smith</a>
+                                        <a href="Agent-Application-details.html" target="_blank" rel="noopener noreferrer" class="font-medium text-sm text-red-600 hover:text-red-800">Mike Wong</a>
                                         <span class="status-badge text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-800">Initial Advising</span>
                                     </div>
-                                    <div class="text-xs text-gray-500">Green Future Scholarship – Tiffin University</div>
+                                    <div class="text-xs text-gray-500 mb-1">Green Future Scholarship – Tiffin University</div>
+                                    <div class="text-xs text-gray-400 mb-2">Agent: John Smith</div>
                                 </div>
                             </div>
                         </div>
@@ -513,12 +555,14 @@
                                 </div>
                             </div>
                             <div id="col-application_in_progress" class="p-4 space-y-3 min-h-96 dropzone" data-status="application_in_progress">
+                                <!-- Example Card -->
                                 <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move" draggable="true" data-app-id="app-1" data-status="application_in_progress">
                                     <div class="flex items-center justify-between mb-2">
                                         <a href="Agent-Application-details.html" target="_blank" rel="noopener noreferrer" class="font-medium text-sm text-red-600 hover:text-red-800">Sarah Chen</a>
                                         <span class="status-badge text-xs px-2 py-1 rounded-full bg-red-100 text-red-800">Application In Progress</span>
                                     </div>
-                                    <div class="text-xs text-gray-500">Merit Scholarship – Tiffin University</div>
+                                    <div class="text-xs text-gray-500 mb-1">Merit Scholarship – Tiffin University</div>
+                                    <div class="text-xs text-gray-400 mb-2">Agent: John Smith</div>
                                 </div>
                             </div>
                         </div>
@@ -556,10 +600,20 @@
                             <div class="p-4 border-b border-gray-200">
                                 <div class="flex items-center justify-between">
                                     <h3 class="font-semibold text-gray-900">Offer Letter Issued</h3>
-                                    <span id="count-offer_letter_issued" class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                    <span id="count-offer_letter_issued" class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">1</span>
                                 </div>
                             </div>
-                            <div id="col-offer_letter_issued" class="p-4 space-y-3 min-h-96 dropzone" data-status="offer_letter_issued"></div>
+                            <div id="col-offer_letter_issued" class="p-4 space-y-3 min-h-96 dropzone" data-status="offer_letter_issued">
+                                <!-- Example Card -->
+                                <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move" draggable="true" data-app-id="app-3" data-status="offer_letter_issued">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <a href="Agent-Application-details.html" target="_blank" rel="noopener noreferrer" class="font-medium text-sm text-red-600 hover:text-red-800">David Kim</a>
+                                        <span class="status-badge text-xs px-2 py-1 rounded-full bg-purple-100 text-purple-800">Offer Letter Issued</span>
+                                    </div>
+                                    <div class="text-xs text-gray-500 mb-1">International Excellence Scholarship – Tiffin University</div>
+                                    <div class="text-xs text-gray-400 mb-2">Agent: Emily Davis</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -645,18 +699,19 @@
                 localStorage.setItem('viewMode', isBoard ? 'board' : 'table');
             }
 
-            // Bind clicks
-            buttons.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const view = btn.getAttribute('data-view');
-                    setActive(view === 'board');
+            // Set table view as default on page load
+            document.addEventListener('DOMContentLoaded', function() {
+                setActive(false); // This will show the table view by default
+                
+                // Bind click events for view toggle buttons
+                buttons.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const view = btn.getAttribute('data-view');
+                        setActive(view === 'board');
+                    });
                 });
             });
-
-            // Initialize
-            const saved = localStorage.getItem('viewMode');
-            setActive(saved === 'board');
         })();
         </script>
 
@@ -770,12 +825,57 @@
                     draggedCard.setAttribute('data-status', newStatus);
                     updateBadgeAppearance(draggedCard, newStatus);
                     updateCounts();
+                    updateCardActions(draggedCard);
                 });
             });
 
             // Initialize counts on load
             updateCounts();
         })();
+        </script>
+
+        <script>
+        // Function to update action buttons based on status
+        function updateCardActions(card) {
+            const status = card.getAttribute('data-status');
+            let actionsHtml = `
+                <button onclick="window.open('Agent-Application-details.html', '_blank')" class="text-red-400 hover:text-red-700 group relative">
+                    <i data-lucide="eye" class="w-4 h-4"></i>
+                    <span class="invisible group-hover:visible absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap">View Details</span>
+                </button>
+                <button class="text-red-400 hover:text-red-700 group relative">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                    <span class="invisible group-hover:visible absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap">Send Reminder</span>
+                </button>`;
+
+            // Add upload button only for specific statuses
+            if (status === 'initial_advising' || status === 'school_response') {
+                actionsHtml += `
+                <button class="text-red-400 hover:text-red-700 group relative">
+                    <i data-lucide="upload" class="w-4 h-4"></i>
+                    <span class="invisible group-hover:visible absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap">Upload Document</span>
+                </button>`;
+            }
+
+            // Find or create actions container
+            let actionsContainer = card.querySelector('.card-actions');
+            if (!actionsContainer) {
+                actionsContainer = document.createElement('div');
+                actionsContainer.className = 'flex space-x-2 mt-2 card-actions';
+                card.appendChild(actionsContainer);
+            }
+            actionsContainer.innerHTML = actionsHtml;
+            
+            // Refresh Lucide icons
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        }
+
+        // Update existing cards
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('[draggable="true"]').forEach(updateCardActions);
+        });
         </script>
 
     <script>
@@ -884,19 +984,6 @@
 
         // Application Modal
         const applicationModal = document.getElementById('application-modal');
-
-        function openApplicationModal(student) {
-            // Populate modal with student data
-            document.getElementById('modal-student-name').textContent = student.name;
-            document.getElementById('modal-program-name').textContent = student.program;
-            document.getElementById('modal-university-name').textContent = student.university;
-
-            const statusBadge = document.getElementById('modal-status-badge');
-            statusBadge.textContent = student.statusText;
-            statusBadge.className = `px-2 py-1 text-xs font-medium rounded-full ${student.statusClass}`;
-
-            applicationModal.classList.remove('hidden');
-        }
 
         function closeApplicationModal() {
             applicationModal.classList.add('hidden');

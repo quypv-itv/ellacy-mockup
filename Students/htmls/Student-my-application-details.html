@@ -995,7 +995,6 @@
                         alert('Please select at least one document.');
                     }
                 });
-
             } else if (stepId === 'submitted-to-school') {
                 documentsHeader.textContent = 'Submitted to School';
                 documentsContent.innerHTML = `
@@ -1009,7 +1008,7 @@
                                         </div>
                                     </div>
                                     <div class="ml-3">
-                                        <p class="text-base font-medium text-gray-900">Check email and notifications regularly</p>
+                                        <p class="text-base text-gray-600">Check email and notifications regularly</p>
                                         <p class="text-base text-gray-600">The system will send a notification/email if the school requests additional documents.</p>
                                     </div>
                             </li
@@ -1452,7 +1451,26 @@
                 documentsHeader.textContent = 'Pre-departure Preparation Checklist';
                 documentsContent.innerHTML = `
                     <div class="space-y-6">
+                        <!-- Training Video Section -->
+                        <div class="border border-gray-200 rounded-xl p-5 bg-white">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Pre-departure Training</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <i data-lucide="play-circle" class="w-5 h-5 text-red-600 mr-2"></i>
+                                        <span class="text-sm font-medium text-gray-900">Training Video:</span>
+                                    </div>
+                                    <a href="#" id="student-training-video" class="text-sm font-medium text-red-600 hover:text-red-800 flex items-center">
+                                        <i data-lucide="external-link" class="w-4 h-4 mr-1"></i>
+                                        Watch Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Travel Documents -->
+                        <div class="border border-gray-200 rounded-xl p-5 bg-white">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Required Documents</h3>
                             <ul class="space-y-2 text-sm text-gray-700">
                                 <li class="flex items-start">
                                     <input type="checkbox" class="mt-1 mr-2 h-4 w-4 text-blue-600 rounded border-gray-300">
@@ -1495,8 +1513,16 @@
                                     <span>Letter of Acceptance from your respective schools</span>
                                 </li>
                             </ul>
+                        </div>
                     </div>
                 `;
+
+                // Add event listener for the training video link
+                document.getElementById('student-training-video')?.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Replace this URL with your actual student training video URL
+                    window.open('https://example.com/student-training-video', '_blank');
+                });
             } else {
                 const stepTitles = {
                     'application-in-progress': 'Application In Progress',
