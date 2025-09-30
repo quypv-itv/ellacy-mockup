@@ -171,11 +171,11 @@
                             </select>
                         </div>
 
-                        <!-- University/Program Filter -->
+                        <!-- University/Scholarship Filter -->
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">University/Program</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">University/Scholarship</label>
                             <select class="w-full border-gray-300 rounded-lg focus:ring-red-400 focus:border-red-400">
-                                <option value="all">All Programs</option>
+                                <option value="all">All Scholarships</option>
                                 <option value="1">University of Melbourne - BBA</option>
                                 <option value="2">University of Toronto - CS</option>
                                 <option value="3">Imperial College - MSc CS</option>
@@ -247,7 +247,7 @@
                             <thead class="bg-gray-50">
                                 <tr>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Student Name</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Program Applied</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Scholarship Applied</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Country</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Agent</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">Status</th>
@@ -264,7 +264,7 @@
                                         <div class="flex items-center">
                                             <img class="h-8 w-8 rounded-full" src="https://ui-avatars.com/api/?name=John+Smith" alt="">
                                             <div class="ml-4">
-                                                <div class="text-sm font-medium text-gray-900">John Smith</div>
+                                                <a href="CRM-application-details.html" target="_blank" class="text-sm font-medium text-gray-900 hover:text-red-400 transition-colors">John Smith</a>
                                                 <div class="text-sm text-gray-500">john.smith@example.com</div>
                                             </div>
                                         </div>
@@ -314,7 +314,7 @@
                                         <div class="flex items-center">
                                             <img class="h-8 w-8 rounded-full" src="https://ui-avatars.com/api/?name=Emily+Chen" alt="">
                                             <div class="ml-4">
-                                                <div class="text-sm font-medium text-gray-900">Emily Chen</div>
+                                                <a href="CRM-application-details.html" target="_blank" class="text-sm font-medium text-gray-900 hover:text-red-400 transition-colors">Emily Chen</a>
                                                 <div class="text-sm text-gray-500">emily.chen@example.com</div>
                                             </div>
                                         </div>
@@ -364,8 +364,8 @@
                                         <div class="flex items-center">
                                             <img class="h-8 w-8 rounded-full" src="https://ui-avatars.com/api/?name=Emily+Johnson" alt="">
                                             <div class="ml-4">
-                                                <div class="text-sm font-medium text-gray-900">Emily Johnson</div>
-                                                <div class="text-sm text-gray-500">emily.j@example.com</div>
+                                                <a href="CRM-application-details.html" target="_blank" class="text-sm font-medium text-gray-900 hover:text-red-400 transition-colors">Emily Johnson</a>
+                                                <div class="text-sm text-gray-500">emily.johnson@example.com</div>
                                             </div>
                                         </div>
                                     </td>
@@ -450,7 +450,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </main>
         </div>
@@ -608,7 +607,7 @@
                                     <h4 class="text-base font-medium text-gray-900 mb-4">Application Details</h4>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div>
-                                            <label class="block text-sm font-medium text-gray-700 mb-1">Program</label>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Scholarship</label>
                                             <div class="text-sm text-gray-900">BBA - University of Melbourne</div>
                                         </div>
                                         <div>
@@ -1062,7 +1061,7 @@
                         "I see 3 applications currently in review status. The average processing time is 5 days. Would you like me to prioritize any specific applications?",
                         "Based on the data, applications from Sarah Wilson have a 95% acceptance rate. Michael Chen's applications show strong academic profiles.",
                         "There are 2 applications missing documents. Should I help you send reminder notifications to the students?",
-                        "The acceptance rate for Australian universities is 78% this month. UK programs show 65% acceptance rate. Would you like detailed analytics?"
+                        "The acceptance rate for Australian universities is 78% this month. UK scholarships show 65% acceptance rate. Would you like detailed analytics?"
                     ];
                     const randomResponse = responses[Math.floor(Math.random() * responses.length)];
                     addMessage(randomResponse);
@@ -1152,6 +1151,99 @@
                 showToast('Filters reset', 'info');
             });
         }
+
+        // View Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const listViewBtn = document.getElementById('list-view-btn');
+            const boardViewBtn = document.getElementById('board-view-btn');
+            const tableView = document.querySelector('.px-6.py-4'); // The table view container
+            const boardView = document.getElementById('board-view');
+
+            // Set initial view (list view)
+            function setView(isBoardView) {
+                if (isBoardView) {
+                    // Show board view, hide table view
+                    if (boardView) boardView.classList.remove('hidden');
+                    if (tableView) tableView.classList.add('hidden');
+                    
+                    // Update button states
+                    if (boardViewBtn) {
+                        boardViewBtn.classList.remove('text-gray-400');
+                        boardViewBtn.classList.add('text-gray-700');
+                    }
+                    if (listViewBtn) {
+                        listViewBtn.classList.remove('text-gray-700');
+                        listViewBtn.classList.add('text-gray-400');
+                    }
+                } else {
+                    // Show table view, hide board view
+                    if (tableView) tableView.classList.remove('hidden');
+                    if (boardView) boardView.classList.add('hidden');
+                    
+                    // Update button states
+                    if (listViewBtn) {
+                        listViewBtn.classList.remove('text-gray-400');
+                        listViewBtn.classList.add('text-gray-700');
+                    }
+                    if (boardViewBtn) {
+                        boardViewBtn.classList.remove('text-gray-700');
+                        boardViewBtn.classList.add('text-gray-400');
+                    }
+                }
+            }
+
+            // Event listeners for view toggle buttons
+            if (listViewBtn) {
+                listViewBtn.addEventListener('click', () => setView(false));
+            }
+            if (boardViewBtn) {
+                boardViewBtn.addEventListener('click', () => setView(true));
+            }
+
+            // Make cards draggable
+            const draggables = document.querySelectorAll('[draggable="true"]');
+            const containers = document.querySelectorAll('.flex-shrink-0.w-72');
+
+            draggables.forEach(draggable => {
+                draggable.addEventListener('dragstart', () => {
+                    draggable.classList.add('opacity-50', 'ring-2', 'ring-red-400');
+                });
+
+                draggable.addEventListener('dragend', () => {
+                    draggable.classList.remove('opacity-50', 'ring-2', 'ring-red-400');
+                });
+            });
+
+            containers.forEach(container => {
+                container.addEventListener('dragover', e => {
+                    e.preventDefault();
+                    const afterElement = getDragAfterElement(container, e.clientY);
+                    const draggable = document.querySelector('.opacity-50');
+                    if (draggable) {
+                        const lastChild = container.querySelector('div:last-child');
+                        if (afterElement == null && lastChild) {
+                            lastChild.appendChild(draggable);
+                        } else if (afterElement) {
+                            container.insertBefore(draggable, afterElement);
+                        }
+                    }
+                });
+            });
+
+            function getDragAfterElement(container, y) {
+                const draggableElements = [...container.querySelectorAll('[draggable="true"]:not(.opacity-50)')];
+
+                return draggableElements.reduce((closest, child) => {
+                    const box = child.getBoundingClientRect();
+                    const offset = y - box.top - box.height / 2;
+                    if (offset < 0 && offset > closest.offset) {
+                        return { offset: offset, element: child };
+                    } else {
+                        return closest;
+                    }
+                }, { offset: Number.NEGATIVE_INFINITY }).element;
+            }
+        });
     </script>
 </body>
 </html>

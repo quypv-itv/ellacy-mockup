@@ -274,18 +274,18 @@
                         </button>
                         
                         <!-- View Toggle Buttons -->
-                        <div class="flex border border-gray-300 rounded-lg overflow-hidden">
+                        <!--<div class="flex border border-gray-300 rounded-lg overflow-hidden">
                             <button id="tableViewBtn" class="view-toggle-btn px-3 py-2 text-sm font-medium bg-white text-gray-700 border-r border-gray-300" data-view="table" title="Table View">
                                 <i data-lucide="list" class="w-4 h-4"></i>
                             </button>
                             <button id="cardViewBtn" class="view-toggle-btn px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50" data-view="card" title="Card View">
                                 <i data-lucide="layout-grid" class="w-4 h-4"></i>
                             </button>
-                        </div>
+                        </div>-->
                     </div>
                     <button onclick="openAddScholarshipModal()"
-                        class="inline-flex items-center px-4 py-2 bg-red-400 text-white text-sm font-medium rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                        <i data-lucide="plus" class="w-4 h-4 mr-1.5"></i>
+                        class="inline-flex items-center px-4 py-2 bg-red-400 text-white text-sm font-medium rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                        <i data-lucide="plus" class="w-4 h-4 mr-1"></i>
                         Add New Scholarship
                     </button>
                 </div>
@@ -392,7 +392,7 @@
                                 <!-- Sample Row -->
                                 <tr>
                                     <td class="px-6 py-4">
-                                        <div class="text-sm font-medium text-red-400 hover:text-blue-800 cursor-pointer"
+                                        <div class="text-sm font-medium text-red-400 hover:text-red-800 cursor-pointer"
                                             onclick="openScholarshipDetail()">
                                             Merit Scholarship 2025
                                         </div>
@@ -409,14 +409,13 @@
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 text-sm">
-                                        <button class="text-red-400 hover:text-blue-900 mr-2"
-                                            onclick="openScholarshipDetail()">
+                                        <button id="cardViewBtn" class="text-red-400 hover:text-red-900 mr-2" data-view="card" title="Preview">
                                             <i data-lucide="eye" class="w-4 h-4"></i>
                                         </button>
-                                        <!-- <button class="text-gray-600 hover:text-gray-900 mr-2" onclick="openEditScholarshipModal()">
+                                        <button class="text-red-400 hover:text-red-900 mr-2" onclick="openScholarshipDetail(); setScholarshipEditMode();" title="Edit Scholarship">
                                             <i data-lucide="edit" class="w-4 h-4"></i>
-                                        </button> -->
-                                        <button class="text-gray-600 hover:text-gray-900">
+                                        </button>
+                                        <button class="text-red-400 hover:text-red-900 mr-2" title="Archive Scholarship">
                                             <i data-lucide="archive" class="w-4 h-4"></i>
                                         </button>
                                     </td>
@@ -429,7 +428,7 @@
                 <!-- Card View -->
                 <div id="cardView" class="hidden space-y-6 overflow-y-auto" style="max-height: calc(100vh - 200px);">
                     <div class="flex-1 space-y-6"><!-- Results Section -->
-                        <!-- Program Card 2 -->
+                        <!-- Scholarship Card 2 -->
                         <div class="bg-white rounded-3xl shadow-md p-6 hover:shadow-lg transition-shadow">
                             <div class="flex items-start mb-4">
                                 <!-- Institution Logo -->
@@ -450,7 +449,7 @@
     
                                     <!-- Institution Type Tags -->
                                     <div class="flex flex-wrap gap-2 mb-2">
-                                        <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs font-medium">US
+                                        <span class="px-2 py-1 bg-red-100 text-red-600 rounded text-xs font-medium">US
                                             University</span>
                                         <span
                                             class="px-2 py-1 bg-purple-100 text-purple-600 rounded text-xs font-medium">Private
@@ -515,12 +514,6 @@
                                             <i data-lucide="chevron-down"
                                                 class="absolute right-2 top-2.5 w-4 h-4 text-gray-500"></i>
                                         </div>
-    
-                                        <button class="px-3 py-2 text-sm text-white rounded-lg flex items-center"
-                                style="background-color: #d82128;">
-                                <i data-lucide="user-plus" class="w-4 h-4 mr-1"></i>
-                                Assign to Student
-                            </button>
                                     </div>
                                 </div>
                             </div>
@@ -653,9 +646,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="bg-blue-50 p-4 rounded-lg">
-                                            <h4 class="font-semibold text-blue-700 mb-2">Commission Payout</h4>
-                                            <ul class="text-sm text-blue-600 space-y-2">
+                                        <div class="bg-red-50 p-4 rounded-lg">
+                                            <h4 class="font-semibold text-red-700 mb-2">Commission Payout</h4>
+                                            <ul class="text-sm text-red-600 space-y-2">
                                                 <li class="flex items-start">
                                                     <i data-lucide="check-circle" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0"></i>
                                                     <span>Paid within 30 days of student's enrollment confirmation</span>
@@ -667,7 +660,7 @@
                                             </ul>
                                         </div>
                                         <div class="mt-4">
-                                            <button class="text-sm text-blue-600 hover:underline flex items-center">
+                                            <button class="text-sm text-red-600 hover:underline flex items-center">
                                                 <i data-lucide="file-text" class="w-4 h-4 mr-1"></i>
                                                 View Commission Agreement
                                             </button>
@@ -730,7 +723,7 @@
                 <div class="p-4 border-t border-gray-200">
                     <div class="flex items-center">
                         <input type="text" id="chat-input" placeholder="Ask about scholarships..."
-                            class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                         <button id="send-message" class="ml-2 p-2 rounded-lg text-white"
                             style="background-color: #d82128;">
                             <i data-lucide="send" class="w-4 h-4"></i>
@@ -761,7 +754,7 @@
                             <div class="flex items-center space-x-3 mb-2">
                                 <h4 id="preview-scholarship-name" class="text-lg font-semibold text-gray-900">
                                     Scholarship Name</h4>
-                                <span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">Canada
+                                <span class="px-2 py-1 text-xs rounded-full bg-red-100 text-red-800">Canada
                                     College</span>
                                 <span class="px-2 py-1 text-xs rounded-full bg-purple-100 text-purple-800">Public
                                     School</span>
@@ -875,7 +868,7 @@
                             <label class="block text-sm font-medium text-gray-700 mb-1">Scholarship Name <span
                                     class="text-red-500">*</span></label>
                             <input id="scholarship-name-input" type="text" class="w-full rounded-md border-gray-300"
-                                placeholder="e.g. 3D Animation and Videogame Art" required>
+                                placeholder="e.g. Merit Scholarship 2025" required>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Degree Level & Field</label>
@@ -1058,13 +1051,42 @@
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">Semester
                                         Breakdown</label>
-                                    <textarea class="w-full rounded-md border-gray-300" rows="4"
-                                        placeholder="Year 1 - Semester 1: ..."></textarea>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="scholarship-view-mode">
+                                            <h6 class="font-medium text-gray-800 mb-2">Year 1</h6>
+                                            <p class="text-sm text-gray-600">Semester 1: Art fundamentals, digital tools</p>
+                                            <p class="text-sm text-gray-600">Semester 2: 3D basics, character design</p>
+                                        </div>
+                                        <div class="scholarship-view-mode">
+                                            <h6 class="font-medium text-gray-800 mb-2">Year 2</h6>
+                                            <p class="text-sm text-gray-600">Semester 3: Advanced animation, specialization</p>
+                                            <p class="text-sm text-gray-600">Semester 4: Capstone project, portfolio</p>
+                                        </div>
+                                        <div class="scholarship-edit-mode hidden">
+                                            <h6 class="font-medium text-gray-800 mb-2">Year 1</h6>
+                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded mb-2" rows="2" placeholder="Enter Year 1 semester details">Semester 1: Art fundamentals, digital tools
+Semester 2: 3D basics, character design</textarea>
+                                        </div>
+                                        <div class="scholarship-edit-mode hidden">
+                                            <h6 class="font-medium text-gray-800 mb-2">Year 2</h6>
+                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded mb-2" rows="2" placeholder="Enter Year 2 semester details">Semester 3: Advanced animation, specialization
+Semester 4: Capstone project, portfolio</textarea>
+                                        </div>
+                                        <div class="scholarship-edit-mode hidden">
+                                            <button class="text-xs text-blue-600 hover:underline flex items-center mt-2" style="color: #2563eb;">
+                                                <i data-lucide="plus" class="w-3 h-3 mr-1"></i>Add Semester
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Duration</label>
-                                    <textarea class="w-full rounded-md border-gray-300" rows="4"
-                                        placeholder="2 years full-time"></textarea>
+                                    <p class="text-sm text-gray-500">Duration</p>
+                                    <p class="font-semibold" id="programDuration2">2 years full-time</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500">Specialization tracks</p>
+                                    <p class="font-semibold" id="specializationTracks2">Research Focus, Academic
+                                        Leadership, Scholarly Publications</p>
                                 </div>
                             </div>
                         </section>
@@ -1072,22 +1094,41 @@
                         <!-- Commission -->
                         <section id="add-scholarship-tab-commission" class="add-scholarship-tab-panel hidden">
                             <div class="space-y-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Commission Rate</label>
-                                    <textarea class="w-full rounded-md border-gray-300" rows="4"
-                                        placeholder="15% of First Year Tuition"></textarea>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Commission Structure</h5>
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-600">Application Fee Commission</span>
+                                            <span class="font-semibold">100%</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-600">First Year Tuition Commission</span>
+                                            <span class="font-semibold">15%</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-600">Subsequent Years Commission</span>
+                                            <span class="font-semibold">10%</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-1">Estimated Amount</label>
-                                        <textarea class="w-full rounded-md border-gray-300" rows="4"
-                                            placeholder="$3,750 - $4,500"></textarea>
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-1">Payment Terms</label>
-                                        <textarea class="w-full rounded-md border-gray-300" rows="4"
-                                            placeholder="Paid in two installments: 50% upon student enrollment, 50% after first semester completion"></textarea>
-                                    </div>
+                                <div class="bg-red-50 p-4 rounded-lg">
+                                    <h5 class="font-semibold text-red-700 mb-2">Commission Payout</h5>
+                                    <ul class="text-sm text-red-600 space-y-2">
+                                        <li class="flex items-start">
+                                            <i data-lucide="check-circle" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0"></i>
+                                            <span>Paid within 30 days of student's enrollment confirmation</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i data-lucide="check-circle" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0"></i>
+                                            <span>Direct bank transfer or check payment available</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="mt-4">
+                                    <button class="text-sm text-red-600 hover:underline flex items-center">
+                                        <i data-lucide="file-text" class="w-4 h-4 mr-1"></i>
+                                        View Commission Agreement
+                                    </button>
                                 </div>
                             </div>
                         </section>
@@ -1263,15 +1304,15 @@
                             <div class="ml-4 flex-1">
                                 <div class="flex items-center space-x-3 mb-2">
                                     <div class="scholarship-view-mode">
-                                        <a href="CRM-sholarships-details.html" target="_blank" class="hover:text-blue-600 transition-colors">
-                                            <h4 class="text-xl font-semibold text-gray-900">3D Animation and Videogame Art
+                                        <a href="CRM-sholarships-details.html" target="_blank" class="hover:text-red-600 transition-colors">
+                                            <h4 class="text-xl font-semibold text-gray-900">Merit Scholarship 2025
                                             </h4>
                                         </a>
                                     </div>
                                     <div class="scholarship-edit-mode hidden">
                                         <input type="text"
                                             class="text-xl font-semibold text-gray-900 border-gray-300 rounded"
-                                            value="3D Animation and Videogame Art">
+                                            value="Merit Scholarship 2025">
                                     </div>
                                     <span
                                         class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Active</span>
@@ -1338,38 +1379,38 @@
                         <section id="scholarship-tab-fees" class="scholarship-tab-panel">
                             <div class="space-y-6">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div class="bg-gray-50 rounded-lg p-4">
-                                        <h5 class="text-sm font-medium text-gray-900 mb-3">Tuition Cost</h5>
+                                    <div>
+                                        <p class="text-xs text-gray-500">Tuition Cost</p>
                                         <div class="scholarship-view-mode">
-                                            <p class="text-2xl font-bold text-gray-900">$9,912 USD</p>
+                                            <p class="text-lg font-bold text-gray-900">$9,912 USD</p>
                                             <p class="text-sm text-gray-500">Annual</p>
                                         </div>
                                         <div class="scholarship-edit-mode hidden">
                                             <input type="text"
-                                                class="text-2xl font-bold text-gray-900 border-gray-300 rounded mb-2"
+                                                class="text-lg font-bold text-gray-900 border-gray-300 rounded mb-2"
                                                 value="$9,912 USD">
                                             <input type="text" class="text-sm text-gray-500 border-gray-300 rounded"
                                                 value="Annual">
                                         </div>
                                     </div>
-                                    <div class="bg-gray-50 rounded-lg p-4">
-                                        <h5 class="text-sm font-medium text-gray-900 mb-3">Application Fee</h5>
+                                    <div>
+                                        <p class="text-xs text-gray-500">Application Fee</p>
                                         <div class="scholarship-view-mode">
-                                            <p class="text-2xl font-bold text-gray-900">$250 USD</p>
+                                            <p class="text-lg font-bold text-gray-900">$250 USD</p>
                                             <p class="text-sm text-gray-500">One-time</p>
                                         </div>
                                         <div class="scholarship-edit-mode hidden">
                                             <input type="text"
-                                                class="text-2xl font-bold text-gray-900 border-gray-300 rounded mb-2"
+                                                class="text-lg font-bold text-gray-900 border-gray-300 rounded mb-2"
                                                 value="$250 USD">
                                             <input type="text" class="text-sm text-gray-500 border-gray-300 rounded"
                                                 value="One-time">
                                         </div>
                                     </div>
-                                    <div class="bg-gray-50 rounded-lg p-4">
-                                        <h5 class="text-sm font-medium text-gray-900 mb-3">Application Deadline</h5>
+                                    <div>
+                                        <p class="text-xs text-gray-500">Application Deadline</p>
                                         <div class="scholarship-view-mode">
-                                            <p class="text-2xl font-bold text-gray-900">Nov 15, 2025</p>
+                                            <p class="text-lg font-bold text-gray-900">Nov 15, 2025</p>
                                             <p class="text-sm text-red-500 flex items-center">
                                                 <i data-lucide="alert-triangle" class="w-4 h-4 mr-1"></i>
                                                 28 days remaining
@@ -1388,39 +1429,39 @@
                                 </div>
 
                                 <!-- Scholarship Award Information -->
-                                <div class="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                                    <h5 class="text-sm font-medium text-blue-900 mb-3">Scholarship Award</h5>
+                                <div class="bg-red-50 rounded-lg p-4 border border-red-200">
+                                    <h5 class="text-sm font-medium text-red-900 mb-3">Scholarship Award</h5>
                                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                         <div>
-                                            <p class="text-xs text-blue-700">Award Value</p>
+                                            <p class="text-xs text-red-700">Award Value</p>
                                             <div class="scholarship-view-mode">
-                                                <p class="text-lg font-semibold text-blue-900">Up to $5,000</p>
+                                                <p class="text-lg font-semibold text-red-900">Up to $5,000</p>
                                             </div>
                                             <div class="scholarship-edit-mode hidden">
                                                 <input type="text"
-                                                    class="text-lg font-semibold text-blue-900 border-blue-300 rounded"
+                                                    class="text-lg font-semibold text-red-900 border-red-300 rounded"
                                                     value="Up to $5,000">
                                             </div>
                                         </div>
                                         <div>
-                                            <p class="text-xs text-blue-700">Available Spots</p>
+                                            <p class="text-xs text-red-700">Available Spots</p>
                                             <div class="scholarship-view-mode">
-                                                <p class="text-lg font-semibold text-blue-900">7 remaining</p>
+                                                <p class="text-lg font-semibold text-red-900">7 remaining</p>
                                             </div>
                                             <div class="scholarship-edit-mode hidden">
                                                 <input type="number"
-                                                    class="text-lg font-semibold text-blue-900 border-blue-300 rounded"
+                                                    class="text-lg font-semibold text-red-900 border-red-300 rounded"
                                                     value="7">
                                             </div>
                                         </div>
                                         <div>
-                                            <p class="text-xs text-blue-700">Source</p>
+                                            <p class="text-xs text-red-700">Source</p>
                                             <div class="scholarship-view-mode">
-                                                <p class="text-lg font-semibold text-blue-900">Ellacy Foundation</p>
+                                                <p class="text-lg font-semibold text-red-900">Ellacy Foundation</p>
                                             </div>
                                             <div class="scholarship-edit-mode hidden">
                                                 <select
-                                                    class="text-lg font-semibold text-blue-900 border-blue-300 rounded">
+                                                    class="text-lg font-semibold text-red-900 border-red-300 rounded">
                                                     <option selected>Ellacy Foundation</option>
                                                     <option>Partner Institution</option>
                                                     <option>Government</option>
@@ -1436,8 +1477,8 @@
                         <section id="scholarship-tab-requirements" class="scholarship-tab-panel hidden">
                             <div class="space-y-6">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div class="bg-gray-50 rounded-lg p-4">
-                                        <h5 class="text-sm font-medium text-gray-900 mb-3">Academic Requirements</h5>
+                                    <div>
+                                        <p class="text-xs text-gray-500">Academic Requirements</p>
                                         <div class="scholarship-view-mode">
                                             <ul class="text-sm text-gray-700 space-y-2">
                                                 <li class="flex items-center">
@@ -1455,14 +1496,13 @@
                                             </ul>
                                         </div>
                                         <div class="scholarship-edit-mode hidden">
-                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded"
-                                                rows="4">GPA 3.0+ (85%+)
+                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="4">GPA 3.0+ (85%+)
 High school diploma or equivalent
 Art portfolio submission</textarea>
                                         </div>
                                     </div>
-                                    <div class="bg-gray-50 rounded-lg p-4">
-                                        <h5 class="text-sm font-medium text-gray-900 mb-3">Language Requirements</h5>
+                                    <div>
+                                        <p class="text-xs text-gray-500">Language Requirements</p>
                                         <div class="scholarship-view-mode">
                                             <ul class="text-sm text-gray-700 space-y-2">
                                                 <li class="flex items-center">
@@ -1480,16 +1520,15 @@ Art portfolio submission</textarea>
                                             </ul>
                                         </div>
                                         <div class="scholarship-edit-mode hidden">
-                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded"
-                                                rows="4">IELTS: 6.5 overall (6.0 minimum per band)
+                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="4">IELTS: 6.5 overall (6.0 minimum per band)
 TOEFL iBT: 80 overall
 Duolingo: 105 overall</textarea>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="bg-gray-50 rounded-lg p-4">
-                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Required Documents</h5>
+                                <div>
+                                    <p class="text-xs text-gray-500">Required Documents</p>
                                     <div class="scholarship-view-mode">
                                         <p class="text-sm text-gray-700 mb-3">Submit a portfolio showcasing your
                                             artistic abilities and creativity in digital media:</p>
@@ -1522,8 +1561,8 @@ Optional: Animation reel or game design samples</textarea>
                         <!-- Course Detail Tab -->
                         <section id="scholarship-tab-course" class="scholarship-tab-panel hidden">
                             <div class="space-y-6">
-                                <div class="bg-gray-50 rounded-lg p-4">
-                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Scholarships Overview</h5>
+                                <div>
+                                    <p class="text-xs text-gray-500">Scholarships Overview</p>
                                     <div class="scholarship-view-mode">
                                         <p class="text-sm text-gray-700">This comprehensive 2-year scholarship combines
                                             traditional art fundamentals with cutting-edge digital animation and game
@@ -1531,14 +1570,13 @@ Optional: Animation reel or game design samples</textarea>
                                             develop a professional portfolio.</p>
                                     </div>
                                     <div class="scholarship-edit-mode hidden">
-                                        <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded"
-                                            rows="3">This comprehensive 2-year scholarship combines traditional art fundamentals with cutting-edge digital animation and game design techniques. Students will master industry-standard software and develop a professional portfolio.</textarea>
+                                        <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="3">This comprehensive 2-year scholarship combines traditional art fundamentals with cutting-edge digital animation and game design techniques. Students will master industry-standard software and develop a professional portfolio.</textarea>
                                     </div>
                                 </div>
 
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div class="bg-gray-50 rounded-lg p-4">
-                                        <h5 class="text-sm font-medium text-gray-900 mb-3">Core Courses</h5>
+                                    <div>
+                                        <p class="text-xs text-gray-500">Core Courses</p>
                                         <div class="scholarship-view-mode">
                                             <ul class="text-sm text-gray-700 space-y-1">
                                                 <li>• Digital Art Fundamentals</li>
@@ -1550,8 +1588,7 @@ Optional: Animation reel or game design samples</textarea>
                                             </ul>
                                         </div>
                                         <div class="scholarship-edit-mode hidden">
-                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded"
-                                                rows="6">Digital Art Fundamentals
+                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="6">Digital Art Fundamentals
 3D Modeling & Texturing
 Character Animation
 Game Engine Basics
@@ -1559,8 +1596,8 @@ Visual Effects
 Portfolio Development</textarea>
                                         </div>
                                     </div>
-                                    <div class="bg-gray-50 rounded-lg p-4">
-                                        <h5 class="text-sm font-medium text-gray-900 mb-3">Specialization Tracks</h5>
+                                    <div>
+                                        <p class="text-xs text-gray-500">Specialization Tracks</p>
                                         <div class="scholarship-view-mode">
                                             <ul class="text-sm text-gray-700 space-y-1">
                                                 <li>• Game Art & Design</li>
@@ -1570,8 +1607,7 @@ Portfolio Development</textarea>
                                             </ul>
                                         </div>
                                         <div class="scholarship-edit-mode hidden">
-                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded"
-                                                rows="4">Game Art & Design
+                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="4">Game Art & Design
 3D Animation
 Visual Effects
 Motion Graphics</textarea>
@@ -1580,21 +1616,34 @@ Motion Graphics</textarea>
                                 </div>
 
                                 <div class="bg-gray-50 rounded-lg p-4">
-                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Semester Breakdown</h5>
+                                    <div class="flex justify-between items-center mb-3">
+                                        <p class="text-xs text-gray-500">Semester Breakdown</p>
+                                    </div>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div>
+                                        <div class="scholarship-view-mode">
                                             <h6 class="font-medium text-gray-800 mb-2">Year 1</h6>
-                                            <p class="text-sm text-gray-600">Semester 1: Art fundamentals, digital
-                                                tools</p>
-                                            <p class="text-sm text-gray-600">Semester 2: 3D basics, character design
-                                            </p>
+                                            <p class="text-sm text-gray-600">Semester 1: Art fundamentals, digital tools</p>
+                                            <p class="text-sm text-gray-600">Semester 2: 3D basics, character design</p>
                                         </div>
-                                        <div>
+                                        <div class="scholarship-view-mode">
                                             <h6 class="font-medium text-gray-800 mb-2">Year 2</h6>
-                                            <p class="text-sm text-gray-600">Semester 3: Advanced animation,
-                                                specialization</p>
-                                            <p class="text-sm text-gray-600">Semester 4: Capstone project, portfolio
-                                            </p>
+                                            <p class="text-sm text-gray-600">Semester 3: Advanced animation, specialization</p>
+                                            <p class="text-sm text-gray-600">Semester 4: Capstone project, portfolio</p>
+                                        </div>
+                                        <div class="scholarship-edit-mode hidden">
+                                            <h6 class="font-medium text-gray-800 mb-2">Year 1</h6>
+                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded mb-2" rows="2" placeholder="Enter Year 1 semester details">Semester 1: Art fundamentals, digital tools
+Semester 2: 3D basics, character design</textarea>
+                                        </div>
+                                        <div class="scholarship-edit-mode hidden">
+                                            <h6 class="font-medium text-gray-800 mb-2">Year 2</h6>
+                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded mb-2" rows="2" placeholder="Enter Year 2 semester details">Semester 3: Advanced animation, specialization
+Semester 4: Capstone project, portfolio</textarea>
+                                        </div>
+                                        <div class="scholarship-edit-mode hidden">
+                                            <button class="text-xs text-blue-600 hover:underline flex items-center mt-2" style="color: #2563eb;">
+                                                <i data-lucide="plus" class="w-3 h-3 mr-1"></i>Add Semester
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -1605,40 +1654,67 @@ Motion Graphics</textarea>
                         <section id="scholarship-tab-commission" class="scholarship-tab-panel hidden">
                             <div class="space-y-6">
                                 <div class="bg-gray-50 p-4 rounded-lg">
-                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Commission Structure</h5>
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h5 class="text-sm font-medium text-gray-900">Commission Structure</h5>
+                                    </div>
                                     <div class="space-y-3">
-                                        <div class="flex justify-between items-center">
+                                        <div class="scholarship-view-mode flex justify-between items-center">
                                             <span class="text-gray-600">Application Fee Commission</span>
                                             <span class="font-semibold">100%</span>
                                         </div>
-                                        <div class="flex justify-between items-center">
+                                        <div class="scholarship-edit-mode hidden flex justify-between items-center">
+                                            <span class="text-gray-600">Application Fee Commission</span>
+                                            <input type="text" class="font-semibold border-gray-300 rounded text-right w-16" value="100%">
+                                        </div>
+                                        <div class="scholarship-view-mode flex justify-between items-center">
                                             <span class="text-gray-600">First Year Tuition Commission</span>
                                             <span class="font-semibold">15%</span>
                                         </div>
-                                        <div class="flex justify-between items-center">
+                                        <div class="scholarship-edit-mode hidden flex justify-between items-center">
+                                            <span class="text-gray-600">First Year Tuition Commission</span>
+                                            <input type="text" class="font-semibold border-gray-300 rounded text-right w-16" value="15%">
+                                        </div>
+                                        <div class="scholarship-view-mode flex justify-between items-center">
                                             <span class="text-gray-600">Subsequent Years Commission</span>
                                             <span class="font-semibold">10%</span>
                                         </div>
+                                        <div class="scholarship-edit-mode hidden flex justify-between items-center">
+                                            <span class="text-gray-600">Subsequent Years Commission</span>
+                                            <input type="text" class="font-semibold border-gray-300 rounded text-right w-16" value="10%">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="bg-blue-50 p-4 rounded-lg">
-                                    <h5 class="font-semibold text-blue-700 mb-2">Commission Payout</h5>
-                                    <ul class="text-sm text-blue-600 space-y-2">
-                                        <li class="flex items-start">
-                                            <i data-lucide="check-circle" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0"></i>
-                                            <span>Paid within 30 days of student's enrollment confirmation</span>
-                                        </li>
-                                        <li class="flex items-start">
-                                            <i data-lucide="check-circle" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0"></i>
-                                            <span>Direct bank transfer or check payment available</span>
-                                        </li>
-                                    </ul>
+                                <div class="bg-red-50 p-4 rounded-lg">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <h5 class="font-semibold text-red-700">Commission Payout</h5>
+                                    </div>
+                                    <div class="scholarship-view-mode">
+                                        <ul class="text-sm text-red-600 space-y-2">
+                                            <li class="flex items-start">
+                                                <i data-lucide="check-circle" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0"></i>
+                                                <span>Paid within 30 days of student's enrollment confirmation</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <i data-lucide="check-circle" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0"></i>
+                                                <span>Direct bank transfer or check payment available</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="scholarship-edit-mode hidden">
+                                        <textarea class="w-full text-sm text-red-600 border-gray-300 rounded" rows="3">Paid within 30 days of student's enrollment confirmation
+Direct bank transfer or check payment available</textarea>
+                                    </div>
                                 </div>
                                 <div class="mt-4">
-                                    <button class="text-sm text-blue-600 hover:underline flex items-center">
-                                        <i data-lucide="file-text" class="w-4 h-4 mr-1"></i>
-                                        View Commission Agreement
-                                    </button>
+                                    <div class="scholarship-view-mode">
+                                        <button class="text-sm text-red-600 hover:underline flex items-center">
+                                            <i data-lucide="file-text" class="w-4 h-4 mr-1"></i>
+                                            View Commission Agreement
+                                        </button>
+                                    </div>
+                                    <div class="scholarship-edit-mode hidden">
+                                        <input type="text" class="text-sm text-red-600 border-gray-300 rounded w-full" value="View Commission Agreement">
+                                    </div>
                                 </div>
                             </div>
                         </section>
@@ -1673,9 +1749,76 @@ Motion Graphics</textarea>
             </div>
         </div>
 
+        <!-- AI Assistant Floating Button -->
+        <div id="ai-assistant" class="fixed bottom-6 right-6 z-50">
+            <button id="ai-toggle"
+                class="w-14 h-14 rounded-full text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
+                style="background-color: #d82128;">
+                <i data-lucide="message-circle" class="w-6 h-6"></i>
+            </button>
+
+            <!-- AI Chat Panel -->
+            <div id="ai-chat-panel"
+                class="hidden absolute bottom-16 right-0 w-80 h-96 bg-white rounded-lg shadow-xl border border-gray-200">
+                <!-- Chat Header -->
+                <div class="flex items-center justify-between p-4 border-b border-gray-200"
+                    style="background-color: #d82128;">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-3">
+                            <i data-lucide="bot" class="w-4 h-4" style="color: #d82128;"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-medium text-white">AI Assistant</h3>
+                            <p class="text-xs text-red-100">Online</p>
+                        </div>
+                    </div>
+                    <button id="ai-close" class="text-white hover:text-red-100">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Chat Messages -->
+                <div id="chat-messages" class="flex-1 p-4 h-64 overflow-y-auto">
+                    <div class="mb-4">
+                        <div class="flex items-start">
+                            <div class="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center mr-2 mt-1">
+                                <i data-lucide="bot" class="w-3 h-3" style="color: #d82128;"></i>
+                            </div>
+                            <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
+                                <p class="text-sm text-gray-800">Hello! I can help you optimize scholarship
+                                    scholarships, analyze utilization rates, and improve student matching. What would
+                                    you like to know?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Input -->
+                <div class="p-4 border-t border-gray-200">
+                    <div class="flex items-center">
+                        <input type="text" id="chat-input" placeholder="Ask about scholarships..."
+                            class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                        <button id="send-message" class="ml-2 p-2 rounded-lg text-white"
+                            style="background-color: #d82128;">
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add this right before the closing </body> tag, after the existing scripts -->
         <script>
             // Function to open university modal
             function openUniversityModal(modalId) {
+                // Close the card view modal if it's open
+                const cardViewModal = document.getElementById('cardViewModal');
+                if (cardViewModal && !cardViewModal.classList.contains('hidden')) {
+                    cardViewModal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+                
+                // Open the university modal
                 const modal = document.getElementById(modalId);
                 if (modal) {
                     modal.classList.remove('hidden');
@@ -1687,6 +1830,11 @@ Motion Graphics</textarea>
                         closeButton.onclick = function() {
                             modal.classList.add('hidden');
                             document.body.style.overflow = 'auto';
+                            // Also trigger click on the card view button
+                            const cardViewBtn = document.getElementById('cardViewBtn');
+                            if (cardViewBtn) {
+                                cardViewBtn.click();
+                            }
                         };
                     }
                     
@@ -1695,6 +1843,11 @@ Motion Graphics</textarea>
                         if (event.target === modal) {
                             modal.classList.add('hidden');
                             document.body.style.overflow = 'auto';
+                            // Also trigger click on the card view button
+                            const cardViewBtn = document.getElementById('cardViewBtn');
+                            if (cardViewBtn) {
+                                cardViewBtn.click();
+                            }
                         }
                     };
                 }
@@ -1707,11 +1860,15 @@ Motion Graphics</textarea>
                     if (modal && !modal.classList.contains('hidden')) {
                         modal.classList.add('hidden');
                         document.body.style.overflow = 'auto';
+                        // Also trigger click on the card view button
+                        const cardViewBtn = document.getElementById('cardViewBtn');
+                        if (cardViewBtn) {
+                            cardViewBtn.click();
+                        }
                     }
                 }
             });
         </script>
-
         <script>
             // Initialize Lucide icons
             lucide.createIcons();
@@ -1727,66 +1884,6 @@ Motion Graphics</textarea>
 
                 // Initialize tab functionality for add modal
                 initializeAddScholarshipTabs();
-            }
-
-            function openEditScholarshipModal() {
-                document.getElementById('modalTitle').textContent = 'Edit Scholarship';
-
-                // Pre-populate form with existing data (in a real app, this would come from the selected row)
-                const modal = document.getElementById('scholarshipModal');
-
-                // Get form inputs
-                const inputs = modal.querySelectorAll('input, select, textarea');
-
-                // Sample data to populate (this would normally come from the selected scholarship)
-                const scholarshipData = {
-                    name: 'Merit Scholarship 2025',
-                    source: 'Ellacy Foundation',
-                    awardValue: 'Up to $5,000',
-                    numberOfAwards: '10',
-                    deadline: '2025-12-31',
-                    autoMatch: true,
-                    minGPA: '3.0',
-                    minIELTS: '6.5',
-                    description: 'This scholarship is awarded to outstanding students who demonstrate academic excellence and leadership potential. Recipients will receive financial support to pursue their educational goals at partner institutions.'
-                };
-
-                // Populate the form fields
-                inputs.forEach(input => {
-                    const label = input.previousElementSibling?.textContent?.toLowerCase() ||
-                        input.closest('div')?.querySelector('label')?.textContent?.toLowerCase() || '';
-
-                    if (label.includes('scholarship name')) {
-                        input.value = scholarshipData.name;
-                    } else if (label.includes('source')) {
-                        input.value = scholarshipData.source;
-                    } else if (label.includes('award value')) {
-                        input.value = scholarshipData.awardValue;
-                    } else if (label.includes('number of awards')) {
-                        input.value = scholarshipData.numberOfAwards;
-                    } else if (label.includes('deadline')) {
-                        input.value = scholarshipData.deadline;
-                    } else if (label.includes('auto-match') && input.type === 'checkbox') {
-                        input.checked = scholarshipData.autoMatch;
-                    } else if (label.includes('minimum gpa')) {
-                        input.value = scholarshipData.minGPA;
-                    } else if (label.includes('minimum ielts')) {
-                        input.value = scholarshipData.minIELTS;
-                    } else if (label.includes('description')) {
-                        input.value = scholarshipData.description;
-                    }
-                });
-
-                // Update button text for edit mode
-                const saveButton = modal.querySelector('button[class*="bg-red-400"]');
-                if (saveButton) {
-                    saveButton.innerHTML = '<i data-lucide="save" class="w-4 h-4 mr-1.5"></i>Update Scholarship';
-                }
-
-                modal.classList.remove('hidden');
-
-                // Re-initialize Lucide icons for the new button
-                lucide.createIcons();
             }
 
             function closeScholarshipModal() {
@@ -2230,9 +2327,8 @@ Motion Graphics</textarea>
                 const tableView = document.getElementById('tableView');
                 const cardView = document.getElementById('cardView');
 
-                // Set initial active view from localStorage or default to 'table'
-                const activeView = localStorage.getItem('scholarshipView') || 'table';
-                setActiveView(activeView);
+                // Always show table view by default
+                setActiveView('table');
 
                 tableViewBtn.addEventListener('click', () => setActiveView('table'));
                 cardViewBtn.addEventListener('click', () => setActiveView('card'));
@@ -2241,16 +2337,18 @@ Motion Graphics</textarea>
                     if (view === 'table') {
                         if (tableView) tableView.classList.remove('hidden');
                         if (cardView) cardView.classList.add('hidden');
-                        tableViewBtn.classList.add('active');
-                        cardViewBtn.classList.remove('active');
+                        tableViewBtn.classList.add('bg-red-600', 'text-white');
+                        tableViewBtn.classList.remove('bg-white', 'text-gray-600');
+                        cardViewBtn.classList.add('bg-white', 'text-gray-600');
+                        cardViewBtn.classList.remove('bg-red-600', 'text-white');
                     } else {
                         if (tableView) tableView.classList.add('hidden');
                         if (cardView) cardView.classList.remove('hidden');
-                        tableViewBtn.classList.remove('active');
-                        cardViewBtn.classList.add('active');
+                        cardViewBtn.classList.add('bg-red-600', 'text-white');
+                        cardViewBtn.classList.remove('bg-white', 'text-gray-600');
+                        tableViewBtn.classList.add('bg-white', 'text-gray-600');
+                        tableViewBtn.classList.remove('bg-red-600', 'text-white');
                     }
-                    // Save preference to localStorage
-                    localStorage.setItem('scholarshipView', view);
                 }
             });
         </script>
@@ -2300,6 +2398,99 @@ Motion Graphics</textarea>
                     }
                 });
             }
+
+            // Add this right before the closing </body> tag, after the existing scripts
+document.addEventListener('DOMContentLoaded', function() {
+    // Create modal container
+    const modal = document.createElement('div');
+    modal.id = 'cardViewModal';
+    modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden';
+    modal.innerHTML = `
+        <div class="bg-white rounded-2xl p-6 w-full max-w-6xl max-h-[95vh] overflow-y-auto" id="modalContent">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold">Scholarship Preview</h3>
+                <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    // Get the card view content and clone it
+    const cardViewContent = document.getElementById('cardView').cloneNode(true);
+    cardViewContent.id = 'modalCardView';
+    cardViewContent.classList.remove('hidden');
+    document.getElementById('modalContent').appendChild(cardViewContent);
+
+    // Show modal when card view button is clicked
+    document.getElementById('cardViewBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        // Initialize Lucide icons in modal
+        if (window.lucide) {
+            window.lucide.createIcons();
+        }
+    });
+
+    // Close modal when close button is clicked
+    document.getElementById('closeModal').addEventListener('click', function() {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+    });
+
+    // Close modal when clicking outside the modal content
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Initialize tab functionality for modal content
+    const modalTabButtons = document.querySelectorAll('#modalCardView .tab-btn');
+    modalTabButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const tabId = this.getAttribute('data-tab');
+            const cardNumber = this.getAttribute('data-card');
+            const section = this.closest('.border-t.pt-4');
+            showTab(section, tabId, cardNumber);
+        });
+    });
+});
+
+// Add this CSS to your <head> or stylesheet
+const style = document.createElement('style');
+style.textContent = `
+    #cardViewModal {
+        transition: opacity 0.3s ease;
+    }
+    #cardViewModal.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+    #modalContent {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    #modalContent::-webkit-scrollbar {
+        width: 6px;
+    }
+    #modalContent::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+    #modalContent::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+    }
+    #modalContent::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+`;
+document.head.appendChild(style);
         </script>
     </body>
 
