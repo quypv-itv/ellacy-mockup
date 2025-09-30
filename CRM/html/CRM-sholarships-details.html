@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiffin University - ApplyLead</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(to right top, #EDE5D6, #9ED5C5, #ffffff);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Main Content -->
+    <div class="min-h-screen">
+    <!-- Sidebar -->
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
+        <div class="p-6">
+            <div class="flex items-center mb-2">
+                <img src="../../ApplyLead_logo.png" alt="ApplyLead" class="h-9">
+            </div>
+            <div class="flex items-center">
+                <span class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">Admin</span>
+            </div>
+        </div>
+        <nav class="mt">
+            <a href="CRM-dashboard.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>
+                Dashboard
+            </a>
+            <a href="CRM-applications.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>
+                Applications
+            </a>
+            <a href="CRM-agent.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                <i data-lucide="users" class="w-5 h-5 mr-3"></i>
+                Agents
+            </a>
+            <a href="CRM-scholarships.html" class="flex items-center px-6 py-3 text-white"
+                style="background-color: #d82128;">
+                <i data-lucide="graduation-cap" class="w-5 h-5 mr-3"></i>
+                Scholarships
+            </a>
+            <a href="CRM-institutions.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                <i data-lucide="building" class="w-5 h-5 mr-3"></i>
+                Institutions
+            </a>
+            <a href="CRM-students.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                <i data-lucide="user" class="w-5 h-5 mr-3"></i>
+                Students
+            </a>
+            <a href="CRM-payment.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                <i data-lucide="credit-card" class="w-5 h-5 mr-3"></i>
+                Payments
+            </a>
+            <a href="CRM-tasks.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                <i data-lucide="check-circle" class="w-5 h-5 mr-3"></i>
+                Tasks
+            </a>
+            <a href="CRM-Campaigns.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                <i data-lucide="brick-wall-shield" class="w-5 h-5 mr-3"></i>
+                Campaigns
+            </a>
+            <a href="CRM-report.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                <i data-lucide="bar-chart" class="w-5 h-5 mr-3"></i>
+                Reports
+            </a>
+            <a href="CRM-messages.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>
+                Messages
+            </a>
+            <a href="CRM-user-admin.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                <i data-lucide="shield" class="w-5 h-5 mr-3"></i>
+                User Admin
+            </a>
+            <a href="CRM-Setting.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                <i data-lucide="settings" class="w-5 h-5 mr-3"></i>
+                Settings
+            </a>
+        </nav>
+        <div class="mt-auto px-6 py-4 border-t border-gray-200">
+            <p class="text-sm text-gray-600 text-center">Designed & developed by Innotech Viet Nam</p>
+        </div>
+    </aside>
+
+ <!-- Main Content -->
+ <div class="ml-64">
+    <!-- Header -->
+    <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6">
+        <h2 class="text-xl font-semibold text-gray-800">Scholarships</h2>
+        <div class="flex items-center">
+            <button class="p-2 hover:bg-gray-100 rounded-full">
+                <i data-lucide="bell" class="w-5 h-5 text-gray-600"></i>
+            </button>
+            <div class="relative ml-4" id="profile-menu">
+                <button class="flex items-center">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt="Admin profile" class="w-8 h-8 rounded-full object-cover">
+                </button>
+                <div id="profile-dropdown"
+                    class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                    <hr class="my-2">
+                    <button onclick="handleLogout()"
+                        class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>    
+    <!-- School Header -->
+            <div class="bg-white rounded-2xl shadow-sm p-6 mb-6 mt-6">
+                <div class="flex items-start justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-20 h-20 rounded-xl overflow-hidden flex items-center justify-center bg-white">
+                            <img src="../../tiffin-university-logo.png" alt="Tiffin University" class="w-full h-full object-contain">
+                        </div>
+                        <div>
+                            <h1 class="text-2xl font-bold text-gray-900">Tiffin University</h1>
+                            <p class="text-gray-600">Tiffin, Ohio, USA</p>
+                            <div class="flex items-center mt-2 space-x-4">
+                                <span class="text-sm text-gray-500">Est. 1888</span>
+                                <span class="text-sm text-gray-500">•</span>
+                                <span class="text-sm text-gray-500">Private University</span>
+                                <span class="text-sm text-gray-500">•</span>
+                                <span class="text-sm text-gray-500">3,000+ Students</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <button class="px-3 py-2 text-sm text-white rounded-lg flex items-center"
+                                style="background-color: #d82128;">
+                                <i data-lucide="user-plus" class="w-4 h-4 mr-1"></i>
+                                Assign to Student
+                            </button>
+                        <button onclick="openTaskModal()" class="px-3 py-2 text-sm text-white rounded-lg flex items-center"
+                        style="background-color: #d82128;">
+                            Create Task
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Left Column - Main Content -->
+                <div class="lg:col-span-2 space-y-6">
+                    <!-- Image Gallery -->
+                    <div class="bg-white rounded-2xl shadow-sm p-6">
+                        <h2 class="text-xl font-semibold mb-4">Campus Gallery</h2>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+                                <img src="https://www.tiffin.edu/nitropack_static/rfNCIaqqEsrXKRRLbfCAeWQAhlVTQUEz/assets/images/optimized/rev-bfbf990/www.tiffin.edu/wp-content/uploads/2022/01/frisbee-main-scaled-870x580.jpg">
+                            </div>
+                            <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+                                <img src="https://www.tiffin.edu/nitropack_static/rfNCIaqqEsrXKRRLbfCAeWQAhlVTQUEz/assets/images/optimized/rev-bfbf990/www.tiffin.edu/wp-content/uploads/2022/06/Rome-Italy-870x580.jpg" alt="Students Collaborating" class="w-full h-full object-cover">
+                            </div>
+                            <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+                                <img src="https://www.tiffin.edu/nitropack_static/rfNCIaqqEsrXKRRLbfCAeWQAhlVTQUEz/assets/images/optimized/rev-bfbf990/www.tiffin.edu/wp-content/uploads/2021/12/cyber-lab-classroom-scaled-870x580.jpg" alt="Pfeiffer Library" class="w-full h-full object-cover">
+                            </div>
+                            <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+                                <img src="https://www.tiffin.edu/nitropack_static/rfNCIaqqEsrXKRRLbfCAeWQAhlVTQUEz/assets/images/optimized/rev-bfbf990/www.tiffin.edu/wp-content/uploads/2023/11/52-Soccer-Mural-870x580.jpg" alt="Computer Science Lab" class="w-full h-full object-cover">
+                            </div>
+                            <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+                                <img src="https://images.sidearmdev.com/crop?url=https%3a%2f%2fdbukjj6eu5tsf.cloudfront.net%2fsidearm.sites%2ftiffinuohio.sidearmsports.com%2fimages%2f2025%2f9%2f24%2fFBkickoff1100.jpg&height=797&width=1416&type=webp&gravity=smart" alt="Dragons Athletics" class="w-full h-full object-cover">
+                            </div>
+                            <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=400&h=300&fit=crop" alt="Campus Quad" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                                    <span class="text-white font-semibold">+15 more</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- School Details Tabs -->
+                    <div class="bg-white rounded-2xl shadow-sm">
+                        <div class="border-b border-gray-200">
+                            <nav class="flex space-x-8 px-6">
+                                <button class="tab-btn py-4 px-1 border-b-2 border-red-600 text-red-600 font-medium text-sm" data-tab="overview">
+                                    Overview
+                                </button>
+                                <button class="tab-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm" data-tab="scholarships">
+                                    Scholarships
+                                </button>
+                                <button class="tab-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm" data-tab="admissions">
+                                    Admissions
+                                </button>
+                                <button class="tab-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm" data-tab="campus">
+                                    Campus Life
+                                </button>
+                                <button class="tab-btn py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm" data-tab="commission">
+                                    Commission
+                                </button>
+                            </nav>
+                        </div>
+
+                        <div class="p-6">
+                            <!-- Overview Tab -->
+                            <div class="tab-content" data-tab="overview">
+                                <h3 class="text-lg font-semibold mb-4">About Tiffin University</h3>
+                                <div class="prose max-w-none text-gray-700">
+                                    <p class="mb-4">
+                                        Tiffin University is a private university located in Tiffin, Ohio. Founded in 1888, 
+                                        TU serves over 3,000 students and is committed to transforming lives through education. 
+                                        The university is known for its personalized attention with a 20:1 student-faculty ratio 
+                                        and diverse academic programs.
+                                    </p>
+                                    <p class="mb-4">
+                                        Follow a path. Blaze a trail. Tiffin University offers 50+ undergraduate and graduate 
+                                        programs across various schools including Business, Criminal Justice & Social Sciences, 
+                                        Science Technology & Health, and Arts Education & Humanities. The university is committed 
+                                        to providing challenging academic programs that enhance global competencies and skills 
+                                        for success in a diverse world.
+                                    </p>
+                                    <p>
+                                        Located in Tiffin, Ohio, students benefit from a close-knit campus community and 
+                                        personalized educational experience. With 98% of students receiving financial aid and 
+                                        50+ student clubs and organizations, TU provides comprehensive support for student 
+                                        success and personal growth.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Scholarships Tab -->
+                            <div class="tab-content hidden" data-tab="scholarships">
+                                <h3 class="text-lg font-semibold mb-4">Available Scholarships</h3>
+                                <div class="space-y-4">
+                                    <div class="border rounded-lg p-4">
+                                        <h4 class="font-semibold text-gray-900">Tiffin University Merit Scholarship</h4>
+                                        <p class="text-sm text-gray-600 mt-1">Award: $8,000 per academic year</p>
+                                        <p class="text-sm text-gray-600">Deadline: Rolling Admissions</p>
+                                        <p class="text-sm text-gray-600 mt-2">For students with strong academic performance. Renewable based on maintaining GPA requirements. 98% of students receive financial aid.</p>
+                                    </div>
+                                    <div class="border rounded-lg p-4">
+                                        <h4 class="font-semibold text-gray-900">International Student Excellence Award</h4>
+                                        <p class="text-sm text-gray-600 mt-1">Award: $5,000 per academic year</p>
+                                        <p class="text-sm text-gray-600">Deadline: Rolling Admissions</p>
+                                        <p class="text-sm text-gray-600 mt-2">For international students who demonstrate academic excellence and leadership potential. Renewable for up to 4 years.</p>
+                                    </div>
+                                    <div class="border rounded-lg p-4">
+                                        <h4 class="font-semibold text-gray-900">STEM Achievement Scholarship</h4>
+                                        <p class="text-sm text-gray-600 mt-1">Award: $6,000 per academic year</p>
+                                        <p class="text-sm text-gray-600">Deadline: Rolling Admissions</p>
+                                        <p class="text-sm text-gray-600 mt-2">For students pursuing Computer Science, Cybersecurity, or other STEM programs. Must maintain a 3.0 GPA.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Admissions Tab -->
+                            <div class="tab-content hidden" data-tab="admissions">
+                                <h3 class="text-lg font-semibold mb-4">Admission Requirements</h3>
+                                <div class="space-y-4">
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">General Requirements</h4>
+                                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                            <li>High school diploma or equivalent</li>
+                                            <li>Completed application form</li>
+                                            <li>Official transcripts</li>
+                                            <li>English proficiency for international students</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">International Students</h4>
+                                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                            <li>TOEFL iBT: 79 or higher (19 minimum per section)</li>
+                                            <li>IELTS: 6.0 or higher (5.5 minimum per band)</li>
+                                            <li>Duolingo: 105 or higher</li>
+                                            <li>PTE Academic: 53 or higher</li>
+                                            <li>Financial documentation</li>
+                                            <li>Passport copy</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Campus Life Tab -->
+                            <div class="tab-content hidden" data-tab="campus">
+                                <h3 class="text-lg font-semibold mb-4">Campus Life</h3>
+                                <div class="space-y-4">
+                                    <p class="text-gray-700">
+                                        Tiffin University offers a vibrant campus life with over 50 student clubs and organizations, 
+                                        NCAA Division II athletics, and comprehensive academic support services. Students can participate in 
+                                        various clubs, Dragon sports teams, and community service opportunities in the close-knit campus community.
+                                    </p>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900 mb-2">Student Services</h4>
+                                            <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                                <li>Academic counseling</li>
+                                                <li>Career services</li>
+                                                <li>Tutoring center</li>
+                                                <li>Library resources</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900 mb-2">Campus Facilities</h4>
+                                            <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                                <li>State-of-the-art technology labs</li>
+                                                <li>Pfeiffer Library</li>
+                                                <li>Gillmor Student Center</li>
+                                                <li>Athletic facilities & fitness center</li>
+                                                <li>Residence halls</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Commission Tab -->
+                            <div class="tab-content hidden" data-tab="commission">
+                                <div class="space-y-6">
+                                    <!-- Commission Summary -->
+                                    <div class="bg-red-50 p-6 rounded-2xl">
+                                        <h3 class="text-lg font-semibold text-red-800 mb-4">Commission Summary</h3>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <div class="bg-white p-4 rounded-xl shadow-sm">
+                                                <div class="flex items-center justify-between mb-2">
+                                                    <span class="text-sm font-medium text-gray-500">Commission Rate</span>
+                                                    <i data-lucide="percent" class="w-5 h-5 text-red-600"></i>
+                                                </div>
+                                                <p class="text-2xl font-bold text-gray-900">15%</p>
+                                                <p class="text-sm text-gray-500 mt-1">of first year tuition</p>
+                                            </div>
+                                            <div class="bg-white p-4 rounded-xl shadow-sm">
+                                                <div class="flex items-center justify-between mb-2">
+                                                    <span class="text-sm font-medium text-gray-500">Estimated Amount</span>
+                                                    <i data-lucide="dollar-sign" class="w-5 h-5 text-green-600"></i>
+                                                </div>
+                                                <p class="text-2xl font-bold text-gray-900">$3,750 - $4,500</p>
+                                                <p class="text-sm text-gray-500 mt-1">per student</p>
+                                            </div>
+                                            <div class="bg-white p-4 rounded-xl shadow-sm md:col-span-2">
+                                                <div class="flex items-center justify-between mb-2">
+                                                    <span class="text-sm font-medium text-gray-500">Payment Terms</span>
+                                                    <i data-lucide="calendar" class="w-5 h-5 text-blue-600"></i>
+                                                </div>
+                                                <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                                                    <li>50% upon student enrollment confirmation</li>
+                                                    <li>50% after first semester completion</li>
+                                                    <li>Paid within 30 days of each milestone</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Commission History -->
+                                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                                        <div class="flex items-center justify-between mb-4">
+                                            <h3 class="text-lg font-semibold text-gray-900">Your Commission History</h3>
+                                            <button class="text-sm text-red-600 hover:text-red-700 flex items-center">
+                                                <i data-lucide="download" class="w-4 h-4 mr-1"></i>
+                                                Export Report
+                                            </button>
+                                        </div>
+                                        
+                                        <div class="overflow-x-auto">
+                                            <table class="min-w-full divide-y divide-gray-200">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Student</th>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Program</th>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                                        <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    <tr>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <div class="flex-shrink-0 h-10 w-10">
+                                                                    <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/women/1.jpg" alt="">
+                                                                </div>
+                                                                <div class="ml-4">
+                                                                    <div class="text-sm font-medium text-gray-900">Sarah Johnson</div>
+                                                                    <div class="text-sm text-gray-500">Fall 2024</div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-900">MBA</div>
+                                                            <div class="text-sm text-gray-500">Business Administration</div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                                Paid
+                                                            </span>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                                            <span class="text-green-600">$4,250</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <div class="flex-shrink-0 h-10 w-10">
+                                                                    <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/1.jpg" alt="">
+                                                                </div>
+                                                                <div class="ml-4">
+                                                                    <div class="text-sm font-medium text-gray-900">Michael Chen</div>
+                                                                    <div class="text-sm text-gray-500">Spring 2025</div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-900">MS in CS</div>
+                                                            <div class="text-sm text-gray-500">Computer Science</div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                                                Pending
+                                                            </span>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                                            <span class="text-gray-600">$4,100</span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Sidebar -->
+                <div class="space-y-6">
+                    <!-- Quick Stats -->
+                    <div class="bg-white rounded-2xl shadow-sm p-6">
+                        <h3 class="text-lg font-semibold mb-4">Quick Stats</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Founded</span>
+                                <span class="font-semibold">1888</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Students</span>
+                                <span class="font-semibold">3,000+</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Student:Faculty</span>
+                                <span class="font-semibold">20:1</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Financial Aid</span>
+                                <span class="font-semibold">98%</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Campus Size</span>
+                                <span class="font-semibold">110 acres</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cost and Tuition -->
+                    <div class="bg-white rounded-2xl shadow-sm p-6">
+                        <h3 class="text-lg font-semibold mb-4">Cost and Tuition</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Tuition & Fees</span>
+                                <span class="font-semibold">$28,000-$32,000/year</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Room & Board</span>
+                                <span class="font-semibold">$12,000/year</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Application Fee</span>
+                                <span class="font-semibold">$50</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Books & Supplies</span>
+                                <span class="font-semibold">$1,800/year</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Living Expenses</span>
+                                <span class="font-semibold">$18,000/year</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="bg-white rounded-2xl shadow-sm p-6">
+                        <h3 class="text-lg font-semibold mb-4">Location</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="map-pin" class="w-4 h-4 text-gray-500 mt-0.5"></i>
+                                <div>
+                                    <p class="text-sm text-gray-900">155 Miami Street</p>
+                                    <p class="text-sm text-gray-600">Tiffin, OH 44883</p>
+                                </div>
+                            </div>
+                            <!-- Google Maps Embed -->
+                            <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3048.5!2d-83.1780!3d41.1145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883f3e8b5c7d8a9f%3A0x1234567890abcdef!2sTiffin%20University!5e0!3m2!1sen!2sus!4v1630000000000!5m2!1sen!2sus" 
+                                    width="100%" 
+                                    height="200" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy"
+                                    class="w-full h-full"
+                                    title="Tiffin University Location">
+                                </iframe>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-2">View <a href="https://www.google.com/maps/place/Tiffin+University/@41.1145,-83.1780,17z" target="_blank" class="text-blue-600 hover:underline">larger map</a> for directions</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Profile dropdown functionality
+        document.getElementById('profile-menu').addEventListener('click', function() {
+            const dropdown = document.getElementById('profile-dropdown');
+            dropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const profileMenu = document.getElementById('profile-menu');
+            const dropdown = document.getElementById('profile-dropdown');
+            
+            if (!profileMenu.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Update active tab button
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('text-red-600', 'border-red-600');
+                        btn.classList.add('text-gray-500', 'border-transparent');
+                    });
+                    
+                    this.classList.remove('text-gray-500', 'border-transparent');
+                    this.classList.add('text-red-600', 'border-red-600');
+                    
+                    // Show active tab content
+                    tabContents.forEach(content => {
+                        content.classList.add('hidden');
+                    });
+                    
+                    const activeContent = document.querySelector(`.tab-content[data-tab="${tabId}"]`);
+                    if (activeContent) {
+                        activeContent.classList.remove('hidden');
+                    }
+                });
+            });
+        });
+
+        // Logout function
+        function handleLogout() {
+            if (confirm('Are you sure you want to logout?')) {
+                window.location.href = '../login.html';
+            }
+        }
+    </script>
+
+    <!-- AI Assistant Floating Button -->
+    <div id="aiAssistantButton" class="fixed bottom-6 right-6 z-50">
+        <button class="text-white rounded-full p-4 shadow-lg transition-all duration-300 hover:scale-110" style="background-color: rgb(237, 33, 40);" onmouseover="this.style.backgroundColor='#d82128'" onmouseout="this.style.backgroundColor='#d82128'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="message-circle" class="lucide lucide-message-circle w-6 h-6"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg>
+        </button>
+    </div>
+
+    <!-- AI Assistant Chat Panel -->
+    <div id="aiChatOverlay" class="fixed z-50 hidden">
+        <div class="fixed bottom-0 left-0 right-0 md:right-6 md:bottom-6 md:left-auto md:w-96 bg-white rounded-t-3xl md:rounded-3xl shadow-2xl transform transition-transform duration-300 translate-y-full" id="aiChatPanel">
+            <!-- Chat Header -->
+            <div class="flex items-center justify-between p-4 border-b border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #d82128;">
+                        <i data-lucide="bot" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900">AI Assistant</h3>
+                        <p class="text-sm text-green-600">Online</p>
+                    </div>
+                </div>
+                <button id="closeChatBtn" class="text-gray-400 hover:text-gray-500">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            
+            <!-- Chat Messages -->
+            <div class="h-96 overflow-y-auto p-4 space-y-4" id="chatMessages">
+                <div class="flex items-start space-x-3">
+                    <div class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center" style="background-color: #d82128;">
+                        <i data-lucide="bot" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <div class="bg-gray-100 rounded-2xl px-4 py-2 max-w-xs">
+                        <p class="text-sm text-gray-800">Hello! I'm your AI assistant. How can I help you with Tiffin University today?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chat Input -->
+            <div class="p-4 border-t border-gray-200">
+                <div class="flex items-center space-x-2">
+                    <input type="text" placeholder="Type your message..." class="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                    <button class="bg-red-600 text-white rounded-full p-2 hover:bg-red-700 transition-colors">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // AI Assistant Chat Functionality
+        const aiButton = document.getElementById('aiAssistantButton');
+        const chatOverlay = document.getElementById('aiChatOverlay');
+        const chatPanel = document.getElementById('aiChatPanel');
+        const closeChatBtn = document.getElementById('closeChatBtn');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.querySelector('#aiChatOverlay input');
+        const sendButton = document.querySelector('#aiChatOverlay button');
+
+        // Toggle chat panel
+        aiButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            chatOverlay.classList.toggle('hidden');
+            chatPanel.classList.toggle('translate-y-full');
+            chatPanel.classList.toggle('translate-y-0');
+            
+            // Focus input when opening
+            if (!chatOverlay.classList.contains('hidden')) {
+                setTimeout(() => {
+                    chatInput.focus();
+                }, 300);
+            }
+        });
+
+        // Close chat panel
+        function closeChat() {
+            chatOverlay.classList.add('hidden');
+            chatPanel.classList.remove('translate-y-0');
+            chatPanel.classList.add('translate-y-full');
+        }
+
+        closeChatBtn.addEventListener('click', closeChat);
+
+        // Close when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!chatPanel.contains(e.target) && !aiButton.contains(e.target)) {
+                closeChat();
+            }
+        });
+
+        // Send message on Enter or button click
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                // Add user message
+                const userMessage = document.createElement('div');
+                userMessage.className = 'flex items-start justify-end space-x-3';
+                userMessage.innerHTML = `
+                    <div class="bg-red-100 rounded-2xl px-4 py-2 max-w-xs">
+                        <p class="text-sm text-gray-800">${message}</p>
+                    </div>
+                    <div class="w-8 h-8 rounded-full flex-shrink-0 bg-gray-200 flex items-center justify-center">
+                        <i data-lucide="user" class="w-4 h-4 text-gray-600"></i>
+                    </div>
+                `;
+                chatMessages.appendChild(userMessage);
+                chatInput.value = '';
+                
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // Simulate AI response (in a real app, this would be an API call)
+                setTimeout(() => {
+                    const aiResponse = document.createElement('div');
+                    aiResponse.className = 'flex items-start space-x-3';
+                    aiResponse.innerHTML = `
+                        <div class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center" style="background-color: #d82128;">
+                            <i data-lucide="bot" class="w-4 h-4 text-white"></i>
+                        </div>
+                        <div class="bg-gray-100 rounded-2xl px-4 py-2 max-w-xs">
+                            <p class="text-sm text-gray-800">I'm an AI assistant. In a real implementation, I would provide helpful information about Tiffin University based on your message: "${message}"</p>
+                        </div>
+                    `;
+                    chatMessages.appendChild(aiResponse);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000);
+            }
+        }
+
+        sendButton.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+
+    <!-- Suggest to Student Modal -->
+    <div id="suggest-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-xl max-w-md w-full">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 class="text-xl font-semibold">Suggest to Student</h2>
+                    <button onclick="closeSuggestModal()" class="p-2 hover:bg-gray-100 rounded-lg">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Select Student</label>
+                    <select id="suggest-student-select" class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                        <option>John Smith</option>
+                        <option>Emma Wilson</option>
+                        <option>Michael Brown</option>
+                    </select>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Add Note (Optional)</label>
+                    <textarea class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500" rows="3" placeholder="Add a personal note..."></textarea>
+                </div>
+
+                <div class="mb-4">
+                    <label class="flex items-center">
+                        <input type="checkbox" id="create-follow-up-task" class="rounded text-blue-600 focus:ring-blue-500">
+                        <span class="ml-2 text-sm">Add follow-up task</span>
+                    </label>
+                </div>
+                
+                <button onclick="confirmSuggest()" class="w-full px-4 py-2 text-white rounded-lg transition-colors hover:opacity-90" style="background-color: #d82128;">
+                    Send Suggestion
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Suggest to Student Modal Functionality
+        function openSuggestModal() {
+            document.getElementById('suggest-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSuggestModal() {
+            document.getElementById('suggest-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function confirmSuggest() {
+            const student = document.getElementById('suggest-student-select').value;
+            const note = document.querySelector('#suggest-modal textarea').value;
+            const createTask = document.getElementById('create-follow-up-task').checked;
+            
+            // Here you would typically make an API call to save the suggestion
+            console.log('Suggestion sent to:', student);
+            if (note) console.log('Note:', note);
+            if (createTask) console.log('Follow-up task will be created');
+            
+            // Close the modal and show success message
+            closeSuggestModal();
+            
+            // Show success message (you can customize this)
+            alert(`Suggestion sent to ${student} successfully!`);
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('suggest-modal');
+            if (event.target === modal) {
+                closeSuggestModal();
+            }
+        }
+    </script>
+
+    <!-- Task Modal -->
+    <div id="task-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-xl max-w-md w-full">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 class="text-xl font-semibold">Create Follow-up Task</h2>
+                    <button onclick="closeTaskModal()" class="p-2 hover:bg-gray-100 rounded-lg">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Task Name</label>
+                    <input type="text" id="task-name" class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Enter task name">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Student</label>
+                    <select id="task-student" class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                        <option value="">Select a student</option>
+                        <option value="student1">John Smith</option>
+                        <option value="student2">Emma Wilson</option>
+                        <option value="student3">Michael Brown</option>
+                    </select>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Due Date</label>
+                    <input type="date" id="task-due-date" class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Priority</label>
+                    <select id="task-priority" class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                        <option value="low">Low</option>
+                        <option value="normal" selected>Normal</option>
+                        <option value="high">High</option>
+                        <option value="urgent">Urgent</option>
+                    </select>
+                </div>
+                
+                <button onclick="createTask()" class="w-full px-4 py-2 text-white rounded-lg transition-colors hover:opacity-90" style="background-color: #d82128;">
+                    Create Task
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Task Modal Functions
+        function openTaskModal() {
+            document.getElementById('task-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTaskModal() {
+            document.getElementById('task-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function createTask() {
+            const taskName = document.getElementById('task-name').value;
+            const student = document.getElementById('task-student').value;
+            const dueDate = document.getElementById('task-due-date').value;
+            const priority = document.getElementById('task-priority').value;
+
+            if (!taskName || !student || !dueDate) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            // Here you would typically send this data to your backend
+            console.log('Creating task:', { taskName, student, dueDate, priority });
+            
+            // Close the modal and reset the form
+            closeTaskModal();
+            document.getElementById('task-form').reset();
+            
+            // Show success message
+            alert('Task created successfully!');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('task-modal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeTaskModal();
+            }
+        });
+    </script>
+</body>
+</html>
