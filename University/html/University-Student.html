@@ -9,10 +9,10 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .gradient-bg { background: linear-gradient(to right top, #EDE5D6, #9ED5C5, #ffffff); }
+        .gradient-bg { background: linear-gradient(to right top, #ffffff, #f5f5f5, #ebebeb); }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-white">
     <div class="min-h-screen">
         <header class="h-16 bg-white shadow-sm relative">
             <div class="h-full px-6 flex items-center justify-between">
@@ -53,22 +53,538 @@
 
             <nav class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center space-x-8">
                 <a href="University-Scholarship.html" class="text-gray-500 hover:text-gray-700 font-medium hover:border-b-2 hover:border-gray-300 pb-1">Scholarships</a>
-                <a href="University-Universities.html" class="text-gray-500 hover:text-gray-700 font-medium hover:border-b-2 hover:border-gray-300 pb-1">Universities</a>
                 <a href="University-Student.html" class="text-black hover:text-gray-700 font-medium border-b-2 border-red-600 pb-1">Student</a>
             </nav>
         </header>
 
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-6">Student Management</h1>
-            <div class="bg-white shadow rounded-lg p-6">
-                <p class="text-gray-700">Student management content will be displayed here.</p>
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                    <div class="relative flex-1 md:w-64">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i data-lucide="search" class="h-5 w-5 text-gray-400"></i>
+                        </div>
+                        <input type="text" id="searchInput" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm" placeholder="Search students...">
+                    </div>
+                    <div class="relative">
+                        <button id="filterButton" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                            <i data-lucide="filter" class="h-4 w-4 mr-2"></i>
+                            Filter
+                            <i data-lucide="chevron-down" class="h-4 w-4 ml-2"></i>
+                        </button>
+                        <div id="filterDropdown" class="hidden absolute right-0 mt-1 w-56 bg-white rounded-md shadow-lg z-10">
+                            <div class="p-4 space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Cohort</label>
+                                    <select id="cohortFilter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
+                                        <option value="">All Cohorts</option>
+                                        <option value="FTU K23">FTU K23</option>
+                                        <option value="FTU K24">FTU K24</option>
+                                        <option value="FTU K25">FTU K25</option>
+                                        <option value="FTU K26">FTU K26</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Major</label>
+                                    <select id="majorFilter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
+                                        <option value="">All Majors</option>
+                                        <option value="Computer Science">Computer Science</option>
+                                        <option value="Business Administration">Business Administration</option>
+                                        <option value="Engineering">Engineering</option>
+                                        <option value="Data Science">Data Science</option>
+                                        <option value="Finance">Finance</option>
+                                    </select>
+                                </div>
+                                <div class="flex justify-end space-x-2 pt-2">
+                                    <button id="resetFilters" type="button" class="inline-flex items-center px-3 py-1.5 border border-gray-300 rounded-md shadow-sm text-xs font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                        Reset
+                                    </button>
+                                    <button id="applyFilters" type="button" class="inline-flex items-center px-3 py-1.5 border border-transparent rounded-md shadow-sm text-xs font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                        Apply Filters
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <button id="importButton" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                            <i data-lucide="upload" class="h-4 w-4 mr-2"></i>
+                            Import Excel
+                        </button>
+                        <input type="file" id="fileInput" class="hidden" accept=".xlsx, .xls, .csv">
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <div class="flex items-center">
+                                        <span>Student Name</span>
+                                        <button class="ml-1 text-gray-400 hover:text-gray-600 focus:outline-none">
+                                            <i data-lucide="chevron-up" class="h-4 w-4"></i>
+                                        </button>
+                                    </div>
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Student Email
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Class
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Cohort
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Major
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Source
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentTableBody" class="bg-white divide-y divide-gray-200">
+                            <!-- Student rows will be dynamically inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+                    <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                        <div>
+                            <p class="text-sm text-gray-700">
+                                Showing <span class="font-medium">1</span> to <span class="font-medium">10</span> of <span class="font-medium">20</span> results
+                            </p>
+                        </div>
+                        <div>
+                            <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                                <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                    <span class="sr-only">Previous</span>
+                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                                <a href="#" aria-current="page" class="z-10 bg-red-50 border-red-500 text-red-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium">1</a>
+                                <a href="#" class="bg-white border-gray-300 text-gray-700 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">2</a>
+                                <a href="#" class="bg-white border-gray-300 text-gray-700 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">3</a>
+                                <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">...</span>
+                                <a href="#" class="bg-white border-gray-300 text-gray-700 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">8</a>
+                                <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                    <span class="sr-only">Next</span>
+                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
+    </div>
+
+    <!-- Student Detail Modal -->
+    <div id="studentModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
+        <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-2/3 lg:w-1/2 shadow-lg rounded-md bg-white">
+            <div class="flex justify-between items-center pb-3">
+                <h3 class="text-lg font-medium text-gray-900">Student Details</h3>
+                <button id="closeModal" class="text-gray-400 hover:text-gray-500">
+                    <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+            </div>
+            <div class="mt-4 space-y-4" id="studentForm">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="editName" class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <p id="modalName" class="mt-1 text-gray-900">Nguyen Van</p>
+                        <input type="text" id="editName" name="name" class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="editEmail" class="block text-sm font-medium text-gray-700">Email</label>
+                        <p id="modalEmail" class="mt-1 text-gray-900">nguyenvana@example.com</p>
+                        <input type="email" id="editEmail" name="email" class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="editClass" class="block text-sm font-medium text-gray-700">Class</label>
+                        <p id="modalClass" class="mt-1 text-gray-900">CS101</p>
+                        <input type="text" id="editClass" name="class" class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="editCohort" class="block text-sm font-medium text-gray-700">Cohort</label>
+                        <p id="modalCohort" class="mt-1 text-gray-900">FTU K25</p>
+                        <input type="text" id="editCohort" name="cohort" class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="editMajor" class="block text-sm font-medium text-gray-700">Major</label>
+                        <p id="modalMajor" class="mt-1 text-gray-900">Computer Science</p>
+                        <input type="text" id="editMajor" name="major" class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="editSource" class="block text-sm font-medium text-gray-700">Source</label>
+                        <p id="modalSource" class="mt-1 text-gray-900">FTU</p>
+                        <input type="text" id="editSource" name="source" class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
+                    </div>
+                </div>
+                <div class="pt-4 border-t border-gray-200">
+                    <label for="editNotes" class="block text-sm font-medium text-gray-700 mb-2">Notes</label>
+                    <p id="modalNotes" class="text-gray-600 text-sm mb-2">No additional notes available.</p>
+                    <textarea id="editNotes" name="notes" rows="3" class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm"></textarea>
+                </div>
+            </div>
+            <div class="mt-5 flex justify-end space-x-3">
+                <button id="cancelEditBtn" type="button" class="hidden px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                    Cancel
+                </button>
+                <button id="saveChangesBtn" type="button" class="hidden px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                    Save Changes
+                </button>
+                <button id="closeModalBtn" type="button" class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                    Close
+                </button>
+                <button id="editStudentBtn" type="button" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                    Edit Student
+                </button>
+            </div>
+        </div>
     </div>
 
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
+
+        // Sample student data
+        const students = [
+            { id: 1, name: 'Nguyen Van', email: 'nguyenvana@example.com', class: 'CS101', cohort: 'FTU K25', major: 'Computer Science', source: 'FTU', notes: 'Interested in AI and Machine Learning' },
+            { id: 2, name: 'Tran Thi', email: 'tranthib@example.com', class: 'BA201', cohort: 'FTU K24', major: 'Business Administration', source: 'FTU', notes: 'Scholarship applicant' },
+            { id: 3, name: 'Le Van', email: 'levanc@example.com', class: 'EN301', cohort: 'FTU K25', major: 'Engineering', source: 'FTU', notes: 'Transferred from another university' },
+            { id: 4, name: 'Pham Thi', email: 'phamthid@example.com', class: 'DS401', cohort: 'FTU K26', major: 'Data Science', source: 'FTU', notes: 'Has programming experience in Python' },
+            { id: 5, name: 'Hoang Van', email: 'hoangvane@example.com', class: 'FN501', cohort: 'FTU K23', major: 'Finance', source: 'FTU', notes: 'Looking for part-time opportunities' },
+        ];
+
+        // DOM Elements
+        const studentTableBody = document.getElementById('studentTableBody');
+        const searchInput = document.getElementById('searchInput');
+        const filterButton = document.getElementById('filterButton');
+        const filterDropdown = document.getElementById('filterDropdown');
+        const applyFiltersBtn = document.getElementById('applyFilters');
+        const resetFiltersBtn = document.getElementById('resetFilters');
+        const importButton = document.getElementById('importButton');
+        const fileInput = document.getElementById('fileInput');
+        const studentModal = document.getElementById('studentModal');
+        const closeModal = document.getElementById('closeModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const editStudentBtn = document.getElementById('editStudentBtn');
+        const cancelEditBtn = document.getElementById('cancelEditBtn');
+        const saveChangesBtn = document.getElementById('saveChangesBtn');
+        const studentForm = document.getElementById('studentForm');
+        let currentStudent = null;
+        let isEditMode = false;
+
+        // Current filters
+        let currentFilters = {
+            search: '',
+            cohort: '',
+            major: '',
+            source: ''
+        };
+
+        // Initialize the table with all students
+        function renderStudents(studentsToRender) {
+            studentTableBody.innerHTML = '';
+            
+            if (studentsToRender.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td colspan="7" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                        No students found matching your criteria.
+                    </td>
+                `;
+                studentTableBody.appendChild(row);
+                return;
+            }
+
+            studentsToRender.forEach(student => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-gray-50';
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                            <div class="ml-4">
+                                <div class="text-sm font-medium text-gray-900">${student.name}</div>
+                                <div class="text-sm text-gray-500">ID: ${String(student.id).padStart(4, '0')}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        ${student.email}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-50 text-black border border-red-200">
+                            ${student.class}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        ${student.cohort}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        ${student.major}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        ${student.source}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <div class="flex items-center justify-end space-x-2">
+                            <div class="relative group">
+                                <button class="text-red-600 hover:text-red-800 p-1 rounded-full hover:bg-red-50 border border-transparent hover:border-red-200 view-student" data-id="${student.id}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                </button>
+                                <div class="absolute right-0 mt-1 w-16 bg-black text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                                    View
+                                    <div class="absolute -top-1 right-2 w-2 h-2 bg-black transform rotate-45"></div>
+                                </div>
+                            </div>
+                            <div class="relative group">
+                                <button class="edit-student text-gray-800 hover:text-black p-1 rounded-full hover:bg-gray-100 border border-transparent hover:border-gray-200" data-id="${student.id}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-edit-2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path></svg>
+                                </button>
+                                <div class="absolute right-0 mt-1 w-16 bg-black text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                                    Edit
+                                    <div class="absolute -top-1 right-2 w-2 h-2 bg-black transform rotate-45"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                `;
+                studentTableBody.appendChild(row);
+            });
+
+            // Re-attach event listeners for view buttons
+            document.querySelectorAll('.view-student').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const studentId = parseInt(e.currentTarget.getAttribute('data-id'));
+                    const student = students.find(s => s.id === studentId);
+                    if (student) {
+                        showStudentDetails(student);
+                    }
+                });
+            });
+
+            // Add event listeners for edit buttons
+            document.querySelectorAll('.edit-student').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const studentId = parseInt(e.currentTarget.getAttribute('data-id'));
+                    const student = students.find(s => s.id === studentId);
+                    if (student) {
+                        showStudentDetails(student, true); // Open in edit mode
+                    }
+                });
+            });
+        }
+
+        // Filter students based on current filters
+        function filterStudents() {
+            return students.filter(student => {
+                const matchesSearch = !currentFilters.search || 
+                    student.name.toLowerCase().includes(currentFilters.search.toLowerCase()) ||
+                    student.email.toLowerCase().includes(currentFilters.search.toLowerCase());
+                const matchesCohort = !currentFilters.cohort || student.cohort === currentFilters.cohort;
+                const matchesMajor = !currentFilters.major || student.major === currentFilters.major;
+                const matchesSource = !currentFilters.source || student.source === currentFilters.source;
+                
+                return matchesSearch && matchesCohort && matchesMajor && matchesSource;
+            });
+        }
+
+        // Show student details in modal
+        function showStudentDetails(student, editMode = false) {
+            currentStudent = student;
+            
+            // Set values in view mode
+            document.getElementById('modalName').textContent = student.name;
+            document.getElementById('modalEmail').textContent = student.email;
+            document.getElementById('modalClass').textContent = student.class;
+            document.getElementById('modalCohort').textContent = student.cohort;
+            document.getElementById('modalMajor').textContent = student.major;
+            document.getElementById('modalSource').textContent = student.source;
+            document.getElementById('modalNotes').textContent = student.notes || 'No additional notes available.';
+            
+            // Set values in edit fields
+            document.getElementById('editName').value = student.name;
+            document.getElementById('editEmail').value = student.email;
+            document.getElementById('editClass').value = student.class;
+            document.getElementById('editCohort').value = student.cohort;
+            document.getElementById('editMajor').value = student.major;
+            document.getElementById('editSource').value = student.source;
+            document.getElementById('editNotes').value = student.notes || '';
+            
+            // Toggle edit mode if needed
+            if (editMode) {
+                setEditMode(true);
+            } else {
+                setEditMode(false);
+            }
+            
+            // Show the modal
+            document.getElementById('studentModal').classList.remove('hidden');
+        }
+        
+        // Toggle between view and edit modes
+        function setEditMode(edit) {
+            isEditMode = edit;
+            
+            // Toggle view mode elements
+            const viewElements = studentForm.querySelectorAll('p[id^="modal"]');
+            viewElements.forEach(el => el.classList.toggle('hidden', edit));
+            
+            // Toggle edit mode elements
+            const editElements = studentForm.querySelectorAll('input, textarea');
+            editElements.forEach(el => el.classList.toggle('hidden', !edit));
+            
+            // Toggle buttons
+            editStudentBtn.classList.toggle('hidden', edit);
+            closeModalBtn.classList.toggle('hidden', edit);
+            cancelEditBtn.classList.toggle('hidden', !edit);
+            saveChangesBtn.classList.toggle('hidden', !edit);
+        }
+        
+        // Edit button click handler
+        editStudentBtn.addEventListener('click', () => {
+            setEditMode(true);
+        });
+        
+        // Cancel button click handler
+        cancelEditBtn.addEventListener('click', () => {
+            // Reset form to original values
+            showStudentDetails(currentStudent, false);
+        });
+        
+        // Save button click handler
+        saveChangesBtn.addEventListener('click', () => {
+            // Update the student object with new values
+            currentStudent = {
+                ...currentStudent,
+                name: document.getElementById('editName').value,
+                email: document.getElementById('editEmail').value,
+                class: document.getElementById('editClass').value,
+                cohort: document.getElementById('editCohort').value,
+                major: document.getElementById('editMajor').value,
+                source: document.getElementById('editSource').value,
+                notes: document.getElementById('editNotes').value
+            };
+            
+            // Update the student in the table
+            updateStudentInTable(currentStudent);
+            
+            // Switch back to view mode
+            showStudentDetails(currentStudent, false);
+            
+            // Show success message (you can replace this with a toast notification)
+            alert('Student information updated successfully!');
+        });
+        
+        // Update student in the table
+        function updateStudentInTable(updatedStudent) {
+            const row = document.querySelector(`tr[data-student-id="${updatedStudent.id}"]`);
+            if (row) {
+                // Update the name and email in the table
+                const nameCell = row.querySelector('td:first-child .ml-4');
+                if (nameCell) {
+                    nameCell.querySelector('div:first-child').textContent = updatedStudent.name;
+                }
+                
+                // Update other cells as needed
+                const cells = row.querySelectorAll('td');
+                if (cells[1]) cells[1].textContent = updatedStudent.class;
+                if (cells[2]) cells[2].textContent = updatedStudent.cohort;
+                if (cells[3]) cells[3].textContent = updatedStudent.major;
+                if (cells[4]) cells[4].textContent = updatedStudent.source;
+            }
+        }
+        
+        // Event Listeners
+        searchInput.addEventListener('input', (e) => {
+            currentFilters.search = e.target.value;
+            const filteredStudents = filterStudents();
+            renderStudents(filteredStudents);
+        });
+
+        filterButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            filterDropdown.classList.toggle('hidden');
+        });
+
+        applyFiltersBtn.addEventListener('click', () => {
+            currentFilters.cohort = document.getElementById('cohortFilter').value;
+            currentFilters.major = document.getElementById('majorFilter').value;
+            currentFilters.source = document.getElementById('sourceFilter').value;
+            
+            const filteredStudents = filterStudents();
+            renderStudents(filteredStudents);
+            filterDropdown.classList.add('hidden');
+        });
+
+        resetFiltersBtn.addEventListener('click', () => {
+            document.getElementById('cohortFilter').value = '';
+            document.getElementById('majorFilter').value = '';
+            document.getElementById('sourceFilter').value = '';
+            
+            currentFilters = {
+                ...currentFilters,
+                cohort: '',
+                major: '',
+                source: ''
+            };
+            
+            const filteredStudents = filterStudents();
+            renderStudents(filteredStudents);
+            filterDropdown.classList.add('hidden');
+        });
+
+        importButton.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                // Here you would typically parse the Excel file
+                // For now, we'll just show an alert
+                alert(`File "${file.name}" selected for import. In a real application, this would process the Excel file.`);
+                // Reset the file input
+                fileInput.value = '';
+            }
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!filterButton.contains(e.target) && !filterDropdown.contains(e.target)) {
+                filterDropdown.classList.add('hidden');
+            }
+        });
+
+        // Modal close handlers
+        const closeModalHandler = () => {
+            document.getElementById('studentModal').classList.add('hidden');
+        };
+
+        closeModal.addEventListener('click', closeModalHandler);
+        closeModalBtn.addEventListener('click', closeModalHandler);
+
+        // Close modal when clicking outside of it
+        window.addEventListener('click', (e) => {
+            if (e.target === studentModal) {
+                closeModalHandler();
+            }
+        });
+
+        // Initial render
+        renderStudents(students);
 
         // Profile Dropdown Toggle
         document.addEventListener('DOMContentLoaded', function () {
@@ -97,19 +613,15 @@
                     });
                 }
             }
-
-            // Handle logout
-            window.handleLogout = function () {
-                // Add your logout logic here
-                console.log('Logging out...');
-                // Example: window.location.href = '/logout';
-                // Show a confirmation dialog before logging out
-                if (confirm('Are you sure you want to log out?')) {
-                    // Perform logout action
-                    window.location.href = '../../login.html';
-                }
-            };
         });
+
+        // Handle logout
+        function handleLogout() {
+            // Add logout logic here
+            console.log('Logging out...');
+            // Redirect to login page
+            window.location.href = 'login.html';
+        }
     </script>
 </body>
 </html>

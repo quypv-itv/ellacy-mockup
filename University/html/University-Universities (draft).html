@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universities - University Partners - ApplyLead</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(to right top, #EDE5D6, #9ED5C5, #ffffff); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen">
+        <header class="h-16 bg-white shadow-sm relative">
+            <div class="h-full px-6 flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <a href="University-dashboard.html" class="flex items-center space-x-4">
+                        <div class="relative">
+                            <img src="../../ApplyLead_logo.png" alt="ApplyLead" class="h-9">
+                        </div>
+                        <div class="text-gray-300">|</div>
+                        <div class="w-48 h-16 flex items-center">
+                            <img src="https://ftu.edu.vn/images/stories/joomlart/logo.png" alt="FTU University" class="h-full object-contain">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button class="relative p-2 hover:bg-gray-100 rounded-full">
+                        <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
+                        <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                    </button>
+                    <div class="relative">
+                        <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop"
+                                 alt="Profile"
+                                 class="w-8 h-8 rounded-full object-cover">
+                        </button>
+                        <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                            <a href="university-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
+                            </a>
+                            <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center space-x-8">
+                <a href="University-Scholarship.html" class="text-gray-500 hover:text-gray-700 font-medium hover:border-b-2 hover:border-gray-300 pb-1">Scholarships</a>
+                <a href="University-Universities.html" class="text-black font-medium border-b-2 border-red-600 pb-1">Universities</a>
+                <a href="University-Student.html" class="text-gray-500 hover:text-gray-700 font-medium hover:border-b-2 hover:border-gray-300 pb-1">Student</a>
+            </nav>
+        </header>
+
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">            
+            <!-- Hero Section -->
+            <section class="relative bg-gradient-to-r from-red-700 to-red-600 rounded-3xl overflow-hidden mb-16">
+                <div class="absolute inset-0 bg-black opacity-40"></div>
+                <div class="relative max-w-7xl mx-auto px-4 py-20 sm:px-6 lg:px-8 text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Global Academic Partnerships</h1>
+                    <p class="text-xl text-gray-100 max-w-3xl mx-auto mb-8">Forging international academic excellence through strategic partnerships with leading universities worldwide</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-full px-6 py-2 text-white font-medium">
+                            <i data-lucide="globe" class="inline-block w-5 h-5 mr-2"></i> 50+ Countries
+                        </div>
+                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-full px-6 py-2 text-white font-medium">
+                            <i data-lucide="university" class="inline-block w-5 h-5 mr-2"></i> 500+ Partner Institutions
+                        </div>
+                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-full px-6 py-2 text-white font-medium">
+                            <i data-lucide="users" class="inline-block w-5 h-5 mr-2"></i> 10,000+ Student Exchanges
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Search and Filter -->
+            <div class="mb-8">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <!-- Search Bar -->
+                    <div class="relative flex-1 max-w-2xl flex items-center">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i data-lucide="search" class="h-5 w-5 text-gray-400"></i>
+                        </div>
+                        <input type="text" 
+                               id="universitySearch"
+                               class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent" 
+                               placeholder="Search partner universities...">
+                        <!-- Filter Button -->
+                        <button type="button" 
+                                class="ml-2 inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" 
+                                id="filter-menu-button" 
+                                aria-expanded="false" 
+                                aria-haspopup="true">
+                            <i data-lucide="filter" class="h-4 w-4 mr-2"></i>
+                            Filter
+                        </button>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <!-- Add University Button -->
+                        <button type="button" id="addUniversityBtn" class="hidden md:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                            <i data-lucide="plus" class="-ml-1 mr-2 h-5 w-5"></i>
+                            Add Partner
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Drawer -->
+            <div id="filter-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+            <div id="filter-drawer" class="fixed top-0 right-0 h-full w-full md:w-96 bg-white shadow-xl transform transition-transform duration-300 ease-in-out translate-x-full z-50 overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-medium text-gray-900">Filter Universities</h3>
+                        <button id="close-filter-drawer" class="text-gray-400 hover:text-gray-500">
+                            <i data-lucide="x" class="h-6 w-6"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <!-- Country Filter -->
+                        <div>
+                            <h4 class="text-sm font-medium text-gray-700 mb-2">Country</h4>
+                            <select id="country" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
+                                <option value="">All Countries</option>
+                                <option value="us">United States</option>
+                                <option value="uk">United Kingdom</option>
+                                <option value="au">Australia</option>
+                                <option value="ca">Canada</option>
+                                <option value="fr">France</option>
+                                <option value="de">Germany</option>
+                                <option value="jp">Japan</option>
+                                <option value="kr">South Korea</option>
+                            </select>
+                        </div>
+
+                        <!-- Program Filter -->
+                        <div>
+                            <h4 class="text-sm font-medium text-gray-700 mb-2">Program</h4>
+                            <select id="program" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
+                                <option value="">All Major</option>
+                                <option value="business">Business & Economics</option>
+                                <option value="engineering">Engineering & Technology</option>
+                                <option value="arts">Arts & Humanities</option>
+                                <option value="science">Science</option>
+                                <option value="law">Law & Social Sciences</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex justify-end space-x-3">
+                        <button type="button" id="reset-filters" class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                            Reset
+                        </button>
+                        <button type="button" id="apply-filters" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                            Apply Filters
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- University Cards Section -->
+            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
+                <!-- Angelo State University -->
+                <div class="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <img src="https://imgs.search.brave.com/J1rlPTsdUnsYqNY_iSsQTQp-s6qi8VgZCZjBF660Mnw/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi81LzU5L0Fu/Z2Vsb3N0YXRlX3Vu/aXZfbG9nby5wbmcv/MjUwcHgtQW5nZWxv/c3RhdGVfdW5pdl9s/b2dvLnBuZw" alt="Angelo State University Logo" class="h-12 mr-4">
+                            <h3 class="text-xl font-bold text-gray-900">Angelo State University</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Located in the heart of West Texas, ASU offers a complete educational experience with a values-based culture on their modern campus.</p>
+                        <div class="space-y-2 text-sm text-gray-600">
+                            <div class="flex items-center">
+                                <i data-lucide="map-pin" class="w-4 h-4 mr-2 text-red-600"></i>
+                                <span>San Angelo, Texas, USA</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="graduation-cap" class="w-4 h-4 mr-2 text-red-600"></i>
+                                <span>100+ Undergraduate & Graduate Programs</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="award" class="w-4 h-4 mr-2 text-red-600"></i>
+                                <span>Ranked #1 in Texas for Lowest Student Debt</span>
+                            </div>
+                        </div>
+                        <a href="University-Universities-Details.html?name=Angelo%20State%20University&location=San%20Angelo,%20Texas,%20USA&website=https%3A%2F%2Fwww.angelo.edu" target="_blank" class="mt-4 inline-flex items-center text-red-600 hover:text-red-800 font-medium">
+                            Visit Landing Page
+                            <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Niagara University -->
+                <div class="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <img src="https://imgs.search.brave.com/FSmsTnz2YYatsCGcfY-UGhZnISsCZNoy_k2tawjRQLU/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDFmMzMwYTk5/YmMwOGNhN2EyMDIy/MDFjY2JlNzhmNzI1/M2I1NTM0M2EzNmRm/MWM1NzU1YTdlMmI4/ZjdhODlkOC93d3cu/bmlhZ2FyYS5lZHUv" alt="Niagara University Logo" class="h-12 mr-4">
+                            <h3 class="text-xl font-bold text-gray-900">Niagara University</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">A private Catholic university located in Lewiston, New York, known for its strong academic programs and beautiful campus near Niagara Falls.</p>
+                        <div class="space-y-2 text-sm text-gray-600">
+                            <div class="flex items-center">
+                                <i data-lucide="map-pin" class="w-4 h-4 mr-2 text-red-600"></i>
+                                <span>Lewiston, New York, USA</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="star" class="w-4 h-4 mr-2 text-red-600"></i>
+                                <span>#1 Best Value in the North (U.S. News 2024 & 2025)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="book-open" class="w-4 h-4 mr-2 text-red-600"></i>
+                                <span>80+ Undergraduate & Graduate Programs</span>
+                            </div>
+                        </div>
+                        <a href="University-Universities-Details.html?name=Niagara%20University&location=Lewiston,%20New%20York,%20USA&website=https%3A%2F%2Fwww.niagara.edu" target="_blank" class="mt-4 inline-flex items-center text-red-600 hover:text-red-800 font-medium">
+                            Visit Landing Page
+                            <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Macquarie University -->
+                <div class="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <img src="https://imgs.search.brave.com/GhJX-AdcjTBnMvrXYZVUMbyoNin1lgAXk02Y8ZrGC0U/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi9kL2Q1L01h/Y3F1YXJpZV9Vbml2/ZXJzaXR5LnBuZy8y/NTBweC1NYWNxdWFy/aWVfVW5pdmVyc2l0/eS5wbmc" alt="Macquarie University Logo" class="h-10 mr-4">
+                            <h3 class="text-xl font-bold text-gray-900">Macquarie University</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">A world-class Australian university with a strong reputation for research and teaching excellence, located in Sydney's high-tech corridor.</p>
+                        <div class="space-y-2 text-sm text-gray-600">
+                            <div class="flex items-center">
+                                <i data-lucide="map-pin" class="w-4 h-4 mr-2 text-red-600"></i>
+                                <span>Sydney, New South Wales, Australia</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="award" class="w-4 h-4 mr-2 text-red-600"></i>
+                                <span>Top 1% of universities worldwide (QS World University Rankings)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="globe" class="w-4 h-4 mr-2 text-red-600"></i>
+                                <span>Over 40,000 students from 100+ countries</span>
+                            </div>
+                        </div>
+                        <a href="University-Universities-Details.html?name=Macquarie%20University&location=Sydney,%20Australia&website=https%3A%2F%2Fwww.mq.edu.au" target="_blank" class="mt-4 inline-flex items-center text-red-600 hover:text-red-800 font-medium">
+                            Visit Landing Page
+                            <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Griffith University -->
+                <div class="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <img src="https://imgs.search.brave.com/w7WvN1XV5tDXtoLg7pucgLBXgu0_yw-5ZsJx5u14Ir4/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuc2Vla2xvZ28u/Y29tL2xvZ28tcG5n/LzI1LzEvZ3JpZmZp/dGgtdW5pdmVyc2l0/eS1sb2dvLXBuZ19z/ZWVrbG9nby0yNTA4/NjgucG5n" alt="Griffith University Logo" class="h-10 mr-4">
+                            <h3 class="text-xl font-bold text-gray-900">Griffith University</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">A leading Australian university with a strong focus on research and academic excellence across multiple campuses in Queensland.</p>
+                        <div class="space-y-2 text-sm text-gray-600">
+                            <div class="flex items-center">
+                                <i data-lucide="map-pin" class="w-4 h-4 mr-2 text-red-600"></i>
+                                <span>Queensland, Australia (Multiple Campuses)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="award" class="w-4 h-4 mr-2 text-red-600"></i>
+                                <span>Top 2% of universities worldwide</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="users" class="w-4 h-4 mr-2 text-red-600"></i>
+                                <span>50,000+ students from 130+ countries</span>
+                            </div>
+                        </div>
+                        <a href="University-Universities-Details.html?name=Griffith%20University&location=Queensland,%20Australia&website=https%3A%2F%2Fwww.griffith.edu.au" target="_blank" class="mt-4 inline-flex items-center text-red-600 hover:text-red-800 font-medium">
+                            Visit Landing Page
+                            <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Partnership Schools Section -->
+            <section id="universities" class="py-12">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-bold text-black mb-4">Our University Partners</h2>
+                        <p class="text-xl text-gray-600">Connecting you with leading institutions worldwide</p>
+                    </div>
+                    
+                    <!-- Partner Categories -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                        <div class="bg-white rounded-3xl shadow-md p-8 text-center">
+                            <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background-color: #d82128;">
+                                <i data-lucide="trophy" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-black mb-4">Top-Ranked Universities</h3>
+                            <p class="text-gray-700 mb-4">Ivy League and Russell Group institutions with world-class programs</p>
+                            <div class="text-sm text-gray-600">
+                                <p>• Harvard, MIT, Stanford</p>
+                                <p>• Oxford, Cambridge</p>
+                                <p>• University of Toronto</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-3xl shadow-md p-8 text-center">
+                            <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background-color: #d82128;">
+                                <i data-lucide="microscope" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-black mb-4">Specialized Programs</h3>
+                            <p class="text-gray-700 mb-4">Technical, medical, and professional schools with focused expertise</p>
+                            <div class="text-sm text-gray-600">
+                                <p>• Medical Schools</p>
+                                <p>• Engineering Institutes</p>
+                                <p>• Business Schools</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-3xl shadow-md p-8 text-center">
+                            <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background-color: #d82128;">
+                                <i data-lucide="globe" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-black mb-4">Regional Excellence</h3>
+                            <p class="text-gray-700 mb-4">Leading universities by country and region with strong local connections</p>
+                            <div class="text-sm text-gray-600">
+                                <p>• Australia: Melbourne, Sydney</p>
+                                <p>• Germany: TUM, Heidelberg</p>
+                                <p>• Singapore: NUS, NTU</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Partner Statistics -->
+                    <div class="bg-gray-50 rounded-3xl p-8 mb-12">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                            <div>
+                                <div class="text-4xl font-bold mb-2" style="color: #d82128;">500+</div>
+                                <p class="text-black font-semibold">Partner Universities</p>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold mb-2" style="color: #d82128;">50+</div>
+                                <p class="text-black font-semibold">Countries Represented</p>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold mb-2" style="color: #d82128;">10,000+</div>
+                                <p class="text-black font-semibold">Scholarships Available</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add University Modal -->
+    <div id="addUniversityModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-2xl p-6 w-full max-w-2xl mx-4">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-semibold text-gray-900">Add University</h3>
+                <button id="closeAddUniversityModal" class="text-gray-400 hover:text-gray-500">
+                    <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+            </div>
+            
+            <div class="space-y-4">
+                <div>
+                    <label for="universityName" class="block text-sm font-medium text-gray-700 mb-1">University Name</label>
+                    <input type="text" 
+                           id="universityName" 
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500"
+                           placeholder="Enter university name"
+                           required>
+                </div>
+                <div>
+                    <label for="universityUrl" class="block text-sm font-medium text-gray-700 mb-1">University Website URL</label>
+                    <input type="url" 
+                           id="universityUrl" 
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500"
+                           placeholder="https://www.university.edu"
+                           required>
+                    <p class="mt-1 text-sm text-gray-500">Enter the official website URL of the university</p>
+                </div>
+                
+                <div class="mt-6 flex justify-end space-x-3">
+                    <button type="button" id="cancelAddUniversity" class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                        Cancel
+                    </button>
+                    <button type="button" id="submitUniversity" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                        <i data-lucide="search" class="mr-2 h-4 w-4"></i>
+                        Fetch University Info
+                    </button>
+                </div>
+                
+                <!-- Loading State -->
+                <div id="loadingState" class="hidden mt-4 p-4 bg-gray-50 rounded-md">
+                    <div class="flex items-center space-x-2 text-gray-600">
+                        <div class="animate-spin">
+                            <i data-lucide="loader-2" class="h-5 w-5"></i>
+                        </div>
+                        <span>Fetching university information...</span>
+                    </div>
+                </div>
+                
+                <!-- Preview Section (will be shown after fetching) -->
+                <div id="universityPreview" class="hidden mt-4 p-4 border border-gray-200 rounded-md">
+                    <h4 class="font-medium text-gray-900 mb-2">University Preview</h4>
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="h-16 w-16 bg-gray-200 rounded-md flex items-center justify-center">
+                                <i data-lucide="university" class="h-8 w-8 text-gray-400"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h5 id="previewName" class="text-sm font-medium text-gray-900 truncate">University Name</h5>
+                            <p id="previewLocation" class="text-sm text-gray-500">Location, Country</p>
+                            <p id="previewDescription" class="mt-1 text-sm text-gray-600 truncate">Brief description of the university will appear here...</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex justify-end">
+                        <button type="button" id="confirmAddUniversity" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                            <i data-lucide="check" class="mr-2 h-4 w-4"></i>
+                            Add University
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Profile Dropdown Toggle
+        document.addEventListener('DOMContentLoaded', function () {
+            const profileButton = document.getElementById('profile-menu');
+            const profileDropdown = document.getElementById('profile-dropdown');
+            const profileLink = document.getElementById('profile-link');
+
+            // Toggle dropdown when clicking profile button
+            if (profileButton && profileDropdown) {
+                profileButton.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    profileDropdown.classList.toggle('hidden');
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function (e) {
+                    if (!profileButton.contains(e.target) && !profileDropdown.contains(e.target)) {
+                        profileDropdown.classList.add('hidden');
+                    }
+                });
+
+                // Close dropdown when clicking on profile link
+                if (profileLink) {
+                    profileLink.addEventListener('click', function () {
+                        profileDropdown.classList.add('hidden');
+                    });
+                }
+            }
+
+            // Handle logout
+            window.handleLogout = function () {
+                // Add your logout logic here
+                console.log('Logging out...');
+                // Example: window.location.href = '/logout';
+                // Show a confirmation dialog before logging out
+                if (confirm('Are you sure you want to log out?')) {
+                    // Perform logout action
+                    window.location.href = '../../login.html';
+                }
+            };
+        });
+    </script>
+
+    <!-- Add JavaScript for filter functionality -->
+    <script>
+        // Filter Drawer Toggle
+        const filterButton = document.getElementById('filter-menu-button');
+        const filterDrawer = document.getElementById('filter-drawer');
+        const closeFilterDrawer = document.getElementById('close-filter-drawer');
+        const filterOverlay = document.getElementById('filter-overlay');
+        const applyFiltersButton = document.getElementById('apply-filters');
+        const resetFiltersButton = document.getElementById('reset-filters');
+        const universitySearch = document.getElementById('universitySearch');
+
+        // Toggle filter drawer
+        function toggleFilterDrawer() {
+            filterDrawer.classList.toggle('translate-x-0');
+            filterDrawer.classList.toggle('translate-x-full');
+            filterOverlay.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden');
+        }
+
+        // Close filter drawer
+        function closeDrawer() {
+            filterDrawer.classList.add('translate-x-full');
+            filterDrawer.classList.remove('translate-x-0');
+            filterOverlay.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // Event Listeners
+        filterButton.addEventListener('click', toggleFilterDrawer);
+        closeFilterDrawer.addEventListener('click', closeDrawer);
+        filterOverlay.addEventListener('click', closeDrawer);
+        
+        // Apply filters
+        applyFiltersButton.addEventListener('click', () => {
+            // Get filter values
+            const country = document.getElementById('country').value;
+            const program = document.getElementById('program').value;
+            const searchTerm = universitySearch.value.toLowerCase();
+            const partnershipTypes = Array.from(document.querySelectorAll('input[name="partnership-type"]:checked')).map(el => el.id);
+            
+            // You can add your filtering logic here
+            console.log('Filters applied:', { country, program, searchTerm, partnershipTypes });
+            
+            closeDrawer();
+        });
+
+        // Reset filters
+        resetFiltersButton.addEventListener('click', () => {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const selects = document.querySelectorAll('select');
+            
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            
+            selects.forEach(select => {
+                select.selectedIndex = 0;
+            });
+            
+            universitySearch.value = '';
+        });
+
+        // Close drawer when pressing Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeDrawer();
+            }
+        });
+
+        // Search functionality
+        universitySearch.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            // Add your search logic here
+            console.log('Searching for:', searchTerm);
+        });
+    </script>
+
+    <script>
+        // University Modal Functionality
+        const addUniversityBtn = document.getElementById('addUniversityBtn');
+        const addUniversityModal = document.getElementById('addUniversityModal');
+        const closeAddUniversityModal = document.getElementById('closeAddUniversityModal');
+        const cancelAddUniversity = document.getElementById('cancelAddUniversity');
+        const submitUniversity = document.getElementById('submitUniversity');
+        const confirmAddUniversity = document.getElementById('confirmAddUniversity');
+        const universityUrlInput = document.getElementById('universityUrl');
+        const loadingState = document.getElementById('loadingState');
+        const universityPreview = document.getElementById('universityPreview');
+
+        // Show modal
+        function showAddUniversityModal() {
+            addUniversityModal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        // Hide modal
+        function hideAddUniversityModal() {
+            addUniversityModal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+            // Reset form
+            document.getElementById('universityName').value = '';
+            document.getElementById('universityUrl').value = '';
+            loadingState.classList.add('hidden');
+            universityPreview.classList.add('hidden');
+        }
+
+        // Event Listeners
+        addUniversityBtn.addEventListener('click', showAddUniversityModal);
+        closeAddUniversityModal.addEventListener('click', hideAddUniversityModal);
+        cancelAddUniversity.addEventListener('click', hideAddUniversityModal);
+
+        // Close modal when clicking outside
+        addUniversityModal.addEventListener('click', (e) => {
+            if (e.target === addUniversityModal) {
+                hideAddUniversityModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !addUniversityModal.classList.contains('hidden')) {
+                hideAddUniversityModal();
+            }
+        });
+
+        // Submit university URL
+        submitUniversity.addEventListener('click', async () => {
+            const url = universityUrlInput.value.trim();
+            const name = document.getElementById('universityName').value.trim();
+            
+            if (!name) {
+                alert('Please enter a university name');
+                return;
+            }
+            
+            if (!url) {
+                alert('Please enter a valid URL');
+                return;
+            }
+
+            // Show loading state
+            loadingState.classList.remove('hidden');
+            universityPreview.classList.add('hidden');
+
+            try {
+                // In a real implementation, you would make an API call to your backend
+                // For now, we'll simulate a response after a delay
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                // Mock data - in a real app, this would come from your API
+                const mockUniversityData = {
+                    name: name || 'Example University',
+                    location: 'City, Country',
+                    description: 'A leading institution known for academic excellence and research opportunities.',
+                    logo: 'https://via.placeholder.com/64',
+                    website: url
+                };
+
+                // Update preview
+                document.getElementById('previewName').textContent = mockUniversityData.name;
+                document.getElementById('previewLocation').textContent = mockUniversityData.location;
+                document.getElementById('previewDescription').textContent = mockUniversityData.description;
+                
+                // Show preview and hide loading
+                loadingState.classList.add('hidden');
+                universityPreview.classList.remove('hidden');
+
+            } catch (error) {
+                console.error('Error fetching university data:', error);
+                alert('Failed to fetch university information. Please try again.');
+                loadingState.classList.add('hidden');
+            }
+        });
+
+        // Confirm and add university
+        confirmAddUniversity.addEventListener('click', () => {
+            // In a real implementation, you would send this data to your backend
+            const universityData = {
+                name: document.getElementById('universityName').value,
+                url: universityUrlInput.value,
+                partnershipTypes: Array.from(document.querySelectorAll('input[name="new-partnership-type"]:checked')).map(el => el.id)
+            };
+
+            console.log('Adding university:', universityData);
+            
+            // Show success message
+            alert('University added successfully!');
+            
+            // Close modal
+            hideAddUniversityModal();
+            
+            // In a real app, you would refresh the university list or add the new university to the grid
+        });
+    </script>
+</body>
+</html>
