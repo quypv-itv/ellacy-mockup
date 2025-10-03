@@ -47,6 +47,7 @@
                 <button type="button" class="flex-1 px-4 py-2 text-sm font-medium rounded-xl text-white" id="student-role" style="background-color: #d82128;">Student</button>
                 <button type="button" class="flex-1 px-4 py-2 text-sm font-medium rounded-xl text-black hover:bg-gray-100" id="agent-role">Agent</button>
                 <button type="button" class="flex-1 px-4 py-2 text-sm font-medium rounded-xl text-black hover:bg-gray-100" id="admin-role">Admin</button>
+                <button type="button" class="flex-1 px-4 py-2 text-sm font-medium rounded-xl text-black hover:bg-gray-100" id="university-role">University</button>
             </div>
             <p class="text-xs text-gray-600 text-center mt-2">📌 For testing different user flows</p>
         </div>
@@ -161,6 +162,8 @@
             event.preventDefault();
             const studentRole = document.getElementById('student-role');
             const agentRole = document.getElementById('agent-role');
+            const adminRole = document.getElementById('admin-role');
+            const universityRole = document.getElementById('university-role');
             
             // Redirect based on selected role
             if (studentRole.style.backgroundColor === 'rgb(237, 34, 23)' || studentRole.classList.contains('text-white')) {
@@ -169,6 +172,8 @@
                 window.location.href = 'Agency/html/Agency-dashboard.html';
             } else if (adminRole.style.backgroundColor === 'rgb(237, 34, 23)' || adminRole.classList.contains('text-white')) {
                 window.location.href = 'CRM/html/CRM-dashboard.html';
+            } else if (universityRole.style.backgroundColor === 'rgb(237, 34, 23)' || universityRole.classList.contains('text-white')) {
+                window.location.href = 'University/html/University-dashboard.html';
             }
         }
 
@@ -176,11 +181,12 @@
         const studentRole = document.getElementById('student-role');
         const agentRole = document.getElementById('agent-role');
         const adminRole = document.getElementById('admin-role');
+        const universityRole = document.getElementById('university-role');
         const signupPrompt = document.getElementById('signup-prompt');
 
         function setActiveRole(activeButton) {
             // Reset all buttons
-            [studentRole, agentRole, adminRole].forEach(btn => {
+            [studentRole, agentRole, adminRole, universityRole].forEach(btn => {
                 btn.classList.remove('text-white');
                 btn.classList.add('text-black', 'hover:bg-gray-100');
                 btn.style.backgroundColor = '';
@@ -198,6 +204,7 @@
         studentRole.addEventListener('click', () => setActiveRole(studentRole));
         agentRole.addEventListener('click', () => setActiveRole(agentRole));
         adminRole.addEventListener('click', () => setActiveRole(adminRole));
+        universityRole.addEventListener('click', () => setActiveRole(universityRole));
     </script>
 </body>
 </html>
