@@ -144,6 +144,9 @@
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Source
                                 </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Matching Scholarship
+                                </th>
                                 <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Actions
                                 </th>
@@ -259,12 +262,22 @@
 
         // Sample student data
         const students = [
-            { id: 1, name: 'Nguyen Van', email: 'nguyenvana@example.com', class: 'CS101', cohort: 'FTU K25', major: 'Computer Science', source: 'FTU', notes: 'Interested in AI and Machine Learning' },
-            { id: 2, name: 'Tran Thi', email: 'tranthib@example.com', class: 'BA201', cohort: 'FTU K24', major: 'Business Administration', source: 'FTU', notes: 'Scholarship applicant' },
-            { id: 3, name: 'Le Van', email: 'levanc@example.com', class: 'EN301', cohort: 'FTU K25', major: 'Engineering', source: 'FTU', notes: 'Transferred from another university' },
-            { id: 4, name: 'Pham Thi', email: 'phamthid@example.com', class: 'DS401', cohort: 'FTU K26', major: 'Data Science', source: 'FTU', notes: 'Has programming experience in Python' },
-            { id: 5, name: 'Hoang Van', email: 'hoangvane@example.com', class: 'FN501', cohort: 'FTU K23', major: 'Finance', source: 'FTU', notes: 'Looking for part-time opportunities' },
+            { id: 1, name: 'Nguyen Van', email: 'nguyenvana@example.com', class: 'CS101', cohort: 'FTU K25', major: 'Computer Science', source: 'FTU', notes: 'Interested in AI and Machine Learning', scholarshipTypes: getRandomScholarshipTypes() },
+            { id: 2, name: 'Tran Thi', email: 'tranthib@example.com', class: 'BA201', cohort: 'FTU K24', major: 'Business Administration', source: 'FTU', notes: 'Scholarship applicant', scholarshipTypes: getRandomScholarshipTypes() },
+            { id: 3, name: 'Le Van', email: 'levanc@example.com', class: 'EN301', cohort: 'FTU K25', major: 'Engineering', source: 'FTU', notes: 'Transferred from another university', scholarshipTypes: getRandomScholarshipTypes() },
+            { id: 4, name: 'Pham Thi', email: 'phamthid@example.com', class: 'DS401', cohort: 'FTU K26', major: 'Data Science', source: 'FTU', notes: 'Has programming experience in Python', scholarshipTypes: getRandomScholarshipTypes() },
+            { id: 5, name: 'Hoang Van', email: 'hoangvane@example.com', class: 'FN501', cohort: 'FTU K23', major: 'Finance', source: 'FTU', notes: 'Looking for part-time opportunities', scholarshipTypes: getRandomScholarshipTypes() },
         ];
+
+        // Function to generate random scholarship types
+        function getRandomScholarshipTypes() {
+            const types = ['1+3 Scholarship', '2+2 Scholarship', 'Joint MBA Scholarship'];
+            const selected = [];
+            // Randomly select 1-3 scholarship types
+            const count = Math.floor(Math.random() * 3) + 1;
+            const shuffled = [...types].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
 
         // DOM Elements
         const studentTableBody = document.getElementById('studentTableBody');
@@ -300,7 +313,7 @@
             if (studentsToRender.length === 0) {
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td colspan="7" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                    <td colspan="8" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
                         No students found matching your criteria.
                     </td>
                 `;
@@ -336,6 +349,15 @@
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         ${student.source}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex flex-wrap gap-1">
+                            ${student.scholarshipTypes.map(type => 
+                                `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getScholarshipTypeClass(type)}">
+                                    ${type}
+                                </span>`
+                            ).join('')}
+                        </div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <div class="flex items-center justify-end space-x-2">
@@ -583,9 +605,6 @@
             }
         });
 
-        // Initial render
-        renderStudents(students);
-
         // Profile Dropdown Toggle
         document.addEventListener('DOMContentLoaded', function () {
             const profileButton = document.getElementById('profile-menu');
@@ -615,13 +634,30 @@
             }
         });
 
-        // Handle logout
-        function handleLogout() {
-            // Add logout logic here
-            console.log('Logging out...');
-            // Redirect to login page
-            window.location.href = 'login.html';
+         // Handle logout
+         window.handleLogout = function () {
+                // Add your logout logic here
+                console.log('Logging out...');
+                // Example: window.location.href = '/logout';
+                // Show a confirmation dialog before logging out
+                if (confirm('Are you sure you want to log out?')) {
+                    // Perform logout action
+                    window.location.href = '../../login.html';
+                }
+            };
+
+        // Add this function to get different colors for different scholarship types
+        function getScholarshipTypeClass(type) {
+            const classes = {
+                '1+3 Scholarship': 'bg-red-600 text-white border border-red-700',
+                '2+2 Scholarship': 'bg-white text-red-600 border border-red-600',
+                'Joint MBA Scholarship': 'bg-black text-white border border-gray-800'
+            };
+            return classes[type] || 'bg-gray-100 text-gray-800';
         }
+
+        // Initial render
+        renderStudents(students);
     </script>
 </body>
 </html>

@@ -66,10 +66,15 @@
 
                     <!-- Navigation Menu -->
                     <nav class="flex items-center space-x-3">
+                        <a href="Student-product-page.html"
+                            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="package" class="w-4 h-4 mr-2"></i>
+                            Products
+                        </a>
                         <a href="Student-find-program.html"
                             class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors">
                             <i data-lucide="search" class="w-4 h-4 mr-2"></i>
-                            Find Scholarships
+                            Find University
                         </a>
                         <a href="Student-favorites.html"
                             class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
@@ -171,9 +176,10 @@
                         <select
                             class="w-full px-4 py-3 bg-transparent border-0 focus:ring-0 focus:outline-none text-gray-700 border-r">
                             <option value="">Select Scholarship Tier</option>
-                            <option value="scholarship-guarantee">Scholarship Guarantee</option>
+                            <option value="scholarship-guarantee">Guaranteed Scholarship</option>
                             <option value="elite-admission">Elite Admission Scholarship</option>
                             <option value="ivy-global">Ivy Global Student Scholarship</option>
+                            <option value="ivy-global">Joint Program (Vietnam to US Transfer)</option>
                         </select>
                     </div>
 
@@ -923,8 +929,45 @@
         // Initialize Lucide Icons
         lucide.createIcons({ icons: lucide.icons });
 
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
         // Profile dropdown functionality
         document.addEventListener('DOMContentLoaded', function () {
+            // Check for scholarship parameter and select the option
+            const scholarshipParam = getUrlParameter('scholarship');
+            const scholarshipSelect = document.querySelector('select[class*="w-full px-4 py-3"]');
+            
+            if (scholarshipSelect) {
+                if (scholarshipParam === 'guaranteed') {
+                    scholarshipSelect.value = 'scholarship-guarantee';
+                } else if (scholarshipParam === 'elite') {
+                    scholarshipSelect.value = 'elite-admission';
+                } else if (scholarshipParam === 'ivy') {
+                    scholarshipSelect.value = 'ivy-global';
+                } else if (scholarshipParam === 'joint') {
+                    // Find the option with value 'ivy-global' and text 'Joint Program (Vietnam to US Transfer)'
+                    const options = scholarshipSelect.options;
+                    for (let i = 0; i < options.length; i++) {
+                        if (options[i].value === 'ivy-global' && options[i].text.includes('Joint Program')) {
+                            scholarshipSelect.selectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+                
+                // Trigger change event in case there are any listeners
+                if (scholarshipParam) {
+                    const event = new Event('change');
+                    scholarshipSelect.dispatchEvent(event);
+                }
+            }
+
             // Profile dropdown
             const profileButton = document.getElementById('profileButton');
             const profileDropdown = document.getElementById('profileDropdown');

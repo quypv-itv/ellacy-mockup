@@ -43,10 +43,6 @@
                 <i data-lucide="graduation-cap" class="w-5 h-5 mr-3"></i>
                 Scholarships
             </a>
-            <a href="Agency-commission.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
-                <i data-lucide="dollar-sign" class="w-5 h-5 mr-3"></i>
-                Commissions
-            </a>
             <a href="Agency-profile.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
                 <i data-lucide="settings" class="w-5 h-5 mr-3"></i>
                 Account Settings
@@ -301,107 +297,194 @@
 
                 <!-- Scholarships Grid -->
                 <div class="flex-1">
-                    <div class="grid grid-cols-2 gap-6">
-                        <!-- Scholarship Card 1 (Ellacy Foundation) -->
-                        <div class="bg-white rounded-xl shadow-sm overflow-hidden relative">
-                            <!-- Ellacy Foundation Badge -->
-                            <div class="absolute -top-1.5 -right-1.5">
-                                <span class="px-2 py-0.5 bg-red-100 text-red-800 text-[10px] font-medium rounded-full whitespace-nowrap">
-                                    Ellacy Foundation
-                                </span>
-                            </div>
-
+                    <div class="grid grid-cols-1 gap-6">
+                        <!-- Scholarship Card -->
+                        <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                             <div class="p-6">
-                                <h3 class="font-semibold text-lg mb-2 cursor-pointer hover:text-red-600 transition-colors"
-                                    onclick="viewDetails(1)">Green Future Scholarship – Tiffin University</h3>
-                                <p class="text-green-600 font-medium mb-4">Commission up to $3,750</p>
+                                <!-- Header Section -->
+                                <div class="flex flex-col md:flex-row gap-6">
+                                    <!-- University Logo -->
+                                    <div class="w-24 h-24 bg-gray-100 rounded-xl flex-shrink-0 flex items-center justify-center">
+                                        <img src="../../tiffin-university-logo.png"
+                                            alt="Tiffin University" class="w-20 h-20 rounded-lg object-cover">
+                                    </div>
 
-                                <!-- Tags -->
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">STEM</span>
-                                    <span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">IELTS ≥
-                                        6.5</span>
-                                    <span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">GPA ≥
-                                        3.2</span>
+                                    <!-- University Info -->
+                                    <div class="flex-1">
+                                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                                            <div>
+                                                <h2 class="text-xl font-bold text-gray-900 hover:text-red-600 transition-colors cursor-pointer" onclick="openTiffinModal()">
+                                                    Tiffin University
+                                                </h2>
+                                                <div class="flex flex-wrap gap-2 mt-1">
+                                                    <span class="px-2 py-0.5 bg-blue-100 text-blue-600 text-xs rounded-full">US University</span>
+                                                    <span
+                                                        class="px-2 py-0.5 bg-purple-100 text-purple-600 text-xs rounded-full">Private</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Program Info -->
+                                        <div class="mt-4 space-y-3">
+                                            <div class="flex flex-wrap items-center gap-4">
+                                                <div class="flex items-center text-sm text-gray-600">
+                                                    <i data-lucide="calendar" class="w-4 h-4 mr-1.5 text-gray-400"></i>
+                                                    <span>Duration: <span class="font-medium">4 years</span></span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Scholarship Type & Field of Study -->
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                                                <div>
+                                                    <label class="block text-sm font-medium text-gray-700 mb-1">Scholarship Type</label>
+                                                    <div class="relative">
+                                                        <select class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                                            <option value="rhodes" selected>Rhodes Scholarship</option>
+                                                            <option value="chevening">Chevening Scholarship</option>
+                                                            <option value="commonwealth">Commonwealth Scholarship</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-sm font-medium text-gray-700 mb-1">Field of Study</label>
+                                                    <div class="relative">
+                                                        <input type="text" placeholder="Search field of study..." 
+                                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                                        <i data-lucide="search" class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Intake & Apply -->
+                                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
+                                                <div class="flex-1 max-w-xs">
+                                                    <div class="relative">
+                                                        <select class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                                            <option value="2025-sep">Winter 2025 </option>
+                                                            <option value="2026-jan">Spring 2026 </option>
+                                                            <option value="2026-sep">Summer 2026 </option>
+                                                            <option value="2026-sep">Fall 2026 </option>
+                                                            <option value="2026-sep">Winter 2026 </option>
+                                                        </select>
+                                                        <i class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500"></i>
+                                                    </div>
+                                                </div>
+                                                <button onclick="openSuggestModal()" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-medium">
+                                                    Suggest to Student
+                                                </button>
+                                                <button onclick="openTaskModal()" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-medium">
+                                                    Create Task
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <!-- Deadline -->
-                                <div class="flex items-center text-sm text-gray-500 mb-4">
-                                    <i data-lucide="clock" class="w-4 h-4 mr-1"></i>
-                                    <span>10 days left</span>
-                                </div>
+                                <!-- Tabbed Information Section -->
+                                <div class="border-t pt-4">
+                                    <div class="flex border-b mb-4">
+                                        <button
+                                            class="tab-btn px-4 py-2 text-sm font-medium text-red-600 border-b-2 border-red-600"
+                                            data-tab="fees" data-card="2">Fees</button>
+                                        <button class="tab-btn px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent"
+                                            data-tab="requirements" data-card="2">Requirements</button>
+                                        <button class="tab-btn px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent"
+                                            data-tab="course-detail" data-card="2">Course Detail</button>
+                                    </div>
 
-                                <!-- Actions -->
-                                <div class="flex flex-nowrap overflow-x-auto space-x-2 py-1 -mx-2 px-2">
-                                    <button onclick="suggestToStudent(1)"
-                                        class="whitespace-nowrap px-3 py-1.5 text-white rounded-lg transition-colors hover:opacity-90 text-xs sm:text-sm"
-                                        style="background-color: #d82128;">
-                                        Suggest to Student
-                                    </button>
-                                    <button onclick="openTaskModal(1)"
-                                        class="whitespace-nowrap px-3 py-1.5 text-white rounded-lg transition-colors hover:opacity-90 text-xs sm:text-sm"
-                                        style="background-color: #d82128;">
-                                        Create Task
-                                    </button>
-                                </div>
+                                    <!-- Fees Tab Content -->
+                                    <div class="tab-content" data-tab="fees" data-card="2">
+                                        <div class="space-y-4">
+                                            <div class="flex justify-between items-center">
+                                                <span class="text-gray-600">Application Fee</span>
+                                                <span class="font-semibold" id="applicationFee2">$100</span>
+                                            </div>
+                                            <div class="flex justify-between items-center">
+                                                <span class="text-gray-600">Tuition (per year)</span>
+                                                <span class="font-semibold" id="tuitionFee2">$25,000 - $30,000</span>
+                                            </div>
+                                            <div class="flex justify-between items-center">
+                                                <span class="text-gray-600">Books & Supplies</span>
+                                                <span class="font-semibold" id="booksSupplies2">$800</span>
+                                            </div>
+                                            <hr class="my-4">
+                                            <div class="flex justify-between items-center text-red-600">
+                                                <span>Scholarship up to $30,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                <div class="flex space-x-2 mt-2">
-                                    <button onclick="saveForStudent(1)"
-                                        class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
-                                        <i data-lucide="bookmark" class="w-5 h-5"></i>
-                                    </button>
-                                    <button onclick="copyLink(1)"
-                                        class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
-                                        <i data-lucide="copy" class="w-5 h-5"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                                    <!-- Requirements Tab Content -->
+                                    <div class="tab-content hidden" data-tab="requirements" data-card="2">
+                                        <div class="space-y-4">
+                                            <div class="bg-white rounded-lg p-4 border">
+                                                <h4 class="font-semibold mb-2 text-black">Academic Requirements</h4>
+                                                <ul class="list-disc list-inside text-sm text-gray-700 space-y-1"
+                                                    id="academicRequirements2">
+                                                    <li>Minimum GPA of 3.7/4.0 or equivalent</li>
+                                                    <li>Bachelor's degree in relevant field</li>
+                                                    <li>Academic excellence demonstrated through transcripts</li>
+                                                    <li>Dean's list or honor roll recognition preferred</li>
+                                                </ul>
+                                            </div>
+                                            <div class="bg-white rounded-lg p-4 border">
+                                                <h4 class="font-semibold mb-2 text-black">Language Requirements</h4>
+                                                <ul class="list-disc list-inside text-sm text-gray-700 space-y-1"
+                                                    id="languageRequirements2">
+                                                    <li>IELTS: 7.0 overall (no band below 6.5)</li>
+                                                    <li>TOEFL iBT: 100 overall</li>
+                                                    <li>Duolingo: 125 overall</li>
+                                                </ul>
+                                            </div>
+                                            <div class="bg-white rounded-lg p-4 border">
+                                                <h4 class="font-semibold mb-2 text-black">Required Documents</h4>
+                                                <ul class="list-disc list-inside text-sm text-gray-700 space-y-1"
+                                                    id="requiredDocuments2">
+                                                    <li>Academic transcripts with grade verification</li>
+                                                    <li>Two academic letters of recommendation</li>
+                                                    <li>Personal statement highlighting achievements</li>
+                                                    <li>Portfolio of academic work (if applicable)</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                        <!-- Scholarship Card 2 -->
-                        <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-                            <div class="p-6">
-                                <h3 class="font-semibold text-lg mb-2 cursor-pointer hover:text-red-600 transition-colors"
-                                    onclick="viewDetails(2)">Merit Scholarship – Tiffin University</h3>
-                                <p class="text-green-600 font-medium mb-4">Commission up to $4,500</p>
-
-                                <!-- Tags -->
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span
-                                        class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">Business</span>
-                                    <span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">IELTS ≥
-                                        6.0</span>
-                                </div>
-
-                                <!-- Deadline -->
-                                <div class="flex items-center text-sm text-gray-500 mb-4">
-                                    <i data-lucide="clock" class="w-4 h-4 mr-1"></i>
-                                    <span>30 days left</span>
-                                </div>
-
-                                <!-- Actions -->
-                                <div class="flex flex-nowrap overflow-x-auto space-x-2 py-1 -mx-2 px-2">
-                                    <button onclick="suggestToStudent(2)"
-                                        class="whitespace-nowrap px-3 py-1.5 text-white rounded-lg transition-colors hover:opacity-90 text-xs sm:text-sm"
-                                        style="background-color: #d82128;">
-                                        Suggest to Student
-                                    </button>
-                                    <button onclick="openTaskModal(2)"
-                                        class="whitespace-nowrap px-3 py-1.5 text-white rounded-lg transition-colors hover:opacity-90 text-xs sm:text-sm"
-                                        style="background-color: #d82128;">
-                                        Create Task
-                                    </button>
-                                </div>
-
-                                <div class="flex space-x-2 mt-2">
-                                    <button onclick="saveForStudent(2)"
-                                        class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
-                                        <i data-lucide="bookmark" class="w-5 h-5"></i>
-                                    </button>
-                                    <button onclick="copyLink(2)"
-                                        class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
-                                        <i data-lucide="copy" class="w-5 h-5"></i>
-                                    </button>
+                                    <!-- Course Detail Tab Content -->
+                                    <div class="tab-content hidden" data-tab="course-detail" data-card="2">
+                                        <div class="space-y-4">
+                                            <div>
+                                                <h4 class="font-semibold mb-2">Scholarship Overview</h4>
+                                                <p class="text-gray-600 text-sm leading-relaxed" id="programOverview2">
+                                                    Merit-based scholarship program designed for academically outstanding
+                                                    students who have demonstrated exceptional performance in their
+                                                    undergraduate studies.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-semibold mb-2">Core Courses</h4>
+                                                <ul class="list-disc list-inside text-sm text-gray-600 space-y-1"
+                                                    id="coreCourses2">
+                                                    <li>Advanced Research Methodologies</li>
+                                                    <li>Leadership in Academic Excellence</li>
+                                                    <li>Scholarly Communication</li>
+                                                    <li>Independent Study Project</li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm text-gray-500">Duration</p>
+                                                <p class="font-semibold" id="programDuration2">2 years full-time</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm text-gray-500">Semester breakdown</p>
+                                                <p class="font-semibold" id="semesterBreakdown2">4 semesters over 2 years</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm text-gray-500">Specialization tracks</p>
+                                                <p class="font-semibold" id="specializationTracks2">Research Focus, Academic
+                                                    Leadership, Scholarly Publications</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -442,15 +525,10 @@
                                 id="course-detail-tab-btn">
                                 Course Detail
                             </button>
-                            <button onclick="switchTab('commission-tab')"
-                                class="px-4 py-2 font-medium border-b-2 border-transparent hover:border-red-500 focus:outline-none"
-                                id="commission-tab-btn">
-                                Commission
-                            </button>
                         </div>
 
                         <!-- Tab Contents -->
-                        <div id="fees-tab" class="tab-content">
+                        <div id="fees-tab-btn" class="tab-content">
                             <div class="space-y-4">
                                 <div class="flex justify-between items-center">
                                     <span class="text-gray-600">Application Fee</span>
@@ -470,32 +548,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Commission Tab -->
-                        <div id="commission-tab" class="tab-content hidden">
-                            <div class="space-y-6">
-                                <!-- Commission Summary -->
-                                <div class="bg-red-50 p-4 rounded-lg">
-                                    <h4 class="font-semibold text-red-800 mb-2">Commission Summary</h4>
-                                    <div class="grid grid-cols-2 gap-4">
-                                        <div>
-                                            <p class="text-sm text-gray-600">Commission Rate</p>
-                                            <p class="font-semibold text-red-800">15% of First Year Tuition</p>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm text-gray-600">Estimated Amount</p>
-                                            <p class="font-semibold text-red-800">$3,750 - $4,500</p>
-                                        </div>
-                                        <div class="col-span-2">
-                                            <p class="text-sm text-gray-600">Payment Terms</p>
-                                            <p class="text-sm">Paid in two installments: 50% upon student enrollment,
-                                                50% after first semester completion</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <div id="requirements-tab" class="tab-content hidden">
                             <div class="space-y-4">
                                 <div class="bg-white rounded-lg p-4 border">
@@ -535,8 +587,9 @@
                                 <div>
                                     <h4 class="font-semibold mb-2">Scholarship Overview</h4>
                                     <p class="text-gray-600 text-sm leading-relaxed" id="programOverview2">
-                                        Merit-based scholarship program designed for academically outstanding students
-                                        who have demonstrated exceptional performance in their undergraduate studies.
+                                        Merit-based scholarship program designed for academically outstanding
+                                        students who have demonstrated exceptional performance in their
+                                        undergraduate studies.
                                     </p>
                                 </div>
                                 <div>
@@ -568,7 +621,7 @@
                     <script>
                         // Set default tab to active
                         document.addEventListener('DOMContentLoaded', function () {
-                            switchTab('fees-tab');
+                            switchTab('fees-tab-btn');
                         });
 
                         function switchTab(tabId) {
@@ -699,6 +752,152 @@
             </div>
         </div>
 
+        <!-- Tiffin University Modal -->
+        <div id="tiffinModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+            <div class="bg-white rounded-2xl p-8 max-w-4xl w-full mx-4 shadow-xl max-h-[90vh] overflow-y-auto">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900">
+                            <a href="Agency-sholarships-details.html" target="_blank" class="hover:text-red-600 transition-colors">
+                                Tiffin University
+                            </a>
+                        </h3>
+                        <p class="text-gray-600">Tiffin, Ohio, USA</p>
+                    </div>
+                    <button onclick="closeTiffinModal()" class="text-gray-400 hover:text-gray-600">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="aspect-w-16 aspect-h-9 mb-6">
+                            <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=450&fit=crop"
+                                alt="Tiffin University Campus" class="w-full h-auto rounded-lg object-cover">
+                        </div>
+
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-2">About</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Tiffin University is a private university located in Tiffin, Ohio. Founded in 1888, TU
+                                    is committed to transforming lives through education.
+                                    Follow a path. Blaze a trail. We challenge students to enhance their global competencies
+                                    and skills for success in a diverse world.
+                                    With a 20:1 student-faculty ratio, we provide personalized attention and exceptional
+                                    educational experiences.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-2">Quick Facts</h4>
+                                <ul class="space-y-2 text-sm text-gray-600">
+                                    <li class="flex items-start">
+                                        <i data-lucide="award" class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
+                                        <span>Founded in 1888 - Over 135 years of educational excellence</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i data-lucide="users" class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
+                                        <span>3,000+ students with 20:1 student-faculty ratio</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i data-lucide="graduation-cap"
+                                            class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
+                                        <span>50+ undergraduate and graduate programs</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i data-lucide="dollar-sign"
+                                            class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
+                                        <span>98% of students receive financial aid</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-gray-900 mb-3">Available Programs</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle"
+                                        class="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <div>
+                                        <p class="font-medium">Computer Science</p>
+                                        <p class="text-sm text-gray-500">Bachelor of Science (BSc)</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle"
+                                        class="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <div>
+                                        <p class="font-medium">Business Administration</p>
+                                        <p class="text-sm text-gray-500">Bachelor of Business Administration (BBA)</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle"
+                                        class="w-5 h-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <div>
+                                        <p class="font-medium">Criminal Justice</p>
+                                        <p class="text-sm text-gray-500">Bachelor of Criminal Justice (BCJ)</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-red-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-red-700 mb-2">Scholarship Opportunities</h4>
+                            <p class="text-sm text-red-600 mb-3">Eligible students may qualify for the following
+                                scholarships:</p>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-start">
+                                    <i data-lucide="award" class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
+                                    <span>Tiffin University Merit Scholarship</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="award" class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
+                                    <span>International Student Excellence Award</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="award" class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
+                                    <span>STEM Achievement Scholarship</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Tiffin University Modal Functions
+            function openTiffinModal() {
+                document.getElementById('tiffinModal').classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeTiffinModal() {
+                document.getElementById('tiffinModal').classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+
+            // Close modal when clicking outside
+            document.addEventListener('click', (e) => {
+                const modal = document.getElementById('tiffinModal');
+                if (e.target === modal) {
+                    closeTiffinModal();
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !document.getElementById('tiffinModal').classList.contains('hidden')) {
+                    closeTiffinModal();
+                }
+            });
+        </script>
+
         <!-- AI Assistant Floating Button -->
         <div id="ai-assistant" class="fixed bottom-6 right-6 z-50">
             <!-- Floating Button -->
@@ -817,19 +1016,40 @@
 
             function closeSuggestModal() {
                 document.getElementById('suggest-modal').classList.add('hidden');
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
             }
 
             function confirmSuggest() {
-                const student = document.getElementById('suggest-student-select').value;
+                const studentSelect = document.getElementById('suggest-student-select');
+                const note = document.querySelector('#suggest-modal textarea').value;
                 const createTask = document.getElementById('create-follow-up-task').checked;
 
-                alert('Scholarship suggestion sent to student');
+                // Show success message
+                alert(`Suggestion sent to ${studentSelect.value} successfully!`);
+                
+                // Close the modal
                 closeSuggestModal();
-
+                
+                // If create task is checked, open the task modal
                 if (createTask) {
-                    openTaskModal(null, student);
+                    openTaskModal();
                 }
             }
+
+            // Close modal when clicking outside
+            document.addEventListener('click', (e) => {
+                const suggestModal = document.getElementById('suggest-modal');
+                if (e.target === suggestModal) {
+                    closeSuggestModal();
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !document.getElementById('suggest-modal').classList.contains('hidden')) {
+                    closeSuggestModal();
+                }
+            });
 
             // Task Management
             let currentScholarship = {
@@ -924,6 +1144,49 @@
                     aiChatPanel.classList.add('hidden');
                 }
             });
+
+            // Suggest to Student Modal Functions
+            function openSuggestModal() {
+                document.getElementById('suggest-modal').classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+            }
+
+            function closeSuggestModal() {
+                document.getElementById('suggest-modal').classList.add('hidden');
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+            }
+
+            function confirmSuggest() {
+                const studentSelect = document.getElementById('suggest-student-select');
+                const note = document.querySelector('#suggest-modal textarea').value;
+                const createTask = document.getElementById('create-follow-up-task').checked;
+
+                // Show success message
+                alert(`Suggestion sent to ${studentSelect.value} successfully!`);
+                
+                // Close the modal
+                closeSuggestModal();
+                
+                // If create task is checked, open the task modal
+                if (createTask) {
+                    openTaskModal();
+                }
+            }
+
+            // Close modal when clicking outside
+            document.addEventListener('click', (e) => {
+                const suggestModal = document.getElementById('suggest-modal');
+                if (e.target === suggestModal) {
+                    closeSuggestModal();
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !document.getElementById('suggest-modal').classList.contains('hidden')) {
+                    closeSuggestModal();
+                }
+            });
         </script>
 
         <script>
@@ -947,31 +1210,42 @@
         </script>
 
         <script>
-            // Set default tab to active
-            document.addEventListener('DOMContentLoaded', function () {
-                switchTab('fees-tab');
+            // Tab switching for scholarship cards
+            document.addEventListener('DOMContentLoaded', function() {
+                // Handle tab clicks
+                document.querySelectorAll('.tab-btn').forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const tabId = this.getAttribute('data-tab');
+                        const cardId = this.getAttribute('data-card');
+                        
+                        // Update active tab
+                        document.querySelectorAll(`[data-card="${cardId}"].tab-btn`).forEach(btn => {
+                            btn.classList.remove('text-red-600', 'border-red-600');
+                            btn.classList.add('text-gray-500', 'hover:text-gray-700', 'border-transparent');
+                        });
+                        
+                        this.classList.remove('text-gray-500', 'hover:text-gray-700', 'border-transparent');
+                        this.classList.add('text-red-600', 'border-red-600');
+                        
+                        // Show corresponding tab content
+                        document.querySelectorAll(`[data-card="${cardId}"].tab-content`).forEach(content => {
+                            content.classList.add('hidden');
+                        });
+                        
+                        const activeContent = document.querySelector(`.tab-content[data-tab="${tabId}"][data-card="${cardId}"]`);
+                        if (activeContent) {
+                            activeContent.classList.remove('hidden');
+                        }
+                    });
+                });
+
+                // Initialize first tab as active
+                const firstTab = document.querySelector('.tab-btn[data-card="2"]');
+                if (firstTab) {
+                    firstTab.dispatchEvent(new Event('click'));
+                }
             });
-
-            function switchTab(tabId) {
-                // Hide all tab contents
-                document.querySelectorAll('.tab-content').forEach(tab => {
-                    tab.classList.add('hidden');
-                });
-
-                // Remove active class from all tab buttons
-                document.querySelectorAll('[id$="-tab-btn"]').forEach(btn => {
-                    btn.classList.remove('border-red-500', 'text-red-600');
-                    btn.classList.add('border-transparent', 'text-gray-600');
-                });
-
-                // Show selected tab content
-                document.getElementById(tabId).classList.remove('hidden');
-
-                // Add active class to clicked tab button
-                document.getElementById(tabId + '-btn').classList.remove('border-transparent', 'text-gray-600');
-                document.getElementById(tabId + '-btn').classList.add('border-red-500', 'text-red-600');
-            }
         </script>
-</body>
-
+    </body>
 </html>

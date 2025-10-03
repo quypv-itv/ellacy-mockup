@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | ApplyLead</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header with Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="Student-Dashboard.html" class="flex items-center">
+                        <img src="../../ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-4">
+                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Student</span>
+                    </a>
+                </div>
+
+                <!-- Navigation Menu -->
+                <nav class="hidden md:flex items-center space-x-3">
+                    <a href="Student-product-page.html"
+                        class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <i data-lucide="package" class="w-4 h-4 mr-2"></i>
+                        Products
+                    </a>
+                    <a href="Student-find-program.html"
+                        class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <i data-lucide="search" class="w-4 h-4 mr-2"></i>
+                        Find University
+                    </a>
+                    <a href="Student-favorites.html"
+                        class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <i data-lucide="heart" class="w-4 h-4 mr-2"></i>
+                        Favorites (4)
+                    </a>
+                    <a href="Student-my-application.html"
+                    class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                    <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
+                        My Applications (8)
+                    </a>
+                    <a href="Student-payment.html"
+                        class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
+                        Payment
+                    </a>
+                </nav>
+
+                <!-- User Menu -->
+                <div class="flex items-center space-x-4">
+                    <a href="Student-messages.html" class="p-2 text-gray-600 hover:text-red-600 rounded-full hover:bg-gray-100">
+                        <i data-lucide="message-square" class="w-5 h-5"></i>
+                    </a>
+                    <div class="relative">
+                        <button id="profile-menu" class="flex items-center space-x-2 p-1 hover:bg-gray-100 rounded-full">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop"
+                                alt="Profile" class="w-8 h-8 rounded-full object-cover">
+                        </button>
+                        <!-- Dropdown Menu -->
+                        <div id="profile-dropdown"
+                            class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 z-50">
+                            <a href="Student-profile.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Profile</a>
+                            <a href="Student-settings.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                            <a href="../../login.html"
+                                class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100">Logout</a>
+                        </div>
+                    </div>
+                    <button class="md:hidden p-2 text-gray-600 hover:text-red-600 rounded-lg">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="md:hidden bg-white border-t fixed bottom-0 w-full z-10">
+        <div class="flex justify-around py-2">
+            <a href="Student-find-program.html" class="flex flex-col items-center text-red-600 p-2">
+                <i data-lucide="search" class="w-5 h-5"></i>
+                <span class="text-xs mt-1">Find</span>
+            </a>
+            <a href="Student-favorites.html" class="flex flex-col items-center text-gray-600 p-2">
+                <i data-lucide="heart" class="w-5 h-5"></i>
+                <span class="text-xs mt-1">Favorites</span>
+            </a>
+            <a href="Student-my-application.html" class="flex flex-col items-center text-gray-600 p-2">
+                <i data-lucide="file-text" class="w-5 h-5"></i>
+                <span class="text-xs mt-1">Applications</span>
+            </a>
+            <a href="Student-messages.html" class="flex flex-col items-center text-gray-600 p-2">
+                <i data-lucide="message-square" class="w-5 h-5"></i>
+                <span class="text-xs mt-1">Messages</span>
+            </a>
+            <a href="Student-profile.html" class="flex flex-col items-center text-gray-600 p-2">
+                <i data-lucide="user" class="w-5 h-5"></i>
+                <span class="text-xs mt-1">Profile</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pb-20 md:pb-6">
+        <!-- Page Header -->
+        <!-- Programs Grid -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+            <!-- Guaranteed Scholarship -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 rounded-lg bg-red-100 text-red-800 mr-4">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-900">Guaranteed Scholarship</h2>
+                    </div>
+                    <p class="text-gray-600 mb-6">Secure admission with guaranteed scholarships at our partner institutions.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mt-8">
+                        <!-- Package 1 -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-lg font-semibold">Single School Package</h3>
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+                                    Popular
+                                </span>
+                            </div>
+                            <div class="mt-4">
+                                <p class="text-3xl font-bold text-gray-900">$1,500</p>
+                                <p class="mt-1 text-sm text-gray-500">+ 10% of total scholarships</p>
+                            </div>
+                            <ul class="mt-4 space-y-2">
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>Apply to 1 school</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>No application fees</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>Guaranteed scholarship</span>
+                                </li>
+                            </ul>
+                            <button onclick="window.location.href='Student-find-program.html?scholarship=guaranteed'" class="mt-6 bg-red-600 text-white py-2 px-6 rounded-md hover:bg-red-700 transition-colors cursor-pointer">
+                                Choose Package
+                            </button>
+                        </div>
+
+                        <!-- Package 2 -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                            <h3 class="text-lg font-semibold">Multi-School Package</h3>
+                            <div class="mt-4">
+                                <p class="text-3xl font-bold text-gray-900">$2,500</p>
+                                <p class="mt-1 text-sm text-gray-500">+ 10% of total scholarships</p>
+                            </div>
+                            <ul class="mt-4 space-y-2">
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>Apply to 2-3 schools</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>No application fees</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>Higher scholarship opportunities</span>
+                                </li>
+                            </ul>
+                            <button onclick="window.location.href='Student-find-program.html?scholarship=guaranteed'" class="mt-6 bg-red-600 text-white py-2 px-6 rounded-md hover:bg-red-700 transition-colors cursor-pointer">
+                                Choose Package
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Elite Admission -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 rounded-lg bg-red-100 text-red-800 mr-4">
+                            <i data-lucide="star" class="w-6 h-6"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-900">Elite Admission Scholarship</h2>
+                    </div>
+                    <p class="text-gray-600">Exclusive access to Top 100 schools with our close partnerships.</p>
+                    
+                    <div class="mt-8 border border-gray-200 rounded-lg p-6 max-w-2xl">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-lg font-semibold">Premium Package</h3>
+                                <p class="text-gray-600">Up to 5 schools</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-3xl font-bold text-gray-900">$3,500</p>
+                                <p class="text-sm text-gray-500">+ 10% of total scholarships</p>
+                            </div>
+                        </div>
+                        <ul class="mt-6 space-y-2">
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                <span>Apply to up to 5 Top 100 schools</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                <span>No application fees</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                <span>Priority application review</span>
+                            </li>
+                        </ul>
+                        <button onclick="window.location.href='Student-find-program.html?scholarship=elite'" class="mt-6 bg-red-600 text-white py-2 px-6 rounded-md hover:bg-red-700 transition-colors cursor-pointer">
+                            Choose Package
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ivy Global Student -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 rounded-lg bg-red-100 text-red-800 mr-4">
+                            <i data-lucide="globe" class="w-6 h-6"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-900">Ivy Global Student Scholarship</h2>
+                    </div>
+                    <p class="text-gray-600">Your gateway to the world's most prestigious universities (choose up to 7-10 Schools).</p>
+                    
+                    <div class="grid md:grid-cols-3 gap-6 mt-8">
+                        <!-- Regular Package -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                            <h3 class="text-lg font-semibold">Regular</h3>
+                            <div class="mt-4">
+                                <p class="text-3xl font-bold text-gray-900">$25,000</p>
+                            </div>
+                            <ul class="mt-4 space-y-2">
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>Apply to 7-10 Ivy League schools</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>Standard support</span>
+                                </li>
+                            </ul>
+                            <button onclick="window.location.href='Student-find-program.html?scholarship=ivy'" class="mt-6 w-full border border-red-600 text-red-600 py-2 px-4 rounded-md hover:bg-red-50 transition-colors cursor-pointer">
+                                Choose Regular
+                            </button>
+                        </div>
+
+                        <!-- VIP Package -->
+                        <div class="border-2 border-red-600 rounded-lg p-6 transform hover:scale-[1.02] transition-all">
+                            <div class="absolute top-0 right-0 bg-black text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">
+                                MOST POPULAR
+                            </div>
+                            <h3 class="text-lg font-semibold">VIP</h3>
+                            <div class="mt-4">
+                                <p class="text-3xl font-bold text-gray-900">$30,000</p>
+                            </div>
+                            <ul class="mt-4 space-y-2">
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>All Regular Package benefits</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="plus-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>Priority application review</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="plus-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>Exclusive interview preparation</span>
+                                </li>
+                            </ul>
+                            <button onclick="window.location.href='Student-find-program.html?scholarship=ivy'" class="mt-6 w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors cursor-pointer">
+                                Choose VIP
+                            </button>
+                        </div>
+
+                        <!-- President Package -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                            <h3 class="text-lg font-semibold">President</h3>
+                            <div class="mt-4">
+                                <p class="text-3xl font-bold text-gray-900">$35,000</p>
+                            </div>
+                            <ul class="mt-4 space-y-2">
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>All VIP Package benefits</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="plus-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>Dedicated admission strategist</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="plus-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>Unlimited essay reviews</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="plus-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>Priority scholarship consideration</span>
+                                </li>
+                            </ul>
+                            <button onclick="window.location.href='Student-find-program.html?scholarship=ivy'" class="mt-6 w-full border border-red-600 text-red-600 py-2 px-4 rounded-md hover:bg-red-50 transition-colors cursor-pointer">
+                                Choose President
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Joint Program -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 rounded-lg bg-red-100 text-red-800 mr-4">
+                            <i data-lucide="users" class="w-6 h-6"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-900">Joint Program (Vietnam to US Transfer)</h2>
+                    </div>
+                    <p class="text-gray-600">Seamless transfer options for Vietnamese students to US universities.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mt-8">
+                        <!-- 1+3 Program -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                            <h3 class="text-lg font-semibold">1+3 Program</h3>
+                            <div class="mt-4">
+                                <p class="text-3xl font-bold text-gray-900">$500</p>
+                                <p class="mt-1 text-sm text-gray-500">+ $4,000 upon transfer</p>
+                            </div>
+                            <ul class="mt-4 space-y-2">
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>1 year in Vietnam + 3 years in US</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>Smooth credit transfer</span>
+                                </li>
+                            </ul>
+                            <button onclick="window.location.href='Student-find-program.html?scholarship=joint'" class="mt-6 bg-red-600 text-white py-2 px-6 rounded-md hover:bg-red-700 transition-colors cursor-pointer">
+                                Choose Program
+                            </button>
+                        </div>
+
+                        <!-- 2+2 Program -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                            <h3 class="text-lg font-semibold">2+2 Program</h3>
+                            <div class="mt-4">
+                                <p class="text-3xl font-bold text-gray-900">$500</p>
+                                <p class="mt-1 text-sm text-gray-500">+ $3,000 upon transfer</p>
+                            </div>
+                            <ul class="mt-4 space-y-2">
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>2 years in Vietnam + 2 years in US</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>Cost-effective pathway</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>Guaranteed transfer to partner schools</span>
+                                </li>
+                            </ul>
+                            <button onclick="window.location.href='Student-find-program.html?scholarship=joint'" class="mt-6 bg-red-600 text-white py-2 px-6 rounded-md hover:bg-red-700 transition-colors cursor-pointer">
+                                Choose Program
+                            </button>
+                        </div>
+
+                         <!-- Fast-Track Joint MBA -->
+                         <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-lg font-semibold">Fast-Track Joint MBA</h3>
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+                                    Popular
+                                </span>
+                            </div>
+                            <div class="mt-4">
+                                <p class="text-3xl font-bold text-gray-900">$7,500</p>
+                                <p class="mt-1 text-sm text-gray-500">+ 15% of total tuition</p>
+                            </div>
+                            <ul class="mt-4 space-y-2">
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>1 year in Vietnam + 1 year in US</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>Dual degree from partner universities</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>Guaranteed admission for qualified candidates</span>
+                                </li>
+                            </ul>
+                            <button onclick="window.location.href='Student-find-program.html?scholarship=joint'" class="mt-6 bg-red-600 text-white py-2 px-6 rounded-md hover:bg-red-700 transition-colors cursor-pointer">
+                                Choose Program
+                            </button>
+                        </div>
+
+                        <!-- Executive Joint MBA -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-lg font-semibold">Executive Joint MBA</h3>
+                            </div>
+                            <div class="mt-4">
+                                <p class="text-3xl font-bold text-gray-900">$9,000</p>
+                                <p class="mt-1 text-sm text-gray-500">+ 12% of total tuition</p>
+                            </div>
+                            <ul class="mt-4 space-y-2">
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>Weekend/Evening classes in Vietnam</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>2-week US residency included</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>Networking opportunities with US faculty</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
+                                    <span>Career coaching and placement support</span>
+                                </li>
+                            </ul>
+                            <button onclick="window.location.href='Student-find-program.html?scholarship=joint'" class="mt-6 bg-red-600 text-white py-2 px-6 rounded-md hover:bg-red-700 transition-colors cursor-pointer">
+                                Choose Program
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Services -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Additional Services</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- SAT Prep -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                            <div class="p-3 rounded-lg bg-red-100 text-red-800 w-12 h-12 flex items-center justify-center mb-4">
+                                <i data-lucide="book-open" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-semibold text-lg">SAT Preparation</h3>
+                            <p class="text-gray-600 mt-2 text-sm">Comprehensive SAT prep courses with expert tutors.</p>
+                            <button class="mt-4 text-red-600 text-sm font-medium hover:text-red-700 flex items-center">
+                                Learn more <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </button>
+                        </div>
+
+                        <!-- Visa Assistance -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                            <div class="p-3 rounded-lg bg-red-100 text-red-800 w-12 h-12 flex items-center justify-center mb-4">
+                                <i data-lucide="file-text" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-semibold text-lg">Visa Preparation</h3>
+                            <p class="text-gray-600 mt-2 text-sm">Expert guidance for your student visa application.</p>
+                            <button class="mt-4 text-red-600 text-sm font-medium hover:text-red-700 flex items-center">
+                                Learn more <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </button>
+                        </div>
+
+                        <!-- Health Insurance -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                            <div class="p-3 rounded-lg bg-red-100 text-red-800 w-12 h-12 flex items-center justify-center mb-4">
+                                <i data-lucide="heart-pulse" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-semibold text-lg">Health Insurance</h3>
+                            <p class="text-gray-600 mt-2 text-sm">Affordable health insurance plans for international students.</p>
+                            <button class="mt-4 text-red-600 text-sm font-medium hover:text-red-700 flex items-center">
+                                Learn more <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </button>
+                        </div>
+
+                        <!-- Accommodation -->
+                        <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                            <div class="p-3 rounded-lg bg-red-100 text-red-800 w-12 h-12 flex items-center justify-center mb-4">
+                                <i data-lucide="home" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-semibold text-lg">Accommodation</h3>
+                            <p class="text-gray-600 mt-2 text-sm">Find the perfect place to stay near your university.</p>
+                            <button class="mt-4 text-red-600 text-sm font-medium hover:text-red-700 flex items-center">
+                                Learn more <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="bg-gradient-to-r from-red-600 to-black rounded-xl p-8 text-center text-white">
+                <h2 class="text-2xl font-bold mb-4">Ready to start your journey?</h2>
+                <p class="max-w-2xl mx-auto mb-6 text-red-100">Our admission experts are here to help you choose the perfect program for your academic goals.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button class="bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                        Contact an Advisor
+                    </button>
+                    <button class="border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-black hover:bg-opacity-20 transition-colors">
+                        Book a Free Consultation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Toggle profile dropdown
+        const profileMenu = document.getElementById('profile-menu');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        if (profileMenu && profileDropdown) {
+            profileMenu.addEventListener('click', (e) => {
+                e.stopPropagation();
+                profileDropdown.classList.toggle('hidden');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!profileDropdown.contains(e.target) && e.target !== profileMenu) {
+                    profileDropdown.classList.add('hidden');
+                }
+            });
+        }
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
