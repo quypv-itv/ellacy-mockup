@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universities - University Partners - ApplyLead</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(to right top, #EDE5D6, #9ED5C5, #ffffff); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen">
+        <header class="h-16 bg-white shadow-sm relative">
+            <div class="h-full px-6 flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <a href="University-dashboard.html" class="flex items-center space-x-4">
+                        <div class="relative">
+                            <img src="../../ApplyLead_logo.png" alt="ApplyLead" class="h-9">
+                        </div>
+                        <div class="text-gray-300">|</div>
+                        <div class="w-48 h-16 flex items-center">
+                            <img src="https://ftu.edu.vn/images/stories/joomlart/logo.png" alt="FTU University" class="h-full object-contain">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button class="relative p-2 hover:bg-gray-100 rounded-full">
+                        <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
+                        <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                    </button>
+                    <div class="relative">
+                        <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop"
+                                 alt="Profile"
+                                 class="w-8 h-8 rounded-full object-cover">
+                        </button>
+                        <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                            <a href="university-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
+                            </a>
+                            <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center space-x-8">
+                <a href="University-Scholarship.html" class="text-gray-500 hover:text-gray-700 font-medium hover:border-b-2 hover:border-gray-300 pb-1">Scholarships</a>
+                <a href="University-Universities.html" class="text-black font-medium border-b-2 border-red-600 pb-1">Universities</a>
+                <a href="University-Student.html" class="text-gray-500 hover:text-gray-700 font-medium hover:border-b-2 hover:border-gray-300 pb-1">Student</a>
+            </nav>
+        </header>
+
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-6">Universities</h1>
+            
+            <!-- Partnership Schools Section -->
+            <section id="universities" class="py-12">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-bold text-black mb-4">Our University Partners</h2>
+                        <p class="text-xl text-gray-600">Connecting you with leading institutions worldwide</p>
+                    </div>
+                    
+                    <!-- Partner Categories -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                        <div class="bg-white rounded-3xl shadow-md p-8 text-center">
+                            <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background-color: #d82128;">
+                                <i data-lucide="trophy" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-black mb-4">Top-Ranked Universities</h3>
+                            <p class="text-gray-700 mb-4">Ivy League and Russell Group institutions with world-class programs</p>
+                            <div class="text-sm text-gray-600">
+                                <p>• Harvard, MIT, Stanford</p>
+                                <p>• Oxford, Cambridge</p>
+                                <p>• University of Toronto</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-3xl shadow-md p-8 text-center">
+                            <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background-color: #d82128;">
+                                <i data-lucide="microscope" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-black mb-4">Specialized Programs</h3>
+                            <p class="text-gray-700 mb-4">Technical, medical, and professional schools with focused expertise</p>
+                            <div class="text-sm text-gray-600">
+                                <p>• Medical Schools</p>
+                                <p>• Engineering Institutes</p>
+                                <p>• Business Schools</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-3xl shadow-md p-8 text-center">
+                            <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background-color: #d82128;">
+                                <i data-lucide="globe" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-black mb-4">Regional Excellence</h3>
+                            <p class="text-gray-700 mb-4">Leading universities by country and region with strong local connections</p>
+                            <div class="text-sm text-gray-600">
+                                <p>• Australia: Melbourne, Sydney</p>
+                                <p>• Germany: TUM, Heidelberg</p>
+                                <p>• Singapore: NUS, NTU</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Partner Statistics -->
+                    <div class="bg-gray-50 rounded-3xl p-8 mb-12">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                            <div>
+                                <div class="text-4xl font-bold mb-2" style="color: #d82128;">500+</div>
+                                <p class="text-black font-semibold">Partner Universities</p>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold mb-2" style="color: #d82128;">50+</div>
+                                <p class="text-black font-semibold">Countries Represented</p>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold mb-2" style="color: #d82128;">10,000+</div>
+                                <p class="text-black font-semibold">Scholarships Available</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <a href="#" class="text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors" style="background-color: #d82128;" onmouseover="this.style.backgroundColor='#d82128'" onmouseout="this.style.backgroundColor='#d82128'">View All Partners</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Profile Dropdown Toggle
+        document.addEventListener('DOMContentLoaded', function () {
+            const profileButton = document.getElementById('profile-menu');
+            const profileDropdown = document.getElementById('profile-dropdown');
+            const profileLink = document.getElementById('profile-link');
+
+            // Toggle dropdown when clicking profile button
+            if (profileButton && profileDropdown) {
+                profileButton.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    profileDropdown.classList.toggle('hidden');
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function (e) {
+                    if (!profileButton.contains(e.target) && !profileDropdown.contains(e.target)) {
+                        profileDropdown.classList.add('hidden');
+                    }
+                });
+
+                // Close dropdown when clicking on profile link
+                if (profileLink) {
+                    profileLink.addEventListener('click', function () {
+                        profileDropdown.classList.add('hidden');
+                    });
+                }
+            }
+
+            // Handle logout
+            window.handleLogout = function () {
+                // Add your logout logic here
+                console.log('Logging out...');
+                // Example: window.location.href = '/logout';
+                // Show a confirmation dialog before logging out
+                if (confirm('Are you sure you want to log out?')) {
+                    // Perform logout action
+                    window.location.href = '../../login.html';
+                }
+            };
+        });
+    </script>
+</body>
+</html>
