@@ -76,32 +76,308 @@
                 <nav
                     class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center space-x-8">
                     <a href="University-Scholarship.html"
-                        class="text-gray-500 hover:text-red-700 font-medium hover:border-b-2 hover:border-gray-300 pb-1">Scholarships</a>
+                        class="text-gray-500 hover:text-red-700 font-medium hover:border-b-2 hover:border-gray-300 pb-1">Partnered University</a>
                     <a href="University-Student.html"
                         class="text-gray-500 hover:text-red-700 font-medium hover:border-b-2 hover:border-gray-300 pb-1">Student</a>
                 </nav>
             </header>
 
-            <!-- News and Events Section -->
-            <section class="bg-gradient-to-r from-red-600 to-black rounded-xl p-8 text-center text-white py-12" style="background-color: #d82128; color: white;">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-8">
-                        <h2 class="text-3xl font-bold mb-2">Latest News & Upcoming Events</h2>
-                        <p class="text-lg">Stay updated with the latest opportunities and events</p>
-                        <div class="w-full flex-shrink-0 p-6">
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            <!-- Marketing Slides Carousel -->
+            <section class="relative bg-white overflow-hidden">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                    <div class="relative">
+                        <!-- Carousel Container -->
+                        <div id="carousel" class="relative rounded-xl overflow-hidden shadow-lg">
+                            <!-- Slide 1 -->
+                            <div class="carousel-slide active bg-gradient-to-r from-red-600 to-black text-white p-8">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                                     <div>
-                                        <span class="px-3 py-1 rounded-full text-xs font-medium mb-2 inline-block"
-                                            style="background-color: #ff0008; color: #ffffff;">University Fair</span>
-                                        <h3 class="text-xl font-bold mb-2" style="color: #ffffff;">Global Education
-                                            Fair 2025</h3>
-                                        <p class="mb-3 text-sm" style="color: #ffffff;">Meet representatives from 100+
-                                            universities worldwide. December 15-17, 2025 in Ho Chi Minh City</p>
+                                        <span class="px-3 py-1 rounded-full text-xs font-medium mb-4 inline-block bg-white text-red-600">Partnership Program</span>
+                                        <h3 class="text-3xl font-bold mb-4">FTU × Ellacy Partnership</h3>
+                                        <p class="text-lg mb-6">Expanding global education opportunities through innovative 1+3 and 2+2 transfer programs with top US universities.</p>
+                                        <button class="bg-white text-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">Learn More</button>
                                     </div>
-                                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=250&fit=crop"
-                                        alt="Education Fair" class="rounded-lg shadow-md w-full h-auto">
+                                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=500&h=300&fit=crop"
+                                        alt="Partnership" class="rounded-lg shadow-md">
                                 </div>
                             </div>
+
+                            <!-- Slide 2 -->
+                            <div class="carousel-slide bg-gradient-to-r from-black to-red-600 text-white p-8">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                                    <div>
+                                        <span class="px-3 py-1 rounded-full text-xs font-medium mb-4 inline-block bg-white text-red-600">Success Story</span>
+                                        <h3 class="text-3xl font-bold mb-4">1,200+ Students Transferred</h3>
+                                        <p class="text-lg mb-6">Our partnership has successfully facilitated over 1,200 student transfers to prestigious US universities with 95% success rate.</p>
+                                        <button class="bg-white text-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">View Statistics</button>
+                                    </div>
+                                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&h=300&fit=crop"
+                                        alt="Students" class="rounded-lg shadow-md">
+                                </div>
+                            </div>
+
+                            <!-- Slide 3 -->
+                            <div class="carousel-slide bg-gradient-to-r from-red-600 to-black text-white p-8">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                                    <div>
+                                        <span class="px-3 py-1 rounded-full text-xs font-medium mb-4 inline-block bg-white text-red-600">New Program</span>
+                                        <h3 class="text-3xl font-bold mb-4">Joint MBA Program Launch</h3>
+                                        <p class="text-lg mb-6">Introducing Fast-Track and Executive Joint MBA programs with Arizona State University and Tiffin University.</p>
+                                        <button class="bg-white text-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">Explore Programs</button>
+                                    </div>
+                                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=300&fit=crop"
+                                        alt="MBA Program" class="rounded-lg shadow-md">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Arrows -->
+                        <button id="prevBtn" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-2 rounded-full transition-all">
+                            <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                        </button>
+                        <button id="nextBtn" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-2 rounded-full transition-all">
+                            <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                        </button>
+
+                        <!-- Dots Indicator -->
+                        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                            <button class="carousel-dot active w-3 h-3 rounded-full bg-white" data-slide="0"></button>
+                            <button class="carousel-dot w-3 h-3 rounded-full bg-white bg-opacity-50" data-slide="1"></button>
+                            <button class="carousel-dot w-3 h-3 rounded-full bg-white bg-opacity-50" data-slide="2"></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ellacy Partnership KPIs -->
+            <section class="py-12 bg-gray-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-2">Partnership Overview</h2>
+                        <p class="text-lg text-gray-600">Key metrics of our collaboration with Ellacy Foundation</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                        <!-- Total Students -->
+                        <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="users" class="w-6 h-6 text-red-600"></i>
+                            </div>
+                            <div class="text-3xl font-bold text-gray-900 mb-2">1,247</div>
+                            <div class="text-sm text-gray-600">Total Students Collaborated</div>
+                        </div>
+
+                        <!-- Scholarships Awarded -->
+                        <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="award" class="w-6 h-6 text-red-600"></i>
+                            </div>
+                            <div class="text-3xl font-bold text-gray-900 mb-2">$2.4M</div>
+                            <div class="text-sm text-gray-600">Total Scholarships Awarded</div>
+                        </div>
+
+                        <!-- Active US Partners -->
+                        <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="building" class="w-6 h-6 text-red-600"></i>
+                            </div>
+                            <div class="text-3xl font-bold text-gray-900 mb-2">12</div>
+                            <div class="text-sm text-gray-600">Active US Partners</div>
+                        </div>
+
+                        <!-- Years of Partnership -->
+                        <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="calendar" class="w-6 h-6 text-red-600"></i>
+                            </div>
+                            <div class="text-3xl font-bold text-gray-900 mb-2">8</div>
+                            <div class="text-sm text-gray-600">Years of Partnership</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FTU Information Section -->
+            <section class="py-12 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Foreign Trade University (FTU)</h2>
+                        <p class="text-lg text-gray-600 max-w-3xl mx-auto">Leading Vietnamese institution in international business education, partnering with Ellacy to provide world-class transfer and joint degree programs.</p>
+                    </div>
+
+                    <!-- FTU Overview Card -->
+                    <div class="bg-gradient-to-r from-red-50 to-gray-50 rounded-xl p-8 mb-8">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">University Overview</h3>
+                                <ul class="space-y-3 text-gray-700">
+                                    <li class="flex items-center">
+                                        <i data-lucide="check-circle" class="w-5 h-5 text-red-600 mr-3"></i>
+                                        <span>Established in 1960, 60+ years of excellence</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i data-lucide="check-circle" class="w-5 h-5 text-red-600 mr-3"></i>
+                                        <span>25,000+ students across multiple campuses</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i data-lucide="check-circle" class="w-5 h-5 text-red-600 mr-3"></i>
+                                        <span>Top-ranked business and economics programs</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i data-lucide="check-circle" class="w-5 h-5 text-red-600 mr-3"></i>
+                                        <span>International accreditation (AACSB candidate)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="text-center">
+                                <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=400&h=300&fit=crop"
+                                    alt="FTU Campus" class="rounded-lg shadow-md mx-auto">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Joint Programs -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                        <!-- 1+3 Program -->
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mr-3">
+                                    <i data-lucide="graduation-cap" class="w-5 h-5 text-red-600"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-gray-900">1+3 Transfer Program</h4>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Complete 1 year at FTU, transfer to US university for final 3 years</p>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-500">Duration:</span>
+                                    <span class="font-medium">4 years total</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-500">Students enrolled:</span>
+                                    <span class="font-medium">342</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-500">Success rate:</span>
+                                    <span class="font-medium text-red-600">96%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2+2 Program -->
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mr-3">
+                                    <i data-lucide="book-open" class="w-5 h-5 text-red-600"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-gray-900">2+2 Transfer Program</h4>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Complete 2 years at FTU, transfer to US university for final 2 years</p>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-500">Duration:</span>
+                                    <span class="font-medium">4 years total</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-500">Students enrolled:</span>
+                                    <span class="font-medium">578</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-500">Success rate:</span>
+                                    <span class="font-medium text-red-600">94%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Joint MBA -->
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mr-3">
+                                    <i data-lucide="briefcase" class="w-5 h-5 text-red-600"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-gray-900">Joint MBA Program</h4>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Fast-track and Executive MBA with dual degrees</p>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-500">Duration:</span>
+                                    <span class="font-medium">18-24 months</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-500">Students enrolled:</span>
+                                    <span class="font-medium">127</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-500">Success rate:</span>
+                                    <span class="font-medium text-red-600">98%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- US Partner Universities -->
+                    <div class="bg-gray-50 rounded-xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">US Partner Universities</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <!-- Tiffin University -->
+                            <div class="bg-white rounded-lg p-4 border border-gray-200 hover:shadow-md transition-shadow">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h4 class="font-semibold text-gray-900">Tiffin University</h4>
+                                    <span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">Active</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-2">Ohio, USA • Business, Engineering</p>
+                                <div class="text-xs text-gray-500">Programs: 1+3, 2+2, Joint MBA</div>
+                            </div>
+
+                            <!-- Arizona State University -->
+                            <div class="bg-white rounded-lg p-4 border border-gray-200 hover:shadow-md transition-shadow">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h4 class="font-semibold text-gray-900">Arizona State University</h4>
+                                    <span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">Active</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-2">Arizona, USA • Business, Technology</p>
+                                <div class="text-xs text-gray-500">Programs: 1+3, 2+2</div>
+                            </div>
+
+                            <!-- University of Arizona -->
+                            <div class="bg-white rounded-lg p-4 border border-gray-200 hover:shadow-md transition-shadow">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h4 class="font-semibold text-gray-900">University of Arizona</h4>
+                                    <span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">Active</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-2">Arizona, USA • Business, Sciences</p>
+                                <div class="text-xs text-gray-500">Programs: 2+2, Joint MBA</div>
+                            </div>
+
+                            <!-- San Jose State University -->
+                            <div class="bg-white rounded-lg p-4 border border-gray-200 hover:shadow-md transition-shadow">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h4 class="font-semibold text-gray-900">San Jose State University</h4>
+                                    <span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">Active</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-2">California, USA • Technology, Business</p>
+                                <div class="text-xs text-gray-500">Programs: 1+3, 2+2</div>
+                            </div>
+
+                            <!-- University of Alabama -->
+                            <div class="bg-white rounded-lg p-4 border border-gray-200 hover:shadow-md transition-shadow">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h4 class="font-semibold text-gray-900">University of Alabama</h4>
+                                    <span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">Active</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-2">Alabama, USA • Business, Engineering</p>
+                                <div class="text-xs text-gray-500">Programs: 1+3, 2+2</div>
+                            </div>
+
+                            <!-- More Partners -->
+                            <div class="bg-white rounded-lg p-4 border border-gray-200 hover:shadow-md transition-shadow">
+                                <div class="flex items-center justify-center h-full">
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-red-600 mb-1">+7</div>
+                                        <div class="text-sm text-gray-600">More Partners</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -367,46 +643,146 @@
                 // Initialize Lucide Icons
                 lucide.createIcons();
 
-                // Profile Dropdown Toggle
+                // Profile dropdown toggle
                 document.addEventListener('DOMContentLoaded', function () {
-                    const profileButton = document.getElementById('profile-menu');
+                    const profileMenuBtn = document.getElementById('profile-menu');
                     const profileDropdown = document.getElementById('profile-dropdown');
-                    const profileLink = document.getElementById('profile-link');
 
-                    // Toggle dropdown when clicking profile button
-                    if (profileButton && profileDropdown) {
-                        profileButton.addEventListener('click', function (e) {
+                    if (profileMenuBtn && profileDropdown) {
+                        profileMenuBtn.addEventListener('click', function (e) {
                             e.stopPropagation();
                             profileDropdown.classList.toggle('hidden');
                         });
 
-                        // Close dropdown when clicking outside
-                        document.addEventListener('click', function (e) {
-                            if (!profileButton.contains(e.target) && !profileDropdown.contains(e.target)) {
+                        document.addEventListener('click', function () {
+                            if (!profileDropdown.classList.contains('hidden')) {
                                 profileDropdown.classList.add('hidden');
                             }
                         });
-
-                        // Close dropdown when clicking on profile link
-                        if (profileLink) {
-                            profileLink.addEventListener('click', function () {
-                                profileDropdown.classList.add('hidden');
-                            });
-                        }
                     }
 
-                    // Handle logout
-                    window.handleLogout = function () {
-                        // Add your logout logic here
-                        console.log('Logging out...');
-                        // Example: window.location.href = '/logout';
-                        // Show a confirmation dialog before logging out
-                        if (confirm('Are you sure you want to log out?')) {
-                            // Perform logout action
-                            window.location.href = '../../login.html';
-                        }
-                    };
+                    // Carousel functionality
+                    initializeCarousel();
                 });
+
+                function handleLogout() {
+                    window.location.href = '../../login.html';
+                }
+
+                // Carousel functionality
+                function initializeCarousel() {
+                    const slides = document.querySelectorAll('.carousel-slide');
+                    const dots = document.querySelectorAll('.carousel-dot');
+                    const prevBtn = document.getElementById('prevBtn');
+                    const nextBtn = document.getElementById('nextBtn');
+                    let currentSlide = 0;
+                    let autoSlideInterval;
+
+                    function showSlide(index) {
+                        // Hide all slides
+                        slides.forEach(slide => {
+                            slide.classList.remove('active');
+                            slide.style.display = 'none';
+                        });
+
+                        // Show current slide
+                        slides[index].classList.add('active');
+                        slides[index].style.display = 'block';
+
+                        // Update dots
+                        dots.forEach((dot, i) => {
+                            if (i === index) {
+                                dot.classList.add('active');
+                                dot.classList.remove('bg-opacity-50');
+                            } else {
+                                dot.classList.remove('active');
+                                dot.classList.add('bg-opacity-50');
+                            }
+                        });
+                    }
+
+                    function nextSlide() {
+                        currentSlide = (currentSlide + 1) % slides.length;
+                        showSlide(currentSlide);
+                    }
+
+                    function prevSlide() {
+                        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                        showSlide(currentSlide);
+                    }
+
+                    function startAutoSlide() {
+                        autoSlideInterval = setInterval(nextSlide, 5000); // 5 seconds
+                    }
+
+                    function stopAutoSlide() {
+                        clearInterval(autoSlideInterval);
+                    }
+
+                    // Event listeners
+                    if (nextBtn) {
+                        nextBtn.addEventListener('click', () => {
+                            stopAutoSlide();
+                            nextSlide();
+                            startAutoSlide();
+                        });
+                    }
+
+                    if (prevBtn) {
+                        prevBtn.addEventListener('click', () => {
+                            stopAutoSlide();
+                            prevSlide();
+                            startAutoSlide();
+                        });
+                    }
+
+                    // Dot navigation
+                    dots.forEach((dot, index) => {
+                        dot.addEventListener('click', () => {
+                            stopAutoSlide();
+                            currentSlide = index;
+                            showSlide(currentSlide);
+                            startAutoSlide();
+                        });
+                    });
+
+                    // Pause on hover
+                    const carousel = document.getElementById('carousel');
+                    if (carousel) {
+                        carousel.addEventListener('mouseenter', stopAutoSlide);
+                        carousel.addEventListener('mouseleave', startAutoSlide);
+                    }
+
+                    // Initialize
+                    if (slides.length > 0) {
+                        showSlide(0);
+                        startAutoSlide();
+                    }
+                }
+
+                // Add CSS for carousel transitions
+                const style = document.createElement('style');
+                style.textContent = `
+                    .carousel-slide {
+                        display: none;
+                        transition: opacity 0.5s ease-in-out;
+                    }
+                    .carousel-slide.active {
+                        display: block;
+                    }
+                    .carousel-dot.active {
+                        opacity: 1;
+                    }
+                    .carousel-dot {
+                        opacity: 0.5;
+                        cursor: pointer;
+                        transition: opacity 0.3s ease;
+                    }
+                    .carousel-dot:hover {
+                        opacity: 0.8;
+                    }
+                `;
+                document.head.appendChild(style);
             </script>
 </body>
 

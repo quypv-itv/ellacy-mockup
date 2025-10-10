@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scholarships - University Partners - ApplyLead</title>
+    <title>Partnered University - ApplyLead</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Inter Font -->
@@ -74,7 +74,7 @@
             <nav
                 class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center space-x-8">
                 <a href="University-Scholarship.html"
-                    class="text-black hover:text-red-600 font-medium border-b-2 border-red-600 pb-1">Scholarships</a>
+                    class="text-black hover:text-red-600 font-medium border-b-2 border-red-600 pb-1">Partnered University</a>
                 <a href="University-Student.html"
                     class="text-gray-800 hover:text-red-600 font-medium hover:border-b-2 hover:border-red-600 pb-1">Student</a>
             </nav>
@@ -92,7 +92,7 @@
                         </div>
                         <input type="text"
                             class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                            placeholder="Search scholarships...">
+                            placeholder="Search partnered university...">
                         <!-- Moved Filter Button Here -->
                         <button type="button"
                             class="ml-2 inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
@@ -142,11 +142,11 @@
                                         
                                             <!-- Scholarship Type -->
                                             <div>
-                                                <h3 class="text-sm font-medium text-gray-800">Scholarship Type</h3>
+                                                <h3 class="text-sm font-medium text-gray-800">Programs Name</h3>
                                                 <select class="mt-1 block w-full pl-3 pr-10 py-1.5 text-base border border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
-                                                    <option value="1+3" selected>1+3 Scholarships</option>
-                                                    <option value="2+2">2+2 Scholarships</option>
-                                                    <option value="mba">Joint MBA</option>
+                                                    <option value="1+3" selected>1+3 Programs</option>
+                                                    <option value="2+2">2+2 Programs</option>
+                                                    <option value="mba">Joint MBA Programs</option>
                                                 </select>
                                             </div>
                                         
@@ -172,25 +172,40 @@
                             </div>
                         </div>
                         <!-- Tabs Navigation -->
-                        <nav class="flex justify-between space-x-1" aria-label="Tabs">
+                        <nav class="flex justify-between space-x-1" aria-label="Tabs" data-university="asu">
                             <button type="button"
-                                class="tab-button w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm border-red-600 text-red-600"
-                                data-tab="fees">
+                                class="tab-button w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm border-red-600 text-red-600"
+                                data-tab="asu-about-joint-program">
+                                About Joint Program
+                            </button>
+                            <button type="button"
+                                class="tab-button w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm text-gray-800 hover:text-red-600 hover:border-red-600"
+                                data-tab="asu-fees">
                                 Fees
                             </button>
                             <button type="button"
-                                class="tab-button w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm text-gray-800 hover:text-red-600 hover:border-red-600"
-                                data-tab="requirements">
+                                class="tab-button w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm text-gray-800 hover:text-red-600 hover:border-red-600"
+                                data-tab="asu-requirements">
                                 Requirements
                             </button>
                             <button type="button"
-                                class="tab-button w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm text-gray-800 hover:text-red-600 hover:border-red-600"
-                                data-tab="course-detail">
+                                class="tab-button w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm text-gray-800 hover:text-red-600 hover:border-red-600"
+                                data-tab="asu-course-detail">
                                 Course Detail
                             </button>
                         </nav>
+                        <!-- About Joint Program Tab Content -->
+                        <div id="asu-about-joint-program-tab" class="tab-content">
+                            <div class="bg-white p-6 rounded-lg border border-gray-200">
+                                <h3 class="text-lg font-semibold text-black mb-6 pb-2 border-b border-red-600">About Joint Program</h3>
+                                <div id="joint-program-content-asu" class="joint-program-content">
+                                    <!-- Dynamic content will be loaded here based on program selection -->
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Fees Tab Content -->
-                        <div id="fees-tab" class="tab-content">
+                        <div id="asu-fees-tab" class="tab-content hidden">
                             <div class="w-full">
                                 <div class="bg-white p-6 rounded-lg border border-gray-200">
                                     <h3 class="text-lg font-semibold text-black mb-6 pb-2 border-b border-red-600">Fees
@@ -227,7 +242,7 @@
                                                     </svg>
                                                 </div>
                                                 <div>
-                                                    <h4 class="text-lg font-semibold text-black mb-2">Scholarship
+                                                    <h4 class="text-lg font-semibold text-black mb-2">Programs
                                                         Opportunity</h4>
                                                     <p class="text-gray-800 mb-3">We offer generous scholarships up to
                                                         <span class="text-red-600 font-semibold">$30,000</span> for
@@ -273,7 +288,7 @@
                         </div>
 
                         <!-- Requirements Tab Content -->
-                        <div id="requirements-tab" class="tab-content hidden">
+                        <div id="asu-requirements-tab" class="tab-content hidden">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <div class="bg-white p-6 rounded-lg border border-gray-200">
                                     <h3 class="text-lg font-semibold text-black mb-4 pb-2 border-b border-red-600">
@@ -373,7 +388,7 @@
                         </div>
 
                         <!-- Course Detail Tab Content -->
-                        <div id="course-detail-tab" class="tab-content hidden">
+                        <div id="asu-course-detail-tab" class="tab-content hidden">
                             <div class="space-y-8">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     <div class="bg-white p-6 rounded-lg border border-gray-200">
@@ -470,11 +485,11 @@
                                         
                                             <!-- Scholarship Type -->
                                             <div>
-                                                <h3 class="text-sm font-medium text-gray-800">Scholarship Type</h3>
+                                                <h3 class="text-sm font-medium text-gray-800">Programs Name</h3>
                                                 <select class="mt-1 block w-full pl-3 pr-10 py-1.5 text-base border border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
-                                                    <option value="1+3">1+3 Scholarships</option>
-                                                    <option value="2+2" selected>2+2 Scholarships</option>
-                                                    <option value="mba">Joint MBA</option>
+                                                    <option value="1+3">1+3 Programs</option>
+                                                    <option value="2+2" selected>2+2 Programs</option>
+                                                    <option value="mba">Joint MBA Programs</option>
                                                 </select>
                                             </div>
                                         
@@ -500,25 +515,40 @@
                             </div>
                         </div>
                         <!-- Tabs Navigation -->
-                        <nav class="flex justify-between space-x-1" aria-label="Tabs">
+                        <nav class="flex justify-between space-x-1" aria-label="Tabs" data-university="nu">
                             <button type="button"
-                                class="tab-button w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm border-red-600 text-red-600"
-                                data-tab="fees-nu">
+                                class="tab-button w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm border-red-600 text-red-600"
+                                data-tab="nu-about-joint-program">
+                                About Joint Program
+                            </button>
+                            <button type="button"
+                                class="tab-button w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm text-gray-800 hover:text-red-600 hover:border-red-600"
+                                data-tab="nu-fees">
                                 Fees
                             </button>
                             <button type="button"
-                                class="tab-button w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm text-gray-800 hover:text-red-600 hover:border-red-600"
-                                data-tab="requirements-nu">
+                                class="tab-button w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm text-gray-800 hover:text-red-600 hover:border-red-600"
+                                data-tab="nu-requirements">
                                 Requirements
                             </button>
                             <button type="button"
-                                class="tab-button w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm text-gray-800 hover:text-red-600 hover:border-red-600"
-                                data-tab="course-detail-nu">
+                                class="tab-button w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm text-gray-800 hover:text-red-600 hover:border-red-600"
+                                data-tab="nu-course-detail">
                                 Course Detail
                             </button>
                         </nav>
+                        <!-- About Joint Program Tab Content -->
+                        <div id="nu-about-joint-program-tab" class="tab-content">
+                            <div class="bg-white p-6 rounded-lg border border-gray-200">
+                                <h3 class="text-lg font-semibold text-black mb-6 pb-2 border-b border-red-600">About Joint Program</h3>
+                                <div id="joint-program-content-nu" class="joint-program-content">
+                                    <!-- Dynamic content will be loaded here based on program selection -->
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Fees Tab Content -->
-                        <div id="fees-nu-tab" class="tab-content">
+                        <div id="nu-fees-tab" class="tab-content hidden">
                             <div class="w-full">
                                 <div class="bg-white p-6 rounded-lg border border-gray-200">
                                     <h3 class="text-lg font-semibold text-black mb-6 pb-2 border-b border-red-600">Fees
@@ -555,7 +585,7 @@
                                                     </svg>
                                                 </div>
                                                 <div>
-                                                    <h4 class="text-lg font-semibold text-black mb-2">Scholarship
+                                                    <h4 class="text-lg font-semibold text-black mb-2">Programs
                                                         Opportunity</h4>
                                                     <p class="text-gray-800 mb-3">We offer generous scholarships up to
                                                         <span class="text-red-600 font-semibold">$30,000</span> for
@@ -601,7 +631,7 @@
                         </div>
 
                         <!-- Requirements Tab Content -->
-                        <div id="requirements-nu-tab" class="tab-content hidden">
+                        <div id="nu-requirements-tab" class="tab-content hidden">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <div class="bg-white p-6 rounded-lg border border-gray-200">
                                     <h3 class="text-lg font-semibold text-black mb-4 pb-2 border-b border-red-600">
@@ -701,7 +731,7 @@
                         </div>
 
                         <!-- Course Detail Tab Content -->
-                        <div id="course-detail-nu-tab" class="tab-content hidden">
+                        <div id="nu-course-detail-tab" class="tab-content hidden">
                             <div class="space-y-8">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     <div class="bg-white p-6 rounded-lg border border-gray-200">
@@ -798,11 +828,11 @@
                                         
                                             <!-- Scholarship Type -->
                                             <div>
-                                                <h3 class="text-sm font-medium text-gray-800">Scholarship Type</h3>
+                                                <h3 class="text-sm font-medium text-gray-800">Programs Name</h3>
                                                 <select class="mt-1 block w-full pl-3 pr-10 py-1.5 text-base border border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
-                                                    <option value="1+3">1+3 Scholarships</option>
-                                                    <option value="2+2">2+2 Scholarships</option>
-                                                    <option value="mba" selected>Joint MBA</option>
+                                                    <option value="1+3">1+3 Programs</option>
+                                                    <option value="2+2">2+2 Programs</option>
+                                                    <option value="mba" selected>Joint MBA Programs</option>
                                                 </select>
                                             </div>
                                         
@@ -830,23 +860,28 @@
                         <!-- Tabs Navigation -->
                         <nav class="flex justify-between space-x-1" aria-label="Tabs">
                             <button type="button"
-                                class="tab-button w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm border-red-600 text-red-600"
+                                class="tab-button w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm border-red-600 text-red-600"
+                                data-tab="about-joint-program-mu">
+                                About Joint Program
+                            </button>
+                            <button type="button"
+                                class="tab-button w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm text-gray-800 hover:text-red-600 hover:border-red-600"
                                 data-tab="fees-mu">
                                 Fees
                             </button>
                             <button type="button"
-                                class="tab-button w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm text-gray-800 hover:text-red-600 hover:border-red-600"
-                                data-tab="requirements-mu">
+                            class="tab-button w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm text-gray-800 hover:text-red-600 hover:border-red-600"
+                            data-tab="requirements-mu">
                                 Requirements
                             </button>
                             <button type="button"
-                                class="tab-button w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm text-gray-800 hover:text-red-600 hover:border-red-600"
+                                class="tab-button w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm text-gray-800 hover:text-red-600 hover:border-red-600"
                                 data-tab="course-detail-mu">
                                 Course Detail
                             </button>
                         </nav>
                         <!-- Fees Tab Content -->
-                        <div id="fees-mu-tab" class="tab-content">
+                        <div id="fees-mu-tab" class="tab-content hidden">
                             <div class="w-full">
                                 <div class="bg-white p-6 rounded-lg border border-gray-200">
                                     <h3 class="text-lg font-semibold text-black mb-6 pb-2 border-b border-red-600">Fees
@@ -883,7 +918,7 @@
                                                     </svg>
                                                 </div>
                                                 <div>
-                                                    <h4 class="text-lg font-semibold text-black mb-2">Scholarship
+                                                    <h4 class="text-lg font-semibold text-black mb-2">Programs
                                                         Opportunity</h4>
                                                     <p class="text-gray-800 mb-3">We offer generous scholarships up to
                                                         <span class="text-red-600 font-semibold">$30,000</span> for
@@ -1089,6 +1124,16 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- About Joint Program Tab Content -->
+                        <div id="about-joint-program-mu-tab" class="tab-content">
+                            <div class="bg-white p-6 rounded-lg border border-gray-200">
+                                <h3 class="text-lg font-semibold text-black mb-6 pb-2 border-b border-red-600">About Joint Program</h3>
+                                <div id="joint-program-content-mu" class="joint-program-content">
+                                    <!-- Dynamic content will be loaded here based on program selection -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- Griffith University Card -->
@@ -1126,11 +1171,11 @@
                                         
                                             <!-- Scholarship Type -->
                                             <div>
-                                                <h3 class="text-sm font-medium text-gray-800">Scholarship Type</h3>
+                                                <h3 class="text-sm font-medium text-gray-800">Programs Name</h3>
                                                 <select class="mt-1 block w-full pl-3 pr-10 py-1.5 text-base border border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
-                                                    <option value="1+3" selected>1+3 Scholarships</option>
-                                                    <option value="2+2">2+2 Scholarships</option>
-                                                    <option value="mba">Joint MBA</option>
+                                                    <option value="1+3" selected>1+3 Programs</option>
+                                                    <option value="2+2">2+2 Programs</option>
+                                                    <option value="mba">Joint MBA Programs</option>
                                                 </select>
                                             </div>
                                         
@@ -1158,23 +1203,28 @@
                         <!-- Tabs Navigation -->
                         <nav class="flex justify-between space-x-1" aria-label="Tabs">
                             <button type="button"
-                                class="tab-button w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm border-red-600 text-red-600"
+                                class="tab-button w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm border-red-600 text-red-600"
+                                data-tab="about-joint-program-gu">
+                                About Joint Program
+                            </button>
+                            <button type="button"
+                                class="tab-button w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm text-gray-800 hover:text-red-600 hover:border-red-600"
                                 data-tab="fees-gu">
                                 Fees
                             </button>
                             <button type="button"
-                                class="tab-button w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm text-gray-800 hover:text-red-600 hover:border-red-600"
+                                class="tab-button w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm text-gray-800 hover:text-red-600 hover:border-red-600"
                                 data-tab="requirements-gu">
                                 Requirements
                             </button>
                             <button type="button"
-                                class="tab-button w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm text-gray-800 hover:text-red-600 hover:border-red-600"
+                                class="tab-button w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm text-gray-800 hover:text-red-600 hover:border-red-600"
                                 data-tab="course-detail-gu">
                                 Course Detail
                             </button>
                         </nav>
                         <!-- Fees Tab Content -->
-                        <div id="fees-gu-tab" class="tab-content">
+                        <div id="fees-gu-tab" class="tab-content hidden">
                             <div class="w-full">
                                 <div class="bg-white p-6 rounded-lg border border-gray-200">
                                     <h3 class="text-lg font-semibold text-black mb-6 pb-2 border-b border-red-600">Fees
@@ -1211,7 +1261,7 @@
                                                     </svg>
                                                 </div>
                                                 <div>
-                                                    <h4 class="text-lg font-semibold text-black mb-2">Scholarship
+                                                    <h4 class="text-lg font-semibold text-black mb-2">Programs
                                                         Opportunity</h4>
                                                     <p class="text-gray-800 mb-3">We offer generous scholarships up to
                                                         <span class="text-red-600 font-semibold">$30,000</span> for
@@ -1417,6 +1467,16 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- About Joint Program Tab Content -->
+                        <div id="about-joint-program-gu-tab" class="tab-content">
+                            <div class="bg-white p-6 rounded-lg border border-gray-200">
+                                <h3 class="text-lg font-semibold text-black mb-6 pb-2 border-b border-red-600">About Joint Program</h3>
+                                <div id="joint-program-content-gu" class="joint-program-content">
+                                    <!-- Dynamic content will be loaded here based on program selection -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1439,7 +1499,7 @@
             <div class="flex-1 overflow-y-auto p-6">
                 <!-- Scholarship Type -->
                 <div class="mb-6">
-                    <h3 class="text-sm font-medium text-gray-700 mb-3">Scholarship Type</h3>
+                    <h3 class="text-sm font-medium text-gray-700 mb-3">Programs Type</h3>
                     <div class="space-y-2">
                         <div class="flex items-center">
                             <input id="type-1+3" name="scholarship-type" type="checkbox"
@@ -1603,6 +1663,151 @@
                     const tabId = tab.getAttribute('data-tab');
                     document.getElementById(`${tabId}-tab`).classList.remove('hidden');
                 });
+            });
+
+            // Dynamic Joint Program Content
+            const jointProgramContent = {
+                '1+3': {
+                    title: '1+3 Joint Program',
+                    description: 'Complete your first year at a partner institution in your home country, then transfer to complete the remaining 3 years at the US university.',
+                    benefits: [
+                        'Cost-effective first year in home country',
+                        'Smooth transition to US education system',
+                        'Cultural adaptation support',
+                        'Guaranteed transfer with good academic standing'
+                    ],
+                    timeline: [
+                        { phase: 'Year 1', location: 'Home Country', description: 'Foundation courses and English preparation' },
+                        { phase: 'Years 2-4', location: 'US University', description: 'Complete degree with full university experience' }
+                    ]
+                },
+                '2+2': {
+                    title: '2+2 Joint Program',
+                    description: 'Complete your first two years at a partner institution, then transfer to complete your final 2 years at the US university.',
+                    benefits: [
+                        'Significant cost savings for first two years',
+                        'Strong academic foundation before transfer',
+                        'Enhanced English proficiency',
+                        'Seamless credit transfer'
+                    ],
+                    timeline: [
+                        { phase: 'Years 1-2', location: 'Home Country', description: 'Core curriculum and prerequisite courses' },
+                        { phase: 'Years 3-4', location: 'US University', description: 'Advanced coursework and specialization' }
+                    ]
+                },
+                'mba': {
+                    title: 'Joint MBA Program',
+                    description: 'Earn dual MBA degrees from both partner institutions, combining international business perspectives with US business education.',
+                    benefits: [
+                        'Dual degree recognition',
+                        'Global business network',
+                        'International internship opportunities',
+                        'Enhanced career prospects worldwide'
+                    ],
+                    timeline: [
+                        { phase: 'Year 1', location: 'Home Country', description: 'Core MBA curriculum and local business focus' },
+                        { phase: 'Year 2', location: 'US University', description: 'Advanced MBA courses and US business practices' }
+                    ]
+                }
+            };
+
+            function updateJointProgramContent(universityCode, programType) {
+                const contentDiv = document.getElementById(`joint-program-content-${universityCode}`);
+                if (!contentDiv) return;
+
+                // Show loading state
+                contentDiv.style.opacity = '0.5';
+                contentDiv.innerHTML = '<div class="text-center py-8"><div class="text-gray-500">Loading program information...</div></div>';
+
+                // Simulate brief loading for smooth transition
+                setTimeout(() => {
+                    if (!jointProgramContent[programType]) {
+                        contentDiv.innerHTML = '<div class="text-center py-8 text-red-600">Program information not available.</div>';
+                        contentDiv.style.opacity = '1';
+                        return;
+                    }
+
+                    const content = jointProgramContent[programType];
+                    
+                    contentDiv.innerHTML = `
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-xl font-semibold text-black mb-3">${content.title}</h4>
+                                <p class="text-gray-800 leading-relaxed">${content.description}</p>
+                            </div>
+                            
+                            <div>
+                                <h5 class="text-lg font-medium text-black mb-3">Program Benefits</h5>
+                                <ul class="space-y-2">
+                                    ${content.benefits.map(benefit => `
+                                        <li class="flex items-start">
+                                            <svg class="h-5 w-5 text-red-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                            </svg>
+                                            <span class="text-gray-800">${benefit}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h5 class="text-lg font-medium text-black mb-3">Program Timeline</h5>
+                                <div class="space-y-4">
+                                    ${content.timeline.map((phase, index) => `
+                                        <div class="bg-red-50 p-4 rounded-lg border border-red-100">
+                                            <div class="flex items-start">
+                                                <span class="bg-red-600 text-white text-sm font-medium px-2.5 py-1 rounded-full mr-3">${phase.phase}</span>
+                                                <div>
+                                                    <h6 class="font-medium text-black">${phase.location}</h6>
+                                                    <p class="text-gray-800 text-sm mt-1">${phase.description}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Restore opacity with smooth transition
+                    contentDiv.style.opacity = '1';
+                }, 300);
+            }
+
+            // Initialize content and add event listeners for all universities
+            const universityMappings = [
+                { name: 'Angelo State University', code: 'asu' },
+                { name: 'Niagara University', code: 'nu' },
+                { name: 'Macquarie University', code: 'mu' },
+                { name: 'Griffith University', code: 'gu' }
+            ];
+
+            universityMappings.forEach(university => {
+                // Find the university card
+                const universityCards = document.querySelectorAll('.bg-white.rounded-xl');
+                let targetCard = null;
+                
+                universityCards.forEach(card => {
+                    if (card.innerHTML.includes(university.name)) {
+                        targetCard = card;
+                    }
+                });
+
+                if (targetCard) {
+                    // Find the Programs Name dropdown in this card
+                    const dropdown = targetCard.querySelector('select');
+                    if (dropdown) {
+                        // Initialize content with default value
+                        const initialValue = dropdown.value || '1+3';
+                        updateJointProgramContent(university.code, initialValue);
+
+                        // Add change event listener
+                        dropdown.addEventListener('change', function() {
+                            const selectedProgram = this.value;
+                            updateJointProgramContent(university.code, selectedProgram);
+                        });
+                    }
+                }
             });
         });
     </script>

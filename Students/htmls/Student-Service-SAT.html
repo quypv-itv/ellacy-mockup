@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title"> - Student Services</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header with Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="Student-Dashboard.html" class="flex items-center">
+                        <img src="../../ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-4">
+                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Student</span>
+                    </a>
+                </div>
+
+                <!-- Navigation Menu -->
+                <nav class="hidden md:flex items-center space-x-3">
+                    <a href="Student-Dashboard.html"
+                        class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <i data-lucide="layout-dashboard" class="w-4 h-4 mr-2"></i>
+                        Dashboard
+                    </a>
+                    <a href="Student-product-page.html"
+                        class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <i data-lucide="package" class="w-4 h-4 mr-2"></i>
+                        Ellacy Program
+                    </a>
+                    <a href="Student-find-program.html"
+                        class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <i data-lucide="search" class="w-4 h-4 mr-2"></i>
+                        Find University
+                    </a>
+                    <a href="Student-favorites.html"
+                        class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <i data-lucide="heart" class="w-4 h-4 mr-2"></i>
+                        Favorites (4)
+                    </a>
+                    <a href="Student-my-application.html"
+                    class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                    <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
+                        My Applications (8)
+                    </a>
+                    <a href="Student-payment.html"
+                        class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
+                        Payment
+                    </a>
+                </nav>
+
+                <!-- Right Side -->
+                <div class="flex items-center space-x-4">
+                    <a href="Student-messages.html" class="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg" title="Messages">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </a>
+                    
+                    <button class="relative p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg" title="Notifications">
+                        <i data-lucide="bell" class="w-5 h-5"></i>
+                        <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                    </button>
+                    
+                    <!-- Profile Dropdown -->
+                    <div class="relative">
+                        <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-50 rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
+                                 alt="Profile" 
+                                 class="w-8 h-8 rounded-full object-cover">
+                        </button>
+                        
+                        <!-- Dropdown Menu -->
+                        <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                            <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
+                            </a>
+                            <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
+                            </a>
+                            <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <nav class="flex" aria-label="Breadcrumb">
+            <ol class="flex items-center space-x-4">
+                <li>
+                    <a href="Student-Additional-Services.html" class="text-gray-500 hover:text-gray-700">Back to Additional Services</a>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <!-- Hero Section -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8">
+            <div class="px-8 py-12">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                                <i id="service-icon" data-lucide="book-open" class="w-8 h-8 text-red-600"></i>
+                            </div>
+                            <div>
+                                <h1 id="service-title" class="text-3xl font-bold text-gray-900">SAT Preparation</h1>
+                                <p id="service-subtitle" class="text-gray-600">Comprehensive test prep program</p>
+                            </div>
+                        </div>
+                        <p id="service-description" class="text-gray-700 text-lg mb-6">
+                            Maximize your SAT scores with our comprehensive preparation program designed by expert tutors. 
+                            Our proven strategies and personalized approach have helped thousands of students achieve their target scores.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i data-lucide="clock" class="w-4 h-4 mr-2 text-red-600"></i>
+                                10-12 weeks program
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i data-lucide="users" class="w-4 h-4 mr-2 text-red-600"></i>
+                                Small class sizes (max 8 students)
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i data-lucide="award" class="w-4 h-4 mr-2 text-red-600"></i>
+                                Score improvement guarantee
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 rounded-lg p-8 text-center">
+                        <div class="text-4xl font-bold text-red-600 mb-2">150+</div>
+                        <div class="text-gray-600 mb-4">Average Score Improvement</div>
+                        <div class="text-2xl font-bold text-gray-900 mb-1">95%</div>
+                        <div class="text-gray-600">Success Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing Plans -->
+        <div class="bg-white rounded-xl shadow-md p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Choose Your Plan</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Basic Plan -->
+                <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                    <div class="text-center">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Basic</h3>
+                        <div class="text-3xl font-bold text-red-600 mb-4">$299</div>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>20 hours of instruction</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>4 practice tests</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>Study materials included</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>Online resources access</li>
+                        </ul>
+                        <button class="w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors">
+                            Get Started
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Premium Plan (Most Popular) -->
+                <div class="border-2 border-red-600 rounded-lg p-6 relative">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-red-600 text-white px-4 py-1 rounded-full text-sm font-medium">Most Popular</span>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Premium</h3>
+                        <div class="text-3xl font-bold text-red-600 mb-4">$499</div>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>40 hours of instruction</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>8 practice tests</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>Personalized study plan</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>1-on-1 tutoring sessions</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>Score improvement guarantee</li>
+                        </ul>
+                        <button class="w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors">
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Elite Plan -->
+                <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                    <div class="text-center">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Elite</h3>
+                        <div class="text-3xl font-bold text-red-600 mb-4">$799</div>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>60 hours of instruction</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>12 practice tests</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>Unlimited 1-on-1 sessions</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>College application guidance</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>24/7 tutor support</li>
+                        </ul>
+                        <button class="w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors">
+                            Get Started
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Stories -->
+        <div class="bg-white rounded-xl shadow-md p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Success Stories</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Story 1 -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=48&h=48&fit=crop&crop=face" alt="Student" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Sarah Chen</h4>
+                            <p class="text-sm text-gray-600">MIT, Class of 2027</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex items-center mb-2">
+                            <span class="text-sm text-gray-600 mr-2">Score Improvement:</span>
+                            <span class="font-bold text-red-600">1180 → 1480</span>
+                        </div>
+                        <div class="text-yellow-400 flex">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm">
+                        "The personalized study plan and expert tutoring helped me improve my SAT score by 300 points. 
+                        I couldn't have gotten into MIT without this program!"
+                    </p>
+                </div>
+
+                <!-- Story 2 -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=48&h=48&fit=crop&crop=face" alt="Student" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Michael Rodriguez</h4>
+                            <p class="text-sm text-gray-600">Stanford, Class of 2026</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex items-center mb-2">
+                            <span class="text-sm text-gray-600 mr-2">Score Improvement:</span>
+                            <span class="font-bold text-red-600">1220 → 1520</span>
+                        </div>
+                        <div class="text-yellow-400 flex">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm">
+                        "The test-taking strategies and practice tests were game-changers. 
+                        My confidence improved dramatically, and so did my scores!"
+                    </p>
+                </div>
+
+                <!-- Story 3 -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=48&h=48&fit=crop&crop=face" alt="Student" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Emily Johnson</h4>
+                            <p class="text-sm text-gray-600">Harvard, Class of 2027</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex items-center mb-2">
+                            <span class="text-sm text-gray-600 mr-2">Score Improvement:</span>
+                            <span class="font-bold text-red-600">1150 → 1490</span>
+                        </div>
+                        <div class="text-yellow-400 flex">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm">
+                        "Amazing program! The tutors were patient and knowledgeable. 
+                        I achieved my dream score and got into Harvard!"
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Program Details -->
+        <div class="bg-white rounded-xl shadow-md p-8 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">What's Included</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Comprehensive Curriculum</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-red-600 mr-3 mt-0.5"></i>
+                            <span class="text-gray-700">Math section mastery (Algebra, Geometry, Advanced Math)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-red-600 mr-3 mt-0.5"></i>
+                            <span class="text-gray-700">Evidence-Based Reading and Writing strategies</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-red-600 mr-3 mt-0.5"></i>
+                            <span class="text-gray-700">Time management and test-taking techniques</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-red-600 mr-3 mt-0.5"></i>
+                            <span class="text-gray-700">Full-length practice tests with detailed analysis</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Expert Support</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-red-600 mr-3 mt-0.5"></i>
+                            <span class="text-gray-700">Certified SAT instructors with 99th percentile scores</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-red-600 mr-3 mt-0.5"></i>
+                            <span class="text-gray-700">Personalized study plans based on diagnostic results</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-red-600 mr-3 mt-0.5"></i>
+                            <span class="text-gray-700">Progress tracking and performance analytics</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-red-600 mr-3 mt-0.5"></i>
+                            <span class="text-gray-700">24/7 online support and resources</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="bg-red-600 rounded-xl text-white p-8 text-center">
+            <h2 class="text-2xl font-bold mb-4">Ready to Boost Your SAT Score?</h2>
+            <p class="text-red-100 mb-6 max-w-2xl mx-auto">
+                Join thousands of successful students who have achieved their target scores with our proven SAT preparation program.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                    Book Free Consultation
+                </button>
+                <button class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors">
+                    View Sample Materials
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Profile dropdown toggle and logout handler
+        document.addEventListener('DOMContentLoaded', function () {
+            const profileMenuBtn = document.getElementById('profile-menu');
+            const profileDropdown = document.getElementById('profile-dropdown');
+
+            if (profileMenuBtn && profileDropdown) {
+                // Toggle dropdown on profile button click
+                profileMenuBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    profileDropdown.classList.toggle('hidden');
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function () {
+                    if (!profileDropdown.classList.contains('hidden')) {
+                        profileDropdown.classList.add('hidden');
+                    }
+                });
+            }
+        });
+
+        function handleLogout() {
+            // Redirect to login page
+            window.location.href = '../../login.html';
+        }
+
+        // Service data for dynamic content loading
+        const serviceData = {
+            'sat-prep': {
+                title: 'SAT Preparation',
+                subtitle: 'Comprehensive test prep program',
+                icon: 'book-open',
+                description: 'Maximize your SAT scores with our comprehensive preparation program designed by expert tutors. Our proven strategies and personalized approach have helped thousands of students achieve their target scores.',
+                stats: { improvement: '150+', successRate: '95%' },
+                plans: [
+                    { name: 'Basic', price: '$299', features: ['20 hours of instruction', '4 practice tests', 'Study materials included', 'Online resources access'] },
+                    { name: 'Premium', price: '$499', features: ['40 hours of instruction', '8 practice tests', 'Personalized study plan', '1-on-1 tutoring sessions', 'Score improvement guarantee'], popular: true },
+                    { name: 'Elite', price: '$799', features: ['60 hours of instruction', '12 practice tests', 'Unlimited 1-on-1 sessions', 'College application guidance', '24/7 tutor support'] }
+                ]
+            },
+            'visa-prep': {
+                title: 'Visa Preparation',
+                subtitle: 'F-1 student visa assistance',
+                icon: 'file-text',
+                description: 'Expert guidance and comprehensive support for your F-1 student visa application process, ensuring maximum approval chances with our experienced consultants.',
+                stats: { improvement: '98%', successRate: 'Approval Rate' },
+                plans: [
+                    { name: 'Basic', price: '$199', features: ['DS-160 form assistance', 'Document checklist', 'Basic interview prep', 'Email support'] },
+                    { name: 'Premium', price: '$349', features: ['Complete application review', 'Mock interview sessions', 'Document preparation', 'Embassy appointment booking', 'Phone support'], popular: true },
+                    { name: 'Elite', price: '$549', features: ['Full-service assistance', 'Multiple mock interviews', 'Document review & editing', 'Post-approval guidance', '24/7 support'] }
+                ]
+            },
+            'health-insurance': {
+                title: 'Health Insurance',
+                subtitle: 'Comprehensive medical coverage',
+                icon: 'heart-pulse',
+                description: 'Affordable and comprehensive health insurance plans specifically designed for international students studying in the United States with full medical coverage.',
+                stats: { improvement: '24/7', successRate: 'Coverage' },
+                plans: [
+                    { name: 'Basic', price: '$89/month', features: ['Emergency coverage', 'Basic medical visits', 'Prescription coverage', 'Telemedicine access'] },
+                    { name: 'Premium', price: '$149/month', features: ['Comprehensive coverage', 'Specialist visits', 'Mental health services', 'Preventive care', 'Dental coverage'], popular: true },
+                    { name: 'Elite', price: '$219/month', features: ['Full coverage', 'Vision & dental', 'Pre-existing conditions', 'International coverage', 'Premium network'] }
+                ]
+            },
+            'accommodation': {
+                title: 'Accommodation',
+                subtitle: 'Housing assistance services',
+                icon: 'home',
+                description: 'Find the perfect place to stay near your university with our comprehensive accommodation assistance and housing solutions tailored for international students.',
+                stats: { improvement: '500+', successRate: 'Properties' },
+                plans: [
+                    { name: 'Basic', price: '$149', features: ['Housing search assistance', 'Property listings access', 'Basic area information', 'Email support'] },
+                    { name: 'Premium', price: '$299', features: ['Personalized search', 'Property viewings', 'Lease negotiation', 'Move-in coordination', 'Local area guidance'], popular: true },
+                    { name: 'Elite', price: '$499', features: ['Full-service assistance', 'Roommate matching', 'Furniture coordination', 'Utility setup', 'Ongoing support'] }
+                ]
+            },
+            'application-review': {
+                title: 'Application Review',
+                subtitle: 'Professional application assessment',
+                icon: 'search',
+                description: 'Professional review of your university application materials by experienced admissions consultants to maximize your chances of acceptance.',
+                stats: { improvement: '85%', successRate: 'Success Rate' },
+                plans: [
+                    { name: 'Basic', price: '$149', features: ['Application review', 'Basic feedback', 'Checklist verification', 'Email delivery'] },
+                    { name: 'Premium', price: '$299', features: ['Detailed review', 'Improvement suggestions', 'Video consultation', 'Revision support', 'Priority service'], popular: true },
+                    { name: 'Elite', price: '$499', features: ['Comprehensive review', 'Multiple revisions', 'Strategy consultation', 'Interview prep', 'Success guarantee'] }
+                ]
+            },
+            'interview-coaching': {
+                title: 'Interview Coaching',
+                subtitle: 'Admission interview preparation',
+                icon: 'video',
+                description: 'Personalized coaching for university admission interviews with mock sessions and expert feedback to help you present your best self.',
+                stats: { improvement: '90%', successRate: 'Success Rate' },
+                plans: [
+                    { name: 'Basic', price: '$99', features: ['1 mock interview', 'Basic feedback', 'Question bank access', 'Tips & strategies'] },
+                    { name: 'Premium', price: '$199', features: ['3 mock interviews', 'Detailed feedback', 'Personalized coaching', 'Video recordings', 'Follow-up session'], popular: true },
+                    { name: 'Elite', price: '$349', features: ['5 mock interviews', 'Expert coaching', 'University-specific prep', 'Confidence building', 'Unlimited practice'] }
+                ]
+            },
+            'essay-editing': {
+                title: 'Essay Editing',
+                subtitle: 'Professional essay enhancement',
+                icon: 'edit',
+                description: 'Professional editing for personal statements and essays by experienced writers to help your application stand out from the competition.',
+                stats: { improvement: '95%', successRate: 'Satisfaction' },
+                plans: [
+                    { name: 'Basic', price: '$79', features: ['Grammar & spelling check', 'Basic structure review', 'Simple suggestions', '48-hour turnaround'] },
+                    { name: 'Premium', price: '$149', features: ['Comprehensive editing', 'Content enhancement', 'Multiple revisions', 'Expert feedback', '24-hour turnaround'], popular: true },
+                    { name: 'Elite', price: '$249', features: ['Complete rewrite support', 'Unlimited revisions', 'Strategy consultation', 'Rush delivery', 'Success guarantee'] }
+                ]
+            },
+            'airport-pickup': {
+                title: 'Airport Pickup Support',
+                subtitle: 'Arrival assistance services',
+                icon: 'car',
+                description: 'Safe and reliable airport pickup and initial housing support to help you settle into your new environment with confidence and ease.',
+                stats: { improvement: '100%', successRate: 'Reliability' },
+                plans: [
+                    { name: 'Basic', price: '$59', features: ['Airport pickup', 'Direct transport', 'Basic city orientation', 'Contact support'] },
+                    { name: 'Premium', price: '$99', features: ['Premium vehicle', 'City tour', 'Shopping assistance', 'University visit', 'Local SIM card'], popular: true },
+                    { name: 'Elite', price: '$149', features: ['Luxury transport', 'Full-day assistance', 'Bank account setup', 'Phone plan setup', 'Ongoing support'] }
+                ]
+            }
+        };
+
+        // Load service content based on URL parameter
+        function loadServiceContent() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const serviceType = urlParams.get('service') || 'sat-prep';
+            const service = serviceData[serviceType];
+            
+            if (service) {
+                // Update page title and meta
+                document.getElementById('page-title').textContent = service.title + ' - Student Services';
+                document.getElementById('service-title').textContent = service.title;
+                document.getElementById('service-subtitle').textContent = service.subtitle;
+                document.getElementById('service-description').textContent = service.description;
+                document.getElementById('service-icon').setAttribute('data-lucide', service.icon);
+                
+                // Update stats
+                document.querySelector('.text-4xl.font-bold.text-red-600').textContent = service.stats.improvement;
+                document.querySelector('.text-2xl.font-bold.text-gray-900').textContent = service.stats.successRate;
+                
+                // Update pricing plans
+                const planContainers = document.querySelectorAll('.border.border-gray-200.rounded-lg, .border-2.border-red-600.rounded-lg');
+                service.plans.forEach((plan, index) => {
+                    if (planContainers[index]) {
+                        const container = planContainers[index];
+                        container.querySelector('h3').textContent = plan.name;
+                        container.querySelector('.text-3xl.font-bold.text-red-600').textContent = plan.price;
+                        
+                        const featureList = container.querySelector('ul');
+                        featureList.innerHTML = plan.features.map(feature => 
+                            `<li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>${feature}</li>`
+                        ).join('');
+                        
+                        // Handle popular badge
+                        if (plan.popular) {
+                            container.classList.add('border-2', 'border-red-600');
+                            container.classList.remove('border', 'border-gray-200');
+                            if (!container.querySelector('.bg-red-600')) {
+                                const badge = document.createElement('div');
+                                badge.className = 'absolute -top-3 left-1/2 transform -translate-x-1/2';
+                                badge.innerHTML = '<span class="bg-red-600 text-white px-4 py-1 rounded-full text-sm font-medium">Most Popular</span>';
+                                container.style.position = 'relative';
+                                container.appendChild(badge);
+                            }
+                        }
+                    }
+                });
+                
+                // Reinitialize icons
+                lucide.createIcons();
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadServiceContent();
+        });
+    </script>
+</body>
+</html>

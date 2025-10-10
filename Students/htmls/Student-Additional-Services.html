@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Additional Services - Student Dashboard</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header with Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="Student-Dashboard.html" class="flex items-center">
+                        <img src="../../ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-4">
+                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Student</span>
+                    </a>
+                </div>
+
+                <!-- Navigation Menu -->
+                <nav class="hidden md:flex items-center space-x-3">
+                    <a href="Student-Dashboard.html"
+                        class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <i data-lucide="layout-dashboard" class="w-4 h-4 mr-2"></i>
+                        Dashboard
+                    </a>
+                    <a href="Student-product-page.html"
+                        class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <i data-lucide="package" class="w-4 h-4 mr-2"></i>
+                        Ellacy Program
+                    </a>
+                    <a href="Student-find-program.html"
+                        class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <i data-lucide="search" class="w-4 h-4 mr-2"></i>
+                        Find University
+                    </a>
+                    <a href="Student-favorites.html"
+                        class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <i data-lucide="heart" class="w-4 h-4 mr-2"></i>
+                        Favorites (4)
+                    </a>
+                    <a href="Student-my-application.html"
+                    class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                    <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
+                        My Applications (8)
+                    </a>
+                    <a href="Student-payment.html"
+                        class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
+                        Payment
+                    </a>
+                </nav>
+
+                <!-- Right Side -->
+                <div class="flex items-center space-x-4">
+                    <a href="Student-messages.html" class="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg" title="Messages">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </a>
+                    
+                    <button class="relative p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg" title="Notifications">
+                        <i data-lucide="bell" class="w-5 h-5"></i>
+                        <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                    </button>
+                    
+                    <!-- Profile Dropdown -->
+                    <div class="relative">
+                        <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-50 rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
+                                 alt="Profile" 
+                                 class="w-8 h-8 rounded-full object-cover">
+                        </button>
+                        
+                        <!-- Dropdown Menu -->
+                        <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                            <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
+                            </a>
+                            <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
+                            </a>
+                            <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Page Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">Additional Services</h1>
+            <p class="mt-2 text-gray-600">Comprehensive support services to enhance your study abroad journey</p>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- SAT Preparation -->
+            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer" onclick="window.location.href='Student-Service-SAT.html?service=sat-prep'">
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
+                        <i data-lucide="book-open" class="w-6 h-6 text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">SAT Preparation</h3>
+                    <p class="text-gray-600 text-sm mb-4">Comprehensive SAT prep courses with expert tutors and proven strategies.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-red-600 font-medium text-sm">From $299</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visa Preparation -->
+            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer" onclick="window.location.href='Student-Service-SAT.html?service=visa-prep'">
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
+                        <i data-lucide="file-text" class="w-6 h-6 text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Visa Preparation</h3>
+                    <p class="text-gray-600 text-sm mb-4">Expert guidance for your F-1 student visa application process.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-red-600 font-medium text-sm">From $199</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health Insurance -->
+            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer" onclick="window.location.href='Student-Service-SAT.html?service=health-insurance'">
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
+                        <i data-lucide="heart-pulse" class="w-6 h-6 text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Health Insurance</h3>
+                    <p class="text-gray-600 text-sm mb-4">Affordable health insurance plans for international students.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-red-600 font-medium text-sm">From $89/month</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accommodation -->
+            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer" onclick="window.location.href='Student-Service-SAT.html?service=accommodation'">
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
+                        <i data-lucide="home" class="w-6 h-6 text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Accommodation</h3>
+                    <p class="text-gray-600 text-sm mb-4">Find the perfect place to stay near your university campus.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-red-600 font-medium text-sm">From $450/month</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Application Review -->
+            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer" onclick="window.location.href='Student-Service-SAT.html?service=application-review'">
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
+                        <i data-lucide="search" class="w-6 h-6 text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Application Review</h3>
+                    <p class="text-gray-600 text-sm mb-4">Professional review of your university application materials.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-red-600 font-medium text-sm">From $149</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interview Coaching -->
+            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer" onclick="window.location.href='Student-Service-SAT.html?service=interview-coaching'">
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
+                        <i data-lucide="video" class="w-6 h-6 text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Interview Coaching</h3>
+                    <p class="text-gray-600 text-sm mb-4">Personalized coaching for university admission interviews.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-red-600 font-medium text-sm">From $99/session</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Essay Editing -->
+            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer" onclick="window.location.href='Student-Service-SAT.html?service=essay-editing'">
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
+                        <i data-lucide="edit" class="w-6 h-6 text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Essay Editing</h3>
+                    <p class="text-gray-600 text-sm mb-4">Professional editing for personal statements and essays.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-red-600 font-medium text-sm">From $79</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Housing & Airport Pickup -->
+            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer" onclick="window.location.href='Student-Service-SAT.html?service=airport-pickup'">
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
+                        <i data-lucide="car" class="w-6 h-6 text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Airport Pickup Support</h3>
+                    <p class="text-gray-600 text-sm mb-4">Safe and reliable airport pickup and initial housing support.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-red-600 font-medium text-sm">From $59</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Choose Our Services Section -->
+        <div class="mt-16 bg-white rounded-xl shadow-md p-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Why Choose Our Additional Services?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="award" class="w-8 h-8 text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Expert Guidance</h3>
+                    <p class="text-gray-600">Professional consultants with years of experience in international education.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="clock" class="w-8 h-8 text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">24/7 Support</h3>
+                    <p class="text-gray-600">Round-the-clock assistance whenever you need help with your journey.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Success Guarantee</h3>
+                    <p class="text-gray-600">Proven track record with high success rates and satisfied students.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Profile dropdown toggle and logout handler
+        document.addEventListener('DOMContentLoaded', function () {
+            const profileMenuBtn = document.getElementById('profile-menu');
+            const profileDropdown = document.getElementById('profile-dropdown');
+
+            if (profileMenuBtn && profileDropdown) {
+                // Toggle dropdown on profile button click
+                profileMenuBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    profileDropdown.classList.toggle('hidden');
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function () {
+                    if (!profileDropdown.classList.contains('hidden')) {
+                        profileDropdown.classList.add('hidden');
+                    }
+                });
+            }
+        });
+
+        function handleLogout() {
+            // Redirect to login page
+            window.location.href = '../../login.html';
+        }
+    </script>
+</body>
+</html>
