@@ -52,7 +52,7 @@
             </div>
 
             <nav class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center space-x-8">
-                <a href="University-Scholarship.html" class="text-gray-500 hover:text-gray-700 font-medium hover:border-b-2 hover:border-gray-300 pb-1">Scholarships</a>
+                <a href="University-Scholarship.html" class="text-gray-500 hover:text-gray-700 font-medium hover:border-b-2 hover:border-gray-300 pb-1">Programs</a>
                 <a href="University-Student.html" class="text-black hover:text-gray-700 font-medium border-b-2 border-red-600 pb-1">Student</a>
             </nav>
         </header>
@@ -133,19 +133,13 @@
                                     Student Email
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Class
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Cohort
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Major
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Source
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Matching Scholarship
+                                    Program
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Actions
@@ -213,14 +207,9 @@
                         <input type="email" id="editEmail" name="email" class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
                     </div>
                     <div>
-                        <label for="editClass" class="block text-sm font-medium text-gray-700">Class</label>
-                        <p id="modalClass" class="mt-1 text-gray-900">CS101</p>
-                        <input type="text" id="editClass" name="class" class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
-                    </div>
-                    <div>
-                        <label for="editCohort" class="block text-sm font-medium text-gray-700">Cohort</label>
-                        <p id="modalCohort" class="mt-1 text-gray-900">FTU K25</p>
-                        <input type="text" id="editCohort" name="cohort" class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
+                        <label for="editProgram" class="block text-sm font-medium text-gray-700">Program</label>
+                        <p id="modalProgram" class="mt-1 text-gray-900">1+3 Transfer Program</p>
+                        <input type="text" id="editProgram" name="program" class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
                     </div>
                     <div>
                         <label for="editMajor" class="block text-sm font-medium text-gray-700">Major</label>
@@ -262,21 +251,17 @@
 
         // Sample student data
         const students = [
-            { id: 1, name: 'Nguyen Van', email: 'nguyenvana@example.com', class: 'CS101', cohort: 'FTU K25', major: 'Computer Science', source: 'FTU', notes: 'Interested in AI and Machine Learning', scholarshipTypes: getRandomScholarshipTypes() },
-            { id: 2, name: 'Tran Thi', email: 'tranthib@example.com', class: 'BA201', cohort: 'FTU K24', major: 'Business Administration', source: 'FTU', notes: 'Scholarship applicant', scholarshipTypes: getRandomScholarshipTypes() },
-            { id: 3, name: 'Le Van', email: 'levanc@example.com', class: 'EN301', cohort: 'FTU K25', major: 'Engineering', source: 'FTU', notes: 'Transferred from another university', scholarshipTypes: getRandomScholarshipTypes() },
-            { id: 4, name: 'Pham Thi', email: 'phamthid@example.com', class: 'DS401', cohort: 'FTU K26', major: 'Data Science', source: 'FTU', notes: 'Has programming experience in Python', scholarshipTypes: getRandomScholarshipTypes() },
-            { id: 5, name: 'Hoang Van', email: 'hoangvane@example.com', class: 'FN501', cohort: 'FTU K23', major: 'Finance', source: 'FTU', notes: 'Looking for part-time opportunities', scholarshipTypes: getRandomScholarshipTypes() },
+            { id: 1, name: 'Nguyen Van', email: 'nguyenvana@example.com', major: 'Computer Science', source: 'FTU', program: '1+3 Transfer Program', notes: 'Interested in AI and Machine Learning', scholarshipType: getRandomScholarshipType() },
+            { id: 2, name: 'Tran Thi', email: 'tranthib@example.com', major: 'Business Administration', source: 'FTU', program: '2+2 Transfer Program', notes: 'Program applicant', scholarshipType: getRandomScholarshipType() },
+            { id: 3, name: 'Le Van', email: 'levanc@example.com', major: 'Engineering', source: 'FTU', program: 'Direct Admission Program', notes: 'Transferred from another university', scholarshipType: getRandomScholarshipType() },
+            { id: 4, name: 'Pham Thi', email: 'phamthid@example.com', major: 'Data Science', source: 'FTU', program: 'Joint MBA Program', notes: 'Has programming experience in Python', scholarshipType: getRandomScholarshipType() },
+            { id: 5, name: 'Hoang Van', email: 'hoangvane@example.com', major: 'Finance', source: 'FTU', program: '1+3 Transfer Program', notes: 'Looking for part-time opportunities', scholarshipType: getRandomScholarshipType() },
         ];
 
-        // Function to generate random scholarship types
-        function getRandomScholarshipTypes() {
-            const types = ['1+3 Scholarship', '2+2 Scholarship', 'Joint MBA Scholarship'];
-            const selected = [];
-            // Randomly select 1-3 scholarship types
-            const count = Math.floor(Math.random() * 3) + 1;
-            const shuffled = [...types].sort(() => 0.5 - Math.random());
-            return shuffled.slice(0, count);
+        // Function to generate random scholarship type (single)
+        function getRandomScholarshipType() {
+            const types = ['1+3 Program', '2+2 Program', 'Joint MBA Program'];
+            return types[Math.floor(Math.random() * types.length)];
         }
 
         // DOM Elements
@@ -313,7 +298,7 @@
             if (studentsToRender.length === 0) {
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td colspan="8" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                    <td colspan="6" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
                         No students found matching your criteria.
                     </td>
                 `;
@@ -336,14 +321,6 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         ${student.email}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-50 text-black border border-red-200">
-                            ${student.class}
-                        </span>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        ${student.cohort}
-                    </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         ${student.major}
                     </td>
@@ -351,13 +328,9 @@
                         ${student.source}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="flex flex-wrap gap-1">
-                            ${student.scholarshipTypes.map(type => 
-                                `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getScholarshipTypeClass(type)}">
-                                    ${type}
-                                </span>`
-                            ).join('')}
-                        </div>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getScholarshipTypeClass(student.scholarshipType)}">
+                            ${student.scholarshipType}
+                        </span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <div class="flex items-center justify-end space-x-2">
@@ -430,8 +403,7 @@
             // Set values in view mode
             document.getElementById('modalName').textContent = student.name;
             document.getElementById('modalEmail').textContent = student.email;
-            document.getElementById('modalClass').textContent = student.class;
-            document.getElementById('modalCohort').textContent = student.cohort;
+            document.getElementById('modalProgram').textContent = student.program;
             document.getElementById('modalMajor').textContent = student.major;
             document.getElementById('modalSource').textContent = student.source;
             document.getElementById('modalNotes').textContent = student.notes || 'No additional notes available.';
@@ -439,8 +411,7 @@
             // Set values in edit fields
             document.getElementById('editName').value = student.name;
             document.getElementById('editEmail').value = student.email;
-            document.getElementById('editClass').value = student.class;
-            document.getElementById('editCohort').value = student.cohort;
+            document.getElementById('editProgram').value = student.program;
             document.getElementById('editMajor').value = student.major;
             document.getElementById('editSource').value = student.source;
             document.getElementById('editNotes').value = student.notes || '';
@@ -493,8 +464,7 @@
                 ...currentStudent,
                 name: document.getElementById('editName').value,
                 email: document.getElementById('editEmail').value,
-                class: document.getElementById('editClass').value,
-                cohort: document.getElementById('editCohort').value,
+                program: document.getElementById('editProgram').value,
                 major: document.getElementById('editMajor').value,
                 source: document.getElementById('editSource').value,
                 notes: document.getElementById('editNotes').value
@@ -522,10 +492,9 @@
                 
                 // Update other cells as needed
                 const cells = row.querySelectorAll('td');
-                if (cells[1]) cells[1].textContent = updatedStudent.class;
-                if (cells[2]) cells[2].textContent = updatedStudent.cohort;
-                if (cells[3]) cells[3].textContent = updatedStudent.major;
-                if (cells[4]) cells[4].textContent = updatedStudent.source;
+                if (cells[1]) cells[1].textContent = updatedStudent.email;
+                if (cells[2]) cells[2].textContent = updatedStudent.major;
+                if (cells[3]) cells[3].textContent = updatedStudent.source;
             }
         }
         
@@ -649,9 +618,9 @@
         // Add this function to get different colors for different scholarship types
         function getScholarshipTypeClass(type) {
             const classes = {
-                '1+3 Scholarship': 'bg-red-600 text-white border border-red-700',
-                '2+2 Scholarship': 'bg-white text-red-600 border border-red-600',
-                'Joint MBA Scholarship': 'bg-black text-white border border-gray-800'
+                '1+3 Program': 'bg-red-600 text-white border border-red-700',
+                '2+2 Program': 'bg-white text-red-600 border border-red-600',
+                'Joint MBA Program': 'bg-black text-white border border-gray-800'
             };
             return classes[type] || 'bg-gray-100 text-gray-800';
         }

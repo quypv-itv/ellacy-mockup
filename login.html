@@ -45,6 +45,7 @@
         <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-2 mb-6">
             <div class="flex justify-center space-x-2" role="group">
                 <button type="button" class="flex-1 px-4 py-2 text-sm font-medium rounded-xl text-white" id="student-role" style="background-color: #d82128;">Student</button>
+                <button type="button" class="flex-1 px-4 py-2 text-sm font-medium rounded-xl text-black hover:bg-gray-100" id="student-joint-role">Student (Joint Program)</button>
                 <button type="button" class="flex-1 px-4 py-2 text-sm font-medium rounded-xl text-black hover:bg-gray-100" id="agent-role">Agent</button>
                 <button type="button" class="flex-1 px-4 py-2 text-sm font-medium rounded-xl text-black hover:bg-gray-100" id="admin-role">Admin</button>
                 <button type="button" class="flex-1 px-4 py-2 text-sm font-medium rounded-xl text-black hover:bg-gray-100" id="university-role">University</button>
@@ -161,6 +162,7 @@
         function handleLogin(event) {
             event.preventDefault();
             const studentRole = document.getElementById('student-role');
+            const studentJointRole = document.getElementById('student-joint-role');
             const agentRole = document.getElementById('agent-role');
             const adminRole = document.getElementById('admin-role');
             const universityRole = document.getElementById('university-role');
@@ -168,6 +170,8 @@
             // Redirect based on selected role
             if (studentRole.style.backgroundColor === 'rgb(237, 34, 23)' || studentRole.classList.contains('text-white')) {
                 window.location.href = 'Students/htmls/Student-Dashboard.html';
+            } else if (studentJointRole.style.backgroundColor === 'rgb(237, 34, 23)' || studentJointRole.classList.contains('text-white')) {
+                window.location.href = 'Students/htmls/Student-Dashboard-Joint-Program.html';
             } else if (agentRole.style.backgroundColor === 'rgb(237, 34, 23)' || agentRole.classList.contains('text-white')) {
                 window.location.href = 'Agency/html/Agency-dashboard.html';
             } else if (adminRole.style.backgroundColor === 'rgb(237, 34, 23)' || adminRole.classList.contains('text-white')) {
@@ -179,6 +183,7 @@
 
         // Role selection handling
         const studentRole = document.getElementById('student-role');
+        const studentJointRole = document.getElementById('student-joint-role');
         const agentRole = document.getElementById('agent-role');
         const adminRole = document.getElementById('admin-role');
         const universityRole = document.getElementById('university-role');
@@ -186,7 +191,7 @@
 
         function setActiveRole(activeButton) {
             // Reset all buttons
-            [studentRole, agentRole, adminRole, universityRole].forEach(btn => {
+            [studentRole, studentJointRole, agentRole, adminRole, universityRole].forEach(btn => {
                 btn.classList.remove('text-white');
                 btn.classList.add('text-black', 'hover:bg-gray-100');
                 btn.style.backgroundColor = '';
@@ -202,6 +207,7 @@
         }
 
         studentRole.addEventListener('click', () => setActiveRole(studentRole));
+        studentJointRole.addEventListener('click', () => setActiveRole(studentJointRole));
         agentRole.addEventListener('click', () => setActiveRole(agentRole));
         adminRole.addEventListener('click', () => setActiveRole(adminRole));
         universityRole.addEventListener('click', () => setActiveRole(universityRole));

@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APPLYLEAD - Student Dashboard</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(to right top, #EDE5D6, #9ED5C5, #ffffff);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Main Content -->
+    <div class="min-h-screen">
+        <!-- Header with Navigation -->
+        <header class="bg-white shadow-sm">
+            <div class="px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <a href="Student-Dashboard.html" class="flex items-center">
+                            <img src="../../ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-4">
+                            <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Student</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Navigation Menu -->
+                    <nav class="flex items-center space-x-3">
+                        <a href="Student-Dashboard.html" class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="layout-dashboard" class="w-4 h-4 mr-2"></i>
+                            Dashboard
+                        </a>
+                        <!--<a href="Student-product-page.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="package" class="w-4 h-4 mr-2"></i>
+                            Ellacy Program
+                        </a>
+                        <a href="Student-find-program.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="search" class="w-4 h-4 mr-2"></i>
+                            Find University                        </a>
+                        <a href="Student-favorites.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="heart" class="w-4 h-4 mr-2"></i>
+                            Favorites (4)
+                        </a>-->
+                        <a href="Student-my-application.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
+                            My Applications (8)
+                        </a>
+                        <a href="Student-payment.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
+                            Payment
+                        </a>
+                    </nav>
+                    
+                    <!-- Right Side -->
+                    <div class="flex items-center space-x-4">
+                        <a href="Student-messages.html" class="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg" title="Messages">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </a>
+                        
+                        <button class="relative">
+                            <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
+                            <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                        </button>
+                        <!-- Profile Dropdown -->
+                        <div class="relative">
+                            <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
+                                     alt="Profile" 
+                                     class="w-8 h-8 rounded-full object-cover">
+                            </button>
+                            
+                            <!-- Dropdown Menu -->
+                            <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                                <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
+                                </a>
+                                <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
+                                </a>
+                                <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- Dashboard Content -->
+        <main class="p-6 relative">
+            <!-- Vietnamese University Watermark Background -->
+            <div class="fixed inset-0 pointer-events-none z-0 opacity-5">
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <img src="../../tiffin-university-logo.png" alt="Partner University" class="w-96 h-96 object-contain">
+                </div>
+            </div>
+
+            <!-- Student Program Summary Header -->
+            <div class="bg-gradient-to-r from-red-800 to-black rounded-3xl shadow-lg p-8 mb-8 text-white relative z-10">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                    <div class="mb-4 md:mb-0">
+                        <h1 class="text-3xl font-bold mb-2">Welcome, Nguyen Van</h1>
+                        <p class="text-red-100 text-lg">Joint Program Student</p>
+                        <div class="flex items-center mt-3">
+                            <div class="bg-white bg-opacity-20 rounded-full px-4 py-2 mr-3">
+                                <span class="text-sm font-medium">Current Program: 1+3 Transfer</span>
+                            </div>
+                            <div class="bg-white bg-opacity-20 rounded-full px-4 py-2">
+                                <span class="text-sm font-medium">Partner: FTU Vietnam</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="bg-white bg-opacity-10 rounded-xl p-4">
+                            <p class="text-red-100 text-sm">Academic Year</p>
+                            <p class="text-2xl font-bold">2024-2025</p>
+                            <p class="text-red-100 text-sm mt-1">Year 2 of 4</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program Information Section -->
+            <div class="bg-white rounded-3xl shadow-lg p-8 mb-8 relative z-10">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-900">Transfer Programs (1+3 & 2+2)</h2>
+                    <div class="flex bg-gray-100 rounded-lg p-1">
+                        <button class="program-tab px-4 py-2 rounded-md text-sm font-medium bg-red-600 text-white" onclick="switchTab('1plus3')">
+                            1+3 Program
+                        </button>
+                        <button class="program-tab px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900" onclick="switchTab('2plus2')">
+                            2+2 Program
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 1+3 Program Content -->
+                <div id="program-1plus3" class="program-content">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Program Explanation -->
+                        <div class="space-y-6">
+                            <div class="bg-red-50 rounded-xl p-6 border border-red-100">
+                                <h3 class="text-lg font-semibold text-red-800 mb-4">What is 1+3 Program?</h3>
+                                <p class="text-sm text-red-700 mb-4">
+                                    The 1+3 Transfer Program allows students to complete their first year of university studies in Vietnam, 
+                                    then transfer to complete the remaining 3 years at a partner university abroad.
+                                </p>
+                                <ul class="space-y-3 text-sm text-red-700">
+                                    <li class="flex items-start">
+                                        <i data-lucide="check-circle" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0"></i>
+                                        <span><strong>Year 1:</strong> Foundation studies in Vietnam with English preparation</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i data-lucide="check-circle" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0"></i>
+                                        <span><strong>Years 2-4:</strong> Complete bachelor's degree at international university</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i data-lucide="check-circle" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0"></i>
+                                        <span><strong>Credits:</strong> All Vietnamese credits transfer seamlessly</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                                <h3 class="text-lg font-semibold text-black mb-4">Why Choose 1+3 Program?</h3>
+                                <ul class="space-y-3 text-sm text-gray-700">
+                                    <li class="flex items-start">
+                                        <i data-lucide="dollar-sign" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0 text-red-600"></i>
+                                        <span><strong>Cost Effective:</strong> Save significantly on first-year tuition and living costs</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i data-lucide="home" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0 text-red-600"></i>
+                                        <span><strong>Gradual Transition:</strong> Adjust to international education while staying close to family</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i data-lucide="book-open" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0 text-red-600"></i>
+                                        <span><strong>Language Preparation:</strong> Intensive English training before going abroad</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i data-lucide="users" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0 text-red-600"></i>
+                                        <span><strong>Support Network:</strong> Travel with Vietnamese classmates for mutual support</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Current University -->
+                        <div>
+                            <div class="border rounded-xl p-6 border-red-200 bg-red-50">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="text-xl font-bold text-gray-900">ASU - Angelo State University</h4>
+                                    <span class="text-xs bg-red-600 text-white px-3 py-1 rounded-full">Current Program</span>
+                                </div>
+                                <div class="space-y-3 mb-6">
+                                    <p class="text-sm text-gray-600"><strong>Location:</strong> San Angelo, Texas, USA</p>
+                                    <p class="text-sm text-gray-600"><strong>Your Major:</strong> Business Administration</p>
+                                    <p class="text-sm text-gray-600"><strong>Program Duration:</strong> 3 years remaining (2025-2028)</p>
+                                    <p class="text-sm text-gray-600"><strong>Estimated Total Cost:</strong> $28,000/year (tuition + living)</p>
+                                </div>
+                                
+                                <div class="bg-white rounded-lg p-4 mb-4">
+                                    <h5 class="font-medium text-gray-900 mb-2">Program Highlights:</h5>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Affordable tuition with excellent value</li>
+                                        <li>• Strong business and agriculture programs</li>
+                                        <li>• Small town environment with personal attention</li>
+                                        <li>• Dedicated international student services</li>
+                                    </ul>
+                                </div>
+
+                                <button class="w-full bg-red-600 text-white py-3 px-4 rounded-lg text-sm hover:bg-red-700 transition-colors font-medium" onclick="showProgramDetails('1plus3')">
+                                    View Detailed Program Information
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2+2 Program Content -->
+                <div id="program-2plus2" class="program-content hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Program Explanation -->
+                        <div class="space-y-6">
+                            <div class="bg-red-50 rounded-xl p-6 border border-red-100">
+                                <h3 class="text-lg font-semibold text-red-800 mb-4">What is 2+2 Program?</h3>
+                                <p class="text-sm text-red-700 mb-4">
+                                    The 2+2 Transfer Program allows students to complete their first two years of university studies in Vietnam, 
+                                    then transfer to complete the final 2 years at a partner university abroad.
+                                </p>
+                                <ul class="space-y-3 text-sm text-red-700">
+                                    <li class="flex items-start">
+                                        <i data-lucide="check-circle" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0"></i>
+                                        <span><strong>Years 1-2:</strong> Core curriculum and major prerequisites in Vietnam</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i data-lucide="check-circle" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0"></i>
+                                        <span><strong>Years 3-4:</strong> Advanced major courses at international university</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i data-lucide="check-circle" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0"></i>
+                                        <span><strong>Credits:</strong> 60+ credits transfer with advanced standing</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                                <h3 class="text-lg font-semibold text-black mb-4">Why Choose 2+2 Program?</h3>
+                                <ul class="space-y-3 text-sm text-gray-700">
+                                    <li class="flex items-start">
+                                        <i data-lucide="piggy-bank" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0 text-red-600"></i>
+                                        <span><strong>Maximum Savings:</strong> Save up to 50% of total education costs</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i data-lucide="graduation-cap" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0 text-red-600"></i>
+                                        <span><strong>Academic Maturity:</strong> Build strong foundation before international study</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i data-lucide="globe" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0 text-red-600"></i>
+                                        <span><strong>Cultural Readiness:</strong> More time to prepare for cultural adaptation</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i data-lucide="target" class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0 text-red-600"></i>
+                                        <span><strong>Focused Study:</strong> Concentrate on advanced major courses abroad</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Current University -->
+                        <div>
+                            <div class="border rounded-xl p-6 border-red-200 bg-red-50">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="text-xl font-bold text-gray-900">ASU - Angelo State University</h4>
+                                    <span class="text-xs bg-red-600 text-white px-3 py-1 rounded-full">Available Option</span>
+                                </div>
+                                <div class="space-y-3 mb-6">
+                                    <p class="text-sm text-gray-600"><strong>Vietnam Phase:</strong> Foreign Trade University (FTU)</p>
+                                    <p class="text-sm text-gray-600"><strong>International Phase:</strong> Angelo State University, Texas</p>
+                                    <p class="text-sm text-gray-600"><strong>Available Majors:</strong> Business, Agriculture, Computer Science</p>
+                                    <p class="text-sm text-gray-600"><strong>Program Duration:</strong> 2 years Vietnam + 2 years at ASU</p>
+                                </div>
+                                
+                                <div class="bg-white rounded-lg p-4 mb-4">
+                                    <h5 class="font-medium text-gray-900 mb-2">ASU Program Benefits:</h5>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Affordable tuition rates in Texas</li>
+                                        <li>• Strong agricultural and business programs</li>
+                                        <li>• Small class sizes with personal attention</li>
+                                        <li>• Excellent job placement in Texas region</li>
+                                    </ul>
+                                </div>
+
+                                <button class="w-full border border-red-600 text-red-600 hover:bg-red-600 hover:text-white py-3 px-4 rounded-lg text-sm transition-colors font-medium" onclick="showProgramDetails('2plus2')">
+                                    Explore 2+2 Program Options
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JMBA Program Section -->
+            <div class="bg-gradient-to-r from-black to-gray-800 rounded-3xl shadow-lg p-8 mb-8 text-white relative z-10">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center">
+                        <div class="bg-red-600 rounded-full p-3 mr-4">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold">Joint MBA Program</h2>
+                            <p class="text-gray-300">Executive & Fast-Track Options</p>
+                        </div>
+                    </div>
+                    <div class="bg-white bg-opacity-10 rounded-lg px-4 py-2">
+                        <span class="text-sm font-medium">Premium Program</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Fast-Track Joint MBA -->
+                    <div class="bg-white bg-opacity-10 rounded-xl p-6">
+                        <div class="flex items-center mb-4">
+                            <i data-lucide="zap" class="w-5 h-5 text-red-400 mr-2"></i>
+                            <h3 class="text-xl font-semibold">Fast-Track Joint MBA</h3>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-300 mb-6">
+                            <li class="flex items-center">
+                                <i data-lucide="clock" class="w-4 h-4 mr-2 text-red-400"></i>
+                                18-month accelerated program
+                            </li>
+                            <li class="flex items-center">
+                                <i data-lucide="globe" class="w-4 h-4 mr-2 text-red-400"></i>
+                                Vietnam + International campus
+                            </li>
+                            <li class="flex items-center">
+                                <i data-lucide="users" class="w-4 h-4 mr-2 text-red-400"></i>
+                                Small cohort (max 25 students)
+                            </li>
+                            <li class="flex items-center">
+                                <i data-lucide="briefcase" class="w-4 h-4 mr-2 text-red-400"></i>
+                                Industry partnerships
+                            </li>
+                        </ul>
+                        <button onclick="showMBADetails('fast-track')" class="w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                            Learn More
+                        </button>
+                    </div>
+
+                    <!-- Executive Joint MBA -->
+                    <div class="bg-white bg-opacity-10 rounded-xl p-6">
+                        <div class="flex items-center mb-4">
+                            <i data-lucide="crown" class="w-5 h-5 text-red-400 mr-2"></i>
+                            <h3 class="text-xl font-semibold">Executive Joint MBA</h3>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-300 mb-6">
+                            <li class="flex items-center">
+                                <i data-lucide="calendar" class="w-4 h-4 mr-2 text-red-400"></i>
+                                24-month executive format
+                            </li>
+                            <li class="flex items-center">
+                                <i data-lucide="laptop" class="w-4 h-4 mr-2 text-red-400"></i>
+                                Weekend & online classes
+                            </li>
+                            <li class="flex items-center">
+                                <i data-lucide="trending-up" class="w-4 h-4 mr-2 text-red-400"></i>
+                                For working professionals
+                            </li>
+                            <li class="flex items-center">
+                                <i data-lucide="award" class="w-4 h-4 mr-2 text-red-400"></i>
+                                Dual degree certification
+                            </li>
+                        </ul>
+                        <button onclick="showMBADetails('executive')" class="w-full border border-red-400 text-red-400 hover:bg-red-400 hover:text-white py-3 px-4 rounded-lg font-medium transition-colors">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- University Applications Section -->
+            <div class="bg-white rounded-3xl shadow-md p-6 mb-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-gray-900">My University Applications</h2>
+                </div>
+                
+                <!-- Table -->
+                <div class="overflow-x-auto">
+                    <!-- Table Header -->
+                    <div class="min-w-full">
+                        <div class="grid grid-cols-12 gap-4 font-medium text-gray-700 border-b pb-3 mb-3">
+                            <div class="col-span-5">My University</div>
+                            <div class="col-span-4">Application Status</div>
+                            <div class="col-span-3 text-right">Required Action</div>
+                        </div>
+                        
+                        <!-- Table Rows -->
+                        <div class="space-y-3">
+                            <!-- Row 1 -->
+                            <div class="grid grid-cols-12 gap-4 items-center py-3 border-b hover:bg-gray-50">
+                                <div class="col-span-5 font-medium">University of Saskatchewan</div>
+                                <div class="col-span-4">
+                                    <span class="px-3 py-1 bg-red-100 text-red-800 text-xs font-medium rounded-full">Initial Advising</span>
+                                </div>
+                                <div class="col-span-3 text-right">
+                                    <a href="Student-my-application-details.html" class="inline-block bg-red-600 hover:bg-red-700 text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors">Complete Profile</a>
+                                </div>
+                            </div>
+
+                            <!-- Row 2 -->
+                            <div class="grid grid-cols-12 gap-4 items-center py-3 border-b hover:bg-gray-50">
+                                <div class="col-span-5 font-medium">University of Toronto</div>
+                                <div class="col-span-4">
+                                    <span class="px-3 py-1 bg-red-100 text-red-800 text-xs font-medium rounded-full">Application In Progress</span>
+                                </div>
+                                <div class="col-span-3 text-right">
+                                    <a href="Student-my-application-details.html" class="inline-block bg-red-600 hover:bg-red-700 text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors">Upload Required Documents</a>
+                                </div>
+                            </div>
+
+                            <!-- Row 3 -->
+                            <div class="grid grid-cols-12 gap-4 items-center py-3 border-b hover:bg-gray-50">
+                                <div class="col-span-5 font-medium">McGill University</div>
+                                <div class="col-span-4">
+                                    <span class="px-3 py-1 bg-red-100 text-red-800 text-xs font-medium rounded-full">Visa Application</span>
+                                </div>
+                                <div class="col-span-3 text-right">
+                                    <a href="Student-my-application-details.html" class="inline-block bg-red-600 hover:bg-red-700 text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors">Complete DS-160 Form</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Empty State (hidden by default) -->
+                <div id="no-applications" class="hidden text-center py-12">
+                    <div class="max-w-md mx-auto">
+                        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="university" class="w-8 h-8 text-gray-400"></i>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">No applications yet</h3>
+                        <p class="text-gray-500 mb-6">Start your journey by applying to universities or tracking your existing applications.</p>
+                        <button class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors">
+                            Apply Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section with Two Equal Columns -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Left Column - 50% width -->
+                <div class="space-y-6">
+                    <!-- My Advisors -->
+                    <div class="bg-white rounded-3xl shadow-md p-6">
+                        <h3 class="text-lg font-semibold mb-4">My Advisors</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4 p-4 border rounded-xl hover:shadow-md transition-shadow">
+                                <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                                    <i data-lucide="user" class="w-6 h-6 text-gray-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-medium">Sarah Johnson</h4>
+                                    <p class="text-sm text-gray-600">Academic Advisor</p>
+                                    <p class="text-xs text-gray-500">Available: Mon-Fri 9AM-5PM</p>
+                                </div>
+                                <a href="Student-messages.html" class="text-red-600 hover:text-red-700 text-sm font-medium">
+                                    <i data-lucide="message-circle" class="w-4 h-4 inline mr-1"></i>
+                                    Message
+                                </a>
+                            </div>
+                            <div class="flex items-center space-x-4 p-4 border rounded-xl hover:shadow-md transition-shadow">
+                                <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                                    <i data-lucide="user" class="w-6 h-6 text-gray-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-medium">Michael Chen</h4>
+                                    <p class="text-sm text-gray-600">Visa Consultant</p>
+                                    <p class="text-xs text-gray-500">Available: Tue-Thu 10AM-4PM</p>
+                                </div>
+                                <a href="Student-messages.html" class="text-red-600 hover:text-red-700 text-sm font-medium">
+                                    <i data-lucide="message-circle" class="w-4 h-4 inline mr-1"></i>
+                                    Message
+                                </a>
+                            </div>
+                            <div class="flex items-center space-x-4 p-4 border rounded-xl hover:shadow-md transition-shadow">
+                                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                    <i data-lucide="award" class="w-6 h-6 text-purple-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-medium">Dr. Robert Taylor</h4>
+                                    <p class="text-sm text-gray-600">Senior Academic Advisor</p>
+                                    <p class="text-xs text-gray-500">Available: Mon-Wed-Fri 10AM-3PM</p>
+                                </div>
+                                <a href="Student-messages.html" class="text-red-600 hover:text-red-700 text-sm font-medium">
+                                    <i data-lucide="message-circle" class="w-4 h-4 inline mr-1"></i>
+                                    Message
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - 50% width -->
+                <div class="space-y-6">
+                    <!-- Profile Completion -->
+                    <div class="bg-white rounded-3xl shadow-md p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold">Profile Completion</h3>
+                            <a href="Student-profile.html" class="px-3 py-1.5 border border-red-600 text-red-600 hover:bg-red-50 rounded-lg text-sm font-medium flex items-center transition-colors">
+                                <span>View Profile</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </a>
+                        </div>
+                        <div class="space-y-4">
+                            <!-- Student Profile -->
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-sm font-medium text-gray-700">Student Profile</span>
+                                    <span class="text-sm font-medium text-red-600">85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-red-500 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Education Background -->
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-sm font-medium text-gray-700">Education Background</span>
+                                    <span class="text-sm font-medium text-red-600">100%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-red-500 h-2 rounded-full" style="width: 100%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Visa Background -->
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-sm font-medium text-gray-700">Visa Background</span>
+                                    <span class="text-sm font-medium text-red-600">60%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-red-500 h-2 rounded-full" style="width: 60%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Family Background -->
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-sm font-medium text-gray-700">Family Background</span>
+                                    <span class="text-sm font-medium text-red-600">30%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-red-500 h-2 rounded-full" style="width: 30%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Payments -->
+                    <div class="bg-white rounded-3xl shadow-md p-6">
+                        <h3 class="text-lg font-semibold mb-4">Upcoming Payments</h3>
+                        <div class="space-y-4">
+                            <div class="border rounded-xl p-4">
+                                <div class="flex justify-between">
+                                    <div>
+                                        <p class="text-sm font-medium">Application Fee</p>
+                                        <p class="text-xs text-gray-600">Due: March 15, 2025</p>
+                                    </div>
+                                    <p class="text-sm font-semibold">$150.00</p>
+                                </div>
+                                <a href="Student-payment.html" class="mt-2 w-auto bg-red-600 hover:bg-red-700 text-white py-1.5 px-3 rounded-lg text-xs font-medium transition-colors ml-auto inline-block">
+                                    Upload Receipt
+                                </a>
+                                <p class="mt-2 text-xs text-center text-gray-500 italic">We'll verify your payment within 24 hours</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Program Details Popup -->
+        <div id="program-popup" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="p-8">
+                    <!-- Popup Header -->
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 id="popup-title" class="text-2xl font-bold text-gray-900"></h2>
+                        <button onclick="closeProgramDetails()" class="text-gray-400 hover:text-gray-600 transition-colors">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+
+                    <!-- Popup Content -->
+                    <div id="popup-content" class="space-y-6">
+                        <!-- Content will be dynamically loaded -->
+                    </div>
+
+                    <!-- Popup Footer -->
+                    <!--<div class="flex justify-end space-x-4 mt-8 pt-6 border-t">
+                        <button onclick="closeProgramDetails()" class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+                            Close
+                        </button>
+                        <button class="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
+                            Apply Now
+                        </button>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Assistant Chat Panel -->
+    <div id="aiChatOverlay" class="fixed z-50 hidden">
+        <div class="fixed bottom-0 left-0 right-0 md:right-6 md:bottom-6 md:left-auto md:w-96 bg-white rounded-t-3xl md:rounded-3xl shadow-2xl transform transition-transform duration-300 translate-y-full" id="aiChatPanel">
+            <!-- Chat Header -->
+            <div class="flex items-center justify-between p-4 border-b border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background-color: #FEE2E2;">
+                        <i data-lucide="bot" class="w-5 h-5" style="color: #d82128;"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900">AI Assistant</h3>
+                        <p class="text-sm text-green-600">Online</p>
+                    </div>
+                </div>
+                <button id="closeChatBtn" class="p-2 hover:bg-gray-100 rounded-full">
+                    <i data-lucide="x" class="w-5 h-5 text-gray-500"></i>
+                </button>
+            </div>
+
+            <!-- Chat Messages -->
+            <div class="h-96 overflow-y-auto p-4 space-y-4" id="chatMessages">
+                <div class="flex items-start space-x-3">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: #FEE2E2;">
+                        <i data-lucide="bot" class="w-4 h-4" style="color: #d82128;"></i>
+                    </div>
+                    <div class="bg-gray-100 rounded-2xl rounded-tl-md p-3 max-w-xs">
+                        <p class="text-sm text-gray-800">Hi! I'm your AI Assistant. I can help you with:</p>
+                        <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                            <li>• Finding scholarships</li>
+                            <li>• Application guidance</li>
+                            <li>• Document preparation</li>
+                            <li>• General questions</li>
+                        </ul>
+                        <p class="text-sm text-gray-800 mt-2">How can I assist you today?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Input -->
+            <div class="p-4 border-t border-gray-200">
+                <div class="flex items-center space-x-2">
+                    <input type="text" id="chatInput" placeholder="Type your message..." class="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:border-transparent" style="--tw-ring-color: #d82128;">
+                    <button id="sendMessageBtn" class="text-white rounded-full p-2 transition-colors" style="background-color: #d82128;" onmouseover="this.style.backgroundColor='#d82128'" onmouseout="this.style.backgroundColor='#d82128'">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Handle logout
+        function handleLogout() {
+            window.location.href = '../../login.html';
+        }
+
+        // Profile Dropdown Toggle
+        const profileMenu = document.getElementById('profile-menu');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileMenu.addEventListener('click', () => {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!profileMenu.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // AI Assistant Chat Functionality
+        const aiButton = document.getElementById('aiAssistantButton');
+        const chatOverlay = document.getElementById('aiChatOverlay');
+        const chatPanel = document.getElementById('aiChatPanel');
+        const closeChatBtn = document.getElementById('closeChatBtn');
+        const chatInput = document.getElementById('chatInput');
+        const sendMessageBtn = document.getElementById('sendMessageBtn');
+        const chatMessages = document.getElementById('chatMessages');
+
+        // Open chat
+        aiButton.addEventListener('click', function() {
+            chatOverlay.classList.remove('hidden');
+            setTimeout(() => {
+                chatPanel.classList.remove('translate-y-full');
+            }, 10);
+            chatInput.focus();
+        });
+
+        // Close chat
+        function closeChat() {
+            chatPanel.classList.add('translate-y-full');
+            setTimeout(() => {
+                chatOverlay.classList.add('hidden');
+            }, 300);
+        }
+
+        closeChatBtn.addEventListener('click', closeChat);
+        chatOverlay.addEventListener('click', function(e) {
+            if (e.target === chatOverlay) {
+                closeChat();
+            }
+        });
+
+        // Send message
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            // Add user message
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.className = 'flex items-start space-x-3 justify-end';
+            userMessageDiv.innerHTML = `
+                <div class="text-white rounded-2xl rounded-tr-md p-3 max-w-xs" style="background-color: #d82128;">
+                    <p class="text-sm">${message}</p>
+                </div>
+                <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="user" class="w-4 h-4 text-gray-600"></i>
+                </div>
+            `;
+            chatMessages.appendChild(userMessageDiv);
+
+            // Clear input
+            chatInput.value = '';
+
+            // Simulate AI response
+            setTimeout(() => {
+                const aiMessageDiv = document.createElement('div');
+                aiMessageDiv.className = 'flex items-start space-x-3';
+                aiMessageDiv.innerHTML = `
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: #FEE2E2;">
+                        <i data-lucide="bot" class="w-4 h-4" style="color: #d82128;"></i>
+                    </div>
+                    <div class="bg-gray-100 rounded-2xl rounded-tl-md p-3 max-w-xs">
+                        <p class="text-sm text-gray-800">I understand you're asking about "${message}". This is a demo response. In a real implementation, I would provide helpful guidance based on your specific needs.</p>
+                    </div>
+                `;
+                chatMessages.appendChild(aiMessageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                lucide.createIcons();
+            }, 1000);
+
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            lucide.createIcons();
+        }
+
+        sendMessageBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Simple tab switching functions
+        function switchTab(program) {
+            // Hide all content
+            document.getElementById('program-1plus3').classList.add('hidden');
+            document.getElementById('program-2plus2').classList.add('hidden');
+            
+            // Show selected content
+            document.getElementById('program-' + program).classList.remove('hidden');
+            
+            // Update tab styles
+            const tabs = document.querySelectorAll('.program-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-red-600', 'text-white');
+                tab.classList.add('text-gray-600', 'hover:text-gray-900');
+            });
+            
+            // Style active tab
+            event.target.classList.remove('text-gray-600', 'hover:text-gray-900');
+            event.target.classList.add('bg-red-600', 'text-white');
+        }
+
+        // Program Details Popup Functions
+        function showProgramDetails(programType) {
+            const popup = document.getElementById('program-popup');
+            const title = document.getElementById('popup-title');
+            const content = document.getElementById('popup-content');
+            
+            if (programType === '1plus3') {
+                title.textContent = 'ASU 1+3 Program - Detailed Information';
+                content.innerHTML = `
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div class="bg-red-50 rounded-xl p-6">
+                                <h3 class="text-lg font-semibold text-red-800 mb-4">Program Structure</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">1</div>
+                                        <div>
+                                            <h4 class="font-medium">Year 1 - Vietnam</h4>
+                                            <p class="text-sm text-gray-600">Foundation courses, English preparation, and general education requirements at FTU Vietnam.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <div class="bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">2-4</div>
+                                        <div>
+                                            <h4 class="font-medium">Years 2-4 - Angelo State University</h4>
+                                            <p class="text-sm text-gray-600">Complete your major coursework and graduate with a full ASU degree in San Angelo, Texas.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50 rounded-xl p-6">
+                                <h3 class="text-lg font-semibold mb-4">Academic Requirements</h3>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-red-600 mr-2"></i>Minimum GPA: 2.5 in Vietnam</li>
+                                    <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-red-600 mr-2"></i>TOEFL: 79 iBT or IELTS: 6.0</li>
+                                    <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-red-600 mr-2"></i>30+ transferable credits</li>
+                                    <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-red-600 mr-2"></i>Complete prerequisite courses</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div class="bg-white border rounded-xl p-6">
+                                <h3 class="text-lg font-semibold mb-4">Cost Breakdown</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-sm">Year 1 (Vietnam)</span>
+                                        <span class="font-medium">$3,000</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-sm">Years 2-4 (ASU)</span>
+                                        <span class="font-medium">$28,000/year</span>
+                                    </div>
+                                    <div class="border-t pt-2 flex justify-between font-semibold">
+                                        <span>Total Program Cost</span>
+                                        <span class="text-red-600">$87,000</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white border rounded-xl p-6">
+                                <h3 class="text-lg font-semibold mb-4">Available Majors at ASU</h3>
+                                <div class="grid grid-cols-1 gap-2 text-sm">
+                                    <div class="p-2 bg-gray-50 rounded">Business Administration</div>
+                                    <div class="p-2 bg-gray-50 rounded">Computer Science</div>
+                                    <div class="p-2 bg-gray-50 rounded">Agricultural Business</div>
+                                    <div class="p-2 bg-gray-50 rounded">Criminal Justice</div>
+                                    <div class="p-2 bg-gray-50 rounded">Psychology</div>
+                                    <div class="p-2 bg-gray-50 rounded">Nursing (RN-BSN)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (programType === '2plus2') {
+                title.textContent = 'ASU 2+2 Program - Detailed Information';
+                content.innerHTML = `
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div class="bg-red-50 rounded-xl p-6">
+                                <h3 class="text-lg font-semibold text-red-800 mb-4">Program Structure</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">1-2</div>
+                                        <div>
+                                            <h4 class="font-medium">Years 1-2 - Vietnam</h4>
+                                            <p class="text-sm text-gray-600">Complete general education and major prerequisites at FTU Vietnam with intensive English preparation.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <div class="bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">3-4</div>
+                                        <div>
+                                            <h4 class="font-medium">Years 3-4 - Angelo State University</h4>
+                                            <p class="text-sm text-gray-600">Focus on advanced major courses and graduate with full ASU degree.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50 rounded-xl p-6">
+                                <h3 class="text-lg font-semibold mb-4">Academic Requirements</h3>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-red-600 mr-2"></i>Minimum GPA: 3.0 in Vietnam</li>
+                                    <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-red-600 mr-2"></i>TOEFL: 85 iBT or IELTS: 6.5</li>
+                                    <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-red-600 mr-2"></i>60+ transferable credits</li>
+                                    <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-red-600 mr-2"></i>Complete all prerequisite courses</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div class="bg-white border rounded-xl p-6">
+                                <h3 class="text-lg font-semibold mb-4">Cost Breakdown</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-sm">Years 1-2 (Vietnam)</span>
+                                        <span class="font-medium">$6,000</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-sm">Years 3-4 (ASU)</span>
+                                        <span class="font-medium">$28,000/year</span>
+                                    </div>
+                                    <div class="border-t pt-2 flex justify-between font-semibold">
+                                        <span>Total Program Cost</span>
+                                        <span class="text-red-600">$62,000</span>
+                                    </div>
+                                    <div class="text-sm text-green-600 font-medium">Save $25,000 vs 1+3 program!</div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white border rounded-xl p-6">
+                                <h3 class="text-lg font-semibold mb-4">Transfer Benefits</h3>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex items-center"><i data-lucide="star" class="w-4 h-4 text-red-600 mr-2"></i>Advanced standing (Junior level)</li>
+                                    <li class="flex items-center"><i data-lucide="star" class="w-4 h-4 text-red-600 mr-2"></i>Priority course registration</li>
+                                    <li class="flex items-center"><i data-lucide="star" class="w-4 h-4 text-red-600 mr-2"></i>Scholarship opportunities</li>
+                                    <li class="flex items-center"><i data-lucide="star" class="w-4 h-4 text-red-600 mr-2"></i>Dedicated transfer advisor</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            popup.classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function closeProgramDetails() {
+            document.getElementById('program-popup').classList.add('hidden');
+        }
+
+        // MBA Details Popup Functions
+        function showMBADetails(mbaType) {
+            const popup = document.getElementById('program-popup');
+            const title = document.getElementById('popup-title');
+            const content = document.getElementById('popup-content');
+            
+            if (mbaType === 'fast-track') {
+                title.textContent = 'Fast-Track Joint MBA - Program Details';
+                content.innerHTML = `
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div class="bg-red-50 rounded-xl p-6">
+                                <h3 class="text-lg font-semibold text-red-800 mb-4">Why pursue an MBA?</h3>
+                                <ul class="space-y-3 text-sm text-red-700">
+                                    <li class="flex items-start"><i data-lucide="trending-up" class="w-4 h-4 text-red-600 mr-2 mt-0.5"></i>Average salary increase of 40–60% after graduation</li>
+                                    <li class="flex items-start"><i data-lucide="users" class="w-4 h-4 text-red-600 mr-2 mt-0.5"></i>Expand an international professional network</li>
+                                    <li class="flex items-start"><i data-lucide="briefcase" class="w-4 h-4 text-red-600 mr-2 mt-0.5"></i>Accelerate career growth into leadership roles</li>
+                                    <li class="flex items-start"><i data-lucide="globe" class="w-4 h-4 text-red-600 mr-2 mt-0.5"></i>Gain global management perspectives</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 rounded-xl p-6">
+                                <h3 class="text-lg font-semibold mb-4">Fast-Track Program Structure</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">6</div>
+                                        <div>
+                                            <h4 class="font-medium">Months 1–6: Foundation in Vietnam</h4>
+                                            <p class="text-sm text-gray-600">Core business modules, leadership fundamentals, Vietnam business environment</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <div class="bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">6</div>
+                                        <div>
+                                            <h4 class="font-medium">Months 7–12: International specialization</h4>
+                                            <p class="text-sm text-gray-600">Advanced strategy, global markets, international residency</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <div class="bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">6</div>
+                                        <div>
+                                            <h4 class="font-medium">Months 13–18: Capstone Project</h4>
+                                            <p class="text-sm text-gray-600">Real consulting project, thesis defense, industry partnership</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div class="bg-white border rounded-xl p-6">
+                                <h3 class="text-lg font-semibold mb-4">Costs & Benefits</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-sm">Tuition (entire program)</span>
+                                        <span class="font-medium text-red-600">$35,000</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-sm">Living expenses (18 months)</span>
+                                        <span class="font-medium">$15,000</span>
+                                    </div>
+                                    <div class="border-t pt-2 flex justify-between font-semibold">
+                                        <span>Total investment</span>
+                                        <span class="text-red-600">$50,000</span>
+                                    </div>
+                                    <div class="text-sm text-green-600 font-medium">Projected ROI: 200–300% within 3 years</div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white border rounded-xl p-6">
+                                <h3 class="text-lg font-semibold mb-4">Who is it for</h3>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-red-600 mr-2"></i>2–5 years of work experience</li>
+                                    <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-red-600 mr-2"></i>Seeking rapid career advancement</li>
+                                    <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-red-600 mr-2"></i>Able to study full-time for 18 months</li>
+                                    <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-red-600 mr-2"></i>IELTS 6.5+ or TOEFL 90+</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (mbaType === 'executive') {
+                title.textContent = 'Executive Joint MBA - Program Details';
+                content.innerHTML = `
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div class="bg-red-50 rounded-xl p-6">
+                                <h3 class="text-lg font-semibold text-red-800 mb-4">Why choose an Executive MBA?</h3>
+                                <ul class="space-y-3 text-sm text-red-700">
+                                    <li class="flex items-start"><i data-lucide="briefcase" class="w-4 h-4 text-red-600 mr-2 mt-0.5"></i>Continue working while studying</li>
+                                    <li class="flex items-start"><i data-lucide="users" class="w-4 h-4 text-red-600 mr-2 mt-0.5"></i>Learn alongside senior leaders and executives</li>
+                                    <li class="flex items-start"><i data-lucide="trending-up" class="w-4 h-4 text-red-600 mr-2 mt-0.5"></i>Apply learning immediately to your role</li>
+                                    <li class="flex items-start"><i data-lucide="award" class="w-4 h-4 text-red-600 mr-2 mt-0.5"></i>Earn a globally recognized credential</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 rounded-xl p-6">
+                                <h3 class="text-lg font-semibold mb-4">Executive MBA Schedule</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">Sat</div>
+                                        <div>
+                                            <h4 class="font-medium">Every Saturday</h4>
+                                            <p class="text-sm text-gray-600">8:00 – 17:00 at Vietnam campus</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <div class="bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">Sun</div>
+                                        <div>
+                                            <h4 class="font-medium">Sundays (twice monthly)</h4>
+                                            <p class="text-sm text-gray-600">Online sessions with international faculty</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <div class="bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">2W</div>
+                                        <div>
+                                            <h4 class="font-medium">2-week residency</h4>
+                                            <p class="text-sm text-gray-600">Immersion at partner university (US/Europe)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div class="bg-white border rounded-xl p-6">
+                                <h3 class="text-lg font-semibold mb-4">Investment & Value</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-sm">Tuition (24 months)</span>
+                                        <span class="font-medium text-red-600">$45,000</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-sm">Residency trips</span>
+                                        <span class="font-medium">$8,000</span>
+                                    </div>
+                                    <div class="border-t pt-2 flex justify-between font-semibold">
+                                        <span>Total investment</span>
+                                        <span class="text-red-600">$53,000</span>
+                                    </div>
+                                    <div class="text-sm text-green-600 font-medium">Average salary uplift: 70–100%</div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white border rounded-xl p-6">
+                                <h3 class="text-lg font-semibold mb-4">Entry requirements</h3>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-red-600 mr-2"></i>5+ years of managerial experience</li>
+                                    <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-red-600 mr-2"></i>Currently in a leadership role</li>
+                                    <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-red-600 mr-2"></i>Company sponsorship preferred</li>
+                                    <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-red-600 mr-2"></i>IELTS 6.0+ or TOEFL 80+</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white border rounded-xl p-6">
+                                <h3 class="text-lg font-semibold mb-4">Concentrations</h3>
+                                <div class="grid grid-cols-1 gap-2 text-sm">
+                                    <div class="p-2 bg-gray-50 rounded">Strategic Management</div>
+                                    <div class="p-2 bg-gray-50 rounded">Digital Transformation</div>
+                                    <div class="p-2 bg-gray-50 rounded">International Business</div>
+                                    <div class="p-2 bg-gray-50 rounded">Finance & Investment</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            popup.classList.remove('hidden');
+            lucide.createIcons();
+        }
+        </script>
+    </body>
+</html>
