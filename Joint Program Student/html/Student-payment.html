@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Center - APPLYLEAD</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(to right top, #EDE5D6, #9ED5C5, #ffffff);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Main Content -->
+    <div class="min-h-screen">
+        <!-- Header with Navigation -->
+        <header class="bg-white shadow-sm">
+            <div class="px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <a href="Student-Dashboard.html" class="flex items-center">
+                            <img src="../../ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-4">
+                            <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Student</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Navigation Menu -->
+                    <nav class="flex items-center space-x-3">
+                        <a href="Student-Dashboard-Joint-Program.html"
+                            class="flex items-center px-3 py-2 rounded-lg font-medium transition-colors"
+                            style="color: #000000;" onmouseover="this.style.color='#d82128'"
+                            onmouseout="this.style.color='#000000'">
+                            <i data-lucide="layout-dashboard" class="w-4 h-4 mr-2"></i>
+                            Dashboard
+                        </a>
+                        <a href="Student-find-university.html" 
+                            class="flex items-center px-3 py-2 rounded-lg font-medium transition-colors" 
+                            style="color: #000000;" onmouseover="this.style.color='#d82128'" 
+                            onmouseout="this.style.color='#000000'">
+                            <i data-lucide="search" class="w-4 h-4 mr-2"></i>
+                            Find University
+                        </a>
+                        <a href="Student-favorites.html" 
+                            class="flex items-center px-3 py-2 rounded-lg font-medium transition-colors" 
+                            style="color: #000000;" onmouseover="this.style.color='#d82128'" 
+                            onmouseout="this.style.color='#000000'">
+                            <i data-lucide="heart" class="w-4 h-4 mr-2"></i>
+                            Favorites (4)
+                        </a>
+                        <a href="Student-my-application.html" 
+                            class="flex items-center px-3 py-2 rounded-lg font-medium transition-colors" 
+                            style="color: #000000;" onmouseover="this.style.color='#d82128'" 
+                            onmouseout="this.style.color='#000000'">
+                            <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
+                            My Applications (8)
+                        </a>
+                        <a href="Student-payment.html" 
+                            class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
+                            Payment
+                        </a>
+                    </nav>
+                    
+                    <!-- Right Side -->
+                    <div class="flex items-center space-x-4">
+                        <a href="Student-messages.html" class="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg" title="Messages">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </a>
+                        
+                        <button class="relative p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg" title="Notifications">
+                            <i data-lucide="bell" class="w-5 h-5"></i>
+                            <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                        </button>
+                        
+                        <!-- Profile Dropdown -->
+                        <div class="relative">
+                            <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-50 rounded-lg">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
+                                     alt="Profile" 
+                                     class="w-8 h-8 rounded-full object-cover">
+                            </button>
+                            
+                            <!-- Dropdown Menu -->
+                            <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                                <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
+                                </a>
+                                <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
+                                </a>
+                                <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- Main Content Area -->
+        <main class="p-6">
+            <!-- Payment Due Alert -->
+            <div class="bg-red-50 border border-red-200 rounded-3xl p-4 mb-6 flex items-center justify-between">
+                <div class="flex items-center">
+                    <i data-lucide="alert-circle" class="w-5 h-5 text-red-600 mr-3"></i>
+                    <p class="text-red-600">You have a payment due on April 15, 2025</p>
+                </div>
+                <button class="text-red-600 hover:text-red-700 font-medium">View Details</button>
+            </div>
+
+            <!-- Outstanding Payments -->
+            <div class="bg-white rounded-3xl shadow-md p-6 mb-6">
+                <h3 class="text-lg font-semibold mb-4">Outstanding Payments</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Total Due Amount</span>
+                            <span class="text-2xl font-semibold">$125 USD</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-600">Application Fee</span>
+                                <span>$50 USD</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-600">Counseling Package</span>
+                                <span>$75 USD</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-center space-y-3 h-full">
+                        <div class="text-sm text-gray-600 text-center">
+                            <p>Due Date: April 15, 2025</p>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <button onclick="document.getElementById('uploadModal').classList.remove('hidden')" class="w-40 border border-red-300 hover:bg-red-50 text-red-600 py-1.5 px-3 rounded-lg text-sm font-medium transition-colors flex items-center justify-center">
+                                <i data-lucide="upload" class="w-4 h-4 mr-1.5"></i>
+                                Upload Receipt
+                            </button>
+                            <p class="text-xs text-gray-400 text-center mt-2">We'll verify your payment within 24 hours</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Upload Receipt Modal -->
+                    <div id="uploadModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                        <div class="bg-white rounded-2xl p-6 w-full max-w-md mx-4">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-lg font-semibold">Upload Payment Receipt</h3>
+                                <button onclick="document.getElementById('uploadModal').classList.add('hidden')" class="text-gray-500 hover:text-gray-700">
+                                    <i data-lucide="x" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                                <div class="flex justify-center mb-3">
+                                    <i data-lucide="upload-cloud" class="w-10 h-10 text-gray-400"></i>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-2">Drag & drop your file here or</p>
+                                <label class="cursor-pointer">
+                                    <span class="bg-red-50 text-red-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors inline-block">
+                                        Select File
+                                    </span>
+                                    <input type="file" id="receiptFile" class="hidden" accept=".pdf,.doc,.docx" />
+                                </label>
+                                <p class="text-xs text-gray-400 mt-3">Supported formats: PDF, DOC, DOCX (Max 5MB)</p>
+                            </div>
+                            <div id="fileInfo" class="mt-4 text-sm text-gray-600 hidden">
+                                <p>Selected file: <span id="fileName" class="font-medium"></span></p>
+                            </div>
+                            <div class="mt-6 flex justify-end gap-3">
+                                <button onclick="document.getElementById('uploadModal').classList.add('hidden')" class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg text-sm font-medium">
+                                    Cancel
+                                </button>
+                                <button id="submitReceipt" class="px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-medium hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                                    Upload Receipt
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transaction History -->
+            <div class="bg-white rounded-3xl shadow-md p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-lg font-semibold">Transaction History</h3>
+                    <div class="flex gap-2">
+                        <button class="px-4 py-2 text-gray-600 hover:text-gray-800 flex items-center">
+                            <i data-lucide="filter" class="w-4 h-4 mr-2"></i>
+                            Filter
+                        </button>
+                        <button class="px-4 py-2 text-gray-600 hover:text-gray-800 flex items-center">
+                            <i data-lucide="download" class="w-4 h-4 mr-2"></i>
+                            Export
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Transaction List -->
+                <div class="space-y-4">
+                    <!-- Transaction 1 -->
+                    <div class="border rounded-xl p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="flex items-center">
+                                    <h4 class="font-medium">Application Fee - Canada Fall Intake</h4>
+                                    <span class="ml-2 px-2 py-1 bg-green-100 text-green-600 text-xs rounded-full">Paid</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-1">March 30, 2025</p>
+                            </div>
+                            <span class="font-medium">$75 USD</span>
+                        </div>
+                        <div class="flex justify-between items-center mt-4">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
+                                Visa •••• 4242
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="px-3 py-1.5 border rounded-lg text-sm text-gray-600 hover:bg-gray-50 flex items-center">
+                                    <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
+                                    View Receipt
+                                </button>
+                                <button class="px-3 py-1.5 border rounded-lg text-sm text-gray-600 hover:bg-gray-50 flex items-center">
+                                    <i data-lucide="download" class="w-4 h-4 mr-2"></i>
+                                    Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transaction 2 -->
+                    <div class="border rounded-xl p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="flex items-center">
+                                    <h4 class="font-medium">Counseling Package - Basic</h4>
+                                    <span class="ml-2 px-2 py-1 bg-yellow-100 text-yellow-600 text-xs rounded-full">Pending</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-1">March 28, 2025</p>
+                            </div>
+                            <span class="font-medium">$75 USD</span>
+                        </div>
+                        <div class="mt-4">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i data-lucide="bank" class="w-4 h-4 mr-2"></i>
+                                Bank Transfer
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transaction 3 -->
+                    <div class="border rounded-xl p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="flex items-center">
+                                    <h4 class="font-medium">Document Processing Fee</h4>
+                                    <span class="ml-2 px-2 py-1 bg-red-100 text-red-600 text-xs rounded-full">Failed</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-1">March 25, 2025</p>
+                            </div>
+                            <span class="font-medium">$50 USD</span>
+                        </div>
+                        <div class="mt-4">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
+                                Card Declined
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Payment Modal (Hidden by default) -->
+    <div class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white rounded-3xl p-6 max-w-lg w-full mx-4">
+            <div class="flex justify-between items-start mb-6">
+                <h3 class="text-xl font-semibold">Complete Payment</h3>
+                <button class="text-gray-500 hover:text-gray-700">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Amount Summary -->
+                <div class="bg-gray-50 rounded-xl p-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-gray-600">Total Amount</span>
+                        <span class="text-xl font-semibold">$125 USD</span>
+                    </div>
+                    <div class="text-sm text-gray-600">
+                        Application Fee: $50<br>
+                        Counseling Package: $75
+                    </div>
+                </div>
+
+                <!-- Payment Method Selection -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Payment Method</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center p-4 border rounded-xl cursor-pointer hover:bg-gray-50">
+                            <input type="radio" name="payment-method" class="mr-3">
+                            <div class="flex-1">
+                                <div class="font-medium">Credit/Debit Card</div>
+                                <div class="text-sm text-gray-600">Pay securely with your card</div>
+                            </div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" 
+                                 alt="Visa" class="h-6">
+                        </label>
+                        <label class="flex items-center p-4 border rounded-xl cursor-pointer hover:bg-gray-50">
+                            <input type="radio" name="payment-method" class="mr-3">
+                            <div class="flex-1">
+                                <div class="font-medium">PayPal</div>
+                                <div class="text-sm text-gray-600">Fast and secure payment</div>
+                            </div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1280px-PayPal.svg.png" 
+                                 alt="PayPal" class="h-6">
+                        </label>
+                        <label class="flex items-center p-4 border rounded-xl cursor-pointer hover:bg-gray-50">
+                            <input type="radio" name="payment-method" class="mr-3">
+                            <div class="flex-1">
+                                <div class="font-medium">Bank Transfer</div>
+                                <div class="text-sm text-gray-600">Direct bank transfer</div>
+                            </div>
+                            <i data-lucide="bank" class="w-6 h-6 text-gray-400"></i>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Card Details (shown when card is selected) -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
+                        <input type="text" placeholder="1234 5678 9012 3456" 
+                               class="w-full px-4 py-2 border rounded-lg">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Expiry Date</label>
+                            <input type="text" placeholder="MM/YY" 
+                                   class="w-full px-4 py-2 border rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">CVC</label>
+                            <input type="text" placeholder="123" 
+                                   class="w-full px-4 py-2 border rounded-lg">
+                        </div>
+                    </div>
+                </div>
+
+                <button class="w-full px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700">
+                    Pay $125 USD
+                </button>
+
+                <p class="text-sm text-gray-600 text-center">
+                    <i data-lucide="lock" class="w-4 h-4 inline mr-1"></i>
+                    Secure payment processed by Stripe
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Handle logout
+        function handleLogout() {
+            window.location.href = '../../login.html';
+        }
+
+        // Profile Dropdown Toggle
+        const profileMenu = document.getElementById('profile-menu');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileMenu.addEventListener('click', () => {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!profileMenu.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+    </script>
+
+    <!-- AI Assistant Floating Button -->
+    <button id="ai-chat-btn" class="fixed bottom-6 right-6 w-14 h-14 rounded-full shadow-lg flex items-center justify-center z-50 transition-all duration-300 hover:scale-110" style="background-color: #d82128;">
+        <i data-lucide="message-circle" class="w-6 h-6 text-white"></i>
+    </button>
+
+    <!-- AI Chat Panel -->
+    <div id="ai-chat-panel" class="fixed bottom-24 right-6 w-80 h-96 bg-white rounded-2xl shadow-2xl z-50 hidden flex flex-col">
+        <!-- Chat Header -->
+        <div class="flex items-center justify-between p-4 border-b border-gray-200 rounded-t-2xl" style="background-color: #FEE2E2;">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #d82128;">
+                    <i data-lucide="bot" class="w-4 h-4 text-white"></i>
+                </div>
+                <span class="font-medium text-gray-800">AI Assistant</span>
+            </div>
+            <button id="close-chat" class="text-gray-500 hover:text-gray-700">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3">
+            <div class="flex items-start space-x-3">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: #FEE2E2;">
+                    <i data-lucide="bot" class="w-4 h-4" style="color: #d82128;"></i>
+                </div>
+                <div class="bg-gray-100 rounded-2xl rounded-tl-md p-3 max-w-xs">
+                    <p class="text-sm text-gray-800">Hello! I'm here to help you with payments and any questions you might have.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="p-4 border-t border-gray-200">
+            <div class="flex space-x-2">
+                <input type="text" id="chat-input" placeholder="Type your message..." class="flex-1 px-3 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                <button id="send-message" class="w-8 h-8 rounded-full flex items-center justify-center text-white" style="background-color: #d82128;">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // AI Chat functionality
+        const aiChatBtn = document.getElementById('ai-chat-btn');
+        const aiChatPanel = document.getElementById('ai-chat-panel');
+        const closeChatBtn = document.getElementById('close-chat');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const sendMessageBtn = document.getElementById('send-message');
+
+        aiChatBtn.addEventListener('click', () => {
+            aiChatPanel.classList.toggle('hidden');
+            if (!aiChatPanel.classList.contains('hidden')) {
+                chatInput.focus();
+            }
+        });
+
+        closeChatBtn.addEventListener('click', () => {
+            aiChatPanel.classList.add('hidden');
+        });
+
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            // Add user message
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.className = 'flex items-start space-x-3 justify-end';
+            userMessageDiv.innerHTML = `
+                <div class="rounded-2xl rounded-tr-md p-3 max-w-xs" style="background-color: #d82128;">
+                    <p class="text-sm text-white">${message}</p>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="user" class="w-4 h-4 text-gray-600"></i>
+                </div>
+            `;
+            chatMessages.appendChild(userMessageDiv);
+            chatInput.value = '';
+
+            // Simulate AI response
+            setTimeout(() => {
+                const aiMessageDiv = document.createElement('div');
+                aiMessageDiv.className = 'flex items-start space-x-3';
+                aiMessageDiv.innerHTML = `
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: #FEE2E2;">
+                        <i data-lucide="bot" class="w-4 h-4" style="color: #d82128;"></i>
+                    </div>
+                    <div class="bg-gray-100 rounded-2xl rounded-tl-md p-3 max-w-xs">
+                        <p class="text-sm text-gray-800">I can help you with "${message}". What specific information are you looking for about payments?</p>
+                    </div>
+                `;
+                chatMessages.appendChild(aiMessageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                lucide.createIcons();
+            }, 1000);
+
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            lucide.createIcons();
+        }
+
+        sendMessageBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Final icon initialization
+        lucide.createIcons();
+    </script>
+</body>
+</html>

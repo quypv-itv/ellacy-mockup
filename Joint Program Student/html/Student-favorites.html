@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorites - APPLYLEAD</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(to right top, #EDE5D6, #9ED5C5, #ffffff);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Main Content -->
+    <div class="min-h-screen">
+        <!-- Header with Navigation -->
+        <header class="bg-white shadow-sm">
+            <div class="px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <a href="Student-Dashboard.html" class="flex items-center">
+                            <img src="../../ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-4">
+                            <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Student</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Navigation Menu -->
+                    <nav class="flex items-center space-x-3">
+                        <a href="Student-Dashboard-Joint-Program.html"
+                            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="layout-dashboard" class="w-4 h-4 mr-2"></i>
+                            Dashboard
+                        </a>
+                        <a href="Student-find-university.html" 
+                            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="search" class="w-4 h-4 mr-2"></i>
+                            Find University
+                        </a>
+                        <a href="Student-favorites.html" 
+                            class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="heart" class="w-4 h-4 mr-2"></i>
+                            Favorites (4)
+                        </a>
+                        <a href="Student-my-application.html" 
+                            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
+                            My Applications (8)
+                        </a>
+                        <a href="Student-payment.html" 
+                            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
+                            Payment
+                        </a>
+                    </nav>
+                    
+                    <!-- Right Side -->
+                    <div class="flex items-center space-x-4">
+                        <a href="Student-messages.html" class="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg" title="Messages">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </a>
+                        
+                        <button class="relative">
+                            <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
+                            <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                        </button>
+                        <!-- Profile Dropdown -->
+                        <div class="relative">
+                            <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
+                                     alt="Profile" 
+                                     class="w-8 h-8 rounded-full object-cover">
+                            </button>
+                            
+                            <!-- Dropdown Menu -->
+                            <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                                <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
+                                </a>
+                                <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
+                                </a>
+                                <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Dashboard Content -->
+        <main class="py-6 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <!-- Filter Section -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
+                    <div class="flex flex-wrap items-center gap-3">
+                        <div class="relative">
+                            <select class="appearance-none bg-white border border-red-200 text-red-700 text-sm rounded-lg px-3 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-red-200 focus:border-red-300">
+                                <option>All Scholarships</option>
+                                <option>Merit-Based</option>
+                                <option>Need-Based</option>
+                                <option>Research</option>
+                                <option>Entrance</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-red-500">
+                                <i class="bi bi-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="relative">
+                            <select class="appearance-none bg-white border border-red-200 text-red-700 text-sm rounded-lg px-3 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-red-200 focus:border-red-300">
+                                <option>All Intakes</option>
+                                <option>Fall 2024</option>
+                                <option>Winter 2025</option>
+                                <option>Spring 2025</option>
+                                <option>Summer 2025</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-red-500">
+                                <i class="bi bi-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="relative">
+                            <select class="appearance-none bg-white border border-red-200 text-red-700 text-sm rounded-lg px-3 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-red-200 focus:border-red-300">
+                                <option>All Locations</option>
+                                <option>Ontario</option>
+                                <option>British Columbia</option>
+                                <option>Alberta</option>
+                                <option>Quebec</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-red-500">
+                                <i class="bi bi-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                        
+                        <button class="ml-auto text-xs font-medium border border-red-500 text-white bg-red-500 hover:bg-red-600 px-4 py-2 rounded transition-colors">
+                            Apply Filters
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Results Section -->
+                <div class="mb-4 flex justify-between items-center">
+                    <div class="text-sm text-gray-600">4 scholarships found</div>
+                    <div class="flex items-center
+                    ">
+                        <span class="text-xs text-gray-500 mr-2">Sort by:</span>
+                        <select class="text-xs border-0 text-red-500 bg-transparent focus:ring-0 focus:ring-offset-0 pr-5">
+                            <option>Most Relevant</option>
+                            <option>Tuition (Low to High)</option>
+                            <option>Tuition (High to Low)</option>
+                            <option>Application Deadline</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
+                    <!-- Program Card 1 -->
+                    <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow">
+                        <!-- Institution Header -->
+                        <div class="flex items-center mb-3">
+                            <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=40&h=40&fit=crop" alt="St. Clair College Logo" class="w-10 h-10 rounded mr-3">
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-900">St. Clair College - Downtown Campus</h3>
+                            </div>
+                        </div>
+                        
+                        <!-- Program Information -->
+                        <div class="mb-4">
+                            <p class="text-xs text-gray-500 mb-1">2-Year Undergraduate Diploma</p>                            
+                            <!-- Status Tags -->
+                            <div class="flex flex-wrap gap-1 mb-3">
+                                <span class="px-2 py-1 bg-pink-100 text-pink-600 rounded text-xs font-medium">Popular</span>
+                                <span class="px-2 py-1 bg-green-100 text-green-600 rounded text-xs font-medium">Fast Acceptance</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Program Details Grid -->
+                        <div class="space-y-2 mb-4 text-xs">
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Location</span>
+                                <span class="font-medium">Ontario, CAN</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Campus city</span>
+                                <span class="font-medium">Windsor</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Tuition (1st year)</span>
+                                <span class="font-medium">$15,200 USD</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Application fee</span>
+                                <span class="font-medium">$92 USD</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Duration</span>
+                                <span class="font-medium">24 months</span>
+                            </div>
+                        </div>
+                        <!-- Action Buttons -->
+                        <div class="flex space-x-2">
+                            <button class="flex-1 bg-white border border-gray-300 text-gray-700 text-sm font-medium py-2 px-2 rounded hover:bg-gray-50 transition-colors flex items-center justify-center view-details-btn"
+                                    data-program="Bachelor of Science - Computer Science"
+                                    data-school="University of Saskatchewan"
+                                    data-location="Saskatchewan, CAN"
+                                    data-duration="48 months"
+                                    data-tuition="$18,000 USD"
+                                    data-description="This scholarship provides a comprehensive education in computer science, covering topics such as software development, algorithms, and computer systems. Students will gain hands-on experience through projects and research opportunities.">
+                                <i data-lucide="info" class="w-4 h-4 mr-1"></i>
+                                Details
+                            </button>
+                            <button class="flex-1 bg-[#d82128] text-white text-sm font-medium py-2 px-2 rounded hover:bg-red-500 transition-colors flex items-center justify-center">
+                                <i data-lucide="external-link" class="w-4 h-4 mr-1"></i>
+                                Apply Now
+                            </button>
+                        </div>
+                        
+                    </div>
+                    
+                    <!-- Program Card 2 -->
+                    <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow">
+                        <!-- Institution Header -->
+                        <div class="flex items-center mb-3">
+                            <img src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=40&h=40&fit=crop" alt="Capilano University Logo" class="w-10 h-10 rounded mr-3">
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-900">Capilano University - North Vancouver</h3>
+                            </div>
+                        </div>
+                        
+                        <!-- Program Information -->
+                        <div class="mb-4">
+                            <p class="text-xs text-gray-500 mb-1">2-Year Undergraduate Diploma</p>                            
+                            <!-- Status Tags -->
+                            <div class="flex flex-wrap gap-1 mb-3">
+                                <span class="px-2 py-1 bg-teal-100 text-teal-600 rounded text-xs font-medium">High Job Demand</span>
+                                <span class="px-2 py-1 bg-pink-100 text-pink-600 rounded text-xs font-medium">Popular</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Program Details Grid -->
+                        <div class="space-y-2 mb-4 text-xs">
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Location</span>
+                                <span class="font-medium">British Columbia, CAN</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Campus city</span>
+                                <span class="font-medium">North Vancouver</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Tuition (1st year)</span>
+                                <span class="font-medium">$17,050 USD</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Application fee</span>
+                                <span class="font-medium">$99 USD</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Duration</span>
+                                <span class="font-medium">24 months</span>
+                            </div>
+                        </div>
+                        <!-- Action Buttons -->
+                        <div class="flex space-x-2">
+                            <button class="flex-1 bg-white border border-gray-300 text-gray-700 text-sm font-medium py-2 px-2 rounded hover:bg-gray-50 transition-colors flex items-center justify-center view-details-btn"
+                                    data-program="Bachelor of Science - Computer Science"
+                                    data-school="University of Saskatchewan"
+                                    data-location="Saskatchewan, CAN"
+                                    data-duration="48 months"
+                                    data-tuition="$18,000 USD"
+                                    data-description="This scholarship provides a comprehensive education in computer science, covering topics such as software development, algorithms, and computer systems. Students will gain hands-on experience through projects and research opportunities.">
+                                <i data-lucide="info" class="w-4 h-4 mr-1"></i>
+                                Details
+                            </button>
+                            <button class="flex-1 bg-[#d82128] text-white text-sm font-medium py-2 px-2 rounded hover:bg-red-500 transition-colors flex items-center justify-center">
+                                <i data-lucide="external-link" class="w-4 h-4 mr-1"></i>
+                                Apply Now
+                            </button>
+                        </div>
+                        
+                    </div>
+                    
+                    <!-- Program Card 3 -->
+                    <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow">
+                        <!-- Institution Header -->
+                        <div class="flex items-center mb-3">
+                            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=40&h=40&fit=crop" alt="University of Saskatchewan Logo" class="w-10 h-10 rounded mr-3">
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-900">University of Saskatchewan</h3>
+                            </div>
+                        </div>
+                        
+                        <!-- Program Information -->
+                        <div class="mb-4">
+                            <p class="text-xs text-gray-500 mb-1">4-Year Bachelor's Degree</p>                            
+                            <!-- Status Tags -->
+                            <div class="flex flex-wrap gap-1 mb-3">
+                                <span class="px-2 py-1 bg-yellow-100 text-yellow-600 rounded text-xs font-medium">Scholarships Available</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Program Details Grid -->
+                        <div class="space-y-2 mb-4 text-xs">
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Location</span>
+                                <span class="font-medium">Saskatchewan, CAN</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Campus city</span>
+                                <span class="font-medium">Saskatoon</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Tuition (1st year)</span>
+                                <span class="font-medium">$23,450 USD</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Application fee</span>
+                                <span class="font-medium">$88 USD</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Duration</span>
+                                <span class="font-medium">36 - 48 months</span>
+                            </div>
+                        </div>
+                        <!-- Action Buttons -->
+                        <div class="flex space-x-2">
+                            <button class="flex-1 bg-white border border-gray-300 text-gray-700 text-sm font-medium py-2 px-2 rounded hover:bg-gray-50 transition-colors flex items-center justify-center view-details-btn"
+                                    data-program="Bachelor of Science - Computer Science"
+                                    data-school="University of Saskatchewan"
+                                    data-location="Saskatchewan, CAN"
+                                    data-duration="48 months"
+                                    data-tuition="$18,000 USD"
+                                    data-description="This scholarship provides a comprehensive education in computer science, covering topics such as software development, algorithms, and computer systems. Students will gain hands-on experience through projects and research opportunities.">
+                                <i data-lucide="info" class="w-4 h-4 mr-1"></i>
+                                Details
+                            </button>
+                            <button class="flex-1 bg-[#d82128] text-white text-sm font-medium py-2 px-2 rounded hover:bg-red-500 transition-colors flex items-center justify-center">
+                                <i data-lucide="external-link" class="w-4 h-4 mr-1"></i>
+                                Apply Now
+                            </button>
+                        </div>
+                        
+                    </div>
+                    
+                    <!-- Program Card 4 -->
+                    <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow">
+                        <!-- Institution Header -->
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg mr-3">UBC</div>
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-900">University of British Columbia</h3>
+                            </div>
+                        </div>
+                        
+                        <!-- Program Information -->
+                        <div class="mb-4">
+                            <p class="text-xs text-gray-500 mb-1">Master's Degree</p>                            
+                            <!-- Status Tags -->
+                            <div class="flex flex-wrap gap-1 mb-3">
+                                <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded text-xs font-medium">Prime</span>
+                                <span class="px-2 py-1 bg-pink-100 text-pink-600 rounded text-xs font-medium">Popular</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Program Details Grid -->
+                        <div class="space-y-2 mb-4 text-xs">
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Location</span>
+                                <span class="font-medium">British Columbia, CAN</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Campus city</span>
+                                <span class="font-medium">Vancouver</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Tuition (1st year)</span>
+                                <span class="font-medium">$27,850 USD</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Application fee</span>
+                                <span class="font-medium">$123 USD</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">Duration</span>
+                                <span class="font-medium">12 months</span>
+                            </div>
+                        </div>
+                        <!-- Action Buttons -->
+                        <div class="flex space-x-2">
+                            <button class="flex-1 bg-white border border-gray-300 text-gray-700 text-sm font-medium py-2 px-2 rounded hover:bg-gray-50 transition-colors flex items-center justify-center view-details-btn"
+                                    data-program="Bachelor of Science - Computer Science"
+                                    data-school="University of Saskatchewan"
+                                    data-location="Saskatchewan, CAN"
+                                    data-duration="48 months"
+                                    data-tuition="$18,000 USD"
+                                    data-description="This scholarship provides a comprehensive education in computer science, covering topics such as software development, algorithms, and computer systems. Students will gain hands-on experience through projects and research opportunities.">
+                                <i data-lucide="info" class="w-4 h-4 mr-1"></i>
+                                Details
+                            </button>
+                            <button class="flex-1 bg-[#d82128] text-white text-sm font-medium py-2 px-2 rounded hover:bg-red-500 transition-colors flex items-center justify-center">
+                                <i data-lucide="external-link" class="w-4 h-4 mr-1"></i>
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- Success Prediction Details Modal -->
+    <div id="successPredictionModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-2xl p-6 max-w-md w-full mx-4 border border-red-100 shadow-lg">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold text-black">Success Prediction Details</h3>
+                <button onclick="closeSuccessDetails()" class="text-gray-500 hover:text-red-600 transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-red-50 p-4 rounded-lg border border-red-100">
+                    <h4 class="font-medium text-black mb-2">Prediction Criteria</h4>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-red-600 mt-0.5 mr-2"></i>
+                            <span>Your academic background matches 85% of successful applicants</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-red-600 mt-0.5 mr-2"></i>
+                            <span>Your English proficiency meets the scholarship requirements</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="alert-circle" class="w-4 h-4 text-yellow-500 mt-0.5 mr-2"></i>
+                            <span>Application submitted 3 months before deadline (earlier is better)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-red-600 mt-0.5 mr-2"></i>
+                            <span>All required documents are complete</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Additional Metrics -->
+                <!-- Intake Periods -->
+                <div class="space-y-3">
+                    <!-- May 2026 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="w-full flex justify-between items-center p-3 bg-gray-50 hover:bg-gray-100" onclick="toggleIntakeDetails('may2026')">
+                            <span class="font-medium">May 2026</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform" id="may2026-arrow" style="transform: rotate(180deg);"></i>
+                        </button>
+                        <div id="may2026-details" class="p-4 space-y-3 text-sm">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Seat Availability:</span>
+                                <span class="font-medium text-green-600">Very High</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Turn Around Time:</span>
+                                <span class="font-medium text-green-600">Very Fast</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Conversion:</span>
+                                <span class="font-medium text-blue-600">High</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- September 2026 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="w-full flex justify-between items-center p-3 bg-gray-50 hover:bg-gray-100" onclick="toggleIntakeDetails('sep2026')">
+                            <span class="font-medium">September 2026</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform" id="sep2026-arrow"></i>
+                        </button>
+                        <div id="sep2026-details" class="hidden p-4 space-y-3 text-sm">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Seat Availability:</span>
+                                <span class="font-medium text-green-600">High</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Turn Around Time:</span>
+                                <span class="font-medium text-green-600">Fast</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Conversion:</span>
+                                <span class="font-medium text-blue-600">Medium</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- January 2027 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="w-full flex justify-between items-center p-3 bg-gray-50 hover:bg-gray-100" onclick="toggleIntakeDetails('jan2027')">
+                            <span class="font-medium">January 2027</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform" id="jan2027-arrow"></i>
+                        </button>
+                        <div id="jan2027-details" class="hidden p-4 space-y-3 text-sm">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Seat Availability:</span>
+                                <span class="font-medium text-yellow-600">Medium</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Turn Around Time:</span>
+                                <span class="font-medium text-yellow-600">Normal</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Conversion:</span>
+                                <span class="font-medium text-blue-600">High</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-xs text-gray-600 mt-4 bg-red-50 p-3 rounded-lg border border-red-100 space-y-2">
+                    <p>• <span class="font-medium">Seat Availability:</span> The predicted likelihood of a seat being available for the scholarship intake.</p>
+                    <p>• <span class="font-medium">Turn Around Time:</span> The expected time to receive a letter of acceptance after submitting an application.</p>
+                    <p>• <span class="font-medium">Conversion:</span> The historical ratio of accepted applications to submitted applications.</p>
+                    <p class="mt-2">Note: These predictions are based on historical data and your current profile. Actual admission decisions are made by the institution.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Program Details Modal (Hidden by default) -->
+    <div id="programModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-3xl p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-scroll no-scrollbar">
+            <div class="flex justify-between items-start mb-6">
+                <div></div> <!-- Empty div to push the button to the right -->
+                <button id="closeModal" class="text-red-600 hover:text-red-800">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <!-- Scholarship Program Offer -->
+            <div class="bg-white border border-red-100 rounded-2xl p-4 mb-6">
+                <h4 class="font-semibold mb-3 text-red-700 border-b border-red-100 pb-2">Scholarship Offer</h4>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <h5 class="font-medium mb-2 text-gray-900">Summary about the scholarship scholarship</h5>
+                        <p class="text-sm text-gray-700" id="modalScholarshipSummary">
+                            Merit-based scholarship for international students with excellent academic records. Renewable for the duration of the scholarship based on maintaining GPA requirements.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Summary about the schools -->
+            <div class="bg-white border border-gray-200 rounded-2xl p-4 mb-6">
+                <h4 class="font-semibold mb-3 text-gray-900 border-b border-gray-200 pb-2">Summary about the schools</h4>
+                <p class="text-sm text-gray-700" id="modalSchoolSummary">
+                    The University of British Columbia is a globally recognized research university located in Vancouver, Canada. Known for its strong scholarships in technology, business, and sciences, UBC consistently ranks among the top 40 universities worldwide. The campus offers state-of-the-art facilities, diverse student community, and excellent career support services.
+                </p>
+            </div>
+            <div class="space-y-6">
+                <!-- Course Structure -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-3">Course Structure</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="border rounded-xl p-4">
+                            <h4 class="font-medium mb-2">Core Courses</h4>
+                            <ul class="list-disc list-inside text-gray-600 text-sm space-y-1" id="modalCoreCourses">
+                                <li>Statistical Methods for Data Science</li>
+                                <li>Machine Learning Fundamentals</li>
+                                <li>Big Data Analytics</li>
+                                <li>Data Visualization and Communication</li>
+                                <li>Research Methods in Data Science</li>
+                            </ul>
+                        </div>
+                        <div class="border rounded-xl p-4">
+                            <h4 class="font-medium mb-2">Elective Options</h4>
+                            <ul class="list-disc list-inside text-gray-600 text-sm space-y-1" id="modalElectives">
+                                <li>Deep Learning and Neural Networks</li>
+                                <li>Natural Language Processing</li>
+                                <li>Computer Vision</li>
+                                <li>Business Analytics</li>
+                                <li>Capstone Project</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Action Buttons -->
+                <div class="flex justify-between items-center pt-6 border-t">
+                    <a href="Student-program-details.html" target="_blank" class="hover:underline flex items-center hover:opacity-80" style="color: #d82128;">
+                        <i data-lucide="external-link" class="w-4 h-4 mr-1"></i>
+                        Visit Official Website
+                    </a>
+                    <div class="flex space-x-3">
+                        <button class="text-sm font-medium hover:opacity-80" style="color: #d82128;">Apply Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Program Details Modal Functions
+        function showProgramDetails(button) {
+            const modal = document.getElementById('programDetailsModal');
+            document.getElementById('detailsProgramName').textContent = button.getAttribute('data-program');
+            document.getElementById('detailsSchoolName').textContent = button.getAttribute('data-school');
+            document.getElementById('detailsLocation').textContent = button.getAttribute('data-location');
+            document.getElementById('detailsDuration').textContent = button.getAttribute('data-duration');
+            document.getElementById('detailsTuition').textContent = button.getAttribute('data-tuition');
+            document.getElementById('detailsDescription').textContent = button.getAttribute('data-description');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDetailsModal() {
+            const modal = document.getElementById('programDetailsModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('programDetailsModal');
+            if (event.target === modal) {
+                closeDetailsModal();
+            }
+        });
+
+        // Add click event listeners to all view details buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
+            viewDetailsBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    showProgramDetails(this);
+                });
+            });
+        });
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Toggle profile dropdown
+        const profileMenu = document.getElementById('profile-menu');
+        const profileDropdown = document.getElementById('profile-dropdown');
+        
+        if (profileMenu && profileDropdown) {
+            // Toggle dropdown on button click
+            profileMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+                profileDropdown.classList.toggle('hidden');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!profileMenu.contains(e.target) && !profileDropdown.contains(e.target)) {
+                    profileDropdown.classList.add('hidden');
+                }
+            });
+            
+            // Close dropdown when clicking on a menu item
+            profileDropdown.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    profileDropdown.classList.add('hidden');
+                });
+            });
+        }
+        
+        // Success Prediction Modal Functions
+        function showSuccessDetails(event) {
+            event.stopPropagation();
+            const modal = document.getElementById('successPredictionModal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeSuccessDetails() {
+            const modal = document.getElementById('successPredictionModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function toggleIntakeDetails(intakeId) {
+            const details = document.getElementById(`${intakeId}-details`);
+            const arrow = document.getElementById(`${intakeId}-arrow`);
+            
+            // Toggle visibility
+            details.classList.toggle('hidden');
+            
+            // Rotate arrow
+            if (details.classList.contains('hidden')) {
+                arrow.style.transform = 'rotate(0deg)';
+            } else {
+                arrow.style.transform = 'rotate(180deg)';
+            }
+            
+            // Close other open dropdowns
+            const allDetails = document.querySelectorAll('[id$="-details"]');
+            const allArrows = document.querySelectorAll('[id$="-arrow"]');
+            
+            allDetails.forEach(item => {
+                if (item.id !== `${intakeId}-details` && !item.classList.contains('hidden')) {
+                    item.classList.add('hidden');
+                }
+            });
+            
+            allArrows.forEach(item => {
+                if (item.id !== `${intakeId}-arrow` && item.style.transform === 'rotate(180deg)') {
+                    item.style.transform = 'rotate(0deg)';
+                }
+            });
+        }
+        
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('successPredictionModal');
+            if (event.target === modal) {
+                closeSuccessDetails();
+            }
+        });
+
+        // Handle logout
+        function handleLogout() {
+            window.location.href = '../../login.html';
+        }
+
+        // Profile Dropdown Toggle (removed duplicate declaration)
+
+        profileMenu.addEventListener('click', () => {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!profileMenu.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // Program Details Modal functionality
+        const programModal = document.getElementById('programModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
+
+        // Program data
+        const programData = {
+            1: {
+                name: 'MSc in Data Science',
+                university: 'University of British Columbia',
+                location: 'Vancouver, Canada',
+                duration: '2 Years',
+                level: 'Master\'s',
+                intake: 'Fall 2025',
+                language: 'English',
+                tuition: '$35,000 - $40,000',
+                appFee: '$150',
+                deadline: 'March 15, 2025',
+                description: 'The Master of Science in Data Science program at UBC provides students with comprehensive training in data science methodologies, statistical analysis, machine learning algorithms, and big data technologies. This program is designed for students who want to develop expertise in extracting insights from complex datasets and applying data-driven solutions to real-world problems.',
+                officialLink: 'https://www.ubc.ca/programs/data-science',
+                // Scholarship Program Offer
+                scholarshipAmount: '$10,000',
+                scholarshipCoverage: 'Partial Tuition',
+                scholarshipSummary: 'Merit-based scholarship for international students with excellent academic records. Renewable for the duration of the program based on maintaining GPA requirements.',
+                // School Summary
+                schoolSummary: 'The University of British Columbia is a globally recognized research university located in Vancouver, Canada. Known for its strong programs in technology, business, and sciences, UBC consistently ranks among the top 40 universities worldwide. The campus offers state-of-the-art facilities, diverse student community, and excellent career support services.'
+            },
+            2: {
+                name: 'Bachelor of Engineering',
+                university: 'University of Toronto',
+                location: 'Toronto, Canada',
+                duration: '4 Years',
+                level: 'Bachelor\'s',
+                intake: 'Fall 2025',
+                language: 'English',
+                tuition: '$45,000 - $50,000',
+                appFee: '$200',
+                deadline: 'February 1, 2025',
+                description: 'The Bachelor of Engineering program at University of Toronto offers a comprehensive engineering education with specializations in mechanical, electrical, computer, and civil engineering. Students gain hands-on experience through laboratory work, design projects, and industry partnerships.',
+                officialLink: 'https://www.utoronto.ca/programs/engineering',
+                // Scholarship Program Offer
+                scholarshipAmount: '$15,000',
+                scholarshipCoverage: 'Partial Tuition',
+                scholarshipSummary: 'Excellence scholarship for outstanding students pursuing engineering degrees. Available for domestic and international students with strong academic performance.',
+                // School Summary
+                schoolSummary: 'The University of Toronto is Canada\'s leading institution of higher learning and research. Founded in 1827, it is consistently ranked as one of the top universities globally. UofT offers world-class engineering programs with cutting-edge research facilities and strong industry connections.'
+            }
+        };
+
+        // Open modal with program data
+        console.log('Setting up event listeners for buttons:', viewDetailsBtns.length); // Debug log
+        viewDetailsBtns.forEach((btn, index) => {
+            console.log('Adding listener to button', index, btn); // Debug log
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('View Details clicked!'); // Debug log
+                const programId = btn.getAttribute('data-program-id');
+                console.log('Program ID:', programId); // Debug log
+                const program = programData[programId];
+                console.log('Program data:', program); // Debug log
+                
+                if (program) {
+                    // Update modal header
+                    document.getElementById('modalProgramName').textContent = program.name;
+                    document.getElementById('modalUniversityName').textContent = program.university;
+                    document.getElementById('modalLocation').textContent = program.location;
+                    
+                    // Update basic program info
+                    document.getElementById('modalDuration').textContent = program.duration;
+                    document.getElementById('modalLevel').textContent = program.level;
+                    document.getElementById('modalIntake').textContent = program.intake;
+                    document.getElementById('modalLanguage').textContent = program.language;
+                    document.getElementById('modalAppFee').textContent = program.appFee;
+                    document.getElementById('modalTuition').textContent = program.tuition;
+                    document.getElementById('modalDeadline').textContent = program.deadline;
+                    
+                    // Update Scholarship Program Offer
+                    document.getElementById('modalScholarshipAmount').textContent = program.scholarshipAmount;
+                    document.getElementById('modalScholarshipCoverage').textContent = program.scholarshipCoverage;
+                    document.getElementById('modalScholarshipSummary').textContent = program.scholarshipSummary;
+                    
+                    // Update School Summary
+                    document.getElementById('modalSchoolSummary').textContent = program.schoolSummary;
+                    
+                    // Update other fields
+                    document.getElementById('modalDescription').textContent = program.description;
+                    document.getElementById('modalOfficialLink').href = program.officialLink;
+                }
+                
+                programModal.classList.remove('hidden');
+                console.log('Modal should be visible now'); // Debug log
+                
+                // Re-initialize icons for modal content
+                setTimeout(() => {
+                    lucide.createIcons();
+                }, 100);
+            });
+        });
+
+        // Close modal
+        function closeModal() {
+            programModal.classList.add('hidden');
+        }
+
+        closeModalBtn.addEventListener('click', closeModal);
+
+        // Close modal when clicking outside
+        programModal.addEventListener('click', (e) => {
+            if (e.target === programModal) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !programModal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        // Handle logout
+        function handleLogout() {
+            window.location.href = '../../login.html';
+        }
+
+        // Profile Dropdown Toggle (removed duplicate declaration)
+
+        profileMenu.addEventListener('click', () => {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!profileMenu.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+                lucide.createIcons();
+            }
+        });
+
+        // School Modal Functionality - Wrap in DOMContentLoaded to ensure elements exist
+        document.addEventListener('DOMContentLoaded', function() {
+            const schoolModal = document.getElementById('schoolModal');
+            const closeSchoolModalBtn = document.getElementById('closeSchoolModal');
+            const schoolNameBtns = document.querySelectorAll('.school-name-btn');
+            const schoolTabBtns = document.querySelectorAll('.school-tab-btn');
+            const schoolTabContents = document.querySelectorAll('.school-tab-content');
+            
+            console.log('School modal element:', schoolModal);
+            console.log('Close button:', closeSchoolModalBtn);
+            console.log('School name buttons found:', schoolNameBtns.length);
+
+            // Handle school name clicks
+            schoolNameBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('School name clicked!');
+                    const schoolId = btn.getAttribute('data-school');
+                    console.log('School ID:', schoolId);
+                    
+                    // Show school modal
+                    if (schoolModal) {
+                        console.log('Opening school modal');
+                        schoolModal.classList.remove('hidden');
+                        
+                        // Reset to overview tab
+                        showSchoolTab('overview');
+                        
+                        lucide.createIcons();
+                    } else {
+                        console.error('School modal not found');
+                    }
+                });
+            });
+
+            // Handle school tab switching
+            schoolTabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = btn.getAttribute('data-tab');
+                    showSchoolTab(tabId);
+                });
+            });
+
+            function showSchoolTab(tabId) {
+                // Remove active state from all tabs
+                schoolTabBtns.forEach(tab => {
+                    tab.classList.remove('border-b-2', 'border-red-600', 'text-red-600');
+                    tab.classList.add('text-gray-500');
+                });
+                
+                // Add active state to clicked tab
+                const activeTab = document.querySelector(`[data-tab="${tabId}"].school-tab-btn`);
+                if (activeTab) {
+                    activeTab.classList.remove('text-gray-500');
+                    activeTab.classList.add('border-b-2', 'border-red-600', 'text-red-600');
+                }
+                
+                // Hide all tab contents
+                schoolTabContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+                
+                // Show selected tab content
+                const activeContent = document.getElementById(`${tabId}-tab`);
+                if (activeContent) {
+                    activeContent.classList.remove('hidden');
+                }
+            }
+
+            // Close school modal
+            if (closeSchoolModalBtn) {
+                closeSchoolModalBtn.addEventListener('click', function() {
+                    schoolModal.classList.add('hidden');
+                });
+            }
+
+            // Close school modal when clicking outside
+            if (schoolModal) {
+                schoolModal.addEventListener('click', function(e) {
+                    if (e.target === schoolModal) {
+                        schoolModal.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Close school modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && schoolModal && !schoolModal.classList.contains('hidden')) {
+                    schoolModal.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+    <!-- AI Assistant Floating Button -->
+    <div id="aiAssistantButton" class="fixed bottom-6 right-6 z-50">
+        <button class="text-white rounded-full p-4 shadow-lg transition-all duration-300 hover:scale-110" style="background-color: #d82128;" onmouseover="this.style.backgroundColor='#d82128'" onmouseout="this.style.backgroundColor='#d82128'">
+            <i data-lucide="message-circle" class="w-6 h-6"></i>
+        </button>
+    </div>
+
+    <!-- AI Assistant Chat Panel -->
+    <div id="aiChatOverlay" class="fixed z-50 hidden">
+        <div class="fixed bottom-0 left-0 right-0 md:right-6 md:bottom-6 md:left-auto md:w-96 bg-white rounded-t-3xl md:rounded-3xl shadow-2xl transform transition-transform duration-300 translate-y-full" id="aiChatPanel">
+            <!-- Chat Header -->
+            <div class="flex items-center justify-between p-4 border-b border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background-color: #FEE2E2;">
+                        <i data-lucide="bot" class="w-5 h-5" style="color: #d82128;"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900">AI Assistant</h3>
+                        <p class="text-sm text-green-600">Online</p>
+                    </div>
+                </div>
+                <button id="closeChatBtn" class="p-2 hover:bg-gray-100 rounded-full">
+                    <i data-lucide="x" class="w-5 h-5 text-gray-500"></i>
+                </button>
+            </div>
+
+            <!-- Chat Messages -->
+            <div class="h-96 overflow-y-auto p-4 space-y-4" id="chatMessages">
+                <div class="flex items-start space-x-3">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: #FEE2E2;">
+                        <i data-lucide="bot" class="w-4 h-4" style="color: #d82128;"></i>
+                    </div>
+                    <div class="bg-gray-100 rounded-2xl rounded-tl-md p-3 max-w-xs">
+                        <p class="text-sm text-gray-800">Hi! I can help you find the perfect program. What are you looking for?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Input -->
+            <div class="p-4 border-t border-gray-200">
+                <div class="flex items-center space-x-2">
+                    <input type="text" id="chatInput" placeholder="Type your message..." class="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:border-transparent" style="--tw-ring-color: #d82128;">
+                    <button id="sendMessageBtn" class="text-white rounded-full p-2 transition-colors" style="background-color: #d82128;" onmouseover="this.style.backgroundColor='#d82128'" onmouseout="this.style.backgroundColor='#d82128'">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // AI Assistant Chat Functionality
+        const aiButton = document.getElementById('aiAssistantButton');
+        const chatOverlay = document.getElementById('aiChatOverlay');
+        const chatPanel = document.getElementById('aiChatPanel');
+        const closeChatBtn = document.getElementById('closeChatBtn');
+        const chatInput = document.getElementById('chatInput');
+        const sendMessageBtn = document.getElementById('sendMessageBtn');
+        const chatMessages = document.getElementById('chatMessages');
+
+        // Open chat
+        aiButton.addEventListener('click', function() {
+            chatOverlay.classList.remove('hidden');
+            setTimeout(() => {
+                chatPanel.classList.remove('translate-y-full');
+            }, 10);
+            chatInput.focus();
+        });
+
+        // Close chat
+        function closeChat() {
+            chatPanel.classList.add('translate-y-full');
+            setTimeout(() => {
+                chatOverlay.classList.add('hidden');
+            }, 300);
+        }
+
+        closeChatBtn.addEventListener('click', closeChat);
+        chatOverlay.addEventListener('click', function(e) {
+            if (e.target === chatOverlay) {
+                closeChat();
+            }
+        });
+
+        // Send message
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            // Add user message
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.className = 'flex items-start space-x-3 justify-end';
+            userMessageDiv.innerHTML = `
+                <div class="text-white rounded-2xl rounded-tr-md p-3 max-w-xs" style="background-color: #d82128;">
+                    <p class="text-sm">${message}</p>
+                </div>
+                <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="user" class="w-4 h-4 text-gray-600"></i>
+                </div>
+            `;
+            chatMessages.appendChild(userMessageDiv);
+
+            // Clear input
+            chatInput.value = '';
+
+            // Simulate AI response
+            setTimeout(() => {
+                const aiMessageDiv = document.createElement('div');
+                aiMessageDiv.className = 'flex items-start space-x-3';
+                aiMessageDiv.innerHTML = `
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: #FEE2E2;">
+                        <i data-lucide="bot" class="w-4 h-4" style="color: #d82128;"></i>
+                    </div>
+                    <div class="bg-gray-100 rounded-2xl rounded-tl-md p-3 max-w-xs">
+                        <p class="text-sm text-gray-800">I can help you with "${message}". What specific information are you looking for about programs or universities?</p>
+                    </div>
+                `;
+                chatMessages.appendChild(aiMessageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                lucide.createIcons();
+            }, 1000);
+
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            lucide.createIcons();
+        }
+
+        sendMessageBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Tab functionality
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('tab-btn')) {
+                const clickedTab = e.target.getAttribute('data-tab');
+                const cardId = e.target.getAttribute('data-card');
+                
+                // Remove active state from all tabs in this card
+                const tabButtons = document.querySelectorAll(`[data-card="${cardId}"].tab-btn`);
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('text-red-600', 'border-b-2', 'border-red-600');
+                    btn.classList.add('text-gray-500');
+                });
+                
+                // Add active state to clicked tab
+                e.target.classList.remove('text-gray-500');
+                e.target.classList.add('text-red-600', 'border-b-2', 'border-red-600');
+                
+                // Hide all tab content in this card
+                const tabContents = document.querySelectorAll(`[data-card="${cardId}"].tab-content`);
+                tabContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+                
+                // Show selected tab content
+                const activeContent = document.querySelector(`[data-tab="${clickedTab}"][data-card="${cardId}"].tab-content`);
+                if (activeContent) {
+                    activeContent.classList.remove('hidden');
+                }
+            }
+        });
+
+        // Filter dropdown functionality
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.filter-toggle')) {
+                const button = e.target.closest('.filter-toggle');
+                const filterType = button.getAttribute('data-filter');
+                const content = document.querySelector(`[data-filter="${filterType}"].filter-content`);
+                const chevron = button.querySelector('[data-lucide="chevron-down"]');
+                
+                if (content.classList.contains('hidden')) {
+                    content.classList.remove('hidden');
+                    chevron.style.transform = 'rotate(180deg)';
+                } else {
+                    content.classList.add('hidden');
+                    chevron.style.transform = 'rotate(0deg)';
+                }
+            }
+        });
+
+        // Initialize icons after all content is loaded
+        lucide.createIcons();
+    </script>
+    
+    <!-- Working Modal Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Open first dropdown by default
+            const firstDetails = document.getElementById('may2026-details');
+            if (firstDetails) firstDetails.classList.remove('hidden');
+            const modal = document.getElementById('programModal');
+            const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
+            const closeBtn = document.getElementById('closeModal');
+            
+            // School modal elements
+            const schoolModal = document.getElementById('schoolModal');
+            const schoolNameBtns = document.querySelectorAll('.school-name');
+            const closeSchoolBtn = document.getElementById('closeSchoolModal');
+            
+            console.log('School name buttons found:', schoolNameBtns.length);
+            
+            // Program data
+            const programs = {
+                '1': {
+                    name: 'MSc in Data Science',
+                    university: 'University of British Columbia',
+                    location: 'Vancouver, Canada'
+                },
+                '2': {
+                    name: 'Bachelor of Engineering', 
+                    university: 'University of Toronto',
+                    location: 'Toronto, Canada'
+                }
+            };
+            
+            // School data with scholarship information
+            const schools = {
+                'ubc': {
+                    name: 'University of British Columbia',
+                    location: 'Vancouver, Canada',
+                    logo: 'https://images.unsplash.com/photo-1562774053-701939374585?w=80&h=80&fit=crop',
+                    scholarship: {
+                        name: 'International Excellence Scholarship',
+                        value: 'CAD 5,000 per year',
+                        type: 'Merit-based',
+                        duration: '4 years (renewable annually)',
+                        awards: '25 scholarships available',
+                        deadline: 'March 15, 2025',
+                        gpa: '3.5/4.0',
+                        english: 'IELTS ≥ 6.5 or TOEFL ≥ 90',
+                        documents: ['Personal Statement', 'Recommendation Letters (2)', 'Academic Transcripts', 'Portfolio']
+                    }
+                },
+                'stclair': {
+                    name: 'St. Clair College - Downtown Campus',
+                    location: 'Windsor, Ontario, Canada',
+                    logo: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=80&h=80&fit=crop',
+                    scholarship: {
+                        name: 'International Student Scholarship',
+                        value: 'CAD 3,000 per semester',
+                        type: 'Entrance Scholarship',
+                        duration: '2 years',
+                        awards: '50 scholarships available',
+                        deadline: 'April 30, 2025',
+                        gpa: '3.0/4.0',
+                        english: 'IELTS ≥ 6.0 or TOEFL ≥ 80',
+                        documents: ['Application Form', 'High School Transcripts', 'English Proficiency Test']
+                    }
+                },
+                'berkeley': {
+                    name: 'Berkeley City College',
+                    location: 'Berkeley, California, USA',
+                    logo: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=80&h=80&fit=crop',
+                    scholarship: {
+                        name: 'Community College Excellence Award',
+                        value: 'USD 2,500 per year',
+                        type: 'Need-based',
+                        duration: '2 years',
+                        awards: '30 scholarships available',
+                        deadline: 'May 15, 2025',
+                        gpa: '2.8/4.0',
+                        english: 'IELTS ≥ 5.5 or TOEFL ≥ 70',
+                        documents: ['Personal Statement', 'Financial Aid Form', 'Academic Records']
+                    }
+                },
+                'stanford': {
+                    name: 'Stanford University',
+                    location: 'Stanford, California, USA',
+                    logo: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=80&h=80&fit=crop',
+                    scholarship: {
+                        name: 'Research Excellence Award',
+                        value: 'USD 15,000 + full tuition waiver',
+                        type: 'Research Scholarship',
+                        duration: '4 years',
+                        awards: '10 scholarships available',
+                        deadline: 'January 15, 2025',
+                        gpa: '3.8/4.0',
+                        english: 'IELTS ≥ 7.0 or TOEFL ≥ 100',
+                        documents: ['Research Proposal', 'CV', 'Recommendation Letters (3)', 'Transcripts']
+                    }
+                }
+            };
+            
+            // Add click listeners to View Details buttons
+            viewDetailsBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const programId = btn.getAttribute('data-program-id');
+                    const program = programs[programId];
+                    
+                    if (program && modal) {
+                        // Update modal content
+                        const nameEl = document.getElementById('modalProgramName');
+                        const uniEl = document.getElementById('modalUniversityName');
+                        const locEl = document.getElementById('modalLocation');
+                        
+                        if (nameEl) nameEl.textContent = program.name;
+                        if (uniEl) uniEl.textContent = program.university;
+                        if (locEl) locEl.textContent = program.location;
+                        
+                        // Show modal
+                        modal.classList.remove('hidden');
+                        lucide.createIcons();
+                    }
+                });
+            });
+            
+            // Add click listeners to university name h3 elements
+            const universityNameElements = document.querySelectorAll('h3.text-sm.font-medium.text-gray-900');
+            universityNameElements.forEach(h3 => {
+                h3.style.cursor = 'pointer';
+                h3.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const universityName = h3.textContent.trim();
+                    
+                    // Find matching school data
+                    let matchedSchool = null;
+                    let schoolKey = null;
+                    
+                    Object.keys(schools).forEach(key => {
+                        if (schools[key].name === universityName) {
+                            matchedSchool = schools[key];
+                            schoolKey = key;
+                        }
+                    });
+                    
+                    // If no exact match, use default data based on university name
+                    if (!matchedSchool) {
+                        matchedSchool = {
+                            name: universityName,
+                            location: 'Location not specified',
+                            logo: 'https://images.unsplash.com/photo-1562774053-701939374585?w=80&h=80&fit=crop',
+                            scholarship: {
+                                name: 'International Student Scholarship',
+                                value: 'CAD 4,000 per year',
+                                type: 'Merit-based',
+                                duration: '2-4 years',
+                                awards: '20 scholarships available',
+                                deadline: 'March 31, 2025',
+                                gpa: '3.2/4.0',
+                                english: 'IELTS ≥ 6.5 or TOEFL ≥ 85',
+                                documents: ['Personal Statement', 'Academic Transcripts', 'Recommendation Letter']
+                            }
+                        };
+                    }
+                    
+                    if (matchedSchool && schoolModal) {
+                        // Update school modal content
+                        const nameEl = document.getElementById('schoolName');
+                        const locEl = document.getElementById('schoolLocation');
+                        const logoEl = document.getElementById('schoolLogo');
+                        
+                        if (nameEl) nameEl.textContent = matchedSchool.name;
+                        if (locEl) locEl.textContent = matchedSchool.location;
+                        if (logoEl) logoEl.src = matchedSchool.logo;
+                        
+                        // Update scholarship information
+                        if (matchedSchool.scholarship) {
+                            const scholarshipNameEl = document.getElementById('scholarshipName');
+                            const scholarshipValueEl = document.getElementById('scholarshipValue');
+                            const scholarshipTypeEl = document.getElementById('scholarshipType');
+                            const scholarshipDurationEl = document.getElementById('scholarshipDuration');
+                            const scholarshipAwardsEl = document.getElementById('scholarshipAwards');
+                            const scholarshipDeadlineEl = document.getElementById('scholarshipDeadline');
+                            
+                            if (scholarshipNameEl) scholarshipNameEl.textContent = matchedSchool.scholarship.name;
+                            if (scholarshipValueEl) scholarshipValueEl.textContent = matchedSchool.scholarship.value;
+                            if (scholarshipTypeEl) scholarshipTypeEl.textContent = matchedSchool.scholarship.type;
+                            if (scholarshipDurationEl) scholarshipDurationEl.textContent = matchedSchool.scholarship.duration;
+                            if (scholarshipAwardsEl) scholarshipAwardsEl.textContent = matchedSchool.scholarship.awards;
+                            if (scholarshipDeadlineEl) scholarshipDeadlineEl.textContent = matchedSchool.scholarship.deadline;
+                            
+                            // Update eligibility requirements
+                            const gpaEl = document.getElementById('gpaRequirement');
+                            const englishEl = document.getElementById('englishRequirement');
+                            if (gpaEl) gpaEl.textContent = matchedSchool.scholarship.gpa;
+                            if (englishEl) englishEl.textContent = matchedSchool.scholarship.english;
+                        }
+                        
+                        // Show school modal
+                        schoolModal.classList.remove('hidden');
+                        lucide.createIcons();
+                    }
+                });
+            });
+            
+            // Add click listeners to school names (existing functionality)
+            schoolNameBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('School name clicked');
+                    const schoolId = btn.getAttribute('data-school-id');
+                    console.log('School ID:', schoolId);
+                    const school = schools[schoolId];
+                    
+                    if (school && schoolModal) {
+                        // Update school modal content
+                        const nameEl = document.getElementById('schoolName');
+                        const locEl = document.getElementById('schoolLocation');
+                        const logoEl = document.getElementById('schoolLogo');
+                        
+                        if (nameEl) nameEl.textContent = school.name;
+                        if (locEl) locEl.textContent = school.location;
+                        if (logoEl) logoEl.src = school.logo;
+                        
+                        // Update scholarship information
+                        if (school.scholarship) {
+                            const scholarshipNameEl = document.getElementById('scholarshipName');
+                            const scholarshipValueEl = document.getElementById('scholarshipValue');
+                            const scholarshipTypeEl = document.getElementById('scholarshipType');
+                            const scholarshipDurationEl = document.getElementById('scholarshipDuration');
+                            const scholarshipAwardsEl = document.getElementById('scholarshipAwards');
+                            const scholarshipDeadlineEl = document.getElementById('scholarshipDeadline');
+                            
+                            if (scholarshipNameEl) scholarshipNameEl.textContent = school.scholarship.name;
+                            if (scholarshipValueEl) scholarshipValueEl.textContent = school.scholarship.value;
+                            if (scholarshipTypeEl) scholarshipTypeEl.textContent = school.scholarship.type;
+                            if (scholarshipDurationEl) scholarshipDurationEl.textContent = school.scholarship.duration;
+                            if (scholarshipAwardsEl) scholarshipAwardsEl.textContent = school.scholarship.awards;
+                            if (scholarshipDeadlineEl) scholarshipDeadlineEl.textContent = school.scholarship.deadline;
+                        }
+                        
+                        // Show school modal
+                        schoolModal.classList.remove('hidden');
+                        console.log('School modal should be visible');
+                        lucide.createIcons();
+                    }
+                });
+            });
+            
+            // Close program modal
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    modal.classList.add('hidden');
+                });
+            }
+            
+            // Close school modal
+            if (closeSchoolBtn) {
+                closeSchoolBtn.addEventListener('click', function() {
+                    schoolModal.classList.add('hidden');
+                });
+            }
+            
+            // Close on outside click
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        modal.classList.add('hidden');
+                    }
+                });
+            }
+            
+            if (schoolModal) {
+                schoolModal.addEventListener('click', function(e) {
+                    if (e.target === schoolModal) {
+                        schoolModal.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // School modal tab functionality
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('school-tab-btn')) {
+                    const clickedTab = e.target.getAttribute('data-tab');
+                    
+                    // Remove active state from all school tabs
+                    const schoolTabButtons = document.querySelectorAll('.school-tab-btn');
+                    schoolTabButtons.forEach(btn => {
+                        btn.classList.remove('text-red-600', 'border-b-2', 'border-red-600');
+                        btn.classList.add('text-gray-500');
+                    });
+                    
+                    // Add active state to clicked tab
+                    e.target.classList.remove('text-gray-500');
+                    e.target.classList.add('text-red-600', 'border-b-2', 'border-red-600');
+                    
+                    // Hide all school tab content
+                    const schoolTabContents = document.querySelectorAll('.school-tab-content');
+                    schoolTabContents.forEach(content => {
+                        content.classList.add('hidden');
+                    });
+                    
+                    // Show selected tab content
+                    const activeContent = document.getElementById(clickedTab + '-tab');
+                    if (activeContent) {
+                        activeContent.classList.remove('hidden');
+                    }
+                }
+            });
+            
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

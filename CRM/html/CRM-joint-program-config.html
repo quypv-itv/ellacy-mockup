@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joint Program Configuration - Admin | APPLYLEAD</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg overflow-y-auto">
+            <div class="p-6">
+                <img src="../../ApplyLead_logo.png" alt="ApplyLead" class="h-9 mb-2">
+                <div class="inline-flex items-center px-2 py-1 rounded text-xs font-medium text-white" style="background-color: #d82128;">Admin</div>
+            </div>
+            <nav class="mt-6">
+                <a href="CRM-dashboard.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>
+                    Dashboard
+                </a>
+                <a href="CRM-applications.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>
+                    Applications
+                </a>
+                <a href="CRM-agent.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="users" class="w-5 h-5 mr-3"></i>
+                    Agents
+                </a>
+                <a href="CRM-scholarships.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="graduation-cap" class="w-5 h-5 mr-3"></i>
+                    Scholarships
+                </a>
+                <a href="CRM-institutions.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="building" class="w-5 h-5 mr-3"></i>
+                    Institutions
+                </a>
+                <a href="CRM-students.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="user" class="w-5 h-5 mr-3"></i>
+                    Students
+                </a>
+                <a href="CRM-payment.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="credit-card" class="w-5 h-5 mr-3"></i>
+                    Payments
+                </a>
+                <a href="CRM-tasks.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="check-circle" class="w-5 h-5 mr-3"></i>
+                    Tasks
+                </a>
+                <a href="CRM-Campaigns.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="brick-wall-shield" class="w-5 h-5 mr-3"></i>
+                    Campaigns
+                </a>
+                <a href="CRM-report.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="bar-chart" class="w-5 h-5 mr-3"></i>
+                    Reports
+                </a>
+                <a href="CRM-messages.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>
+                    Messages
+                </a>
+                <a href="CRM-user-admin.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="shield" class="w-5 h-5 mr-3"></i>
+                    User Admin
+                </a>
+                <a href="#" class="flex items-center px-6 py-3 text-white" style="background-color: #d82128;">
+                    <i data-lucide="book-open" class="w-5 h-5 mr-3"></i>Joint Program
+                </a>
+                <a href="CRM-Setting.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="settings" class="w-5 h-5 mr-3"></i>Settings
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 ml-64 overflow-y-auto">
+            <!-- Header -->
+            <header class="bg-white shadow-sm sticky top-0 z-40 border-b">
+                <div class="flex items-center justify-between px-8 py-4">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900">Joint Program Configuration</h1>
+                        <p class="text-sm text-gray-600 mt-1">Configure program information and partner universities for student page</p>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <button onclick="window.open('../../Joint Program Student/html/About-Joint-Program.html', '_blank')" class="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors flex items-center space-x-2">
+                            <i data-lucide="eye" class="w-4 h-4"></i><span>Preview Page</span>
+                        </button>
+                        <button onclick="saveAllChanges()" class="px-6 py-2 text-white rounded-lg hover:bg-red-700 transition-colors flex items-center space-x-2" style="background-color: #d82128;">
+                            <i data-lucide="save" class="w-4 h-4"></i><span>Save All Changes</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content Area -->
+            <main class="p-8">
+                <!-- Tabs -->
+                <div class="bg-white rounded-lg shadow-sm mb-6">
+                    <div class="border-b border-gray-200">
+                        <nav class="flex space-x-8 px-6">
+                            <button onclick="switchTab('1plus3')" class="tab-button border-b-2 py-4 px-1 text-sm font-medium" style="border-color: #d82128; color: #d82128;">1+3 Program</button>
+                            <button onclick="switchTab('2plus2')" class="tab-button border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700">2+2 Program</button>
+                            <button onclick="switchTab('jmba')" class="tab-button border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700">Joint MBA</button>
+                            <button onclick="switchTab('partners-12')" class="tab-button border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700">Partners (1+3/2+2)</button>
+                            <button onclick="switchTab('partners-mba')" class="tab-button border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700">Partners (MBA)</button>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- Tab Contents -->
+                <div id="tab-1plus3" class="tab-content active">
+                    <div class="bg-white rounded-lg shadow-sm p-6 space-y-6">
+                        <h2 class="text-xl font-bold flex items-center"><i data-lucide="file-text" class="w-5 h-5 mr-2" style="color: #d82128;"></i>1+3 Program Configuration</h2>
+                        <div class="border-b pb-6"><h3 class="text-lg font-semibold mb-4">Description</h3><textarea rows="3" class="w-full px-4 py-3 border rounded-lg text-sm">The 1+3 Transfer Program allows students to complete their first year of university studies in Vietnam, then transfer to complete the remaining 3 years at a partner university abroad.</textarea></div>
+                        <div class="border-b pb-6"><h3 class="text-lg font-semibold mb-4">Features</h3><div class="space-y-3"><div class="flex space-x-3 p-3 bg-gray-50 rounded-lg"><input type="text" class="flex-1 px-3 py-2 border rounded-lg text-sm" value="Year 1 (VN): Foundation studies, English prep"><button class="p-2 hover:bg-red-100 rounded-lg" style="color: #d82128;"><i data-lucide="trash-2" class="w-4 h-4"></i></button></div></div></div>
+                    </div>
+                </div>
+
+                <div id="tab-2plus2" class="tab-content">
+                    <div class="bg-white rounded-lg shadow-sm p-6 space-y-6">
+                        <h2 class="text-xl font-bold flex items-center"><i data-lucide="file-text" class="w-5 h-5 mr-2" style="color: #d82128;"></i>2+2 Program Configuration</h2>
+                        <div class="border-b pb-6"><h3 class="text-lg font-semibold mb-4">Description</h3><textarea rows="3" class="w-full px-4 py-3 border rounded-lg text-sm">The 2+2 Transfer Program allows students to complete their first two years of university studies in Vietnam, then transfer to complete the final 2 years at a partner university abroad.</textarea></div>
+                    </div>
+                </div>
+
+                <div id="tab-jmba" class="tab-content">
+                    <div class="bg-white rounded-lg shadow-sm p-6 space-y-6">
+                        <h2 class="text-xl font-bold flex items-center"><i data-lucide="briefcase" class="w-5 h-5 mr-2" style="color: #d82128;"></i>Joint MBA Configuration</h2>
+                        <div class="border-b pb-6"><h3 class="text-lg font-semibold mb-4">Fast-Track MBA</h3><div class="grid grid-cols-3 gap-4"><div><label class="block text-sm font-medium mb-2">Duration</label><input type="text" class="w-full px-4 py-2 border rounded-lg text-sm" value="18 months"></div><div><label class="block text-sm font-medium mb-2">Format</label><input type="text" class="w-full px-4 py-2 border rounded-lg text-sm" value="accelerated"></div></div></div>
+                    </div>
+                </div>
+
+                <div id="tab-partners-12" class="tab-content">
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex justify-between mb-6"><h2 class="text-xl font-bold flex items-center"><i data-lucide="building-2" class="w-5 h-5 mr-2" style="color: #d82128;"></i>Partner Universities (1+3/2+2)</h2><button class="px-4 py-2 text-white rounded-lg" style="background-color: #d82128;"><i data-lucide="plus" class="w-4 h-4 inline mr-2"></i>Add University</button></div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                                <div class="flex justify-between mb-3">
+                                    <h4 class="font-semibold text-gray-900">Angelo State University</h4>
+                                    <div class="flex space-x-1">
+                                        <button class="p-1 text-blue-600 hover:bg-blue-50 rounded"><i data-lucide="edit" class="w-4 h-4"></i></button>
+                                        <button class="p-1 text-red-600 hover:bg-red-50 rounded"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-2">Texas, USA</p>
+                                <p class="text-xs text-gray-500 mb-3">Long-standing EGE partner</p>
+                                <div class="mb-3">
+                                    <p class="text-xs font-medium text-gray-700 mb-1">Vietnamese Partners:</p>
+                                    <div class="flex flex-wrap gap-1">
+                                        <span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded">FTU</span>
+                                    </div>
+                                </div>
+                                <div class="flex gap-1">
+                                    <span class="px-2 py-1 bg-red-100 text-red-700 text-xs rounded-full">2+2</span>
+                                </div>
+                            </div>
+                            <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                                <div class="flex justify-between mb-3">
+                                    <h4 class="font-semibold text-gray-900">Rowan University</h4>
+                                    <div class="flex space-x-1">
+                                        <button class="p-1 text-blue-600 hover:bg-blue-50 rounded"><i data-lucide="edit" class="w-4 h-4"></i></button>
+                                        <button class="p-1 text-red-600 hover:bg-red-50 rounded"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-2">New Jersey, USA</p>
+                                <p class="text-xs text-gray-500 mb-3">Ellacy Foundation network</p>
+                                <div class="mb-3">
+                                    <p class="text-xs font-medium text-gray-700 mb-1">Vietnamese Partners:</p>
+                                    <div class="flex flex-wrap gap-1">
+                                        <span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded">IUH</span>
+                                        <span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded">FTU</span>
+                                    </div>
+                                </div>
+                                <div class="flex gap-1">
+                                    <span class="px-2 py-1 bg-red-100 text-red-700 text-xs rounded-full">1+3</span>
+                                    <span class="px-2 py-1 bg-red-100 text-red-700 text-xs rounded-full">2+2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-partners-mba" class="tab-content">
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex justify-between mb-6"><h2 class="text-xl font-bold flex items-center"><i data-lucide="building-2" class="w-5 h-5 mr-2" style="color: #d82128;"></i>Partner Universities (MBA)</h2><button class="px-4 py-2 text-white rounded-lg" style="background-color: #d82128;"><i data-lucide="plus" class="w-4 h-4 inline mr-2"></i>Add University</button></div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                                <div class="flex justify-between mb-3">
+                                    <h4 class="font-semibold text-gray-900">Ohio Northern University</h4>
+                                    <div class="flex space-x-1">
+                                        <button class="p-1 text-blue-600 hover:bg-blue-50 rounded"><i data-lucide="edit" class="w-4 h-4"></i></button>
+                                        <button class="p-1 text-red-600 hover:bg-red-50 rounded"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-2">Ohio, USA</p>
+                                <p class="text-xs text-gray-500 mb-3">Ellacy Foundation scholarship partner</p>
+                                <div class="mb-3">
+                                    <p class="text-xs font-medium text-gray-700 mb-1">Vietnamese Partners:</p>
+                                    <div class="flex flex-wrap gap-1">
+                                        <span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded">IUH</span>
+                                        <span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded">FTU</span>
+                                        <span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded">HVNH</span>
+                                    </div>
+                                </div>
+                                <div class="flex gap-1">
+                                    <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">MBA</span>
+                                </div>
+                            </div>
+                            <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                                <div class="flex justify-between mb-3">
+                                    <h4 class="font-semibold text-gray-900">BAU International University</h4>
+                                    <div class="flex space-x-1">
+                                        <button class="p-1 text-blue-600 hover:bg-blue-50 rounded"><i data-lucide="edit" class="w-4 h-4"></i></button>
+                                        <button class="p-1 text-red-600 hover:bg-red-50 rounded"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-2">Washington, D.C., USA</p>
+                                <p class="text-xs text-gray-500 mb-3">BAU Global Education Network</p>
+                                <div class="mb-3">
+                                    <p class="text-xs font-medium text-gray-700 mb-1">Vietnamese Partners:</p>
+                                    <div class="flex flex-wrap gap-1">
+                                        <span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded">FTU</span>
+                                    </div>
+                                </div>
+                                <div class="flex gap-1">
+                                    <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">MBA</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(el => {
+                el.classList.remove('text-red-600');
+                el.classList.add('border-transparent', 'text-gray-500');
+                el.style.borderColor = 'transparent';
+                el.style.color = '';
+            });
+            
+            document.getElementById('tab-' + tabName).classList.add('active');
+            event.target.classList.remove('border-transparent', 'text-gray-500');
+            event.target.style.borderColor = '#d82128';
+            event.target.style.color = '#d82128';
+            lucide.createIcons();
+        }
+        
+        function saveAllChanges() {
+            alert('All changes saved successfully!');
+        }
+    </script>
+</body>
+</html>
