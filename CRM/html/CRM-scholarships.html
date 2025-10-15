@@ -459,49 +459,6 @@
                                     <!-- Program Duration -->
                                     <p class="text-sm text-gray-500 mb-1">Duration: 4 years</p>
     
-                                    <!-- Scholarship Type and Field of Study Dropdowns -->
-                                    <div class="flex flex-wrap gap-4 mb-3">
-                                        <!-- Scholarship Type Dropdown -->
-                                        <div class="flex-1 max-w-[200px]">
-                                            <label class="text-sm text-gray-600 mb-1 block">Scholarship Type:</label>
-                                            <div class="relative">
-                                                <select
-                                                    class="appearance-none bg-white border border-gray-300 rounded-lg px-3 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 w-full">
-                                                    <option value="merit" selected>Merit Scholarship</option>
-                                                    <option value="rhodes">Rhodes Scholarship</option>
-                                                    <option value="chevening">Chevening Scholarship</option>
-                                                    <option value="commonwealth">Commonwealth Scholarship</option>
-                                                </select>
-                                                <i data-lucide="chevron-down"
-                                                    class="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none"></i>
-                                            </div>
-                                        </div>
-    
-                                        <!-- Field of Study Dropdown -->
-                                        <div class="flex-1 max-w-[200px]">
-                                            <label class="text-sm text-gray-600 mb-1 block cursor-pointer" id="fieldOfStudyLabel2">Field of Study:</label>
-                                            <div class="relative">
-                                                <input type="text" placeholder="Search field of study..." 
-                                                    class="search-field-of-study w-full px-3 py-2 mb-1 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-                                                    id="fieldOfStudySearch2">
-                                                <div class="field-of-study-dropdown absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg hidden">
-                                                    <input type="hidden" name="field-of-study-2" id="fieldOfStudyValue2">
-                                                    <ul class="py-1 max-h-60 overflow-auto">
-                                                        <li data-value="computer-science" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Computer Science</li>
-                                                        <li data-value="business" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Business Administration</li>
-                                                        <li data-value="engineering" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Engineering</li>
-                                                        <li data-value="medicine" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Medicine</li>
-                                                        <li data-value="law" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Law</li>
-                                                        <li data-value="arts" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Arts & Humanities</li>
-                                                        <li data-value="science" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Natural Sciences</li>
-                                                        <li data-value="social-sciences" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Social Sciences</li>
-                                                    </ul>
-                                                    <div id="noResults2" class="hidden px-4 py-2 text-sm text-gray-500 border-t border-gray-200">No results for that search.</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-    
                                     <!-- Intake Period Dropdown -->
                                     <div class="flex items-center gap-4 mb-4">
                                         <div class="relative">
@@ -525,47 +482,67 @@
                                         class="tab-btn px-4 py-2 text-sm font-medium text-red-600 border-b-2 border-red-600"
                                         data-tab="fees" data-card="2">Fees</button>
                                     <button class="tab-btn px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700"
-                                        data-tab="requirements" data-card="2">Requirements</button>
-                                    <button class="tab-btn px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700"
-                                        data-tab="course-detail" data-card="2">Course Detail</button>
+                                        data-tab="requirements" data-card="2">Admission Requirements</button>
                                 </div>
     
                                 <!-- Fees Tab Content -->
                                 <div class="tab-content" data-tab="fees" data-card="2">
                                     <div class="space-y-4">
                                         <div class="flex justify-between items-center">
-                                            <span class="text-gray-600">Application Fee</span>
-                                            <span class="font-semibold" id="applicationFee2">$100</span>
+                                            <span class="text-gray-600">Tuition and Fees</span>
+                                            <span class="font-semibold" id="tuitionAndFees2">$14,888</span>
                                         </div>
                                         <div class="flex justify-between items-center">
-                                            <span class="text-gray-600">Tuition (per year)</span>
-                                            <span class="font-semibold" id="tuitionFee2">$25,000 - $30,000</span>
+                                            <span class="text-gray-600">Living Expenses (Housing and Food)</span>
+                                            <span class="font-semibold" id="livingExpenses2">$12,700</span>
                                         </div>
                                         <div class="flex justify-between items-center">
                                             <span class="text-gray-600">Books & Supplies</span>
-                                            <span class="font-semibold" id="booksSupplies2">$800</span>
+                                            <span class="font-semibold" id="booksSupplies2">$720</span>
                                         </div>
-                                        <hr class="my-4">
-                                        <div class="flex justify-between items-center text-red-600">
-                                            <span>Scholarship up to $30,000</span>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-gray-600">Other</span>
+                                            <span class="font-semibold" id="other2">$2,080</span>
                                         </div>
                                     </div>
                                 </div>
     
                                 <!-- Requirements Tab Content -->
                                 <div class="tab-content hidden" data-tab="requirements" data-card="2">
-                                    <div class="space-y-4">
-                                        <div class="bg-white rounded-lg p-4 border">
-                                            <h4 class="font-semibold mb-2 text-black">Academic Requirements</h4>
-                                            <ul class="list-disc list-inside text-sm text-gray-700 space-y-1"
-                                                id="academicRequirements2">
-                                                <li>Minimum GPA of 3.7/4.0 or equivalent</li>
-                                                <li>Bachelor's degree in relevant field</li>
-                                                <li>Academic excellence demonstrated through transcripts</li>
-                                                <li>Dean's list or honor roll recognition preferred</li>
-                                            </ul>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div class="space-y-4">
+                                            <h3 class="text-lg font-bold text-gray-900 mb-2 pb-2 border-b-2" style="border-color:#d82128;">Graduation</h3>
+                                            <div class="bg-white rounded-lg p-4 border">
+                                                <h4 class="font-semibold mb-2 text-black">Academic Requirements</h4>
+                                                <ul class="list-disc list-inside text-sm text-gray-700 space-y-1" id="graduationAcademic2">
+                                                    <li>Minimum GPA of 3.7/4.0 or equivalent</li>
+                                                    <li>Completed Bachelor's degree in relevant field</li>
+                                                </ul>
+                                            </div>
+                                            <div class="bg-white rounded-lg p-4 border">
+                                                <h4 class="font-semibold mb-2 text-black">Language Requirements</h4>
+                                                <ul class="list-disc list-inside text-sm text-gray-700 space-y-1" id="graduationLanguage2">
+                                                    <li>IELTS: 7.0 overall (no band below 6.5)</li>
+                                                    <li>TOEFL iBT: 100 overall</li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                        <div class="bg-white rounded-lg p-4 border">
+                                        <div class="space-y-4">
+                                            <h3 class="text-lg font-bold text-gray-900 mb-2 pb-2 border-b-2" style="border-color:#d82128;">Non-Graduation</h3>
+                                            <div class="bg-white rounded-lg p-4 border">
+                                                <h4 class="font-semibold mb-2 text-black">Academic Requirements</h4>
+                                                <ul class="list-disc list-inside text-sm text-gray-700 space-y-1" id="nonGraduationAcademic2">
+                                                    <li>Strong academic standing in current program</li>
+                                                    <li>Proof of ongoing enrollment</li>
+                                                </ul>
+                                            </div>
+                                            <div class="bg-white rounded-lg p-4 border">
+                                                <h4 class="font-semibold mb-2 text-black">Language Requirements</h4>
+                                                <ul class="list-disc list-inside text-sm text-gray-700 space-y-1" id="nonGraduationLanguage2">
+                                                    <li>IELTS: 6.5 overall</li>
+                                                    <li>TOEFL iBT: 90 overall</li>
+                                                </ul>
+                                            </div>
                                             <h4 class="font-semibold mb-2 text-black">Language Requirements</h4>
                                             <ul class="list-disc list-inside text-sm text-gray-700 space-y-1"
                                                 id="languageRequirements2">
@@ -587,42 +564,6 @@
                                     </div>
                                 </div>
     
-                                <!-- Course Detail Tab Content -->
-                                <div class="tab-content hidden" data-tab="course-detail" data-card="2">
-                                    <div class="space-y-4">
-                                        <div>
-                                            <h4 class="font-semibold mb-2">Scholarship Overview</h4>
-                                            <p class="text-gray-600 text-sm leading-relaxed" id="programOverview2">
-                                                Merit-based scholarship program designed for academically outstanding
-                                                students who have demonstrated exceptional performance in their
-                                                undergraduate studies.
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-semibold mb-2">Core Courses</h4>
-                                            <ul class="list-disc list-inside text-sm text-gray-600 space-y-1"
-                                                id="coreCourses2">
-                                                <li>Advanced Research Methodologies</li>
-                                                <li>Leadership in Academic Excellence</li>
-                                                <li>Scholarly Communication</li>
-                                                <li>Independent Study Project</li>
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm text-gray-500">Duration</p>
-                                            <p class="font-semibold" id="programDuration2">2 years full-time</p>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm text-gray-500">Semester breakdown</p>
-                                            <p class="font-semibold" id="semesterBreakdown2">4 semesters over 2 years</p>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm text-gray-500">Specialization tracks</p>
-                                            <p class="font-semibold" id="specializationTracks2">Research Focus, Academic
-                                                Leadership, Scholarly Publications</p>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -738,16 +679,6 @@
                                 <option value="">Select Source</option>
                                 <option>Ellacy Foundation</option>
                                 <option>Partner Institution</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Tier <span
-                                    class="text-red-500">*</span></label>
-                            <select class="w-full rounded-md border-gray-300" required>
-                                <option value="">Select Scholarship Tier</option>
-                                <option>Scholarship Guarantee</option>
-                                <option>Elite Admission Scholarship</option>
-                                <option>Ivy Global Student Scholarship</option>
                             </select>
                         </div>
                         <div>
@@ -867,10 +798,7 @@
                                 data-tab="fees" style="border-color: #d82128; color: #d82128;">Fees</button>
                             <button
                                 class="add-scholarship-tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300"
-                                data-tab="requirements">Requirements</button>
-                            <button
-                                class="add-scholarship-tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300"
-                                data-tab="course">Course Detail</button>
+                                data-tab="requirements">Admission Requirements</button>
                         </nav>
                     </div>
 
@@ -879,12 +807,10 @@
                         <!-- Fees Tab -->
                         <section id="add-scholarship-tab-fees" class="add-scholarship-tab-panel">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Application Fee</label>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Tuition and Fees</label>
                                     <div class="flex space-x-2">
-                                        <input type="number" class="flex-1 rounded-md border-gray-300"
-                                            placeholder="250">
+                                        <input type="number" class="flex-1 rounded-md border-gray-300" placeholder="14888">
                                         <select class="w-24 rounded-md border-gray-300">
                                             <option>USD</option>
                                             <option>CAD</option>
@@ -894,11 +820,9 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Tuition (per
-                                        year)</label>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Living Expenses (Housing and Food)</label>
                                     <div class="flex space-x-2">
-                                        <input type="number" class="flex-1 rounded-md border-gray-300"
-                                            placeholder="9912">
+                                        <input type="number" class="flex-1 rounded-md border-gray-300" placeholder="12700">
                                         <select class="w-24 rounded-md border-gray-300">
                                             <option>USD</option>
                                             <option>CAD</option>
@@ -910,8 +834,7 @@
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">Books & Supplies</label>
                                     <div class="flex space-x-2">
-                                        <input type="number" class="flex-1 rounded-md border-gray-300"
-                                            placeholder="1459">
+                                        <input type="number" class="flex-1 rounded-md border-gray-300" placeholder="720">
                                         <select class="w-24 rounded-md border-gray-300">
                                             <option>USD</option>
                                             <option>CAD</option>
@@ -921,11 +844,9 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Scholarship up to
-                                    </label>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Other</label>
                                     <div class="flex space-x-2">
-                                        <input type="number" class="flex-1 rounded-md border-gray-300"
-                                            placeholder="1459">
+                                        <input type="number" class="flex-1 rounded-md border-gray-300" placeholder="2080">
                                         <select class="w-24 rounded-md border-gray-300">
                                             <option>USD</option>
                                             <option>CAD</option>
@@ -937,109 +858,68 @@
                             </div>
                         </section>
 
-                        <!-- Requirements Tab -->
+                        <!-- Admission Requirements Tab -->
                         <section id="add-scholarship-tab-requirements" class="add-scholarship-tab-panel hidden">
-                            <div class="space-y-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Academic
-                                        Requirements</label>
-                                    <textarea class="w-full rounded-md border-gray-300" rows="3"
-                                        placeholder="High school diploma or equivalent, relevant prerequisite courses..."></textarea>
-                                </div>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Language Requirements
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Graduation Column -->
+                                <div class="space-y-4">
+                                    <h3 class="text-lg font-bold text-gray-900 mb-2 pb-2 border-b-2" style="border-color:#d82128;">Graduation</h3>
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-1">Minimum GPA</label>
-                                        <input type="number" step="0.1" class="w-full rounded-md border-gray-300"
-                                            placeholder="3.0">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Academic Requirements</label>
+                                        <textarea class="w-full rounded-md border-gray-300" rows="3" placeholder="Minimum GPA, completed degree, prerequisite courses..."></textarea>
                                     </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-1">Minimum
-                                            IELTS</label>
-                                        <input type="number" step="0.5" class="w-full rounded-md border-gray-300"
-                                            placeholder="6.5">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-1">Minimum TOEFL
-                                            iBT</label>
-                                        <input type="number" class="w-full rounded-md border-gray-300" placeholder="80">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-1">Minimum
-                                            Duolingo</label>
-                                        <input type="number" class="w-full rounded-md border-gray-300"
-                                            placeholder="105">
-                                    </div>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Required Documents</label>
-                                    <textarea class="w-full rounded-md border-gray-300" rows="3"
-                                        placeholder="Submit a portfolio showcasing artistic abilities..."></textarea>
-                                </div>
-                            </div>
-                        </section>
-
-                        <!-- Course Detail Tab -->
-                        <section id="add-scholarship-tab-course" class="add-scholarship-tab-panel hidden">
-                            <div class="space-y-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Scholarship
-                                        Overview</label>
-                                    <textarea class="w-full rounded-md border-gray-300" rows="4"
-                                        placeholder="This comprehensive 2-year scholarship combines traditional art fundamentals with cutting-edge digital animation and game design techniques. Students will master industry-standard software and develop a professional portfolio."></textarea>
-                                </div>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-1">Core Courses</label>
-                                        <textarea class="w-full rounded-md border-gray-300" rows="4"
-                                            placeholder="List core courses, one per line..."></textarea>
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-1">Specialization
-                                            Tracks</label>
-                                        <textarea class="w-full rounded-md border-gray-300" rows="4"
-                                            placeholder="List specialization options..."></textarea>
-                                    </div>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Semester
-                                        Breakdown</label>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div class="scholarship-view-mode">
-                                            <h6 class="font-medium text-gray-800 mb-2">Year 1</h6>
-                                            <p class="text-sm text-gray-600">Semester 1: Art fundamentals, digital tools</p>
-                                            <p class="text-sm text-gray-600">Semester 2: 3D basics, character design</p>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Minimum GPA</label>
+                                            <input type="number" step="0.1" class="w-full rounded-md border-gray-300" placeholder="3.7">
                                         </div>
-                                        <div class="scholarship-view-mode">
-                                            <h6 class="font-medium text-gray-800 mb-2">Year 2</h6>
-                                            <p class="text-sm text-gray-600">Semester 3: Advanced animation, specialization</p>
-                                            <p class="text-sm text-gray-600">Semester 4: Capstone project, portfolio</p>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Minimum IELTS</label>
+                                            <input type="number" step="0.5" class="w-full rounded-md border-gray-300" placeholder="7.0">
                                         </div>
-                                        <div class="scholarship-edit-mode hidden">
-                                            <h6 class="font-medium text-gray-800 mb-2">Year 1</h6>
-                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded mb-2" rows="2" placeholder="Enter Year 1 semester details">Semester 1: Art fundamentals, digital tools
-Semester 2: 3D basics, character design</textarea>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Minimum TOEFL iBT</label>
+                                            <input type="number" class="w-full rounded-md border-gray-300" placeholder="100">
                                         </div>
-                                        <div class="scholarship-edit-mode hidden">
-                                            <h6 class="font-medium text-gray-800 mb-2">Year 2</h6>
-                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded mb-2" rows="2" placeholder="Enter Year 2 semester details">Semester 3: Advanced animation, specialization
-Semester 4: Capstone project, portfolio</textarea>
-                                        </div>
-                                        <div class="scholarship-edit-mode hidden">
-                                            <button class="text-xs text-blue-600 hover:underline flex items-center mt-2" style="color: #2563eb;">
-                                                <i data-lucide="plus" class="w-3 h-3 mr-1"></i>Add Semester
-                                            </button>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Minimum Duolingo</label>
+                                            <input type="number" class="w-full rounded-md border-gray-300" placeholder="125">
                                         </div>
                                     </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Required Documents</label>
+                                        <textarea class="w-full rounded-md border-gray-300" rows="3" placeholder="Transcripts, recommendation letters, personal statement..."></textarea>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p class="text-sm text-gray-500">Duration</p>
-                                    <p class="font-semibold" id="programDuration2">2 years full-time</p>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-500">Specialization tracks</p>
-                                    <p class="font-semibold" id="specializationTracks2">Research Focus, Academic
-                                        Leadership, Scholarly Publications</p>
+                                <!-- Non-Graduation Column -->
+                                <div class="space-y-4">
+                                    <h3 class="text-lg font-bold text-gray-900 mb-2 pb-2 border-b-2" style="border-color:#d82128;">Non-Graduation</h3>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Academic Requirements</label>
+                                        <textarea class="w-full rounded-md border-gray-300" rows="3" placeholder="Current standing, ongoing enrollment, prerequisite courses..."></textarea>
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Minimum GPA</label>
+                                            <input type="number" step="0.1" class="w-full rounded-md border-gray-300" placeholder="3.0">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Minimum IELTS</label>
+                                            <input type="number" step="0.5" class="w-full rounded-md border-gray-300" placeholder="6.5">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Minimum TOEFL iBT</label>
+                                            <input type="number" class="w-full rounded-md border-gray-300" placeholder="90">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Minimum Duolingo</label>
+                                            <input type="number" class="w-full rounded-md border-gray-300" placeholder="110">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Required Documents</label>
+                                        <textarea class="w-full rounded-md border-gray-300" rows="3" placeholder="Transcripts, proof of enrollment, personal statement..."></textarea>
+                                    </div>
                                 </div>
                             </div>
                         </section>
@@ -1274,10 +1154,7 @@ Semester 4: Capstone project, portfolio</textarea>
                                 data-tab="fees">Fees</button>
                             <button
                                 class="scholarship-tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300"
-                                data-tab="requirements">Requirements</button>
-                            <button
-                                class="scholarship-tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300"
-                                data-tab="course">Course Detail</button>
+                                data-tab="requirements">Admission Requirements</button>
                         </nav>
                     </div>
 
@@ -1288,92 +1165,53 @@ Semester 4: Capstone project, portfolio</textarea>
                             <div class="space-y-6">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
-                                        <p class="text-xs text-gray-500">Tuition Cost</p>
+                                        <p class="text-xs text-gray-500">Tuition and Fees</p>
                                         <div class="scholarship-view-mode">
-                                            <p class="text-lg font-bold text-gray-900">$9,912 USD</p>
-                                            <p class="text-sm text-gray-500">Annual</p>
+                                            <p class="text-lg font-bold text-gray-900">$14,888</p>
                                         </div>
                                         <div class="scholarship-edit-mode hidden">
-                                            <input type="text"
-                                                class="text-lg font-bold text-gray-900 border-gray-300 rounded mb-2"
-                                                value="$9,912 USD">
-                                            <input type="text" class="text-sm text-gray-500 border-gray-300 rounded"
-                                                value="Annual">
+                                            <input type="text" class="text-lg font-bold text-gray-900 border-gray-300 rounded mb-2" value="$14,888">
                                         </div>
                                     </div>
                                     <div>
-                                        <p class="text-xs text-gray-500">Application Fee</p>
+                                        <p class="text-xs text-gray-500">Living Expenses (Housing and Food)</p>
                                         <div class="scholarship-view-mode">
-                                            <p class="text-lg font-bold text-gray-900">$250 USD</p>
-                                            <p class="text-sm text-gray-500">One-time</p>
+                                            <p class="text-lg font-bold text-gray-900">$12,700</p>
                                         </div>
                                         <div class="scholarship-edit-mode hidden">
-                                            <input type="text"
-                                                class="text-lg font-bold text-gray-900 border-gray-300 rounded mb-2"
-                                                value="$250 USD">
-                                            <input type="text" class="text-sm text-gray-500 border-gray-300 rounded"
-                                                value="One-time">
+                                            <input type="text" class="text-lg font-bold text-gray-900 border-gray-300 rounded mb-2" value="$12,700">
                                         </div>
                                     </div>
                                     <div>
-                                        <p class="text-xs text-gray-500">Application Deadline</p>
+                                        <p class="text-xs text-gray-500">Books & Supplies</p>
                                         <div class="scholarship-view-mode">
-                                            <p class="text-lg font-bold text-gray-900">Nov 15, 2025</p>
-                                            <p class="text-sm text-red-500 flex items-center">
-                                                <i data-lucide="alert-triangle" class="w-4 h-4 mr-1"></i>
-                                                28 days remaining
-                                            </p>
+                                            <p class="text-lg font-bold text-gray-900">$720</p>
                                         </div>
                                         <div class="scholarship-edit-mode hidden">
-                                            <input type="date"
-                                                class="text-lg font-bold text-gray-900 border-gray-300 rounded mb-2"
-                                                value="2025-11-15">
-                                            <p class="text-sm text-red-500 flex items-center">
-                                                <i data-lucide="alert-triangle" class="w-4 h-4 mr-1"></i>
-                                                28 days remaining
-                                            </p>
+                                            <input type="text" class="text-lg font-bold text-gray-900 border-gray-300 rounded mb-2" value="$720">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-gray-500">Other</p>
+                                        <div class="scholarship-view-mode">
+                                            <p class="text-lg font-bold text-gray-900">$2,080</p>
+                                        </div>
+                                        <div class="scholarship-edit-mode hidden">
+                                            <input type="text" class="text-lg font-bold text-gray-900 border-gray-300 rounded mb-2" value="$2,080">
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- Scholarship Award Information -->
                                 <div class="bg-red-50 rounded-lg p-4 border border-red-200">
-                                    <h5 class="text-sm font-medium text-red-900 mb-3">Scholarship Award</h5>
+                                    <h5 class="text-sm font-medium text-red-900 mb-3">Scholarship </h5>
                                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                         <div>
-                                            <p class="text-xs text-red-700">Award Value</p>
                                             <div class="scholarship-view-mode">
                                                 <p class="text-lg font-semibold text-red-900">Up to $5,000</p>
                                             </div>
                                             <div class="scholarship-edit-mode hidden">
-                                                <input type="text"
-                                                    class="text-lg font-semibold text-red-900 border-red-300 rounded"
-                                                    value="Up to $5,000">
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p class="text-xs text-red-700">Available Spots</p>
-                                            <div class="scholarship-view-mode">
-                                                <p class="text-lg font-semibold text-red-900">7 remaining</p>
-                                            </div>
-                                            <div class="scholarship-edit-mode hidden">
-                                                <input type="number"
-                                                    class="text-lg font-semibold text-red-900 border-red-300 rounded"
-                                                    value="7">
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p class="text-xs text-red-700">Source</p>
-                                            <div class="scholarship-view-mode">
-                                                <p class="text-lg font-semibold text-red-900">Ellacy Foundation</p>
-                                            </div>
-                                            <div class="scholarship-edit-mode hidden">
-                                                <select
-                                                    class="text-lg font-semibold text-red-900 border-red-300 rounded">
-                                                    <option selected>Ellacy Foundation</option>
-                                                    <option>Partner Institution</option>
-                                                    <option>Government</option>
-                                                </select>
+                                                <input type="text" class="text-lg font-semibold text-red-900 border-red-300 rounded" value="Up to $5,000">
                                             </div>
                                         </div>
                                     </div>
@@ -1381,182 +1219,70 @@ Semester 4: Capstone project, portfolio</textarea>
                             </div>
                         </section>
 
-                        <!-- Requirements Tab -->
+                        <!-- Admission Requirements Tab -->
                         <section id="scholarship-tab-requirements" class="scholarship-tab-panel hidden">
-                            <div class="space-y-6">
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-4">
+                                    <h3 class="text-lg font-bold text-gray-900 mb-2 pb-2 border-b-2" style="border-color:#d82128;">Graduation</h3>
                                     <div>
                                         <p class="text-xs text-gray-500">Academic Requirements</p>
                                         <div class="scholarship-view-mode">
                                             <ul class="text-sm text-gray-700 space-y-2">
-                                                <li class="flex items-center">
-                                                    <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                                                    GPA 3.0+ (85%+)
-                                                </li>
-                                                <li class="flex items-center">
-                                                    <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                                                    High school diploma or equivalent
-                                                </li>
-                                                <li class="flex items-center">
-                                                    <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                                                    Art portfolio submission
-                                                </li>
+                                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>GPA 3.7+</li>
+                                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>Completed Bachelor's degree</li>
                                             </ul>
                                         </div>
                                         <div class="scholarship-edit-mode hidden">
-                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="4">GPA 3.0+ (85%+)
-High school diploma or equivalent
-Art portfolio submission</textarea>
+                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="4">GPA 3.7+
+Completed Bachelor's degree</textarea>
                                         </div>
                                     </div>
                                     <div>
                                         <p class="text-xs text-gray-500">Language Requirements</p>
                                         <div class="scholarship-view-mode">
                                             <ul class="text-sm text-gray-700 space-y-2">
-                                                <li class="flex items-center">
-                                                    <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                                                    IELTS: 6.5 overall (6.0 minimum per band)
-                                                </li>
-                                                <li class="flex items-center">
-                                                    <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                                                    TOEFL iBT: 80 overall
-                                                </li>
-                                                <li class="flex items-center">
-                                                    <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                                                    Duolingo: 105 overall
-                                                </li>
+                                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>IELTS: 7.0 (no band below 6.5)</li>
+                                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>TOEFL iBT: 100</li>
                                             </ul>
                                         </div>
                                         <div class="scholarship-edit-mode hidden">
-                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="4">IELTS: 6.5 overall (6.0 minimum per band)
-TOEFL iBT: 80 overall
-Duolingo: 105 overall</textarea>
+                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="4">IELTS: 7.0 (no band below 6.5)
+TOEFL iBT: 100</textarea>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div>
-                                    <p class="text-xs text-gray-500">Required Documents</p>
-                                    <div class="scholarship-view-mode">
-                                        <p class="text-sm text-gray-700 mb-3">Submit a portfolio showcasing your
-                                            artistic abilities and creativity in digital media:</p>
-                                        <ul class="text-sm text-gray-700 space-y-2">
-                                            <li class="flex items-center">
-                                                <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                                                10-15 original artworks (digital or traditional)
-                                            </li>
-                                            <li class="flex items-center">
-                                                <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                                                Artist statement (500 words max)
-                                            </li>
-                                            <li class="flex items-center">
-                                                <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                                                Optional: Animation reel or game design samples
-                                            </li>
-                                        </ul>
+                                <div class="space-y-4">
+                                    <h3 class="text-lg font-bold text-gray-900 mb-2 pb-2 border-b-2" style="border-color:#d82128;">Non-Graduation</h3>
+                                    <div>
+                                        <p class="text-xs text-gray-500">Academic Requirements</p>
+                                        <div class="scholarship-view-mode">
+                                            <ul class="text-sm text-gray-700 space-y-2">
+                                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>Strong academic standing</li>
+                                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>Proof of ongoing enrollment</li>
+                                            </ul>
+                                        </div>
+                                        <div class="scholarship-edit-mode hidden">
+                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="4">Strong academic standing
+Proof of ongoing enrollment</textarea>
+                                        </div>
                                     </div>
-                                    <div class="scholarship-edit-mode hidden">
-                                        <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="6">Submit a portfolio showcasing your artistic abilities and creativity in digital media:
-
-10-15 original artworks (digital or traditional)
-Artist statement (500 words max)
-Optional: Animation reel or game design samples</textarea>
+                                    <div>
+                                        <p class="text-xs text-gray-500">Language Requirements</p>
+                                        <div class="scholarship-view-mode">
+                                            <ul class="text-sm text-gray-700 space-y-2">
+                                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>IELTS: 6.5 overall</li>
+                                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>TOEFL iBT: 90</li>
+                                            </ul>
+                                        </div>
+                                        <div class="scholarship-edit-mode hidden">
+                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="4">IELTS: 6.5 overall
+TOEFL iBT: 90</textarea>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </section>
 
-                        <!-- Course Detail Tab -->
-                        <section id="scholarship-tab-course" class="scholarship-tab-panel hidden">
-                            <div class="space-y-6">
-                                <div>
-                                    <p class="text-xs text-gray-500">Scholarships Overview</p>
-                                    <div class="scholarship-view-mode">
-                                        <p class="text-sm text-gray-700">This comprehensive 2-year scholarship combines
-                                            traditional art fundamentals with cutting-edge digital animation and game
-                                            design techniques. Students will master industry-standard software and
-                                            develop a professional portfolio.</p>
-                                    </div>
-                                    <div class="scholarship-edit-mode hidden">
-                                        <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="3">This comprehensive 2-year scholarship combines traditional art fundamentals with cutting-edge digital animation and game design techniques. Students will master industry-standard software and develop a professional portfolio.</textarea>
-                                    </div>
-                                </div>
-
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <p class="text-xs text-gray-500">Core Courses</p>
-                                        <div class="scholarship-view-mode">
-                                            <ul class="text-sm text-gray-700 space-y-1">
-                                                <li>• Digital Art Fundamentals</li>
-                                                <li>• 3D Modeling & Texturing</li>
-                                                <li>• Character Animation</li>
-                                                <li>• Game Engine Basics</li>
-                                                <li>• Visual Effects</li>
-                                                <li>• Portfolio Development</li>
-                                            </ul>
-                                        </div>
-                                        <div class="scholarship-edit-mode hidden">
-                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="6">Digital Art Fundamentals
-3D Modeling & Texturing
-Character Animation
-Game Engine Basics
-Visual Effects
-Portfolio Development</textarea>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <p class="text-xs text-gray-500">Specialization Tracks</p>
-                                        <div class="scholarship-view-mode">
-                                            <ul class="text-sm text-gray-700 space-y-1">
-                                                <li>• Game Art & Design</li>
-                                                <li>• 3D Animation</li>
-                                                <li>• Visual Effects</li>
-                                                <li>• Motion Graphics</li>
-                                            </ul>
-                                        </div>
-                                        <div class="scholarship-edit-mode hidden">
-                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="4">Game Art & Design
-3D Animation
-Visual Effects
-Motion Graphics</textarea>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="bg-gray-50 rounded-lg p-4">
-                                    <div class="flex justify-between items-center mb-3">
-                                        <p class="text-xs text-gray-500">Semester Breakdown</p>
-                                    </div>
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div class="scholarship-view-mode">
-                                            <h6 class="font-medium text-gray-800 mb-2">Year 1</h6>
-                                            <p class="text-sm text-gray-600">Semester 1: Art fundamentals, digital tools</p>
-                                            <p class="text-sm text-gray-600">Semester 2: 3D basics, character design</p>
-                                        </div>
-                                        <div class="scholarship-view-mode">
-                                            <h6 class="font-medium text-gray-800 mb-2">Year 2</h6>
-                                            <p class="text-sm text-gray-600">Semester 3: Advanced animation, specialization</p>
-                                            <p class="text-sm text-gray-600">Semester 4: Capstone project, portfolio</p>
-                                        </div>
-                                        <div class="scholarship-edit-mode hidden">
-                                            <h6 class="font-medium text-gray-800 mb-2">Year 1</h6>
-                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded mb-2" rows="2" placeholder="Enter Year 1 semester details">Semester 1: Art fundamentals, digital tools
-Semester 2: 3D basics, character design</textarea>
-                                        </div>
-                                        <div class="scholarship-edit-mode hidden">
-                                            <h6 class="font-medium text-gray-800 mb-2">Year 2</h6>
-                                            <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded mb-2" rows="2" placeholder="Enter Year 2 semester details">Semester 3: Advanced animation, specialization
-Semester 4: Capstone project, portfolio</textarea>
-                                        </div>
-                                        <div class="scholarship-edit-mode hidden">
-                                            <button class="text-xs text-blue-600 hover:underline flex items-center mt-2" style="color: #2563eb;">
-                                                <i data-lucide="plus" class="w-3 h-3 mr-1"></i>Add Semester
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
                     </div>
 
                     <!-- Admin Actions -->

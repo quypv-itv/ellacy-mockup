@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transform Your Dreams into Global Success | Ellacy Foundation</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(220, 38, 38, 0.15); }
+        .card-zoom { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-zoom:hover { transform: scale(1.05); box-shadow: 0 25px 50px rgba(185, 28, 28, 0.2); }
+        .gold-gradient { background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%); }
+        .gold-accent { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+        .crimson-gradient { background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%); }
+        .glow-effect { box-shadow: 0 0 20px rgba(220, 38, 38, 0.3); }
+        .carousel-container { scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; overflow-x: auto; scrollbar-width: none; }
+        .carousel-container::-webkit-scrollbar { display: none; }
+        .carousel-item { scroll-snap-align: start; }
+        ::-webkit-scrollbar { width: 10px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #dc2626, #b91c1c); border-radius: 5px; }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+            padding: 20px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            animation: slideUp 0.3s ease;
+            max-height: 85vh;
+            overflow-y: auto;
+            max-width: 600px;
+            width: 100%;
+            margin: auto;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .modal-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .modal-content::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #dc2626, #b91c1c);
+            border-radius: 10px;
+        }
+        
+        /* Attractive Animations for Demo */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(220, 38, 38, 0.6), 0 0 60px rgba(220, 38, 38, 0.4); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .pulse-glow-animation {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .fade-in-left {
+            animation: fadeInLeft 0.8s ease-out forwards;
+        }
+        
+        .fade-in-right {
+            animation: fadeInRight 0.8s ease-out forwards;
+        }
+        
+        .scale-in {
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+        
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
+        
+        .shimmer-effect {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background-size: 1000px 100%;
+            animation: shimmer 3s infinite;
+        }
+        
+        /* Enhanced hover effects */
+        .glow-button {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glow-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .glow-button:hover::before {
+            left: 100%;
+        }
+        
+        /* Number counter animation */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .count-animation {
+            animation: countUp 1s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="Student-Dashboard.html" class="flex items-center">
+                        <img src="../../ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-4">
+                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Student</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex items-center space-x-3">
+                    <a href="Student-Dashboard.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <i data-lucide="layout-dashboard" class="w-4 h-4 mr-2"></i>Dashboard
+                    </a>
+                    <a href="Student-product-page-premium.html" class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium">
+                        <i data-lucide="package" class="w-4 h-4 mr-2"></i>Ellacy Program
+                    </a>
+                    <a href="Student-find-program.html" class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <i data-lucide="search" class="w-4 h-4 mr-2"></i>Find University
+                    </a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="Student-messages.html" class="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </a>
+                    <button class="relative p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg">
+                        <i data-lucide="bell" class="w-5 h-5"></i>
+                        <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                    </button>
+                    <div class="relative">
+                        <button id="profile-menu" class="flex items-center p-2 hover:bg-gray-50 rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" alt="Profile" class="w-8 h-8 rounded-full object-cover">
+                        </button>
+                        <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                            <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
+                            </a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative min-h-[600px] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&h=1080&fit=crop" alt="Students celebrating" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-red-900/90 via-red-800/85 to-red-700/80"></div>
+            </div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center text-white">
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                    Scholarships That<br>
+                    <span class="gold-gradient bg-clip-text text-transparent">Transform Lives</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto text-red-50 font-light">
+                    Over 2,000 students have received up to 100% scholarships & launched global careers with Ellacy Foundation
+                </p>
+                <div class="flex flex-wrap justify-center gap-6 mb-10">
+                    <div class="bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-400"></i>
+                            <span class="font-semibold">100% Scholarships</span>
+                        </div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="globe" class="w-5 h-5 text-yellow-400"></i>
+                            <span class="font-semibold">98% Visa Success</span>
+                        </div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="building" class="w-5 h-5 text-yellow-400"></i>
+                            <span class="font-semibold">100+ Global Partners</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#programs" class="crimson-gradient text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-2xl transition-all transform hover:scale-105 glow-effect">
+                        Explore Programs
+                    </a>
+                    <a href="#consultation" class="bg-white text-red-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-red-50 transition-all transform hover:scale-105 border-2 border-white">
+                        Book Free Consultation
+                    </a>
+                </div>
+            </div>
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+                <i data-lucide="chevron-down" class="w-8 h-8 text-white"></i>
+            </div>
+        </section>
+
+        <!-- Key Benefits / Impact Section -->
+        <section class="py-20 bg-gradient-to-b from-white to-red-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">What You'll Achieve</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Scholarships, career opportunities, and global success</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg card-hover border border-red-100">
+                        <div class="w-16 h-16 gold-gradient rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="dollar-sign" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Average Scholarship Value</h3>
+                        <p class="text-gray-600 text-lg font-semibold text-red-600">$25,000–$50,000 per student</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg card-hover border border-red-100">
+                        <div class="w-16 h-16 crimson-gradient rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="briefcase" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Career Pathway</h3>
+                        <p class="text-gray-600">OPT/STEM up to 3 years in the U.S.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg card-hover border border-red-100">
+                        <div class="w-16 h-16 crimson-gradient rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="plane" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Visa Success Rate</h3>
+                        <p class="text-gray-600 text-lg font-semibold text-red-600">98% success rate annually</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg card-hover border border-red-100">
+                        <div class="w-16 h-16 gold-gradient rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="globe" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Global Network</h3>
+                        <p class="text-gray-600">100+ partner universities & 15 countries</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg card-hover border border-red-100">
+                        <div class="w-16 h-16 crimson-gradient rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="user-check" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">1:1 Mentorship</h3>
+                        <p class="text-gray-600">Guidance from essay to interview to visa</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg card-hover border border-red-100">
+                        <div class="w-16 h-16 gold-gradient rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="trending-up" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Career Earnings</h3>
+                        <p class="text-gray-600">Average salary after graduation <span class="font-semibold text-red-600">$64K–$78K/year</span></p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-8 text-white">
+                    <div class="grid md:grid-cols-2 gap-8 text-center">
+                        <div>
+                            <div class="flex items-center justify-center mb-2">
+                                <i data-lucide="trending-up" class="w-6 h-6 mr-2 text-yellow-400"></i>
+                                <p class="text-4xl font-bold">$70,000</p>
+                            </div>
+                            <p class="text-red-100">Average Earning Potential/year after graduation (U.S. data)</p>
+                        </div>
+                        <div>
+                            <div class="flex items-center justify-center mb-2">
+                                <i data-lucide="users-2" class="w-6 h-6 mr-2 text-yellow-400"></i>
+                                <p class="text-4xl font-bold">4,000+ Alumni</p>
+                            </div>
+                            <p class="text-red-100">Working in U.S., Canada, and Europe</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Stories -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Real Students, Real Success</h2>
+                    <p class="text-xl text-gray-600">Hear from students who transformed their lives with Ellacy</p>
+                </div>
+                <div class="flex overflow-x-auto carousel-container gap-6 pb-4">
+                    <div class="flex-none w-full md:w-1/2 lg:w-1/3 carousel-item">
+                        <div class="bg-gradient-to-br from-red-50 to-white p-8 rounded-2xl shadow-lg border border-red-100 h-full">
+                            <div class="flex items-center mb-6">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Student" class="w-16 h-16 rounded-full object-cover border-4 border-red-200">
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-gray-900">Nguyen Phuong Anh</h4>
+                                    <p class="text-sm text-gray-600">🇺🇸 Bachelor of Business, ASU</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-4 italic">"Ellacy helped me secure a full scholarship at Angelo State University — and now I work in California!"</p>
+                            <div class="pt-4 border-t border-red-100">
+                                <span class="text-sm font-semibold text-red-600">🎓 $24,000 Scholarship Earned</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-full md:w-1/2 lg:w-1/3 carousel-item">
+                        <div class="bg-gradient-to-br from-red-50 to-white p-8 rounded-2xl shadow-lg border border-red-100 h-full">
+                            <div class="flex items-center mb-6">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Student" class="w-16 h-16 rounded-full object-cover border-4 border-red-200">
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-gray-900">Hoang Minh</h4>
+                                    <p class="text-sm text-gray-600">🇺🇸 Computer Science, ONU</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-4 italic">"Earned $30,000/year scholarship at Ohio Northern University. Ellacy made my American dream come true!"</p>
+                            <div class="pt-4 border-t border-red-100">
+                                <span class="text-sm font-semibold text-red-600">🎓 $30,000/year Scholarship</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-full md:w-1/2 lg:w-1/3 carousel-item">
+                        <div class="bg-gradient-to-br from-red-50 to-white p-8 rounded-2xl shadow-lg border border-red-100 h-full">
+                            <div class="flex items-center mb-6">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Student" class="w-16 h-16 rounded-full object-cover border-4 border-red-200">
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-gray-900">Thuy Linh</h4>
+                                    <p class="text-sm text-gray-600">🇺🇸 Business Admin, Butler</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-4 italic">"100% tuition waiver at Butler University! The team guided me every step of the way."</p>
+                            <div class="pt-4 border-t border-red-100">
+                                <span class="text-sm font-semibold text-red-600">🎓 100% Tuition Waiver</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-full md:w-1/2 lg:w-1/3 carousel-item">
+                        <div class="bg-gradient-to-br from-red-50 to-white p-8 rounded-2xl shadow-lg border border-red-100 h-full">
+                            <div class="flex items-center mb-6">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" alt="Student" class="w-16 h-16 rounded-full object-cover border-4 border-red-200">
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-gray-900">Kien Nguyen</h4>
+                                    <p class="text-sm text-gray-600">🇺🇸 MBA-IT, Ottawa University</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-4 italic">"MBA graduate now working at Google Cloud. Ellacy opened doors I never thought possible!"</p>
+                            <div class="pt-4 border-t border-red-100">
+                                <span class="text-sm font-semibold text-red-600">💼 Now at Google Cloud</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-full md:w-1/2 lg:w-1/3 carousel-item">
+                        <div class="bg-gradient-to-br from-red-50 to-white p-8 rounded-2xl shadow-lg border border-red-100 h-full">
+                            <div class="flex items-center mb-6">
+                                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&h=100&fit=crop" alt="Student" class="w-16 h-16 rounded-full object-cover border-4 border-red-200">
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-gray-900">Mai Pham</h4>
+                                    <p class="text-sm text-gray-600">🇺🇸 Finance, 2+2 Transfer</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-4 italic">"2+2 Transfer program gave me the best of both worlds. Dual degree and amazing career prospects!"</p>
+                            <div class="pt-4 border-t border-red-100">
+                                <span class="text-sm font-semibold text-red-600">🎓 Dual Degree Graduate</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-full md:w-1/2 lg:w-1/3 carousel-item">
+                        <div class="bg-gradient-to-br from-red-50 to-white p-8 rounded-2xl shadow-lg border border-red-100 h-full">
+                            <div class="flex items-center mb-6">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" alt="Student" class="w-16 h-16 rounded-full object-cover border-4 border-red-200">
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-gray-900">Tran Bao Khang</h4>
+                                    <p class="text-sm text-gray-600">🇨🇦 Engineering, University of Toronto</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-4 italic">"Got accepted to UofT with $28,000 scholarship. Now working as a software engineer at Shopify!"</p>
+                            <div class="pt-4 border-t border-red-100">
+                                <span class="text-sm font-semibold text-red-600">💼 Now at Shopify</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-full md:w-1/2 lg:w-1/3 carousel-item">
+                        <div class="bg-gradient-to-br from-red-50 to-white p-8 rounded-2xl shadow-lg border border-red-100 h-full">
+                            <div class="flex items-center mb-6">
+                                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100&h=100&fit=crop" alt="Student" class="w-16 h-16 rounded-full object-cover border-4 border-red-200">
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-gray-900">Le Thu Ha</h4>
+                                    <p class="text-sm text-gray-600">🇬🇧 Marketing, University of Manchester</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-4 italic">"Full scholarship to study in the UK! Ellacy made my dreams come true. Now I'm a Marketing Director!"</p>
+                            <div class="pt-4 border-t border-red-100">
+                                <span class="text-sm font-semibold text-red-600">🎓 $42,000 Scholarship</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-full md:w-1/2 lg:w-1/3 carousel-item">
+                        <div class="bg-gradient-to-br from-red-50 to-white p-8 rounded-2xl shadow-lg border border-red-100 h-full">
+                            <div class="flex items-center mb-6">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Student" class="w-16 h-16 rounded-full object-cover border-4 border-red-200">
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-gray-900">Nguyen Duc Anh</h4>
+                                    <p class="text-sm text-gray-600">🇺🇸 Data Science, NYU</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-4 italic">"Never thought I could study at NYU! $50k scholarship and now working at Amazon as Data Scientist."</p>
+                            <div class="pt-4 border-t border-red-100">
+                                <span class="text-sm font-semibold text-red-600">💼 Amazon Data Scientist</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-full md:w-1/2 lg:w-1/3 carousel-item">
+                        <div class="bg-gradient-to-br from-red-50 to-white p-8 rounded-2xl shadow-lg border border-red-100 h-full">
+                            <div class="flex items-center mb-6">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop" alt="Student" class="w-16 h-16 rounded-full object-cover border-4 border-red-200">
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-gray-900">Pham Thuy Duong</h4>
+                                    <p class="text-sm text-gray-600">🇦🇺 Psychology, Melbourne University</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-4 italic">"Ellacy guided me through every step. 80% scholarship and amazing experience in Australia!"</p>
+                            <div class="pt-4 border-t border-red-100">
+                                <span class="text-sm font-semibold text-red-600">🎓 80% Scholarship</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none w-full md:w-1/2 lg:w-1/3 carousel-item">
+                        <div class="bg-gradient-to-br from-red-50 to-white p-8 rounded-2xl shadow-lg border border-red-100 h-full">
+                            <div class="flex items-center mb-6">
+                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop" alt="Student" class="w-16 h-16 rounded-full object-cover border-4 border-red-200">
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-gray-900">Vo Minh Quan</h4>
+                                    <p class="text-sm text-gray-600">🇺🇸 Mechanical Engineering, MIT</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-4 italic">"Got into MIT with full ride! Best decision ever. Now I'm an engineer at Tesla working on electric vehicles."</p>
+                            <div class="pt-4 border-t border-red-100">
+                                <span class="text-sm font-semibold text-red-600">💼 Tesla Engineer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Meet Our Mentors -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Learn From Global Experts</h2>
+                    <p class="text-xl text-gray-600">World-class mentors guiding your journey to success</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div onclick="openModal('cuong')" class="bg-gradient-to-br from-white to-red-50 p-8 rounded-2xl shadow-lg border-2 border-yellow-400/30 card-zoom text-center cursor-pointer relative group">
+                        <div class="absolute top-4 right-4 text-red-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i data-lucide="info" class="w-5 h-5"></i>
+                        </div>
+                        <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-yellow-400 shadow-lg">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop" alt="Cuong Nguyen" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Cuong Nguyen</h3>
+                        <p class="text-red-600 font-semibold mb-3">CEO, Ex-U.S. Air Force Major</p>
+                        <p class="text-gray-600 mb-4">"20+ years in education & technology"</p>
+                        <div class="flex justify-center space-x-2">
+                            <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium">Leadership</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm font-medium">Strategy</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-4 group-hover:text-red-600 transition-colors">Click to view full profile</p>
+                    </div>
+                    <div onclick="openModal('ella')" class="bg-gradient-to-br from-white to-red-50 p-8 rounded-2xl shadow-lg border-2 border-yellow-400/30 card-zoom text-center cursor-pointer relative group">
+                        <div class="absolute top-4 right-4 text-red-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i data-lucide="info" class="w-5 h-5"></i>
+                        </div>
+                        <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-yellow-400 shadow-lg">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop" alt="Ella Nguyen" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Ella Nguyen</h3>
+                        <p class="text-red-600 font-semibold mb-3">Founder, Harvard HE Certificate</p>
+                        <p class="text-gray-600 mb-4">"10+ years in study abroad & international scholarship consulting"</p>
+                        <div class="flex justify-center space-x-2">
+                            <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium">Admissions</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm font-medium">Scholarships</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-4 group-hover:text-red-600 transition-colors">Click to view full profile</p>
+                    </div>
+                    <div onclick="openModal('mark')" class="bg-gradient-to-br from-white to-red-50 p-8 rounded-2xl shadow-lg border-2 border-yellow-400/30 card-zoom text-center cursor-pointer relative group">
+                        <div class="absolute top-4 right-4 text-red-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i data-lucide="info" class="w-5 h-5"></i>
+                        </div>
+                        <div class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-yellow-400 shadow-lg">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="Mark Kopenski" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Mark Kopenski</h3>
+                        <p class="text-red-600 font-semibold mb-3">Senior Advisor, Ex-VP Admissions</p>
+                        <p class="text-gray-600 mb-4">"30+ years in global admissions strategy"</p>
+                        <div class="flex justify-center space-x-2">
+                            <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium">U.S./U.K.</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm font-medium">Elite Schools</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-4 group-hover:text-red-600 transition-colors">Click to view full profile</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="Student-messages.html" class="inline-block crimson-gradient text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-2xl transition-all transform hover:scale-105 glow-effect">
+                        Book a 15' Advisor Call
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Ellacy - Visual Grid -->
+        <section class="py-20 bg-gradient-to-b from-red-50 to-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Why Choose Ellacy</h2>
+                    <p class="text-xl text-gray-600">Your complete pathway to global education success</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-zoom border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=250&fit=crop" alt="Campus" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="w-12 h-12 crimson-gradient rounded-xl flex items-center justify-center mb-4">
+                                <i data-lucide="globe" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Global Opportunities</h3>
+                            <p class="text-gray-600">Study across 100+ partner universities</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-zoom border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=250&fit=crop" alt="Scholarship" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="w-12 h-12 gold-accent rounded-xl flex items-center justify-center mb-4">
+                                <i data-lucide="dollar-sign" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Up to 100% Tuition Coverage</h3>
+                            <p class="text-gray-600">Average scholarship $25k–$50k per student</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 3 -->
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-zoom border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=250&fit=crop" alt="Mentorship" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="w-12 h-12 crimson-gradient rounded-xl flex items-center justify-center mb-4">
+                                <i data-lucide="users" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">1:1 Guidance</h3>
+                            <p class="text-gray-600">From essay writing to visa interview</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 4 -->
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-zoom border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&h=250&fit=crop" alt="Career" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="w-12 h-12 gold-accent rounded-xl flex items-center justify-center mb-4">
+                                <i data-lucide="briefcase" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Internship & OPT Pathway</h3>
+                            <p class="text-gray-600">Work up to 3 years in the U.S.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 5 -->
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-zoom border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=400&h=250&fit=crop" alt="Alumni" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="w-12 h-12 crimson-gradient rounded-xl flex items-center justify-center mb-4">
+                                <i data-lucide="network" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Global Network</h3>
+                            <p class="text-gray-600">15+ countries, 4,000+ alumni</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 6 -->
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-zoom border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop" alt="Growth" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="w-12 h-12 gold-accent rounded-xl flex items-center justify-center mb-4">
+                                <i data-lucide="trending-up" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">High ROI</h3>
+                            <p class="text-gray-600">Avg graduate salary $64k–$78k/year</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Student Achievements -->
+        <section class="py-20 bg-gradient-to-b from-red-50 to-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">What Our Students Achieved</h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-red-100">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-16 h-16 crimson-gradient rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="trophy" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-bold text-gray-900 mb-2">$5.4M+</h3>
+                                <p class="text-gray-600">Total scholarships awarded to our students</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-red-100">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-16 h-16 gold-gradient rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="briefcase" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-bold text-gray-900 mb-2">98%</h3>
+                                <p class="text-gray-600">Post-graduation employment rate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scholarship Programs -->
+        <section class="py-20 bg-white" id="programs">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Choose Your Path to Success</h2>
+                    <p class="text-xl text-gray-600">Tailored programs for every ambition</p>
+                </div>
+
+                <!-- Guaranteed Scholarship Program -->
+                <div class="mb-16 bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-red-600 to-red-700 p-6 text-white">
+                        <div class="flex items-center">
+                            <i data-lucide="award" class="w-8 h-8 mr-4"></i>
+                            <div>
+                                <h3 class="text-3xl font-bold">Guaranteed Scholarship Program</h3>
+                                <p class="mt-1 text-red-100">Secure admission with guaranteed scholarship at partner institutions</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6 p-8">
+                        <div class="border-2 border-red-200 rounded-xl p-6 card-hover relative">
+                            <span class="absolute top-4 right-4 bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-bold">Popular</span>
+                            <h4 class="text-2xl font-bold text-gray-900 mb-4">Single School</h4>
+                            <div class="mb-6">
+                                <p class="text-4xl font-bold text-red-600">$1,500</p>
+                                <p class="text-gray-500">+ 10% of scholarships</p>
+                            </div>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Apply to 1 school</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>No application fees</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Guaranteed scholarship</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Personal counselor</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Document prep & visa coaching</span>
+                                </li>
+                            </ul>
+                            <a href="Student-find-program.html" class="block w-full crimson-gradient text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all text-center">
+                                Choose Package
+                            </a>
+                        </div>
+                        <div class="border-2 border-gray-200 rounded-xl p-6 card-hover">
+                            <h4 class="text-2xl font-bold text-gray-900 mb-4">Multi-School</h4>
+                            <div class="mb-6">
+                                <p class="text-4xl font-bold text-red-600">$2,500</p>
+                                <p class="text-gray-500">+ 10% of scholarships</p>
+                            </div>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Apply to 2-3 schools</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>No application fees</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Higher scholarship opportunities</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>School comparison analysis</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Priority processing</span>
+                                </li>
+                            </ul>
+                            <a href="Student-find-program.html" class="block w-full crimson-gradient text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all text-center">
+                                Choose Package
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Elite Admission Program -->
+                <div class="mb-16 bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-red-600 to-red-700 p-6 text-white">
+                        <div class="flex items-center">
+                            <i data-lucide="star" class="w-8 h-8 mr-4"></i>
+                            <div>
+                                <h3 class="text-3xl font-bold">Elite Admission Program</h3>
+                                <p class="mt-1 text-red-100">Access to Top 100 Universities</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="max-w-2xl border-2 border-red-200 rounded-xl p-6 card-hover">
+                            <div class="flex justify-between items-start mb-6">
+                                <div>
+                                    <h4 class="text-2xl font-bold text-gray-900">Premium Package</h4>
+                                    <p class="text-gray-600">Up to 5 Top 100 schools</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-4xl font-bold text-red-600">$3,500</p>
+                                    <p class="text-sm text-gray-500">+ 10% of scholarships</p>
+                                </div>
+                            </div>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Apply to up to 5 Top 100 schools</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Essay workshop & interview coaching</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Priority review by U.S. admissions team</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Career path consultation</span>
+                                </li>
+                            </ul>
+                            <a href="Student-find-program.html" class="block w-full crimson-gradient text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all text-center">
+                                Choose Package
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ivy Global Student Program -->
+                <div class="mb-16 bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-red-600 to-red-700 p-6 text-white">
+                        <div class="flex items-center">
+                            <i data-lucide="globe" class="w-8 h-8 mr-4"></i>
+                            <div>
+                                <h3 class="text-3xl font-bold">Ivy Global Student Program</h3>
+                                <p class="mt-1 text-red-100">Your gateway to the world's most prestigious universities</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6 p-8">
+                        <div class="border-2 border-gray-200 rounded-xl p-6 card-hover">
+                            <h4 class="text-2xl font-bold text-gray-900 mb-4">Regular</h4>
+                            <div class="mb-6">
+                                <p class="text-4xl font-bold text-red-600">$25,000</p>
+                            </div>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>7-10 Ivy League schools</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Standard support</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Basic essay review (2 rounds)</span>
+                                </li>
+                            </ul>
+                            <a href="Student-find-program.html" class="block w-full border-2 border-red-600 text-red-600 py-3 rounded-lg font-semibold hover:bg-red-50 transition-all text-center">
+                                Choose Regular
+                            </a>
+                        </div>
+                        <div class="border-2 border-red-600 rounded-xl p-6 card-hover relative">
+                            <span class="absolute top-4 right-4 bg-black text-white px-3 py-1 rounded-full text-xs font-bold">MOST POPULAR</span>
+                            <h4 class="text-2xl font-bold text-gray-900 mb-4">VIP</h4>
+                            <div class="mb-6">
+                                <p class="text-4xl font-bold text-red-600">$30,000</p>
+                            </div>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>All Regular benefits</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="plus-circle" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Priority review</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="plus-circle" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Enhanced essay review (5 rounds)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="plus-circle" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Alumni network access</span>
+                                </li>
+                            </ul>
+                            <a href="Student-find-program.html" class="block w-full crimson-gradient text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all text-center">
+                                Choose VIP
+                            </a>
+                        </div>
+                        <div class="border-2 border-gray-200 rounded-xl p-6 card-hover">
+                            <h4 class="text-2xl font-bold text-gray-900 mb-4">President</h4>
+                            <div class="mb-6">
+                                <p class="text-4xl font-bold text-red-600">$35,000</p>
+                            </div>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>All VIP benefits</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="plus-circle" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Dedicated strategist</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="plus-circle" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Unlimited essay reviews</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="plus-circle" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Post-admission support</span>
+                                </li>
+                            </ul>
+                            <a href="Student-find-program.html" class="block w-full border-2 border-red-600 text-red-600 py-3 rounded-lg font-semibold hover:bg-red-50 transition-all text-center">
+                                Choose President
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Joint Program -->
+                <div class="mb-16 bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-red-600 to-red-700 p-6 text-white">
+                        <div class="flex items-center">
+                            <i data-lucide="users" class="w-8 h-8 mr-4"></i>
+                            <div>
+                                <h3 class="text-3xl font-bold">Joint Program (Vietnam → US Transfer)</h3>
+                                <p class="mt-1 text-red-100">Seamless transfer options to US universities</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6 p-8">
+                        <div class="border-2 border-gray-200 rounded-xl p-6 card-hover">
+                            <h4 class="text-2xl font-bold text-gray-900 mb-4">1+3 Program</h4>
+                            <div class="mb-6">
+                                <p class="text-4xl font-bold text-red-600">$500</p>
+                                <p class="text-gray-500">+ $4,000 upon transfer</p>
+                            </div>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>1 year Vietnam + 3 years US</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Smooth credit transfer</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>English language support</span>
+                                </li>
+                            </ul>
+                            <a href="Student-find-program.html" class="block w-full crimson-gradient text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all text-center">
+                                Choose Program
+                            </a>
+                        </div>
+                        <div class="border-2 border-gray-200 rounded-xl p-6 card-hover">
+                            <h4 class="text-2xl font-bold text-gray-900 mb-4">2+2 Program</h4>
+                            <div class="mb-6">
+                                <p class="text-4xl font-bold text-red-600">$500</p>
+                                <p class="text-gray-500">+ $3,000 upon transfer</p>
+                            </div>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>2 years Vietnam + 2 years US</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Cost-effective pathway</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Dual degree opportunity</span>
+                                </li>
+                            </ul>
+                            <a href="Student-find-program.html" class="block w-full crimson-gradient text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all text-center">
+                                Choose Program
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Add Our Services -->
+        <section class="py-20 bg-gradient-to-b from-red-50 to-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Why Add Our Services to Your Package?</h2>
+                    <p class="text-xl text-gray-600">Because preparation is the key to success</p>
+                </div>
+                
+                <div class="flex overflow-x-auto carousel-container gap-6 pb-4">
+                    <!-- SAT Prep -->
+                    <div class="flex-none w-80 carousel-item">
+                        <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-zoom">
+                            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=200&fit=crop" alt="SAT Classroom" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">SAT Preparation</h3>
+                                <p class="text-gray-600 mb-4">+120 points average – unlock higher scholarships</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-2xl font-bold text-red-600">+$1,000</span>
+                                    <button class="text-red-600 font-semibold hover:text-red-700">Add →</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Visa Prep -->
+                    <div class="flex-none w-80 carousel-item">
+                        <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-zoom">
+                            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=200&fit=crop" alt="Visa Interview" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Visa Preparation</h3>
+                                <p class="text-gray-600 mb-4">98% visa success – checklist & mock interview</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-2xl font-bold text-red-600">+$299</span>
+                                    <button class="text-red-600 font-semibold hover:text-red-700">Add →</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Health Insurance -->
+                    <div class="flex-none w-80 carousel-item">
+                        <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-zoom">
+                            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=200&fit=crop" alt="Health Insurance" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Health Insurance</h3>
+                                <p class="text-gray-600 mb-4">Study abroad with peace of mind – affordable international insurance</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-2xl font-bold text-red-600">+$499</span>
+                                    <button class="text-red-600 font-semibold hover:text-red-700">Add →</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Accommodation -->
+                    <div class="flex-none w-80 carousel-item">
+                        <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-zoom">
+                            <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400&h=200&fit=crop" alt="Accommodation" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Accommodation</h3>
+                                <p class="text-gray-600 mb-4">Help finding safe and convenient housing near campus</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-2xl font-bold text-red-600">+$199</span>
+                                    <button class="text-red-600 font-semibold hover:text-red-700">Add →</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-8">
+                    <div class="inline-block bg-yellow-50 border-2 border-yellow-400 px-6 py-3 rounded-xl">
+                        <span class="text-yellow-800 font-semibold">💡 Combine with your main package → Get up to 15% off</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-20 bg-gradient-to-b from-white to-red-50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+                    <p class="text-xl text-gray-600">Everything you need to know about our programs</p>
+                </div>
+                <div class="space-y-4">
+                    <details class="bg-white rounded-xl shadow-lg p-6 group">
+                        <summary class="font-bold text-lg text-gray-900 cursor-pointer flex justify-between items-center">
+                            What does the +10% scholarship fee mean?
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-gray-600">The 10% fee is calculated on the total scholarship value you receive. For example: if you receive a $20,000 scholarship, the service fee will be $2,000. This fee is only charged after you successfully receive the scholarship.</p>
+                    </details>
+                    <details class="bg-white rounded-xl shadow-lg p-6 group">
+                        <summary class="font-bold text-lg text-gray-900 cursor-pointer flex justify-between items-center">
+                            What is the refund policy if visa is denied?
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-gray-600">If your visa application is rejected due to our error, you will receive a 100% refund of the service fee. We are committed to maximum support to ensure a 98% visa success rate.</p>
+                    </details>
+                    <details class="bg-white rounded-xl shadow-lg p-6 group">
+                        <summary class="font-bold text-lg text-gray-900 cursor-pointer flex justify-between items-center">
+                            Can I change schools?
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-gray-600">Yes, you can change schools in the early stages of the application process. However, changing schools may affect the timeline and requires advisor approval to ensure it aligns with your profile.</p>
+                    </details>
+                    <details class="bg-white rounded-xl shadow-lg p-6 group">
+                        <summary class="font-bold text-lg text-gray-900 cursor-pointer flex justify-between items-center">
+                            How long does application processing take?
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="mt-4 text-gray-600">Average processing time is 8-12 weeks depending on the service package and school you choose. Elite and Ivy packages may take 12-16 weeks due to more complex processes.</p>
+                    </details>
+                </div>
+                <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="bg-gray-100 rounded-lg p-4 h-20 flex items-center justify-center">
+                            <span class="text-gray-600 font-bold text-lg">NAFSA</span>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-gray-100 rounded-lg p-4 h-20 flex items-center justify-center">
+                            <span class="text-gray-600 font-bold text-lg">AIRC</span>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-gray-100 rounded-lg p-4 h-20 flex items-center justify-center">
+                            <span class="text-gray-600 font-bold text-sm">EducationUSA</span>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-gray-100 rounded-lg p-4 h-20 flex items-center justify-center">
+                            <span class="text-gray-600 font-bold text-lg">Partners</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Footer -->
+        <section class="py-20 bg-white" id="consultation">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="crimson-gradient rounded-3xl p-12 text-center text-white relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-10">
+                        <div class="absolute top-0 left-0 w-64 h-64 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+                        <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/3 translate-y-1/3"></div>
+                    </div>
+                    <div class="relative z-10">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-4">Ready to Start Your Global Journey?</h2>
+                        <p class="text-xl mb-8 max-w-3xl mx-auto text-red-100">
+                            Free consultation & scholarship guidance tailored to your profile
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+                            <a href="Student-messages.html" class="bg-white text-red-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-red-50 transition-all transform hover:scale-105">
+                                📞 Contact an Advisor
+                            </a>
+                            <a href="Student-messages.html" class="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 transition-all transform hover:scale-105">
+                                📅 Book Free Consultation
+                            </a>
+                        </div>
+                        <div class="flex flex-wrap justify-center gap-8 pt-8 border-t border-white/20">
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                                <span class="font-semibold">NAFSA Member</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                                <span class="font-semibold">AIRC Certified</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="globe" class="w-6 h-6"></i>
+                                <span class="font-semibold">EducationUSA Partner</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Teacher Profile Modals -->
+    <div id="teacherModal" class="modal">
+        <div class="w-full">
+            <div class="modal-content bg-white rounded-3xl shadow-2xl">
+                <div class="relative">
+                    <div class="crimson-gradient p-8 text-white">
+                        <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-white/20 rounded-full hover:bg-white/30 transition-all">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
+                        <div class="flex items-center space-x-6">
+                            <img id="modalImage" src="" alt="Teacher" class="w-32 h-32 rounded-full border-4 border-white shadow-lg object-cover">
+                            <div>
+                                <h3 id="modalName" class="text-3xl font-bold mb-2"></h3>
+                                <p id="modalRole" class="text-xl text-red-100 mb-2"></p>
+                                <div id="modalTags" class="flex gap-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-8">
+                        <div class="mb-6">
+                            <h4 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+                                <i data-lucide="user" class="w-5 h-5 mr-2 text-red-600"></i>
+                                About
+                            </h4>
+                            <p id="modalAbout" class="text-gray-600 leading-relaxed"></p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+                                <i data-lucide="briefcase" class="w-5 h-5 mr-2 text-red-600"></i>
+                                Experience
+                            </h4>
+                            <ul id="modalExperience" class="space-y-2 text-gray-600"></ul>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+                                <i data-lucide="award" class="w-5 h-5 mr-2 text-red-600"></i>
+                                Expertise
+                            </h4>
+                            <ul id="modalExpertise" class="space-y-2 text-gray-600"></ul>
+                        </div>
+                        
+                        <div class="flex gap-4">
+                            <a href="Student-messages.html" class="flex-1 crimson-gradient text-white px-6 py-3 rounded-xl font-semibold text-center hover:scale-105 transition-all">
+                                Book Consultation
+                            </a>
+                            <button onclick="closeModal()" class="flex-1 border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-all">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Teacher data
+        const teacherData = {
+            cuong: {
+                name: "Cuong Nguyen",
+                role: "CEO & Program Director",
+                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop",
+                tags: ["Leadership", "Strategy", "Technology"],
+                about: "Cuong Nguyen brings over 20 years of experience in education and technology. As a former U.S. Air Force Major, he combines military precision with educational innovation to help students achieve their global education dreams. Under his leadership, Ellacy Foundation has helped 2,000+ students secure scholarships and visas.",
+                experience: [
+                    "CEO & Founder, Ellacy Foundation (2015-Present)",
+                    "U.S. Air Force Major - Education & Training Division (2005-2015)",
+                    "Director of International Programs, Stanford Extension (2010-2015)",
+                    "Advisory Board Member, Multiple Educational NGOs"
+                ],
+                expertise: [
+                    "Strategic planning and program development",
+                    "U.S. education system and military academies",
+                    "Leadership training and mentorship",
+                    "International student recruitment"
+                ]
+            },
+            ella: {
+                name: "Ella Nguyen",
+                role: "Founder & Harvard-trained Advisor",
+                image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop",
+                tags: ["Admissions", "Scholarships", "Harvard"],
+                about: "Ella Nguyen is a Harvard-trained education consultant with 10+ years of experience in global admissions. She has personally reviewed thousands of applications and secured millions in scholarship funding for students. Her deep understanding of admission committees and scholarship processes has resulted in a 98% success rate.",
+                experience: [
+                    "Co-Founder & Chief Admissions Officer, Ellacy Foundation (2015-Present)",
+                    "Harvard Higher Education Certificate Program Graduate",
+                    "Independent College Counselor & Admissions Consultant (2013-Present)",
+                    "Former Admissions Reader, Ivy League Universities"
+                ],
+                expertise: [
+                    "College essay coaching and personal statement development",
+                    "Scholarship application strategies",
+                    "Interview preparation and coaching",
+                    "Ivy League and Top 100 university admissions"
+                ]
+            },
+            mark: {
+                name: "Mark Kopenski",
+                role: "Senior Advisor",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop",
+                tags: ["U.S./U.K.", "Elite Schools", "Admissions"],
+                about: "Mark Kopenski is a seasoned education consultant with 30+ years of experience in global admissions. As a former Vice President of Admissions at multiple U.S. and U.K. universities, he has insider knowledge of what top institutions look for in applicants. His expertise spans from undergraduate to graduate programs.",
+                experience: [
+                    "Senior Advisor, Ellacy Foundation (2018-Present)",
+                    "Former VP of Admissions, Top 50 U.S. University (2005-2018)",
+                    "International Education Consultant (2000-Present)",
+                    "Guest Lecturer, Multiple International Education Conferences"
+                ],
+                expertise: [
+                    "U.S. and U.K. university admissions processes",
+                    "Graduate school applications (MBA, Master's, PhD)",
+                    "Merit scholarship identification and application",
+                    "Strategic university selection and fit analysis"
+                ]
+            }
+        };
+        
+        function openModal(teacherId) {
+            const teacher = teacherData[teacherId];
+            const modal = document.getElementById('teacherModal');
+            
+            document.getElementById('modalImage').src = teacher.image;
+            document.getElementById('modalName').textContent = teacher.name;
+            document.getElementById('modalRole').textContent = teacher.role;
+            document.getElementById('modalAbout').textContent = teacher.about;
+            
+            // Tags
+            const tagsContainer = document.getElementById('modalTags');
+            tagsContainer.innerHTML = teacher.tags.map(tag => 
+                `<span class="px-3 py-1 bg-white/20 text-white rounded-full text-xs">${tag}</span>`
+            ).join('');
+            
+            // Experience
+            const expContainer = document.getElementById('modalExperience');
+            expContainer.innerHTML = teacher.experience.map(exp => 
+                `<li class="flex items-start"><i data-lucide="check-circle" class="w-4 h-4 text-red-600 mr-2 mt-1 flex-shrink-0"></i><span>${exp}</span></li>`
+            ).join('');
+            
+            // Expertise
+            const expertiseContainer = document.getElementById('modalExpertise');
+            expertiseContainer.innerHTML = teacher.expertise.map(exp => 
+                `<li class="flex items-start"><i data-lucide="star" class="w-4 h-4 text-yellow-500 mr-2 mt-1 flex-shrink-0"></i><span>${exp}</span></li>`
+            ).join('');
+            
+            modal.classList.add('active');
+            lucide.createIcons();
+        }
+        
+        function closeModal() {
+            document.getElementById('teacherModal').classList.remove('active');
+        }
+        
+        // Close modal on backdrop click
+        const modal = document.getElementById('teacherModal');
+        modal.addEventListener('click', function(e) {
+            // Close if clicking directly on modal backdrop (not on content)
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Prevent clicks inside modal content from closing
+        const modalContent = modal.querySelector('.modal-content');
+        if (modalContent) {
+            modalContent.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+        
+        // Auto-scroll carousel every 3 seconds
+        const carousels = document.querySelectorAll('.carousel-container');
+        carousels.forEach(carousel => {
+            let scrollInterval = setInterval(() => {
+                const scrollAmount = carousel.offsetWidth * 0.33; // Scroll by ~1/3 of container width
+                const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+                
+                if (carousel.scrollLeft >= maxScroll - 10) {
+                    // Reset to start
+                    carousel.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    // Scroll to next
+                    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }
+            }, 3000);
+            
+            // Pause auto-scroll on hover
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(scrollInterval);
+            });
+            
+            // Resume auto-scroll on mouse leave
+            carousel.addEventListener('mouseleave', () => {
+                scrollInterval = setInterval(() => {
+                    const scrollAmount = carousel.offsetWidth * 0.33;
+                    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+                    
+                    if (carousel.scrollLeft >= maxScroll - 10) {
+                        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                    }
+                }, 3000);
+            });
+        });
+        
+        // Profile dropdown
+        const profileMenu = document.getElementById('profile-menu');
+        const profileDropdown = document.getElementById('profile-dropdown');
+        if (profileMenu && profileDropdown) {
+            profileMenu.addEventListener('click', (e) => {
+                e.stopPropagation();
+                profileDropdown.classList.toggle('hidden');
+            });
+            document.addEventListener('click', (e) => {
+                if (!profileDropdown.contains(e.target) && e.target !== profileMenu) {
+                    profileDropdown.classList.add('hidden');
+                }
+            });
+        }
+        
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add(entry.target.dataset.animation);
+                    // Only animate once
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all elements with data-animation attribute
+        document.querySelectorAll('[data-animation]').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+        
+        // Counter animation for numbers
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start).toLocaleString();
+                }
+            }, 16);
+        }
+        
+        // Trigger counter animations when in view
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.dataset.target);
+                    animateCounter(entry.target, target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        document.querySelectorAll('[data-target]').forEach(el => {
+            counterObserver.observe(el);
+        });
+        
+        // Add glow effect to primary CTAs
+        document.querySelectorAll('.crimson-gradient, .gold-gradient').forEach(btn => {
+            if (btn.tagName === 'A' || btn.tagName === 'BUTTON') {
+                btn.classList.add('glow-button');
+            }
+        });
+        
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -12,6 +12,17 @@
         body {
             font-family: 'Inter', sans-serif;
         }
+        
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
     </style>
 </head>
 
@@ -127,9 +138,102 @@
 
     <!-- Main Content -->
     <main class="pb-20 md:pb-6">
-        <!-- Page Header -->
+        <!-- Hero Section: Marketing/Sales Focus -->
+        <section class="relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black text-white">
+            <!-- Background decorations -->
+            <div class="pointer-events-none absolute inset-0 opacity-20">
+                <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-red-700 blur-3xl"></div>
+                <div class="absolute -bottom-24 -left-24 w-[28rem] h-[28rem] rounded-full bg-red-500 blur-3xl opacity-70"></div>
+            </div>
+
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <!-- Left content -->
+                    <div>
+                        <div class="inline-flex items-center px-4 py-2 bg-red-600/90 rounded-full text-sm font-semibold tracking-wide mb-6">
+                            <i data-lucide="sparkles" class="w-4 h-4 mr-2"></i>
+                            Limited Spots · Scholarship-Oriented
+                        </div>
+
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+                            Elevate Your Admission Chances
+                            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">with Ellacy Programs</span>
+                        </h1>
+
+                        <p class="mt-5 text-base md:text-lg text-gray-300 max-w-2xl">
+                            Partner with our expert counselors to secure offers and scholarships from top universities. Streamlined process, priority reviews, and measurable results designed for ambitious students.
+                        </p>
+
+                        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                            <button onclick="document.getElementById('programs').scrollIntoView({behavior: 'smooth'})" class="inline-flex items-center justify-center px-7 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-red-600/30 cursor-pointer">
+                                <i data-lucide="rocket" class="w-5 h-5 mr-2"></i>
+                                Explore Programs
+                            </button>
+                            <button onclick="window.location.href='Student-find-program.html'" class="inline-flex items-center justify-center px-7 py-4 bg-white text-gray-900 font-bold rounded-xl transition-all duration-300 hover:bg-gray-100 cursor-pointer border border-white/10">
+                                <i data-lucide="search" class="w-5 h-5 mr-2"></i>
+                                Find Universities
+                            </button>
+                        </div>
+
+                        <!-- Trust badges / stats -->
+                        <div class="mt-10 grid grid-cols-3 gap-6">
+                            <div class="text-center">
+                                <div class="text-3xl md:text-4xl font-extrabold text-red-500">500+</div>
+                                <div class="text-xs md:text-sm text-gray-400 mt-1">Students Placed</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl md:text-4xl font-extrabold text-red-500">$50M+</div>
+                                <div class="text-xs md:text-sm text-gray-400 mt-1">Scholarships Won</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl md:text-4xl font-extrabold text-red-500">100+</div>
+                                <div class="text-xs md:text-sm text-gray-400 mt-1">Partner Schools</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right visual -->
+                    <div class="relative hidden md:block">
+                        <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                            <!-- Hero Slider -->
+                            <div id="heroSlider" class="relative h-[420px] bg-gradient-to-t from-black/60 to-transparent">
+                                <!-- Slides: Ellacy marketing images -->
+                                <img src="../../Pictures/Ellacy 1.png" alt="Ellacy Banner 1" class="absolute inset-0 w-full h-full object-contain object-center opacity-100 transition-opacity duration-500 slide active">
+                                <img src="../../Pictures/Ellacy 2.png" alt="Ellacy Banner 2" class="absolute inset-0 w-full h-full object-contain object-center opacity-0 transition-opacity duration-500 slide">
+                                <img src="../../Pictures/Ellacy 3.png" alt="Ellacy Banner 3" class="absolute inset-0 w-full h-full object-contain object-center opacity-0 transition-opacity duration-500 slide">
+                                <img src="../../Pictures/Ellacy 4.png" alt="Ellacy Banner 4" class="absolute inset-0 w-full h-full object-contain object-center opacity-0 transition-opacity duration-500 slide">
+
+                                <!-- Overlay gradient -->
+                                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+                                <!-- Prev/Next controls -->
+                                <button type="button" class="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/40 hover:bg-black/60 text-white border border-white/10 transition cursor-pointer" aria-label="Previous" data-hero-prev>
+                                    <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                                </button>
+                                <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/40 hover:bg-black/60 text-white border border-white/10 transition cursor-pointer" aria-label="Next" data-hero-next>
+                                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                                </button>
+
+                                <!-- Dots -->
+                                <div class="absolute bottom-3 left-0 right-0 flex items-center justify-center gap-2" data-hero-dots>
+                                    <!-- Dots will be injected by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider wave -->
+            <div class="absolute bottom-0 left-0 right-0 translate-y-full">
+                <svg viewBox="0 0 1440 90" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+                    <path d="M0 90L60 85C120 80 240 70 360 60C480 50 600 40 720 45C840 50 960 70 1080 75C1200 80 1320 80 1380 80L1440 80V90H0Z" fill="#F9FAFB"/>
+                </svg>
+            </div>
+        </section>
+
         <!-- Programs Grid -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+        <div id="programs" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
             <!-- Guaranteed Scholarship Program -->
             <div class="bg-white rounded-xl shadow-md overflow-hidden">
                 <div class="p-6">
@@ -138,90 +242,589 @@
                             <i data-lucide="award" class="w-6 h-6"></i>
                         </div>
                         <h2 class="text-2xl font-bold text-gray-900">Guaranteed Scholarship Program</h2>
+                    </div>                    
+                    <!-- Trusted by logos -->
+                    <div class="mt-2 mb-2 flex flex-wrap items-center gap-4 opacity-80">
+                        <span class="text-xs text-gray-500">Trusted by:</span>
+                        <img src="../../tiffin-university-logo.png" alt="Tiffin University" class="h-6 object-contain" onerror="this.style.display='none'"/>
+                        <img src="https://imgs.search.brave.com/0hWMuoaUWNAyGWv5n6H4tzAYFH3X_pleytwTvgVAKAg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGY2ZWY4MWJh/MzM3MmNlYWM5ZGEw/MDMyZmRmZjBhZWYy/NDNlYWYyNjc1NmUz/YmNiNThjZDk2MTg0/NjcxOTE1Yy93d3cu/YW5nZWxvLmVkdS8" alt="Angelo State" class="h-6 object-contain" onerror="this.style.display='none'"/>
+                        <img src="https://imgs.search.brave.com/r3nWNTOjuvX8JESsHrTqUfbaRzGTv1csK_-Cphz2IbQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9iYW5u/ZXIyLmNsZWFucG5n/LmNvbS8yMDE4MTEy/MC9qY3cva2lzc3Bu/Zy1idXRsZXItdW5p/dmVyc2l0eS1idXRs/ZXItYnVsbGRvZ3Mt/bWVucy1iYXNrZXRi/YWxsLXByZW1pZXIt/c29jY2VyLWdyb3Vw/LTViZjRkOWE4MGRj/Y2ExLjczODk2ODkx/MTU0Mjc3MzE2MDA1/NjUuanBn" alt="Butler University" class="h-6 object-contain" onerror="this.style.display='none'"/>
+                        <img src="https://imgs.search.brave.com/sxE038e07J9Ek5nd3C55kRghQQBv2z_UA6iN3zwf394/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9kMmp5/aXIwbTc5Z3M2MC5j/bG91ZGZyb250Lm5l/dC9jb2xsZWdlL2xv/Z29zX2NvbXByZXNz/ZWQvT2hpb19Ob3J0/aGVybl9Vbml2ZXJz/aXR5LmpwZw" alt="Ohio Northern" class="h-6 object-contain" onerror="this.style.display='none'"/>
+                        <img src="https://imgs.search.brave.com/ZTJ5Dk58fh8kq2hWyLVsEnJNYgccwMRXekVM35VuaLA/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvZW4vdGh1bWIv/OC84Zi9PdHRhd2Ff/VW5pdmVyc2l0eV9z/ZWFsLnN2Zy81MTJw/eC1PdHRhd2FfVW5p/dmVyc2l0eV9zZWFs/LnN2Zy5wbmc" alt="Ottawa University" class="h-6 object-contain" onerror="this.style.display='none'"/>
+                        <img src="https://imgs.search.brave.com/Zw3JaJcy89TrsZxIa7JlluJAndf9_pbxQBBwmpfNT0w/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzEzN2E0M2Uy/YzE5ZWU3NDI0ZTdj/YTJiODM2NTUwOGEx/ZmZiNDRhOTNmZDQz/NzNmODZjMTMyZmM5/ZTAzYTRjYS93d3cu/c2NoaWxsZXIuZWR1/Lw" alt="Schiller International" class="h-6 object-contain" onerror="this.style.display='none'"/>
+                        <img src="https://imgs.search.brave.com/smkUJDozyI-QTCD0Uda7u3VSXdyN3iOnNqXqBHgezPk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTljMGQwM2Fk/MDA5ZDRhY2UxY2Vi/NWFkYjE0ZDBhMGNj/ZDZiZTE4MzFhZmVj/ZTg2MTE4MTZhNWZl/ODAxNjY4My93d3cu/cm93YW4uZWR1Lw" alt="Rowan" class="h-6 object-contain" onerror="this.style.display='none'"/>
                     </div>
-                    <p class="text-gray-600 mb-6">Secure admission with guaranteed scholarship program at our partner institutions.</p>
-                    
-                    <div class="grid md:grid-cols-2 gap-6 mt-8">
-                        <!-- Package 1 -->
-                        <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                            <div class="flex justify-between items-start">
-                                <h3 class="text-lg font-semibold">Single School Package</h3>
-                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
-                                    Popular
-                                </span>
+                    <div class="grid md:grid-cols-2 gap-8 mt-8">
+                        <!-- Package 1 - Enhanced Design -->
+                        <div class="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                            <!-- Hero Image -->
+                            <div class="relative h-48 overflow-hidden">
+                                <img src="../../Pictures/Ellacy 3.png" alt="Single School Package" class="absolute inset-0 w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="text-center text-white">
+                                        <i data-lucide="graduation-cap" class="w-16 h-16 mx-auto mb-3 opacity-90"></i>
+                                        <h3 class="text-2xl font-bold">Single School</h3>
+                                        <p class="text-sm opacity-90 mt-1">Perfect Start Package</p>
+                                    </div>
+                                </div>
+                                <!-- Popular Badge -->
+                                <div class="absolute top-4 right-4">
+                                    <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-bold bg-yellow-400 text-gray-900 shadow-lg">
+                                        <i data-lucide="star" class="w-4 h-4 mr-1"></i>
+                                        POPULAR
+                                    </span>
+                                </div>
                             </div>
-                            <div class="mt-4">
-                                <p class="text-3xl font-bold text-gray-900">$1,500</p>
-                                <p class="mt-1 text-sm text-gray-500">+ 10% of total scholarships</p>
-                            </div>
-                            <ul class="mt-4 space-y-2">
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Apply to 1 school</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>No application fees</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Guaranteed scholarship program</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Personal admission counselor</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Document preparation assistance</span>
-                                </li>
-                            </ul>
-                            <div class="mt-6 flex gap-3">
-                                <button onclick="window.location.href='Student-find-program.html?scholarship=guaranteed'" class="flex-1 bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors cursor-pointer">
-                                    Choose Package
-                                </button>
-                                <button onclick="openPackageModal('single-school')" class="px-4 py-2 border border-red-600 text-red-600 rounded-md hover:bg-red-50 transition-colors cursor-pointer">
-                                    View Detail
-                                </button>
+
+                            <!-- Content -->
+                            <div class="p-6">
+                                <!-- University Slider -->
+                                <div class="relative overflow-hidden mb-6">
+                                    <div id="universitySlider" class="relative min-h-[280px]">
+                                        <!-- Slide 1: Angelo State University -->
+                                        <div class="university-slide opacity-100 transition-opacity duration-700 absolute inset-0">
+                                            <h3 class="text-lg font-bold text-gray-900 mb-3">Why Choose Angelo State University?</h3>
+                                            <div class="space-y-3">
+                                                <div class="bg-red-50 rounded-lg p-3">
+                                                    <h4 class="font-semibold text-red-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="trophy" class="w-4 h-4 mr-2"></i>
+                                                        Academic Excellence
+                                                    </h4>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• Top 13% Best U.S. Universities (15 years)</li>
+                                                        <li>• #1 Physics program in Texas</li>
+                                                        <li>• 5th ranked dormitories in U.S.</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-blue-50 rounded-lg p-3">
+                                                    <h4 class="font-semibold text-blue-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="shield-check" class="w-4 h-4 mr-2"></i>
+                                                        Safety & Accreditation
+                                                    </h4>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• 24/7 Campus Police & ASU Alert</li>
+                                                        <li>• SACS accredited since 1932</li>
+                                                        <li>• AACSB Business School (2021)</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slide 2: Ohio Northern University -->
+                                        <div class="university-slide opacity-0 transition-opacity duration-700 absolute inset-0">
+                                            <h3 class="text-lg font-bold text-gray-900 mb-3">Why Choose Ohio Northern University?</h3>
+                                            <div class="space-y-3">
+                                                <div class="bg-red-50 rounded-lg p-3">
+                                                    <h4 class="font-semibold text-red-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="award" class="w-4 h-4 mr-2"></i>
+                                                        Top Rankings
+                                                    </h4>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• #3 Midwest Regional Colleges (U.S. News)</li>
+                                                        <li>• Top 12 Small Colleges (WSJ)</li>
+                                                        <li>• #1 in Ohio for job placement</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-purple-50 rounded-lg p-3">
+                                                    <h4 class="font-semibold text-purple-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="briefcase" class="w-4 h-4 mr-2"></i>
+                                                        Career Success
+                                                    </h4>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• Disney, Microsoft, NASA, SpaceX</li>
+                                                        <li>• Google, PwC, Proctor & Gamble</li>
+                                                        <li>• #3 in nation for job placement</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slide 3: Butler University -->
+                                        <div class="university-slide opacity-0 transition-opacity duration-700 absolute inset-0">
+                                            <h3 class="text-lg font-bold text-gray-900 mb-3">Why Choose Butler University?</h3>
+                                            <div class="space-y-3">
+                                                <div class="bg-red-50 rounded-lg p-3">
+                                                    <h4 class="font-semibold text-red-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="star" class="w-4 h-4 mr-2"></i>
+                                                        #1 Rankings
+                                                    </h4>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• #1 Regional University in Midwest</li>
+                                                        <li>• #1 for undergraduate teaching</li>
+                                                        <li>• Most innovative in Midwest</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-green-50 rounded-lg p-3">
+                                                    <h4 class="font-semibold text-green-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="graduation-cap" class="w-4 h-4 mr-2"></i>
+                                                        Program Excellence
+                                                    </h4>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• #3 Best Communications (National)</li>
+                                                        <li>• #94 Accounting & Finance (National)</li>
+                                                        <li>• AIRC Member University</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slide 4: Ottawa University -->
+                                        <div class="university-slide opacity-0 transition-opacity duration-700 absolute inset-0">
+                                            <h3 class="text-lg font-bold text-gray-900 mb-3">Why Choose Ottawa University?</h3>
+                                            <div class="space-y-3">
+                                                <div class="bg-red-50 rounded-lg p-3">
+                                                    <h4 class="font-semibold text-red-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="trending-up" class="w-4 h-4 mr-2"></i>
+                                                        Academic Excellence
+                                                    </h4>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• #51 Regional Colleges Midwest</li>
+                                                        <li>• #33 Social Mobility Leader</li>
+                                                        <li>• Strong community focus</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-blue-50 rounded-lg p-3">
+                                                    <h4 class="font-semibold text-blue-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="check-circle" class="w-4 h-4 mr-2"></i>
+                                                        Accreditation
+                                                    </h4>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• Higher Learning Commission</li>
+                                                        <li>• ACBSP Business School</li>
+                                                        <li>• Accredited Nursing School</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slide 5: Schiller International University -->
+                                        <div class="university-slide opacity-0 transition-opacity duration-700 absolute inset-0">
+                                            <h3 class="text-lg font-bold text-gray-900 mb-3">Why Choose Schiller International?</h3>
+                                            <div class="space-y-3">
+                                                <div class="bg-yellow-50 rounded-lg p-3">
+                                                    <h4 class="font-semibold text-yellow-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="dollar-sign" class="w-4 h-4 mr-2"></i>
+                                                        Up to 50% Scholarship
+                                                    </h4>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• Year 1 scholarship renewable</li>
+                                                        <li>• Based on academic performance</li>
+                                                        <li>• Does not include online programs</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-purple-50 rounded-lg p-3">
+                                                    <h4 class="font-semibold text-purple-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="globe" class="w-4 h-4 mr-2"></i>
+                                                        Global Campuses
+                                                    </h4>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• Madrid, Heidelberg, Paris, Tampa</li>
+                                                        <li>• Dual Degrees (US & Europe)</li>
+                                                        <li>• Global employability oriented</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slide 6: GBS Malta -->
+                                        <div class="university-slide opacity-0 transition-opacity duration-700 absolute inset-0">
+                                            <h3 class="text-lg font-bold text-gray-900 mb-3">Why Choose GBS Malta?</h3>
+                                            <div class="space-y-3">
+                                                <div class="bg-yellow-50 rounded-lg p-3">
+                                                    <h4 class="font-semibold text-yellow-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="dollar-sign" class="w-4 h-4 mr-2"></i>
+                                                        Up to 50% MBA Scholarship
+                                                    </h4>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• MBA program only</li>
+                                                        <li>• Year 1 renewable scholarship</li>
+                                                        <li>• Get qualified scheme available</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-green-50 rounded-lg p-3">
+                                                    <h4 class="font-semibold text-green-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="briefcase" class="w-4 h-4 mr-2"></i>
+                                                        Malta Benefits
+                                                    </h4>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• Lowest unemployment in Europe</li>
+                                                        <li>• Work up to 20 hours/week</li>
+                                                        <li>• British Qualification (MFHEA)</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slide 7: EMA Paris -->
+                                        <div class="university-slide opacity-0 transition-opacity duration-700 absolute inset-0">
+                                            <h3 class="text-lg font-bold text-gray-900 mb-3">Why Choose EMA Paris?</h3>
+                                            <div class="space-y-3">
+                                                <div class="bg-yellow-50 rounded-lg p-3">
+                                                    <h4 class="font-semibold text-yellow-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="dollar-sign" class="w-4 h-4 mr-2"></i>
+                                                        Up to 50% Scholarship
+                                                    </h4>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• Year 1 renewable scholarship</li>
+                                                        <li>• Academic performance based</li>
+                                                        <li>• Does not include online programs</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-pink-50 rounded-lg p-3">
+                                                    <h4 class="font-semibold text-pink-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="book-open" class="w-4 h-4 mr-2"></i>
+                                                        Program Excellence
+                                                    </h4>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• Arts, Finance, Business Law</li>
+                                                        <li>• Bachelor to DBA programs</li>
+                                                        <li>• State & Qualiopi certified</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slider Dots -->
+                                    <div class="flex justify-center gap-2 mt-4">
+                                        <button class="uni-dot w-2 h-2 rounded-full bg-red-600 transition-all" data-slide="0"></button>
+                                        <button class="uni-dot w-2 h-2 rounded-full bg-gray-300 transition-all" data-slide="1"></button>
+                                        <button class="uni-dot w-2 h-2 rounded-full bg-gray-300 transition-all" data-slide="2"></button>
+                                        <button class="uni-dot w-2 h-2 rounded-full bg-gray-300 transition-all" data-slide="3"></button>
+                                        <button class="uni-dot w-2 h-2 rounded-full bg-gray-300 transition-all" data-slide="4"></button>
+                                        <button class="uni-dot w-2 h-2 rounded-full bg-gray-300 transition-all" data-slide="5"></button>
+                                        <button class="uni-dot w-2 h-2 rounded-full bg-gray-300 transition-all" data-slide="6"></button>
+                                    </div>
+                                </div>
+
+                                <!-- CTA Buttons -->
+                                <div class="space-y-3">
+                                    <button onclick="window.location.href='Student-find-program.html?scholarship=guaranteed'" class="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-4 px-6 rounded-xl font-bold text-lg hover:from-red-700 hover:to-red-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer">
+                                        <i data-lucide="rocket" class="w-5 h-5 inline mr-2"></i>
+                                        Get Started Now
+                                    </button>
+                                    <button onclick="openPackageModal('single-school')" class="w-full py-3 px-6 border-2 border-red-600 text-red-600 rounded-xl font-semibold hover:bg-red-50 transition-all duration-300 cursor-pointer">
+                                        View Details
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Package 2 -->
-                        <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                            <h3 class="text-lg font-semibold">Multi-School Package</h3>
-                            <div class="mt-4">
-                                <p class="text-3xl font-bold text-gray-900">$2,500</p>
-                                <p class="mt-1 text-sm text-gray-500">+ 10% of total scholarships</p>
+                        <!-- Package 2 - Enhanced Design -->
+                        <div class="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                            <!-- Hero Image with Slider -->
+                            <div class="relative h-48 overflow-hidden">
+                                <div class="relative w-full h-full">
+                                    <img src="../../Pictures/Ellacy 1.png" alt="Multi-School Package 1" class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000 multi-slide active">
+                                    <img src="../../Pictures/Ellacy 2.png" alt="Multi-School Package 2" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 multi-slide">
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="text-center text-white">
+                                        <i data-lucide="trophy" class="w-16 h-16 mx-auto mb-3 opacity-90"></i>
+                                        <h3 class="text-2xl font-bold">Multi-School</h3>
+                                        <p class="text-sm opacity-90 mt-1">Maximum Success Package</p>
+                                    </div>
+                                </div>
+                                <!-- Best Value Badge -->
+                                <div class="absolute top-4 right-4">
+                                    <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-bold bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg">
+                                        <i data-lucide="zap" class="w-4 h-4 mr-1"></i>
+                                        BEST VALUE
+                                    </span>
+                                </div>
                             </div>
-                            <ul class="mt-4 space-y-2">
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Apply to 2-3 schools</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>No application fees</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Higher scholarship opportunities</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>School comparison analysis</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Priority application processing</span>
-                                </li>
-                            </ul>
-                            <div class="mt-6 flex gap-3">
-                                <button onclick="window.location.href='Student-find-program.html?scholarship=guaranteed'" class="flex-1 bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors cursor-pointer">
-                                    Choose Package
-                                </button>
-                                <button onclick="openPackageModal('multi-school')" class="px-4 py-2 border border-red-600 text-red-600 rounded-md hover:bg-red-50 transition-colors cursor-pointer">
-                                    View Detail
-                                </button>
+
+                            <!-- Content -->
+                            <div class="p-6">
+                                <!-- Multi-School University Slider -->
+                                <div class="relative overflow-hidden mb-6">
+                                    <div id="multiSchoolSlider" class="relative min-h-[280px]">
+                                        <!-- Slide 1: Collaborative Partnerships -->
+                                        <div class="multi-school-slide opacity-100 transition-opacity duration-700 absolute inset-0">
+                                            <h4 class="text-base font-bold text-gray-900 mb-3">Collaborative Partnerships for Greater Impact</h4>
+                                            <div class="space-y-3">
+                                                <div class="bg-purple-50 rounded-lg p-3">
+                                                    <h5 class="font-semibold text-purple-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="users" class="w-4 h-4 mr-2"></i>
+                                                        Ellacy Foundation Partnership
+                                                    </h5>
+                                                    <p class="text-xs text-gray-700 leading-relaxed">
+                                                        One of the unique aspects of Ellacy Foundation is our collaboration with partner universities in the United States. These partnerships enable us to offer a diverse range of scholarships tailored to meet the specific needs and aspirations of our applicants.
+                                                    </p>
+                                                </div>
+                                                <div class="bg-blue-50 rounded-lg p-3">
+                                                    <h5 class="font-semibold text-blue-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="award" class="w-4 h-4 mr-2"></i>
+                                                        Scholarship Spectrum
+                                                    </h5>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• <strong>Academic scholarships</strong> for high achievers</li>
+                                                        <li>• <strong>Need-based scholarships</strong> for financial support</li>
+                                                        <li>• <strong>Skill-focused scholarships</strong> for specialized talents</li>
+                                                        <li>• Making higher education more accessible</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slide 2: Angelo State University -->
+                                        <div class="multi-school-slide opacity-0 transition-opacity duration-700 absolute inset-0">
+                                            <h4 class="text-base font-bold text-gray-900 mb-3">Why Choose Angelo State University?</h4>
+                                            <div class="space-y-3">
+                                                <div class="bg-red-50 rounded-lg p-3">
+                                                    <h5 class="font-semibold text-red-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="trophy" class="w-4 h-4 mr-2"></i>
+                                                        Excellence
+                                                    </h5>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• Top 13% Best U.S. Universities</li>
+                                                        <li>• #1 Physics program in Texas</li>
+                                                        <li>• 5th ranked dormitories</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-yellow-50 rounded-lg p-3">
+                                                    <h5 class="font-semibold text-yellow-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="dollar-sign" class="w-4 h-4 mr-2"></i>
+                                                        60% Tuition Reduction
+                                                    </h5>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• From $21,910 → $9,310</li>
+                                                        <li>• Health insurance: $1,500</li>
+                                                        <li>• Total: ~$10,000/year</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slide 3: Ohio Northern University -->
+                                        <div class="multi-school-slide opacity-0 transition-opacity duration-700 absolute inset-0">
+                                            <h4 class="text-base font-bold text-gray-900 mb-3">Why Choose Ohio Northern University?</h4>
+                                            <div class="space-y-3">
+                                                <div class="bg-red-50 rounded-lg p-3">
+                                                    <h5 class="font-semibold text-red-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="award" class="w-4 h-4 mr-2"></i>
+                                                        Rankings
+                                                    </h5>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• #3 Midwest Regional Colleges</li>
+                                                        <li>• #1 in Ohio for job placement</li>
+                                                        <li>• Top 12 Small Colleges (WSJ)</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-purple-50 rounded-lg p-3">
+                                                    <h5 class="font-semibold text-purple-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="briefcase" class="w-4 h-4 mr-2"></i>
+                                                        Career Success
+                                                    </h5>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• Disney, Microsoft, NASA, SpaceX</li>
+                                                        <li>• Google, PwC, Proctor & Gamble</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slide 4: Butler University -->
+                                        <div class="multi-school-slide opacity-0 transition-opacity duration-700 absolute inset-0">
+                                            <h4 class="text-base font-bold text-gray-900 mb-3">Why Choose Butler University?</h4>
+                                            <div class="space-y-3">
+                                                <div class="bg-red-50 rounded-lg p-3">
+                                                    <h5 class="font-semibold text-red-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="star" class="w-4 h-4 mr-2"></i>
+                                                        #1 Rankings
+                                                    </h5>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• #1 Regional University in Midwest</li>
+                                                        <li>• #1 for undergraduate teaching</li>
+                                                        <li>• Most innovative in Midwest</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-green-50 rounded-lg p-3">
+                                                    <h5 class="font-semibold text-green-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="graduation-cap" class="w-4 h-4 mr-2"></i>
+                                                        Programs
+                                                    </h5>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• #3 Best Communications (National)</li>
+                                                        <li>• #94 Accounting & Finance</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slide 5: Ottawa University -->
+                                        <div class="multi-school-slide opacity-0 transition-opacity duration-700 absolute inset-0">
+                                            <h4 class="text-base font-bold text-gray-900 mb-3">Why Choose Ottawa University?</h4>
+                                            <div class="space-y-3">
+                                                <div class="bg-red-50 rounded-lg p-3">
+                                                    <h5 class="font-semibold text-red-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="trending-up" class="w-4 h-4 mr-2"></i>
+                                                        Academic Excellence
+                                                    </h5>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• #51 Regional Colleges Midwest</li>
+                                                        <li>• #33 Social Mobility Leader</li>
+                                                        <li>• Strong community focus</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-blue-50 rounded-lg p-3">
+                                                    <h5 class="font-semibold text-blue-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="check-circle" class="w-4 h-4 mr-2"></i>
+                                                        Accreditation
+                                                    </h5>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• Higher Learning Commission</li>
+                                                        <li>• ACBSP Business School</li>
+                                                        <li>• Accredited Nursing School</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slide 6: Schiller International University -->
+                                        <div class="multi-school-slide opacity-0 transition-opacity duration-700 absolute inset-0">
+                                            <h4 class="text-base font-bold text-gray-900 mb-3">Why Choose Schiller International?</h4>
+                                            <div class="space-y-3">
+                                                <div class="bg-yellow-50 rounded-lg p-3">
+                                                    <h5 class="font-semibold text-yellow-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="dollar-sign" class="w-4 h-4 mr-2"></i>
+                                                        Up to 50% Scholarship
+                                                    </h5>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• Year 1 scholarship renewable</li>
+                                                        <li>• Based on academic performance</li>
+                                                        <li>• Does not include online programs</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-purple-50 rounded-lg p-3">
+                                                    <h5 class="font-semibold text-purple-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="globe" class="w-4 h-4 mr-2"></i>
+                                                        Global Campuses
+                                                    </h5>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• Madrid, Heidelberg, Paris, Tampa</li>
+                                                        <li>• Dual Degrees (US & Europe)</li>
+                                                        <li>• Global employability oriented</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slide 7: GBS Malta -->
+                                        <div class="multi-school-slide opacity-0 transition-opacity duration-700 absolute inset-0">
+                                            <h4 class="text-base font-bold text-gray-900 mb-3">Why Choose GBS Malta?</h4>
+                                            <div class="space-y-3">
+                                                <div class="bg-yellow-50 rounded-lg p-3">
+                                                    <h5 class="font-semibold text-yellow-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="dollar-sign" class="w-4 h-4 mr-2"></i>
+                                                        Up to 50% MBA Scholarship
+                                                    </h5>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• MBA program only</li>
+                                                        <li>• Year 1 renewable scholarship</li>
+                                                        <li>• Get qualified scheme available</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-green-50 rounded-lg p-3">
+                                                    <h5 class="font-semibold text-green-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="briefcase" class="w-4 h-4 mr-2"></i>
+                                                        Malta Benefits
+                                                    </h5>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• Lowest unemployment in Europe</li>
+                                                        <li>• Work up to 20 hours/week</li>
+                                                        <li>• British Qualification (MFHEA)</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slide 8: EMA Paris -->
+                                        <div class="multi-school-slide opacity-0 transition-opacity duration-700 absolute inset-0">
+                                            <h4 class="text-base font-bold text-gray-900 mb-3">Why Choose EMA Paris?</h4>
+                                            <div class="space-y-3">
+                                                <div class="bg-yellow-50 rounded-lg p-3">
+                                                    <h5 class="font-semibold text-yellow-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="dollar-sign" class="w-4 h-4 mr-2"></i>
+                                                        Up to 50% Scholarship
+                                                    </h5>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• Year 1 renewable scholarship</li>
+                                                        <li>• Academic performance based</li>
+                                                        <li>• Does not include online programs</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-pink-50 rounded-lg p-3">
+                                                    <h5 class="font-semibold text-pink-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="book-open" class="w-4 h-4 mr-2"></i>
+                                                        Program Excellence
+                                                    </h5>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• Arts, Finance, Business Law</li>
+                                                        <li>• Bachelor to DBA programs</li>
+                                                        <li>• State & Qualiopi certified</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slide 9: Rowan University -->
+                                        <div class="multi-school-slide opacity-0 transition-opacity duration-700 absolute inset-0">
+                                            <h4 class="text-base font-bold text-gray-900 mb-3">Why Choose Rowan University?</h4>
+                                            <div class="space-y-3">
+                                                <div class="bg-red-50 rounded-lg p-3">
+                                                    <h5 class="font-semibold text-red-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="trending-up" class="w-4 h-4 mr-2"></i>
+                                                        Top Rankings
+                                                    </h5>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• Top 100 Public National University</li>
+                                                        <li>• #3 fastest-growing research university</li>
+                                                        <li>• #137 Best Doctoral Engineering</li>
+                                                        <li>• #209 Top Performers on Social Mobility</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="bg-yellow-50 rounded-lg p-3">
+                                                    <h5 class="font-semibold text-yellow-900 text-sm mb-2 flex items-center">
+                                                        <i data-lucide="dollar-sign" class="w-4 h-4 mr-2"></i>
+                                                        Ellacy Scholarship
+                                                    </h5>
+                                                    <ul class="space-y-1 text-xs text-gray-700">
+                                                        <li>• <strong>Up to $8,000/year</strong> Brown & Gold</li>
+                                                        <li>• Tuition: $25,564 → $17,564</li>
+                                                        <li>• Merit: $1,000 to $19,000/year</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slider Dots -->
+                                    <div class="flex justify-center gap-2 mt-4">
+                                        <button class="multi-school-dot w-2 h-2 rounded-full bg-purple-600 transition-all" data-slide="0"></button>
+                                        <button class="multi-school-dot w-2 h-2 rounded-full bg-gray-300 transition-all" data-slide="1"></button>
+                                        <button class="multi-school-dot w-2 h-2 rounded-full bg-gray-300 transition-all" data-slide="2"></button>
+                                        <button class="multi-school-dot w-2 h-2 rounded-full bg-gray-300 transition-all" data-slide="3"></button>
+                                        <button class="multi-school-dot w-2 h-2 rounded-full bg-gray-300 transition-all" data-slide="4"></button>
+                                        <button class="multi-school-dot w-2 h-2 rounded-full bg-gray-300 transition-all" data-slide="5"></button>
+                                        <button class="multi-school-dot w-2 h-2 rounded-full bg-gray-300 transition-all" data-slide="6"></button>
+                                        <button class="multi-school-dot w-2 h-2 rounded-full bg-gray-300 transition-all" data-slide="7"></button>
+                                        <button class="multi-school-dot w-2 h-2 rounded-full bg-gray-300 transition-all" data-slide="8"></button>
+                                    </div>
+                                </div>
+
+                                <!-- CTA Buttons -->
+                                <div class="space-y-3">
+                                    <button onclick="window.location.href='Student-find-program.html?scholarship=guaranteed'" class="w-full bg-gradient-to-r from-gray-800 to-black text-white py-4 px-6 rounded-xl font-bold text-lg hover:from-gray-900 hover:to-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer">
+                                        <i data-lucide="rocket" class="w-5 h-5 inline mr-2"></i>
+                                        Get Started Now
+                                    </button>
+                                    <button onclick="openPackageModal('multi-school')" class="w-full py-3 px-6 border-2 border-gray-800 text-gray-800 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300 cursor-pointer">
+                                        View Details
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -229,75 +832,108 @@
             </div>
 
             <!-- Elite Admission Program -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden">
-                <div class="p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="p-3 rounded-lg bg-red-100 text-red-800 mr-4">
-                            <i data-lucide="star" class="w-6 h-6"></i>
+            <div class="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <!-- Hero Section -->
+                <div class="relative h-48 overflow-hidden bg-gradient-to-br from-gray-900 via-red-900 to-black">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <i data-lucide="crown" class="w-16 h-16 mx-auto mb-3 opacity-90"></i>
+                            <h3 class="text-2xl font-bold">Elite Admission Program</h3>
+                            <p class="text-sm opacity-90 mt-1">Premium Package - Elite Success Strategy</p>
                         </div>
-                        <h2 class="text-2xl font-bold text-gray-900">Elite Admission Program</h2>
                     </div>
-                    <p class="text-gray-600">Exclusive access to Top 100 schools with our close partnerships.</p>
-                    
-                    <div class="mt-8 border border-gray-200 rounded-lg p-6 max-w-2xl">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="text-lg font-semibold">Premium Package</h3>
-                                <p class="text-gray-600">Up to 5 schools</p>
+                    <!-- Elite Badge -->
+                    <div class="absolute top-4 right-4">
+                        <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-bold bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg">
+                            <i data-lucide="sparkles" class="w-4 h-4 mr-1"></i>
+                            ELITE
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="p-6">
+                    <!-- Key Benefits -->
+                    <div class="space-y-4 mb-6">
+                        <div class="bg-gradient-to-r from-red-50 to-orange-50 rounded-lg p-4">
+                            <h4 class="font-bold text-red-900 mb-3 flex items-center">
+                                <i data-lucide="target" class="w-5 h-5 mr-2"></i>
+                                Apply to 3-5 Top 100 Schools
+                            </h4>
+                            <p class="text-sm text-gray-700">
+                                Gain exclusive access to prestigious Top 100 universities through our close partnerships. Maximize your chances with multiple applications to elite institutions.
+                            </p>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-blue-50 rounded-lg p-4">
+                                <h5 class="font-semibold text-blue-900 text-sm mb-2 flex items-center">
+                                    <i data-lucide="compass" class="w-4 h-4 mr-2"></i>
+                                    Application Guidance
+                                </h5>
+                                <p class="text-xs text-gray-700">
+                                    Expert guidance throughout the entire application process, from school selection to submission.
+                                </p>
                             </div>
-                            <div class="text-right">
-                                <p class="text-3xl font-bold text-gray-900">$3,500</p>
-                                <p class="text-sm text-gray-500">+ 10% of total scholarships</p>
+
+                            <div class="bg-green-50 rounded-lg p-4">
+                                <h5 class="font-semibold text-green-900 text-sm mb-2 flex items-center">
+                                    <i data-lucide="shield-check" class="w-4 h-4 mr-2"></i>
+                                    Visa Success: 95%+
+                                </h5>
+                                <p class="text-xs text-gray-700">
+                                    Comprehensive visa assistance, including challenging cases, with over 95% success rate.
+                                </p>
                             </div>
                         </div>
-                        <ul class="mt-6 space-y-2">
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                <span>Apply to up to 5 Top 100 schools</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                <span>No application fees</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                <span>Priority application review</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                <span>Dedicated admission strategist</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                <span>Essay writing workshops</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                <span>Interview preparation sessions</span>
-                            </li>
-                        </ul>
-                        <div class="mt-6 flex gap-3">
-                            <button onclick="window.location.href='Student-find-program.html?scholarship=elite'" class="flex-1 bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors cursor-pointer">
-                                Choose Package
-                            </button>
-                            <button onclick="openPackageModal('premium')" class="px-4 py-2 border border-red-600 text-red-600 rounded-md hover:bg-red-50 transition-colors cursor-pointer">
-                                View Detail
-                            </button>
+
+                        <div class="bg-purple-50 rounded-lg p-4">
+                            <h5 class="font-semibold text-purple-900 text-sm mb-3 flex items-center">
+                                <i data-lucide="award" class="w-4 h-4 mr-2"></i>
+                                Premium Support Services
+                            </h5>
+                            <div class="grid md:grid-cols-2 gap-2 text-xs text-gray-700">
+                                <div class="flex items-start">
+                                    <span class="text-purple-600 mr-2">✓</span>
+                                    <span>Dedicated admission strategist</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="text-purple-600 mr-2">✓</span>
+                                    <span>Priority application review</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="text-purple-600 mr-2">✓</span>
+                                    <span>Essay writing workshops</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="text-purple-600 mr-2">✓</span>
+                                    <span>Interview preparation sessions</span>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="space-y-3">
+                        <button onclick="window.location.href='Student-find-program.html?scholarship=elite'" class="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-4 px-6 rounded-xl font-bold text-lg hover:from-red-700 hover:to-red-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer">
+                            <i data-lucide="rocket" class="w-5 h-5 inline mr-2"></i>
+                            Get Started Now
+                        </button>
+                        <button onclick="openPackageModal('premium')" class="w-full py-3 px-6 border-2 border-red-600 text-red-600 rounded-xl font-semibold hover:bg-red-50 transition-all duration-300 cursor-pointer">
+                            View Details
+                        </button>
                     </div>
                 </div>
             </div>
 
             <!-- Ivy Global Student Program -->
             <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <!-- Hero Banner -->
+                <div class="relative h-64 overflow-hidden">
+                    <img src="../../Pictures/Ellacy 4.png" alt="Ivy Global Student Program" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+                </div>
                 <div class="p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="p-3 rounded-lg bg-red-100 text-red-800 mr-4">
-                            <i data-lucide="globe" class="w-6 h-6"></i>
-                        </div>
-                        <h2 class="text-2xl font-bold text-gray-900">Ivy Global Student Program</h2>
-                    </div>
-                    <p class="text-gray-600">Your gateway to the world's most prestigious universities (choose up to 7-10 Schools).</p>
                     
                     <div class="grid md:grid-cols-3 gap-6 mt-8">
                         <!-- Regular Package -->
@@ -429,166 +1065,548 @@
                         </div>
                         <h2 class="text-2xl font-bold text-gray-900">Joint Program (Vietnam to US Transfer)</h2>
                     </div>
-                    <p class="text-gray-600">Seamless transfer options for Vietnamese students to US universities.</p>
+                    <!-- Partner logos -->
+                    <div class="mt-2 mb-2 flex flex-wrap items-center gap-4 opacity-80">
+                        <span class="text-xs text-gray-500">Partnered with:</span>
+                        <img src="../../tiffin-university-logo.png" alt="Tiffin University" class="h-6 object-contain" onerror="this.style.display='none'"/>
+                        <img src="https://imgs.search.brave.com/0hWMuoaUWNAyGWv5n6H4tzAYFH3X_pleytwTvgVAKAg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGY2ZWY4MWJh/MzM3MmNlYWM5ZGEw/MDMyZmRmZjBhZWYy/NDNlYWYyNjc1NmUz/YmNiNThjZDk2MTg0/NjcxOTE1Yy93d3cu/YW5nZWxvLmVkdS8" alt="Angelo State" class="h-6 object-contain" onerror="this.style.display='none'"/>
+                        <img src="https://imgs.search.brave.com/r3nWNTOjuvX8JESsHrTqUfbaRzGTv1csK_-Cphz2IbQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9iYW5u/ZXIyLmNsZWFucG5n/LmNvbS8yMDE4MTEy/MC9qY3cva2lzc3Bu/Zy1idXRsZXItdW5p/dmVyc2l0eS1idXRs/ZXItYnVsbGRvZ3Mt/bWVucy1iYXNrZXRi/YWxsLXByZW1pZXIt/c29jY2VyLWdyb3Vw/LTViZjRkOWE4MGRj/Y2ExLjczODk2ODkx/MTU0Mjc3MzE2MDA1/NjUuanBn" alt="Butler University" class="h-6 object-contain" onerror="this.style.display='none'"/>
+                        <img src="https://imgs.search.brave.com/sxE038e07J9Ek5nd3C55kRghQQBv2z_UA6iN3zwf394/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9kMmp5/aXIwbTc5Z3M2MC5j/bG91ZGZyb250Lm5l/dC9jb2xsZWdlL2xv/Z29zX2NvbXByZXNz/ZWQvT2hpb19Ob3J0/aGVybl9Vbml2ZXJz/aXR5LmpwZw" alt="Ohio Northern" class="h-6 object-contain" onerror="this.style.display='none'"/>
+                        <img src="https://imgs.search.brave.com/ZTJ5Dk58fh8kq2hWyLVsEnJNYgccwMRXekVM35VuaLA/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvZW4vdGh1bWIv/OC84Zi9PdHRhd2Ff/VW5pdmVyc2l0eV9z/ZWFsLnN2Zy81MTJw/eC1PdHRhd2FfVW5p/dmVyc2l0eV9zZWFs/LnN2Zy5wbmc" alt="Ottawa University" class="h-6 object-contain" onerror="this.style.display='none'"/>
+                        <img src="https://imgs.search.brave.com/Zw3JaJcy89TrsZxIa7JlluJAndf9_pbxQBBwmpfNT0w/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzEzN2E0M2Uy/YzE5ZWU3NDI0ZTdj/YTJiODM2NTUwOGEx/ZmZiNDRhOTNmZDQz/NzNmODZjMTMyZmM5/ZTAzYTRjYS93d3cu/c2NoaWxsZXIuZWR1/Lw" alt="Schiller International" class="h-6 object-contain" onerror="this.style.display='none'"/>
+                        <img src="https://imgs.search.brave.com/smkUJDozyI-QTCD0Uda7u3VSXdyN3iOnNqXqBHgezPk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTljMGQwM2Fk/MDA5ZDRhY2UxY2Vi/NWFkYjE0ZDBhMGNj/ZDZiZTE4MzFhZmVj/ZTg2MTE4MTZhNWZl/ODAxNjY4My93d3cu/cm93YW4uZWR1Lw" alt="Rowan" class="h-6 object-contain" onerror="this.style.display='none'"/>
+                    </div>
                     
-                    <div class="grid md:grid-cols-2 gap-6 mt-8">
+                    <div class="grid md:grid-cols-2 gap-8 mt-8">
                         <!-- 1+3 Program -->
-                        <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                            <h3 class="text-lg font-semibold">1+3 Program</h3>
-                            <div class="mt-4">
-                                <p class="text-3xl font-bold text-gray-900">$500</p>
-                                <p class="mt-1 text-sm text-gray-500">+ $4,000 upon transfer</p>
+                        <div class="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-gray-100">
+                            <!-- Header -->
+                            <div class="bg-gradient-to-r from-red-600 to-red-700 p-6 text-white">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h3 class="text-2xl font-bold">1+3 Program</h3>
+                                        <p class="text-sm opacity-90 mt-1">Fast-Track to US Education</p>
+                                    </div>
+                                    <i data-lucide="rocket" class="w-12 h-12 opacity-80"></i>
+                                </div>
                             </div>
-                            <ul class="mt-4 space-y-2">
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>1 year in Vietnam + 3 years in US</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Smooth credit transfer</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>English language support</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Academic counseling</span>
-                                </li>
-                            </ul>
-                            <div class="mt-6 flex gap-3">
-                                <button onclick="window.location.href='Student-find-program.html?scholarship=joint'" class="flex-1 bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors cursor-pointer">
-                                    Choose Program
-                                </button>
-                                <button onclick="openPackageModal('1plus3')" class="px-4 py-2 border border-red-600 text-red-600 rounded-md hover:bg-red-50 transition-colors cursor-pointer">
-                                    View Detail
-                                </button>
+
+                            <!-- Content -->
+                            <div class="p-6">
+                                <!-- Key Benefits -->
+                                <div class="space-y-4 mb-6">
+                                    <div class="bg-red-50 rounded-lg p-4">
+                                        <h4 class="font-bold text-red-900 mb-2 flex items-center">
+                                            <i data-lucide="calendar" class="w-5 h-5 mr-2"></i>
+                                            Program Structure
+                                        </h4>
+                                        <p class="text-sm text-gray-700">1 year in Vietnam + 3 years in US for complete Bachelor's degree</p>
+                                    </div>
+
+                                    <div class="bg-green-50 rounded-lg p-4">
+                                        <h4 class="font-bold text-green-900 mb-2 flex items-center">
+                                            <i data-lucide="dollar-sign" class="w-5 h-5 mr-2"></i>
+                                            Cost Savings
+                                        </h4>
+                                        <ul class="space-y-1 text-sm text-gray-700">
+                                            <li>• Save up to 25% on total tuition</li>
+                                            <li>• Lower living costs in Vietnam first year</li>
+                                            <li>• Smooth credit transfer guaranteed</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="bg-blue-50 rounded-lg p-4">
+                                        <h4 class="font-bold text-blue-900 mb-2 flex items-center">
+                                            <i data-lucide="check-circle" class="w-5 h-5 mr-2"></i>
+                                            Support Services
+                                        </h4>
+                                        <ul class="space-y-1 text-sm text-gray-700">
+                                            <li>• English language preparation</li>
+                                            <li>• Academic counseling throughout</li>
+                                            <li>• Cultural adaptation workshops</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- CTA Buttons -->
+                                <div class="space-y-3">
+                                    <button onclick="window.location.href='Student-find-program.html?scholarship=joint'" class="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-3 px-6 rounded-xl font-bold hover:from-red-700 hover:to-red-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer">
+                                        <i data-lucide="arrow-right" class="w-5 h-5 inline mr-2"></i>
+                                        Apply Now
+                                    </button>
+                                    <button onclick="window.location.href='../../Joint%20Program%20Student/html/About-Joint-Program.html'" class="w-full py-2 px-6 border-2 border-red-600 text-red-600 rounded-xl font-semibold hover:bg-red-50 transition-all duration-300 cursor-pointer">
+                                        View Details
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
                         <!-- 2+2 Program -->
-                        <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                            <h3 class="text-lg font-semibold">2+2 Program</h3>
-                            <div class="mt-4">
-                                <p class="text-3xl font-bold text-gray-900">$500</p>
-                                <p class="mt-1 text-sm text-gray-500">+ $3,000 upon transfer</p>
+                        <div class="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-gray-100">
+                            <!-- Header -->
+                            <div class="bg-gradient-to-r from-gray-800 to-black p-6 text-white">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h3 class="text-2xl font-bold">2+2 Program</h3>
+                                        <p class="text-sm opacity-90 mt-1">Most Cost-Effective Pathway</p>
+                                    </div>
+                                    <i data-lucide="trending-down" class="w-12 h-12 opacity-80"></i>
+                                </div>
                             </div>
-                            <ul class="mt-4 space-y-2">
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>2 years in Vietnam + 2 years in US</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Cost-effective pathway</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Guaranteed transfer to partner schools</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Cultural adaptation support</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Career guidance program</span>
-                                </li>
-                            </ul>
-                            <div class="mt-6 flex gap-3">
-                                <button onclick="window.location.href='Student-find-program.html?scholarship=joint'" class="flex-1 bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors cursor-pointer">
-                                    Choose Program
-                                </button>
-                                <button onclick="openPackageModal('2plus2')" class="px-4 py-2 border border-red-600 text-red-600 rounded-md hover:bg-red-50 transition-colors cursor-pointer">
-                                    View Detail
-                                </button>
+
+                            <!-- Content -->
+                            <div class="p-6">
+                                <!-- Key Benefits -->
+                                <div class="space-y-4 mb-6">
+                                    <div class="bg-red-50 rounded-lg p-4">
+                                        <h4 class="font-bold text-red-900 mb-2 flex items-center">
+                                            <i data-lucide="calendar" class="w-5 h-5 mr-2"></i>
+                                            Balanced Program
+                                        </h4>
+                                        <p class="text-sm text-gray-700">2 years in Vietnam + 2 years in US for complete Bachelor's degree</p>
+                                    </div>
+
+                                    <div class="bg-green-50 rounded-lg p-4">
+                                        <h4 class="font-bold text-green-900 mb-2 flex items-center">
+                                            <i data-lucide="piggy-bank" class="w-5 h-5 mr-2"></i>
+                                            Maximum Savings
+                                        </h4>
+                                        <ul class="space-y-1 text-sm text-gray-700">
+                                            <li>• Save up to 50% on total education cost</li>
+                                            <li>• Guaranteed transfer to partner schools</li>
+                                            <li>• No additional transfer fees</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="bg-purple-50 rounded-lg p-4">
+                                        <h4 class="font-bold text-purple-900 mb-2 flex items-center">
+                                            <i data-lucide="users" class="w-5 h-5 mr-2"></i>
+                                            Complete Support
+                                        </h4>
+                                        <ul class="space-y-1 text-sm text-gray-700">
+                                            <li>• Cultural adaptation workshops</li>
+                                            <li>• Career guidance program</li>
+                                            <li>• Peer mentorship network</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- CTA Buttons -->
+                                <div class="space-y-3">
+                                    <button onclick="window.location.href='Student-find-program.html?scholarship=joint'" class="w-full bg-gradient-to-r from-gray-800 to-black text-white py-3 px-6 rounded-xl font-bold hover:from-gray-900 hover:to-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer">
+                                        <i data-lucide="arrow-right" class="w-5 h-5 inline mr-2"></i>
+                                        Apply Now
+                                    </button>
+                                    <button onclick="window.location.href='../../Joint%20Program%20Student/html/About-Joint-Program.html'" class="w-full py-2 px-6 border-2 border-gray-800 text-gray-800 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300 cursor-pointer">
+                                        View Details
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
                          <!-- Fast-Track Joint MBA -->
-                         <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                            <div class="flex justify-between items-start">
-                                <h3 class="text-lg font-semibold">Fast-Track Joint MBA</h3>
-                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
-                                    Popular
-                                </span>
+                         <div class="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-red-200">
+                            <!-- Header -->
+                            <div class="bg-gradient-to-r from-red-600 to-red-700 p-6 text-white relative">
+                                <div class="absolute top-4 right-4">
+                                </div>
+                                <div class="flex items-center justify-between pr-20">
+                                    <div>
+                                        <h3 class="text-2xl font-bold">Fast-Track Joint MBA</h3>
+                                        <p class="text-sm opacity-90 mt-1">Dual Degree in 2 Years</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="mt-4">
-                                <p class="text-3xl font-bold text-gray-900">$7,500</p>
-                                <p class="mt-1 text-sm text-gray-500">+ 15% of total tuition</p>
-                            </div>
-                            <ul class="mt-4 space-y-2">
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>1 year in Vietnam + 1 year in US</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Dual degree from partner universities</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Guaranteed admission for qualified candidates</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Executive networking events</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Industry mentorship program</span>
-                                </li>
-                            </ul>
-                            <div class="mt-6 flex gap-3">
-                                <button onclick="window.location.href='Student-find-program.html?scholarship=joint'" class="flex-1 bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors cursor-pointer">
-                                    Choose Program
-                                </button>
-                                <button onclick="openPackageModal('fast-track-mba')" class="px-4 py-2 border border-red-600 text-red-600 rounded-md hover:bg-red-50 transition-colors cursor-pointer">
-                                    View Detail
-                                </button>
+
+                            <!-- Content -->
+                            <div class="p-6">
+                                <!-- Key Benefits -->
+                                <div class="space-y-4 mb-6">
+                                    <div class="bg-red-50 rounded-lg p-4">
+                                        <h4 class="font-bold text-red-900 mb-2 flex items-center">
+                                            <i data-lucide="award" class="w-5 h-5 mr-2"></i>
+                                            Dual Degree Program
+                                        </h4>
+                                        <p class="text-sm text-gray-700">1 year in Vietnam + 1 year in US = 2 degrees from partner universities</p>
+                                    </div>
+
+                                    <div class="bg-purple-50 rounded-lg p-4">
+                                        <h4 class="font-bold text-purple-900 mb-2 flex items-center">
+                                            <i data-lucide="briefcase" class="w-5 h-5 mr-2"></i>
+                                            Career Acceleration
+                                        </h4>
+                                        <ul class="space-y-1 text-sm text-gray-700">
+                                            <li>• Guaranteed admission for qualified candidates</li>
+                                            <li>• Executive networking events</li>
+                                            <li>• Industry mentorship program</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="bg-blue-50 rounded-lg p-4">
+                                        <h4 class="font-bold text-blue-900 mb-2 flex items-center">
+                                            <i data-lucide="globe" class="w-5 h-5 mr-2"></i>
+                                            Global Experience
+                                        </h4>
+                                        <ul class="space-y-1 text-sm text-gray-700">
+                                            <li>• International business exposure</li>
+                                            <li>• Cross-cultural leadership skills</li>
+                                            <li>• Global alumni network</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- CTA Buttons -->
+                                <div class="space-y-3">
+                                    <button onclick="window.location.href='Student-find-program.html?scholarship=joint'" class="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-3 px-6 rounded-xl font-bold hover:from-red-700 hover:to-red-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer">
+                                        <i data-lucide="arrow-right" class="w-5 h-5 inline mr-2"></i>
+                                        Apply Now
+                                    </button>
+                                    <button onclick="window.location.href='../../Joint%20Program%20Student/html/About-Joint-Program.html'" class="w-full py-2 px-6 border-2 border-red-600 text-red-600 rounded-xl font-semibold hover:bg-red-50 transition-all duration-300 cursor-pointer">
+                                        View Details
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Executive Joint MBA -->
-                        <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                            <div class="flex justify-between items-start">
-                                <h3 class="text-lg font-semibold">Executive Joint MBA</h3>
+                        <div class="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-gray-100">
+                            <!-- Header -->
+                            <div class="bg-gradient-to-r from-gray-800 to-black p-6 text-white">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h3 class="text-2xl font-bold">Executive Joint MBA</h3>
+                                        <p class="text-sm opacity-90 mt-1">For Working Professionals</p>
+                                    </div>
+                                    <i data-lucide="briefcase" class="w-12 h-12 opacity-80"></i>
+                                </div>
                             </div>
-                            <div class="mt-4">
-                                <p class="text-3xl font-bold text-gray-900">$9,000</p>
-                                <p class="mt-1 text-sm text-gray-500">+ 12% of total tuition</p>
+
+                            <!-- Content -->
+                            <div class="p-6">
+                                <!-- Key Benefits -->
+                                <div class="space-y-4 mb-6">
+                                    <div class="bg-red-50 rounded-lg p-4">
+                                        <h4 class="font-bold text-red-900 mb-2 flex items-center">
+                                            <i data-lucide="clock" class="w-5 h-5 mr-2"></i>
+                                            Flexible Schedule
+                                        </h4>
+                                        <p class="text-sm text-gray-700">Weekend/Evening classes in Vietnam + 2-week US residency included</p>
+                                    </div>
+
+                                    <div class="bg-purple-50 rounded-lg p-4">
+                                        <h4 class="font-bold text-purple-900 mb-2 flex items-center">
+                                            <i data-lucide="users" class="w-5 h-5 mr-2"></i>
+                                            Executive Network
+                                        </h4>
+                                        <ul class="space-y-1 text-sm text-gray-700">
+                                            <li>• Networking with US faculty</li>
+                                            <li>• Executive leadership workshops</li>
+                                            <li>• C-level peer connections</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="bg-green-50 rounded-lg p-4">
+                                        <h4 class="font-bold text-green-900 mb-2 flex items-center">
+                                            <i data-lucide="trending-up" class="w-5 h-5 mr-2"></i>
+                                            Career Growth
+                                        </h4>
+                                        <ul class="space-y-1 text-sm text-gray-700">
+                                            <li>• Career coaching & placement support</li>
+                                            <li>• Continue working while studying</li>
+                                            <li>• Immediate application of skills</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- CTA Buttons -->
+                                <div class="space-y-3">
+                                    <button onclick="window.location.href='Student-find-program.html?scholarship=joint'" class="w-full bg-gradient-to-r from-gray-800 to-black text-white py-3 px-6 rounded-xl font-bold hover:from-gray-900 hover:to-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer">
+                                        <i data-lucide="arrow-right" class="w-5 h-5 inline mr-2"></i>
+                                        Apply Now
+                                    </button>
+                                    <button onclick="window.location.href='../../Joint%20Program%20Student/html/About-Joint-Program.html'" class="w-full py-2 px-6 border-2 border-gray-800 text-gray-800 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300 cursor-pointer">
+                                        View Details
+                                    </button>
+                                </div>
                             </div>
-                            <ul class="mt-4 space-y-2">
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Weekend/Evening classes in Vietnam</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>2-week US residency included</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Networking opportunities with US faculty</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Career coaching and placement support</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i data-lucide="check-circle" class="flex-shrink-0 h-5 w-5 text-red-600 mr-2 mt-0.5"></i>
-                                    <span>Executive leadership workshops</span>
-                                </li>
-                            </ul>
-                            <div class="mt-6 flex gap-3">
-                                <button onclick="window.location.href='Student-find-program.html?scholarship=joint'" class="flex-1 bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors cursor-pointer">
-                                    Choose Program
-                                </button>
-                                <button onclick="openPackageModal('executive-mba')" class="px-4 py-2 border border-red-600 text-red-600 rounded-md hover:bg-red-50 transition-colors cursor-pointer">
-                                    View Detail
-                                </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Stories -->
+            <div class="bg-gradient-to-br from-gray-50 to-red-50 rounded-xl shadow-md overflow-hidden">
+                <div class="p-8">
+                    <!-- Scrolling Container -->
+                    <div class="relative overflow-hidden">
+                        <div id="successStoriesScroller" class="flex gap-6 overflow-x-auto scrollbar-hide pb-4" style="scroll-behavior: smooth;">
+                        <!-- Story 1 -->
+                        <div class="flex-shrink-0 w-80 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center text-white font-bold text-xl">
+                                    NT
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="font-bold text-gray-900">Nguyen Tran</h3>
+                                    <p class="text-sm text-gray-600">Single School Package</p>
+                                </div>
                             </div>
+                            <div class="mb-4">
+                                <div class="flex items-center text-yellow-500 mb-2">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
+                                <p class="text-gray-700 text-sm italic">"Thanks to Ellacy's Single School Package, I received a 60% scholarship to Angelo State University. The counselors guided me through every step!"</p>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i data-lucide="graduation-cap" class="w-4 h-4 mr-2 text-red-600"></i>
+                                <span>Angelo State University</span>
+                            </div>
+                            <div class="flex items-center text-sm text-green-600 mt-2">
+                                <i data-lucide="dollar-sign" class="w-4 h-4 mr-1"></i>
+                                <span class="font-semibold">$13,000 scholarship/year</span>
+                            </div>
+                        </div>
+
+                        <!-- Story 2 -->
+                        <div class="flex-shrink-0 w-80 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-gray-800 to-black flex items-center justify-center text-white font-bold text-xl">
+                                    LP
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="font-bold text-gray-900">Le Phuong</h3>
+                                    <p class="text-sm text-gray-600">Multi-School Package</p>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex items-center text-yellow-500 mb-2">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
+                                <p class="text-gray-700 text-sm italic">"Applied to 3 universities and got accepted to all! Chose Butler University with an amazing scholarship. Best decision ever!"</p>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i data-lucide="graduation-cap" class="w-4 h-4 mr-2 text-red-600"></i>
+                                <span>Butler University</span>
+                            </div>
+                            <div class="flex items-center text-sm text-green-600 mt-2">
+                                <i data-lucide="dollar-sign" class="w-4 h-4 mr-1"></i>
+                                <span class="font-semibold">$16,500 scholarship/year</span>
+                            </div>
+                        </div>
+
+                        <!-- Story 3 -->
+                        <div class="flex-shrink-0 w-80 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center text-white font-bold text-xl">
+                                    HM
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="font-bold text-gray-900">Hoang Minh</h3>
+                                    <p class="text-sm text-gray-600">Elite Admission Program</p>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex items-center text-yellow-500 mb-2">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
+                                <p class="text-gray-700 text-sm italic">"The Premium Package helped me get into a Top 100 university! The visa assistance was incredible - got approved on first try!"</p>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i data-lucide="graduation-cap" class="w-4 h-4 mr-2 text-red-600"></i>
+                                <span>Rowan University</span>
+                            </div>
+                            <div class="flex items-center text-sm text-green-600 mt-2">
+                                <i data-lucide="dollar-sign" class="w-4 h-4 mr-1"></i>
+                                <span class="font-semibold">$19,000 scholarship/year</span>
+                            </div>
+                        </div>
+
+                        <!-- Story 4 -->
+                        <div class="flex-shrink-0 w-80 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center text-white font-bold text-xl">
+                                    TH
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="font-bold text-gray-900">Tran Huy</h3>
+                                    <p class="text-sm text-gray-600">Multi-School Package</p>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex items-center text-yellow-500 mb-2">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
+                                <p class="text-gray-700 text-sm italic">"Ohio Northern University was my dream! With Ellacy's help, I got in with a great scholarship and now working at NASA!"</p>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i data-lucide="graduation-cap" class="w-4 h-4 mr-2 text-red-600"></i>
+                                <span>Ohio Northern University</span>
+                            </div>
+                            <div class="flex items-center text-sm text-green-600 mt-2">
+                                <i data-lucide="dollar-sign" class="w-4 h-4 mr-1"></i>
+                                <span class="font-semibold">$15,000 scholarship/year</span>
+                            </div>
+                        </div>
+
+                        <!-- Story 5 -->
+                        <div class="flex-shrink-0 w-80 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-gray-800 to-black flex items-center justify-center text-white font-bold text-xl">
+                                    VL
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="font-bold text-gray-900">Vo Linh</h3>
+                                    <p class="text-sm text-gray-600">Single School Package</p>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex items-center text-yellow-500 mb-2">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
+                                <p class="text-gray-700 text-sm italic">"Schiller International gave me the chance to study in Europe! The global campus experience is amazing!"</p>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i data-lucide="graduation-cap" class="w-4 h-4 mr-2 text-red-600"></i>
+                                <span>Schiller International</span>
+                            </div>
+                            <div class="flex items-center text-sm text-green-600 mt-2">
+                                <i data-lucide="dollar-sign" class="w-4 h-4 mr-1"></i>
+                                <span class="font-semibold">50% tuition scholarship</span>
+                            </div>
+                        </div>
+
+                        <!-- Story 6 -->
+                        <div class="flex-shrink-0 w-80 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center text-white font-bold text-xl">
+                                    PA
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="font-bold text-gray-900">Pham Anh</h3>
+                                    <p class="text-sm text-gray-600">Elite Admission Program</p>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex items-center text-yellow-500 mb-2">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
+                                <p class="text-gray-700 text-sm italic">"Ottawa University's nursing program is top-notch. Ellacy made the entire process smooth and stress-free!"</p>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i data-lucide="graduation-cap" class="w-4 h-4 mr-2 text-red-600"></i>
+                                <span>Ottawa University</span>
+                            </div>
+                            <div class="flex items-center text-sm text-green-600 mt-2">
+                                <i data-lucide="dollar-sign" class="w-4 h-4 mr-1"></i>
+                                <span class="font-semibold">$12,000 scholarship/year</span>
+                            </div>
+                        </div>
+
+                        <!-- Story 7 -->
+                        <div class="flex-shrink-0 w-80 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-gray-800 to-black flex items-center justify-center text-white font-bold text-xl">
+                                    DK
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="font-bold text-gray-900">Do Khang</h3>
+                                    <p class="text-sm text-gray-600">Multi-School Package</p>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex items-center text-yellow-500 mb-2">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
+                                <p class="text-gray-700 text-sm italic">"GBS Malta's MBA program opened doors to European job market. Best investment in my career!"</p>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i data-lucide="graduation-cap" class="w-4 h-4 mr-2 text-red-600"></i>
+                                <span>GBS Malta</span>
+                            </div>
+                            <div class="flex items-center text-sm text-green-600 mt-2">
+                                <i data-lucide="dollar-sign" class="w-4 h-4 mr-1"></i>
+                                <span class="font-semibold">50% MBA scholarship</span>
+                            </div>
+                        </div>
+
+                        <!-- Story 8 -->
+                        <div class="flex-shrink-0 w-80 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center text-white font-bold text-xl">
+                                    NM
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="font-bold text-gray-900">Nguyen Mai</h3>
+                                    <p class="text-sm text-gray-600">Single School Package</p>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex items-center text-yellow-500 mb-2">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
+                                <p class="text-gray-700 text-sm italic">"EMA Paris gave me the perfect blend of business and arts education. Living in Paris is a dream come true!"</p>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-600">
+                                <i data-lucide="graduation-cap" class="w-4 h-4 mr-2 text-red-600"></i>
+                                <span>EMA Paris</span>
+                            </div>
+                            <div class="flex items-center text-sm text-green-600 mt-2">
+                                <i data-lucide="dollar-sign" class="w-4 h-4 mr-1"></i>
+                                <span class="font-semibold">50% tuition scholarship</span>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats Section -->
+                    <div class="mt-8 grid md:grid-cols-4 gap-6 text-center">
+                        <div class="bg-white rounded-lg p-4 shadow">
+                            <div class="text-3xl font-bold text-red-600 mb-1">500+</div>
+                            <div class="text-sm text-gray-600">Students Placed</div>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 shadow">
+                            <div class="text-3xl font-bold text-red-600 mb-1">95%</div>
+                            <div class="text-sm text-gray-600">Visa Success Rate</div>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 shadow">
+                            <div class="text-3xl font-bold text-red-600 mb-1">$5M+</div>
+                            <div class="text-sm text-gray-600">Scholarships Secured</div>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 shadow">
+                            <div class="text-3xl font-bold text-red-600 mb-1">50+</div>
+                            <div class="text-sm text-gray-600">Partner Universities</div>
                         </div>
                     </div>
                 </div>
@@ -597,11 +1615,17 @@
             <!-- Additional Services -->
             <div class="bg-white rounded-xl shadow-md overflow-hidden">
                 <div class="p-6">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-6">
-                        <a href="Student-Additional-Services.html" class="hover:text-red-600 transition-colors">
-                            Additional Services
-                        </a>
-                    </h2>
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900">
+                            <a href="Student-Additional-Services.html" class="hover:text-red-600 transition-colors">
+                                Additional Services
+                            </a>
+                        </h2>
+                        <button onclick="window.location.href='Student-Additional-Services.html'" class="inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold bg-red-600 text-white hover:bg-red-700 transition-colors cursor-pointer">
+                            Explore Services
+                            <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </button>
+                    </div>
                     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <!-- SAT Prep -->
                         <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
@@ -719,7 +1743,250 @@
             });
         }
 
-        // Initialize Lucide Icons
+        // Hero slider logic
+        (function(){
+            const slider = document.getElementById('heroSlider');
+            if (!slider) return;
+            const slides = slider.querySelectorAll('.slide');
+            if (!slides.length) return;
+            const prevBtn = slider.querySelector('[data-hero-prev]');
+            const nextBtn = slider.querySelector('[data-hero-next]');
+            const dotsContainer = slider.querySelector('[data-hero-dots]');
+            let current = 0;
+            let timer = null;
+
+            function buildDots(){
+                if (!dotsContainer) return;
+                dotsContainer.innerHTML = '';
+                slides.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.setAttribute('aria-label', 'Go to slide ' + (i+1));
+                    dot.className = 'w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/70 transition ring-0';
+                    dot.dataset.index = String(i);
+                    dot.addEventListener('click', () => {
+                        goTo(i);
+                        restart();
+                    });
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            function updateDots(){
+                if (!dotsContainer) return;
+                const dots = dotsContainer.querySelectorAll('button');
+                dots.forEach((d, i) => {
+                    d.className = 'w-2.5 h-2.5 rounded-full transition ring-0 ' + (i === current ? 'bg-white' : 'bg-white/40 hover:bg-white/70');
+                });
+            }
+
+            function goTo(i){
+                slides.forEach((el, idx) => {
+                    if (idx === i){
+                        el.classList.add('opacity-100','active');
+                        el.classList.remove('opacity-0');
+                    } else {
+                        el.classList.remove('opacity-100','active');
+                        el.classList.add('opacity-0');
+                    }
+                });
+                current = i;
+                updateDots();
+            }
+
+            function next(){
+                const n = (current + 1) % slides.length;
+                goTo(n);
+            }
+            function prev(){
+                const p = (current - 1 + slides.length) % slides.length;
+                goTo(p);
+            }
+            function start(){
+                stop();
+                timer = setInterval(next, 5000);
+            }
+            function stop(){
+                if (timer) clearInterval(timer);
+                timer = null;
+            }
+            function restart(){ start(); }
+
+            prevBtn && prevBtn.addEventListener('click', () => { prev(); restart(); });
+            nextBtn && nextBtn.addEventListener('click', () => { next(); restart(); });
+            slider.addEventListener('mouseenter', stop);
+            slider.addEventListener('mouseleave', start);
+
+            buildDots();
+            goTo(0);
+            start();
+        })();
+
+        // Multi-School package slider
+        (function(){
+            const slides = document.querySelectorAll('.multi-slide');
+            if (!slides.length) return;
+            let current = 0;
+            
+            function next(){
+                slides[current].classList.remove('opacity-100');
+                slides[current].classList.add('opacity-0');
+                current = (current + 1) % slides.length;
+                slides[current].classList.remove('opacity-0');
+                slides[current].classList.add('opacity-100');
+            }
+            
+            setInterval(next, 3000);
+        })();
+
+        // University slider (Single School package)
+        (function(){
+            const slides = document.querySelectorAll('.university-slide');
+            const dots = document.querySelectorAll('.uni-dot');
+            if (!slides.length) return;
+            let current = 0;
+            let timer = null;
+            
+            function goTo(index){
+                slides[current].classList.remove('opacity-100');
+                slides[current].classList.add('opacity-0');
+                dots[current].classList.remove('bg-red-600');
+                dots[current].classList.add('bg-gray-300');
+                
+                current = index;
+                
+                slides[current].classList.remove('opacity-0');
+                slides[current].classList.add('opacity-100');
+                dots[current].classList.remove('bg-gray-300');
+                dots[current].classList.add('bg-red-600');
+            }
+            
+            function next(){
+                goTo((current + 1) % slides.length);
+            }
+            
+            function start(){
+                stop();
+                timer = setInterval(next, 5000);
+            }
+            
+            function stop(){
+                if (timer) clearInterval(timer);
+            }
+            
+            // Dot click handlers
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    goTo(i);
+                    start();
+                });
+            });
+            
+            // Pause on hover
+            const slider = document.getElementById('universitySlider');
+            if (slider) {
+                slider.addEventListener('mouseenter', stop);
+                slider.addEventListener('mouseleave', start);
+            }
+            
+            start();
+        })();
+
+        // Multi-School university slider
+        (function(){
+            const slides = document.querySelectorAll('.multi-school-slide');
+            const dots = document.querySelectorAll('.multi-school-dot');
+            if (!slides.length) return;
+            let current = 0;
+            let timer = null;
+            
+            function goTo(index){
+                slides[current].classList.remove('opacity-100');
+                slides[current].classList.add('opacity-0');
+                dots[current].classList.remove('bg-purple-600');
+                dots[current].classList.add('bg-gray-300');
+                
+                current = index;
+                
+                slides[current].classList.remove('opacity-0');
+                slides[current].classList.add('opacity-100');
+                dots[current].classList.remove('bg-gray-300');
+                dots[current].classList.add('bg-purple-600');
+            }
+            
+            function next(){
+                goTo((current + 1) % slides.length);
+            }
+            
+            function start(){
+                stop();
+                timer = setInterval(next, 5000);
+            }
+            
+            function stop(){
+                if (timer) clearInterval(timer);
+            }
+            
+            // Dot click handlers
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    goTo(i);
+                    start();
+                });
+            });
+            
+            // Pause on hover
+            const slider = document.getElementById('multiSchoolSlider');
+            if (slider) {
+                slider.addEventListener('mouseenter', stop);
+                slider.addEventListener('mouseleave', start);
+            }
+            
+            start();
+        })();
+
+        // Success Stories Auto-Scroll
+        (function(){
+            const scroller = document.getElementById('successStoriesScroller');
+            if (!scroller) return;
+            
+            // Clone cards for infinite loop
+            const originalCards = Array.from(scroller.children);
+            originalCards.forEach(card => {
+                const clone = card.cloneNode(true);
+                scroller.appendChild(clone);
+            });
+            
+            let scrollSpeed = 1.5; // pixels per frame (increased speed)
+            let isPaused = false;
+            
+            function autoScroll(){
+                if (!isPaused) {
+                    scroller.scrollLeft += scrollSpeed;
+                    
+                    // Reset when reaching halfway (where clones start)
+                    if (scroller.scrollLeft >= scroller.scrollWidth / 2) {
+                        scroller.scrollLeft = 0;
+                    }
+                }
+                
+                requestAnimationFrame(autoScroll);
+            }
+            
+            // Start auto-scroll
+            autoScroll();
+            
+            // Pause on hover
+            scroller.addEventListener('mouseenter', () => {
+                isPaused = true;
+            });
+            
+            scroller.addEventListener('mouseleave', () => {
+                isPaused = false;
+            });
+        })();
+
+        // Initialize Lucide icons
         lucide.createIcons();
 
         const packageDetails = {
@@ -1115,23 +2382,13 @@
                     </div>
                     
                     <div>
-                        <div class="mb-6">
-                            <h3 class="font-semibold text-lg mb-3">Timeline</h3>
-                            <div class="space-y-3">
-                                ${details.timeline.map((step, index) => `
-                                    <div class="flex items-start">
-                                        <div class="flex-shrink-0 w-6 h-6 bg-red-600 text-white rounded-full flex items-center justify-center text-sm font-medium mr-3">
-                                            ${index + 1}
-                                        </div>
-                                        <p class="text-gray-700 text-sm">${step}</p>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                        
-                        <div class="mb-6">
+                        <div class="mb-4">
                             <h3 class="font-semibold text-lg mb-3">Support Level</h3>
                             <p class="text-gray-700">${details.support}</p>
+                            <button onclick="window.location.href='Student-messages.html'" class="mt-3 inline-flex items-center px-4 py-2 rounded-md text-sm font-semibold bg-black text-white hover:bg-gray-800 transition-colors cursor-pointer">
+                                <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
+                                Book a Call
+                            </button>
                         </div>
                         
                         <div class="bg-green-50 p-4 rounded-lg">
@@ -1167,6 +2424,68 @@
         // Initialize Lucide icons
         lucide.createIcons();
     </script>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-black to-gray-900 text-white mt-16">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- About Section -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 text-red-500">About Ellacy Programs</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        Ellacy Education provides comprehensive study abroad programs and services, 
+                        connecting Vietnamese students with top universities worldwide.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 text-red-500">Quick Links</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-300 hover:text-red-400 transition-colors">Programs</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-red-400 transition-colors">Universities</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-red-400 transition-colors">Scholarships</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-red-400 transition-colors">Services</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-red-400 transition-colors">My Dashboard</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 text-red-500">Resources</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-300 hover:text-red-400 transition-colors">Application Guide</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-red-400 transition-colors">Visa Information</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-red-400 transition-colors">Student Support</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-red-400 transition-colors">FAQs</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-red-400 transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 text-red-500">Resources</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-300 hover:text-red-400 transition-colors">support@ellacy.edu</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-red-400 transition-colors">+84 (0) 123 456 789</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-red-400 transition-colors">Ho Chi Minh City, Vietnam</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-800 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+                    <p>&copy; 2025 Ellacy Education. All rights reserved.</p>
+                    <div class="flex gap-6 mt-4 md:mt-0">
+                        <a href="#" class="hover:text-red-400 transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-red-400 transition-colors">Terms of Service</a>
+                        <a href="#" class="hover:text-red-400 transition-colors">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

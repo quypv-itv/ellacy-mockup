@@ -14,9 +14,12 @@
         body {
             font-family: 'Inter', sans-serif;
         }
+        /* Hide scrollbar utility */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 overflow-x-hidden">
     <!-- Header with Navigation -->
     <header class="bg-white shadow-sm sticky top-0 z-10">
         <div class="px-6 py-4">
@@ -102,137 +105,537 @@
 
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <!-- Page Header -->
-        <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900">Additional Services</h1>
-            <p class="mt-2 text-gray-600">Comprehensive support services to enhance your study abroad journey</p>
-        </div>
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] rounded-none shadow-none mb-10">
+            <!-- Background -->
+            <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-red-900 to-black"></div>
+            <div class="relative px-8 py-12 md:px-12 md:py-14">
+                <div class="max-w-3xl">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-white/90 mb-4">
+                        <i data-lucide="sparkles" class="w-3 h-3 mr-1"></i>
+                        End-to-End Student Success
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-white">
+                        Everything you need <span class="text-red-300">beyond admission</span>
+                    </h1>
+                    <p class="mt-3 text-white/80 max-w-2xl">
+                        From test prep and visa to housing, insurance, and career coaching — Ellacy’s dedicated services help you win scholarships, settle in faster, and thrive at your dream university.
+                    </p>
+
+                    <!-- Hero Benefits -->
+                    <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div class="flex items-center text-white/90">
+                            <span class="w-6 h-6 rounded-full bg-red-600 flex items-center justify-center mr-2">
+                                <i data-lucide="shield-check" class="w-4 h-4 text-white"></i>
+                            </span>
+                            Visa guidance (95%+ success)
+                        </div>
+                        <div class="flex items-center text-white/90">
+                            <span class="w-6 h-6 rounded-full bg-red-600 flex items-center justify-center mr-2">
+                                <i data-lucide="book-open" class="w-4 h-4 text-white"></i>
+                            </span>
+                            SAT/Essay coaching
+                        </div>
+                        <div class="flex items-center text-white/90">
+                            <span class="w-6 h-6 rounded-full bg-red-600 flex items-center justify-center mr-2">
+                                <i data-lucide="home" class="w-4 h-4 text-white"></i>
+                            </span>
+                            Housing & insurance setup
+                        </div>
+                    </div>
+
+                    <!-- CTAs -->
+                    <div class="mt-7 flex flex-col sm:flex-row gap-3">
+                        <a href="#services" class="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-semibold px-5 py-3 rounded-xl shadow-lg transition-all cursor-pointer">
+                            <i data-lucide="rocket" class="w-5 h-5 mr-2"></i>
+                            Explore Services
+                        </a>
+                        <a href="Student-messages.html" class="inline-flex items-center justify-center border-2 border-white/60 text-white hover:bg-white/10 font-semibold px-5 py-3 rounded-xl transition-all cursor-pointer">
+                            <i data-lucide="message-square" class="w-5 h-5 mr-2"></i>
+                            Talk to Advisor
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Toolbar: Search + Filters -->
+        <section class="mb-6">
+            <div class="bg-white rounded-xl shadow p-4">
+                <div class="flex flex-col md:flex-row gap-3 md:items-center">
+                    <div class="relative flex-1">
+                        <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                        <input id="serviceSearch" type="text" placeholder="Search for a service…" class="w-full pl-9 pr-3 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent" />
+                    </div>
+                    <div class="flex gap-3">
+                        <select id="categoryFilter" class="min-w-[160px] px-3 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                            <option value="">All Categories</option>
+                            <option>Testing</option>
+                            <option>Visa</option>
+                            <option>Insurance</option>
+                            <option>Housing</option>
+                            <option>Application</option>
+                            <option>Interview</option>
+                            <option>Writing</option>
+                            <option>Arrival</option>
+                        </select>
+                        <select id="advisorFilter" class="min-w-[160px] px-3 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                            <option value="">All Advisors</option>
+                            <option>Scholarship Team</option>
+                            <option>Visa Team</option>
+                            <option>Housing Team</option>
+                            <option>Coaching Team</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Services Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div id="services" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <!-- SAT Preparation -->
-            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer" onclick="window.location.href='Student-Service-SAT.html?service=sat-prep'">
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
-                        <i data-lucide="book-open" class="w-6 h-6 text-red-600"></i>
+            <div class="service-card bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group cursor-pointer" data-name="SAT Preparation" data-keywords="sat test prep strategies time management math reading" data-category="Testing" data-advisor="Scholarship Team" onclick="window.location.href='Student-Service-SAT.html?service=sat-prep'">
+                <!-- Image -->
+                <div class="relative h-40 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=160&fit=crop" 
+                         alt="SAT Preparation" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <div class="absolute top-3 right-3">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-red-600 text-white">
+                            Popular
+                        </span>
                     </div>
+                </div>
+                <!-- Content -->
+                <div class="p-5">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">SAT Preparation</h3>
-                    <p class="text-gray-600 text-sm mb-4">Comprehensive SAT prep courses with expert tutors and proven strategies.</p>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Comprehensive SAT prep courses with expert tutors and proven strategies.</p>
+                    <div class="text-xs font-semibold text-gray-700 mb-1">Skills you'll gain</div>
+                    <div class="flex flex-wrap gap-2 mb-4 text-xs">
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Test strategies</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Time management</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Math reasoning</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Evidence-based reading</span>
+                    </div>
                     <div class="flex items-center justify-between">
-                        <span class="text-red-600 font-medium text-sm">From $299</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                        <span class="text-red-600 font-bold text-base">From $299</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5 text-gray-400 group-hover:text-red-600 group-hover:translate-x-1 transition-all"></i>
                     </div>
                 </div>
             </div>
 
             <!-- Visa Preparation -->
-            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer" onclick="window.location.href='Student-Service-SAT.html?service=visa-prep'">
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
-                        <i data-lucide="file-text" class="w-6 h-6 text-red-600"></i>
+            <div class="service-card bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group cursor-pointer" data-name="Visa Preparation" data-keywords="visa ds-160 i-20 sevis interview" data-category="Visa" data-advisor="Visa Team" onclick="window.location.href='Student-Service-SAT.html?service=visa-prep'">
+                <!-- Image -->
+                <div class="relative h-40 overflow-hidden">
+                    <img src="https://imgs.search.brave.com/7aTUaYlplCCPBKMynT7Djy166txUNGPY-vfbHlJ1_dY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/bGF3c2IuY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDI0LzEw/L2hvdy10by1wcmVw/YXJlLWZvci11cy12/aXNhLWludGVydmll/dy5qcGc" 
+                         alt="Visa Preparation" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <div class="absolute top-3 right-3">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-red-600 text-white">
+                            Popular
+                        </span>
                     </div>
+                </div>
+                <!-- Content -->
+                <div class="p-5">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Visa Preparation</h3>
-                    <p class="text-gray-600 text-sm mb-4">Expert guidance for your F-1 student visa application process.</p>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Expert guidance for your F-1 student visa application process.</p>
+                    <div class="text-xs font-semibold text-gray-700 mb-1">Skills you'll gain</div>
+                    <div class="flex flex-wrap gap-2 mb-4 text-xs">
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">DS-160 completion</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">I-20 review</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Financial docs prep</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Mock interview</span>
+                    </div>
                     <div class="flex items-center justify-between">
-                        <span class="text-red-600 font-medium text-sm">From $199</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                        <span class="text-red-600 font-bold text-base">From $199</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5 text-gray-400 group-hover:text-red-600 group-hover:translate-x-1 transition-all"></i>
                     </div>
                 </div>
             </div>
 
             <!-- Health Insurance -->
-            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer" onclick="window.location.href='Student-Service-SAT.html?service=health-insurance'">
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
-                        <i data-lucide="heart-pulse" class="w-6 h-6 text-red-600"></i>
-                    </div>
+            <div class="service-card bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group cursor-pointer" data-name="Health Insurance" data-keywords="insurance health coverage claims telemedicine" data-category="Insurance" data-advisor="Scholarship Team" onclick="window.location.href='Student-Service-SAT.html?service=health-insurance'">
+                <!-- Image -->
+                <div class="relative h-40 overflow-hidden">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGiE5EqxrxE5km73_OLzvzi92tWhrous6spA&s" 
+                         alt="Health Insurance" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                </div>
+                <!-- Content -->
+                <div class="p-5">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Health Insurance</h3>
-                    <p class="text-gray-600 text-sm mb-4">Affordable health insurance plans for international students.</p>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Affordable health insurance plans for international students.</p>
+                    <div class="text-xs font-semibold text-gray-700 mb-1">Skills you'll gain</div>
+                    <div class="flex flex-wrap gap-2 mb-4 text-xs">
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Plan comparison</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Coverage terms</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Claims process</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">University compliance</span>
+                    </div>
                     <div class="flex items-center justify-between">
-                        <span class="text-red-600 font-medium text-sm">From $89/month</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                        <span class="text-red-600 font-bold text-base">From $89/month</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5 text-gray-400 group-hover:text-red-600 group-hover:translate-x-1 transition-all"></i>
                     </div>
                 </div>
             </div>
 
             <!-- Accommodation -->
-            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer" onclick="window.location.href='Student-Service-SAT.html?service=accommodation'">
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
-                        <i data-lucide="home" class="w-6 h-6 text-red-600"></i>
-                    </div>
+            <div class="service-card bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group cursor-pointer" data-name="Accommodation" data-keywords="housing lease apartment dorm roommate" data-category="Housing" data-advisor="Housing Team" onclick="window.location.href='Student-Service-SAT.html?service=accommodation'">
+                <!-- Image -->
+                <div class="relative h-40 overflow-hidden">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQS04kOddtbjF12A4djZBQAcclK2EcV-GcWw&s" 
+                         alt="Accommodation" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                </div>
+                <!-- Content -->
+                <div class="p-5">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Accommodation</h3>
-                    <p class="text-gray-600 text-sm mb-4">Find the perfect place to stay near your university campus.</p>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Find the perfect place to stay near your university campus.</p>
+                    <div class="text-xs font-semibold text-gray-700 mb-1">Skills you'll gain</div>
+                    <div class="flex flex-wrap gap-2 mb-4 text-xs">
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Lease basics</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Neighborhood research</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Budgeting</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Scam avoidance</span>
+                    </div>
                     <div class="flex items-center justify-between">
-                        <span class="text-red-600 font-medium text-sm">From $450/month</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                        <span class="text-red-600 font-bold text-base">From $450/month</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5 text-gray-400 group-hover:text-red-600 group-hover:translate-x-1 transition-all"></i>
                     </div>
                 </div>
             </div>
 
             <!-- Application Review -->
-            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer" onclick="window.location.href='Student-Service-SAT.html?service=application-review'">
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
-                        <i data-lucide="search" class="w-6 h-6 text-red-600"></i>
-                    </div>
+            <div class="service-card bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group cursor-pointer" data-name="Application Review" data-keywords="application review resume essay documents" data-category="Application" data-advisor="Scholarship Team" onclick="window.location.href='Student-Service-SAT.html?service=application-review'">
+                <!-- Image -->
+                <div class="relative h-40 overflow-hidden">
+                    <img src="data:image/jpeg;base64,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" 
+                         alt="Application Review" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                </div>
+                <!-- Content -->
+                <div class="p-5">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Application Review</h3>
-                    <p class="text-gray-600 text-sm mb-4">Professional review of your university application materials.</p>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Professional review of your university application materials.</p>
+                    <div class="text-xs font-semibold text-gray-700 mb-1">Skills you'll gain</div>
+                    <div class="flex flex-wrap gap-2 mb-4 text-xs">
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Essay structure</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Resume polish</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Document formatting</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Reviewer insights</span>
+                    </div>
                     <div class="flex items-center justify-between">
-                        <span class="text-red-600 font-medium text-sm">From $149</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                        <span class="text-red-600 font-bold text-base">From $149</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5 text-gray-400 group-hover:text-red-600 group-hover:translate-x-1 transition-all"></i>
                     </div>
                 </div>
             </div>
 
             <!-- Interview Coaching -->
-            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer" onclick="window.location.href='Student-Service-SAT.html?service=interview-coaching'">
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
-                        <i data-lucide="video" class="w-6 h-6 text-red-600"></i>
-                    </div>
+            <div class="service-card bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group cursor-pointer" data-name="Interview Coaching" data-keywords="interview coaching mock behavioral answers" data-category="Interview" data-advisor="Coaching Team" onclick="window.location.href='Student-Service-SAT.html?service=interview-coaching'">
+                <!-- Image -->
+                <div class="relative h-40 overflow-hidden">
+                    <img src="data:image/jpeg;base64,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" 
+                         alt="Interview Coaching" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                </div>
+                <!-- Content -->
+                <div class="p-5">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Interview Coaching</h3>
-                    <p class="text-gray-600 text-sm mb-4">Personalized coaching for university admission interviews.</p>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Personalized coaching for university admission interviews.</p>
+                    <div class="text-xs font-semibold text-gray-700 mb-1">Skills you'll gain</div>
+                    <div class="flex flex-wrap gap-2 mb-4 text-xs">
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Storytelling</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Behavioral answers</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Confidence</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">English speaking</span>
+                    </div>
                     <div class="flex items-center justify-between">
-                        <span class="text-red-600 font-medium text-sm">From $99/session</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                        <span class="text-red-600 font-bold text-base">From $99/session</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5 text-gray-400 group-hover:text-red-600 group-hover:translate-x-1 transition-all"></i>
                     </div>
                 </div>
             </div>
 
             <!-- Essay Editing -->
-            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer" onclick="window.location.href='Student-Service-SAT.html?service=essay-editing'">
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
-                        <i data-lucide="edit" class="w-6 h-6 text-red-600"></i>
-                    </div>
+            <div class="service-card bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group cursor-pointer" data-name="Essay Editing" data-keywords="essay editing writing personal statement sop" data-category="Writing" data-advisor="Coaching Team" onclick="window.location.href='Student-Service-SAT.html?service=essay-editing'">
+                <!-- Image -->
+                <div class="relative h-40 overflow-hidden">
+                    <img src="data:image/jpeg;base64,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" 
+                         alt="Essay Editing" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                </div>
+                <!-- Content -->
+                <div class="p-5">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Essay Editing</h3>
-                    <p class="text-gray-600 text-sm mb-4">Professional editing for personal statements and essays.</p>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Professional editing for personal statements and essays.</p>
+                    <div class="text-xs font-semibold text-gray-700 mb-1">Skills you'll gain</div>
+                    <div class="flex flex-wrap gap-2 mb-4 text-xs">
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Narrative clarity</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Grammar & style</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Voice consistency</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Impact proofing</span>
+                    </div>
                     <div class="flex items-center justify-between">
-                        <span class="text-red-600 font-medium text-sm">From $79</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                        <span class="text-red-600 font-bold text-base">From $79</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5 text-gray-400 group-hover:text-red-600 group-hover:translate-x-1 transition-all"></i>
                     </div>
                 </div>
             </div>
 
-            <!-- Housing & Airport Pickup -->
-            <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer" onclick="window.location.href='Student-Service-SAT.html?service=airport-pickup'">
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
-                        <i data-lucide="car" class="w-6 h-6 text-red-600"></i>
-                    </div>
+            <!-- Airport Pickup Support -->
+            <div class="service-card bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group cursor-pointer" data-name="Airport Pickup Support" data-keywords="airport pickup arrival sim banking transit" data-category="Arrival" data-advisor="Housing Team" onclick="window.location.href='Student-Service-SAT.html?service=airport-pickup'">
+                <!-- Image -->
+                <div class="relative h-40 overflow-hidden">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLP7r1yBseYmJ6YxkiHJ65HioruVgn4-LONw&s" 
+                         alt="Airport Pickup Support" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                </div>
+                <!-- Content -->
+                <div class="p-5">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Airport Pickup Support</h3>
-                    <p class="text-gray-600 text-sm mb-4">Safe and reliable airport pickup and initial housing support.</p>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Safe and reliable airport pickup and initial housing support.</p>
+                    <div class="text-xs font-semibold text-gray-700 mb-1">Skills you'll gain</div>
+                    <div class="flex flex-wrap gap-2 mb-4 text-xs">
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Arrival coordination</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Local transit</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Safety briefing</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">SIM & banking setup</span>
+                    </div>
                     <div class="flex items-center justify-between">
-                        <span class="text-red-600 font-medium text-sm">From $59</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                        <span class="text-red-600 font-bold text-base">From $59</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5 text-gray-400 group-hover:text-red-600 group-hover:translate-x-1 transition-all"></i>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Why Choose Our Services Section -->
-        <div class="mt-16 bg-white rounded-xl shadow-md p-8">
+        <!-- Popular Bundles -->
+        <section class="mt-14">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-2xl font-bold text-gray-900">Popular Bundles</h2>
+                <span class="text-sm text-gray-600">Combine services for bigger results</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Bundle 1 -->
+                <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
+                    <div class="flex items-center mb-3">
+                        <span class="w-9 h-9 rounded-lg bg-red-100 text-red-700 flex items-center justify-center mr-3">
+                            <i data-lucide="trophy" class="w-5 h-5"></i>
+                        </span>
+                        <h3 class="font-semibold text-lg">Scholarship Starter</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">SAT Preparation + Essay Editing — build a competitive profile for scholarships.</p>
+                    <div class="flex flex-wrap gap-2 mb-4 text-xs">
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">SAT Prep</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Essay Editing</span>
+                    </div>
+                    <button class="inline-flex items-center text-red-600 text-sm font-medium hover:text-red-700 cursor-pointer">Learn More <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></button>
+                </div>
+
+                <!-- Bundle 2 -->
+                <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
+                    <div class="flex items-center mb-3">
+                        <span class="w-9 h-9 rounded-lg bg-gray-100 text-gray-800 flex items-center justify-center mr-3">
+                            <i data-lucide="plane" class="w-5 h-5"></i>
+                        </span>
+                        <h3 class="font-semibold text-lg">US Launch Pack</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">Visa Preparation + Health Insurance + Airport Pickup — a smooth start in the US.</p>
+                    <div class="flex flex-wrap gap-2 mb-4 text-xs">
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Visa</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Insurance</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Airport Pickup</span>
+                    </div>
+                    <button class="inline-flex items-center text-red-600 text-sm font-medium hover:text-red-700 cursor-pointer">Learn More <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></button>
+                </div>
+
+                <!-- Bundle 3 -->
+                <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
+                    <div class="flex items-center mb-3">
+                        <span class="w-9 h-9 rounded-lg bg-green-100 text-green-700 flex items-center justify-center mr-3">
+                            <i data-lucide="briefcase" class="w-5 h-5"></i>
+                        </span>
+                        <h3 class="font-semibold text-lg">Success Semester</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">Accommodation + Health Insurance + Interview Coaching — set up and stand out.</p>
+                    <div class="flex flex-wrap gap-2 mb-4 text-xs">
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Housing</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Insurance</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Interview</span>
+                    </div>
+                    <button class="inline-flex items-center text-red-600 text-sm font-medium hover:text-red-700 cursor-pointer">Learn More <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Meet Our Advisors -->
+        <section class="mt-14">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-2xl font-bold text-gray-900">Meet Our Advisors</h2>
+                <a href="Student-messages.html" class="text-sm text-red-600 hover:text-red-700 font-medium">Book a Call</a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Advisor 1 -->
+                <div class="bg-white rounded-xl shadow p-6">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=240&h=240&fit=crop" alt="Advisor" class="w-20 h-20 rounded-full object-cover mb-3">
+                    <h3 class="font-semibold text-gray-900">Linh Nguyen</h3>
+                    <div class="text-sm text-gray-600">Senior Visa Advisor</div>
+                    <p class="text-sm text-gray-700 mt-2">Former US consulate staff. 8+ years guiding F-1 approvals, DS-160, I-20 and interview training.</p>
+                    <button onclick="window.location.href='Student-messages.html'" class="mt-3 inline-flex items-center px-3 py-2 rounded-lg text-sm font-semibold bg-red-600 text-white hover:bg-red-700">View Profile</button>
+                </div>
+                <!-- Advisor 2 -->
+                <div class="bg-white rounded-xl shadow p-6">
+                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=240&h=240&fit=crop" alt="Advisor" class="w-20 h-20 rounded-full object-cover mb-3">
+                    <h3 class="font-semibold text-gray-900">An Tran</h3>
+                    <div class="text-sm text-gray-600">Scholarship Strategist</div>
+                    <p class="text-sm text-gray-700 mt-2">M.Ed, former admissions reader. Specializes in SAT strategy, essay positioning and scholarship maximization.</p>
+                    <button onclick="window.location.href='Student-messages.html'" class="mt-3 inline-flex items-center px-3 py-2 rounded-lg text-sm font-semibold bg-red-600 text-white hover:bg-red-700">View Profile</button>
+                </div>
+                <!-- Advisor 3 -->
+                <div class="bg-white rounded-xl shadow p-6">
+                    <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=240&h=240&fit=crop" alt="Advisor" class="w-20 h-20 rounded-full object-cover mb-3">
+                    <h3 class="font-semibold text-gray-900">Quang Le</h3>
+                    <div class="text-sm text-gray-600">Housing & Arrival Lead</div>
+                    <p class="text-sm text-gray-700 mt-2">5+ years placing students in safe, budget-friendly housing; expert in arrival logistics and setup.</p>
+                    <button onclick="window.location.href='Student-messages.html'" class="mt-3 inline-flex items-center px-3 py-2 rounded-lg text-sm font-semibold bg-red-600 text-white hover:bg-red-700">View Profile</button>
+                </div>
+                <!-- Advisor 4 -->
+                <div class="bg-white rounded-xl shadow p-6">
+                    <img src="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?w=240&h=240&fit=crop" alt="Advisor" class="w-20 h-20 rounded-full object-cover mb-3">
+                    <h3 class="font-semibold text-gray-900">Mai Pham</h3>
+                    <div class="text-sm text-gray-600">Interview Coach</div>
+                    <p class="text-sm text-gray-700 mt-2">Ex-tech recruiter. Trains storytelling, behavioral answers and executive presence for admissions.</p>
+                    <button onclick="window.location.href='Student-messages.html'" class="mt-3 inline-flex items-center px-3 py-2 rounded-lg text-sm font-semibold bg-red-600 text-white hover:bg-red-700">View Profile</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Stories (Services) -->
+        <div class="mt-16 bg-gradient-to-br from-gray-50 to-red-50 rounded-xl shadow-md overflow-hidden">
+            <div class="p-8">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-2xl font-bold text-gray-900">Success Stories from Our Services</h2>
+                    <div class="text-sm text-gray-600">Real results from SAT, Visa, Housing, and more</div>
+                </div>
+                <div class="relative overflow-hidden">
+                    <div id="serviceStoriesScroller" class="flex gap-6 overflow-x-auto scrollbar-hide pb-4" style="scroll-behavior: smooth;">
+                        <!-- SAT Story -->
+                        <div class="flex-shrink-0 w-80 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center text-white font-bold text-xl">HN</div>
+                                <div class="ml-4">
+                                    <h3 class="font-bold text-gray-900">Hoai Nam</h3>
+                                    <p class="text-sm text-gray-600">SAT Preparation</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 text-sm italic mb-3">"Improved my SAT by 210 points in 6 weeks. Strategies and mock tests were a game changer!"</p>
+                            <div class="text-sm text-green-600 flex items-center">
+                                <i data-lucide="trending-up" class="w-4 h-4 mr-1"></i>
+                                +210 SAT score
+                            </div>
+                        </div>
+
+                        <!-- Visa Story -->
+                        <div class="flex-shrink-0 w-80 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-gray-800 to-black flex items-center justify-center text-white font-bold text-xl">TT</div>
+                                <div class="ml-4">
+                                    <h3 class="font-bold text-gray-900">Thu Trang</h3>
+                                    <p class="text-sm text-gray-600">Visa Preparation</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 text-sm italic mb-3">"Got F-1 approved on the first try. The mock interviews and document review were spot on."</p>
+                            <div class="text-sm text-green-600 flex items-center">
+                                <i data-lucide="check-circle" class="w-4 h-4 mr-1"></i>
+                                F-1 approved (first attempt)
+                            </div>
+                        </div>
+
+                        <!-- Accommodation Story -->
+                        <div class="flex-shrink-0 w-80 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center text-white font-bold text-xl">QL</div>
+                                <div class="ml-4">
+                                    <h3 class="font-bold text-gray-900">Quang Linh</h3>
+                                    <p class="text-sm text-gray-600">Accommodation</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 text-sm italic mb-3">"Found a safe apartment 10 minutes from campus in 3 days. Saved $200/month vs. dorm."</p>
+                            <div class="text-sm text-green-600 flex items-center">
+                                <i data-lucide="dollar-sign" class="w-4 h-4 mr-1"></i>
+                                $200/month savings
+                            </div>
+                        </div>
+
+                        <!-- Insurance Story -->
+                        <div class="flex-shrink-0 w-80 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-gray-800 to-black flex items-center justify-center text-white font-bold text-xl">MA</div>
+                                <div class="ml-4">
+                                    <h3 class="font-bold text-gray-900">Minh Anh</h3>
+                                    <p class="text-sm text-gray-600">Health Insurance</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 text-sm italic mb-3">"Ellacy helped me choose an affordable plan that met my university’s requirements."</p>
+                            <div class="text-sm text-green-600 flex items-center">
+                                <i data-lucide="shield" class="w-4 h-4 mr-1"></i>
+                                Compliant & affordable
+                            </div>
+                        </div>
+
+                        <!-- Essay Editing Story -->
+                        <div class="flex-shrink-0 w-80 bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center text-white font-bold text-xl">TN</div>
+                                <div class="ml-4">
+                                    <h3 class="font-bold text-gray-900">Thao Nguyen</h3>
+                                    <p class="text-sm text-gray-600">Essay Editing</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 text-sm italic mb-3">"Editor refined my story without losing my voice. Got admitted with scholarship."</p>
+                            <div class="text-sm text-green-600 flex items-center">
+                                <i data-lucide="award" class="w-4 h-4 mr-1"></i>
+                                Admitted with scholarship
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="mt-8 grid md:grid-cols-4 gap-6 text-center">
+                    <div class="bg-white rounded-lg p-4 shadow">
+                        <div class="text-3xl font-bold text-red-600 mb-1">1,200+</div>
+                        <div class="text-sm text-gray-600">Services Delivered</div>
+                    </div>
+                    <div class="bg-white rounded-lg p-4 shadow">
+                        <div class="text-3xl font-bold text-red-600 mb-1">95%</div>
+                        <div class="text-sm text-gray-600">Visa Success Rate</div>
+                    </div>
+                    <div class="bg-white rounded-lg p-4 shadow">
+                        <div class="text-3xl font-bold text-red-600 mb-1">+200</div>
+                        <div class="text-sm text-gray-600">Avg. SAT Score Gain</div>
+                    </div>
+                    <div class="bg-white rounded-lg p-4 shadow">
+                        <div class="text-3xl font-bold text-red-600 mb-1">48h</div>
+                        <div class="text-sm text-gray-600">Avg. Housing Turnaround</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- Why Choose Our Services Section -->
+         <div class="mt-16 bg-white rounded-xl shadow-md p-8">
             <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Why Choose Our Additional Services?</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="text-center">
@@ -260,6 +663,92 @@
         </div>
     </main>
 
+    <!-- Scripts: Search/Filter and Icons -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        // Icon init
+        if (window.lucide && lucide.createIcons) { lucide.createIcons(); }
+
+        const searchInput = document.getElementById('serviceSearch');
+        const categorySelect = document.getElementById('categoryFilter');
+        const advisorSelect = document.getElementById('advisorFilter');
+        const cards = Array.from(document.querySelectorAll('.service-card'));
+
+        function normalize(s){ return (s || '').toString().toLowerCase(); }
+
+        function applyFilters(){
+          const q = normalize(searchInput.value);
+          const cat = normalize(categorySelect.value);
+          const adv = normalize(advisorSelect.value);
+
+          cards.forEach(card => {
+            const name = normalize(card.dataset.name);
+            const kw = normalize(card.dataset.keywords);
+            const category = normalize(card.dataset.category);
+            const advisor = normalize(card.dataset.advisor);
+
+            const matchesText = !q || name.includes(q) || kw.includes(q);
+            const matchesCat = !cat || category === cat;
+            const matchesAdv = !adv || advisor === adv;
+
+            const show = matchesText && matchesCat && matchesAdv;
+            card.style.display = show ? '' : 'none';
+          });
+        }
+
+        [searchInput, categorySelect, advisorSelect].forEach(el => el && el.addEventListener('input', applyFilters));
+        [categorySelect, advisorSelect].forEach(el => el && el.addEventListener('change', applyFilters));
+      });
+    </script>
+
+    <!-- Footer -->
+    <footer class="mt-12 bg-black border-t">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-3">
+                        <img src="../../ApplyLead_logo.png" alt="ApplyLead" class="h-8 w-auto mr-2">
+                        <span class="text-white font-semibold">Ellacy by ApplyLead</span>
+                    </div>
+                    <p class="text-sm text-white">Trusted partner for students from application to arrival.</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold text-white mb-3">Services</h4>
+                    <ul class="space-y-2 text-sm text-white">
+                        <li><a href="#services" class="hover:text-red-600">SAT Preparation</a></li>
+                        <li><a href="#services" class="hover:text-red-600">Visa Preparation</a></li>
+                        <li><a href="#services" class="hover:text-red-600">Accommodation</a></li>
+                        <li><a href="#services" class="hover:text-red-600">Health Insurance</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold text-white mb-3">Company</h4>
+                    <ul class="space-y-2 text-sm text-white">
+                        <li><a href="Student-product-page.html" class="hover:text-red-600">Ellacy Programs</a></li>
+                        <li><a href="Student-find-program.html" class="hover:text-red-600">Find University</a></li>
+                        <li><a href="Student-messages.html" class="hover:text-red-600">Contact Advisor</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold text-white mb-3">Contact</h4>
+                    <ul class="space-y-2 text-sm text-white">
+                        <li>Email: support@applylead.com</li>
+                        <li>Phone: +84 90 000 0000</li>
+                        <li>Mon–Fri: 9:00–18:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t text-xs text-white flex flex-col sm:flex-row items-center justify-between">
+                <div>© 2025 ApplyLead. All rights reserved.</div>
+                <div class="space-x-4 mt-2 sm:mt-0">
+                    <a href="#" class="hover:text-red-600">Privacy</a>
+                    <a href="#" class="hover:text-red-600">Terms</a>
+                    <a href="#" class="hover:text-red-600">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
@@ -275,6 +764,29 @@
                     e.stopPropagation();
                     profileDropdown.classList.toggle('hidden');
                 });
+
+        // Services Success Stories Auto-Scroll
+        (function(){
+            const scroller = document.getElementById('serviceStoriesScroller');
+            if (!scroller) return;
+            // Clone children for seamless loop
+            const originals = Array.from(scroller.children);
+            originals.forEach(card => scroller.appendChild(card.cloneNode(true)));
+            let paused = false;
+            let speed = 1.2; // px per frame
+            function tick(){
+                if (!paused) {
+                    scroller.scrollLeft += speed;
+                    if (scroller.scrollLeft >= scroller.scrollWidth / 2) {
+                        scroller.scrollLeft = 0;
+                    }
+                }
+                requestAnimationFrame(tick);
+            }
+            scroller.addEventListener('mouseenter', () => paused = true);
+            scroller.addEventListener('mouseleave', () => paused = false);
+            tick();
+        })();
 
                 // Close dropdown when clicking outside
                 document.addEventListener('click', function () {
