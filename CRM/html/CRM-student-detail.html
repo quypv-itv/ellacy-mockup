@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details - Long Le | APPLYLEAD CRM</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .tab-active {
+            background-color: #d82128;
+            color: white;
+            border-radius: 12px;
+        }
+        .tab-inactive {
+            background-color: transparent;
+            color: #6b7280;
+            border-radius: 12px;
+        }
+        .tab-inactive:hover {
+            background-color: #f3f4f6;
+        }
+        .sidebar-item-active {
+            background-color: #FEF2F2;
+            border-left: 3px solid #d82128;
+            color: #d82128;
+        }
+        .sidebar-item {
+            border-left: 3px solid transparent;
+        }
+        .brand-red {
+            background-color: #d82128;
+        }
+        .brand-red-light {
+            background-color: #FEF2F2;
+        }
+        .text-brand-red {
+            color: #d82128;
+        }
+        .border-brand-red {
+            border-color: #d82128;
+        }
+        .hover\:bg-brand-red:hover {
+            background-color: #d82128;
+        }
+    </style>
+</head>
+<body style="background-color: #F9F9F9;">
+    <!-- Sidebar -->
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
+        <div class="p-6">
+             <img src="../../ApplyLead_logo.png" alt="ApplyLead" class="h-9 mb-2">
+            <span class="text-sm text-gray-500 bg-red-100 text-red-800 px-2 py-1 rounded-full">Admin</span>
+        </div>
+        <nav class="mt">
+            <a href="CRM-dashboard.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>
+                Dashboard
+            </a>
+            <a href="CRM-applications.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>
+                Applications
+            </a>
+            <a href="CRM-agent.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="users" class="w-5 h-5 mr-3"></i>
+                Agents
+            </a>
+            <a href="CRM-scholarships.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="graduation-cap" class="w-5 h-5 mr-3"></i>
+                Scholarships
+            </a>
+            <a href="CRM-institutions.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="building" class="w-5 h-5 mr-3"></i>
+                Institutions
+            </a>
+            <a href="CRM-students.html" class="flex items-center px-6 py-3 text-white" style="background-color: #d82128;">
+                <i data-lucide="user" class="w-5 h-5 mr-3"></i>
+                Students
+            </a>
+            <a href="CRM-payment.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="credit-card" class="w-5 h-5 mr-3"></i>
+                Payments
+            </a>
+            <a href="CRM-tasks.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="check-circle" class="w-5 h-5 mr-3"></i>
+                Tasks
+            </a>
+            <a href="CRM-Campaigns.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="brick-wall-shield" class="w-5 h-5 mr-3"></i>
+                Campaigns
+            </a>
+            <a href="CRM-report.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="bar-chart" class="w-5 h-5 mr-3"></i>
+                Reports
+            </a>
+            <a href="CRM-messages.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>
+                Messages
+            </a>
+            <a href="CRM-user-admin.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="shield" class="w-5 h-5 mr-3"></i>
+                User Admin
+            </a>
+            <a href="CRM-Setting.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
+                <i data-lucide="settings" class="w-5 h-5 mr-3"></i>
+                Settings
+            </a>
+        </nav>
+        <div class="mt-auto px-6 py-4 border-t border-gray-200">
+            <p class="text-sm text-gray-600 text-center">Designed & developed by Innotech Viet Nam</p>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="ml-64">
+        <!-- Top Bar -->
+        <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6">
+            <div class="flex items-center space-x-4">
+                <button onclick="window.location.href='CRM-students.html'" class="flex items-center text-red-600 hover:text-red-800">
+                    <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i>
+                    Back to Students
+                </button>
+            </div>
+            <div class="flex items-center space-x-4">
+              
+                <button class="relative">
+                    <i data-lucide="bell" class="w-6 h-6 text-gray-600"></i>
+                    <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                </button>
+                <!-- Profile Dropdown -->
+                <div class="relative">
+                    <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
+                             alt="Profile" 
+                             class="w-8 h-8 rounded-full object-cover">
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Student Header -->
+        <div class="bg-white border-b border-gray-200 px-6 py-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-6">
+                    <div class="w-20 h-20 bg-purple-500 rounded-full flex items-center justify-center text-white text-2xl font-semibold">
+                        LL
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900">Long Le</h1>
+                        <div class="flex items-center space-x-4 mt-2 text-sm text-gray-600">
+                            <span><strong>Student ID:</strong> 2237004</span>
+                            <span><strong>Email:</strong> baolong.le@ellacy.org</span>
+                            <span><strong>Phone:</strong> 1123456789</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Admin Actions -->
+                <div class="flex items-center gap-2">
+                    <!-- Primary Action -->
+                    <button class="px-4 py-2 text-sm font-medium text-white rounded-lg hover:opacity-90 flex items-center shadow-sm" style="background-color: #d82128;">
+                        <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i>
+                        Message Student
+                    </button>
+                    
+                    <!-- Secondary Actions -->
+                    <button onclick="showTab('activities'); setTimeout(openAddActivityModal, 100);" class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
+                        <i data-lucide="sticky-note" class="w-4 h-4 mr-1.5"></i>
+                        Add Activity
+                    </button>
+                    <button class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
+                        <i data-lucide="flag" class="w-4 h-4 mr-1.5"></i>
+                        Flag Issue
+                    </button>
+                    <button class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors flex items-center">
+                        <i data-lucide="download" class="w-4 h-4 mr-1.5"></i>
+                        Export
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="bg-gray-100 px-6 py-4">
+            <nav class="flex space-x-1 overflow-x-auto">
+                <button onclick="showTab('profile')" id="profile-tab" class="px-4 py-2 text-sm font-medium rounded-md tab-active">Profile</button>
+                <button onclick="showTab('scholarship')" id="scholarship-tab" class="px-4 py-2 text-sm font-medium rounded-md tab-inactive">Find Scholarship</button>
+                <button onclick="showTab('favorites')" id="favorites-tab" class="px-4 py-2 text-sm font-medium rounded-md tab-inactive">Favorites</button>
+                <button onclick="showTab('applications')" id="applications-tab" class="px-4 py-2 text-sm font-medium rounded-md tab-inactive">Applications</button>
+                <button onclick="showTab('activities')" id="activities-tab" class="px-4 py-2 text-sm font-medium rounded-md tab-inactive">Activities</button>
+                <button onclick="showTab('payment')" id="payment-tab" class="px-4 py-2 text-sm font-medium rounded-md tab-inactive">Payment</button>
+            </nav>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="flex">
+            <!-- Profile Tab -->
+            <div id="profile" class="tab-content w-full flex">
+                <!-- Sidebar Navigation -->
+                <div class="w-80 bg-white border-r border-gray-200 min-h-screen">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Profile Sections</h3>
+                        <nav class="space-y-2">
+                            <div onclick="showProfileSection('personal', event)" class="sidebar-item sidebar-item-active cursor-pointer p-3 rounded-lg hover:bg-gray-50">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <i data-lucide="user" class="w-4 h-4 mr-3"></i>
+                                        <span class="text-sm font-medium">Personal Information</span>
+                                    </div>
+                                    <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Complete</span>
+                                </div>
+                            </div>
+                            <div onclick="showProfileSection('education', event)" class="sidebar-item cursor-pointer p-3 rounded-lg hover:bg-gray-50">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <i data-lucide="graduation-cap" class="w-4 h-4 mr-3"></i>
+                                        <span class="text-sm font-medium">Education Information</span>
+                                    </div>
+                                    <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Complete</span>
+                                </div>
+                            </div>
+                            <div onclick="showProfileSection('tests', event)" class="sidebar-item cursor-pointer p-3 rounded-lg hover:bg-gray-50">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <i data-lucide="file-check" class="w-4 h-4 mr-3"></i>
+                                        <span class="text-sm font-medium">Test Scores</span>
+                                    </div>
+                                    <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Complete</span>
+                                </div>
+                            </div>
+                            <div onclick="showProfileSection('visa', event)" class="sidebar-item cursor-pointer p-3 rounded-lg hover:bg-gray-50">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <i data-lucide="passport" class="w-4 h-4 mr-3"></i>
+                                        <span class="text-sm font-medium">Visa Background</span>
+                                    </div>
+                                    <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Complete</span>
+                                </div>
+                            </div>
+                            <div onclick="showProfileSection('family', event)" class="sidebar-item cursor-pointer p-3 rounded-lg hover:bg-gray-50">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <i data-lucide="users" class="w-4 h-4 mr-3"></i>
+                                        <span class="text-sm font-medium">Family Background</span>
+                                    </div>
+                                    <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Complete</span>
+                                </div>
+                            </div>
+                            <div onclick="showProfileSection('files', event)" class="sidebar-item cursor-pointer p-3 rounded-lg hover:bg-gray-50">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <i data-lucide="folder" class="w-4 h-4 mr-3"></i>
+                                        <span class="text-sm font-medium">Documents</span>
+                                    </div>
+                                    <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Complete</span>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- Main Profile Content -->
+                <div class="flex-1 p-6 bg-gray-50">
+                    <div id="personal-section" class="profile-section">
+                        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                            <div class="flex items-center justify-between mb-6">
+                                <h2 class="text-xl font-semibold text-gray-900">Personal Information</h2>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded-full">Read Only</span>
+                                    <button class="text-sm px-3 py-1 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 flex items-center">
+                                        <i data-lucide="download" class="w-4 h-4 mr-1"></i>
+                                        Export PDF
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-6">Student profile information (Agent view - Read only access)</p>
+                            
+                            <!-- Section A: Student Profile -->
+                            <div class="mb-8">
+                                <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                                    <i data-lucide="user" class="w-5 h-5 mr-2"></i>
+                                    Student Profile
+                                </h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">UID</label>
+                                        <p class="text-sm text-gray-900 font-mono">STU-2237004</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Student Name</label>
+                                        <p class="text-sm text-gray-900">Long Le</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
+                                        <p class="text-sm text-gray-900">March 15, 1998</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Telephone</label>
+                                        <p class="text-sm text-gray-900">+84 1123456789</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                        <p class="text-sm text-gray-900">baolong.le@ellacy.org</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Skype ID</label>
+                                        <p class="text-sm text-gray-900">long.le.skype</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                                        <p class="text-sm text-gray-900">123 Nguyen Hue Street, District 1, Ho Chi Minh City, Vietnam</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Agent</label>
+                                        <p class="text-sm text-gray-900">John Smith</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Academic Advisor</label>
+                                        <p class="text-sm text-gray-900">Dr. Emily Davis</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Visa Advisor</label>
+                                        <p class="text-sm text-gray-900">Michael Johnson</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg md:col-span-3">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Social Media Links</label>
+                                        <div class="flex flex-wrap gap-2">
+                                            <a href="https://linkedin.com/in/longle" class="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
+                                                <i data-lucide="linkedin" class="w-3 h-3 mr-1"></i>
+                                                LinkedIn
+                                            </a>
+                                            <a href="https://facebook.com/longle" class="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
+                                                <i data-lucide="facebook" class="w-3 h-3 mr-1"></i>
+                                                Facebook
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Section B: Education Background -->
+                            <div class="mb-8">
+                                <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                                    <i data-lucide="graduation-cap" class="w-5 h-5 mr-2"></i>
+                                    Education Background
+                                </h3>
+                                
+                                <!-- Test Scores -->
+                                <div class="mb-6">
+                                    <h4 class="text-md font-medium text-gray-800 mb-3">Test Scores</h4>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">IELTS Score</label>
+                                            <p class="text-sm text-gray-900">7.5 (Dec 2023)</p>
+                                        </div>
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">SAT Score</label>
+                                            <p class="text-sm text-gray-900">1450 (Nov 2023)</p>
+                                        </div>
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">GRE Score</label>
+                                            <p class="text-sm text-gray-900">Not taken</p>
+                                        </div>
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Other Scores</label>
+                                            <p class="text-sm text-gray-900">AP Calculus: 5</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Academic History -->
+                                <div class="mb-6">
+                                    <h4 class="text-md font-medium text-gray-800 mb-3">Academic History</h4>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">High School</label>
+                                            <p class="text-sm text-gray-900">Le Hong Phong High School, Ho Chi Minh City</p>
+                                            <p class="text-xs text-gray-600 mt-1">GPA: 3.8/4.0</p>
+                                        </div>
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Awards/Honors</label>
+                                            <p class="text-sm text-gray-900">Valedictorian, National Math Olympiad Silver Medal</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Study Abroad Goals -->
+                                <div class="mb-6">
+                                    <h4 class="text-md font-medium text-gray-800 mb-3">Study Abroad Goals</h4>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Desired Study Level</label>
+                                            <p class="text-sm text-gray-900">Bachelor Degree</p>
+                                        </div>
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Maximum Annual Budget</label>
+                                            <p class="text-sm text-gray-900">$30,000-$40,000 USD</p>
+                                        </div>
+                                        <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Interested Schools/Universities</label>
+                                            <p class="text-sm text-gray-900">University of Toronto, McGill University, University of British Columbia</p>
+                                        </div>
+                                        <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Degree Programs of Interest</label>
+                                            <p class="text-sm text-gray-900">Computer Science, Software Engineering, Data Science</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Section C: Visa Background -->
+                            <div class="mb-8">
+                                <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                                    <i data-lucide="passport" class="w-5 h-5 mr-2"></i>
+                                    Visa Background
+                                </h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Previous Visa Applications</label>
+                                        <p class="text-sm text-gray-900">Tourist visa to Canada (2022)</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Visa Rejections</label>
+                                        <p class="text-sm text-gray-900">None</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Relatives/Friends Abroad</label>
+                                        <p class="text-sm text-gray-900">Uncle: Minh Le, Canadian citizen, Toronto</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Section D: Family Background -->
+                            <div class="mb-8">
+                                <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                                    <i data-lucide="users" class="w-5 h-5 mr-2"></i>
+                                    Family Background
+                                </h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Number of Family Members</label>
+                                        <p class="text-sm text-gray-900">4</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Parents Name</label>
+                                        <p class="text-sm text-gray-900">Duc Le, Lan Nguyen</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Parents Phone</label>
+                                        <p class="text-sm text-gray-900">+84 909 123 456</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Information Confirmation</label>
+                                        <p class="text-sm text-green-600 flex items-center">
+                                            <i data-lucide="check-circle" class="w-4 h-4 mr-1"></i>
+                                            Confirmed
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Section E: Referral Information -->
+                            <div class="mb-8">
+                                <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                                    <i data-lucide="user-plus" class="w-5 h-5 mr-2"></i>
+                                    Referral Information
+                                </h3>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Person who Introduced you to Ellacy</label>
+                                    <p class="text-sm text-gray-900">Ms. Sarah Johnson (School Counselor)</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Other profile sections -->
+                    <div id="education-section" class="profile-section hidden">
+                        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                            <h2 class="text-xl font-semibold text-gray-900 mb-6">Education Information</h2>
+                            <p class="text-sm text-gray-600 mb-4">Education background information is already displayed in the Personal Information section above.</p>
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                <p class="text-sm text-blue-800">All education details including test scores, academic history, and study abroad goals are consolidated in the Personal Information section for better overview.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tests-section" class="profile-section hidden">
+                        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                            <h2 class="text-xl font-semibold text-gray-900 mb-6">Test Scores</h2>
+                            <p class="text-sm text-gray-600 mb-4">Test scores information is already displayed in the Personal Information section.</p>
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                <p class="text-sm text-blue-800">IELTS, SAT, GRE scores and other test information are consolidated in the Personal Information section for better overview.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="visa-section" class="profile-section hidden">
+                        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                            <h2 class="text-xl font-semibold text-gray-900 mb-6">Visa Background</h2>
+                            <p class="text-sm text-gray-600 mb-4">Visa background information is already displayed in the Personal Information section.</p>
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                <p class="text-sm text-blue-800">Previous visa applications, rejections, and relatives abroad information are consolidated in the Personal Information section for better overview.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="family-section" class="profile-section hidden">
+                        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                            <h2 class="text-xl font-semibold text-gray-900 mb-6">Family Background</h2>
+                            <p class="text-sm text-gray-600 mb-4">Family background information is already displayed in the Personal Information section.</p>
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                <p class="text-sm text-blue-800">Family members, parents information, and financial background details are consolidated in the Personal Information section for better overview.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="files-section" class="profile-section hidden">
+                        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                            <div class="flex items-center justify-between mb-6">
+                                <h2 class="text-xl font-semibold text-gray-900 flex items-center">
+                                    <i data-lucide="folder" class="w-5 h-5 mr-2"></i>
+                                    Uploaded Documents
+                                </h2>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-sm text-gray-600">3 Verified, 1 Pending</span>
+                                </div>
+                            </div>
+
+                            <!-- Required Documents -->
+                            <div class="mb-6">
+                                <h3 class="text-md font-semibold text-gray-800 mb-4">Required Documents</h3>
+                                <div class="space-y-3">
+                                    <!-- Document 1: CV - Verified -->
+                                    <div class="border border-green-200 bg-green-50 rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer" onclick="openDocumentReview('cv')">
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center flex-1">
+                                                <i data-lucide="file-text" class="w-5 h-5 text-green-600 mr-3"></i>
+                                                <div class="flex-1">
+                                                    <p class="text-sm font-semibold text-gray-900">CV_Long_Le.pdf</p>
+                                                    <p class="text-xs text-gray-600 mt-1">Uploaded: Feb 10, 2024 • Size: 2.5 MB</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-3">
+                                                <span class="px-3 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full flex items-center">
+                                                    <i data-lucide="check-circle" class="w-3 h-3 mr-1"></i>
+                                                    Verified
+                                                </span>
+                                                <button onclick="event.stopPropagation(); downloadDocument('cv')" class="px-3 py-1 bg-white border border-gray-300 text-gray-700 rounded hover:bg-gray-50">
+                                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                                </button>
+                                                <button onclick="event.stopPropagation(); openDocumentReview('cv')" class="px-3 py-1 bg-white border border-gray-300 text-gray-700 rounded hover:bg-gray-50">
+                                                    <i data-lucide="eye" class="w-4 h-4"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="mt-2 pl-8 text-xs text-gray-600">
+                                            <p class="flex items-center"><i data-lucide="user" class="w-3 h-3 mr-1"></i> Verified by: Admin User • Feb 12, 2024</p>
+                                            <p class="text-green-700 mt-1">✓ Document is clear and complete</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Document 2: Transcript - Pending -->
+                                    <div class="border border-yellow-200 bg-yellow-50 rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer" onclick="openDocumentReview('transcript')">
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center flex-1">
+                                                <i data-lucide="file-text" class="w-5 h-5 text-yellow-600 mr-3"></i>
+                                                <div class="flex-1">
+                                                    <p class="text-sm font-semibold text-gray-900">Academic_Transcript.pdf</p>
+                                                    <p class="text-xs text-gray-600 mt-1">Uploaded: Feb 12, 2024 • Size: 3.2 MB</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-3">
+                                                <span class="px-3 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full flex items-center">
+                                                    <i data-lucide="clock" class="w-3 h-3 mr-1"></i>
+                                                    Pending Review
+                                                </span>
+                                                <button onclick="event.stopPropagation(); downloadDocument('transcript')" class="px-3 py-1 bg-white border border-gray-300 text-gray-700 rounded hover:bg-gray-50">
+                                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                                </button>
+                                                <button onclick="event.stopPropagation(); openDocumentReview('transcript')" class="px-3 py-1 text-white rounded hover:opacity-90" style="background-color: #d82128;">
+                                                    <i data-lucide="file-search" class="w-4 h-4"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="mt-2 pl-8 text-xs text-gray-600">
+                                            <p>⏳ Awaiting staff verification</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Document 3: Passport - Verified -->
+                                    <div class="border border-green-200 bg-green-50 rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer" onclick="openDocumentReview('passport')">
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center flex-1">
+                                                <i data-lucide="file-text" class="w-5 h-5 text-green-600 mr-3"></i>
+                                                <div class="flex-1">
+                                                    <p class="text-sm font-semibold text-gray-900">Passport_Copy.pdf</p>
+                                                    <p class="text-xs text-gray-600 mt-1">Uploaded: Feb 8, 2024 • Size: 1.8 MB</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-3">
+                                                <span class="px-3 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full flex items-center">
+                                                    <i data-lucide="check-circle" class="w-3 h-3 mr-1"></i>
+                                                    Verified
+                                                </span>
+                                                <button onclick="event.stopPropagation(); downloadDocument('passport')" class="px-3 py-1 bg-white border border-gray-300 text-gray-700 rounded hover:bg-gray-50">
+                                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                                </button>
+                                                <button onclick="event.stopPropagation(); openDocumentReview('passport')" class="px-3 py-1 bg-white border border-gray-300 text-gray-700 rounded hover:bg-gray-50">
+                                                    <i data-lucide="eye" class="w-4 h-4"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="mt-2 pl-8 text-xs text-gray-600">
+                                            <p class="flex items-center"><i data-lucide="user" class="w-3 h-3 mr-1"></i> Verified by: Admin User • Feb 10, 2024</p>
+                                            <p class="text-green-700 mt-1">✓ Valid until 2028, all pages clear</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Additional Documents -->
+                            <div>
+                                <h3 class="text-md font-semibold text-gray-800 mb-4">Additional Documents</h3>
+                                <div class="space-y-3">
+                                    <!-- Document 4: IELTS - Verified -->
+                                    <div class="border border-green-200 bg-green-50 rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer" onclick="openDocumentReview('ielts')">
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center flex-1">
+                                                <i data-lucide="file-text" class="w-5 h-5 text-green-600 mr-3"></i>
+                                                <div class="flex-1">
+                                                    <p class="text-sm font-semibold text-gray-900">IELTS_Certificate.pdf</p>
+                                                    <p class="text-xs text-gray-600 mt-1">Uploaded: Jan 15, 2024 • Size: 1.2 MB</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-3">
+                                                <span class="px-3 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full flex items-center">
+                                                    <i data-lucide="check-circle" class="w-3 h-3 mr-1"></i>
+                                                    Verified
+                                                </span>
+                                                <button onclick="event.stopPropagation(); downloadDocument('ielts')" class="px-3 py-1 bg-white border border-gray-300 text-gray-700 rounded hover:bg-gray-50">
+                                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                                </button>
+                                                <button onclick="event.stopPropagation(); openDocumentReview('ielts')" class="px-3 py-1 bg-white border border-gray-300 text-gray-700 rounded hover:bg-gray-50">
+                                                    <i data-lucide="eye" class="w-4 h-4"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="mt-2 pl-8 text-xs text-gray-600">
+                                            <p class="flex items-center"><i data-lucide="user" class="w-3 h-3 mr-1"></i> Verified by: Admin User • Jan 20, 2024</p>
+                                            <p class="text-green-700 mt-1">✓ Score 7.5, Valid until Dec 2025</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Document Review Modal -->
+                    <div id="document-review-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+                        <div class="bg-white rounded-lg shadow-xl w-full max-w-6xl max-h-[90vh] overflow-hidden flex flex-col mx-4">
+                            <!-- Modal Header -->
+                            <div class="flex items-center justify-between p-6 border-b">
+                                <h3 class="text-lg font-semibold text-gray-900">Document Review</h3>
+                                <button onclick="closeDocumentReview()" class="text-gray-400 hover:text-gray-600">
+                                    <i data-lucide="x" class="w-6 h-6"></i>
+                                </button>
+                            </div>
+
+                            <!-- Modal Body -->
+                            <div class="flex-1 overflow-hidden flex">
+                                <!-- Document Preview (Left) -->
+                                <div class="w-2/3 p-6 overflow-y-auto bg-gray-50">
+                                    <div class="bg-white border border-gray-300 rounded-lg p-8 text-center">
+                                        <i data-lucide="file-text" class="w-16 h-16 text-gray-400 mx-auto mb-4"></i>
+                                        <p class="text-gray-600">Document Preview</p>
+                                        <p class="text-sm text-gray-500 mt-2">PDF Viewer would be integrated here</p>
+                                    </div>
+                                </div>
+
+                                <!-- Verification Panel (Right) -->
+                                <div class="w-1/3 p-6 border-l overflow-y-auto">
+                                    <div class="space-y-6">
+                                        <!-- Document Info -->
+                                        <div>
+                                            <h4 class="text-sm font-semibold text-gray-900 mb-3">Document Information</h4>
+                                            <div class="space-y-2 text-sm">
+                                                <div><span class="text-gray-600">File:</span> <span class="font-medium">Academic_Transcript.pdf</span></div>
+                                                <div><span class="text-gray-600">Type:</span> <span class="font-medium">Required</span></div>
+                                                <div><span class="text-gray-600">Uploaded:</span> <span class="font-medium">Feb 12, 2024</span></div>
+                                                <div><span class="text-gray-600">Size:</span> <span class="font-medium">3.2 MB</span></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Current Status -->
+                                        <div>
+                                            <h4 class="text-sm font-semibold text-gray-900 mb-3">Current Status</h4>
+                                            <span class="px-3 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full inline-flex items-center">
+                                                <i data-lucide="clock" class="w-3 h-3 mr-1"></i>
+                                                Pending Review
+                                            </span>
+                                        </div>
+
+                                        <!-- Set Verification Status -->
+                                        <div>
+                                            <h4 class="text-sm font-semibold text-gray-900 mb-3">Set Verification Status</h4>
+                                            <div class="space-y-2">
+                                                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                                    <input type="radio" name="status" value="verified" class="mr-3 text-green-600">
+                                                    <div class="flex items-center">
+                                                        <i data-lucide="check-circle" class="w-4 h-4 text-green-600 mr-2"></i>
+                                                        <span class="text-sm font-medium">Verified</span>
+                                                    </div>
+                                                </label>
+                                                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                                    <input type="radio" name="status" value="rejected" class="mr-3 text-red-600">
+                                                    <div class="flex items-center">
+                                                        <i data-lucide="x-circle" class="w-4 h-4 text-red-600 mr-2"></i>
+                                                        <span class="text-sm font-medium">Rejected</span>
+                                                    </div>
+                                                </label>
+                                                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                                    <input type="radio" name="status" value="needmoreinfo" class="mr-3 text-orange-600">
+                                                    <div class="flex items-center">
+                                                        <i data-lucide="alert-circle" class="w-4 h-4 text-orange-600 mr-2"></i>
+                                                        <span class="text-sm font-medium">Need More Info</span>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <!-- Verification Note -->
+                                        <div>
+                                            <label class="text-sm font-semibold text-gray-900 mb-2 block">Verification Note <span class="text-red-500">*</span></label>
+                                            <textarea rows="4" class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-red-400 focus:border-red-400" placeholder="Enter reason or note (required for Rejected/Need More Info)"></textarea>
+                                            <p class="text-xs text-gray-500 mt-1">This note will be visible to the student</p>
+                                        </div>
+
+                                        <!-- Verification History -->
+                                        <div>
+                                            <h4 class="text-sm font-semibold text-gray-900 mb-3">Verification History</h4>
+                                            <div class="space-y-2 text-xs">
+                                                <div class="p-2 bg-gray-50 rounded">
+                                                    <p class="font-medium text-gray-900">Uploaded by Student</p>
+                                                    <p class="text-gray-600">Feb 12, 2024 10:30 AM</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Action Buttons -->
+                                        <div class="space-y-2 pt-4 border-t">
+                                            <button class="w-full px-4 py-2 text-sm font-medium text-white rounded-lg hover:opacity-90" style="background-color: #d82128;">
+                                                <i data-lucide="save" class="w-4 h-4 inline mr-1"></i>
+                                                Save Verification
+                                            </button>
+                                            <button onclick="closeDocumentReview()" class="w-full px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        function openDocumentReview(docId) {
+                            document.getElementById('document-review-modal').classList.remove('hidden');
+                            lucide.createIcons();
+                        }
+
+                        function closeDocumentReview() {
+                            document.getElementById('document-review-modal').classList.add('hidden');
+                        }
+
+                        function downloadDocument(docId) {
+                            alert('Download document: ' + docId);
+                        }
+
+                        // Activities Management
+                        let activities = [];
+                        let editingActivityId = null;
+
+                        function openAddActivityModal() {
+                            editingActivityId = null;
+                            document.getElementById('activity-modal-title').textContent = 'Add New Activity';
+                            document.getElementById('activity-form').reset();
+                            document.getElementById('activity-date').valueAsDate = new Date();
+                            document.getElementById('add-activity-modal').classList.remove('hidden');
+                            lucide.createIcons();
+                        }
+
+                        function closeAddActivityModal() {
+                            document.getElementById('add-activity-modal').classList.add('hidden');
+                            editingActivityId = null;
+                        }
+
+                        function openEditActivityModal(id) {
+                            const activity = activities.find(a => a.id === id);
+                            if (!activity) return;
+
+                            editingActivityId = id;
+                            document.getElementById('activity-modal-title').textContent = 'Edit Activity';
+                            document.getElementById('activity-type-' + activity.type).checked = true;
+                            document.getElementById('activity-date').value = activity.date;
+                            document.getElementById('activity-time').value = activity.time;
+                            document.getElementById('activity-title').value = activity.title;
+                            document.getElementById('activity-application').value = activity.applicationId || '';
+                            document.getElementById('activity-attendees').value = activity.attendees;
+                            document.getElementById('activity-content').value = activity.content;
+                            document.getElementById('activity-outcome').value = activity.outcome;
+                            document.getElementById('activity-action-items').value = activity.actionItems;
+                            
+                            document.getElementById('add-activity-modal').classList.remove('hidden');
+                            lucide.createIcons();
+                        }
+
+                        function saveActivity() {
+                            const form = document.getElementById('activity-form');
+                            if (!form.checkValidity()) {
+                                form.reportValidity();
+                                return;
+                            }
+
+                            const type = document.querySelector('input[name="interaction-type"]:checked').value;
+                            const date = document.getElementById('activity-date').value;
+                            const time = document.getElementById('activity-time').value;
+                            const title = document.getElementById('activity-title').value;
+                            const applicationSelect = document.getElementById('activity-application');
+                            const applicationId = applicationSelect.value;
+                            const applicationName = applicationSelect.options[applicationSelect.selectedIndex].text;
+                            const attendees = document.getElementById('activity-attendees').value;
+                            const content = document.getElementById('activity-content').value;
+                            const outcome = document.getElementById('activity-outcome').value;
+                            const actionItems = document.getElementById('activity-action-items').value;
+
+                            const now = new Date().toISOString();
+                            
+                            if (editingActivityId) {
+                                // Edit existing activity
+                                const activityIndex = activities.findIndex(a => a.id === editingActivityId);
+                                const oldActivity = {...activities[activityIndex]};
+                                
+                                activities[activityIndex] = {
+                                    ...activities[activityIndex],
+                                    type, date, time, title, applicationId, applicationName, attendees, content, outcome, actionItems,
+                                    updatedAt: now,
+                                    updatedBy: 'Admin User',
+                                    editHistory: [
+                                        ...(activities[activityIndex].editHistory || []),
+                                        {
+                                            timestamp: now,
+                                            editor: 'Admin User',
+                                            changes: getChanges(oldActivity, {type, date, time, title, applicationId, attendees, content, outcome, actionItems})
+                                        }
+                                    ]
+                                };
+                            } else {
+                                // Create new activity
+                                const newActivity = {
+                                    id: Date.now(),
+                                    type, date, time, title, applicationId, applicationName, attendees, content, outcome, actionItems,
+                                    createdAt: now,
+                                    createdBy: 'Admin User',
+                                    editHistory: []
+                                };
+                                activities.unshift(newActivity);
+                            }
+
+                            renderActivities();
+                            closeAddActivityModal();
+                        }
+
+                        function getChanges(oldData, newData) {
+                            const changes = [];
+                            const fields = {
+                                type: 'Interaction Type',
+                                date: 'Date',
+                                time: 'Time',
+                                title: 'Title',
+                                applicationId: 'Related Application',
+                                attendees: 'Attendees',
+                                content: 'Content',
+                                outcome: 'Outcome',
+                                actionItems: 'Action Items'
+                            };
+
+                            for (const key in fields) {
+                                if (oldData[key] !== newData[key]) {
+                                    changes.push({
+                                        field: fields[key],
+                                        oldValue: oldData[key] || '(empty)',
+                                        newValue: newData[key] || '(empty)'
+                                    });
+                                }
+                            }
+                            return changes;
+                        }
+
+                        function deleteActivity(id) {
+                            if (!confirm('Are you sure you want to delete this activity?')) return;
+                            activities = activities.filter(a => a.id !== id);
+                            renderActivities();
+                        }
+
+                        function viewEditHistory(id) {
+                            const activity = activities.find(a => a.id === id);
+                            if (!activity || !activity.editHistory || activity.editHistory.length === 0) {
+                                alert('No edit history available for this activity.');
+                                return;
+                            }
+
+                            let historyHTML = '<div class="space-y-3">';
+                            activity.editHistory.forEach(edit => {
+                                const date = new Date(edit.timestamp);
+                                historyHTML += `
+                                    <div class="border-l-4 border-blue-500 pl-3 py-2">
+                                        <p class="text-sm font-semibold text-gray-900">Edited by ${edit.editor}</p>
+                                        <p class="text-xs text-gray-600">${date.toLocaleString()}</p>
+                                        <div class="mt-2 space-y-1">
+                                            ${edit.changes.map(change => `
+                                                <div class="text-xs">
+                                                    <span class="font-medium">${change.field}:</span>
+                                                    <span class="text-red-600 line-through">${change.oldValue}</span>
+                                                    <span class="text-green-600">→ ${change.newValue}</span>
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                `;
+                            });
+                            historyHTML += '</div>';
+
+                            // Create a simple modal for history
+                            const modal = document.createElement('div');
+                            modal.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center';
+                            modal.innerHTML = `
+                                <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[80vh] overflow-hidden mx-4">
+                                    <div class="flex items-center justify-between p-4 border-b">
+                                        <h3 class="text-lg font-semibold">Edit History - ${activity.title}</h3>
+                                        <button onclick="this.closest('.fixed').remove()" class="text-gray-400 hover:text-gray-600">
+                                            <i data-lucide="x" class="w-5 h-5"></i>
+                                        </button>
+                                    </div>
+                                    <div class="p-4 overflow-y-auto max-h-96">
+                                        ${historyHTML}
+                                    </div>
+                                </div>
+                            `;
+                            document.body.appendChild(modal);
+                            lucide.createIcons();
+                        }
+
+                        function renderActivities() {
+                            const container = document.getElementById('activities-list');
+                            
+                            if (activities.length === 0) {
+                                container.innerHTML = `
+                                    <div class="text-center py-12 text-gray-500">
+                                        <i data-lucide="inbox" class="w-12 h-12 mx-auto text-gray-300 mb-4"></i>
+                                        <p class="text-lg font-medium">No activities recorded yet</p>
+                                        <p class="mt-1">Click "Add Activity" to record your first interaction</p>
+                                    </div>
+                                `;
+                                lucide.createIcons();
+                                return;
+                            }
+
+                            container.innerHTML = activities.map(activity => {
+                                const typeColors = {
+                                    call: 'bg-blue-100 text-blue-800',
+                                    meeting: 'bg-purple-100 text-purple-800',
+                                    chat: 'bg-green-100 text-green-800',
+                                    email: 'bg-yellow-100 text-yellow-800',
+                                    other: 'bg-gray-100 text-gray-800'
+                                };
+
+                                const typeIcons = {
+                                    call: 'phone',
+                                    meeting: 'video',
+                                    chat: 'message-square',
+                                    email: 'mail',
+                                    other: 'more-horizontal'
+                                };
+
+                                const outcomeColors = {
+                                    positive: 'bg-green-100 text-green-800',
+                                    successful: 'bg-green-100 text-green-800',
+                                    pending: 'bg-yellow-100 text-yellow-800',
+                                    'follow-up': 'bg-orange-100 text-orange-800',
+                                    resolved: 'bg-blue-100 text-blue-800',
+                                    cancelled: 'bg-red-100 text-red-800'
+                                };
+
+                                const date = new Date(activity.date + ' ' + (activity.time || '00:00'));
+                                const hasEditHistory = activity.editHistory && activity.editHistory.length > 0;
+
+                                return `
+                                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                                        <div class="flex items-start justify-between mb-3">
+                                            <div class="flex items-center space-x-3">
+                                                <span class="px-3 py-1 text-xs font-medium ${typeColors[activity.type]} rounded-full flex items-center">
+                                                    <i data-lucide="${typeIcons[activity.type]}" class="w-3 h-3 mr-1"></i>
+                                                    ${activity.type.charAt(0).toUpperCase() + activity.type.slice(1)}
+                                                </span>
+                                                <span class="text-sm text-gray-600">${date.toLocaleString('en-US', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit'})}</span>
+                                                ${hasEditHistory ? '<span class="px-2 py-0.5 text-xs bg-gray-100 text-gray-600 rounded cursor-pointer hover:bg-gray-200" onclick="viewEditHistory(' + activity.id + ')"><i data-lucide="history" class="w-3 h-3 inline mr-0.5"></i>Edited</span>' : ''}
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <button onclick="openEditActivityModal(${activity.id})" class="text-gray-400 hover:text-gray-600">
+                                                    <i data-lucide="edit" class="w-4 h-4"></i>
+                                                </button>
+                                                <button onclick="deleteActivity(${activity.id})" class="text-gray-400 hover:text-red-600">
+                                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <h4 class="text-sm font-semibold text-gray-900 mb-2">${activity.title}</h4>
+                                        ${activity.applicationId ? '<div class="mb-2"><span class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-800 rounded-full"><i data-lucide="file-text" class="w-3 h-3 mr-1"></i>' + activity.applicationName + '</span></div>' : ''}
+                                        <p class="text-sm text-gray-700 mb-3">${activity.content}</p>
+                                        ${activity.actionItems ? '<div class="text-sm bg-yellow-50 border-l-4 border-yellow-400 p-2 mb-3"><strong>Action Items:</strong> ' + activity.actionItems + '</div>' : ''}
+                                        <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                                            <div class="flex items-center space-x-4 text-xs text-gray-600">
+                                                <span class="flex items-center">
+                                                    <i data-lucide="user" class="w-3 h-3 mr-1"></i>
+                                                    Created by: ${activity.createdBy}
+                                                </span>
+                                                ${activity.attendees ? '<span class="flex items-center"><i data-lucide="users" class="w-3 h-3 mr-1"></i>Attendees: ' + activity.attendees + '</span>' : ''}
+                                            </div>
+                                            ${activity.outcome ? '<span class="px-2 py-1 text-xs font-medium ' + (outcomeColors[activity.outcome] || 'bg-gray-100 text-gray-800') + ' rounded-full">' + activity.outcome.charAt(0).toUpperCase() + activity.outcome.slice(1).replace('-', ' ') + '</span>' : ''}
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('');
+
+                            lucide.createIcons();
+                        }
+
+                        // Initialize with demo data on page load
+                        document.addEventListener('DOMContentLoaded', function() {
+                            activities = [
+                                {
+                                    id: 1,
+                                    type: 'call',
+                                    date: '2024-02-15',
+                                    time: '10:30',
+                                    title: 'Phone discussion about scholarship options',
+                                    applicationId: 'app-1',
+                                    applicationName: 'Merit Scholarship – Tiffin University',
+                                    attendees: 'Student, Parents',
+                                    content: 'Discussed Merit Scholarship opportunities at Tiffin University. Student is very interested in Computer Science program. Parents are supportive but concerned about budget. Need to send more information about financial aid options.',
+                                    outcome: 'positive',
+                                    actionItems: 'Send financial aid information packet',
+                                    createdAt: '2024-02-15T10:45:00',
+                                    createdBy: 'Admin User',
+                                    editHistory: []
+                                },
+                                {
+                                    id: 2,
+                                    type: 'meeting',
+                                    date: '2024-02-10',
+                                    time: '14:00',
+                                    title: 'Initial consultation meeting',
+                                    applicationId: '',
+                                    applicationName: '',
+                                    attendees: 'Student, Parents, Counselor',
+                                    content: 'First meeting with student and family. Reviewed academic background, IELTS score (7.5), and study goals. Student wants to study in Canada, particularly interested in Toronto area. Need to prepare scholarship recommendations for next meeting.',
+                                    outcome: 'successful',
+                                    actionItems: 'Prepare scholarship recommendations for Canada universities',
+                                    createdAt: '2024-02-10T15:30:00',
+                                    createdBy: 'Admin User',
+                                    editHistory: []
+                                },
+                                {
+                                    id: 3,
+                                    type: 'email',
+                                    date: '2024-02-08',
+                                    time: '09:15',
+                                    title: 'Follow-up on document submission',
+                                    applicationId: '',
+                                    applicationName: '',
+                                    attendees: '',
+                                    content: 'Sent email reminder about missing academic transcript. Student confirmed they will upload by end of week. Also requested information about visa requirements.',
+                                    outcome: 'pending',
+                                    actionItems: 'Follow up on Friday if transcript not received',
+                                    createdAt: '2024-02-08T09:20:00',
+                                    createdBy: 'Admin User',
+                                    editHistory: []
+                                }
+                            ];
+                            renderActivities();
+                        });
+                    </script>
+                </div>
+            </div>
+
+            <!-- Scholarship Tab -->
+            <div id="scholarship" class="tab-content hidden w-full">
+                <div class="p-6">
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">                        
+                        <!-- Profile Completion Notice -->
+                        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+                            <div class="flex items-center">
+                                <i data-lucide="alert-triangle" class="w-5 h-5 text-yellow-600 mr-3"></i>
+                                <div>
+                                    <h3 class="text-sm font-medium text-yellow-800">Complete Profile for Better Matches</h3>
+                                    <p class="text-sm text-yellow-700 mt-1">Students need to complete their profile first for automatic scholarship filtering based on their preferences.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scholarship Cards -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Merit Scholarship</h3>
+                                <p class="text-sm text-gray-600 mb-4">University of Toronto</p>
+                                <div class="space-y-2 text-sm">
+                                    <div><strong>Award:</strong> $5,000 CAD</div>
+                                    <div><strong>Deadline:</strong> March 15, 2024</div>
+                                    <div><strong>Eligibility:</strong> GPA 3.5+</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Favorites Tab -->
+            <div id="favorites" class="tab-content hidden w-full">
+                <div class="p-6">
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">                        
+                        <!-- Favorite Scholarship Card -->
+                        <div class="border border-gray-200 rounded-lg p-6 mb-6 hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Merit Scholarship – Tiffin University</h3>
+                                    <div class="flex items-center space-x-2 mb-3">
+                                        <span class="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">Popular</span>
+                                        <span class="px-2 py-1 text-xs font-medium bg-purple-100 text-purple-800 rounded-full">Fast Acceptance</span>
+                                    </div>
+                                </div>
+                                <button class="text-red-500 hover:text-red-700">
+                                    <i data-lucide="heart" class="w-5 h-5 fill-current"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-sm text-gray-700">
+                                <div class="flex items-start">
+                                    <i data-lucide="map-pin" class="w-4 h-4 text-gray-500 mr-2 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-medium">Location:</span> Ontario, CAN
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="building-2" class="w-4 h-4 text-gray-500 mr-2 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-medium">Campus city:</span> Windsor
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="dollar-sign" class="w-4 h-4 text-gray-500 mr-2 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-medium">Tuition (1st year):</span> $15,200 USD
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="file-text" class="w-4 h-4 text-gray-500 mr-2 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-medium">Application fee:</span> $92 USD
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="calendar" class="w-4 h-4 text-gray-500 mr-2 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-medium">Duration:</span> 24 months
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-6 mb-6 hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Green Future Scholarship – Tiffin University</h3>
+                                    <div class="flex items-center space-x-2 mb-3">
+                                        <span class="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">Popular</span>
+                                        <span class="px-2 py-1 text-xs font-medium bg-purple-100 text-purple-800 rounded-full">Fast Acceptance</span>
+                                    </div>
+                                </div>
+                                <button class="text-red-500 hover:text-red-700">
+                                    <i data-lucide="heart" class="w-5 h-5 fill-current"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-sm text-gray-700">
+                                <div class="flex items-start">
+                                    <i data-lucide="map-pin" class="w-4 h-4 text-gray-500 mr-2 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-medium">Location:</span> Ontario, CAN
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="building-2" class="w-4 h-4 text-gray-500 mr-2 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-medium">Campus city:</span> Windsor
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="dollar-sign" class="w-4 h-4 text-gray-500 mr-2 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-medium">Tuition (1st year):</span> $15,200 USD
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="file-text" class="w-4 h-4 text-gray-500 mr-2 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-medium">Application fee:</span> $92 USD
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="calendar" class="w-4 h-4 text-gray-500 mr-2 mt-0.5"></i>
+                                    <div>
+                                        <span class="font-medium">Duration:</span> 24 months
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Empty State (shown when no favorites) -->
+                        <!-- <div class="text-center py-12 text-gray-500">
+                            <i data-lucide="bookmark" class="w-12 h-12 mx-auto text-gray-300 mb-4"></i>
+                            <p class="text-lg font-medium">No favorite scholarships yet</p>
+                            <p class="mt-1">Click the heart icon to save scholarships to your favorites</p>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Applications Tab -->
+            <div id="applications" class="tab-content hidden w-full">
+                <div class="p-6">
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">                        
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Scholarship Name</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Progress</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Update</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <!-- Application 1 -->
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-medium text-gray-900">Merit Scholarship – Tiffin University</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                                <div class="bg-red-600 h-2 rounded-full" style="width: 75%"></div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <i data-lucide="map-pin" class="w-4 h-4 text-gray-400 mr-1"></i>
+                                                <span class="text-sm text-gray-900">United States</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                                Submitted to School
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            Oct 1, 2024
+                                        </td>
+                                    </tr>
+
+                                    <!-- Application 2 -->
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-medium text-gray-900">Green Future Scholarship – Tiffin University</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                                <div class="bg-red-600 h-2 rounded-full" style="width: 100%"></div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <i data-lucide="map-pin" class="w-4 h-4 text-gray-400 mr-1"></i>
+                                                <span class="text-sm text-gray-900">United States</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                                Pre-Departure
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            Sep 28, 2024
+                                        </td>
+                                    </tr>
+
+                                    <!-- Application 3 -->
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-medium text-gray-900">International Excellence Scholarship – Tiffin University</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                                <div class="bg-red-600 h-2 rounded-full" style="width: 50%"></div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <i data-lucide="map-pin" class="w-4 h-4 text-gray-400 mr-1"></i>
+                                                <span class="text-sm text-gray-900">United States</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                                Application In Progress
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            Sep 25, 2024
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activities Tab -->
+            <div id="activities" class="tab-content hidden w-full">
+                <div class="p-6">
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-xl font-semibold text-gray-900">Student Activities & Communication Log</h2>
+                            <button onclick="openAddActivityModal()" class="px-4 py-2 text-sm font-medium text-white rounded-lg hover:opacity-90 flex items-center" style="background-color: #d82128;">
+                                <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                                Add Activity
+                            </button>
+                        </div>
+
+                        <!-- Activities List (rendered by JavaScript) -->
+                        <div id="activities-list" class="space-y-4">
+                            <!-- Activities will be dynamically rendered here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Tab -->
+            <div id="payment" class="tab-content hidden w-full">
+                <div class="p-6">
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <!-- Upcoming Payments -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">Upcoming Payments</h3>
+                            <div class="bg-white shadow overflow-hidden sm:rounded-md">
+                                <ul class="divide-y divide-gray-200">
+                                    <!-- Payment 1 -->
+                                    <li class="border-l-4 border-red-600">
+                                        <div class="px-4 py-4 sm:px-6 hover:bg-gray-50">
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center">
+                                                    <div class="min-w-0 flex-1 flex items-center">
+                                                        <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-3 md:gap-4">
+                                                            <div>
+                                                                <p class="text-sm font-medium text-red-600 truncate">Tuition Fee - Fall 2024</p>
+                                                                <p class="mt-1 flex items-center text-sm text-gray-500">
+                                                                    <i data-lucide="calendar" class="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400"></i>
+                                                                    <span>Due on October 15, 2024</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="hidden md:block">
+                                                                <div>
+                                                                    <p class="text-sm text-gray-900">Tiffin University</p>
+                                                                    <p class="mt-1 flex items-center text-sm text-gray-500">
+                                                                        <i data-lucide="book" class="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400"></i>
+                                                                        <span>Merit Scholarship Program</span>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex flex-col items-end">
+                                                                <p class="text-lg font-semibold text-gray-900">$125.00</p>
+                                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800 mt-1">
+                                                                    Due in 14 days
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <!-- Payment 2 -->
+                                    <li class="border-l-4 border-yellow-500">
+                                        <div class="px-4 py-4 sm:px-6 hover:bg-gray-50">
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center">
+                                                    <div class="min-w-0 flex-1 flex items-center">
+                                                        <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-3 md:gap-4">
+                                                            <div>
+                                                                <p class="text-sm font-medium text-yellow-600 truncate">Housing Deposit</p>
+                                                                <p class="mt-1 flex items-center text-sm text-gray-500">
+                                                                    <i data-lucide="calendar" class="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400"></i>
+                                                                    <span>Due on November 1, 2024</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="hidden md:block">
+                                                                <div>
+                                                                    <p class="text-sm text-gray-900">Tiffin University Housing</p>
+                                                                    <p class="mt-1 flex items-center text-sm text-gray-500">
+                                                                        <i data-lucide="home" class="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400"></i>
+                                                                        <span>On-Campus Dormitory</span>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex flex-col items-end">
+                                                                <p class="text-lg font-semibold text-gray-900">$50.00</p>
+                                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 mt-1">
+                                                                    Due in 30 days
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Payment History -->
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">Payment History</h3>
+                            <div class="bg-white shadow overflow-hidden sm:rounded-md">
+                                <ul class="divide-y divide-gray-200">
+                                    <!-- Past Payment 1 -->
+                                    <li class="border-l-4 border-green-500">
+                                        <div class="px-4 py-4 sm:px-6">
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center">
+                                                    <div class="min-w-0 flex-1 flex items-center">
+                                                        <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-3 md:gap-4">
+                                                            <div>
+                                                                <p class="text-sm font-medium text-gray-900 truncate">Application Fee</p>
+                                                                <p class="mt-1 flex items-center text-sm text-gray-500">
+                                                                    <i data-lucide="calendar" class="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400"></i>
+                                                                    <span>Paid on September 15, 2024</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="hidden md:block">
+                                                                <div>
+                                                                    <p class="text-sm text-gray-900">Tiffin University</p>
+                                                                    <p class="mt-1 flex items-center text-sm text-gray-500">
+                                                                        <i data-lucide="file-text" class="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400"></i>
+                                                                        <span>Application #TU-2024-7890</span>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex flex-col items-end">
+                                                                <p class="text-lg font-semibold text-gray-900">$50.00</p>
+                                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 mt-1">
+                                                                    Paid
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ml-5 flex-shrink-0">
+                                                    <button class="text-red-600 hover:text-red-900 font-medium">View Receipt</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Tab functionality
+        function showTab(tabName) {
+            console.log('Showing tab:', tabName);
+            
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Remove active class from all tabs
+            document.querySelectorAll('[id$="-tab"]').forEach(tab => {
+                tab.classList.remove('tab-active');
+                tab.classList.add('tab-inactive');
+            });
+
+            // Show selected tab content and update active tab
+            const selectedTab = document.getElementById(tabName);
+            if (selectedTab) {
+                selectedTab.classList.remove('hidden');
+            }
+            
+            const selectedTabButton = document.getElementById(tabName + '-tab');
+            if (selectedTabButton) {
+                selectedTabButton.classList.remove('tab-inactive');
+                selectedTabButton.classList.add('tab-active');
+            }
+        }
+
+        // Profile section functionality
+        function showProfileSection(sectionName, event) {
+            // Hide all profile sections
+            const sections = document.querySelectorAll('.profile-section');
+            sections.forEach(section => section.classList.add('hidden'));
+
+            // Remove active class from all sidebar items
+            const sidebarItems = document.querySelectorAll('.sidebar-item');
+            sidebarItems.forEach(item => {
+                item.classList.remove('sidebar-item-active');
+            });
+
+            // Show selected section
+            const selectedSection = document.getElementById(sectionName + '-section');
+            if (selectedSection) {
+                selectedSection.classList.remove('hidden');
+            }
+
+            // Add active class to clicked sidebar item
+            event.currentTarget.classList.add('sidebar-item-active');
+        }
+
+        // Get student ID from URL parameters
+        function getStudentIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('student') || 'long-le';
+        }
+
+        // Load student data based on ID
+        function loadStudentData() {
+            const studentId = getStudentIdFromUrl();
+            
+            // Mock student data - in real implementation, this would come from API
+            const studentData = {
+                'long-le': {
+                    name: 'Long Le',
+                    id: '2237004',
+                    email: 'baolong.le@ellacy.org',
+                    phone: '1123456789'
+                },
+                'sarah-johnson': {
+                    name: 'Sarah Johnson',
+                    id: '2237001',
+                    email: 'sarah.johnson@example.com',
+                    phone: '+1 (555) 123-4567'
+                },
+                'mike-wong': {
+                    name: 'Mike Wong',
+                    id: '2237002',
+                    email: 'mike.wong@example.com',
+                    phone: '+1 (555) 987-6543'
+                },
+                'emma-davis': {
+                    name: 'Emma Davis',
+                    id: '2237003',
+                    email: 'emma.davis@example.com',
+                    phone: '+1 (555) 456-7890'
+                }
+            };
+
+            const student = studentData[studentId] || studentData['long-le'];
+            
+            // Update page title and header
+            document.title = `Student Details - ${student.name} | APPLYLEAD`;
+            document.querySelector('h1').textContent = student.name;
+            document.querySelector('[data-student-id]').textContent = student.id;
+            document.querySelector('[data-student-email]').textContent = student.email;
+            document.querySelector('[data-student-phone]').textContent = student.phone;
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Lucide icons
+            lucide.createIcons();
+            
+            // Load student data
+            loadStudentData();
+            
+            // Add click handlers to tab buttons
+            document.querySelectorAll('[id$="-tab"]').forEach(tab => {
+                tab.addEventListener('click', function(e) {
+                    const tabName = this.id.replace('-tab', '');
+                    showTab(tabName);
+                    e.preventDefault();
+                });
+            });
+            
+            // Show default tab
+            showTab('profile');
+        });
+    </script>
+
+    <!-- Add Activity Modal -->
+    <div id="add-activity-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col mx-4">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between p-6 border-b">
+                <h3 id="activity-modal-title" class="text-lg font-semibold text-gray-900">Add New Activity</h3>
+                <button onclick="closeAddActivityModal()" class="text-gray-400 hover:text-gray-600">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="flex-1 overflow-y-auto p-6">
+                <form id="activity-form" class="space-y-5" onsubmit="event.preventDefault(); saveActivity();">
+                    <!-- Interaction Type -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-900 mb-2">Interaction Type <span class="text-red-500">*</span></label>
+                        <div class="grid grid-cols-5 gap-2">
+                            <label class="flex items-center justify-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-50">
+                                <input type="radio" id="activity-type-call" name="interaction-type" value="call" class="sr-only" checked>
+                                <div class="text-center">
+                                    <i data-lucide="phone" class="w-5 h-5 mx-auto mb-1"></i>
+                                    <span class="text-xs font-medium">Call</span>
+                                </div>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-50">
+                                <input type="radio" id="activity-type-meeting" name="interaction-type" value="meeting" class="sr-only">
+                                <div class="text-center">
+                                    <i data-lucide="video" class="w-5 h-5 mx-auto mb-1"></i>
+                                    <span class="text-xs font-medium">Meeting</span>
+                                </div>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-50">
+                                <input type="radio" id="activity-type-chat" name="interaction-type" value="chat" class="sr-only">
+                                <div class="text-center">
+                                    <i data-lucide="message-square" class="w-5 h-5 mx-auto mb-1"></i>
+                                    <span class="text-xs font-medium">Chat</span>
+                                </div>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-50">
+                                <input type="radio" id="activity-type-email" name="interaction-type" value="email" class="sr-only">
+                                <div class="text-center">
+                                    <i data-lucide="mail" class="w-5 h-5 mx-auto mb-1"></i>
+                                    <span class="text-xs font-medium">Email</span>
+                                </div>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-50">
+                                <input type="radio" id="activity-type-other" name="interaction-type" value="other" class="sr-only">
+                                <div class="text-center">
+                                    <i data-lucide="more-horizontal" class="w-5 h-5 mx-auto mb-1"></i>
+                                    <span class="text-xs font-medium">Other</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Date & Time -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-900 mb-2">Date <span class="text-red-500">*</span></label>
+                            <input type="date" id="activity-date" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-900 mb-2">Time</label>
+                            <input type="time" id="activity-time" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+
+                    <!-- Title -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-900 mb-2">Title <span class="text-red-500">*</span></label>
+                        <input type="text" id="activity-title" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Brief summary of the interaction" required>
+                    </div>
+
+                    <!-- Related Application -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-900 mb-2">Related Application (Optional)</label>
+                        <select id="activity-application" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">Not related to any application</option>
+                            <option value="app-1">Merit Scholarship – Tiffin University</option>
+                            <option value="app-2">Green Future Scholarship – Tiffin University</option>
+                            <option value="app-3">International Excellence Scholarship – Tiffin University</option>
+                        </select>
+                        <p class="text-xs text-gray-500 mt-1">Link this activity to a specific application for better tracking</p>
+                    </div>
+
+                    <!-- Attendees -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-900 mb-2">Attendees/Participants</label>
+                        <input type="text" id="activity-attendees" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., Student, Parents, Counselor">
+                        <p class="text-xs text-gray-500 mt-1">Separate multiple attendees with commas</p>
+                    </div>
+
+                    <!-- Activity Content -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-900 mb-2">Activity Details <span class="text-red-500">*</span></label>
+                        <textarea id="activity-content" rows="6" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Detailed notes about the interaction, discussion points, key takeaways, etc." required></textarea>
+                    </div>
+
+                    <!-- Outcome/Result -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-900 mb-2">Outcome/Result</label>
+                        <select id="activity-outcome" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">Select outcome...</option>
+                            <option value="positive">Positive</option>
+                            <option value="successful">Successful</option>
+                            <option value="pending">Pending Action</option>
+                            <option value="follow-up">Needs Follow-up</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+
+                    <!-- Action Items -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-900 mb-2">Action Items / Next Steps</label>
+                        <textarea id="activity-action-items" rows="3" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="What needs to be done next..."></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="flex items-center justify-end space-x-3 p-6 border-t">
+                <button onclick="closeAddActivityModal()" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200">
+                    Cancel
+                </button>
+                <button onclick="saveActivity()" class="px-4 py-2 text-sm font-medium text-white rounded-lg hover:opacity-90" style="background-color: #d82128;">
+                    <i data-lucide="save" class="w-4 h-4 inline mr-1"></i>
+                    Save Activity
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

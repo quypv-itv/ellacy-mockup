@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; margin: 0; }
         .gradient-bg { background: linear-gradient(to right top, #ffffff, #f5f5f5, #ebebeb); }
     </style>
 </head>
@@ -52,12 +52,12 @@
             </div>
 
             <nav class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center space-x-8">
-                <a href="University-Scholarship.html" class="text-gray-500 hover:text-gray-700 font-medium hover:border-b-2 hover:border-gray-300 pb-1">Partnered University</a>
+                <a href="University-Scholarship.html" class="text-gray-500 hover:text-gray-700 font-medium hover:border-b-2 hover:border-gray-300 pb-1">About Joint Program</a>
                 <a href="University-Student.html" class="text-black hover:text-gray-700 font-medium border-b-2 border-red-600 pb-1">Student</a>
             </nav>
         </header>
 
-        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <main class="w-full px-0 py-8">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
                 <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
                     <div class="relative flex-1 md:w-64">
@@ -107,20 +107,23 @@
             </div>
 
             <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200">
+                <div>
+                    <table class="w-full table-auto divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     <div class="flex items-center">
                                         <span>Student Name</span>
-                                        <button class="ml-1 text-gray-400 hover:text-gray-600 focus:outline-none">
-                                            <i data-lucide="chevron-up" class="h-4 w-4"></i>
-                                        </button>
                                     </div>
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Student Email
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Year
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Class
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Major
@@ -130,6 +133,12 @@
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Program
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Application Status
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Document Upload
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Actions
@@ -245,7 +254,10 @@
             { id: 2, name: 'Tran Thi', email: 'tranthib@example.com', major: 'Business Administration', source: 'FTU HN', program: '2+2 Transfer Program', notes: 'Program applicant', scholarshipType: getRandomScholarshipType() },
             { id: 3, name: 'Le Van', email: 'levanc@example.com', major: 'Engineering', source: 'FTU HN', program: 'Direct Admission Program', notes: 'Transferred from another university', scholarshipType: getRandomScholarshipType() },
             { id: 4, name: 'Pham Thi', email: 'phamthid@example.com', major: 'Data Science', source: 'FTU HCM', program: 'Joint MBA Program', notes: 'Has programming experience in Python', scholarshipType: getRandomScholarshipType() },
-            { id: 5, name: 'Hoang Van', email: 'hoangvane@example.com', major: 'Finance', source: 'FTU HCM', program: '1+3 Transfer Program', notes: 'Looking for part-time opportunities', scholarshipType: getRandomScholarshipType() },
+            { id: 5, name: 'Hoang Van', email: 'hoangvane@example.com', major: 'Finance', source: 'FTU HCM', program: '1+3 Transfer Program', notes: 'Looking for part-time opportunities', scholarshipType: getRandomScholarshipType(), yearStart: '2024', className: 'Class A', status: 'In Progress' },
+            { id: 6, name: 'Nguyen Minh Chau', email: 'minhchau.nguyen@example.com', major: 'Information Systems', source: 'FTU HN', program: '2+2 Transfer Program', notes: 'Interested in product management', scholarshipType: getRandomScholarshipType(), yearStart: '2025', className: 'Class C', status: 'Under Review' },
+            { id: 7, name: 'Bui Gia Khang', email: 'giakhang.bui@example.com', major: 'Marketing', source: 'FTU HCM', program: 'Direct Admission Program', notes: 'Strong extracurricular activities', scholarshipType: getRandomScholarshipType(), yearStart: '2026', className: 'Class B', status: 'Approved', documentName: 'transcript.pdf' },
+            { id: 8, name: 'Do Thanh Ha', email: 'thanhha.do@example.com', major: 'Accounting', source: 'FTU HN', program: '1+3 Transfer Program', notes: 'CPA track', scholarshipType: getRandomScholarshipType(), yearStart: '2024', className: 'Class D', status: 'In Progress' },
         ];
 
         // Function to generate random scholarship type (single)
@@ -288,7 +300,7 @@
             if (studentsToRender.length === 0) {
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td colspan="6" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                    <td colspan="10" class="px-6 py-4 whitespace-normal break-words text-sm text-gray-500 text-center">
                         No students found matching your criteria.
                     </td>
                 `;
@@ -300,7 +312,7 @@
                 const row = document.createElement('tr');
                 row.className = 'hover:bg-gray-50';
                 row.innerHTML = `
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-4 whitespace-normal break-words">
                         <div class="flex items-center">
                             <div class="ml-4">
                                 <div class="text-sm font-medium text-gray-900">${student.name}</div>
@@ -308,21 +320,25 @@
                             </div>
                         </div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        ${student.email}
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        ${student.major}
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        ${student.source}
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-4 whitespace-normal break-words text-sm text-gray-500">${student.email}</td>
+                    <td class="px-6 py-4 whitespace-normal break-words text-sm text-gray-700">${student.yearStart || student.year || '2024'}</td>
+                    <td class="px-6 py-4 whitespace-normal break-words text-sm text-gray-700">${student.className || 'Class B'}</td>
+                    <td class="px-6 py-4 whitespace-normal break-words text-sm text-gray-500">${student.major}</td>
+                    <td class="px-6 py-4 whitespace-normal break-words text-sm text-gray-500">${student.source}</td>
+                    <td class="px-6 py-4 whitespace-normal break-words">
                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getScholarshipTypeClass(student.scholarshipType)}">
                             ${student.scholarshipType}
                         </span>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <td class="px-6 py-4 whitespace-normal break-words">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusBadgeClass(student.status || 'In Progress')}">${student.status || 'In Progress'}</span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-normal break-words text-sm">
+                        <span class="text-gray-500 mr-3">${student.documentName || ''}</span>
+                        <button id="upload-btn-${student.id}" class="inline-flex items-center px-3 py-1.5 rounded-md bg-red-600 text-white hover:bg-red-700">Upload</button>
+                        <input id="upload-input-${student.id}" type="file" class="hidden" accept="application/pdf,image/*">
+                    </td>
+                    <td class="px-6 py-4 whitespace-normal break-words text-right text-sm font-medium">
                         <div class="flex items-center justify-end space-x-2">
                             <div class="relative group">
                                 <button class="text-red-600 hover:text-red-800 p-1 rounded-full hover:bg-red-50 border border-transparent hover:border-red-200 view-student" data-id="${student.id}">
@@ -346,6 +362,18 @@
                     </td>
                 `;
                 studentTableBody.appendChild(row);
+
+                // Attach upload handlers
+                const btn = document.getElementById(`upload-btn-${student.id}`);
+                const input = document.getElementById(`upload-input-${student.id}`);
+                if (btn && input) {
+                    btn.addEventListener('click', () => input.click());
+                    input.addEventListener('change', () => {
+                        if (input.files && input.files.length > 0) {
+                            alert(`Uploaded for ${student.name}: ${input.files[0].name}`);
+                        }
+                    });
+                }
             });
 
             // Re-attach event listeners for view buttons
@@ -613,6 +641,17 @@
                 'Joint MBA Program': 'bg-black text-white border border-gray-800'
             };
             return classes[type] || 'bg-gray-100 text-gray-800';
+        }
+
+        // Status badge color mapping
+        function getStatusBadgeClass(status) {
+            const map = {
+                'In Progress': 'bg-yellow-100 text-yellow-800',
+                'Under Review': 'bg-blue-100 text-blue-800',
+                'Approved': 'bg-green-100 text-green-800',
+                'Rejected': 'bg-red-100 text-red-800'
+            };
+            return map[status] || 'bg-gray-100 text-gray-800';
         }
 
         // Initial render

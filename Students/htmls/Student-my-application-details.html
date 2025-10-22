@@ -459,6 +459,7 @@
                             <div class="pl-6">
                                 <h4 class="font-medium text-gray-900">Initial Advising</h4>
                                 <p class="text-sm text-gray-500">Kick-off advising session and pathway planning</p>
+                                <p class="text-xs text-red-600 mt-1 step-completion-info">Completed by Michael Chen (Agent) on 10/15/2025</p>
                             </div>
                         </div>
 
@@ -470,6 +471,7 @@
                                 <h4 class="font-medium text-gray-900">Application In Progress</h4>
                                 <p class="text-sm text-gray-500">Comprehensive review and advisor feedback on documents
                                 </p>
+                                <p class="text-xs text-red-600 mt-1 step-completion-info hidden">Completed by Dr. Emily Rodriguez (Academic Advisor) on 10/17/2025</p>
                             </div>
                         </div>
 
@@ -481,7 +483,7 @@
                                 <h4 class="font-medium">Submitted to School</h4>
                                 <p class="text-sm text-gray-500">Sign service agreement and complete the first payment
                                 </p>
-                                <p class="status-text text-xs mt-1"></p>
+                                <p class="text-xs text-red-600 mt-1 step-completion-info hidden">Completed by Dr. Emily Rodriguez (Academic Advisor) on 10/18/2025</p>
                             </div>
                         </div>
 
@@ -493,8 +495,8 @@
                                 <h4 class="font-medium">School Response</h4>
                                 <p class="text-sm text-gray-500">Finalize application materials and complete the second
                                     payment</p>
-                                <p class="status-text text-xs mt-1"></p>
-                            </div>
+                                    <p class="text-xs text-red-600 mt-1 step-completion-info hidden">Completed by Dr. Emily Rodriguez (Academic Advisor) on 10/19/2025</p>
+                                </div>
                         </div>
 
                         <!-- Step 5: Offer Letter -->
@@ -504,7 +506,7 @@
                             <div class="pl-6">
                                 <h4 class="font-medium text-gray-900">Offered Letter Issued</h4>
                                 <p class="text-sm text-gray-500">Submit application to the selected school</p>
-                                <p class="status-text text-xs mt-1"></p>
+                                <p class="text-xs text-red-600 mt-1 step-completion-info hidden">Completed by Dr. Emily Rodriguez (Academic Advisor) on 10/20/2025</p>
                             </div>
                         </div>
 
@@ -515,7 +517,7 @@
                             <div class="pl-6">
                                 <h4 class="font-medium text-gray-900">Committed to School</h4>
                                 <p class="text-sm text-gray-500">Receive and confirm your offer from the school</p>
-                                <p class="status-text text-xs mt-1"></p>
+                                <p class="text-xs text-red-600 mt-1 step-completion-info hidden">Completed by Dr. Emily Rodriguez (Academic Advisor) on 10/21/2025</p>
                             </div>
                         </div>
 
@@ -525,11 +527,8 @@
                             <div class="timeline-dot"></div>
                             <div class="pl-6">
                                 <h4 class="font-medium">Visa Application</h4>
-                                <ul class="list-disc pl-5 text-sm text-gray-500 mt-1 space-y-1">
-                                    <li>Assign Visa Advisor from Ellacy Team</li>
-                                    <li>Provide students with a checklist for Visa Prep (Ellacy)</li>
-                                </ul>
-                                <p class="status-text text-xs mt-1"></p>
+                                <p class="text-sm text-gray-500">Assign Visa Advisor from Ellacy Team and provide students with a checklist for Visa Prep</p>
+                                <p class="text-xs text-red-600 mt-1 step-completion-info hidden">Completed by James Wilson (Visa Advisor) on 10/21/2025</p>
                             </div>
                         </div>
 
@@ -539,13 +538,8 @@
                             <div class="timeline-dot"></div>
                             <div class="pl-6">
                                 <h4 class="font-medium">Pre-Departure</h4>
-                                <ul class="list-disc pl-5 text-sm text-gray-500 mt-1 space-y-1">
-                                    <li>Pre-departure online training session</li>
-                                    <li>Help prepare travel schedule</li>
-                                    <li>Support with Insurance</li>
-                                    <li>Send student the Preparation Checklist for Department</li>
-                                    <li>Support student with pre-departure preparation</li>
-                                </ul>
+                                <p class="text-sm text-gray-500">Pre-departure training, travel schedule, insurance support, and preparation checklist</p>
+                                <p class="text-xs text-red-600 mt-1 step-completion-info hidden">Completed by James Wilson (Visa Advisor) on 10/21/2025</p>
                             </div>
                         </div>
 
@@ -555,11 +549,7 @@
                             <div class="timeline-dot"></div>
                             <div class="pl-6">
                                 <h4 class="font-medium">Arrival</h4>
-                                <ul class="list-disc pl-5 text-sm text-gray-500 mt-1 space-y-1">
-                                    <li>Online meeting to advise and support in the first month in the foreign country
-                                    </li>
-                                    <li>Liaise with the school to provide support to student</li>
-                                </ul>
+                                <p class="text-sm text-gray-500">Online meeting to advise and support in the first month in the foreign country</p>
                             </div>
                         </div>
                     </div>
@@ -662,12 +652,18 @@
                 if (title) title.className = 'font-medium';
                 if (description) description.className = 'text-sm text-gray-500';
 
+                // Handle completion info visibility
+                const completionInfo = step.querySelector('.step-completion-info');
+                
                 if (stepIndex < currentStepIndex) {
                     // Completed step
                     dot.classList.add('completed');
                     if (title) title.classList.add('text-gray-900');
                     if (statusText) {
                         statusText.className = 'text-xs mt-1 text-gray-500';
+                    }
+                    if (completionInfo) {
+                        completionInfo.classList.remove('hidden');
                     }
                 } else if (stepIndex === currentStepIndex) {
                     // Current step
@@ -676,12 +672,18 @@
                     if (statusText) {
                         statusText.className = 'text-xs mt-1 text-[#d82128]';
                     }
+                    if (completionInfo) {
+                        completionInfo.classList.add('hidden');
+                    }
                 } else {
                     // Future step
                     if (title) title.classList.add('text-gray-500');
                     if (statusText) {
                         statusText.textContent = '';
                         statusText.className = 'status-text text-xs mt-1';
+                    }
+                    if (completionInfo) {
+                        completionInfo.classList.add('hidden');
                     }
                 }
             });

@@ -701,9 +701,9 @@ Spring 2026</textarea>
                                     <div>
                                         <div class="view-mode">
                                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                <!-- Non-Graduation Column -->
+                                                <!-- Bachelor Column -->
                                                 <div class="bg-gray-50 rounded-lg p-4">
-                                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Non-Graduation
+                                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Master
                                                     </h5>
                                                     <div class="mb-3">
                                                         <p class="text-xs text-gray-500">English Language</p>
@@ -723,9 +723,9 @@ Spring 2026</textarea>
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <!-- Non-Graduation Column -->
+                                                <!-- Bachelor Column -->
                                                 <div class="bg-gray-50 rounded-lg p-4">
-                                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Non-Graduation
+                                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Bachelor
                                                     </h5>
                                                     <div class="mb-3">
                                                         <p class="text-xs text-gray-500">English Language</p>
@@ -749,9 +749,9 @@ Spring 2026</textarea>
                                         </div>
                                         <div class="edit-mode hidden">
                                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                <!-- Graduation Column Edit -->
+                                                <!-- Master Column Edit -->
                                                 <div class="bg-gray-50 rounded-lg p-4">
-                                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Graduation</h5>
+                                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Master</h5>
                                                     <label class="block text-xs text-gray-500 mb-1">English
                                                         Language</label>
                                                     <textarea
@@ -766,9 +766,9 @@ Spring 2026</textarea>
                                                         • Graduate: GPA 3.0+ (B average)
                                                         • Bachelor's degree or equivalent</textarea>
                                                 </div>
-                                                <!-- Non-Graduation Column Edit -->
+                                                <!-- Bachelor Column Edit -->
                                                 <div class="bg-gray-50 rounded-lg p-4">
-                                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Non-Graduation
+                                                    <h5 class="text-sm font-medium text-gray-900 mb-3">Bachelor
                                                     </h5>
                                                     <label class="block text-xs text-gray-500 mb-1">English
                                                         Language</label>
@@ -1505,7 +1505,7 @@ Spring 2026</textarea>
                         englishLanguage: 'TOEFL iBT: 80\nIELTS: 6.5\nDuolingo: 105',
                         academicRequirements: "Bachelor's degree or equivalent\nMinimum GPA: 3.0"
                     },
-                    nonGraduation: {
+                    nonMaster: {
                         englishLanguage: 'TOEFL iBT: 80\nIELTS: 6.5\nDuolingo: 105',
                         academicRequirements: 'High school diploma or equivalent\nMinimum GPA: 2.5'
                     },
@@ -1740,18 +1740,18 @@ Spring 2026</textarea>
                         <div class="space-y-4">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div class="bg-gray-50 rounded-lg p-4">
-                                    <h5 class="text-sm font-medium text-gray-900 mb-2">Graduation</h5>
+                                    <h5 class="text-sm font-medium text-gray-900 mb-2">Master</h5>
                                     <label class="block text-xs text-gray-500 mb-1">English Language</label>
-                                    <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded mb-3" rows="3">${fetchedData.admissions.graduation?.englishLanguage || ''}</textarea>
+                                    <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded mb-3" rows="3">${fetchedData.admissionsBachelor?.englishLanguage || ''}</textarea>
                                     <label class="block text-xs text-gray-500 mb-1">Academic Requirements</label>
-                                    <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="3">${fetchedData.admissions.graduation?.academicRequirements || ''}</textarea>
+                                    <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="3">${fetchedData.admissionsBachelor?.academicRequirements || ''}</textarea>
                                 </div>
                                 <div class="bg-gray-50 rounded-lg p-4">
-                                    <h5 class="text-sm font-medium text-gray-900 mb-2">Non-Graduation</h5>
+                                    <h5 class="text-sm font-medium text-gray-900 mb-2">Bachelor</h5>
                                     <label class="block text-xs text-gray-500 mb-1">English Language</label>
-                                    <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded mb-3" rows="3">${fetchedData.admissions.nonGraduation?.englishLanguage || ''}</textarea>
+                                    <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded mb-3" rows="3">${fetchedData.admissions.nonMaster?.englishLanguage || ''}</textarea>
                                     <label class="block text-xs text-gray-500 mb-1">Academic Requirements</label>
-                                    <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="3">${fetchedData.admissions.nonGraduation?.academicRequirements || ''}</textarea>
+                                    <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="3">${fetchedData.admissions.nonMaster?.academicRequirements || ''}</textarea>
                                 </div>
                             </div>
                             <div>
@@ -1864,7 +1864,7 @@ Spring 2026</textarea>
                         englishLanguage: 'TOEFL iBT: 80\nIELTS: 6.5\nDuolingo: 105',
                         academicRequirements: "Bachelor's degree or equivalent\nMinimum GPA: 3.0"
                     },
-                    nonGraduation: {
+                    nonMaster: {
                         englishLanguage: 'TOEFL iBT: 80\nIELTS: 6.5\nDuolingo: 105',
                         academicRequirements: 'High school diploma or equivalent\nMinimum GPA: 2.5'
                     },
