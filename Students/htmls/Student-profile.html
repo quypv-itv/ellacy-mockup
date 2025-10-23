@@ -16,6 +16,10 @@
             font-family: 'Inter', sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         .gradient-bg {
             background: linear-gradient(to right top, #EDE5D6, #9ED5C5, #ffffff);
         }
@@ -27,19 +31,55 @@
 
         .nav-item {
             cursor: pointer;
-            transition: background-color 0.2s ease-in-out;
+            transition: all 0.3s ease;
         }
 
         .nav-item.active {
             background-color: #ffffff;
-            /* blue-50 */
             border-left-color: #f64e3b;
-            /* blue-500 */
         }
 
         .nav-item.active h4 {
             color: #000000;
-            /* blue-700 */
+            font-weight: 600;
+        }
+
+        /* Smooth scroll offset for sections */
+        .profile-section {
+            scroll-margin-top: 20px;
+        }
+
+        /* Uploaded Documents tab content */
+        #upload-documents-content {
+            display: none;
+        }
+
+        #upload-documents-content.active {
+            display: block;
+        }
+
+        /* Sub-tabs styling */
+        .upload-subtab {
+            background-color: transparent;
+            color: #6b7280;
+            border-bottom: 2px solid transparent;
+        }
+
+        .upload-subtab.active {
+            color: #f64e3b;
+            border-bottom-color: #f64e3b;
+        }
+
+        .upload-subtab:hover {
+            color: #f64e3b;
+        }
+
+        .upload-subtab-content {
+            display: none;
+        }
+
+        .upload-subtab-content.active {
+            display: block;
         }
     </style>
 </head>
@@ -48,7 +88,7 @@
     <!-- Main Content -->
     <div class="min-h-screen">
         <!-- Header with Navigation -->
-        <header class="bg-white shadow-sm">
+        <header class="bg-white shadow-sm sticky top-0 z-50">
             <div class="px-6 py-4">
                 <div class="flex items-center justify-between">
                     <!-- Logo -->
@@ -150,7 +190,7 @@
         <!-- Main Content Area -->
         <main class="flex">
             <!-- Left Sidebar Navigation (300px width) -->
-            <aside class="w-80 bg-white shadow-lg min-h-screen">
+            <aside class="w-80 bg-white shadow-lg sticky top-[73px] h-[calc(100vh-73px)] overflow-y-auto">
                 <!-- Profile Completion Progress -->
                 <div class="p-6 border-b">
                     <div class="flex items-center justify-between mb-4">
@@ -188,7 +228,7 @@
                             <div class="flex-1">
                                 <h4 class="font-medium text-gray-600 text-sm">Education Background</h4>
                                 <div class="flex flex-wrap gap-1 mt-1">
-                                    <span class="px-1.5 py-0.5 bg-red-500 text-white text-xs rounded">Missing</span>
+                                    <span class="px-1.5 py-0.5 bg-orange-500 text-white text-xs rounded">Optional</span>
                                 </div>
                             </div>
                         </div>
@@ -236,6 +276,22 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- G. Notes by Agent/Advisor -->
+                        <div class="flex items-start py-3 border-l-4 border-transparent pl-4 nav-item"
+                            data-section="notes-content">
+                            <div class="w-6 h-6 bg-gray-400 rounded-full flex items-center justify-center mr-3 mt-0.5 relative">
+                                <i data-lucide="sticky-note" class="w-3 h-3 text-white"></i>
+                                <!-- New Note Indicator -->
+                                <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white animate-pulse"></span>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-medium text-gray-600 text-sm">Notes by Agent/Advisor</h4>
+                                <div class="flex flex-wrap gap-1 mt-1">
+                                    <span class="px-1.5 py-0.5 bg-red-500 text-white text-xs rounded animate-pulse">New</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </nav>
             </aside>
@@ -264,8 +320,11 @@
                 <!-- Form Sections -->
                 <div class="space-y-6">
 
+                    <!-- Continuous Scrollable Content for First 4 Tabs -->
+                    <div id="continuous-content" class="space-y-6">
+
                     <!-- Section A: Student Profile -->
-                    <div id="student-profile-content" class="space-y-6 content-section">
+                    <div id="student-profile-content" class="space-y-6 profile-section">
 
                         <!-- Section B: Agent -->
                         <div class="bg-white rounded-3xl shadow-md">
@@ -593,7 +652,7 @@
 
                     <!-- Section D: Education Background -->
                     <div id="education-background-content"
-                        class="bg-white rounded-3xl shadow-md content-section hidden">
+                        class="bg-white rounded-3xl shadow-md profile-section">
                         <div class="p-6 border-b">
                             <div class="flex items-center">
                                 <i data-lucide="graduation-cap" class="w-5 h-5 text-gray-600 mr-3"></i>
@@ -775,7 +834,7 @@
                     </div>
 
                     <!-- Section F: Family Background -->
-                    <div id="family-background-content" class="bg-white rounded-3xl shadow-md content-section hidden">
+                    <div id="family-background-content" class="bg-white rounded-3xl shadow-md profile-section">
                         <div class="p-6 border-b">
                             <div class="flex items-center">
                                 <i data-lucide="users" class="w-5 h-5 text-gray-600 mr-3"></i>
@@ -992,9 +1051,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Section E: Visa Background -->
-                <div id="visa-background-content" class="bg-white rounded-3xl shadow-md content-section hidden">
+                <!-- Section C: Visa Background -->
+                    <div id="visa-background-content" class="bg-white rounded-3xl shadow-md profile-section">
                     <div class="p-6 border-b flex justify-between items-center">
                         <div class="flex items-center">
                             <i data-lucide="passport" class="w-5 h-5 text-gray-600 mr-3"></i>
@@ -1288,21 +1346,28 @@
                             </div>
                         </div>
                     </div>
+                    </div>
+                <!-- End of Visa Background -->
                 </div>
-
-
-
-
-
-                <!-- Section H: Upload Documents -->
-                <div id="upload-documents-content" class="bg-white rounded-3xl shadow-md content-section hidden">
-                    <div class="p-6 border-b">
-                        <div class="flex items-center">
-                            <i data-lucide="file" class="w-5 h-5 text-gray-600 mr-3"></i>
-                            <h3 class="text-lg font-semibold text-black">Upload Documents</h3>
+                <!-- End of Continuous Content -->
+                </div>
+                <!-- Section H: Upload Documents (Separate Tab) -->
+                <div id="upload-documents-content" class="bg-white rounded-3xl shadow-md">
+                    
+                    <!-- Sub-tabs Navigation -->
+                    <div class="border-b">
+                        <div class="flex space-x-8 px-6">
+                            <button class="upload-subtab active py-3 text-sm font-medium transition-colors" data-subtab="general-documents">
+                                Admisstion Documents
+                            </button>
+                            <button class="upload-subtab py-3 text-sm font-medium transition-colors" data-subtab="financial-documents">
+                                Financial Documents (Mockup note: Role agent can not view this tab)
+                            </button>
                         </div>
                     </div>
-                    <div class="p-6 space-y-4">
+                    
+                    <!-- General Documents Content -->
+                    <div id="general-documents" class="upload-subtab-content active p-6 space-y-4">
                         <!-- CV/Resume -->
                         <div class="flex items-center justify-between p-4 border rounded-xl">
                             <div class="flex items-center">
@@ -1431,7 +1496,7 @@
                             <div class="flex items-center">
                                 <i data-lucide="file-text" class="w-5 h-5 text-gray-400 mr-3"></i>
                                 <div>
-                                    <p class="font-medium">Financial Documents <span class="text-red-600">*</span></p>
+                                    <p class="font-medium">Financial Documents<span class="text-red-600">*</span></p>
                                     <p class="text-sm text-gray-500">Bank statements or sponsorship letters</p>
                                 </div>
                             </div>
@@ -1507,17 +1572,132 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Financial Documents Content -->
+                    <div id="financial-documents" class="upload-subtab-content p-6 space-y-4">
+                        <!-- Bank Statement -->
+                        <div class="flex items-center justify-between p-4 border rounded-xl">
+                            <div class="flex items-center">
+                                <i data-lucide="file-text" class="w-5 h-5 text-gray-400 mr-3"></i>
+                                <div>
+                                    <p class="font-medium">Bank Statement <span class="text-red-600">*</span></p>
+                                    <p class="text-sm text-gray-500">Last 6 months bank statements</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-gray-500 text-xs">Not Uploaded</span>
+                                <button class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-gray-100"
+                                    title="Upload file">
+                                    <i data-lucide="upload" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Sponsorship Letter -->
+                        <div class="flex items-center justify-between p-4 border rounded-xl mt-3">
+                            <div class="flex items-center">
+                                <i data-lucide="file-text" class="w-5 h-5 text-gray-400 mr-3"></i>
+                                <div>
+                                    <p class="font-medium">Sponsorship Letter</p>
+                                    <p class="text-sm text-gray-500">If applicable</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-gray-500 text-xs">Not Uploaded</span>
+                                <button class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-gray-100"
+                                    title="Upload file">
+                                    <i data-lucide="upload" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Proof of Funds -->
+                        <div class="flex items-center justify-between p-4 border rounded-xl mt-3">
+                            <div class="flex items-center">
+                                <i data-lucide="file-text" class="w-5 h-5 text-gray-400 mr-3"></i>
+                                <div>
+                                    <p class="font-medium">Proof of Funds <span class="text-red-600">*</span></p>
+                                    <p class="text-sm text-gray-500">Certificate of deposit or investment statements</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-gray-500 text-xs">Not Uploaded</span>
+                                <button class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-gray-100"
+                                    title="Upload file">
+                                    <i data-lucide="upload" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Tax Returns -->
+                        <div class="flex items-center justify-between p-4 border rounded-xl mt-3">
+                            <div class="flex items-center">
+                                <i data-lucide="file-text" class="w-5 h-5 text-gray-400 mr-3"></i>
+                                <div>
+                                    <p class="font-medium">Tax Returns</p>
+                                    <p class="text-sm text-gray-500">Last 2 years (if applicable)</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-gray-500 text-xs">Not Uploaded</span>
+                                <button class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-gray-100"
+                                    title="Upload file">
+                                    <i data-lucide="upload" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Affidavit of Support -->
+                        <div class="flex items-center justify-between p-4 border rounded-xl mt-3">
+                            <div class="flex items-center">
+                                <i data-lucide="file-text" class="w-5 h-5 text-gray-400 mr-3"></i>
+                                <div>
+                                    <p class="font-medium">Affidavit of Support (I-134)</p>
+                                    <p class="text-sm text-gray-500">If sponsored by someone in the U.S.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-gray-500 text-xs">Not Uploaded</span>
+                                <button class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-gray-100"
+                                    title="Upload file">
+                                    <i data-lucide="upload" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Additional Financial Documents Upload -->
+                        <div class="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center">
+                            <div class="flex flex-col items-center justify-center space-y-3">
+                                <div class="p-3 bg-gray-100 rounded-full">
+                                    <i data-lucide="upload" class="w-6 h-6 text-gray-500"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-700">Upload Additional Financial Documents</p>
+                                    <p class="text-xs text-gray-500 mt-1">PDF, DOCX, JPG, PNG (Max. 10MB each)</p>
+                                </div>
+                                <label
+                                    class="cursor-pointer mt-2 px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-lg hover:bg-red-700 transition-colors">
+                                    Choose Files
+                                    <input type="file" class="hidden" multiple>
+                                </label>
+                            </div>
+                            <div class="mt-4 text-xs text-gray-500">
+                                You can upload property deeds, business ownership documents, or other financial proof.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Final Save Button -->
+                    <div class="flex justify-center mt-6">
+                        <button class="px-8 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium shadow-md">
+                            <i data-lucide="save" class="w-4 h-4 inline-block mr-2"></i>
+                            Save Documents
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Final Save Button -->
-                <div class="flex justify-center mt-8">
-                    <button class="px-8 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium">
-                        Save Profile
-                    </button>
-                </div>
-
-                <!-- Notes by Agent / Advisor -->
-                <div class="bg-white rounded-3xl shadow-md mt-6">
+                <!-- Section I: Notes by Agent / Advisor (Separate Tab) -->
+                <div id="notes-content" class="bg-white rounded-3xl shadow-md">
                     <div class="p-6 border-b">
                         <div class="flex items-center">
                             <i data-lucide="sticky-note" class="w-5 h-5 text-gray-600 mr-3"></i>
@@ -1777,20 +1957,22 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             const navItems = document.querySelectorAll('.nav-item');
-            const sections = document.querySelectorAll('.content-section');
+            const continuousContent = document.getElementById('continuous-content');
+            const uploadDocumentsContent = document.getElementById('upload-documents-content');
+            const notesContent = document.getElementById('notes-content');
+            
+            // Track current view mode
+            let isUploadDocumentsView = false;
+            
+            // Sections that use smooth scrolling
+            const scrollableSections = [
+                'student-profile-content',
+                'education-background-content',
+                'family-background-content',
+                'visa-background-content'
+            ];
 
-            function showSection(sectionId) {
-                // Hide all sections
-                sections.forEach(section => {
-                    section.classList.add('hidden');
-                });
-
-                // Show the target section
-                const targetSection = document.getElementById(sectionId);
-                if (targetSection) {
-                    targetSection.classList.remove('hidden');
-                }
-
+            function handleNavigation(sectionId) {
                 // Update active state for nav items
                 navItems.forEach(item => {
                     if (item.dataset.section === sectionId) {
@@ -1799,20 +1981,119 @@
                         item.classList.remove('active');
                     }
                 });
+
+                // Check if it's a separate tab (upload documents or notes)
+                if (sectionId === 'upload-documents-content') {
+                    isUploadDocumentsView = true;
+                    // Hide continuous content and notes, show upload documents
+                    continuousContent.style.display = 'none';
+                    notesContent.style.display = 'none';
+                    uploadDocumentsContent.classList.add('active');
+                    uploadDocumentsContent.style.display = 'block';
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else if (sectionId === 'notes-content') {
+                    isUploadDocumentsView = true;
+                    // Hide continuous content and upload documents, show notes
+                    continuousContent.style.display = 'none';
+                    uploadDocumentsContent.style.display = 'none';
+                    notesContent.classList.add('active');
+                    notesContent.style.display = 'block';
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    isUploadDocumentsView = false;
+                    // Show continuous content, hide upload documents and notes
+                    continuousContent.style.display = 'block';
+                    uploadDocumentsContent.classList.remove('active');
+                    uploadDocumentsContent.style.display = 'none';
+                    notesContent.classList.remove('active');
+                    notesContent.style.display = 'none';
+                    
+                    // Smooth scroll to the target section
+                    const targetSection = document.getElementById(sectionId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                    }
+                }
             }
 
             // Add click listeners to nav items
             navItems.forEach(item => {
                 item.addEventListener('click', function () {
                     const sectionId = this.dataset.section;
-                    showSection(sectionId);
+                    handleNavigation(sectionId);
                 });
             });
 
-            // Show the first section by default
+            // Scroll spy - update active nav based on scroll position
+            const observerOptions = {
+                root: null,
+                rootMargin: '-100px 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                // Only update active state if NOT in upload documents view
+                if (!isUploadDocumentsView) {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const sectionId = entry.target.id;
+                            navItems.forEach(item => {
+                                if (item.dataset.section === sectionId) {
+                                    item.classList.add('active');
+                                } else {
+                                    item.classList.remove('active');
+                                }
+                            });
+                        }
+                    });
+                }
+            }, observerOptions);
+
+            // Observe all scrollable sections
+            scrollableSections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    observer.observe(section);
+                }
+            });
+
+            // Show continuous content by default
+            continuousContent.style.display = 'block';
+            uploadDocumentsContent.style.display = 'none';
+            notesContent.style.display = 'none';
+            
+            // Set first nav item as active
             if (navItems.length > 0) {
-                showSection(navItems[0].dataset.section);
+                navItems[0].classList.add('active');
             }
+
+            // Handle sub-tabs for Upload Documents
+            const uploadSubtabs = document.querySelectorAll('.upload-subtab');
+            const uploadSubtabContents = document.querySelectorAll('.upload-subtab-content');
+
+            uploadSubtabs.forEach(subtab => {
+                subtab.addEventListener('click', function() {
+                    const targetSubtab = this.dataset.subtab;
+                    
+                    // Update active state for sub-tabs
+                    uploadSubtabs.forEach(st => st.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show/hide sub-tab content
+                    uploadSubtabContents.forEach(content => {
+                        if (content.id === targetSubtab) {
+                            content.classList.add('active');
+                        } else {
+                            content.classList.remove('active');
+                        }
+                    });
+                });
+            });
         });
     </script>
     <script>

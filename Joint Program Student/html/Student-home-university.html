@@ -277,14 +277,6 @@
                     <!-- Success Stories -->
                     <section class="py-12 bg-gray-50">
                         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div class="flex items-center justify-between mb-6">
-                                <p class="text-lg text-gray-600">Real journeys from Ellacy transfer students</p>
-                                <div class="hidden md:flex gap-2">
-                                    <button id="storiesPrev" class="p-2 rounded-full bg-white border hover:bg-gray-50"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
-                                    <button id="storiesNext" class="p-2 rounded-full bg-white border hover:bg-gray-50"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
-                                </div>
-                            </div>
-
                             <div id="stories-container" class="relative overflow-hidden">
                                 <div id="stories-track" class="flex gap-6 will-change-transform">
                                     <!-- Story cards -->
@@ -611,75 +603,58 @@
                             show(0);
                         }
 
-                        // Success Stories horizontal auto-scroll slider
+                        // Success Stories continuous smooth auto-scroll slider
                         function initStoriesSlider() {
                             const container = document.getElementById('stories-container');
                             const track = document.getElementById('stories-track');
-                            const prev = document.getElementById('storiesPrev');
-                            const next = document.getElementById('storiesNext');
                             if (!container || !track) return;
 
-                            const GAP_PX = 24; // Tailwind gap-6
-                            let offset = 0;
-
-                            function ensureScrollable() {
-                                // If all cards fit in the viewport, duplicate once to enable sliding
-                                if (track.scrollWidth <= container.clientWidth) {
-                                    const items = Array.from(track.children);
-                                    // Append a clone of each item to extend the track
-                                    items.forEach((node) => track.appendChild(node.cloneNode(true)));
-                                }
-                            }
-
-                            function cardWidth() {
-                                const first = track.firstElementChild;
-                                return first ? first.getBoundingClientRect().width : 320;
-                            }
-
-                            function maxScrollPx() {
-                                return Math.max(0, track.scrollWidth - container.clientWidth);
-                            }
-
-                            function update() {
-                                track.style.transform = `translateX(${offset}px)`;
-                            }
-
-                            function step(dir = 1) {
-                                const w = cardWidth();
-                                const move = w + GAP_PX;
-                                offset -= dir * move;
-                                const maxScroll = maxScrollPx();
-                                if (-offset > maxScroll) {
-                                    // loop back to start
-                                    offset = 0;
-                                } else if (offset > 0) {
-                                    // loop to end
-                                    offset = -maxScroll;
-                                }
-                                update();
-                            }
-
-                            let timer = setInterval(() => step(1), 3000);
-                            function restart() {
-                                clearInterval(timer);
-                                timer = setInterval(() => step(1), 3000);
-                            }
-
-                            container.addEventListener('mouseenter', () => clearInterval(timer));
-                            container.addEventListener('mouseleave', restart);
-                            window.addEventListener('resize', () => {
-                                // Re-clamp offset on resize
-                                const maxScroll = maxScrollPx();
-                                if (-offset > maxScroll) offset = -maxScroll;
-                                ensureScrollable();
-                                update();
+                            // Clone all cards to create seamless loop
+                            const originalCards = Array.from(track.children);
+                            originalCards.forEach((card) => {
+                                const clone = card.cloneNode(true);
+                                track.appendChild(clone);
                             });
 
-                            if (prev) prev.addEventListener('click', () => { step(-1); restart(); });
-                            if (next) next.addEventListener('click', () => { step(1); restart(); });
+                            let offset = 0;
+                            let animationId = null;
+                            let isPaused = false;
+                            const SPEED = 0.5; // pixels per frame (lower = slower)
 
-                            ensureScrollable();
-                            update();
+                            function animate() {
+                                if (!isPaused) {
+                                    offset -= SPEED;
+                                    
+                                    // Get the width of original content (half of total since we cloned)
+                                    const halfWidth = track.scrollWidth / 2;
+                                    
+                                    // Reset to start when we've scrolled through the original cards
+                                    if (Math.abs(offset) >= halfWidth) {
+                                        offset = 0;
+                                    }
+                                    
+                                    track.style.transform = `translateX(${offset}px)`;
+                                }
+                                animationId = requestAnimationFrame(animate);
+                            }
+
+                            // Start animation
+                            animate();
+
+                            // Pause on hover
+                            container.addEventListener('mouseenter', () => {
+                                isPaused = true;
+                            });
+
+                            container.addEventListener('mouseleave', () => {
+                                isPaused = false;
+                            });
+
+                            // Handle window resize
+                            window.addEventListener('resize', () => {
+                                offset = 0;
+                                track.style.transform = `translateX(0px)`;
+                            });
                         }
 
                         // Add CSS for carousel transitions
