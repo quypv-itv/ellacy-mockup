@@ -134,11 +134,21 @@
                             Filters
                         </button>
                     </div>
-                    <button
-                        class="inline-flex items-center px-4 py-2 bg-red-400 text-white rounded-lg hover:bg-red-700 transition-colors whitespace-nowrap">
-                        <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
-                        New Application
-                    </button>
+                    <div class="flex items-center space-x-3">
+                        <div class="flex items-center gap-2">
+                            <button data-view="table" class="view-toggle px-3 py-2 text-sm font-medium rounded-lg bg-red-600 text-white">
+                                <i data-lucide="list" class="w-4 h-4 inline-block mr-1"></i> Table
+                            </button>
+                            <button data-view="board" class="view-toggle px-3 py-2 text-sm font-medium rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200">
+                                <i data-lucide="columns" class="w-4 h-4 inline-block mr-1"></i> Board
+                            </button>
+                        </div>
+                        <button
+                            class="inline-flex items-center px-4 py-2 bg-red-400 text-white rounded-lg hover:bg-red-700 transition-colors whitespace-nowrap">
+                            <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                            New Application
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Filter Drawer Backdrop -->
@@ -257,7 +267,7 @@
                 </div>
 
                 <!-- Application Table -->
-                <div class="px-6 py-4">
+                <div id="table-view" class="px-6 py-4">
                     <div class="bg-white rounded-lg shadow overflow-x-auto">
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
@@ -552,6 +562,140 @@
                                 disabled>
                                 <i data-lucide="chevron-right" class="w-4 h-4"></i>
                             </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kanban Board View -->
+                <div id="board-view" class="hidden mt-6 px-6">
+                    <div class="overflow-x-auto">
+                        <div class="flex space-x-4 min-w-max pb-4">
+                            <!-- Step 1: Initial Advising -->
+                            <div class="flex-shrink-0 w-72">
+                                <div class="bg-white rounded-2xl shadow-sm">
+                                    <div class="p-4 border-b border-gray-200">
+                                        <div class="flex items-center justify-between">
+                                            <h3 class="font-semibold text-gray-900">Initial Advising</h3>
+                                            <span id="count-initial_advising" class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">1</span>
+                                        </div>
+                                    </div>
+                                    <div id="col-initial_advising" class="p-4 space-y-3 min-h-96 dropzone" data-status="initial_advising">
+                                        <!-- Example Card -->
+                                        <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-move" draggable="true" data-app-id="app-1" data-status="initial_advising">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <a href="CRM-application-details.html" target="_blank" rel="noopener noreferrer" class="font-medium text-sm text-red-600 hover:text-red-800">John Smith</a>
+                                                <span class="status-badge text-xs px-2 py-1 rounded-full bg-red-100 text-red-800">Initial Advising</span>
+                                            </div>
+                                            <div class="text-xs text-gray-500 mb-1">Guaranteed Scholarship Program – Tiffin University</div>
+                                            <div class="text-xs text-gray-400 mb-2">Agent: Sarah Wilson</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Application In Progress -->
+                            <div class="flex-shrink-0 w-72">
+                                <div class="bg-white rounded-2xl shadow-sm">
+                                    <div class="p-4 border-b border-gray-200">
+                                        <div class="flex items-center justify-between">
+                                            <h3 class="font-semibold text-gray-900">Application In Progress</h3>
+                                            <span id="count-application_in_progress" class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                        </div>
+                                    </div>
+                                    <div id="col-application_in_progress" class="p-4 space-y-3 min-h-96 dropzone" data-status="application_in_progress"></div>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Submitted to School -->
+                            <div class="flex-shrink-0 w-72">
+                                <div class="bg-white rounded-2xl shadow-sm">
+                                    <div class="p-4 border-b border-gray-200">
+                                        <div class="flex items-center justify-between">
+                                            <h3 class="font-semibold text-gray-900">Submitted to School</h3>
+                                            <span id="count-submitted_to_school" class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                        </div>
+                                    </div>
+                                    <div id="col-submitted_to_school" class="p-4 space-y-3 min-h-96 dropzone" data-status="submitted_to_school"></div>
+                                </div>
+                            </div>
+
+                            <!-- Step 4: School Response -->
+                            <div class="flex-shrink-0 w-72">
+                                <div class="bg-white rounded-2xl shadow-sm">
+                                    <div class="p-4 border-b border-gray-200">
+                                        <div class="flex items-center justify-between">
+                                            <h3 class="font-semibold text-gray-900">School Response</h3>
+                                            <span id="count-school_response" class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                        </div>
+                                    </div>
+                                    <div id="col-school_response" class="p-4 space-y-3 min-h-96 dropzone" data-status="school_response"></div>
+                                </div>
+                            </div>
+
+                            <!-- Step 5: Offer Letter Issued -->
+                            <div class="flex-shrink-0 w-72">
+                                <div class="bg-white rounded-2xl shadow-sm">
+                                    <div class="p-4 border-b border-gray-200">
+                                        <div class="flex items-center justify-between">
+                                            <h3 class="font-semibold text-gray-900">Offer Letter Issued</h3>
+                                            <span id="count-offer_letter_issued" class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                        </div>
+                                    </div>
+                                    <div id="col-offer_letter_issued" class="p-4 space-y-3 min-h-96 dropzone" data-status="offer_letter_issued"></div>
+                                </div>
+                            </div>
+
+                            <!-- Step 6: Committed to School -->
+                            <div class="flex-shrink-0 w-72">
+                                <div class="bg-white rounded-2xl shadow-sm">
+                                    <div class="p-4 border-b border-gray-200">
+                                        <div class="flex items-center justify-between">
+                                            <h3 class="font-semibold text-gray-900">Committed to School</h3>
+                                            <span id="count-committed_to_school" class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                        </div>
+                                    </div>
+                                    <div id="col-committed_to_school" class="p-4 space-y-3 min-h-96 dropzone" data-status="committed_to_school"></div>
+                                </div>
+                            </div>
+
+                            <!-- Step 7: Visa Application -->
+                            <div class="flex-shrink-0 w-72">
+                                <div class="bg-white rounded-2xl shadow-sm">
+                                    <div class="p-4 border-b border-gray-200">
+                                        <div class="flex items-center justify-between">
+                                            <h3 class="font-semibold text-gray-900">Visa Application</h3>
+                                            <span id="count-visa_application" class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                        </div>
+                                    </div>
+                                    <div id="col-visa_application" class="p-4 space-y-3 min-h-96 dropzone" data-status="visa_application"></div>
+                                </div>
+                            </div>
+
+                            <!-- Step 8: Pre-Departure -->
+                            <div class="flex-shrink-0 w-72">
+                                <div class="bg-white rounded-2xl shadow-sm">
+                                    <div class="p-4 border-b border-gray-200">
+                                        <div class="flex items-center justify-between">
+                                            <h3 class="font-semibold text-gray-900">Pre-Departure</h3>
+                                            <span id="count-pre_departure" class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                        </div>
+                                    </div>
+                                    <div id="col-pre_departure" class="p-4 space-y-3 min-h-96 dropzone" data-status="pre_departure"></div>
+                                </div>
+                            </div>
+
+                            <!-- Step 9: Arrival -->
+                            <div class="flex-shrink-0 w-72">
+                                <div class="bg-white rounded-2xl shadow-sm">
+                                    <div class="p-4 border-b border-gray-200">
+                                        <div class="flex items-center justify-between">
+                                            <h3 class="font-semibold text-gray-900">Arrival</h3>
+                                            <span id="count-arrival" class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">0</span>
+                                        </div>
+                                    </div>
+                                    <div id="col-arrival" class="p-4 space-y-3 min-h-96 dropzone" data-status="arrival"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1415,6 +1559,170 @@
             // Reinitialize lucide icons
             lucide.createIcons();
         }
+
+        // View Toggle for Table/Board
+        (function() {
+            const table = document.getElementById('table-view');
+            const board = document.getElementById('board-view');
+            const buttons = document.querySelectorAll('.view-toggle');
+
+            function setActive(isBoard) {
+                if (!table || !board) return;
+                if (isBoard) {
+                    table.classList.add('hidden');
+                    board.classList.remove('hidden');
+                } else {
+                    table.classList.remove('hidden');
+                    board.classList.add('hidden');
+                }
+                // update button styles
+                buttons.forEach(btn => {
+                    const wantBoard = btn.getAttribute('data-view') === 'board';
+                    btn.classList.toggle('bg-red-600', wantBoard === isBoard);
+                    btn.classList.toggle('text-white', wantBoard === isBoard);
+                    btn.classList.toggle('bg-gray-100', wantBoard !== isBoard);
+                    btn.classList.toggle('text-gray-600', wantBoard !== isBoard);
+                });
+                localStorage.setItem('viewMode', isBoard ? 'board' : 'table');
+            }
+
+            // Set table view as default on page load
+            document.addEventListener('DOMContentLoaded', function() {
+                setActive(false); // This will show the table view by default
+                
+                // Bind click events for view toggle buttons
+                buttons.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const view = btn.getAttribute('data-view');
+                        setActive(view === 'board');
+                    });
+                });
+            });
+        })();
+
+        // Drag & Drop for Kanban Board
+        (function initKanbanDnD() {
+            const boardRoot = document.getElementById('board-view');
+            if (!boardRoot) return;
+
+            const dropzones = boardRoot.querySelectorAll('.dropzone');
+            const statusOrder = [
+                'initial_advising',
+                'application_in_progress',
+                'submitted_to_school',
+                'school_response',
+                'offer_letter_issued',
+                'committed_to_school',
+                'visa_application',
+                'pre_departure',
+                'arrival'
+            ];
+
+            function updateCounts() {
+                statusOrder.forEach(status => {
+                    const col = document.getElementById(`col-${status}`);
+                    const countSpan = document.getElementById(`count-${status}`);
+                    if (col && countSpan) {
+                        const count = col.querySelectorAll('[draggable="true"]').length;
+                        countSpan.textContent = count;
+                    }
+                });
+            }
+
+            function updateBadgeAppearance(card, status) {
+                const badge = card.querySelector('.status-badge');
+                if (!badge) return;
+                // reset
+                badge.className = 'status-badge text-xs px-2 py-1 rounded-full';
+                switch (status) {
+                    case 'initial_advising':
+                        badge.textContent = 'Initial Advising';
+                        badge.classList.add('bg-red-100','text-red-800');
+                        break;
+                    case 'application_in_progress':
+                        badge.textContent = 'Application In Progress';
+                        badge.classList.add('bg-yellow-100','text-yellow-800');
+                        break;
+                    case 'submitted_to_school':
+                        badge.textContent = 'Submitted to School';
+                        badge.classList.add('bg-blue-100','text-blue-800');
+                        break;
+                    case 'school_response':
+                        badge.textContent = 'School Response';
+                        badge.classList.add('bg-amber-100','text-amber-800');
+                        break;
+                    case 'offer_letter_issued':
+                        badge.textContent = 'Offer Letter Issued';
+                        badge.classList.add('bg-purple-100','text-purple-800');
+                        break;
+                    case 'committed_to_school':
+                        badge.textContent = 'Committed to School';
+                        badge.classList.add('bg-indigo-100','text-indigo-800');
+                        break;
+                    case 'visa_application':
+                        badge.textContent = 'Visa Application';
+                        badge.classList.add('bg-pink-100','text-pink-800');
+                        break;
+                    case 'pre_departure':
+                        badge.textContent = 'Pre-Departure';
+                        badge.classList.add('bg-teal-100','text-teal-800');
+                        break;
+                    case 'arrival':
+                        badge.textContent = 'Arrival';
+                        badge.classList.add('bg-green-100','text-green-800');
+                        break;
+                }
+            }
+
+            let draggedCard = null;
+
+            // Drag start
+            boardRoot.addEventListener('dragstart', (e) => {
+                if (e.target.hasAttribute('draggable')) {
+                    draggedCard = e.target;
+                    e.target.style.opacity = '0.4';
+                }
+            });
+
+            // Drag end
+            boardRoot.addEventListener('dragend', (e) => {
+                if (e.target.hasAttribute('draggable')) {
+                    e.target.style.opacity = '1';
+                }
+            });
+
+            // Drag over
+            dropzones.forEach(zone => {
+                zone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    zone.classList.add('bg-gray-100');
+                });
+
+                zone.addEventListener('dragleave', () => {
+                    zone.classList.remove('bg-gray-100');
+                });
+
+                zone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    zone.classList.remove('bg-gray-100');
+                    
+                    if (draggedCard) {
+                        const newStatus = zone.getAttribute('data-status');
+                        draggedCard.setAttribute('data-status', newStatus);
+                        zone.appendChild(draggedCard);
+                        updateBadgeAppearance(draggedCard, newStatus);
+                        updateCounts();
+                        
+                        // Here you would typically make an API call to update the status
+                        console.log(`Card moved to: ${newStatus}`);
+                    }
+                });
+            });
+
+            // Initial count update
+            updateCounts();
+        })();
     </script>
 </body>
 

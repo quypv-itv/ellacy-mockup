@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Campaign Detail - APPLYLEAD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .tab-active {
+            color: #d82128;
+            border-bottom: 2px solid #d82128;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg overflow-y-auto">
+            <div class="p-6">
+                <img src="../../ApplyLead_logo.png" alt="ApplyLead" class="h-9 mb-2">
+                <span class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">Admin</span>
+            </div>
+            <nav class="mt-2">
+                <a href="CRM-dashboard.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>Dashboard
+                </a>
+                <a href="CRM-applications.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>Applications
+                </a>
+                <a href="CRM-agent.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="users" class="w-5 h-5 mr-3"></i>Agents
+                </a>
+                <a href="CRM-scholarships.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="graduation-cap" class="w-5 h-5 mr-3"></i>Scholarships
+                </a>
+                <a href="CRM-institutions.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="building" class="w-5 h-5 mr-3"></i>Institutions
+                </a>
+                <a href="CRM-students.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="user" class="w-5 h-5 mr-3"></i>Students
+                </a>
+                <a href="CRM-payment.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="credit-card" class="w-5 h-5 mr-3"></i>Payments
+                </a>
+                <a href="CRM-tasks.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="check-circle" class="w-5 h-5 mr-3"></i>Tasks
+                </a>
+                <a href="CRM-Campaigns.html" class="flex items-center px-6 py-3 text-white"
+                    style="background-color: #d82128;">
+                    <i data-lucide="megaphone" class="w-5 h-5 mr-3"></i>Campaigns
+                </a>
+                <a href="CRM-report.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="bar-chart" class="w-5 h-5 mr-3"></i>Reports
+                </a>
+                <a href="CRM-messages.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="message-circle" class="w-5 h-5 mr-3"></i>Messages
+                </a>
+                <a href="CRM-user-admin.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="shield" class="w-5 h-5 mr-3"></i>User Admin
+                </a>
+                <a href="CRM-Setting.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="settings" class="w-5 h-5 mr-3"></i>Settings
+                </a>
+            </nav>
+            <div class="mt-auto px-6 py-4 border-t border-gray-200">
+                <p class="text-sm text-gray-600 text-center">Designed & developed by Innotech Viet Nam</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 ml-64 overflow-y-auto">
+            <!-- Header -->
+            <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4 sticky top-0 z-10">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <a href="CRM-Campaigns.html" class="text-gray-600 hover:text-gray-900">
+                            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                        </a>
+                        <div>
+                            <h1 class="text-2xl font-bold text-gray-900">Summer 2025 Scholarship Campaign</h1>
+                            <div class="flex items-center space-x-3 mt-1">
+                                <span
+                                    class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Active</span>
+                                <span class="text-sm text-gray-500">Goal: Lead Generation</span>
+                                <span class="text-sm text-gray-500">•</span>
+                                <span class="text-sm text-gray-500">Jan 15 - Mar 31, 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Tab Navigation -->
+            <div class="bg-white border-b border-gray-200 px-6">
+                <nav class="flex space-x-8">
+                    <button onclick="switchTab('overview')"
+                        class="tab-button tab-active py-4 px-1 text-sm font-medium border-b-2 transition-colors">
+                        Overview
+                    </button>
+                    <button onclick="switchTab('analytics')"
+                        class="tab-button py-4 px-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-700 transition-colors">
+                        Analytics
+                    </button>
+                    <button onclick="switchTab('links')"
+                        class="tab-button py-4 px-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-700 transition-colors">
+                        Links & UTM
+                    </button>
+                    <button onclick="switchTab('leads')"
+                        class="tab-button py-4 px-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-700 transition-colors">
+                        Leads
+                    </button>
+                    <button onclick="switchTab('settings')"
+                        class="tab-button py-4 px-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-700 transition-colors">
+                        Settings
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Tab Content -->
+            <main class="p-6">
+                <!-- OVERVIEW TAB -->
+                <div id="overview-tab" class="tab-content">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                        <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm font-medium text-gray-600">Total Leads</span>
+                                <i data-lucide="users" class="w-5 h-5 text-red-600"></i>
+                            </div>
+                            <div class="text-3xl font-bold text-gray-900">1,247</div>
+                            <div class="flex items-center mt-2">
+                                <i data-lucide="trending-up" class="w-4 h-4 text-green-600 mr-1"></i>
+                                <span class="text-sm text-green-600 font-medium">+12.5%</span>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm font-medium text-gray-600">Conversion Rate</span>
+                                <i data-lucide="target" class="w-5 h-5 text-red-600"></i>
+                            </div>
+                            <div class="text-3xl font-bold text-gray-900">8.3%</div>
+                            <div class="flex items-center mt-2">
+                                <i data-lucide="trending-up" class="w-4 h-4 text-green-600 mr-1"></i>
+                                <span class="text-sm text-green-600 font-medium">+2.1%</span>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm font-medium text-gray-600">Student Signups</span>
+                                <i data-lucide="user-plus" class="w-5 h-5 text-red-600"></i>
+                            </div>
+                            <div class="text-3xl font-bold text-gray-900">89</div>
+                            <div class="text-sm text-gray-600 mt-2">Last 30 days</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Lead Sources</h3>
+                            <canvas id="leadSourcesChart" style="max-height: 300px;"></canvas>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3"></div>
+                                    <div class="flex-1">
+                                        <p class="text-sm text-gray-900 font-medium">New lead from Facebook Ads</p>
+                                        <p class="text-xs text-gray-500">Nguyen Van A • 5 minutes ago</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3"></div>
+                                    <div class="flex-1">
+                                        <p class="text-sm text-gray-900 font-medium">Lead qualified</p>
+                                        <p class="text-xs text-gray-500">Tran Thi B • 1 hour ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ANALYTICS TAB -->
+                <div id="analytics-tab" class="tab-content hidden">
+                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200 mb-6">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-gray-900">Traffic Overview</h3>
+                            <div class="flex items-center space-x-2">
+                                <button class="px-3 py-1 text-sm font-medium text-white rounded-lg"
+                                    style="background-color: #d82128;">7 Days</button>
+                                <button
+                                    class="px-3 py-1 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">30
+                                    Days</button>
+                            </div>
+                        </div>
+                        <canvas id="trafficChart" style="max-height: 300px;"></canvas>
+                    </div>
+
+                    <!-- Row 1: Click Sources + Performance Metrics (mirrors modal layout) -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Click Sources -->
+                        <div class="bg-white border rounded-lg p-6">
+                            <h4 class="text-lg font-medium text-gray-900 mb-4">Click Sources</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-gray-600">Facebook Ads</span>
+                                    <div class="flex items-center">
+                                        <div class="w-24 bg-gray-200 rounded-full h-2 mr-3">
+                                            <div class="bg-blue-600 h-2 rounded-full" style="width: 45%"></div>
+                                        </div>
+                                        <span class="text-sm font-medium">561 (45%)</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-gray-600">QR Code Scans</span>
+                                    <div class="flex items-center">
+                                        <div class="w-24 bg-gray-200 rounded-full h-2 mr-3">
+                                            <div class="bg-green-600 h-2 rounded-full" style="width: 30%"></div>
+                                        </div>
+                                        <span class="text-sm font-medium">374 (30%)</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-gray-600">Direct Link</span>
+                                    <div class="flex items-center">
+                                        <div class="w-24 bg-gray-200 rounded-full h-2 mr-3">
+                                            <div class="bg-purple-600 h-2 rounded-full" style="width: 25%"></div>
+                                        </div>
+                                        <span class="text-sm font-medium">312 (25%)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Performance Metrics -->
+                        <div class="bg-white border rounded-lg p-6">
+                            <h4 class="text-lg font-medium text-gray-900 mb-4">Performance Metrics</h4>
+                            <div class="space-y-4">
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">Average Daily Clicks</span>
+                                    <span class="text-sm font-medium">42</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">Peak Hour</span>
+                                    <span class="text-sm font-medium">2:00 PM - 3:00 PM</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">Best Performing Day</span>
+                                    <span class="text-sm font-medium">Tuesday</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600">Mobile vs Desktop</span>
+                                    <span class="text-sm font-medium">68% / 32%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LINKS & UTM TAB -->
+                <div id="links-tab" class="tab-content hidden">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200">
+                        <div class="p-6 border-b border-gray-200 flex justify-between">
+                            <h3 class="text-lg font-semibold text-gray-900">Tracking Links</h3>
+                            <div class="flex items-center space-x-3">
+                                <select id="links-source-filter"
+                                    class="px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                                    <option value="all">All Sources</option>
+                                    <option value="facebook">Facebook</option>
+                                    <option value="google">Google</option>
+                                    <option value="qr">QR</option>
+                                    <option value="whatsapp">WhatsApp</option>
+                                </select>
+                                <button id="links-export"
+                                    class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium">Export
+                                    CSV</button>
+                                <button class="px-4 py-2 text-white rounded-lg text-sm font-medium"
+                                    style="background-color: #d82128;">Generate New Link</button>
+                            </div>
+                        </div>
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Link
+                                        Name</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Source
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Campaign
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">URL</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Clicks
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y">
+                                <tr data-source="facebook">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900">Facebook</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">facebook</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">summer2025</td>
+                                    <td class="px-6 py-4 text-sm">
+                                        <a href="https://apply.ly/SPR25EDU?utm_source=facebook&utm_medium=ads&utm_campaign=summer2025" target="_blank" class="text-blue-600 hover:underline font-mono">https://apply.ly/SPR25EDU?utm_source=facebook...</a>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm font-semibold">6,789</td>
+                                    <td class="px-6 py-4"><span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">Active</span></td>
+                                    <td class="px-6 py-4">
+                                        <button class="px-2 py-1 border rounded text-xs hover:bg-gray-50 flex items-center" onclick="copyLink(this)" data-url="https://apply.ly/SPR25EDU?utm_source=facebook&utm_medium=ads&utm_campaign=summer2025" title="Copy URL">
+                                            <i data-lucide="copy" class="w-4 h-4 mr-1"></i>Copy
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr data-source="google">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900">Google</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">google</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">summer2025</td>
+                                    <td class="px-6 py-4 text-sm">
+                                        <a href="https://apply.ly/SPR25EDU?utm_source=google&utm_medium=cpc&utm_campaign=summer2025" target="_blank" class="text-blue-600 hover:underline font-mono">https://apply.ly/SPR25EDU?utm_source=google...</a>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm font-semibold">4,312</td>
+                                    <td class="px-6 py-4"><span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">Active</span></td>
+                                    <td class="px-6 py-4">
+                                        <button class="px-2 py-1 border rounded text-xs hover:bg-gray-50 flex items-center" onclick="copyLink(this)" data-url="https://apply.ly/SPR25EDU?utm_source=google&utm_medium=cpc&utm_campaign=summer2025" title="Copy URL">
+                                            <i data-lucide="copy" class="w-4 h-4 mr-1"></i>Copy
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr data-source="qr">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900">QR</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">qr</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">summer2025</td>
+                                    <td class="px-6 py-4 text-sm">
+                                        <a href="https://apply.ly/SPR25EDU?src=qr" target="_blank" class="text-blue-600 hover:underline font-mono">https://apply.ly/SPR25EDU?src=qr</a>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm font-semibold">2,084</td>
+                                    <td class="px-6 py-4"><span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">Active</span></td>
+                                    <td class="px-6 py-4">
+                                        <button class="px-2 py-1 border rounded text-xs hover:bg-gray-50 flex items-center" onclick="copyLink(this)" data-url="https://apply.ly/SPR25EDU?src=qr" title="Copy URL">
+                                            <i data-lucide="copy" class="w-4 h-4 mr-1"></i>Copy
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr data-source="whatsapp">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900">WhatsApp</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">whatsapp</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">summer2025</td>
+                                    <td class="px-6 py-4 text-sm">
+                                        <a href="https://apply.ly/SPR25EDU?utm_source=whatsapp&utm_medium=share&utm_campaign=summer2025" target="_blank" class="text-blue-600 hover:underline font-mono">https://apply.ly/SPR25EDU?utm_source=whatsapp...</a>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm font-semibold">1,126</td>
+                                    <td class="px-6 py-4"><span class="px-2 py-1 text-xs bg-yellow-100 text-yellow-800 rounded-full">Paused</span></td>
+                                    <td class="px-6 py-4">
+                                        <button class="px-2 py-1 border rounded text-xs hover:bg-gray-50 flex items-center" onclick="copyLink(this)" data-url="https://apply.ly/SPR25EDU?utm_source=whatsapp&utm_medium=share&utm_campaign=summer2025" title="Copy URL">
+                                            <i data-lucide="copy" class="w-4 h-4 mr-1"></i>Copy
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- LEADS TAB -->
+                <div id="leads-tab" class="tab-content hidden">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-200">
+                        <div class="p-6 border-b flex justify-between">
+                            <h3 class="text-lg font-semibold">Campaign Leads</h3>
+                            <div class="flex space-x-3">
+                                <button class="px-4 py-2 border rounded-lg text-sm">Export CSV</button>
+                            </div>
+                        </div>
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Source
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y">
+                                <!-- Missing Profile -->
+                                <tr>
+                                    <td class="px-6 py-4 text-sm font-medium">Nguyen Van A</td>
+                                    <td class="px-6 py-4 text-sm">nguyenvana@email.com</td>
+                                    <td class="px-6 py-4 text-sm">Facebook</td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-2 py-1 text-xs bg-red-100 text-red-800 rounded-full">Missing
+                                            Profile</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">2025-01-15</td>
+                                </tr>
+                                <!-- Complete Profile -->
+                                <tr>
+                                    <td class="px-6 py-4 text-sm font-medium">Tran Thi B</td>
+                                    <td class="px-6 py-4 text-sm">tranthib@email.com</td>
+                                    <td class="px-6 py-4 text-sm">QR Code</td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">Complete
+                                            Profile</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">2025-01-18</td>
+                                </tr>
+                                <!-- In Application Progress -->
+                                <tr>
+                                    <td class="px-6 py-4 text-sm font-medium">Le Van C</td>
+                                    <td class="px-6 py-4 text-sm">levanc@email.com</td>
+                                    <td class="px-6 py-4 text-sm">Google Ads</td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-2 py-1 text-xs bg-amber-100 text-amber-800 rounded-full">In
+                                            Application Progress</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">2025-01-20</td>
+                                </tr>
+                                <!-- Pre-departure -->
+                                <tr>
+                                    <td class="px-6 py-4 text-sm font-medium">Pham Thi D</td>
+                                    <td class="px-6 py-4 text-sm">phamthid@email.com</td>
+                                    <td class="px-6 py-4 text-sm">Direct Link</td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full">Pre-departure</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">2025-01-22</td>
+                                </tr>
+                                <!-- Arrival -->
+                                <tr>
+                                    <td class="px-6 py-4 text-sm font-medium">Hoang Gia E</td>
+                                    <td class="px-6 py-4 text-sm">hoanggiae@email.com</td>
+                                    <td class="px-6 py-4 text-sm">Referral</td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="px-2 py-1 text-xs bg-purple-100 text-purple-800 rounded-full">Arrival</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">2025-01-25</td>
+                                </tr>
+                                <!-- In Active -->
+                                <tr>
+                                    <td class="px-6 py-4 text-sm font-medium">Vo Minh F</td>
+                                    <td class="px-6 py-4 text-sm">vominhf@email.com</td>
+                                    <td class="px-6 py-4 text-sm">Organic</td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">In
+                                            Active</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">2025-01-28</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- SETTINGS TAB -->
+                <div id="settings-tab" class="tab-content hidden">
+                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                        <h3 class="text-lg font-semibold mb-4">Campaign Settings</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Campaign Name</label>
+                                <input type="text" value="Summer 2025 Scholarship Campaign"
+                                    class="w-full px-3 py-2 border rounded-lg">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Status</label>
+                                <select class="w-full px-3 py-2 border rounded-lg">
+                                    <option selected>Active</option>
+                                    <option>Draft</option>
+                                    <option>Ended</option>
+                                </select>
+                            </div>
+                            <div class="flex justify-end space-x-3 pt-4">
+                                <button class="px-4 py-2 border rounded-lg">Cancel</button>
+                                <button class="px-4 py-2 text-white rounded-lg" style="background-color: #d82128;">Save
+                                    Changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
+            document.getElementById(tabName + '-tab').classList.remove('hidden');
+
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('tab-active', 'text-red-600');
+                btn.classList.add('text-gray-500', 'border-transparent');
+            });
+            event.target.classList.add('tab-active');
+            event.target.classList.remove('text-gray-500', 'border-transparent');
+        }
+
+        // Initialize Charts
+        const ctx1 = document.getElementById('leadSourcesChart');
+        if (ctx1) {
+            new Chart(ctx1, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Facebook', 'Google', 'Organic', 'Referral'],
+                    datasets: [{
+                        data: [45, 33, 15, 7],
+                        backgroundColor: ['#3B82F6', '#d82128', '#10B981', '#8B5CF6']
+                    }]
+                }
+            });
+        }
+
+        const ctx2 = document.getElementById('trafficChart');
+        if (ctx2) {
+            new Chart(ctx2, {
+                type: 'line',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        label: 'Visits',
+                        data: [1200, 1900, 1500, 2100, 1800, 2400, 2200],
+                        borderColor: '#d82128',
+                        tension: 0.4
+                    }]
+                }
+            });
+        }
+
+        // Device Breakdown (Doughnut)
+        const deviceCtx = document.getElementById('deviceChart');
+        if (deviceCtx) {
+            new Chart(deviceCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Mobile', 'Desktop', 'Tablet'],
+                    datasets: [{
+                        data: [68, 24, 8],
+                        backgroundColor: ['#d82128', '#3B82F6', '#10B981'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    plugins: { legend: { position: 'bottom' } },
+                    cutout: '65%'
+                }
+            });
+        }
+
+        // CTA Performance (Bar)
+        const ctaCtx = document.getElementById('ctaChart');
+        if (ctaCtx) {
+            new Chart(ctaCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Primary CTA', 'Secondary CTA', 'WhatsApp', 'Call Us'],
+                    datasets: [{
+                        label: 'Clicks',
+                        data: [842, 516, 392, 278],
+                        backgroundColor: '#d82128',
+                        borderRadius: 6,
+                        maxBarThickness: 26
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: { beginAtZero: true, ticks: { stepSize: 200 } }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+
+        // Links table helpers
+        function copyLink(btn) {
+            const url = btn.getAttribute('data-url');
+            if (!url) return;
+            navigator.clipboard.writeText(url).then(() => {
+                const original = btn.innerHTML;
+                btn.innerHTML = '<i data-lucide="check" class="w-4 h-4 mr-1"></i>Copied';
+                btn.classList.add('text-green-700');
+                lucide.createIcons();
+                setTimeout(() => {
+                    btn.innerHTML = original;
+                    btn.classList.remove('text-green-700');
+                    lucide.createIcons();
+                }, 1500);
+            });
+        }
+
+        // Filter by source
+        const sourceFilter = document.getElementById('links-source-filter');
+        if (sourceFilter) {
+            sourceFilter.addEventListener('change', () => {
+                const val = sourceFilter.value;
+                document.querySelectorAll('#links-tab tbody tr').forEach(tr => {
+                    const src = tr.getAttribute('data-source');
+                    if (val === 'all' || src === val) {
+                        tr.classList.remove('hidden');
+                    } else {
+                        tr.classList.add('hidden');
+                    }
+                });
+            });
+        }
+
+        // Export CSV
+        const exportBtn = document.getElementById('links-export');
+        if (exportBtn) {
+            exportBtn.addEventListener('click', () => {
+                const rows = [['Name', 'Source', 'Medium', 'Campaign', 'URL', 'Clicks', 'Status']];
+                document.querySelectorAll('#links-tab tbody tr:not(.hidden)').forEach(tr => {
+                    const tds = tr.querySelectorAll('td');
+                    const name = tds[0]?.innerText.trim() || '';
+                    const source = tds[1]?.innerText.trim() || '';
+                    const medium = tds[2]?.innerText.trim() || '';
+                    const campaign = tds[3]?.innerText.trim() || '';
+                    const url = tds[4]?.querySelector('a')?.href || '';
+                    const clicks = tds[5]?.innerText.trim() || '';
+                    const status = tds[6]?.innerText.trim() || '';
+                    rows.push([name, source, medium, campaign, url, clicks, status]);
+                });
+
+                const csv = rows.map(r => r.map(field => '"' + field.replaceAll('"', '""') + '"').join(',')).join('\n');
+                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'tracking_links.csv';
+                a.click();
+                URL.revokeObjectURL(url);
+            });
+        }
+    </script>
+</body>
+
+</html>
