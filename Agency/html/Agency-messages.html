@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,11 +17,12 @@
         }
     </style>
 </head>
+
 <body class="bg-gray-50">
     <!-- Sidebar -->
     <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
         <div class="p-6">
-             <img src="../../ApplyLead_logo.png" alt="ApplyLead" class="h-9 mb-2">
+            <img src="../../ApplyLead_logo.png" alt="ApplyLead" class="h-9 mb-2">
             <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Agent</span>
         </div>
         <nav class="mt">
@@ -42,7 +44,7 @@
             </a>
             <a href="Agency-scholarships.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
                 <i data-lucide="graduation-cap" class="w-5 h-5 mr-3"></i>
-                Scholarships
+                University
             </a>
             <a href="Agency-commission.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
                 <i data-lucide="dollar-sign" class="w-5 h-5 mr-3"></i>
@@ -84,12 +86,12 @@
                 <!-- Profile Dropdown -->
                 <div class="relative">
                     <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
-                             alt="Profile" 
-                             class="w-8 h-8 rounded-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop"
+                            alt="Profile" class="w-8 h-8 rounded-full object-cover">
                     </button>
                     <!-- Dropdown Menu -->
-                    <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                    <div id="profile-dropdown"
+                        class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
                         <a href="Agency-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                             <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
                         </a>
@@ -97,7 +99,8 @@
                             <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
                         </a>
                         <hr class="my-1">
-                        <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        <a href="#" onclick="handleLogout()"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                             <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
                         </a>
                     </div>
@@ -113,24 +116,32 @@
                     <!-- Search Bar -->
                     <div class="p-4 border-b">
                         <div class="relative mb-2">
-                            <i data-lucide="search" class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-                            <input type="text" placeholder="Search messages..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                            <i data-lucide="search"
+                                class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            <input type="text" placeholder="Search messages..."
+                                class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
                         </div>
                         <!-- Message Filter Tabs -->
                         <div class="flex w-full mt-2 space-x-1" id="messageTabs">
-                            <button data-tab="all" class="tab-button flex-1 px-1 py-2 text-xs sm:text-sm font-medium text-white rounded-lg whitespace-nowrap truncate text-center transition-colors" style="background-color: #d82128;">
+                            <button data-tab="all"
+                                class="tab-button flex-1 px-1 py-2 text-xs sm:text-sm font-medium text-white rounded-lg whitespace-nowrap truncate text-center transition-colors"
+                                style="background-color: #d82128;">
                                 All
                             </button>
-                            <button data-tab="students" class="tab-button flex-1 px-1 py-2 text-xs sm:text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg whitespace-nowrap truncate text-center transition-colors">
+                            <button data-tab="students"
+                                class="tab-button flex-1 px-1 py-2 text-xs sm:text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg whitespace-nowrap truncate text-center transition-colors">
                                 Students
                             </button>
-                            <button data-tab="agents" class="tab-button flex-1 px-1 py-2 text-xs sm:text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg whitespace-nowrap truncate text-center transition-colors">
+                            <button data-tab="agents"
+                                class="tab-button flex-1 px-1 py-2 text-xs sm:text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg whitespace-nowrap truncate text-center transition-colors">
                                 Agents
                             </button>
-                            <button data-tab="university" class="tab-button flex-1 px-1 py-2 text-xs sm:text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg whitespace-nowrap truncate text-center transition-colors">
+                            <button data-tab="university"
+                                class="tab-button flex-1 px-1 py-2 text-xs sm:text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg whitespace-nowrap truncate text-center transition-colors">
                                 University
                             </button>
-                            <button data-tab="ellacy-staff" class="tab-button flex-1 px-1 py-2 text-xs sm:text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg whitespace-nowrap truncate text-center transition-colors">
+                            <button data-tab="ellacy-staff"
+                                class="tab-button flex-1 px-1 py-2 text-xs sm:text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg whitespace-nowrap truncate text-center transition-colors">
                                 Ellacy Staff
                             </button>
                         </div>
@@ -139,9 +150,11 @@
                     <div class="overflow-y-auto h-[calc(100vh-12rem)]" id="chatList">
                         <!-- All Chats (default) -->
                         <div class="chat-item" data-category="all">
-                            <div class="p-4 border-l-4 cursor-pointer hover:bg-gray-50" style="background-color: #FEF2F2; border-left-color: #d82128;">
+                            <div class="p-4 border-l-4 cursor-pointer hover:bg-gray-50"
+                                style="background-color: #FEF2F2; border-left-color: #d82128;">
                                 <div class="flex items-center space-x-3">
-                                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop" alt="Sarah Chen" class="w-12 h-12 rounded-full object-cover">
+                                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop"
+                                        alt="Sarah Chen" class="w-12 h-12 rounded-full object-cover">
                                     <div class="flex-1">
                                         <h4 class="font-medium text-gray-900">Sarah Chen</h4>
                                         <p class="text-sm text-gray-500 truncate">Thanks for the update!</p>
@@ -156,12 +169,15 @@
 
                         <!-- Students -->
                         <div class="chat-item hidden" data-category="students">
-                            <div class="p-4 border-l-4 cursor-pointer hover:bg-gray-50" style="border-left-color: #ffffff;">
+                            <div class="p-4 border-l-4 cursor-pointer hover:bg-gray-50"
+                                style="border-left-color: #ffffff;">
                                 <div class="flex items-center space-x-3">
-                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="John Doe" class="w-12 h-12 rounded-full object-cover">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
+                                        alt="John Doe" class="w-12 h-12 rounded-full object-cover">
                                     <div class="flex-1">
                                         <h4 class="font-medium text-gray-900">John Doe</h4>
-                                        <p class="text-sm text-gray-500 truncate">Hi, I have a question about my application</p>
+                                        <p class="text-sm text-gray-500 truncate">Hi, I have a question about my
+                                            application</p>
                                     </div>
                                     <div class="text-right">
                                         <span class="text-xs text-gray-500">1h ago</span>
@@ -172,9 +188,11 @@
 
                         <!-- Agents -->
                         <div class="chat-item hidden" data-category="agents">
-                            <div class="p-4 border-l-4 cursor-pointer hover:bg-gray-50" style="border-left-color: #d82128;">
+                            <div class="p-4 border-l-4 cursor-pointer hover:bg-gray-50"
+                                style="border-left-color: #d82128;">
                                 <div class="flex items-center space-x-3">
-                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Emma Wilson" class="w-12 h-12 rounded-full object-cover">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop"
+                                        alt="Emma Wilson" class="w-12 h-12 rounded-full object-cover">
                                     <div class="flex-1">
                                         <h4 class="font-medium text-gray-900">Emma Wilson</h4>
                                         <p class="text-sm text-gray-500 truncate">Thanks for the update!</p>
@@ -189,14 +207,16 @@
 
                         <!-- University -->
                         <div class="chat-item hidden" data-category="university">
-                            <div class="p-4 border-l-4 cursor-pointer hover:bg-gray-50" style="border-left-color: #ffffff;">
+                            <div class="p-4 border-l-4 cursor-pointer hover:bg-gray-50"
+                                style="border-left-color: #ffffff;">
                                 <div class="flex items-center space-x-3">
                                     <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
                                         <i data-lucide="school" class="w-6 h-6 text-purple-600"></i>
                                     </div>
                                     <div class="flex-1">
                                         <h4 class="font-medium text-gray-900">Harvard University</h4>
-                                        <p class="text-sm text-gray-500 truncate">Application deadline extended to Dec 15</p>
+                                        <p class="text-sm text-gray-500 truncate">Application deadline extended to Dec
+                                            15</p>
                                     </div>
                                     <div class="text-right">
                                         <span class="text-xs text-gray-500">1d ago</span>
@@ -207,14 +227,16 @@
 
                         <!-- Ellacy Staff -->
                         <div class="chat-item hidden" data-category="ellacy-staff">
-                            <div class="p-4 border-l-4 cursor-pointer hover:bg-gray-50" style="border-left-color: #ffffff;">
+                            <div class="p-4 border-l-4 cursor-pointer hover:bg-gray-50"
+                                style="border-left-color: #ffffff;">
                                 <div class="flex items-center space-x-3">
                                     <div class="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center">
                                         <i data-lucide="headset" class="w-6 h-6 text-pink-600"></i>
                                     </div>
                                     <div class="flex-1">
                                         <h4 class="font-medium text-gray-900">Ellacy Support</h4>
-                                        <p class="text-sm text-gray-500 truncate">Your recent inquiry has been resolved</p>
+                                        <p class="text-sm text-gray-500 truncate">Your recent inquiry has been resolved
+                                        </p>
                                     </div>
                                     <div class="text-right">
                                         <span class="text-xs text-gray-500">2d ago</span>
@@ -230,7 +252,8 @@
                     <!-- Chat Header -->
                     <div class="p-4 border-b flex items-center justify-between">
                         <div class="flex items-center space-x-3">
-                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop" alt="Sarah Chen" class="w-10 h-10 rounded-full object-cover">
+                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop"
+                                alt="Sarah Chen" class="w-10 h-10 rounded-full object-cover">
                             <div>
                                 <h4 class="font-medium">Sarah Chen</h4>
                                 <span class="text-sm text-green-500">Online</span>
@@ -253,9 +276,11 @@
                     <div class="flex-1 overflow-y-auto p-4 space-y-4">
                         <!-- Their Message -->
                         <div class="flex items-end space-x-2">
-                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop" alt="Sarah Chen" class="w-8 h-8 rounded-full object-cover">
+                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop"
+                                alt="Sarah Chen" class="w-8 h-8 rounded-full object-cover">
                             <div class="max-w-md bg-gray-100 rounded-2xl rounded-bl-none p-4">
-                                <p class="text-gray-800">Hi! I wanted to check if you received my updated documents for the university application?</p>
+                                <p class="text-gray-800">Hi! I wanted to check if you received my updated documents for
+                                    the university application?</p>
                                 <span class="text-xs text-gray-500 mt-1 block">10:30 AM</span>
                             </div>
                         </div>
@@ -263,14 +288,16 @@
                         <!-- My Message -->
                         <div class="flex items-end justify-end space-x-2">
                             <div class="max-w-md bg-red-500 text-white rounded-2xl rounded-br-none p-4">
-                                <p>Yes, I've received them. Everything looks good! I'll submit them to the university today.</p>
+                                <p>Yes, I've received them. Everything looks good! I'll submit them to the university
+                                    today.</p>
                                 <span class="text-xs text-red-100 mt-1 block">10:32 AM</span>
                             </div>
                         </div>
 
                         <!-- Their Message -->
                         <div class="flex items-end space-x-2">
-                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop" alt="Sarah Chen" class="w-8 h-8 rounded-full object-cover">
+                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop"
+                                alt="Sarah Chen" class="w-8 h-8 rounded-full object-cover">
                             <div class="max-w-md bg-gray-100 rounded-2xl rounded-bl-none p-4">
                                 <p class="text-gray-800">That's great! Thank you so much for your help!</p>
                                 <span class="text-xs text-gray-500 mt-1 block">10:33 AM</span>
@@ -292,8 +319,10 @@
                             <button class="p-2 hover:bg-gray-100 rounded-full">
                                 <i data-lucide="paperclip" class="w-5 h-5 text-gray-600"></i>
                             </button>
-                            <input type="text" placeholder="Type a message..." class="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:border-blue-500">
-                            <button class="p-2 rounded-full transition-colors hover:opacity-90" style="background-color: #d82128;">
+                            <input type="text" placeholder="Type a message..."
+                                class="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:border-blue-500">
+                            <button class="p-2 rounded-full transition-colors hover:opacity-90"
+                                style="background-color: #d82128;">
                                 <i data-lucide="send" class="w-5 h-5 text-white"></i>
                             </button>
                         </div>
@@ -326,34 +355,34 @@
         }
 
         // Tab switching functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const tabs = document.querySelectorAll('.tab-button');
             const chatItems = document.querySelectorAll('.chat-item');
-            
+
             // Show all chats by default
             showChats('all');
-            
+
             // Add click event to each tab
             tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
+                tab.addEventListener('click', function () {
                     // Remove active state from all tabs
                     tabs.forEach(t => {
                         t.classList.remove('text-white');
                         t.style.backgroundColor = '';
                         t.classList.add('text-gray-700', 'bg-gray-100', 'hover:bg-gray-200');
                     });
-                    
+
                     // Add active state to clicked tab
                     this.classList.remove('text-gray-700', 'bg-gray-100', 'hover:bg-gray-200');
                     this.classList.add('text-white');
                     this.style.backgroundColor = '#d82128';
-                    
+
                     // Get the category to show
                     const category = this.getAttribute('data-tab');
                     showChats(category);
                 });
             });
-            
+
             // Function to show chats based on category
             function showChats(category) {
                 chatItems.forEach(item => {
@@ -373,4 +402,5 @@
         }
     </script>
 </body>
+
 </html>

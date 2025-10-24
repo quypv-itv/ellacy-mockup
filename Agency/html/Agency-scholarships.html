@@ -4,13 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scholarships | APPLYLEAD</title>
+    <title>University | APPLYLEAD</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
+        }
+
+        /* Partner Universities Marquee Animation */
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .partner-marquee {
+            animation: marquee 30s linear infinite;
+        }
+
+        .partner-marquee:hover {
+            animation-play-state: paused;
         }
     </style>
 </head>
@@ -41,7 +60,7 @@
             </a>
             <a href="#" class="flex items-center px-6 py-3 text-white" style="background-color: #d82128;">
                 <i data-lucide="graduation-cap" class="w-5 h-5 mr-3"></i>
-                Scholarships
+                University
             </a>
             <a href="Agency-profile.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
                 <i data-lucide="settings" class="w-5 h-5 mr-3"></i>
@@ -69,7 +88,7 @@
     <div class="ml-64">
         <!-- Header -->
         <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6">
-            <h2 class="text-xl font-semibold text-gray-800">Scholarships</h2>
+            <h2 class="text-xl font-semibold text-gray-800">University</h2>
             <div class="flex items-center space-x-4">
                 <!-- Notification Icon -->
                 <button class="relative p-2 hover:bg-gray-100 rounded-full">
@@ -297,27 +316,135 @@
 
                 <!-- Scholarships Grid -->
                 <div class="flex-1">
-                    <div class="grid grid-cols-1 gap-6">
+                    <!-- View Toggle -->
+                    <div class="flex justify-between items-center mb-4">
+                        <p class="text-sm text-gray-600">Showing <span class="font-semibold">3</span> scholarships</p>
+                        <div class="flex gap-2">
+                            <button id="cardViewBtn" onclick="switchView('card')"
+                                class="p-2 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300" title="Card View">
+                                <i data-lucide="grid-3x3" class="w-5 h-5"></i>
+                            </button>
+                            <button id="listViewBtn" onclick="switchView('list')"
+                                class="p-2 rounded-lg bg-red-600 text-white" title="List View">
+                                <i data-lucide="list" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Partner Universities Carousel -->
+                    <section class="rounded-3xl shadow-md p-6 w-full bg-white mb-6">
+                        <div class="max-w-6xl mx-auto">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="university" class="w-6 h-6 text-red-600"></i>
+                                    <h2 class="text-lg font-bold text-gray-900">Partner Universities</h2>
+                                </div>
+                                <span class="text-xs text-gray-500">Auto-scroll • Hover to pause</span>
+                            </div>
+                            <div class="overflow-hidden">
+                                <div class="flex gap-4 partner-marquee min-w-max">
+                                    <div
+                                        class="flex-shrink-0 w-72 bg-white rounded-xl border border-gray-200 p-4 shadow-sm hover:shadow-md transition">
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <img src="../../tiffin-university-logo.png" alt="Tiffin"
+                                                class="w-10 h-10 object-contain">
+                                            <div>
+                                                <p class="text-sm font-semibold text-gray-900">Tiffin University</p>
+                                                <p class="text-xs text-gray-500">Tiffin, USA</p>
+                                            </div>
+                                        </div>
+                                        <p class="text-xs text-gray-700 mb-2">Career-focused programs and mentorship.
+                                        </p>
+                                        <div class="flex flex-wrap gap-1">
+                                            <span
+                                                class="px-2 py-0.5 rounded-full text-[10px] bg-red-100 text-red-700">2+2</span>
+                                            <span
+                                                class="px-2 py-0.5 rounded-full text-[10px] bg-yellow-100 text-yellow-700">Exchange</span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex-shrink-0 w-72 bg-white rounded-xl border border-gray-200 p-4 shadow-sm hover:shadow-md transition">
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <img src="https://imgs.search.brave.com/0hWMuoaUWNAyGWv5n6H4tzAYFH3X_pleytwTvgVAKAg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGY2ZWY4MWJh/MzM3MmNlYWM5ZGEw/MDMyZmRmZjBhZWYy/NDNlYWYyNjc1NmUz/YmNiNThjZDk2MTg0/NjcxOTE1Yy93d3cu/YW5nZWxvLmVkdS8"
+                                                alt="Angelo State" class="w-10 h-10 object-contain">
+                                            <div>
+                                                <p class="text-sm font-semibold text-gray-900">Angelo State University
+                                                </p>
+                                                <p class="text-xs text-gray-500">San Angelo, USA</p>
+                                            </div>
+                                        </div>
+                                        <p class="text-xs text-gray-700 mb-2">Personalized education and student
+                                            support.</p>
+                                        <div class="flex flex-wrap gap-1">
+                                            <span
+                                                class="px-2 py-0.5 rounded-full text-[10px] bg-green-100 text-green-700">2+2</span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex-shrink-0 w-72 bg-white rounded-xl border border-gray-200 p-4 shadow-sm hover:shadow-md transition">
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <img src="https://imgs.search.brave.com/r3nWNTOjuvX8JESsHrTqUfbaRzGTv1csK_-Cphz2IbQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9iYW5u/ZXIyLmNsZWFucG5n/LmNvbS8yMDE4MTEy/MC9qY3cva2lzc3Bu/Zy1idXRsZXItdW5p/dmVyc2l0eS1idXRs/ZXItYnVsbGRvZ3Mt/bWVucy1iYXNrZXRi/YWxsLXByZW1pZXIt/c29jY2VyLWdyb3Vw/LTViZjRkOWE4MGRj/Y2ExLjczODk2ODkx/MTU0Mjc3MzE2MDA1/NjUuanBn"
+                                                alt="Butler" class="w-10 h-10 object-contain">
+                                            <div>
+                                                <p class="text-sm font-semibold text-gray-900">Butler University</p>
+                                                <p class="text-xs text-gray-500">Indianapolis, USA</p>
+                                            </div>
+                                        </div>
+                                        <p class="text-xs text-gray-700 mb-2">Strong liberal arts and business programs.
+                                        </p>
+                                        <div class="flex flex-wrap gap-1">
+                                            <span
+                                                class="px-2 py-0.5 rounded-full text-[10px] bg-blue-100 text-blue-700">2+2</span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flex-shrink-0 w-72 bg-white rounded-xl border border-gray-200 p-4 shadow-sm hover:shadow-md transition">
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <img src="../../tiffin-university-logo.png" alt="Tiffin"
+                                                class="w-10 h-10 object-contain">
+                                            <div>
+                                                <p class="text-sm font-semibold text-gray-900">Tiffin University</p>
+                                                <p class="text-xs text-gray-500">Tiffin, USA</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-wrap gap-1">
+                                            <span
+                                                class="px-2 py-0.5 rounded-full text-[10px] bg-red-100 text-red-700">2+2</span>
+                                            <span
+                                                class="px-2 py-0.5 rounded-full text-[10px] bg-yellow-100 text-yellow-700">Exchange</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Card View Container -->
+                    <div id="cardViewContainer" class="hidden grid grid-cols-1 gap-6">
                         <!-- Scholarship Card -->
                         <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                             <div class="p-6">
                                 <!-- Header Section -->
                                 <div class="flex flex-col md:flex-row gap-6">
                                     <!-- University Logo -->
-                                    <div class="w-24 h-24 bg-gray-100 rounded-xl flex-shrink-0 flex items-center justify-center">
-                                        <img src="../../tiffin-university-logo.png"
-                                            alt="Tiffin University" class="w-20 h-20 rounded-lg object-cover">
+                                    <div
+                                        class="w-24 h-24 bg-gray-100 rounded-xl flex-shrink-0 flex items-center justify-center">
+                                        <img src="../../tiffin-university-logo.png" alt="Tiffin University"
+                                            class="w-20 h-20 rounded-lg object-cover">
                                     </div>
 
                                     <!-- University Info -->
                                     <div class="flex-1">
                                         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                                             <div>
-                                                <h2 class="text-xl font-bold text-gray-900 hover:text-red-600 transition-colors cursor-pointer" onclick="openTiffinModal()">
+                                                <h2 class="text-xl font-bold text-gray-900 hover:text-red-600 transition-colors cursor-pointer"
+                                                    onclick="openTiffinModal()">
                                                     Tiffin University
                                                 </h2>
                                                 <div class="flex flex-wrap gap-2 mt-1">
-                                                    <span class="px-2 py-0.5 bg-blue-100 text-blue-600 text-xs rounded-full">US University</span>
+                                                    <span
+                                                        class="px-2 py-0.5 bg-blue-100 text-blue-600 text-xs rounded-full">US
+                                                        University</span>
                                                     <span
                                                         class="px-2 py-0.5 bg-purple-100 text-purple-600 text-xs rounded-full">Private</span>
                                                 </div>
@@ -336,43 +463,54 @@
                                             <!-- Scholarship Type & Field of Study -->
                                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
                                                 <div>
-                                                    <label class="block text-sm font-medium text-gray-700 mb-1">Scholarship Type</label>
+                                                    <label
+                                                        class="block text-sm font-medium text-gray-700 mb-1">Scholarship
+                                                        Type</label>
                                                     <div class="relative">
-                                                        <select class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                                        <select
+                                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500">
                                                             <option value="rhodes" selected>Rhodes Scholarship</option>
                                                             <option value="chevening">Chevening Scholarship</option>
-                                                            <option value="commonwealth">Commonwealth Scholarship</option>
+                                                            <option value="commonwealth">Commonwealth Scholarship
+                                                            </option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <label class="block text-sm font-medium text-gray-700 mb-1">Field of Study</label>
+                                                    <label class="block text-sm font-medium text-gray-700 mb-1">Field of
+                                                        Study</label>
                                                     <div class="relative">
-                                                        <input type="text" placeholder="Search field of study..." 
+                                                        <input type="text" placeholder="Search field of study..."
                                                             class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500">
-                                                        <i data-lucide="search" class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500"></i>
+                                                        <i data-lucide="search"
+                                                            class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500"></i>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <!-- Intake & Apply -->
-                                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
+                                            <div
+                                                class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
                                                 <div class="flex-1 max-w-xs">
                                                     <div class="relative">
-                                                        <select class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                                        <select
+                                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500">
                                                             <option value="2025-sep">Winter 2025 </option>
                                                             <option value="2026-jan">Spring 2026 </option>
                                                             <option value="2026-sep">Summer 2026 </option>
                                                             <option value="2026-sep">Fall 2026 </option>
                                                             <option value="2026-sep">Winter 2026 </option>
                                                         </select>
-                                                        <i class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500"></i>
+                                                        <i
+                                                            class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500"></i>
                                                     </div>
                                                 </div>
-                                                <button onclick="openSuggestModal()" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-medium">
+                                                <button onclick="openSuggestModal()"
+                                                    class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-medium">
                                                     Suggest to Student
                                                 </button>
-                                                <button onclick="openTaskModal()" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-medium">
+                                                <button onclick="openTaskModal()"
+                                                    class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-medium">
                                                     Create Task
                                                 </button>
                                             </div>
@@ -386,9 +524,11 @@
                                         <button
                                             class="tab-btn px-4 py-2 text-sm font-medium text-red-600 border-b-2 border-red-600"
                                             data-tab="fees" data-card="2">Fees</button>
-                                        <button class="tab-btn px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent"
+                                        <button
+                                            class="tab-btn px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent"
                                             data-tab="requirements" data-card="2">Requirements</button>
-                                        <button class="tab-btn px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent"
+                                        <button
+                                            class="tab-btn px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent"
                                             data-tab="course-detail" data-card="2">Course Detail</button>
                                     </div>
 
@@ -455,7 +595,8 @@
                                             <div>
                                                 <h4 class="font-semibold mb-2">Scholarship Overview</h4>
                                                 <p class="text-gray-600 text-sm leading-relaxed" id="programOverview2">
-                                                    Merit-based scholarship program designed for academically outstanding
+                                                    Merit-based scholarship program designed for academically
+                                                    outstanding
                                                     students who have demonstrated exceptional performance in their
                                                     undergraduate studies.
                                                 </p>
@@ -476,17 +617,222 @@
                                             </div>
                                             <div>
                                                 <p class="text-sm text-gray-500">Semester breakdown</p>
-                                                <p class="font-semibold" id="semesterBreakdown2">4 semesters over 2 years</p>
+                                                <p class="font-semibold" id="semesterBreakdown2">4 semesters over 2
+                                                    years</p>
                                             </div>
                                             <div>
                                                 <p class="text-sm text-gray-500">Specialization tracks</p>
-                                                <p class="font-semibold" id="specializationTracks2">Research Focus, Academic
+                                                <p class="font-semibold" id="specializationTracks2">Research Focus,
+                                                    Academic
                                                     Leadership, Scholarly Publications</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- List View Table -->
+                    <div id="listViewContainer" class="bg-white rounded-2xl shadow-sm overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full" style="min-width: 1200px;">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th
+                                            class="px-6 py-4 text-left text-sm font-semibold text-gray-800 min-w-[250px]">
+                                            Scholarship & Program Name</th>
+                                        <th
+                                            class="px-6 py-4 text-left text-sm font-semibold text-gray-800 min-w-[150px]">
+                                            Location</th>
+                                        <th
+                                            class="px-6 py-4 text-left text-sm font-semibold text-gray-800 min-w-[150px]">
+                                            Intake</th>
+                                        <th
+                                            class="px-6 py-4 text-left text-sm font-semibold text-gray-800 min-w-[100px]">
+                                            Duration</th>
+                                        <th
+                                            class="px-6 py-4 text-left text-sm font-semibold text-gray-800 min-w-[150px]">
+                                            Tuition Fee</th>
+                                        <th
+                                            class="px-6 py-4 text-left text-sm font-semibold text-gray-800 min-w-[150px]">
+                                            Award Value</th>
+                                        <th
+                                            class="px-6 py-4 text-right text-sm font-semibold text-gray-800 min-w-[120px]">
+                                            Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100">
+                                    <!-- Tiffin University Group -->
+                                    <tr class="bg-gray-100 university-group-header cursor-pointer hover:bg-red-50">
+                                        <td class="px-6 py-3" colspan="7">
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center">
+                                                    <div class="flex items-center"
+                                                        onclick="toggleUniversityGroup('tiffin', event)">
+                                                        <i id="tiffin-icon" data-lucide="minus"
+                                                            class="w-4 h-4 mr-2 text-gray-600"></i>
+                                                        <img src="../../tiffin-university-logo.png"
+                                                            class="w-6 h-6 mr-2 object-contain">
+                                                    </div>
+                                                    <span
+                                                        class="text-sm font-semibold text-gray-800 hover:text-red-600 cursor-pointer">Tiffin
+                                                        University</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-red-50 program-row tiffin-programs">
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center pl-6">
+                                                <div>
+                                                    <div class="flex items-center">
+                                                        <span class="text-sm font-medium text-gray-900">International
+                                                            Academic Scholarship</span>
+                                                        <span
+                                                            class="ml-2 px-2 py-0.5 bg-red-100 text-red-800 text-xs font-medium rounded-full">Featured</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center">
+                                                <i data-lucide="map-pin" class="w-4 h-4 mr-1 text-gray-500"></i>
+                                                <span class="text-sm text-gray-800">Tiffin, OH, USA</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                                            <div class="flex flex-wrap gap-1">
+                                                <span
+                                                    class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full whitespace-nowrap">Winter
+                                                    2025</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-sm text-gray-800">4 years</td>
+                                        <td class="px-6 py-4">
+                                            <div class="text-sm font-medium text-gray-900">$12,000</div>
+                                            <div class="text-xs text-gray-600">per semester</div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Up
+                                                to $5,000</span>
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <div class="flex items-center space-x-2 pr-2">
+                                                <button onclick="openSuggestModal()"
+                                                    class="p-1 text-white rounded-full p-2"
+                                                    style="background-color: #d82128;" title="Suggest to Student">
+                                                    <i data-lucide="send" class="w-4 h-4"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-red-50 program-row tiffin-programs">
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center pl-6">
+                                                <div>
+                                                    <div class="text-sm font-medium text-gray-900">Green & Gold Grant
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center">
+                                                <i data-lucide="map-pin" class="w-4 h-4 mr-1 text-gray-500"></i>
+                                                <span class="text-sm text-gray-800">Tiffin, OH, USA</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                                            <div class="flex flex-wrap gap-1">
+                                                <span
+                                                    class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full whitespace-nowrap">Spring
+                                                    2026</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-sm text-gray-800">4 years</td>
+                                        <td class="px-6 py-4">
+                                            <div class="text-sm font-medium text-gray-900">$10,000</div>
+                                            <div class="text-xs text-gray-600">per semester</div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Up
+                                                to $3,000</span>
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <div class="flex items-center space-x-2 pr-2">
+                                                <button onclick="openSuggestModal()"
+                                                    class="p-1 text-white rounded-full p-2"
+                                                    style="background-color: #d82128;" title="Suggest to Student">
+                                                    <i data-lucide="send" class="w-4 h-4"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Angelo State University Group -->
+                                    <tr class="bg-gray-100 university-group-header cursor-pointer hover:bg-red-50">
+                                        <td class="px-6 py-3" colspan="7">
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center">
+                                                    <div class="flex items-center"
+                                                        onclick="toggleUniversityGroup('angelo', event)">
+                                                        <i id="angelo-icon" data-lucide="minus"
+                                                            class="w-4 h-4 mr-2 text-gray-600"></i>
+                                                        <img src="https://imgs.search.brave.com/0hWMuoaUWNAyGWv5n6H4tzAYFH3X_pleytwTvgVAKAg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGY2ZWY4MWJh/MzM3MmNlYWM5ZGEw/MDMyZmRmZjBhZWYy/NDNlYWYyNjc1NmUz/YmNiNThjZDk2MTg0/NjcxOTE1Yy93d3cu/YW5nZWxvLmVkdS8"
+                                                            class="w-6 h-6 mr-2 object-contain">
+                                                    </div>
+                                                    <span
+                                                        class="text-sm font-semibold text-gray-800 hover:text-red-600 cursor-pointer">Angelo
+                                                        State University</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-red-50 program-row angelo-programs">
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center pl-6">
+                                                <div>
+                                                    <div class="text-sm font-medium text-gray-900">2+2 Program</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center">
+                                                <i data-lucide="map-pin" class="w-4 h-4 mr-1 text-gray-500"></i>
+                                                <span class="text-sm text-gray-800">San Angelo, TX, USA</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                                            <div class="flex flex-wrap gap-1">
+                                                <span
+                                                    class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full whitespace-nowrap">Fall
+                                                    2025</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-sm text-gray-800">4 years</td>
+                                        <td class="px-6 py-4">
+                                            <div class="text-sm font-medium text-gray-900">$12,000</div>
+                                            <div class="text-xs text-gray-600">per semester</div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Up
+                                                to $8,000</span>
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <div class="flex items-center space-x-2 pr-2">
+                                                <button onclick="openSuggestModal()"
+                                                    class="p-1 text-white rounded-full p-2"
+                                                    style="background-color: #d82128;" title="Suggest to Student">
+                                                    <i data-lucide="send" class="w-4 h-4"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -499,7 +845,8 @@
             <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
                 <div class="p-6">
                     <div class="flex justify-between items-start mb-4">
-                        <a href="Agency-sholarships-details.html" target="_blank" class="hover:text-red-600 transition-colors">
+                        <a href="Agency-sholarships-details.html" target="_blank"
+                            class="hover:text-red-600 transition-colors">
                             <h2 class="text-xl font-semibold">Green Future Scholarship – Tiffin University</h2>
                         </a>
                         <button onclick="closeModal()" class="p-2 hover:bg-gray-100 rounded-lg">
@@ -758,7 +1105,8 @@
                 <div class="flex justify-between items-start mb-6">
                     <div>
                         <h3 class="text-2xl font-bold text-gray-900">
-                            <a href="Agency-sholarships-details.html" target="_blank" class="hover:text-red-600 transition-colors">
+                            <a href="Agency-sholarships-details.html" target="_blank"
+                                class="hover:text-red-600 transition-colors">
                                 Tiffin University
                             </a>
                         </h3>
@@ -780,9 +1128,11 @@
                             <div>
                                 <h4 class="font-semibold text-gray-900 mb-2">About</h4>
                                 <p class="text-gray-600 text-sm leading-relaxed">
-                                    Tiffin University is a private university located in Tiffin, Ohio. Founded in 1888, TU
+                                    Tiffin University is a private university located in Tiffin, Ohio. Founded in 1888,
+                                    TU
                                     is committed to transforming lives through education.
-                                    Follow a path. Blaze a trail. We challenge students to enhance their global competencies
+                                    Follow a path. Blaze a trail. We challenge students to enhance their global
+                                    competencies
                                     and skills for success in a diverse world.
                                     With a 20:1 student-faculty ratio, we provide personalized attention and exceptional
                                     educational experiences.
@@ -793,11 +1143,13 @@
                                 <h4 class="font-semibold text-gray-900 mb-2">Quick Facts</h4>
                                 <ul class="space-y-2 text-sm text-gray-600">
                                     <li class="flex items-start">
-                                        <i data-lucide="award" class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
+                                        <i data-lucide="award"
+                                            class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
                                         <span>Founded in 1888 - Over 135 years of educational excellence</span>
                                     </li>
                                     <li class="flex items-start">
-                                        <i data-lucide="users" class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
+                                        <i data-lucide="users"
+                                            class="w-4 h-4 mr-2 mt-0.5 text-red-600 flex-shrink-0"></i>
                                         <span>3,000+ students with 20:1 student-faculty ratio</span>
                                     </li>
                                     <li class="flex items-start">
@@ -1026,10 +1378,10 @@
 
                 // Show success message
                 alert(`Suggestion sent to ${studentSelect.value} successfully!`);
-                
+
                 // Close the modal
                 closeSuggestModal();
-                
+
                 // If create task is checked, open the task modal
                 if (createTask) {
                     openTaskModal();
@@ -1163,10 +1515,10 @@
 
                 // Show success message
                 alert(`Suggestion sent to ${studentSelect.value} successfully!`);
-                
+
                 // Close the modal
                 closeSuggestModal();
-                
+
                 // If create task is checked, open the task modal
                 if (createTask) {
                     openTaskModal();
@@ -1211,28 +1563,28 @@
 
         <script>
             // Tab switching for scholarship cards
-            document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function () {
                 // Handle tab clicks
                 document.querySelectorAll('.tab-btn').forEach(button => {
-                    button.addEventListener('click', function(e) {
+                    button.addEventListener('click', function (e) {
                         e.preventDefault();
                         const tabId = this.getAttribute('data-tab');
                         const cardId = this.getAttribute('data-card');
-                        
+
                         // Update active tab
                         document.querySelectorAll(`[data-card="${cardId}"].tab-btn`).forEach(btn => {
                             btn.classList.remove('text-red-600', 'border-red-600');
                             btn.classList.add('text-gray-500', 'hover:text-gray-700', 'border-transparent');
                         });
-                        
+
                         this.classList.remove('text-gray-500', 'hover:text-gray-700', 'border-transparent');
                         this.classList.add('text-red-600', 'border-red-600');
-                        
+
                         // Show corresponding tab content
                         document.querySelectorAll(`[data-card="${cardId}"].tab-content`).forEach(content => {
                             content.classList.add('hidden');
                         });
-                        
+
                         const activeContent = document.querySelector(`.tab-content[data-tab="${tabId}"][data-card="${cardId}"]`);
                         if (activeContent) {
                             activeContent.classList.remove('hidden');
@@ -1246,6 +1598,55 @@
                     firstTab.dispatchEvent(new Event('click'));
                 }
             });
+
+            // Toggle university group visibility
+            function toggleUniversityGroup(groupName, event) {
+                event.stopPropagation();
+                const programs = document.querySelectorAll(`.${groupName}-programs`);
+                const icon = document.getElementById(`${groupName}-icon`);
+
+                programs.forEach(program => {
+                    program.classList.toggle('hidden');
+                });
+
+                if (icon) {
+                    const iconName = icon.getAttribute('data-lucide');
+                    if (iconName === 'minus') {
+                        icon.setAttribute('data-lucide', 'plus');
+                    } else {
+                        icon.setAttribute('data-lucide', 'minus');
+                    }
+                    lucide.createIcons();
+                }
+            }
+
+            // Switch between Card and List view
+            function switchView(view) {
+                const cardViewContainer = document.getElementById('cardViewContainer');
+                const listViewContainer = document.getElementById('listViewContainer');
+                const cardViewBtn = document.getElementById('cardViewBtn');
+                const listViewBtn = document.getElementById('listViewBtn');
+
+                if (view === 'card') {
+                    cardViewContainer.classList.remove('hidden');
+                    listViewContainer.classList.add('hidden');
+                    cardViewBtn.classList.remove('bg-gray-200', 'text-gray-600');
+                    cardViewBtn.classList.add('bg-red-600', 'text-white');
+                    listViewBtn.classList.remove('bg-red-600', 'text-white');
+                    listViewBtn.classList.add('bg-gray-200', 'text-gray-600');
+                } else {
+                    cardViewContainer.classList.add('hidden');
+                    listViewContainer.classList.remove('hidden');
+                    listViewBtn.classList.remove('bg-gray-200', 'text-gray-600');
+                    listViewBtn.classList.add('bg-red-600', 'text-white');
+                    cardViewBtn.classList.remove('bg-red-600', 'text-white');
+                    cardViewBtn.classList.add('bg-gray-200', 'text-gray-600');
+                }
+
+                // Reinitialize Lucide icons
+                lucide.createIcons();
+            }
         </script>
-    </body>
+</body>
+
 </html>

@@ -10,6 +10,27 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Partner carousel animation to match Students page */
+        @keyframes partner-marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .partner-marquee {
+            animation: partner-marquee 60s linear infinite;
+            will-change: transform;
+        }
+
+        .partner-marquee:hover {
+            animation-play-state: paused;
+        }
+    </style>
 </head>
 
 <body class="bg-gray-50">
@@ -122,7 +143,7 @@
                                 class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-red-400 focus:border-red-400 w-64">
                         </div>
                         <button id="filter-toggle"
-                            class="inline-flex items-center px-4 py-2 border border-red-400 text-red-400 rounded-lg hover:bg-red-50">
+                            class="inline-flex items-center px-4 py-2 border border-red-400 text-red-400 rounded-lg hover:bg-gray-50">
                             <i data-lucide="filter" class="w-4 h-4 mr-2"></i>
                             Filters
                         </button>
@@ -193,73 +214,208 @@
 
             <!-- Main Content Area -->
             <main class="flex-1 overflow-y-auto px-6 pb-6">
-                <!-- Institutions Table -->
-                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Institution Name</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Country</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Type</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Scholarships</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Status</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <img src="https://ui-avatars.com/api/?name=Tiffin+University&background=d82128&color=fff"
-                                            alt="Tiffin University" class="h-8 w-8 rounded-full">
-                                        <div class="ml-4">
-                                            <div class="text-sm font-medium text-gray-900">Tiffin University</div>
-                                            <div class="text-sm text-gray-500">admissions@tiffin.edu</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">United States</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Private University</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">50+ active scholarships
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span
-                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    <div class="flex space-x-2">
-                                        <button class="text-red-400 hover:text-blue-900"
-                                            onclick="openInstitutionDetail()">
-                                            <i data-lucide="eye" class="w-4 h-4"></i>
-                                        </button>
-                                        <button class="text-red-400 hover:text-blue-900"
-                                            onclick="openInstitutionEdit()">
-                                            <i data-lucide="edit" class="w-4 h-4"></i>
-                                        </button>
-                                        <button class="text-red-400 hover:text-blue-900">
-                                            <i data-lucide="plus-circle" class="w-4 h-4"></i>
-                                        </button>
-                                        <button class="text-red-600 hover:text-red-900">
-                                            <i data-lucide="archive" class="w-4 h-4"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- Top-level Submenu Tabs -->
+                <div class="mb-4 border-b border-gray-200">
+                    <nav class="-mb-px flex space-x-6" aria-label="Top tabs">
+                        <button class="top-tab-link border-b-2 border-red-500 py-3 text-sm font-medium text-red-600"
+                            data-top-tab="institutions">Institutions</button>
+                        <button
+                            class="top-tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300"
+                            data-top-tab="tiers">Institution Tiers</button>
+                        <button
+                            class="top-tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300"
+                            data-top-tab="partners">Partner Universities</button>
+                    </nav>
                 </div>
+
+                <!-- Panel: Institutions -->
+                <section id="panel-institutions" class="top-tab-panel">
+                    <!-- Institutions Table -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Institution Name</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Country</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Type</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Scholarships</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Status</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <img src="https://ui-avatars.com/api/?name=Tiffin+University&background=d82128&color=fff"
+                                                alt="Tiffin University" class="h-8 w-8 rounded-full">
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Tiffin University</div>
+                                                <div class="text-sm text-gray-500">admissions@tiffin.edu</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">United States</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Private University
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">50+ active
+                                        scholarships
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="inline-flex items-center gap-2">
+                                            <label class="relative inline-flex items-center cursor-pointer">
+                                                <input type="checkbox" checked class="sr-only peer">
+                                                <div
+                                                    class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600">
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <div class="flex space-x-2">
+                                            <button class="text-red-400 hover:text-blue-900"
+                                                onclick="openInstitutionDetail()">
+                                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                            </button>
+                                            <button class="text-red-400 hover:text-blue-900"
+                                                onclick="openInstitutionEdit()">
+                                                <i data-lucide="edit" class="w-4 h-4"></i>
+                                            </button>
+                                            <button class="text-red-400 hover:text-blue-900">
+                                                <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                                            </button>
+                                            <button class="text-red-600 hover:text-red-900">
+                                                <i data-lucide="archive" class="w-4 h-4"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Panel: Partner Universities Carousel Config -->
+                <section id="panel-partners"
+                    class="top-tab-panel hidden mt-6 bg-white rounded-lg shadow-sm overflow-hidden">
+                    <div class="p-6 border-b flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="university" class="w-5 h-5 text-red-600"></i>
+                            <h3 class="text-lg font-semibold text-gray-900">Partner Universities Carousel Config</h3>
+                            <span class="ml-2 text-xs text-gray-500">Configures Students › Student-find-program
+                                carousel</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button id="clearPartnersBtn"
+                                class="px-3 py-1 text-sm border rounded-lg text-red-600 hover:bg-red-50">Clear
+                                All</button>
+                            <button id="addPartnerBtn" class="px-4 py-2 text-sm text-white rounded-lg"
+                                style="background-color:#d82128;">
+                                <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>
+                                Add Partner
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <!-- Live Preview -->
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="play-circle" class="w-5 h-5 text-gray-500"></i>
+                                    <h4 class="text-sm font-semibold text-gray-800">Live Preview</h4>
+                                </div>
+                                <span class="text-xs text-gray-500">Auto-scroll • Hover to pause</span>
+                            </div>
+                            <div class="overflow-hidden border rounded-xl">
+                                <div id="partnersPreview" class="flex gap-4 partner-marquee min-w-max p-4 bg-white">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data Table -->
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-4 py-2 text-left text-xs font-semibold text-gray-600">Logo URL
+                                        </th>
+                                        <th class="px-4 py-2 text-left text-xs font-semibold text-gray-600">Name</th>
+                                        <th class="px-4 py-2 text-left text-xs font-semibold text-gray-600">Location
+                                        </th>
+                                        <th class="px-4 py-2 text-left text-xs font-semibold text-gray-600">Description
+                                        </th>
+                                        <th class="px-4 py-2 text-left text-xs font-semibold text-gray-600">Hashtags
+                                        </th>
+                                        <th class="px-4 py-2 text-right text-xs font-semibold text-gray-600">Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="partnersTableBody" class="divide-y divide-gray-100 bg-white"></tbody>
+                            </table>
+                            <p id="partnersEmptyState" class="text-sm text-gray-500 p-4 hidden">No partners yet. Click
+                                "Add Partner" to create one.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Panel: Institution Tiers -->
+                <section id="panel-tiers" class="top-tab-panel hidden">
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <!-- Header -->
+                        <div class="p-6 border-b flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <input type="text" placeholder="Search Institution Tiers..."
+                                    class="px-4 py-2 border rounded-lg text-sm w-64" id="tierSearchInput">
+                                <button class="px-4 py-2 border rounded-lg text-sm hover:bg-gray-50">
+                                    <i data-lucide="search" class="w-4 h-4 inline mr-1"></i>
+                                    Filter by Status
+                                </button>
+                            </div>
+                            <button id="addTierBtn" class="px-4 py-2 text-sm text-white rounded-lg"
+                                style="background-color:#d82128;">
+                                <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>
+                                Add Institution Tier
+                            </button>
+                        </div>
+
+                        <!-- Table -->
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Name</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Description</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Status</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tiersTableBody" class="bg-white divide-y divide-gray-200">
+                                <!-- Rows will be rendered by JS -->
+                            </tbody>
+                        </table>
+                        <p id="tiersEmptyState" class="text-sm text-gray-500 p-4 text-center hidden">No tiers yet. Click
+                            "Add Institution Tier" to create one.</p>
+                    </div>
+                </section>
             </main>
 
             <!-- Institution Detail Drawer -->
@@ -497,8 +653,6 @@
                                                     <p class="text-sm text-gray-500">Undergraduate</p>
                                                     <p class="text-sm text-gray-500 mt-1">Tuition: $28,000 - $32,000 /
                                                         year</p>
-                                                    <p class="text-xs text-gray-500 mt-1">Application Deadline: Rolling
-                                                        Admissions</p>
                                                 </div>
 
                                                 <!-- Edit Mode -->
@@ -565,8 +719,6 @@ Spring 2026</textarea>
                                                     <p class="text-sm text-gray-500">Undergraduate</p>
                                                     <p class="text-sm text-gray-500 mt-1">Tuition: $28,000 - $32,000 /
                                                         year</p>
-                                                    <p class="text-xs text-gray-500 mt-1">Application Deadline: Rolling
-                                                        Admissions</p>
                                                 </div>
 
                                                 <!-- Edit Mode -->
@@ -633,8 +785,6 @@ Spring 2026</textarea>
                                                     <p class="text-sm text-gray-500">Undergraduate</p>
                                                     <p class="text-sm text-gray-500 mt-1">Tuition: $28,000 - $32,000 /
                                                         year</p>
-                                                    <p class="text-xs text-gray-500 mt-1">Application Deadline: Rolling
-                                                        Admissions</p>
                                                 </div>
 
                                                 <!-- Edit Mode -->
@@ -1707,7 +1857,6 @@ Spring 2026</textarea>
                                                 <input type="text" class="text-sm text-gray-500 border-gray-300 rounded" value="${program.level} • ${program.field}">
                                                 <input type="text" class="text-sm text-gray-500 border-gray-300 rounded" value="${program.tuition}">
                                             </div>
-                                            <input type="text" class="w-full text-xs text-gray-500 border-gray-300 rounded" value="Application Deadline: ${program.deadline}">
                                         </div>
                                         <div class="flex space-x-2 ml-4">
                                             <button class="text-gray-400 hover:text-gray-600">
@@ -2069,231 +2218,293 @@ Spring 2026</textarea>
         });
     </script>
     <script>
-        // Filter Drawer Functionality
-        const filterToggle = document.getElementById('filter-toggle');
-        const filterDrawer = document.getElementById('filter-drawer');
-        const filterBackdrop = document.getElementById('filter-backdrop');
-        const closeFilter = document.getElementById('close-filter');
-        const applyFiltersBtn = document.getElementById('apply-filters');
-        const resetFiltersBtn = document.getElementById('reset-filters');
-
-        // Open drawer
-        function openFilterDrawer() {
-            filterDrawer.classList.remove('translate-x-full');
-            filterBackdrop.classList.remove('opacity-0', 'pointer-events-none');
-            filterBackdrop.classList.add('opacity-100');
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Close drawer
-        function closeFilterDrawer() {
-            filterDrawer.classList.add('translate-x-full');
-            filterBackdrop.classList.add('opacity-0', 'pointer-events-none');
-            filterBackdrop.classList.remove('opacity-100');
-            document.body.style.overflow = '';
-        }
-
-        // Event Listeners
-        if (filterToggle) filterToggle.addEventListener('click', openFilterDrawer);
-        if (closeFilter) closeFilter.addEventListener('click', closeFilterDrawer);
-        if (filterBackdrop) filterBackdrop.addEventListener('click', closeFilterDrawer);
-
-        // Close with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeFilterDrawer();
-            }
-        });
-
-        // Apply filters
-        if (applyFiltersBtn) {
-            applyFiltersBtn.addEventListener('click', () => {
-                // Here you would typically apply the filters to your data
-                closeFilterDrawer();
-                showNotification('Filters applied successfully', 'success');
-            });
-        }
-
-        // Reset filters
-        if (resetFiltersBtn) {
-            resetFiltersBtn.addEventListener('click', () => {
-                const selects = filterDrawer.querySelectorAll('select');
-                selects.forEach(select => {
-                    select.selectedIndex = 0; // Reset to first option
-                });
-                // Here you would typically reset any filtered data
-                showNotification('Filters reset', 'info');
-            });
-        }
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Handle edit/save for scholarship items
-            document.querySelectorAll('.edit-btn').forEach(btn => {
-                btn.addEventListener('click', function () {
-                    const container = this.closest('.p-4');
-                    const viewMode = container.querySelector('.view-mode');
-                    const editMode = container.querySelector('.edit-mode');
-                    const saveBtn = container.querySelector('.save-btn');
-
-                    viewMode.classList.add('hidden');
-                    editMode.classList.remove('hidden');
-                    this.classList.add('hidden');
-                    saveBtn.classList.remove('hidden');
-                });
-            });
-
-            // Handle save for scholarship items
-            document.querySelectorAll('.save-btn').forEach(btn => {
-                btn.addEventListener('click', function () {
-                    const container = this.closest('.p-4');
-                    const viewMode = container.querySelector('.view-mode');
-                    const editMode = container.querySelector('.edit-mode');
-                    const editBtn = container.querySelector('.edit-btn');
-
-                    // Get values from edit mode
-                    const inputs = editMode.querySelectorAll('input, select, textarea');
-                    const name = inputs[0].value;
-                    const level = inputs[1].value;
-                    const tuition = inputs[2].value;
-                    const deadline = inputs[3].value;
-                    const requirements = inputs[4].value.split('\n').filter(r => r.trim() !== '');
-
-                    // Update view mode
-                    const viewName = viewMode.querySelector('h5');
-                    const viewLevel = viewMode.querySelector('p:nth-of-type(1)');
-                    const viewTuition = viewMode.querySelector('p:nth-of-type(2)');
-                    const viewDeadline = viewMode.querySelector('p:nth-of-type(3)');
-                    const requirementsContainer = viewMode.nextElementSibling;
-
-                    viewName.textContent = name;
-                    viewLevel.textContent = level;
-                    viewTuition.textContent = `Tuition: ${tuition}`;
-                    viewDeadline.textContent = `Application Deadline: ${deadline}`;
-
-                    // Update requirements
-                    requirementsContainer.innerHTML = '';
-                    requirements.forEach(req => {
-                        const span = document.createElement('span');
-                        span.className = 'px-2 py-1 text-xs rounded-full';
-
-                        // Different colors for different requirement types
-                        if (req.includes('IELTS')) {
-                            span.classList.add('bg-blue-100', 'text-blue-800');
-                        } else if (req.includes('GPA')) {
-                            span.classList.add('bg-green-100', 'text-green-800');
-                        } else if (req.includes('Fall')) {
-                            span.classList.add('bg-purple-100', 'text-purple-800');
-                        } else if (req.includes('Spring')) {
-                            span.classList.add('bg-orange-100', 'text-orange-800');
-                        } else {
-                            span.classList.add('bg-gray-100', 'text-gray-800');
-                        }
-
-                        span.textContent = req;
-                        requirementsContainer.appendChild(span);
-                    });
-
-                    // Toggle modes
-                    viewMode.classList.remove('hidden');
-                    editMode.classList.add('hidden');
-                    this.classList.add('hidden');
-                    editBtn.classList.remove('hidden');
-
-                    // Show success message
-                    showNotification('Scholarship updated successfully!', 'success');
-                });
-            });
-
-            // Handle archive button
-            document.querySelectorAll('.p-4 .text-gray-400').forEach(btn => {
-                if (btn.querySelector('i[data-lucide="archive"]')) {
-                    btn.addEventListener('click', function () {
-                        if (confirm('Are you sure you want to archive this scholarship?')) {
-                            const container = this.closest('.p-4');
-                            container.style.opacity = '0';
-                            setTimeout(() => {
-                                container.remove();
-                                showNotification('Scholarship archived successfully!', 'success');
-                            }, 200);
-                        }
-                    });
-                }
-            });
-        });
-
-        // Notification function
-        function showNotification(message, type = 'success') {
-            const notification = document.createElement('div');
-            notification.className = `fixed bottom-4 right-4 px-4 py-2 rounded-lg text-white z-50 transition-all duration-300 transform translate-x-full`;
-            notification.style.backgroundColor = type === 'success' ? '#10B981' : type === 'error' ? '#EF4444' : '#3B82F6';
-            notification.textContent = message;
-
-            document.body.appendChild(notification);
-
-            // Slide in
-            setTimeout(() => {
-                notification.classList.remove('translate-x-full');
-            }, 100);
-
-            // Slide out and remove
-            setTimeout(() => {
-                notification.classList.add('translate-x-full');
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.parentNode.removeChild(notification);
-                    }
-                }, 300);
-            }, 3000);
-        }
-    </script>
-    <script>
-        function switchReviewTab(tabName) {
-            // Hide all tab panels
-            document.querySelectorAll('.tab-panel-review').forEach(panel => {
-                panel.classList.add('hidden');
-            });
-
-            // Remove active state from all tab links
-            document.querySelectorAll('.tab-link-review').forEach(link => {
+        // Top-level submenu tabs switching
+        function switchTopTab(tabName) {
+            // Hide all panels
+            document.querySelectorAll('.top-tab-panel').forEach(panel => panel.classList.add('hidden'));
+            // Deactivate all links
+            document.querySelectorAll('.top-tab-link').forEach(link => {
                 link.classList.remove('border-red-500', 'text-red-600');
                 link.classList.add('border-transparent', 'text-gray-600');
             });
-
-            // Show selected tab panel
-            const selectedPanel = document.getElementById(`tab-review-${tabName}`);
-            if (selectedPanel) {
-                selectedPanel.classList.remove('hidden');
+            // Show selected panel
+            const panel = document.getElementById(`panel-${tabName}`);
+            if (panel) panel.classList.remove('hidden');
+            // Activate selected link
+            const link = document.querySelector(`.top-tab-link[data-top-tab="${tabName}"]`);
+            if (link) {
+                link.classList.remove('border-transparent', 'text-gray-600');
+                link.classList.add('border-red-500', 'text-red-600');
             }
-
-            // Set active state for selected tab link
-            const selectedLink = document.querySelector(`.tab-link-review[data-tab="${tabName}"]`);
-            if (selectedLink) {
-                selectedLink.classList.remove('border-transparent', 'text-gray-600');
-                selectedLink.classList.add('border-red-500', 'text-red-600');
-            }
+            if (window.lucide) lucide.createIcons();
         }
 
-        // Initialize tab functionality when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
-            // Add click handlers to all review tab links
-            document.querySelectorAll('.tab-link-review').forEach(link => {
-                link.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const tabName = this.getAttribute('data-tab');
-                    switchReviewTab(tabName);
+            document.querySelectorAll('.top-tab-link').forEach(link => {
+                link.addEventListener('click', function () {
+                    const tabName = this.getAttribute('data-top-tab');
+                    switchTopTab(tabName);
                 });
             });
+            // Default to Institutions tab
+            switchTopTab('institutions');
+        });
+    </script>
+    <script>
+        // Partner Universities Carousel Config - LocalStorage CRUD
+        const LS_KEY = 'partnerUniversities';
+        const partnersTableBody = document.getElementById('partnersTableBody');
+        const partnersEmptyState = document.getElementById('partnersEmptyState');
+        const partnersPreview = document.getElementById('partnersPreview');
+        const addPartnerBtn = document.getElementById('addPartnerBtn');
+        const clearPartnersBtn = document.getElementById('clearPartnersBtn');
 
-            // Activate first tab by default if no tab is active
-            if (!document.querySelector('.tab-link-review.border-red-500')) {
-                const firstTab = document.querySelector('.tab-link-review');
-                if (firstTab) {
-                    firstTab.click();
-                }
+        function loadPartners() {
+            try {
+                const raw = localStorage.getItem(LS_KEY);
+                return raw ? JSON.parse(raw) : [];
+            } catch { return []; }
+        }
+        function savePartners(list) { localStorage.setItem(LS_KEY, JSON.stringify(list)); }
+
+        function renderTable() {
+            const list = loadPartners();
+            partnersTableBody.innerHTML = '';
+            if (!list.length) {
+                partnersEmptyState.classList.remove('hidden');
+            } else {
+                partnersEmptyState.classList.add('hidden');
             }
+            list.forEach((p, idx) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="px-4 py-2 align-top"><div class="truncate max-w-[260px] text-xs text-gray-700">${p.logo || ''}</div></td>
+                    <td class="px-4 py-2 align-top"><div class="text-sm font-medium text-gray-900">${p.name || ''}</div></td>
+                    <td class="px-4 py-2 align-top"><div class="text-xs text-gray-600">${p.location || ''}</div></td>
+                    <td class="px-4 py-2 align-top"><div class="text-xs text-gray-700 max-w-xs line-clamp-3">${p.description || ''}</div></td>
+                    <td class="px-4 py-2 align-top"><div class="flex flex-wrap gap-1">${(p.hashtags || []).map(h => `<span class='px-2 py-0.5 rounded-full text-[10px] bg-gray-100 text-gray-700'>${h}</span>`).join('')}</div></td>
+                    <td class="px-4 py-2 align-top text-right">
+                        <button class="text-gray-600 hover:text-red-600 mr-2" data-action="edit" data-idx="${idx}"><i data-lucide="edit" class="w-4 h-4"></i></button>
+                        <button class="text-red-600 hover:text-red-800" data-action="delete" data-idx="${idx}"><i data-lucide="trash" class="w-4 h-4"></i></button>
+                    </td>`;
+                partnersTableBody.appendChild(tr);
+            });
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function renderPreview() {
+            const list = loadPartners();
+            partnersPreview.innerHTML = '';
+            // Build two sets for seamless loop
+            const twoSets = [...list, ...list];
+            twoSets.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'flex-shrink-0 w-72 bg-white rounded-xl border border-gray-200 p-4 shadow-sm hover:shadow-md transition';
+                card.innerHTML = `
+                    <div class="flex items-center gap-3 mb-2">
+                        <img src="${p.logo || ''}" alt="${p.name || ''}" class="w-10 h-10 object-contain">
+                        <div>
+                            <p class="text-sm font-semibold text-gray-900">${p.name || ''}</p>
+                            <p class="text-xs text-gray-500">${p.location || ''}</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-700 mb-2">${p.description || ''}</p>
+                    <div class="flex flex-wrap gap-1">${(p.hashtags || []).map(h => `<span class='px-2 py-0.5 rounded-full text-[10px] bg-gray-100 text-gray-700'>${h}</span>`).join('')}</div>
+                `;
+                partnersPreview.appendChild(card);
+            });
+        }
+
+        function upsertPartner(initial, index = null) {
+            // Populate modal fields
+            document.getElementById('partnerLogo').value = initial?.logo || '';
+            document.getElementById('partnerName').value = initial?.name || '';
+            document.getElementById('partnerLocation').value = initial?.location || '';
+            document.getElementById('partnerDesc').value = initial?.description || '';
+            document.getElementById('partnerTags').value = (initial?.hashtags || []).join(', ');
+            document.getElementById('partnerIndex').value = index == null ? '' : String(index);
+            document.getElementById('partnerModalTitle').textContent = index == null ? 'Add Partner' : 'Edit Partner';
+            document.getElementById('partnerModal').classList.remove('hidden');
+        }
+
+        function closePartnerModal() { document.getElementById('partnerModal').classList.add('hidden'); }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Seed once if empty with example 3 to visualize
+            const existing = loadPartners();
+            if (!existing.length) {
+                savePartners([
+                    { logo: '../../tiffin-university-logo.png', name: 'Tiffin University', location: 'Tiffin, USA', description: 'Career-focused programs and mentorship.', hashtags: ['2+2', 'Exchange'] },
+                    { logo: 'https://imgs.search.brave.com/0hWMuoaUWNAyGWv5n6H4tzAYFH3X_pleytwTvgVAKAg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGY2ZWY4MWJh/MzM3MmNlYWM5ZGEw/MDMyZmRmZjBhZWYy/NDNlYWYyNjc1NmUz/YmNiNThjZDk2MTg0/NjcxOTE1Yy93d3cu/YW5nZWxvLmVkdS8', name: 'Angelo State University', location: 'San Angelo, USA', description: 'Personalized education and student support.', hashtags: ['2+2'] },
+                    { logo: 'https://imgs.search.brave.com/vWqXUEDq-6yOdvybXfzZ3HIe2bsNag2-dXlJfNn-9u8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjk0NjkwYTlj/YzdhNzJmYTYyZTc0/NjI5ZDY4ZWRiZTE5/NWFhZDhmMzQ5NTIz/NTBhMTFkYmY5OTA3/OWZlMWZiYy93d3cu/YnV0bGVyLmVkdS8', name: 'Butler University', location: 'Indianapolis, USA', description: 'Strong liberal arts and business programs.', hashtags: ['2+2'] }
+                ]);
+            }
+            renderTable();
+            renderPreview();
+
+            if (addPartnerBtn) addPartnerBtn.addEventListener('click', () => upsertPartner());
+            if (clearPartnersBtn) clearPartnersBtn.addEventListener('click', () => {
+                if (confirm('Clear all partner universities?')) { savePartners([]); renderTable(); renderPreview(); }
+            });
+
+
+            partnersTableBody.addEventListener('click', (e) => {
+                const btn = e.target.closest('button'); if (!btn) return;
+                const idx = parseInt(btn.dataset.idx, 10);
+                const list = loadPartners();
+                if (btn.dataset.action === 'edit') {
+                    upsertPartner(list[idx], idx);
+                } else if (btn.dataset.action === 'delete') {
+                    if (confirm('Delete this partner?')) { list.splice(idx, 1); savePartners(list); renderTable(); renderPreview(); }
+                }
+            });
+        });
+
+        // Modal actions
+        document.getElementById('partnerCancel').addEventListener('click', closePartnerModal);
+        document.getElementById('partnerCloseX').addEventListener('click', closePartnerModal);
+        document.getElementById('partnerSave').addEventListener('click', () => {
+            const logo = document.getElementById('partnerLogo').value.trim();
+            const name = document.getElementById('partnerName').value.trim();
+            const location = document.getElementById('partnerLocation').value.trim();
+            const description = document.getElementById('partnerDesc').value.trim();
+            const tags = document.getElementById('partnerTags').value.split(',').map(s => s.trim()).filter(Boolean);
+            const idxStr = document.getElementById('partnerIndex').value;
+            if (!name) { alert('Name is required'); return; }
+            const list = loadPartners();
+            const payload = { logo, name, location, description, hashtags: tags };
+            if (idxStr === '') { list.push(payload); } else { list[parseInt(idxStr, 10)] = payload; }
+            savePartners(list); renderTable(); renderPreview(); closePartnerModal();
+            showNotification('Partner saved', 'success');
+        });
+    </script>
+
+    <script>
+        // Institution Tiers - LocalStorage CRUD
+        const TIERS_LS_KEY = 'institutionTiers';
+        const tiersTableBody = document.getElementById('tiersTableBody');
+        const tiersEmptyState = document.getElementById('tiersEmptyState');
+        const addTierBtn = document.getElementById('addTierBtn');
+
+        function loadTiers() {
+            try {
+                const raw = localStorage.getItem(TIERS_LS_KEY);
+                return raw ? JSON.parse(raw) : [];
+            } catch { return []; }
+        }
+        function saveTiers(list) { localStorage.setItem(TIERS_LS_KEY, JSON.stringify(list)); }
+
+        function renderTiersTable() {
+            const tiers = loadTiers();
+            tiersTableBody.innerHTML = '';
+            if (!tiers.length) {
+                tiersEmptyState.classList.remove('hidden');
+                return;
+            }
+            tiersEmptyState.classList.add('hidden');
+            tiers.forEach((tier, idx) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${tier.name || ''}</div>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="text-sm text-gray-700">${tier.description || ''}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="inline-flex items-center gap-2">
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" ${tier.status === 'active' ? 'checked' : ''} class="sr-only peer tier-status-toggle" data-idx="${idx}">
+                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600"></div>
+                            </label>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm">
+                        <div class="flex space-x-2">
+                            <button class="text-gray-600 hover:text-red-600" data-action="edit" data-idx="${idx}">
+                                <i data-lucide="edit" class="w-4 h-4"></i>
+                            </button>
+                            <button class="text-red-600 hover:text-red-800" data-action="delete" data-idx="${idx}">
+                                <i data-lucide="trash" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tiersTableBody.appendChild(row);
+            });
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function upsertTier(initial, index = null) {
+            document.getElementById('tierName').value = initial?.name || '';
+            document.getElementById('tierDesc').value = initial?.description || '';
+            document.getElementById('tierIndex').value = index == null ? '' : String(index);
+            document.getElementById('tierModalTitle').textContent = index == null ? 'Create New Institution Tier' : 'Edit Institution Tier';
+            document.getElementById('tierModal').classList.remove('hidden');
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function closeTierModal() {
+            document.getElementById('tierModal').classList.add('hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Seed with sample data if empty
+            const existing = loadTiers();
+            if (!existing.length) {
+                saveTiers([
+                    { name: 'Guaranteed Scholarship Program', description: 'Scholarships that are guaranteed for eligible students', status: 'active' },
+                    { name: 'Elite Admission Program', description: 'Premium scholarships for high-achieving students', status: 'active' },
+                    { name: 'Ivy Global Student Program', description: 'Scholarships for students targeting top-tier institutions', status: 'active' },
+                    { name: 'Joint Program Vietnam to US Transfer', description: 'Transfer program scholarships from Vietnam to US universities', status: 'active' },
+                ]);
+            }
+            renderTiersTable();
+
+            if (addTierBtn) addTierBtn.addEventListener('click', () => upsertTier());
+
+            tiersTableBody.addEventListener('click', (e) => {
+                const btn = e.target.closest('button'); if (!btn) return;
+                const idx = parseInt(btn.dataset.idx, 10);
+                const list = loadTiers();
+                if (btn.dataset.action === 'edit') {
+                    upsertTier(list[idx], idx);
+                } else if (btn.dataset.action === 'delete') {
+                    if (confirm('Delete this tier?')) {
+                        list.splice(idx, 1);
+                        saveTiers(list);
+                        renderTiersTable();
+                    }
+                }
+            });
+
+            // Handle status toggle
+            tiersTableBody.addEventListener('change', (e) => {
+                if (e.target.classList.contains('tier-status-toggle')) {
+                    const idx = parseInt(e.target.dataset.idx, 10);
+                    const list = loadTiers();
+                    list[idx].status = e.target.checked ? 'active' : 'inactive';
+                    saveTiers(list);
+                    showNotification(`Tier ${e.target.checked ? 'activated' : 'deactivated'}`, 'success');
+                }
+            });
+        });
+
+        // Modal actions
+        document.getElementById('tierCancel').addEventListener('click', closeTierModal);
+        document.getElementById('tierCloseX').addEventListener('click', closeTierModal);
+        document.getElementById('tierSave').addEventListener('click', () => {
+            const name = document.getElementById('tierName').value.trim();
+            const description = document.getElementById('tierDesc').value.trim();
+            const idxStr = document.getElementById('tierIndex').value;
+            if (!name) { alert('Name is required'); return; }
+            const list = loadTiers();
+            const payload = { name, description, status: 'active' };
+            if (idxStr === '') { list.push(payload); } else { list[parseInt(idxStr, 10)] = payload; }
+            saveTiers(list);
+            renderTiersTable();
+            closeTierModal();
+            showNotification('Tier saved', 'success');
         });
     </script>
 </body>
-
-</html>

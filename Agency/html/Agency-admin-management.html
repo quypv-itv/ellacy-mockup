@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,41 +12,57 @@
         body {
             font-family: 'Inter', sans-serif;
         }
+
         .animate-fadeIn {
             animation: fadeIn 0.3s ease-out;
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         [data-has-subagents] i {
             transition: transform 0.2s ease;
         }
+
         [aria-expanded="true"] i {
             transform: rotate(90deg);
         }
+
         .sub-agent-row {
             display: none;
             opacity: 0;
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
+
         .sub-agent-row.show {
             display: table-row;
             opacity: 1;
         }
+
         .expand-icon {
             transition: transform 0.2s ease;
         }
+
         .expand-icon.expanded {
             transform: rotate(90deg);
         }
     </style>
 </head>
+
 <body class="bg-gray-50">
     <!-- Sidebar -->
     <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
         <div class="p-6">
-             <img src="../../ApplyLead_logo.png" alt="ApplyLead" class="h-9 mb-2">
+            <img src="../../ApplyLead_logo.png" alt="ApplyLead" class="h-9 mb-2">
             <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Agent</span>
         </div>
         <nav class="mt">
@@ -67,7 +84,7 @@
             </a>
             <a href="Agency-scholarships.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
                 <i data-lucide="graduation-cap" class="w-5 h-5 mr-3"></i>
-                Scholarships
+                University
             </a>
             <a href="Agency-commission.html" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50">
                 <i data-lucide="dollar-sign" class="w-5 h-5 mr-3"></i>
@@ -107,11 +124,11 @@
                 </button>
                 <div class="relative">
                     <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
-                             alt="Profile" 
-                             class="w-8 h-8 rounded-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop"
+                            alt="Profile" class="w-8 h-8 rounded-full object-cover">
                     </button>
-                    <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 z-50">
+                    <div id="profile-dropdown"
+                        class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 z-50">
                         <a href="Agency-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                             <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
                         </a>
@@ -119,7 +136,8 @@
                             <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
                         </a>
                         <hr class="my-1">
-                        <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+                        <a href="#" onclick="handleLogout()"
+                            class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
                             <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
                         </a>
                     </div>
@@ -133,19 +151,21 @@
             <div class="flex justify-between items-center mb-6">
                 <div class="flex items-center space-x-4">
                     <div class="relative">
-                        <i data-lucide="search" class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-                        <input type="text" 
-                               placeholder="Search team members..." 
-                               class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-64">
+                        <i data-lucide="search"
+                            class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" placeholder="Search team members..."
+                            class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-64">
                     </div>
-                    <select class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <select
+                        class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                         <option>All Roles</option>
                         <option>Staff</option>
                         <option>Sub-agent</option>
                     </select>
                 </div>
-                <button onclick="showAddStaffModal()" 
-                        class="px-4 py-2 text-white font-medium rounded-lg transition-colors hover:opacity-90 flex items-center" style="background-color: #d82128;">
+                <button onclick="showAddStaffModal()"
+                    class="px-4 py-2 text-white font-medium rounded-lg transition-colors hover:opacity-90 flex items-center"
+                    style="background-color: #d82128;">
                     <i data-lucide="plus" class="w-5 h-5 mr-2"></i>
                     Add Staff Member
                 </button>
@@ -157,158 +177,225 @@
                     <thead class="bg-gray-50">
                         <tr>
                             <th class="w-8"></th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">EFID</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Assigned Students</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Login</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                EFID</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Email</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Role</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Assigned Students</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Last Login</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Status</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Actions</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-<!-- Agent Admin cha (EF-AG-2000) -->
-<tr class="bg-white border-b border-gray-200">
-    <td class="px-2 py-4">
-        <button onclick="toggleSubAgents(this)" aria-expanded="false" class="text-gray-400 hover:text-gray-600 transition-all" data-has-subagents="true">
-            <span class="expand-icon w-5 h-5 flex items-center justify-center text-lg font-bold">+</span>
-        </button>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">EF-AG-2000</td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="flex items-center">
-            <img class="h-8 w-8 rounded-full" src="https://randomuser.me/api/portraits/men/99.jpg" alt="">
-            <div class="ml-4">
-                <div class="text-sm font-medium text-gray-900">Super Admin</div>
-                <div class="text-xs text-gray-500">Agent Admin</div>
-            </div>
-        </div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="text-sm text-gray-900">super.admin@ellacy.com</div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="text-sm text-gray-900">Staff</div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">25 Students</a>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="text-sm text-gray-500">Just now</div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
-</tr>
-<tr class="sub-agent-row" data-parent="EF-AG-2000">
-    <td></td>
-    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 pl-12">EF-AG-2001</td>
-    <td class="px-6 py-4 whitespace-nowrap pl-12">
-        <div class="flex items-center">
-            <img class="h-8 w-8 rounded-full" src="https://randomuser.me/api/portraits/men/21.jpg" alt="">
-            <div class="ml-4">
-                <div class="text-sm font-medium text-gray-900">Agent Admin 1</div>
-                <div class="text-xs text-gray-500">Agent Admin</div>
-            </div>
-        </div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm text-gray-900">admin1@ellacy.com</div></td>
-    <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm text-gray-900">Staff</div></td>
-    <td class="px-6 py-4 whitespace-nowrap"><a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">5 Students</a></td>
-    <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm text-gray-500">10 min ago</div></td>
-    <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span></td>
-    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
-</tr>
-<tr class="sub-agent-row" data-parent="EF-AG-2000">
-    <td></td>
-    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 pl-12">EF-AG-2002</td>
-    <td class="px-6 py-4 whitespace-nowrap pl-12">
-        <div class="flex items-center">
-            <img class="h-8 w-8 rounded-full" src="https://randomuser.me/api/portraits/women/22.jpg" alt="">
-            <div class="ml-4">
-                <div class="text-sm font-medium text-gray-900">Agent Admin 2</div>
-                <div class="text-xs text-gray-500">Agent Admin</div>
-            </div>
-        </div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm text-gray-900">admin2@ellacy.com</div></td>
-    <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm text-gray-900">Staff</div></td>
-    <td class="px-6 py-4 whitespace-nowrap"><a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">7 Students</a></td>
-    <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm text-gray-500">20 min ago</div></td>
-    <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span></td>
-    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
-</tr>
-<tr class="sub-agent-row" data-parent="EF-AG-2000">
-    <td></td>
-    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 pl-12">EF-AG-2003</td>
-    <td class="px-6 py-4 whitespace-nowrap pl-12">
-        <div class="flex items-center">
-            <img class="h-8 w-8 rounded-full" src="https://randomuser.me/api/portraits/men/23.jpg" alt="">
-            <div class="ml-4">
-                <div class="text-sm font-medium text-gray-900">Agent Admin 3</div>
-                <div class="text-xs text-gray-500">Agent Admin</div>
-            </div>
-        </div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm text-gray-900">admin3@ellacy.com</div></td>
-    <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm text-gray-900">Staff</div></td>
-    <td class="px-6 py-4 whitespace-nowrap"><a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">8 Students</a></td>
-    <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm text-gray-500">30 min ago</div></td>
-    <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span></td>
-    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
-</tr>
-<tr class="sub-agent-row" data-parent="EF-AG-2000">
-    <td></td>
-    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 pl-12">EF-AG-2004</td>
-    <td class="px-6 py-4 whitespace-nowrap pl-12">
-        <div class="flex items-center">
-            <img class="h-8 w-8 rounded-full" src="https://randomuser.me/api/portraits/women/24.jpg" alt="">
-            <div class="ml-4">
-                <div class="text-sm font-medium text-gray-900">Agent Admin 4</div>
-                <div class="text-xs text-gray-500">Agent Admin</div>
-            </div>
-        </div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm text-gray-900">admin4@ellacy.com</div></td>
-    <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm text-gray-900">Staff</div></td>
-    <td class="px-6 py-4 whitespace-nowrap"><a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">6 Students</a></td>
-    <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm text-gray-500">40 min ago</div></td>
-    <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span></td>
-    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
-</tr>
-<tr class="sub-agent-row" data-parent="EF-AG-2000">
-    <td></td>
-    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 pl-12">EF-AG-2005</td>
-    <td class="px-6 py-4 whitespace-nowrap pl-12">
-        <div class="flex items-center">
-            <img class="h-8 w-8 rounded-full" src="https://randomuser.me/api/portraits/men/25.jpg" alt="">
-            <div class="ml-4">
-                <div class="text-sm font-medium text-gray-900">Agent Admin 5</div>
-                <div class="text-xs text-gray-500">Agent Admin</div>
-            </div>
-        </div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm text-gray-900">admin5@ellacy.com</div></td>
-    <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm text-gray-900">Staff</div></td>
-    <td class="px-6 py-4 whitespace-nowrap"><a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">9 Students</a></td>
-    <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm text-gray-500">1 hour ago</div></td>
-    <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span></td>
-    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
-</tr>
+                        <!-- Agent Admin cha (EF-AG-2000) -->
+                        <tr class="bg-white border-b border-gray-200">
+                            <td class="px-2 py-4">
+                                <button onclick="toggleSubAgents(this)" aria-expanded="false"
+                                    class="text-gray-400 hover:text-gray-600 transition-all" data-has-subagents="true">
+                                    <span
+                                        class="expand-icon w-5 h-5 flex items-center justify-center text-lg font-bold">+</span>
+                                </button>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">EF-AG-2000</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <img class="h-8 w-8 rounded-full"
+                                        src="https://randomuser.me/api/portraits/men/99.jpg" alt="">
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Super Admin</div>
+                                        <div class="text-xs text-gray-500">Agent Admin</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">super.admin@ellacy.com</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Staff</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">25
+                                    Students</a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-500">Just now</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
+                        </tr>
+                        <tr class="sub-agent-row" data-parent="EF-AG-2000">
+                            <td></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 pl-12">EF-AG-2001</td>
+                            <td class="px-6 py-4 whitespace-nowrap pl-12">
+                                <div class="flex items-center">
+                                    <img class="h-8 w-8 rounded-full"
+                                        src="https://randomuser.me/api/portraits/men/21.jpg" alt="">
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Agent Admin 1</div>
+                                        <div class="text-xs text-gray-500">Agent Admin</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">admin1@ellacy.com</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Staff</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap"><a href="Agency-my-students.html"
+                                    class="text-blue-600 hover:text-blue-800">5 Students</a></td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-500">10 min ago</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
+                        </tr>
+                        <tr class="sub-agent-row" data-parent="EF-AG-2000">
+                            <td></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 pl-12">EF-AG-2002</td>
+                            <td class="px-6 py-4 whitespace-nowrap pl-12">
+                                <div class="flex items-center">
+                                    <img class="h-8 w-8 rounded-full"
+                                        src="https://randomuser.me/api/portraits/women/22.jpg" alt="">
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Agent Admin 2</div>
+                                        <div class="text-xs text-gray-500">Agent Admin</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">admin2@ellacy.com</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Staff</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap"><a href="Agency-my-students.html"
+                                    class="text-blue-600 hover:text-blue-800">7 Students</a></td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-500">20 min ago</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
+                        </tr>
+                        <tr class="sub-agent-row" data-parent="EF-AG-2000">
+                            <td></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 pl-12">EF-AG-2003</td>
+                            <td class="px-6 py-4 whitespace-nowrap pl-12">
+                                <div class="flex items-center">
+                                    <img class="h-8 w-8 rounded-full"
+                                        src="https://randomuser.me/api/portraits/men/23.jpg" alt="">
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Agent Admin 3</div>
+                                        <div class="text-xs text-gray-500">Agent Admin</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">admin3@ellacy.com</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Staff</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap"><a href="Agency-my-students.html"
+                                    class="text-blue-600 hover:text-blue-800">8 Students</a></td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-500">30 min ago</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
+                        </tr>
+                        <tr class="sub-agent-row" data-parent="EF-AG-2000">
+                            <td></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 pl-12">EF-AG-2004</td>
+                            <td class="px-6 py-4 whitespace-nowrap pl-12">
+                                <div class="flex items-center">
+                                    <img class="h-8 w-8 rounded-full"
+                                        src="https://randomuser.me/api/portraits/women/24.jpg" alt="">
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Agent Admin 4</div>
+                                        <div class="text-xs text-gray-500">Agent Admin</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">admin4@ellacy.com</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Staff</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap"><a href="Agency-my-students.html"
+                                    class="text-blue-600 hover:text-blue-800">6 Students</a></td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-500">40 min ago</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
+                        </tr>
+                        <tr class="sub-agent-row" data-parent="EF-AG-2000">
+                            <td></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 pl-12">EF-AG-2005</td>
+                            <td class="px-6 py-4 whitespace-nowrap pl-12">
+                                <div class="flex items-center">
+                                    <img class="h-8 w-8 rounded-full"
+                                        src="https://randomuser.me/api/portraits/men/25.jpg" alt="">
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Agent Admin 5</div>
+                                        <div class="text-xs text-gray-500">Agent Admin</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">admin5@ellacy.com</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Staff</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap"><a href="Agency-my-students.html"
+                                    class="text-blue-600 hover:text-blue-800">9 Students</a></td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-500">1 hour ago</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap"><span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
+                        </tr>
 
                         <!-- Sample Row 1 -->
                         <tr class="bg-white border-b border-gray-200">
                             <td class="px-2 py-4">
-                                <button onclick="toggleSubAgents(this)" aria-expanded="false" class="text-gray-400 hover:text-gray-600 transition-all" data-has-subagents="true">
-                                    <span class="expand-icon w-5 h-5 flex items-center justify-center text-lg font-bold">+</span>
+                                <button onclick="toggleSubAgents(this)" aria-expanded="false"
+                                    class="text-gray-400 hover:text-gray-600 transition-all" data-has-subagents="true">
+                                    <span
+                                        class="expand-icon w-5 h-5 flex items-center justify-center text-lg font-bold">+</span>
                                 </button>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">EF-AG-1001</td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
-                                    <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1573496359142-b8f2917c472ef?w=100&h=100&fit=crop" alt="">
+                                    <img class="h-8 w-8 rounded-full"
+                                        src="https://images.unsplash.com/photo-1573496359142-b8f2917c472ef?w=100&h=100&fit=crop"
+                                        alt="">
                                     <div class="ml-4">
                                         <div class="text-sm font-medium text-gray-900">Jessica Parker</div>
                                         <div class="text-xs text-gray-500">Agent Admin</div>
@@ -322,13 +409,15 @@
                                 <div class="text-sm text-gray-900">Staff</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">12 Students</a>
+                                <a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">12
+                                    Students</a>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-500">2 hours ago</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                <span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                     Active
                                 </span>
                             </td>
@@ -337,14 +426,18 @@
                                     <button onclick="toggleActions(this)" class="text-gray-400 hover:text-gray-600">
                                         <i data-lucide="more-vertical" class="w-5 h-5"></i>
                                     </button>
-                                    <div class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 z-10">
-                                        <button onclick="showStaffDetails('sarah')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <div
+                                        class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 z-10">
+                                        <button onclick="showStaffDetails('sarah')"
+                                            class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                             View Details
                                         </button>
-                                        <button onclick="resetPassword('sarah')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                        <button onclick="resetPassword('sarah')"
+                                            class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                             Reset Password
                                         </button>
-                                        <button onclick="toggleStatus('sarah')" class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+                                        <button onclick="toggleStatus('sarah')"
+                                            class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
                                             Deactivate
                                         </button>
                                     </div>
@@ -358,7 +451,9 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 pl-12">EF-ST-2001</td>
                             <td class="px-6 py-4 whitespace-nowrap pl-12">
                                 <div class="flex items-center">
-                                    <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1531123897727-b8f2917c472ef?w=100&h=100&fit=crop" alt="">
+                                    <img class="h-8 w-8 rounded-full"
+                                        src="https://images.unsplash.com/photo-1531123897727-b8f2917c472ef?w=100&h=100&fit=crop"
+                                        alt="">
                                     <div class="ml-4">
                                         <div class="text-sm font-medium text-gray-900">David Kim</div>
                                         <div class="text-xs text-gray-500">Sub-agent</div>
@@ -372,13 +467,15 @@
                                 <div class="text-sm text-gray-900">Sub-agent</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">8 Students</a>
+                                <a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">8
+                                    Students</a>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-500">1 day ago</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
+                                <span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
                                     Inactive
                                 </span>
                             </td>
@@ -387,14 +484,18 @@
                                     <button onclick="toggleActions(this)" class="text-gray-400 hover:text-gray-600">
                                         <i data-lucide="more-vertical" class="w-5 h-5"></i>
                                     </button>
-                                    <div class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 z-10">
-                                        <button onclick="showStaffDetails('michael')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <div
+                                        class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 z-10">
+                                        <button onclick="showStaffDetails('michael')"
+                                            class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                             View Details
                                         </button>
-                                        <button onclick="resetPassword('michael')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                        <button onclick="resetPassword('michael')"
+                                            class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                             Reset Password
                                         </button>
-                                        <button onclick="toggleStatus('michael')" class="block w-full text-left px-4 py-2 text-sm text-green-600 hover:bg-gray-100">
+                                        <button onclick="toggleStatus('michael')"
+                                            class="block w-full text-left px-4 py-2 text-sm text-green-600 hover:bg-gray-100">
                                             Activate
                                         </button>
                                     </div>
@@ -405,14 +506,18 @@
                         <!-- Sample Row 2 -->
                         <tr>
                             <td class="px-2 py-4">
-                                <button onclick="toggleSubAgents(this)" aria-expanded="false" class="text-gray-400 hover:text-gray-600 transition-all" data-has-subagents="true">
-                                    <span class="expand-icon w-5 h-5 flex items-center justify-center text-lg font-bold">+</span>
+                                <button onclick="toggleSubAgents(this)" aria-expanded="false"
+                                    class="text-gray-400 hover:text-gray-600 transition-all" data-has-subagents="true">
+                                    <span
+                                        class="expand-icon w-5 h-5 flex items-center justify-center text-lg font-bold">+</span>
                                 </button>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">EF-AG-1002</td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
-                                    <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=100&h=100&fit=crop" alt="">
+                                    <img class="h-8 w-8 rounded-full"
+                                        src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=100&h=100&fit=crop"
+                                        alt="">
                                     <div class="ml-4">
                                         <div class="text-sm font-medium text-gray-900">Michael Chen</div>
                                         <div class="text-xs text-gray-500">Agent Admin</div>
@@ -426,13 +531,15 @@
                                 <div class="text-sm text-gray-900">Staff</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">8 Students</a>
+                                <a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">8
+                                    Students</a>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-500">1 day ago</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
+                                <span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
                                     Inactive
                                 </span>
                             </td>
@@ -441,180 +548,205 @@
                                     <button onclick="toggleActions(this)" class="text-gray-400 hover:text-gray-600">
                                         <i data-lucide="more-vertical" class="w-5 h-5"></i>
                                     </button>
-                                    <div class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 z-10">
-                                        <button onclick="showStaffDetails('michael')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <div
+                                        class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 z-10">
+                                        <button onclick="showStaffDetails('michael')"
+                                            class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                             View Details
                                         </button>
-                                        <button onclick="resetPassword('michael')" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                        <button onclick="resetPassword('michael')"
+                                            class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                             Reset Password
                                         </button>
-                                        <button onclick="toggleStatus('michael')" class="block w-full text-left px-4 py-2 text-sm text-green-600 hover:bg-gray-100">
+                                        <button onclick="toggleStatus('michael')"
+                                            class="block w-full text-left px-4 py-2 text-sm text-green-600 hover:bg-gray-100">
                                             Activate
                                         </button>
                                     </div>
                                 </div>
                             </td>
                         </tr>
-<!-- Agent Admin 3 -->
-<tr class="bg-white border-b border-gray-200">
-    <td class="px-2 py-4">
-        <button onclick="toggleSubAgents(this)" aria-expanded="false" class="text-gray-400 hover:text-gray-600 transition-all" data-has-subagents="true">
-            <span class="expand-icon w-5 h-5 flex items-center justify-center text-lg font-bold">+</span>
-        </button>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">EF-AG-1003</td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="flex items-center">
-            <img class="h-8 w-8 rounded-full" src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
-            <div class="ml-4">
-                <div class="text-sm font-medium text-gray-900">Anna Smith</div>
-                <div class="text-xs text-gray-500">Agent Admin</div>
-            </div>
-        </div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="text-sm text-gray-900">anna.smith@ellacy.com</div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="text-sm text-gray-900">Staff</div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">15 Students</a>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="text-sm text-gray-500">1 hour ago</div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
-</tr>
-<tr class="sub-agent-row" data-parent="EF-AG-1003">
-    <td></td>
-    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 pl-12">EF-ST-2003</td>
-    <td class="px-6 py-4 whitespace-nowrap pl-12">
-        <div class="flex items-center">
-            <img class="h-8 w-8 rounded-full" src="https://randomuser.me/api/portraits/men/45.jpg" alt="">
-            <div class="ml-4">
-                <div class="text-sm font-medium text-gray-900">Peter Brown</div>
-                <div class="text-xs text-gray-500">Sub-agent</div>
-            </div>
-        </div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="text-sm text-gray-900">peter.brown@ellacy.com</div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="text-sm text-gray-900">Sub-agent</div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">5 Students</a>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="text-sm text-gray-500">2 days ago</div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Inactive</span>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
-</tr>
-<!-- Agent Admin 4 -->
-<tr class="bg-white border-b border-gray-200">
-    <td class="px-2 py-4">
-        <button onclick="toggleSubAgents(this)" aria-expanded="false" class="text-gray-400 hover:text-gray-600 transition-all" data-has-subagents="true">
-            <span class="expand-icon w-5 h-5 flex items-center justify-center text-lg font-bold">+</span>
-        </button>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">EF-AG-1004</td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="flex items-center">
-            <img class="h-8 w-8 rounded-full" src="https://randomuser.me/api/portraits/men/55.jpg" alt="">
-            <div class="ml-4">
-                <div class="text-sm font-medium text-gray-900">Tom Nguyen</div>
-                <div class="text-xs text-gray-500">Agent Admin</div>
-            </div>
-        </div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="text-sm text-gray-900">tom.nguyen@ellacy.com</div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="text-sm text-gray-900">Staff</div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">10 Students</a>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="text-sm text-gray-500">4 hours ago</div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
-</tr>
-<!-- Agent Admin 5 -->
-<tr class="bg-white border-b border-gray-200">
-    <td class="px-2 py-4">
-        <button onclick="toggleSubAgents(this)" aria-expanded="false" class="text-gray-400 hover:text-gray-600 transition-all" data-has-subagents="true">
-            <span class="expand-icon w-5 h-5 flex items-center justify-center text-lg font-bold">+</span>
-        </button>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">EF-AG-1005</td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="flex items-center">
-            <img class="h-8 w-8 rounded-full" src="https://randomuser.me/api/portraits/women/90.jpg" alt="">
-            <div class="ml-4">
-                <div class="text-sm font-medium text-gray-900">Nguyen Thi E</div>
-                <div class="text-xs text-gray-500">Agent Admin</div>
-            </div>
-        </div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="text-sm text-gray-900">nguyenthie@ellacy.com</div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="text-sm text-gray-900">Staff</div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">11 Students</a>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="text-sm text-gray-500">8 hours ago</div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
-</tr>
-<tr class="sub-agent-row" data-parent="EF-AG-1005">
-    <td></td>
-    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 pl-12">EF-ST-2004</td>
-    <td class="px-6 py-4 whitespace-nowrap pl-12">
-        <div class="flex items-center">
-            <img class="h-8 w-8 rounded-full" src="https://randomuser.me/api/portraits/men/91.jpg" alt="">
-            <div class="ml-4">
-                <div class="text-sm font-medium text-gray-900">Pham Van F</div>
-                <div class="text-xs text-gray-500">Sub-agent</div>
-            </div>
-        </div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="text-sm text-gray-900">phamvanf@ellacy.com</div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="text-sm text-gray-900">Sub-agent</div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">6 Students</a>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <div class="text-sm text-gray-500">Yesterday</div>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Active</span>
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
-</tr>
+                        <!-- Agent Admin 3 -->
+                        <tr class="bg-white border-b border-gray-200">
+                            <td class="px-2 py-4">
+                                <button onclick="toggleSubAgents(this)" aria-expanded="false"
+                                    class="text-gray-400 hover:text-gray-600 transition-all" data-has-subagents="true">
+                                    <span
+                                        class="expand-icon w-5 h-5 flex items-center justify-center text-lg font-bold">+</span>
+                                </button>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">EF-AG-1003</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <img class="h-8 w-8 rounded-full"
+                                        src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Anna Smith</div>
+                                        <div class="text-xs text-gray-500">Agent Admin</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">anna.smith@ellacy.com</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Staff</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">15
+                                    Students</a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-500">1 hour ago</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
+                        </tr>
+                        <tr class="sub-agent-row" data-parent="EF-AG-1003">
+                            <td></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 pl-12">EF-ST-2003</td>
+                            <td class="px-6 py-4 whitespace-nowrap pl-12">
+                                <div class="flex items-center">
+                                    <img class="h-8 w-8 rounded-full"
+                                        src="https://randomuser.me/api/portraits/men/45.jpg" alt="">
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Peter Brown</div>
+                                        <div class="text-xs text-gray-500">Sub-agent</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">peter.brown@ellacy.com</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Sub-agent</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">5
+                                    Students</a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-500">2 days ago</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Inactive</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
+                        </tr>
+                        <!-- Agent Admin 4 -->
+                        <tr class="bg-white border-b border-gray-200">
+                            <td class="px-2 py-4">
+                                <button onclick="toggleSubAgents(this)" aria-expanded="false"
+                                    class="text-gray-400 hover:text-gray-600 transition-all" data-has-subagents="true">
+                                    <span
+                                        class="expand-icon w-5 h-5 flex items-center justify-center text-lg font-bold">+</span>
+                                </button>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">EF-AG-1004</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <img class="h-8 w-8 rounded-full"
+                                        src="https://randomuser.me/api/portraits/men/55.jpg" alt="">
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Tom Nguyen</div>
+                                        <div class="text-xs text-gray-500">Agent Admin</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">tom.nguyen@ellacy.com</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Staff</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">10
+                                    Students</a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-500">4 hours ago</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
+                        </tr>
+                        <!-- Agent Admin 5 -->
+                        <tr class="bg-white border-b border-gray-200">
+                            <td class="px-2 py-4">
+                                <button onclick="toggleSubAgents(this)" aria-expanded="false"
+                                    class="text-gray-400 hover:text-gray-600 transition-all" data-has-subagents="true">
+                                    <span
+                                        class="expand-icon w-5 h-5 flex items-center justify-center text-lg font-bold">+</span>
+                                </button>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">EF-AG-1005</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <img class="h-8 w-8 rounded-full"
+                                        src="https://randomuser.me/api/portraits/women/90.jpg" alt="">
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Nguyen Thi E</div>
+                                        <div class="text-xs text-gray-500">Agent Admin</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">nguyenthie@ellacy.com</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Staff</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">11
+                                    Students</a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-500">8 hours ago</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
+                        </tr>
+                        <tr class="sub-agent-row" data-parent="EF-AG-1005">
+                            <td></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 pl-12">EF-ST-2004</td>
+                            <td class="px-6 py-4 whitespace-nowrap pl-12">
+                                <div class="flex items-center">
+                                    <img class="h-8 w-8 rounded-full"
+                                        src="https://randomuser.me/api/portraits/men/91.jpg" alt="">
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Pham Van F</div>
+                                        <div class="text-xs text-gray-500">Sub-agent</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">phamvanf@ellacy.com</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Sub-agent</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="Agency-my-students.html" class="text-blue-600 hover:text-blue-800">6
+                                    Students</a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-500">Yesterday</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Active</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -633,28 +765,35 @@
             <form onsubmit="handleAddStaff(event)" class="space-y-4">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-                    <input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <input type="text" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                    <input type="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <input type="email" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Temporary Password (Optional)</label>
-                    <input type="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <input type="password"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Role</label>
-                    <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <select
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                         <option>Agent Staff</option>
                         <option>Sub-agent</option>
                     </select>
                 </div>
                 <div class="flex justify-end space-x-3">
-                    <button type="button" onclick="hideAddStaffModal()" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200">
+                    <button type="button" onclick="hideAddStaffModal()"
+                        class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200">
                         Cancel
                     </button>
-                    <button type="submit" class="px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors hover:opacity-90" style="background-color: #d82128;">
+                    <button type="submit"
+                        class="px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors hover:opacity-90"
+                        style="background-color: #d82128;">
                         Invite & Create
                     </button>
                 </div>
@@ -663,7 +802,8 @@
     </div>
 
     <!-- Staff Details Drawer -->
-    <div id="staff-details-drawer" class="hidden fixed inset-y-0 right-0 w-96 bg-white shadow-lg transform transition-transform duration-300 ease-in-out">
+    <div id="staff-details-drawer"
+        class="hidden fixed inset-y-0 right-0 w-96 bg-white shadow-lg transform transition-transform duration-300 ease-in-out">
         <div class="h-full flex flex-col">
             <div class="p-6 border-b">
                 <div class="flex justify-between items-center mb-4">
@@ -688,8 +828,11 @@
                         <div class="flex items-center justify-between">
                             <span id="staff-detail-role" class="text-sm text-gray-900"></span>
                             <label class="relative inline-flex items-center cursor-pointer">
-                                <input type="checkbox" id="staff-detail-status" class="sr-only peer" onchange="handleStatusChange(this)">
-                                <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                                <input type="checkbox" id="staff-detail-status" class="sr-only peer"
+                                    onchange="handleStatusChange(this)">
+                                <div
+                                    class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600">
+                                </div>
                             </label>
                         </div>
                     </div>
@@ -707,7 +850,8 @@
                         <h5 class="text-sm font-medium text-gray-500 mb-2">Activity Summary</h5>
                         <div class="grid grid-cols-2 gap-4">
                             <div class="p-4 bg-gray-50 rounded-lg">
-                                <div class="text-2xl font-semibold text-gray-900" id="staff-detail-total-students">0</div>
+                                <div class="text-2xl font-semibold text-gray-900" id="staff-detail-total-students">0
+                                </div>
                                 <div class="text-sm text-gray-500">Total Students</div>
                             </div>
                             <div class="p-4 bg-gray-50 rounded-lg">
@@ -728,18 +872,20 @@
                     <!-- Notes -->
                     <div>
                         <h5 class="text-sm font-medium text-gray-500 mb-2">Internal Notes</h5>
-                        <textarea id="staff-detail-notes" 
-                                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
-                                  rows="3"
-                                  placeholder="Add internal notes about this staff member..."></textarea>
+                        <textarea id="staff-detail-notes"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            rows="3" placeholder="Add internal notes about this staff member..."></textarea>
                     </div>
                 </div>
             </div>
             <div class="p-6 border-t">
-                <button onclick="resetPassword(currentStaffId)" class="w-full px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors hover:opacity-90 mb-3" style="background-color: #d82128;">
+                <button onclick="resetPassword(currentStaffId)"
+                    class="w-full px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors hover:opacity-90 mb-3"
+                    style="background-color: #d82128;">
                     Reset Password
                 </button>
-                <button onclick="hideStaffDetails()" class="w-full px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200">
+                <button onclick="hideStaffDetails()"
+                    class="w-full px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200">
                     Close
                 </button>
             </div>
@@ -749,16 +895,21 @@
     <!-- AI Assistant Floating Button -->
     <div id="ai-assistant" class="fixed bottom-6 right-6 z-50">
         <!-- Floating Button -->
-        <button id="ai-chat-toggle" class="w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110" style="background-color: #d82128;">
+        <button id="ai-chat-toggle"
+            class="w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
+            style="background-color: #d82128;">
             <i data-lucide="message-circle" class="w-6 h-6 text-white"></i>
         </button>
-        
+
         <!-- Chat Panel -->
-        <div id="ai-chat-panel" class="hidden absolute bottom-16 right-0 w-80 h-96 bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col">
+        <div id="ai-chat-panel"
+            class="hidden absolute bottom-16 right-0 w-80 h-96 bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col">
             <!-- Chat Header -->
-            <div class="flex items-center justify-between p-4 border-b border-gray-200 rounded-t-2xl" style="background-color: #FEF2F2;">
+            <div class="flex items-center justify-between p-4 border-b border-gray-200 rounded-t-2xl"
+                style="background-color: #FEF2F2;">
                 <div class="flex items-center space-x-3">
-                    <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #d82128;">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center"
+                        style="background-color: #d82128;">
                         <i data-lucide="bot" class="w-4 h-4 text-white"></i>
                     </div>
                     <div>
@@ -773,19 +924,21 @@
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
-            
+
             <!-- Chat Messages -->
             <div class="flex-1 p-4 overflow-y-auto space-y-3">
                 <!-- AI Message -->
                 <div class="flex items-start space-x-2">
-                    <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: #FEF2F2;">
+                    <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
+                        style="background-color: #FEF2F2;">
                         <i data-lucide="bot" class="w-3 h-3" style="color: #d82128;"></i>
                     </div>
                     <div class="bg-gray-100 rounded-2xl px-3 py-2 max-w-xs">
-                        <p class="text-sm text-gray-800">Hello! I can help you manage your team members and staff permissions. What would you like to know?</p>
+                        <p class="text-sm text-gray-800">Hello! I can help you manage your team members and staff
+                            permissions. What would you like to know?</p>
                     </div>
                 </div>
-                
+
                 <!-- User Message Example -->
                 <div class="flex items-start space-x-2 justify-end">
                     <div class="rounded-2xl px-3 py-2 max-w-xs" style="background-color: #d82128;">
@@ -793,12 +946,15 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Chat Input -->
             <div class="p-4 border-t border-gray-200">
                 <div class="flex items-center space-x-2">
-                    <input type="text" placeholder="Type your message..." class="flex-1 px-3 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2" style="--tw-ring-color: #d82128;">
-                    <button class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #d82128;">
+                    <input type="text" placeholder="Type your message..."
+                        class="flex-1 px-3 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2"
+                        style="--tw-ring-color: #d82128;">
+                    <button class="w-8 h-8 rounded-full flex items-center justify-center"
+                        style="background-color: #d82128;">
                         <i data-lucide="send" class="w-4 h-4 text-white"></i>
                     </button>
                 </div>
@@ -849,11 +1005,11 @@
         function toggleActions(button) {
             const dropdown = button.nextElementSibling;
             const allDropdowns = document.querySelectorAll('[data-staff-actions] > div');
-            
+
             allDropdowns.forEach(d => {
                 if (d !== dropdown) d.classList.add('hidden');
             });
-            
+
             dropdown.classList.toggle('hidden');
         }
 
@@ -872,7 +1028,7 @@
         function showStaffDetails(staffId) {
             currentStaffId = staffId;
             const drawer = document.getElementById('staff-details-drawer');
-            
+
             // Here you would typically fetch staff details from your server
             // For demo, we'll use mock data
             const staffData = {
@@ -994,17 +1150,17 @@
             icon.textContent = expanded ? '-' : '+';
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             lucide.createIcons();
-            
+
             document.querySelectorAll('[data-has-subagents]').forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     const icon = this.querySelector('i');
                     const parentId = this.closest('tr').querySelector('td:nth-child(2)').textContent;
                     const subRows = document.querySelectorAll(`tr[data-parent="${parentId}"]`);
-                    
+
                     icon.classList.toggle('expanded');
-                    
+
                     subRows.forEach(row => {
                         row.classList.toggle('show');
                     });
@@ -1034,4 +1190,5 @@
         });
     </script>
 </body>
+
 </html>
