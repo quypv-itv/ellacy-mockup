@@ -624,6 +624,29 @@
                                         </div>
                                     </div>
 
+                                    <!-- Scholarships extracted/linked from Offer Letter -->
+                                    <div class="mt-8">
+                                        <h4 class="text-md font-semibold text-gray-900 mb-4">Scholarships from Offer Letter</h4>
+                                        <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                                            <div class="p-6 space-y-4">
+                                                <div>
+                                                    <div class="text-sm text-gray-700">
+                                                        Using uploaded file: <span class="font-mono text-gray-900" id="offerFileName">Offer_Letter_Sarah_Chen_2025.pdf</span>
+                                                    </div>
+                                                    <div class="mt-2 flex items-center gap-2">
+                                                        <button id="btnScanOfferDetail" class="px-3 py-2 text-sm border rounded-lg hover:bg-gray-50">Auto-scan from Offer</button>
+                                                        <button id="btnSelectScholarDetail" class="px-3 py-2 text-sm border rounded-lg hover:bg-gray-50">Select</button>
+                                                    </div>
+                                                    <p class="text-xs text-gray-500 mt-1">Mockup: system simulates scanning text from the uploaded Offer Letter and matches against Admin-configured scholarships.</p>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-sm text-gray-600 mb-1">Linked Scholarships</label>
+                                                    <div id="detailScholarChips" class="flex flex-wrap gap-2"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <!-- Agent Actions -->
                                     <div class="mt-8">
                                         <h4 class="text-md font-semibold text-gray-900 mb-4">Agent Actions</h4>
@@ -1922,6 +1945,163 @@
             }
         });
     </script>
+    <script>
+        // Scholarships linking logic for Offer Letter Issued step (mockup mode)
+        (function(){
+            const LS_KEYS = {
+                scholarships: 'appl_lead_scholarships',
+                appScholar: 'appl_lead_application_scholarships'
+            };
+            function load(key, fb){ try{ const raw=localStorage.getItem(key); return raw?JSON.parse(raw):(fb??[]);}catch{ return fb??[]; } }
+            function save(key, val){ localStorage.setItem(key, JSON.stringify(val)); }
+
+            // For this details page, assume an application id can be parsed from URL (?appId=...) or default to 'app-detail-1'
+            const params = new URLSearchParams(location.search);
+            const appId = params.get('appId') || 'app-detail-1';
+
+            // Seed mock scholarships if none exist
+            (function ensureSeed(){
+                const list = load(LS_KEYS.scholarships, []);
+                if (!list || list.length === 0) {
+                    const seed = [
+                        { id: 'SCH-MERIT-2025', name: 'Merit Scholarship 2025' },
+                        { id: 'SCH-ATH-2025', name: 'Athletic Scholarship 2025' },
+                        { id: 'SCH-ART-2025', name: 'Arts Scholarship 2025' },
+                        { id: 'SCH-LEAD-2025', name: 'Leadership Excellence Award' }
+                    ];
+                    save(LS_KEYS.scholarships, seed);
+                }
+            })();
+
+            function getMap(){ return load(LS_KEYS.appScholar, {}); }
+            function setMap(m){ save(LS_KEYS.appScholar, m); }
+
+            function renderChips(){
+                const chips = document.getElementById('detailScholarChips');
+                if (!chips) return;
+                chips.innerHTML = '';
+                const map = getMap();
+                const ids = map[appId] || [];
+                const all = load(LS_KEYS.scholarships, []);
+                const byId = Object.fromEntries(all.map(s=>[s.id,s]));
+                if (ids.length===0){ chips.innerHTML = '<p class="text-xs text-gray-500">No scholarships linked.</p>'; return; }
+                ids.forEach(id=>{
+                    const s = byId[id] || { name:id };
+                    const span = document.createElement('span');
+                    span.className = 'px-2 py-1 text-xs rounded-full bg-purple-100 text-purple-800 flex items-center gap-1';
+                    span.innerHTML = `<span>${s.name || s.title || id}</span>`;
+                    const btn = document.createElement('button');
+                    btn.className = 'ml-1 text-purple-600 hover:text-purple-800';
+                    btn.textContent = '×';
+                    btn.addEventListener('click', ()=>{
+                        const m = getMap();
+                        m[appId] = (m[appId]||[]).filter(x=>x!==id);
+                        setMap(m); renderChips();
+                    });
+                    span.appendChild(btn);
+                    chips.appendChild(span);
+                });
+            }
+
+            function scanOffer(){
+                // Mock: we already have an uploaded file; simulate OCR by picking up to 3 configured scholarships
+                const all = load(LS_KEYS.scholarships, []);
+                if (!all || all.length === 0) { alert('No scholarships configured. Add them in CRM-scholarships.'); return; }
+                // Prefer names containing typical keywords
+                const priority = all.filter(s => /merit|athletic|arts|leadership|excellence/i.test(s.name||s.title||''));
+                const pool = priority.length ? priority : all;
+                const found = pool.slice(0, 3).map(s => s.id);
+                const m = getMap();
+                const set = new Set([...(m[appId]||[]), ...found]);
+                m[appId] = Array.from(set);
+                setMap(m); renderChips();
+                alert('Mock scan linked: '+found.length+' scholarship(s) from Offer Letter.');
+            }
+
+            // Modal-based selection
+            function openSelect(){
+                const modal = document.getElementById('scholarModalDetail');
+                const list = document.getElementById('scholarListDetail');
+                const all = load(LS_KEYS.scholarships, []);
+                const map = getMap();
+                const selected = new Set(map[appId] || []);
+                list.innerHTML = '';
+                if (!all || all.length===0){
+                    list.innerHTML = '<p class="text-sm text-gray-600">No scholarships configured. Please add in CRM-scholarships.</p>';
+                } else {
+                    all.forEach(s => {
+                        const row = document.createElement('label');
+                        row.className = 'flex items-center gap-2 text-sm';
+                        row.innerHTML = `<input type='checkbox' value='${s.id}' ${selected.has(s.id)?'checked':''} class='sch-cb-detail'> <span>${s.name || s.title || s.id}</span>`;
+                        list.appendChild(row);
+                    });
+                }
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.getElementById('scholarSearchDetail').value='';
+            }
+
+            function applySearchDetail(){
+                const q = document.getElementById('scholarSearchDetail').value.trim().toLowerCase();
+                const items = document.querySelectorAll('#scholarListDetail label');
+                items.forEach(lb => {
+                    const text = lb.textContent.toLowerCase();
+                    lb.style.display = text.includes(q) ? '' : 'none';
+                });
+            }
+
+            function closeSelect(){
+                const modal = document.getElementById('scholarModalDetail');
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+
+            function saveSelection(){
+                const cbs = document.querySelectorAll('#scholarListDetail input.sch-cb-detail');
+                const ids = Array.from(cbs).filter(cb=>cb.checked).map(cb=>cb.value);
+                const m = getMap(); m[appId]=ids; setMap(m); renderChips();
+                closeSelect();
+            }
+
+            // Use event delegation so it works regardless of element order
+            document.addEventListener('click', (e) => {
+                const t = e.target;
+                if (!(t instanceof Element)) return;
+                const id = t.id;
+                if (id === 'btnScanOfferDetail') { e.preventDefault(); scanOffer(); }
+                if (id === 'btnSelectScholarDetail') { e.preventDefault(); openSelect(); }
+                if (id === 'scholarModalCloseDetail' || id === 'scholarCancelDetail') { e.preventDefault(); closeSelect(); }
+                if (id === 'scholarSaveDetail') { e.preventDefault(); saveSelection(); }
+                // Click on backdrop closes modal
+                const modal = document.getElementById('scholarModalDetail');
+                if (modal && t === modal) { closeSelect(); }
+            });
+            document.addEventListener('input', (e) => {
+                const t = e.target;
+                if (!(t instanceof Element)) return;
+                if (t.id === 'scholarSearchDetail') applySearchDetail();
+            });
+            // Allow ESC to close
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSelect(); });
+            renderChips();
+        })();
+    </script>
+    <!-- Scholarship selection modal (Detail page) -->
+    <div id="scholarModalDetail" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50">
+      <div class="bg-white rounded-lg p-4 w-[520px] max-h-[75vh] overflow-y-auto">
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-base font-semibold">Select Scholarships</h3>
+          <button id="scholarModalCloseDetail" class="text-gray-500 hover:text-gray-700">✕</button>
+        </div>
+        <input id="scholarSearchDetail" placeholder="Search scholarships..." class="w-full border rounded-lg px-3 py-2 text-sm mb-3" />
+        <div id="scholarListDetail" class="space-y-2"></div>
+        <div class="mt-3 flex justify-end gap-2">
+          <button id="scholarCancelDetail" class="px-3 py-1 border rounded-lg text-sm hover:bg-gray-50">Cancel</button>
+          <button id="scholarSaveDetail" class="px-3 py-1 text-white rounded-lg text-sm" style="background-color:#d82128;">Save</button>
+        </div>
+      </div>
+    </div>
+
 </body>
 
 </html>

@@ -223,7 +223,7 @@
                             class="top-tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300"
                             data-top-tab="tiers">Institution Tiers</button>
                         <button
-                            class="top-tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300"
+                            class="top-tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300 hidden"
                             data-top-tab="partners">Partner Universities</button>
                     </nav>
                 </div>
@@ -561,6 +561,23 @@
                                             value="1827">
                                         <input type="text" class="w-full text-xs border-gray-300 rounded"
                                             value="Historic Institution">
+                                    </div>
+                                </div>
+
+                                <!-- Optional: Partner University Checkbox -->
+                                <div class="bg-gray-50 rounded-lg p-4">
+                                    <p class="text-xs text-gray-500">Partner University (optional)</p>
+                                    <div class="view-mode">
+                                        <p class="text-sm font-medium text-gray-900">No</p>
+                                        <p class="text-xs text-gray-500">Mark if this institution is a partner
+                                            university</p>
+                                    </div>
+                                    <div class="edit-mode hidden">
+                                        <label class="inline-flex items-center gap-2 text-sm text-gray-900">
+                                            <input type="checkbox" id="isPartnerUniversity"
+                                                class="h-4 w-4 rounded border-gray-300">
+                                            Partner University
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -1369,6 +1386,84 @@ Spring 2026</textarea>
                         <i data-lucide="send" class="w-4 h-4"></i>
                     </button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Partner Upsert Modal (used by upsertPartner()) -->
+    <div id="partnerModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50">
+        <div
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[720px] bg-white rounded-lg shadow-xl">
+            <div class="p-6 border-b flex items-center justify-between">
+                <h3 id="partnerModalTitle" class="text-lg font-semibold text-gray-900">Add Partner</h3>
+                <button id="partnerCloseX" class="text-gray-500 hover:text-gray-700">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="p-6 space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Logo URL</label>
+                    <input id="partnerLogo" type="url" class="w-full border rounded-lg px-3 py-2 text-sm"
+                        placeholder="https://...">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                        <input id="partnerName" type="text" class="w-full border rounded-lg px-3 py-2 text-sm"
+                            placeholder="Institution name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Location</label>
+                        <input id="partnerLocation" type="text" class="w-full border rounded-lg px-3 py-2 text-sm"
+                            placeholder="City, Country">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                    <textarea id="partnerDesc" class="w-full border rounded-lg px-3 py-2 text-sm h-24"
+                        placeholder="Short description"></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Hashtags (comma separated)</label>
+                    <input id="partnerTags" type="text" class="w-full border rounded-lg px-3 py-2 text-sm"
+                        placeholder="2+2, Exchange, ...">
+                </div>
+                <input id="partnerIndex" type="hidden" value="">
+            </div>
+            <div class="p-4 border-t flex justify-end gap-2">
+                <button id="partnerCancel" class="px-4 py-2 text-sm border rounded-lg hover:bg-gray-50">Cancel</button>
+                <button id="partnerSave" class="px-4 py-2 text-sm text-white rounded-lg"
+                    style="background-color:#d82128;">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Partner Selection Modal -->
+    <div id="partnerSelectModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50">
+        <div
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[720px] bg-white rounded-lg shadow-xl">
+            <div class="p-6 border-b flex items-center justify-between">
+                <h3 class="text-lg font-semibold text-gray-900">Select Institution</h3>
+                <button id="partnerSelectCloseX" class="text-gray-500 hover:text-gray-700">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="mb-4">
+                    <div class="relative">
+                        <i data-lucide="search"
+                            class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input id="institutionSelectSearch" type="text" placeholder="Search institutions..."
+                            class="pl-9 pr-3 py-2 w-full border rounded-lg text-sm">
+                    </div>
+                </div>
+                <div class="max-h-80 overflow-y-auto">
+                    <ul id="institutionSelectList" class="divide-y divide-gray-100"></ul>
+                </div>
+            </div>
+            <div class="p-4 border-t flex justify-end">
+                <button id="partnerSelectCancel"
+                    class="px-4 py-2 text-sm border rounded-lg hover:bg-gray-50">Close</button>
             </div>
         </div>
     </div>
@@ -2258,6 +2353,11 @@ Spring 2026</textarea>
         const partnersPreview = document.getElementById('partnersPreview');
         const addPartnerBtn = document.getElementById('addPartnerBtn');
         const clearPartnersBtn = document.getElementById('clearPartnersBtn');
+        const partnerSelectModal = document.getElementById('partnerSelectModal');
+        const institutionSelectList = document.getElementById('institutionSelectList');
+        const institutionSelectSearch = document.getElementById('institutionSelectSearch');
+        const partnerSelectCancel = document.getElementById('partnerSelectCancel');
+        const partnerSelectCloseX = document.getElementById('partnerSelectCloseX');
 
         function loadPartners() {
             try {
@@ -2315,6 +2415,76 @@ Spring 2026</textarea>
             });
         }
 
+        // Build institution list from Institutions table
+        function getInstitutionsFromTable() {
+            const rows = document.querySelectorAll('#panel-institutions tbody tr');
+            const list = [];
+            rows.forEach(tr => {
+                const img = tr.querySelector('img');
+                const nameEl = tr.querySelector('td .text-sm.font-medium');
+                const countryEl = tr.querySelector('td:nth-child(2)');
+                const name = nameEl ? nameEl.textContent.trim() : '';
+                const logo = img ? img.getAttribute('src') : '';
+                const location = countryEl ? countryEl.textContent.trim() : '';
+                if (name) list.push({ name, logo, location });
+            });
+            return list;
+        }
+
+        function openPartnerSelectModal() {
+            const institutions = getInstitutionsFromTable();
+            institutionSelectList.innerHTML = '';
+            institutions.forEach((inst, idx) => {
+                const li = document.createElement('li');
+                li.className = 'p-3 hover:bg-gray-50 flex items-center justify-between';
+                li.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <img src="${inst.logo}" alt="${inst.name}" class="w-8 h-8 rounded-full object-contain">
+                        <div>
+                            <p class="text-sm font-medium text-gray-900">${inst.name}</p>
+                            <p class="text-xs text-gray-500">${inst.location}</p>
+                        </div>
+                    </div>
+                    <button class="px-3 py-1 text-sm text-white rounded" data-action="select" data-idx="${idx}" style="background-color:#d82128;">Select</button>
+                `;
+                institutionSelectList.appendChild(li);
+            });
+            partnerSelectModal.classList.remove('hidden');
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function closePartnerSelectModal() { partnerSelectModal.classList.add('hidden'); }
+
+        // Filter search within selection list
+        if (institutionSelectSearch) {
+            institutionSelectSearch.addEventListener('input', () => {
+                const term = institutionSelectSearch.value.toLowerCase();
+                Array.from(institutionSelectList.children).forEach(li => {
+                    const text = li.textContent.toLowerCase();
+                    li.style.display = text.includes(term) ? '' : 'none';
+                });
+            });
+        }
+
+        // Handle selection click
+        if (institutionSelectList) {
+            institutionSelectList.addEventListener('click', (e) => {
+                const btn = e.target.closest('button[data-action="select"]');
+                if (!btn) return;
+                const idx = parseInt(btn.dataset.idx, 10);
+                const institutions = getInstitutionsFromTable();
+                const inst = institutions[idx];
+                if (inst) {
+                    upsertPartner({ logo: inst.logo, name: inst.name, location: inst.location, description: '', hashtags: [] });
+                    closePartnerSelectModal();
+                }
+            });
+        }
+
+        // Close selection modal buttons
+        if (partnerSelectCancel) partnerSelectCancel.addEventListener('click', closePartnerSelectModal);
+        if (partnerSelectCloseX) partnerSelectCloseX.addEventListener('click', closePartnerSelectModal);
+
         function upsertPartner(initial, index = null) {
             // Populate modal fields
             document.getElementById('partnerLogo').value = initial?.logo || '';
@@ -2342,7 +2512,7 @@ Spring 2026</textarea>
             renderTable();
             renderPreview();
 
-            if (addPartnerBtn) addPartnerBtn.addEventListener('click', () => upsertPartner());
+            if (addPartnerBtn) addPartnerBtn.addEventListener('click', () => openPartnerSelectModal());
             if (clearPartnersBtn) clearPartnersBtn.addEventListener('click', () => {
                 if (confirm('Clear all partner universities?')) { savePartners([]); renderTable(); renderPreview(); }
             });

@@ -12,9 +12,110 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root { --brand: #d82128; }
         body {
             font-family: 'Inter', sans-serif;
         }
+        .kanban-column {
+            min-height: 500px;
+            background: #f4f5f7;
+            border-radius: 8px;
+        }
+        .task-card {
+            transition: all 0.2s;
+            cursor: grab;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+        }
+        .task-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+            background: #fff;
+        }
+        .task-card:active {
+            cursor: grabbing;
+        }
+        .task-card.priority-high {
+            box-shadow: inset 0 3px 0 0 #ef4444;
+        }
+        .task-card.priority-medium {
+            box-shadow: inset 0 3px 0 0 #f59e0b;
+        }
+        .task-card.priority-low {
+            box-shadow: inset 0 3px 0 0 #10b981;
+        }
+        .dragging {
+            opacity: 0.5;
+            transform: rotate(2deg);
+        }
+        .column-header {
+            font-weight: 600;
+            font-size: 13px;
+            color: #5e6c84;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .task-id {
+            color: #5e6c84;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        .btn-create-task {
+            background-color: #ef4444;
+        }
+        .btn-create-task:hover {
+            background-color: #dc2626;
+        }
+        /* Modal improvements */
+        #create-task-modal input:focus,
+        #create-task-modal textarea:focus,
+        #create-task-modal select:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        #create-task-modal label {
+            font-weight: 500;
+        }
+        /* Modal accent */
+        .modal-accent-left { border-left: 4px solid var(--brand); }
+        .modal-header-title { color: #111827; }
+        .modal-subtle { color: #6b7280; }
+        /* Chips */
+        .chip { display:inline-flex; align-items:center; gap:6px; padding:2px 8px; border-radius:9999px; font-size:12px; font-weight:600; }
+        .chip-type-application { background:#e0f2fe; color:#0369a1; }
+        .chip-type-scholarship { background:#f5f3ff; color:#6d28d9; }
+        .chip-type-agent { background:#ecfdf5; color:#047857; }
+        .chip-type-student { background:#fff7ed; color:#c2410c; }
+        .chip-priority-high { background:#fee2e2; color:#b91c1c; }
+        .chip-priority-medium { background:#fef3c7; color:#b45309; }
+        .chip-priority-low { background:#dcfce7; color:#166534; }
+        /* Tag pills (Jira-like) */
+        .tag-pill { display:inline-flex; align-items:center; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:700; text-transform: uppercase; letter-spacing: .2px; }
+        .tag-blue { background:#e6f4ff; color:#0958d9; }
+        .tag-green { background:#eafff1; color:#18794e; }
+        .tag-purple { background:#f3e8ff; color:#6d28d9; }
+        .tag-orange { background:#fff1e6; color:#c2410c; }
+        .tag-pink { background:#ffe4ef; color:#be185d; }
+        .tag-gray { background:#f3f4f6; color:#374151; }
+        .select2-container--default .select2-selection--single {
+            height: 42px !important;
+            border-color: #d1d5db !important;
+            border-radius: 0.375rem !important;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 42px !important;
+            padding-left: 12px !important;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 40px !important;
+        }
+        .select2-container--default.select2-container--focus .select2-selection--single {
+            border-color: #3b82f6 !important;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+        }
+        /* Ensure Select2 takes full width */
+        .select2-container { width: 100% !important; }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -170,112 +271,45 @@
                     </div>
                 </div>
 
-                <!-- Tasks Table -->
-                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Task Title</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Linked Item</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Assigned To</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Priority</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Due Date</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                <!-- Sample Task 1 -->
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm font-medium text-gray-900">Review Nguyen T.'s application</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">APP-2025-001</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center">
-                                            <img class="h-8 w-8 rounded-full" src="https://ui-avatars.com/api/?name=John+Smith" alt="">
-                                            <div class="ml-3">
-                                                <div class="text-sm font-medium text-gray-900">John Smith</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">High</span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-04-15</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">In Progress</span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                        <button onclick="openTaskDetail()" class="text-red-400 hover:text-blue-900 mr-3">View</button>
-                                        <button class="text-green-600 hover:text-green-900 mr-3">Done</button>
-                                        <button class="text-gray-600 hover:text-gray-900">Reassign</button>
-                                    </td>
-                                </tr>
-                                <!-- Sample Task 2 -->
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm font-medium text-gray-900">Verify scholarship documents</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">SCH-2025-003</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center">
-                                            <img class="h-8 w-8 rounded-full" src="https://ui-avatars.com/api/?name=Jane+Doe" alt="">
-                                            <div class="ml-3">
-                                                <div class="text-sm font-medium text-gray-900">Jane Doe</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Medium</span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-04-20</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">To Do</span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                        <button onclick="openTaskDetail()" class="text-red-400 hover:text-blue-900 mr-3">View</button>
-                                        <button class="text-green-600 hover:text-green-900 mr-3">Done</button>
-                                        <button class="text-gray-600 hover:text-gray-900">Reassign</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <!-- Kanban Board -->
+                <div class="grid grid-cols-3 gap-4">
+                    <!-- To Do Column -->
+                    <div class="kanban-column p-3">
+                        <div class="flex items-center justify-between mb-3 px-2">
+                            <h3 class="column-header flex items-center">
+                                To Do
+                                <span id="todo-count" class="ml-2 px-2 py-0.5 bg-gray-200 text-gray-700 rounded-full text-xs font-semibold">0</span>
+                            </h3>
+                        </div>
+                        <div id="todo-column" class="space-y-2 min-h-[400px]" data-status="todo">
+                            <!-- Cards will be rendered here -->
+                        </div>
                     </div>
-                    <div class="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
-                        <nav class="flex items-center justify-between">
-                            <div class="flex-1 flex justify-between sm:hidden">
-                                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">Previous</a>
-                                <a href="#" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">Next</a>
-                            </div>
-                            <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
-                                <div>
-                                    <p class="text-sm text-gray-700">
-                                        Showing <span class="font-medium">1</span> to <span class="font-medium">10</span> of <span class="font-medium">20</span> results
-                                    </p>
-                                </div>
-                                <div>
-                                    <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
-                                        <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                                            <span class="sr-only">Previous</span>
-                                            <i data-lucide="chevron-left" class="h-5 w-5"></i>
-                                        </a>
-                                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">1</a>
-                                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">2</a>
-                                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">3</a>
-                                        <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                                            <span class="sr-only">Next</span>
-                                            <i data-lucide="chevron-right" class="h-5 w-5"></i>
-                                        </a>
-                                    </nav>
-                                </div>
-                            </div>
-                        </nav>
+
+                    <!-- In Progress Column -->
+                    <div class="kanban-column p-3">
+                        <div class="flex items-center justify-between mb-3 px-2">
+                            <h3 class="column-header flex items-center">
+                                In Progress
+                                <span id="inprogress-count" class="ml-2 px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">0</span>
+                            </h3>
+                        </div>
+                        <div id="inprogress-column" class="space-y-2 min-h-[400px]" data-status="in-progress">
+                            <!-- Cards will be rendered here -->
+                        </div>
+                    </div>
+
+                    <!-- Done Column -->
+                    <div class="kanban-column p-3">
+                        <div class="flex items-center justify-between mb-3 px-2">
+                            <h3 class="column-header flex items-center">
+                                Done
+                                <span id="done-count" class="ml-2 px-2 py-0.5 bg-green-100 text-green-700 rounded-full text-xs font-semibold">0</span>
+                            </h3>
+                        </div>
+                        <div id="done-column" class="space-y-2 min-h-[400px]" data-status="done">
+                            <!-- Cards will be rendered here -->
+                        </div>
                     </div>
                 </div>
             </main>
@@ -333,63 +367,107 @@
     </div>
 
     <!-- Task Detail Modal -->
-    <div id="task-detail-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
-        <div class="relative top-20 mx-auto p-5 border w-3/4 shadow-lg rounded-lg bg-white">
-            <div class="flex justify-between items-center pb-3">
-                <h3 class="text-xl font-semibold text-gray-900">Task Details</h3>
-                <button onclick="closeTaskDetail()" class="text-gray-400 hover:text-gray-500">
-                    <i data-lucide="x" class="h-6 w-6"></i>
-                </button>
+    <div id="task-detail-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 overflow-y-auto h-full w-full z-50">
+        <div class="relative top-16 mx-auto w-full max-w-4xl bg-white rounded-xl shadow-2xl">
+            <!-- Header -->
+            <div class="flex items-start justify-between px-6 py-4 border-b border-gray-200">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h3 id="detail-title" class="text-lg font-semibold text-gray-900">Task Title</h3>
+                        <span id="detail-status" class="px-2 py-0.5 text-xs font-semibold rounded-full bg-gray-100 text-gray-700">To Do</span>
+                    </div>
+                    <div class="mt-1 flex items-center gap-3 text-sm text-gray-500">
+                        <span id="detail-key">KEY-000</span>
+                        <span>•</span>
+                        <span id="detail-assignee" class="inline-flex items-center gap-2">
+                            <img id="detail-assignee-avatar" class="h-5 w-5 rounded-full" src="" alt="">
+                            <span id="detail-assignee-name">Assignee</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="detail-reassign-btn" onclick="openReassignModal()" class="px-3 py-1.5 text-sm border border-gray-300 rounded-md hover:bg-gray-50">Reassign</button>
+                    <button id="detail-delete-btn" class="px-3 py-1.5 text-sm border border-red-300 text-red-600 rounded-md hover:bg-red-50" onclick="if(currentDetailTask && canDelete(currentDetailTask)){ deleteTask(currentDetailTask.id); closeTaskDetail(); }">Delete</button>
+                    <button onclick="closeTaskDetail()" class="text-gray-400 hover:text-gray-600">
+                        <i data-lucide="x" class="h-5 w-5"></i>
+                    </button>
+                </div>
             </div>
-            <div class="mt-4">
-                <div class="grid grid-cols-2 gap-4">
+
+            <!-- Body -->
+            <div class="grid grid-cols-3 gap-6 px-6 py-5">
+                <!-- Left: Description & Comments -->
+                <div class="col-span-2">
+                    <!-- Tags -->
+                    <div id="detail-tags" class="flex flex-wrap gap-2 mb-4"></div>
+
+                    <!-- Description -->
                     <div>
-                        <h4 class="text-sm font-medium text-gray-500">Task Title</h4>
-                        <p class="mt-1 text-sm text-gray-900">Review Nguyen T.'s application</p>
+                        <h4 class="text-sm font-medium text-gray-700 mb-1">Description</h4>
+                        <div id="detail-description" class="prose prose-sm max-w-none text-gray-800 bg-gray-50 rounded-md p-3"></div>
                     </div>
-                    <div>
-                        <h4 class="text-sm font-medium text-gray-500">Linked Item</h4>
-                        <p class="mt-1 text-sm text-red-400 hover:text-blue-700 cursor-pointer">APP-2025-001</p>
-                    </div>
-                    <div>
-                        <h4 class="text-sm font-medium text-gray-500">Description</h4>
-                        <p class="mt-1 text-sm text-gray-900">Review and verify all submitted documents for the application. Check eligibility criteria and academic requirements.</p>
-                    </div>
-                    <div>
-                        <h4 class="text-sm font-medium text-gray-500">Sub-tasks</h4>
-                        <div class="mt-1 space-y-2">
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="rounded border-gray-300 text-red-400" checked>
-                                <span class="ml-2 text-sm text-gray-900">Review academic transcripts</span>
+
+                    <!-- Subtasks placeholder (static demo) -->
+                    <div class="mt-5">
+                        <h4 class="text-sm font-medium text-gray-700 mb-2">Sub-tasks</h4>
+                        <div class="space-y-2">
+                            <label class="inline-flex items-center text-sm text-gray-700">
+                                <input type="checkbox" class="rounded border-gray-300 text-red-400 mr-2">
+                                Review documents
                             </label>
-                            <br>
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="rounded border-gray-300 text-red-400">
-                                <span class="ml-2 text-sm text-gray-900">Verify language proficiency scores</span>
+                            <label class="inline-flex items-center text-sm text-gray-700">
+                                <input type="checkbox" class="rounded border-gray-300 text-red-400 mr-2">
+                                Confirm eligibility
                             </label>
                         </div>
                     </div>
-                </div>
-                <div class="mt-4">
-                    <h4 class="text-sm font-medium text-gray-500">Comments</h4>
-                    <div class="mt-2 space-y-4">
-                        <div class="flex space-x-3">
-                            <img class="h-8 w-8 rounded-full" src="https://ui-avatars.com/api/?name=John+Smith" alt="">
-                            <div class="flex-1 bg-gray-50 rounded-lg px-4 py-2 sm:px-6 sm:py-4">
-                                <div class="text-sm">
-                                    <span class="font-medium text-gray-900">John Smith</span>
-                                    <span class="text-gray-500 ml-2">2 hours ago</span>
+
+                    <!-- Comments -->
+                    <div class="mt-6">
+                        <h4 class="text-sm font-medium text-gray-700 mb-2">Comments</h4>
+                        <div id="detail-comments" class="space-y-3">
+                            <div class="flex gap-3">
+                                <img class="h-8 w-8 rounded-full" src="https://ui-avatars.com/api/?name=John+Smith" alt="">
+                                <div class="flex-1 bg-gray-50 rounded-lg px-4 py-2">
+                                    <div class="text-sm"><span class="font-medium text-gray-900">John Smith</span> <span class="text-gray-500 ml-2">2 hours ago</span></div>
+                                    <div class="mt-1 text-sm text-gray-700">Started reviewing the documents.</div>
                                 </div>
-                                <div class="mt-1 text-sm text-gray-700">Started reviewing the documents. Will need additional information about the scholarship eligibility.</div>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <textarea id="detail-new-comment" rows="2" class="w-full rounded-md border border-gray-300 px-3 py-2" placeholder="Add a comment..."></textarea>
+                            <div class="mt-2 flex justify-end">
+                                <button class="btn-create-task px-3 py-1.5 rounded-md text-sm text-white">Post Comment</button>
                             </div>
                         </div>
                     </div>
-                    <div class="mt-4">
-                        <label for="comment" class="sr-only">Add comment</label>
-                        <textarea id="comment" rows="3" class="w-full rounded-lg border-gray-300" placeholder="Add a comment..."></textarea>
-                        <div class="mt-2 flex justify-end">
-                            <button class="px-4 py-2 bg-red-400 text-white rounded-lg text-sm font-medium hover:bg-blue-700">Post Comment</button>
-                        </div>
+                </div>
+
+                <!-- Right: Metadata -->
+                <div class="col-span-1">
+                    <div class="bg-gray-50 rounded-md p-3 border border-gray-200">
+                        <dl class="divide-y divide-gray-200 text-sm">
+                            <div class="py-2 flex justify-between items-center">
+                                <dt class="text-gray-600">Linked Item</dt>
+                                <dd id="detail-item" class="ml-2 font-medium text-blue-600"></dd>
+                            </div>
+                            <div class="py-2 flex justify-between items-center">
+                                <dt class="text-gray-600">Priority</dt>
+                                <dd id="detail-priority" class="ml-2"></dd>
+                            </div>
+                            <div class="py-2 flex justify-between items-center">
+                                <dt class="text-gray-600">Due Date</dt>
+                                <dd id="detail-due" class="ml-2 text-gray-800"></dd>
+                            </div>
+                            <div class="py-2 flex justify-between items-center">
+                                <dt class="text-gray-600">Status</dt>
+                                <dd id="detail-status-side" class="ml-2"></dd>
+                            </div>
+                            <div class="py-2 flex justify-between items-center">
+                                <dt class="text-gray-600">Created By</dt>
+                                <dd id="detail-created-by" class="ml-2 text-gray-800"></dd>
+                            </div>
+                        </dl>
                     </div>
                 </div>
             </div>
@@ -397,63 +475,106 @@
     </div>
 
     <!-- Create Task Modal -->
-    <div id="create-task-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
-        <div class="relative top-20 mx-auto p-5 border w-2/3 shadow-lg rounded-lg bg-white">
-            <div class="flex justify-between items-center pb-3">
-                <h3 class="text-xl font-semibold text-gray-900">Create New Task</h3>
-                <button onclick="closeCreateTaskModal()" class="text-gray-400 hover:text-gray-500">
-                    <i data-lucide="x" class="h-6 w-6"></i>
+    <div id="create-task-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 overflow-y-auto h-full w-full z-50">
+        <div class="relative top-20 mx-auto p-0 border-0 w-full max-w-3xl shadow-2xl rounded-xl bg-white modal-accent-left">
+            <div class="flex justify-between items-center px-6 py-4 border-b border-gray-200">
+                <h3 class="text-lg font-semibold modal-header-title">Create New Task</h3>
+                <button onclick="closeCreateTaskModal()" class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i data-lucide="x" class="h-5 w-5"></i>
                 </button>
             </div>
-            <form class="mt-4">
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="col-span-2">
-                        <label class="block text-sm font-medium text-gray-700">Task Title</label>
-                        <input type="text" class="mt-1 w-full rounded-lg border-gray-300">
-                    </div>
-                    <div class="col-span-2">
-                        <label class="block text-sm font-medium text-gray-700">Description</label>
-                        <textarea rows="3" class="mt-1 w-full rounded-lg border-gray-300"></textarea>
-                    </div>
+            <form class="px-6 py-5" id="create-task-form">
+                <div class="space-y-4">
+                    <!-- Task Title -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Linked To</label>
-                        <select class="mt-1 w-full rounded-lg border-gray-300">
-                            <option value="">Select Item Type</option>
-                            <option value="application">Application</option>
-                            <option value="scholarship">Scholarship</option>
-                            <option value="agent">Agent</option>
-                            <option value="student">Student</option>
-                        </select>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Task Title</label>
+                        <input type="text" id="task-title" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter task title">
                     </div>
+                    
+                    <!-- Description -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Item ID</label>
-                        <input type="text" class="mt-1 w-full rounded-lg border-gray-300" placeholder="e.g. APP-2025-001">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                        <textarea rows="3" id="task-desc" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none" placeholder="Add description..."></textarea>
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Assign To</label>
-                        <select class="mt-1 w-full rounded-lg border-gray-300">
-                            <option value="">Select Staff</option>
-                            <option value="john">John Smith</option>
-                            <option value="jane">Jane Doe</option>
-                            <option value="mike">Mike Johnson</option>
-                        </select>
+                    
+                    <!-- Two Column Layout -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- Linked To -->
+                        <div>
+                            <div class="flex items-center justify-between mb-1">
+                                <label class="block text-sm font-medium text-gray-700">Linked To</label>
+                                <span id="type-chip" class="chip chip-type-application hidden">Application</span>
+                            </div>
+                            <select id="task-type" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white">
+                                <option value="">Select Item Type</option>
+                                <option value="application">Application</option>
+                                <option value="scholarship">Scholarship</option>
+                                <option value="agent">Agent</option>
+                                <option value="student">Student</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Item Selection -->
+                        <div>
+                            <div class="flex items-center justify-between mb-1">
+                                <label class="block text-sm font-medium text-gray-700">Item</label>
+                                <span class="text-xs modal-subtle">Searchable</span>
+                            </div>
+                            <select id="task-item-id" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white" disabled>
+                                <option value="">Select item type first</option>
+                            </select>
+                        </div>
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Priority</label>
-                        <select class="mt-1 w-full rounded-lg border-gray-300">
-                            <option value="high">High</option>
-                            <option value="medium">Medium</option>
-                            <option value="low">Low</option>
-                        </select>
+                    
+                    <!-- Two Column Layout -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- Assign To -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Assign To</label>
+                            <select id="task-assignee" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white">
+                                <option value="">Select Staff</option>
+                                <option value="john">John Smith</option>
+                                <option value="jane">Jane Doe</option>
+                                <option value="mike">Mike Johnson</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Priority -->
+                        <div>
+                            <div class="flex items-center justify-between mb-1">
+                                <label class="block text-sm font-medium text-gray-700">Priority</label>
+                                <span id="priority-chip" class="chip chip-priority-high">High</span>
+                            </div>
+                            <select id="task-priority" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white">
+                                <option value="high">High</option>
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
                     </div>
+                    
+                    <!-- Due Date -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Due Date</label>
-                        <input type="date" class="mt-1 w-full rounded-lg border-gray-300">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Due Date</label>
+                        <input type="date" id="task-due" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+
+                    <!-- Tags -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Tags</label>
+                        <select id="task-tags" multiple class="w-full px-3 py-2 border border-gray-300 rounded-md bg-white"></select>
+                        <p class="text-xs text-gray-500 mt-1">Add multiple tags. Press Enter to create new.</p>
                     </div>
                 </div>
-                <div class="mt-4 flex justify-end space-x-3">
-                    <button type="button" onclick="closeCreateTaskModal()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">Cancel</button>
-                    <button type="submit" class="px-4 py-2 bg-red-400 text-white rounded-lg text-sm font-medium hover:bg-blue-700">Create Task</button>
+                
+                <!-- Footer Buttons -->
+                <div class="mt-6 flex justify-end gap-3 pt-4 border-t border-gray-200">
+                    <button type="button" onclick="closeCreateTaskModal()" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn-create-task px-4 py-2 rounded-md text-sm font-medium text-white transition-colors">
+                        Create Task
+                    </button>
                 </div>
             </form>
         </div>
@@ -592,29 +713,486 @@
             window.location.href = '../../login.html';
         }
 
+        // Sample data for items
+        const itemsData = {
+            application: [
+                { id: 'APP-2025-001', name: "Nguyen T.'s Application - Harvard" },
+                { id: 'APP-2025-002', name: "John D.'s Application - MIT" },
+                { id: 'APP-2025-003', name: "Sarah L.'s Application - Stanford" },
+                { id: 'APP-2025-004', name: "Michael K.'s Application - Yale" }
+            ],
+            scholarship: [
+                { id: 'SCH-2025-001', name: 'Merit Scholarship 2025' },
+                { id: 'SCH-2025-002', name: 'Need-Based Grant' },
+                { id: 'SCH-2025-003', name: 'Athletic Scholarship' },
+                { id: 'SCH-2025-004', name: 'International Student Award' }
+            ],
+            agent: [
+                { id: 'AGT-2025-001', name: 'Vietnam Education Partners' },
+                { id: 'AGT-2025-002', name: 'Global Study Advisors' },
+                { id: 'AGT-2025-003', name: 'Asia Pacific Recruitment' },
+                { id: 'AGT-2025-004', name: 'International Student Services' }
+            ],
+            student: [
+                { id: 'STU-2025-001', name: 'Nguyen Van A' },
+                { id: 'STU-2025-002', name: 'Tran Thi B' },
+                { id: 'STU-2025-003', name: 'Le Van C' },
+                { id: 'STU-2025-004', name: 'Pham Thi D' }
+            ]
+        };
+
+        // Sample tag suggestions
+        const tagSuggestions = ['Local Mars Office', 'Space Travel Partners', 'SeeSpaceZ Plus', 'Urgent', 'Research', 'Review'];
+
         // Initialize Select2
         $(document).ready(function() {
-            $('select').select2({
-                minimumResultsForSearch: 6
+            // Initialize select2 for all selects except task-item-id (will be initialized dynamically)
+            $('select:not(#task-item-id)').select2({
+                minimumResultsForSearch: 6,
+                width: '100%'
+            });
+            
+            // Helpers to update chips
+            function updateTypeChip(type) {
+                const chip = document.getElementById('type-chip');
+                if (!chip) return;
+                chip.className = 'chip';
+                if (!type) { chip.classList.add('hidden'); return; }
+                chip.classList.remove('hidden');
+                if (type === 'application') chip.classList.add('chip-type-application');
+                if (type === 'scholarship') chip.classList.add('chip-type-scholarship');
+                if (type === 'agent') chip.classList.add('chip-type-agent');
+                if (type === 'student') chip.classList.add('chip-type-student');
+                chip.textContent = type.charAt(0).toUpperCase() + type.slice(1);
+            }
+
+            function updatePriorityChip(priority) {
+                const chip = document.getElementById('priority-chip');
+                if (!chip) return;
+                chip.className = 'chip';
+                if (priority === 'high') chip.classList.add('chip-priority-high');
+                if (priority === 'medium') chip.classList.add('chip-priority-medium');
+                if (priority === 'low') chip.classList.add('chip-priority-low');
+                chip.textContent = priority.charAt(0).toUpperCase() + priority.slice(1);
+            }
+
+            // Handle Linked To change
+            $('#task-type').on('change', function() {
+                const selectedType = $(this).val();
+                const itemSelect = $('#task-item-id');
+                updateTypeChip(selectedType);
+                
+                // Destroy existing select2 if exists
+                if (itemSelect.hasClass('select2-hidden-accessible')) {
+                    itemSelect.select2('destroy');
+                }
+                
+                // Clear and populate options
+                itemSelect.empty();
+                
+                if (selectedType && itemsData[selectedType]) {
+                    itemSelect.prop('disabled', false);
+                    itemSelect.append('<option value="">Select an item</option>');
+                    
+                    itemsData[selectedType].forEach(item => {
+                        itemSelect.append(`<option value="${item.id}">${item.id} - ${item.name}</option>`);
+                    });
+                    
+                    // Initialize select2 with search
+                    itemSelect.select2({
+                        placeholder: 'Search and select...',
+                        allowClear: true,
+                        width: '100%'
+                    });
+                } else {
+                    itemSelect.prop('disabled', true);
+                    itemSelect.append('<option value="">Select item type first</option>');
+                }
+            });
+
+            // Handle Priority change
+            $('#task-priority').on('change', function() {
+                updatePriorityChip($(this).val());
+            });
+
+            // Initialize Tags select (Select2 with tagging)
+            const tagsSelect = $('#task-tags');
+            tagSuggestions.forEach(t => tagsSelect.append(`<option value="${t}">${t}</option>`));
+            tagsSelect.select2({
+                tags: true,
+                tokenSeparators: [','],
+                width: '100%',
+                placeholder: 'Add tags...'
             });
         });
 
+        // Simple role and user model
+        const currentUser = { id: 'admin_1', name: 'Admin', role: 'admin' }; // roles: admin, parent_agent, sub_agent
+        const staffDirectory = {
+            john: { id: 'john', name: 'John Smith' },
+            jane: { id: 'jane', name: 'Jane Doe' },
+            mike: { id: 'mike', name: 'Mike Johnson' }
+        };
+
+        // Initial tasks demo
+        let tasks = [
+            { id: 'T-001', title: "Review Nguyen T.'s application", itemId: 'APP-2025-001', assignee: 'john', priority: 'high', due: '2025-04-15', status: 'in-progress', createdBy: 'parent_1', createdByRole: 'parent_agent', tags: ['Urgent', 'Review'] },
+            { id: 'T-002', title: 'Verify scholarship documents', itemId: 'SCH-2025-003', assignee: 'jane', priority: 'medium', due: '2025-04-20', status: 'todo', createdBy: 'admin_1', createdByRole: 'admin', tags: ['Local Mars Office'] },
+            { id: 'T-003', title: 'Update student profile information', itemId: 'STU-2025-015', assignee: 'mike', priority: 'low', due: '2025-04-25', status: 'todo', createdBy: 'admin_1', createdByRole: 'admin', tags: ['Research'] },
+            { id: 'T-004', title: 'Process payment for John Doe', itemId: 'PAY-2025-008', assignee: 'jane', priority: 'high', due: '2025-04-12', status: 'in-progress', createdBy: 'admin_1', createdByRole: 'admin', tags: ['Urgent'] },
+            { id: 'T-005', title: 'Complete agent onboarding checklist', itemId: 'AGT-2025-004', assignee: 'john', priority: 'medium', due: '2025-04-10', status: 'done', createdBy: 'parent_1', createdByRole: 'parent_agent', tags: ['Space Travel Partners'] },
+            { id: 'T-006', title: 'Send welcome email to new students', itemId: 'SYS-2025-012', assignee: 'mike', priority: 'low', due: '2025-04-18', status: 'done', createdBy: 'admin_1', createdByRole: 'admin', tags: ['SeeSpaceZ Plus'] }
+        ];
+
+        // Generate additional mock tasks (including Due Today)
+        function seedMoreTasks(count = 12) {
+            const priorities = ['high','medium','low'];
+            const statuses = ['todo','in-progress','done'];
+            const assignees = ['john','jane','mike'];
+            const prefixes = ['APP','SCH','AGT','STU','SYS','PAY'];
+            const sampleTitles = [
+                'Prepare onboarding kit', 'Validate documents', 'Follow up with student',
+                'Review payment proof', 'Schedule counseling call', 'Draft recommendation',
+                'Verify transcript', 'Create application checklist', 'Confirm interview slot', 'Sync data to CRM'
+            ];
+            const sampleTags = ['Urgent','Research','Local Mars Office','SeeSpaceZ Plus','Review'];
+            const today = new Date();
+            for (let i=0;i<count;i++) {
+                const id = 'T-' + String(Math.floor(Math.random()*100000)).padStart(5,'0');
+                const itemId = `${prefixes[i % prefixes.length]}-2025-${String(100+i).padStart(3,'0')}`;
+                const priority = priorities[i % priorities.length];
+                const status = statuses[i % statuses.length];
+                const assignee = assignees[i % assignees.length];
+                const title = sampleTitles[i % sampleTitles.length];
+                // Distribute due dates: some today, some +/- days
+                const d = new Date(today);
+                if (i % 4 === 0) { /* due today */ }
+                else if (i % 4 === 1) { d.setDate(d.getDate() + 2); }
+                else if (i % 4 === 2) { d.setDate(d.getDate() - 2); }
+                else { d.setDate(d.getDate() + 7); }
+                const due = d.toISOString().slice(0,10);
+                const tags = [sampleTags[i % sampleTags.length]];
+                tasks.push({ id, title, itemId, assignee, priority, due, tags, status, createdBy: 'admin_1', createdByRole: 'admin' });
+            }
+        }
+
+        function priorityBadge(priority) {
+            if (priority === 'high') return '<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">High</span>';
+            if (priority === 'medium') return '<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Medium</span>';
+            return '<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Low</span>';
+        }
+
+        function statusBadge(status) {
+            if (status === 'in-progress') return '<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">In Progress</span>';
+            if (status === 'done') return '<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Done</span>';
+            return '<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">To Do</span>';
+        }
+
+        function canDelete(task) {
+            if (currentUser.role === 'admin') return true;
+            if (currentUser.role === 'sub_agent' && task.createdByRole === 'parent_agent') return false;
+            return task.createdBy === currentUser.id;
+        }
+
+        function renderTasks() {
+            const todoCol = document.getElementById('todo-column');
+            const inprogressCol = document.getElementById('inprogress-column');
+            const doneCol = document.getElementById('done-column');
+            
+            if (!todoCol || !inprogressCol || !doneCol) return;
+            
+            todoCol.innerHTML = '';
+            inprogressCol.innerHTML = '';
+            doneCol.innerHTML = '';
+            
+            let todoCount = 0, inprogressCount = 0, doneCount = 0;
+            
+            tasks.forEach((t) => {
+                const card = document.createElement('div');
+                card.className = `task-card p-4 priority-${t.priority}`;
+                card.draggable = true;
+                card.dataset.taskId = t.id;
+                
+                const priorityLabel = t.priority === 'high' ? 'High' : (t.priority === 'medium' ? 'Medium' : 'Low');
+                const priorityCls = t.priority === 'high'
+                    ? 'bg-red-100 text-red-800'
+                    : (t.priority === 'medium' ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800');
+                const statusLabel = t.status === 'in-progress' ? 'In Progress' : (t.status === 'done' ? 'Done' : 'To Do');
+                // Jira-like status palette: To Do (gray), In Progress (blue), Done (green)
+                const statusCls = t.status === 'in-progress'
+                    ? 'bg-blue-100 text-blue-800'
+                    : (t.status === 'done' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-700');
+                const today = new Date(); today.setHours(0,0,0,0);
+                const dueDate = t.due ? new Date(t.due) : null; if (dueDate) dueDate.setHours(0,0,0,0);
+                const isOverdue = dueDate && (dueDate < today) && t.status !== 'done';
+                const isDueToday = dueDate && (dueDate.getTime() === today.getTime()) && t.status !== 'done';
+                
+                const tagsHtml = (t.tags || []).map(tag => {
+                    // simple color mapping by hash
+                    const colors = ['tag-blue','tag-green','tag-purple','tag-orange','tag-pink','tag-gray'];
+                    let hash = 0; for (let i=0;i<tag.length;i++){ hash = (hash*31 + tag.charCodeAt(i))>>>0; }
+                    const cls = colors[hash % colors.length];
+                    return `<span class="tag-pill ${cls}">${tag}</span>`;
+                }).join(' ');
+
+                card.innerHTML = `
+                    <div class="mb-2">
+                        <div class="flex items-start justify-between gap-3">
+                            <h4 class="text-[13px] font-semibold text-gray-900 leading-tight">${t.title}</h4>
+                            <div class="flex items-center gap-2">
+                                <span class="px-2 py-0.5 rounded-full text-xs font-semibold ${priorityCls}">${priorityLabel}</span>
+                                <span class="px-2 py-0.5 rounded-full text-xs font-semibold ${statusCls}">${statusLabel}</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-2">${tagsHtml}</div>
+                        <p class="task-id mt-1">${t.itemId || ''}</p>
+                    </div>
+
+                    <div class="flex items-center justify-between mt-3">
+                        <div class="flex items-center gap-2 text-xs text-gray-600">
+                            ${t.due ? `<span class="flex items-center gap-1">
+                                <i data-lucide="calendar" class="w-3 h-3"></i>
+                                ${new Date(t.due).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
+                            </span>` : ''}
+                            ${isDueToday ? `<span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-800">Due Today</span>` : ''}
+                            ${isOverdue ? `<span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-red-100 text-red-800">Overdue</span>` : ''}
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-blue-100 text-blue-800">${staffDirectory[t.assignee]?.name || ''}</span>
+                            ${canDelete(t) ? `<button onclick="deleteTask('${t.id}')" class="p-1 hover:bg-gray-100 rounded" title="Delete">
+                                <i data-lucide="trash-2" class="w-3.5 h-3.5 text-gray-500"></i>
+                            </button>` : ''}
+                        </div>
+                    </div>
+                `;
+                
+                // Add drag event listeners
+                card.addEventListener('dragstart', handleDragStart);
+                card.addEventListener('dragend', handleDragEnd);
+                
+                // Add click to view details
+                card.addEventListener('click', (e) => {
+                    if (!e.target.closest('button')) {
+                        openTaskDetail(t.id);
+                    }
+                });
+                
+                // Append to appropriate column
+                if (t.status === 'todo') {
+                    todoCol.appendChild(card);
+                    todoCount++;
+                } else if (t.status === 'in-progress') {
+                    inprogressCol.appendChild(card);
+                    inprogressCount++;
+                } else if (t.status === 'done') {
+                    doneCol.appendChild(card);
+                    doneCount++;
+                }
+            });
+            
+            // Update counts
+            document.getElementById('todo-count').textContent = todoCount;
+            document.getElementById('inprogress-count').textContent = inprogressCount;
+            document.getElementById('done-count').textContent = doneCount;
+            
+            lucide.createIcons();
+        }
+        
+        // Drag and Drop handlers
+        let draggedElement = null;
+        
+        function handleDragStart(e) {
+            draggedElement = this;
+            this.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/html', this.innerHTML);
+        }
+        
+        function handleDragEnd(e) {
+            this.classList.remove('dragging');
+        }
+        
+        function handleDragOver(e) {
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+            e.dataTransfer.dropEffect = 'move';
+            return false;
+        }
+        
+        function handleDrop(e) {
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            }
+            
+            if (draggedElement) {
+                const taskId = draggedElement.dataset.taskId;
+                const newStatus = this.dataset.status;
+                
+                // Update task status
+                tasks = tasks.map(t => t.id === taskId ? { ...t, status: newStatus } : t);
+                renderTasks();
+            }
+            
+            return false;
+        }
+        
+        // Setup drop zones
+        function setupDropZones() {
+            const columns = document.querySelectorAll('[data-status]');
+            columns.forEach(col => {
+                col.addEventListener('dragover', handleDragOver);
+                col.addEventListener('drop', handleDrop);
+            });
+        }
+
+        function markDone(id) {
+            tasks = tasks.map(t => t.id === id ? { ...t, status: 'done' } : t);
+            renderTasks();
+        }
+
+        function deleteTask(id) {
+            const task = tasks.find(t => t.id === id);
+            if (!task) return;
+            if (!canDelete(task)) {
+                alert('You do not have permission to delete this task.');
+                return;
+            }
+            if (confirm('Delete this task?')) {
+                tasks = tasks.filter(t => t.id !== id);
+                renderTasks();
+            }
+        }
+
         // Task Detail Modal
-        function openTaskDetail() {
-            document.getElementById('task-detail-modal').classList.remove('hidden');
+        let currentDetailTask = null;
+        function openTaskDetail(id) {
+            const t = tasks.find(x => x.id === id) || null;
+            currentDetailTask = t;
+            const modal = document.getElementById('task-detail-modal');
+            if (!modal || !t) { return; }
+
+            // Header
+            document.getElementById('detail-title').textContent = t.title || '';
+            const statusEl = document.getElementById('detail-status');
+            statusEl.className = 'px-2 py-0.5 text-xs font-semibold rounded-full';
+            if (t.status === 'in-progress') { statusEl.classList.add('bg-yellow-100','text-yellow-800'); statusEl.textContent = 'In Progress'; }
+            else if (t.status === 'done') { statusEl.classList.add('bg-green-100','text-green-800'); statusEl.textContent = 'Done'; }
+            else { statusEl.classList.add('bg-gray-100','text-gray-700'); statusEl.textContent = 'To Do'; }
+            document.getElementById('detail-key').textContent = t.id;
+            const assName = staffDirectory[t.assignee]?.name || '';
+            const avatar = `https://ui-avatars.com/api/?name=${encodeURIComponent(assName)}&size=40&background=0D8ABC&color=fff`;
+            document.getElementById('detail-assignee-avatar').src = avatar;
+            document.getElementById('detail-assignee-name').textContent = assName;
+
+            // Right metadata
+            document.getElementById('detail-item').textContent = t.itemId || '';
+            const prEl = document.getElementById('detail-priority');
+            prEl.innerHTML = '';
+            const prSpan = document.createElement('span');
+            prSpan.className = 'px-2 py-0.5 text-xs font-semibold rounded-full';
+            if (t.priority === 'high') { prSpan.classList.add('bg-red-100','text-red-800'); prSpan.textContent = 'High'; }
+            else if (t.priority === 'medium') { prSpan.classList.add('bg-yellow-100','text-yellow-800'); prSpan.textContent = 'Medium'; }
+            else { prSpan.classList.add('bg-green-100','text-green-800'); prSpan.textContent = 'Low'; }
+            prEl.appendChild(prSpan);
+            document.getElementById('detail-due').textContent = t.due ? new Date(t.due).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}) : '-';
+            document.getElementById('detail-status-side').innerHTML = statusBadge(t.status);
+            document.getElementById('detail-created-by').textContent = t.createdBy || '';
+
+            // Tags
+            const tagsWrap = document.getElementById('detail-tags');
+            tagsWrap.innerHTML = '';
+            (t.tags || []).forEach(tag => {
+                const colors = ['tag-blue','tag-green','tag-purple','tag-orange','tag-pink','tag-gray'];
+                let hash = 0; for (let i=0;i<tag.length;i++){ hash = (hash*31 + tag.charCodeAt(i))>>>0; }
+                const cls = colors[hash % colors.length];
+                const s = document.createElement('span');
+                s.className = `tag-pill ${cls}`;
+                s.textContent = tag;
+                tagsWrap.appendChild(s);
+            });
+
+            // Description
+            document.getElementById('detail-description').textContent = t.description || '—';
+
+            // Delete button visibility
+            const delBtn = document.getElementById('detail-delete-btn');
+            if (delBtn) {
+                if (canDelete(t)) delBtn.classList.remove('hidden'); else delBtn.classList.add('hidden');
+            }
+
+            modal.classList.remove('hidden');
+            lucide.createIcons();
         }
 
         function closeTaskDetail() {
             document.getElementById('task-detail-modal').classList.add('hidden');
+            currentDetailTask = null;
         }
 
         // Create Task Modal
         function openCreateTaskModal() {
+            if (currentUser.role !== 'admin') {
+                alert('Only admins can create tasks.');
+                return;
+            }
             document.getElementById('create-task-modal').classList.remove('hidden');
         }
 
         function closeCreateTaskModal() {
             document.getElementById('create-task-modal').classList.add('hidden');
+            // Reset form
+            document.getElementById('create-task-form').reset();
+            // Reset select2 dropdowns
+            $('#task-type').val('').trigger('change');
+            $('#task-assignee').val('').trigger('change');
+            $('#task-priority').val('high').trigger('change');
+            // Disable and reset item select
+            const itemSelect = $('#task-item-id');
+            if (itemSelect.hasClass('select2-hidden-accessible')) {
+                itemSelect.select2('destroy');
+            }
+            itemSelect.prop('disabled', true);
+            itemSelect.empty().append('<option value="">Select item type first</option>');
+        }
+
+        const createForm = document.getElementById('create-task-form');
+        if (createForm) {
+            createForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const title = document.getElementById('task-title').value.trim();
+                const desc = document.getElementById('task-desc').value.trim();
+                const type = document.getElementById('task-type').value;
+                const itemId = $('#task-item-id').val(); // Use jQuery to get select2 value
+                const assignee = document.getElementById('task-assignee').value;
+                const priority = document.getElementById('task-priority').value;
+                const due = document.getElementById('task-due').value;
+                const tags = $('#task-tags').val() || [];
+
+                if (!title || !assignee) {
+                    alert('Title and Assignee are required.');
+                    return;
+                }
+
+                const newTask = {
+                    id: 'T-' + String(Math.floor(Math.random()*100000)).padStart(5, '0'),
+                    title,
+                    description: desc,
+                    type,
+                    itemId,
+                    assignee,
+                    priority,
+                    due,
+                    tags,
+                    status: 'todo',
+                    createdBy: currentUser.id,
+                    createdByRole: currentUser.role
+                };
+                tasks.unshift(newTask);
+                renderTasks();
+                closeCreateTaskModal();
+                this.reset();
+            });
         }
 
         // Reassign Task Modal
@@ -625,6 +1203,15 @@
         function closeReassignModal() {
             document.getElementById('reassign-task-modal').classList.add('hidden');
         }
+
+        // Hide create button for non-admins
+        (function() {
+            const createBtn = Array.from(document.querySelectorAll('button'))
+                .find(b => b.textContent && b.textContent.includes('Create Task'));
+            if (createBtn && currentUser.role !== 'admin') {
+                createBtn.classList.add('hidden');
+            }
+        })();
 
         // Close modals when clicking outside
         window.onclick = function(event) {
@@ -640,6 +1227,11 @@
                 }
             });
         };
-    </script>
+
+        // Seed extra mock tasks then render
+        seedMoreTasks(20);
+        renderTasks();
+        setupDropZones();
+</script>
 </body>
 </html>

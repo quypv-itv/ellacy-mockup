@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joint Program Universities Details - APPLYLEAD CRM</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <div class="flex h-screen overflow-hidden">
+    <!-- Sidebar (same as CRM) -->
+    <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg overflow-y-auto overflow-x-hidden flex flex-col">
+      <div class="p-6">
+        <div class="flex items-center mb-2">
+          <img src="../../ApplyLead_logo.png" alt="ApplyLead" class="h-9">
+        </div>
+        <div class="flex items-center">
+          <span class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">Admin</span>
+        </div>
+      </div>
+      <nav class="mt">
+        <a href="CRM-dashboard.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+            data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>Dashboard</a>
+        <a href="CRM-applications.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+            data-lucide="file-text" class="w-5 h-5 mr-3"></i>Applications</a>
+        <a href="CRM-agent.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+            data-lucide="users" class="w-5 h-5 mr-3"></i>Agents</a>
+        <a href="CRM-scholarships.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+            data-lucide="graduation-cap" class="w-5 h-5 mr-3"></i>Scholarships</a>
+        <a href="CRM-institutions.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+            data-lucide="building" class="w-5 h-5 mr-3"></i>Institutions</a>
+        <a href="CRM-students.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+            data-lucide="user" class="w-5 h-5 mr-3"></i>Students</a>
+        <a href="CRM-payment.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+            data-lucide="credit-card" class="w-5 h-5 mr-3"></i>Payments</a>
+        <a href="CRM-tasks.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+            data-lucide="check-circle" class="w-5 h-5 mr-3"></i>Tasks</a>
+        <a href="CRM-Campaigns.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+            data-lucide="brick-wall-shield" class="w-5 h-5 mr-3"></i>Campaigns</a>
+        <a href="CRM-report.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+            data-lucide="bar-chart" class="w-5 h-5 mr-3"></i>Reports</a>
+        <a href="CRM-messages.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+            data-lucide="message-circle" class="w-5 h-5 mr-3"></i>Messages</a>
+        <a href="CRM-user-admin.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+            data-lucide="shield" class="w-5 h-5 mr-3"></i>User Admin</a>
+        <a href="CRM-joint-program-config.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+            data-lucide="book-open" class="w-5 h-5 mr-3"></i>Ellacy Program</a>
+        <a href="CRM-joint-program-universities.html" class="flex items-center px-6 py-3 text-white"
+          style="background-color:#d82128;"><i data-lucide="building-2" class="w-5 h-5 mr-3"></i>Joint Program
+          Universities</a>
+        <a href="CRM-Setting.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+            data-lucide="settings" class="w-5 h-5 mr-3"></i>Settings</a>
+      </nav>
+      <div class="mt-auto px-6 py-4 border-t border-gray-200">
+        <p class="text-sm text-gray-600 text-center">Designed & developed by Innotech Viet Nam</p>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <div class="ml-64 flex-1 flex flex-col overflow-hidden">
+      <header class="bg-white shadow-sm sticky top-0 z-40 border-b">
+        <div class="flex items-center justify-between px-6 py-4">
+          <div>
+            <h1 class="text-xl font-semibold text-gray-800">Joint Program Universities Details</h1>
+            <p class="text-sm text-gray-600" id="header_subtitle"></p>
+          </div>
+          <a href="CRM-joint-program-universities.html" class="text-sm text-red-600 hover:underline">Back to Joint
+            Program Universities </a>
+        </div>
+      </header>
+
+      <main class="flex-1 overflow-y-auto p-6 w-full max-w-none">
+        <!-- Tabs -->
+        <div class="bg-white rounded-lg shadow-sm mb-6">
+          <div class="border-b border-gray-200">
+            <nav class="flex flex-wrap gap-4 px-4 md:px-6">
+              <button onclick="switchTab('hero')" class="tab-button border-b-2 py-3 px-2 text-sm font-medium"
+                style="border-color:#d82128;color:#d82128;">Hero Section</button>
+              <button onclick="switchTab('1plus3')"
+                class="tab-button border-b-2 border-transparent py-3 px-2 text-sm font-medium text-gray-500 hover:text-gray-700">1+3
+                Program</button>
+              <button onclick="switchTab('2plus2')"
+                class="tab-button border-b-2 border-transparent py-3 px-2 text-sm font-medium text-gray-500 hover:text-gray-700">2+2
+                Program</button>
+              <button onclick="switchTab('jmba')"
+                class="tab-button border-b-2 border-transparent py-3 px-2 text-sm font-medium text-gray-500 hover:text-gray-700">Joint
+                MBA</button>
+              <button onclick="switchTab('partner-13')"
+                class="tab-button border-b-2 border-transparent py-3 px-2 text-sm font-medium text-gray-500 hover:text-gray-700">Partner
+                (1+3)</button>
+              <button onclick="switchTab('partner-22')"
+                class="tab-button border-b-2 border-transparent py-3 px-2 text-sm font-medium text-gray-500 hover:text-gray-700">Partner
+                (2+2)</button>
+              <button onclick="switchTab('partner-mba')"
+                class="tab-button border-b-2 border-transparent py-3 px-2 text-sm font-medium text-gray-500 hover:text-gray-700">Partner
+                (MBA)</button>
+              <button onclick="switchTab('faq')"
+                class="tab-button border-b-2 border-transparent py-3 px-2 text-sm font-medium text-gray-500 hover:text-gray-700">FAQ</button>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Tab Contents -->
+        <section id="tab-hero" class="tab-content active">
+          <div class="bg-white rounded-xl shadow-sm border p-6">
+            <h3 class="text-lg font-semibold mb-4 flex items-center">
+              <i data-lucide="layout" class="w-5 h-5 mr-2" style="color:#d82128;"></i>
+              Hero Section Configuration
+            </h3>
+            <p class="text-sm text-gray-600 mb-6">Configure the hero section displayed on the About Joint Program
+              student page.</p>
+
+            <!-- University Info (Read-only) -->
+            <div class="border rounded-lg p-4 bg-gray-50 mb-6">
+              <div class="flex items-start gap-4">
+                <img id="d_logo" src="" alt="logo" class="w-12 h-12 rounded object-contain bg-white border" />
+                <div class="flex-1">
+                  <div class="flex items-center gap-2">
+                    <span id="d_name" class="font-semibold text-gray-900"></span>
+                    <span id="d_abbrev" class="px-2 py-0.5 rounded-full text-xs bg-red-50 text-red-700"></span>
+                  </div>
+                  <div class="text-xs text-gray-500"><span id="d_city"></span> • <span id="d_status"></span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hero Config Form -->
+            <form id="heroForm" class="space-y-6">
+              <!-- Background Image -->
+              <div>
+                <label class="block text-sm font-medium mb-2">Background Image URL</label>
+                <input type="url" id="hero_bg" placeholder="https://images.unsplash.com/..."
+                  class="w-full px-3 py-2 border rounded-lg text-sm" />
+                <p class="text-xs text-gray-500 mt-1">Enter a URL for the hero background image (recommended:
+                  1600x900px)</p>
+              </div>
+
+              <!-- Title -->
+              <div>
+                <label class="block text-sm font-medium mb-2">Hero Title</label>
+                <input type="text" id="hero_title" placeholder="e.g., About Joint Program"
+                  class="w-full px-3 py-2 border rounded-lg" />
+              </div>
+
+              <!-- Description -->
+              <div>
+                <label class="block text-sm font-medium mb-2">Hero Description</label>
+                <textarea id="hero_desc" rows="3" placeholder="Brief overview of the programs..."
+                  class="w-full px-3 py-2 border rounded-lg text-sm"></textarea>
+              </div>
+
+              <!-- Program Display Mode -->
+              <div>
+                <label class="block text-sm font-medium mb-2">Program Display Mode <span
+                    class="text-xs text-gray-500">(Select 1-3)</span></label>
+                <div class="flex flex-wrap gap-3">
+                  <label
+                    class="inline-flex items-center gap-2 px-4 py-2 border rounded-lg cursor-pointer hover:bg-gray-50">
+                    <input type="checkbox" id="hero_prog_13" class="hero-prog-check" />
+                    <span class="text-sm font-medium">1+3 Program</span>
+                  </label>
+                  <label
+                    class="inline-flex items-center gap-2 px-4 py-2 border rounded-lg cursor-pointer hover:bg-gray-50">
+                    <input type="checkbox" id="hero_prog_22" class="hero-prog-check" />
+                    <span class="text-sm font-medium">2+2 Program</span>
+                  </label>
+                  <label
+                    class="inline-flex items-center gap-2 px-4 py-2 border rounded-lg cursor-pointer hover:bg-gray-50">
+                    <input type="checkbox" id="hero_prog_mba" class="hero-prog-check" />
+                    <span class="text-sm font-medium">Joint MBA</span>
+                  </label>
+                </div>
+                <p id="progError" class="text-xs text-red-600 mt-1 hidden">Please select at least 1 program</p>
+              </div>
+
+              <!-- Marketing Stats -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium mb-2">Application Growth (%)</label>
+                  <div class="relative">
+                    <input type="number" id="hero_growth" placeholder="e.g.42"
+                      class="w-full px-3 py-2 border rounded-lg" />
+                    <span class="absolute right-3 top-2.5 text-gray-400 text-sm">%</span>
+                  </div>
+                  <p class="text-xs text-gray-500 mt-1">Year-over-year growth for marketing</p>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2">Offers Issued</label>
+                  <input type="number" id="hero_offers" placeholder="e.g. 280"
+                    class="w-full px-3 py-2 border rounded-lg" />
+                  <p class="text-xs text-gray-500 mt-1">Total offers for marketing display</p>
+                </div>
+              </div>
+
+              <!-- Actions -->
+              <div class="flex items-center justify-end gap-3 pt-4 border-t">
+                <button type="button" onclick="previewHero()"
+                  class="px-4 py-2 border rounded-lg text-sm hover:bg-gray-50">
+                  <i data-lucide="eye" class="w-4 h-4 inline mr-1"></i>Preview
+                </button>
+                <button type="submit" class="px-6 py-2 rounded-lg text-white text-sm" style="background-color:#d82128;">
+                  <i data-lucide="save" class="w-4 h-4 inline mr-1"></i>Save Hero Config
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section id="tab-1plus3" class="tab-content">
+          <div class="bg-white rounded-xl shadow-sm border p-6">
+            <h3 class="text-lg font-semibold mb-4 flex items-center">
+              <i data-lucide="book-open" class="w-5 h-5 mr-2" style="color:#d82128;"></i>
+              1+3 Program Configuration
+            </h3>
+            <p class="text-sm text-gray-600 mb-6">Configure content for the 1+3 Program section on the student page.</p>
+
+            <form id="program13Form" class="space-y-8">
+              <!-- 4 Alternating Rows -->
+              <div class="border rounded-lg p-4">
+                <h4 class="font-semibold mb-4">Content Rows (Text/Image Alternating)</h4>
+
+                <!-- Row 1: What is 1+3? -->
+                <div class="mb-6 pb-6 border-b">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs font-semibold px-2 py-1 rounded bg-blue-100 text-blue-700">Row 1</span>
+                    <span class="text-sm font-medium text-gray-700">Text Left | Image Right</span>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Title</label>
+                      <input type="text" id="r1_title" placeholder="e.g., What is 1+3 Program?"
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Image URL</label>
+                      <input type="url" id="r1_img" placeholder="https://..."
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <label class="block text-sm font-medium mb-1">Description</label>
+                    <textarea id="r1_bullets" rows="3"
+                      placeholder="Year 1 (Vietnam): Foundation studies...Years 2-4 (Overseas): Continue major courses..."
+                      class="w-full px-3 py-2 border rounded-lg text-sm"></textarea>
+                  </div>
+                </div>
+
+                <!-- Row 2: Why Choose 1+3? -->
+                <div class="mb-6 pb-6 border-b">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-700">Row 2</span>
+                    <span class="text-sm font-medium text-gray-700">Image Left | Text Right</span>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Title</label>
+                      <input type="text" id="r2_title" placeholder="e.g., Why Choose 1+3?"
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Image URL</label>
+                      <input type="url" id="r2_img" placeholder="https://..."
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <label class="block text-sm font-medium mb-1">Description</label>
+                    <textarea id="r2_bullets" rows="4"
+                      placeholder="Cost Effective: Save significantly...Gradual Transition: Adjust to international education..."
+                      class="w-full px-3 py-2 border rounded-lg text-sm"></textarea>
+                  </div>
+                </div>
+
+                <!-- Row 3: Who Should Choose? -->
+                <div class="mb-6 pb-6 border-b">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs font-semibold px-2 py-1 rounded bg-purple-100 text-purple-700">Row 3</span>
+                    <span class="text-sm font-medium text-gray-700">Text Left | Image Right</span>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Title</label>
+                      <input type="text" id="r3_title" placeholder="e.g., Who Should Choose 1+3?"
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Image URL</label>
+                      <input type="url" id="r3_img" placeholder="https://..."
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <label class="block text-sm font-medium mb-1">Description</label>
+                    <textarea id="r3_bullets" rows="3"
+                      placeholder="Students wanting early exposure abroad...Learners who prefer gradual transition..."
+                      class="w-full px-3 py-2 border rounded-lg text-sm"></textarea>
+                  </div>
+                </div>
+
+                <!-- Row 4: Support & Services -->
+                <div class="mb-0">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs font-semibold px-2 py-1 rounded bg-orange-100 text-orange-700">Row 4</span>
+                    <span class="text-sm font-medium text-gray-700">Image Left | Text Right</span>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Title</label>
+                      <input type="text" id="r4_title" placeholder="e.g., Support & Services"
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Image URL</label>
+                      <input type="url" id="r4_img" placeholder="https://..."
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <label class="block text-sm font-medium mb-1">Bullet Points (one per line)</label>
+                    <textarea id="r4_bullets" rows="3"
+                      placeholder="Course mapping & articulation advising ...Visa guidance and document review..."
+                      class="w-full px-3 py-2 border rounded-lg text-sm"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Success Stories -->
+              <div class="border rounded-lg p-4">
+                <div class="flex items-center justify-between mb-3">
+                  <h4 class="font-semibold">Success Stories</h4>
+                  <button type="button" onclick="addStory()"
+                    class="text-sm px-3 py-1 rounded-lg border hover:bg-gray-50">
+                    <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>Add Story
+                  </button>
+                </div>
+                <div id="storiesList" class="space-y-3">
+                  <!-- Stories will be rendered here -->
+                </div>
+              </div>
+
+              <!-- Parent Feedback -->
+              <div class="border rounded-lg p-4">
+                <div class="flex items-center justify-between mb-3">
+                  <h4 class="font-semibold">Parent Feedback</h4>
+                  <button type="button" onclick="addFeedback()"
+                    class="text-sm px-3 py-1 rounded-lg border hover:bg-gray-50">
+                    <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>Add Feedback
+                  </button>
+                </div>
+                <div id="feedbackList" class="space-y-3">
+                  <!-- Feedback will be rendered here -->
+                </div>
+              </div>
+
+              <!-- Actions -->
+              <div class="flex items-center justify-end gap-3 pt-4 border-t">
+                <button type="button" onclick="preview13()"
+                  class="px-4 py-2 border rounded-lg text-sm hover:bg-gray-50">
+                  <i data-lucide="eye" class="w-4 h-4 inline mr-1"></i>Preview
+                </button>
+                <button type="submit" class="px-6 py-2 rounded-lg text-white text-sm" style="background-color:#d82128;">
+                  <i data-lucide="save" class="w-4 h-4 inline mr-1"></i>Save 1+3 Config
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section id="tab-2plus2" class="tab-content">
+          <div class="bg-white rounded-xl shadow-sm border p-6">
+            <h3 class="text-lg font-semibold mb-4 flex items-center">
+              <i data-lucide="book-open" class="w-5 h-5 mr-2" style="color:#d82128;"></i>
+              2+2 Program Configuration
+            </h3>
+            <p class="text-sm text-gray-600 mb-6">Configure content for the 2+2 Program section on the student page.</p>
+
+            <form id="program22Form" class="space-y-8">
+              <!-- 4 Alternating Rows -->
+              <div class="border rounded-lg p-4">
+                <h4 class="font-semibold mb-4">Content Rows (Text/Image Alternating)</h4>
+
+                <!-- Row 1: What is 2+2? -->
+                <div class="mb-6 pb-6 border-b">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs font-semibold px-2 py-1 rounded bg-blue-100 text-blue-700">Row 1</span>
+                    <span class="text-sm font-medium text-gray-700">Text Left | Image Right</span>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Title</label>
+                      <input type="text" id="r1_title_22" placeholder="e.g., What is 2+2 Program?"
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Image URL</label>
+                      <input type="url" id="r1_img_22" placeholder="https://..."
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <label class="block text-sm font-medium mb-1">Description</label>
+                    <textarea id="r1_bullets_22" rows="3"
+                      placeholder="Years 1-2 (Vietnam): Foundation studies...Years 3-4 (Overseas): Complete degree abroad..."
+                      class="w-full px-3 py-2 border rounded-lg text-sm"></textarea>
+                  </div>
+                </div>
+
+                <!-- Row 2: Why Choose 2+2? -->
+                <div class="mb-6 pb-6 border-b">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-700">Row 2</span>
+                    <span class="text-sm font-medium text-gray-700">Image Left | Text Right</span>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Title</label>
+                      <input type="text" id="r2_title_22" placeholder="e.g., Why Choose 2+2?"
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Image URL</label>
+                      <input type="url" id="r2_img_22" placeholder="https://..."
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <label class="block text-sm font-medium mb-1">Description</label>
+                    <textarea id="r2_bullets_22" rows="4"
+                      placeholder="Maximum Cost Savings: Two years in Vietnam...Stronger Foundation: More time to build academic skills..."
+                      class="w-full px-3 py-2 border rounded-lg text-sm"></textarea>
+                  </div>
+                </div>
+
+                <!-- Row 3: Who Should Choose? -->
+                <div class="mb-6 pb-6 border-b">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs font-semibold px-2 py-1 rounded bg-purple-100 text-purple-700">Row 3</span>
+                    <span class="text-sm font-medium text-gray-700">Text Left | Image Right</span>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Title</label>
+                      <input type="text" id="r3_title_22" placeholder="e.g., Who Should Choose 2+2?"
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Image URL</label>
+                      <input type="url" id="r3_img_22" placeholder="https://..."
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <label class="block text-sm font-medium mb-1">Description</label>
+                    <textarea id="r3_bullets_22" rows="3"
+                      placeholder="Students seeking maximum cost savings...Learners who want longer preparation time..."
+                      class="w-full px-3 py-2 border rounded-lg text-sm"></textarea>
+                  </div>
+                </div>
+
+                <!-- Row 4: Support & Services -->
+                <div class="mb-0">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs font-semibold px-2 py-1 rounded bg-orange-100 text-orange-700">Row 4</span>
+                    <span class="text-sm font-medium text-gray-700">Image Left | Text Right</span>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Title</label>
+                      <input type="text" id="r4_title_22" placeholder="e.g., Support & Services"
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Image URL</label>
+                      <input type="url" id="r4_img_22" placeholder="https://..."
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <label class="block text-sm font-medium mb-1">Description</label>
+                    <textarea id="r4_bullets_22" rows="3"
+                      placeholder="Course mapping & articulation advising...Visa guidance and document review..."
+                      class="w-full px-3 py-2 border rounded-lg text-sm"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Success Stories -->
+              <div class="border rounded-lg p-4">
+                <div class="flex items-center justify-between mb-3">
+                  <h4 class="font-semibold">Success Stories</h4>
+                  <button type="button" onclick="addStory22()"
+                    class="text-sm px-3 py-1 rounded-lg border hover:bg-gray-50">
+                    <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>Add Story
+                  </button>
+                </div>
+                <div id="storiesList22" class="space-y-3">
+                  <!-- Stories will be rendered here -->
+                </div>
+              </div>
+
+              <!-- Parent Feedback -->
+              <div class="border rounded-lg p-4">
+                <div class="flex items-center justify-between mb-3">
+                  <h4 class="font-semibold">Parent Feedback</h4>
+                  <button type="button" onclick="addFeedback22()"
+                    class="text-sm px-3 py-1 rounded-lg border hover:bg-gray-50">
+                    <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>Add Feedback
+                  </button>
+                </div>
+                <div id="feedbackList22" class="space-y-3">
+                  <!-- Feedback will be rendered here -->
+                </div>
+              </div>
+
+              <!-- Actions -->
+              <div class="flex items-center justify-end gap-3 pt-4 border-t">
+                <button type="button" onclick="preview22()"
+                  class="px-4 py-2 border rounded-lg text-sm hover:bg-gray-50">
+                  <i data-lucide="eye" class="w-4 h-4 inline mr-1"></i>Preview
+                </button>
+                <button type="submit" class="px-6 py-2 rounded-lg text-white text-sm" style="background-color:#d82128;">
+                  <i data-lucide="save" class="w-4 h-4 inline mr-1"></i>Save 2+2 Config
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section id="tab-jmba" class="tab-content">
+          <div class="bg-white rounded-xl shadow-sm border p-6">
+            <h3 class="text-lg font-semibold mb-4 flex items-center">
+              <i data-lucide="briefcase" class="w-5 h-5 mr-2" style="color:#d82128;"></i>
+              Joint MBA Configuration
+            </h3>
+            <p class="text-sm text-gray-600 mb-6">Configure content for the Joint MBA section on the student page.</p>
+
+            <form id="programMBAForm" class="space-y-8">
+              <!-- 4 Alternating Rows -->
+              <div class="border rounded-lg p-4">
+                <h4 class="font-semibold mb-4">Content Rows (Text/Image Alternating)</h4>
+
+                <!-- Row 1: What is Joint MBA? -->
+                <div class="mb-6 pb-6 border-b">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs font-semibold px-2 py-1 rounded bg-blue-100 text-blue-700">Row 1</span>
+                    <span class="text-sm font-medium text-gray-700">Text Left | Image Right</span>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Title</label>
+                      <input type="text" id="r1_title_mba" placeholder="e.g., What is Joint MBA?"
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Image URL</label>
+                      <input type="url" id="r1_img_mba" placeholder="https://..."
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <label class="block text-sm font-medium mb-1">Description</label>
+                    <textarea id="r1_bullets_mba" rows="3"
+                      placeholder="Fast-track MBA program...Dual degree opportunities..."
+                      class="w-full px-3 py-2 border rounded-lg text-sm"></textarea>
+                  </div>
+                </div>
+
+                <!-- Row 2: Why Choose Joint MBA? -->
+                <div class="mb-6 pb-6 border-b">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-700">Row 2</span>
+                    <span class="text-sm font-medium text-gray-700">Image Left | Text Right</span>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Title</label>
+                      <input type="text" id="r2_title_mba" placeholder="e.g., Why Choose Joint MBA?"
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Image URL</label>
+                      <input type="url" id="r2_img_mba" placeholder="https://..."
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <label class="block text-sm font-medium mb-1">Description</label>
+                    <textarea id="r2_bullets_mba" rows="4"
+                      placeholder="Accelerated Timeline: Complete in 18 months...Global Network: Connect with international business leaders..."
+                      class="w-full px-3 py-2 border rounded-lg text-sm"></textarea>
+                  </div>
+                </div>
+
+                <!-- Row 3: Who Should Choose? -->
+                <div class="mb-6 pb-6 border-b">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs font-semibold px-2 py-1 rounded bg-purple-100 text-purple-700">Row 3</span>
+                    <span class="text-sm font-medium text-gray-700">Text Left | Image Right</span>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Title</label>
+                      <input type="text" id="r3_title_mba" placeholder="e.g., Who Should Choose Joint MBA?"
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Image URL</label>
+                      <input type="url" id="r3_img_mba" placeholder="https://..."
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <label class="block text-sm font-medium mb-1">Description</label>
+                    <textarea id="r3_bullets_mba" rows="3"
+                      placeholder="Working professionals seeking career advancement...Entrepreneurs planning to start businesses..."
+                      class="w-full px-3 py-2 border rounded-lg text-sm"></textarea>
+                  </div>
+                </div>
+
+                <!-- Row 4: Support & Services -->
+                <div class="mb-0">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs font-semibold px-2 py-1 rounded bg-orange-100 text-orange-700">Row 4</span>
+                    <span class="text-sm font-medium text-gray-700">Image Left | Text Right</span>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Title</label>
+                      <input type="text" id="r4_title_mba" placeholder="e.g., Support & Services"
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium mb-1">Image URL</label>
+                      <input type="url" id="r4_img_mba" placeholder="https://..."
+                        class="w-full px-3 py-2 border rounded-lg text-sm" />
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <label class="block text-sm font-medium mb-1">Description</label>
+                    <textarea id="r4_bullets_mba" rows="3"
+                      placeholder="Career counseling and placement support...Networking events and industry connections..."
+                      class="w-full px-3 py-2 border rounded-lg text-sm"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Success Stories -->
+              <div class="border rounded-lg p-4">
+                <div class="flex items-center justify-between mb-3">
+                  <h4 class="font-semibold">Success Stories</h4>
+                  <button type="button" onclick="addStoryMBA()"
+                    class="text-sm px-3 py-1 rounded-lg border hover:bg-gray-50">
+                    <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>Add Story
+                  </button>
+                </div>
+                <div id="storiesListMBA" class="space-y-3">
+                  <!-- Stories will be rendered here -->
+                </div>
+              </div>
+
+              <!-- Parent Feedback -->
+              <div class="border rounded-lg p-4">
+                <div class="flex items-center justify-between mb-3">
+                  <h4 class="font-semibold">Parent Feedback</h4>
+                  <button type="button" onclick="addFeedbackMBA()"
+                    class="text-sm px-3 py-1 rounded-lg border hover:bg-gray-50">
+                    <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>Add Feedback
+                  </button>
+                </div>
+                <div id="feedbackListMBA" class="space-y-3">
+                  <!-- Feedback will be rendered here -->
+                </div>
+              </div>
+
+              <!-- Actions -->
+              <div class="flex items-center justify-end gap-3 pt-4 border-t">
+                <button type="button" onclick="previewMBA()"
+                  class="px-4 py-2 border rounded-lg text-sm hover:bg-gray-50">
+                  <i data-lucide="eye" class="w-4 h-4 inline mr-1"></i>Preview
+                </button>
+                <button type="submit" class="px-6 py-2 rounded-lg text-white text-sm" style="background-color:#d82128;">
+                  <i data-lucide="save" class="w-4 h-4 inline mr-1"></i>Save MBA Config
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section id="tab-partner-13" class="tab-content">
+          <div class="bg-white rounded-xl shadow-sm border p-6">
+            <h3 class="text-lg font-semibold mb-4 flex items-center">
+              <i data-lucide="users" class="w-5 h-5 mr-2" style="color:#d82128;"></i>
+              Partner (1+3) Configuration
+            </h3>
+            <p class="text-sm text-gray-600 mb-4">Select institutions from CRM and add partner-specific marketing
+              content.</p>
+
+            <!-- Institution Selector -->
+            <div class="border rounded-lg p-4 mb-6">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3 items-end">
+                <div class="md:col-span-2">
+                  <label class="block text-sm font-medium mb-1">Select Institution</label>
+                  <select id="inst_select_13" class="w-full px-3 py-2 border rounded-lg text-sm">
+                    <option value="">-- Choose an institution --</option>
+                  </select>
+                </div>
+                <div>
+                  <button type="button" onclick="addPartner13()" class="w-full px-4 py-2 text-sm rounded-lg text-white"
+                    style="background-color:#d82128;">
+                    <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>Add Partner
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Partners List -->
+            <div id="partners_list_13" class="space-y-4">
+              <p class="text-sm text-gray-500">No partners yet. Select an institution and click Add.</p>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center justify-end gap-3 pt-6 mt-6 border-t">
+              <button type="button" onclick="previewPartners13()"
+                class="px-4 py-2 border rounded-lg text-sm hover:bg-gray-50">
+                <i data-lucide="eye" class="w-4 h-4 inline mr-1"></i>Preview
+              </button>
+              <button type="button" onclick="savePartners13()" class="px-6 py-2 rounded-lg text-white text-sm"
+                style="background-color:#d82128;">
+                <i data-lucide="save" class="w-4 h-4 inline mr-1"></i>Save Partners (1+3)
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section id="tab-partner-22" class="tab-content">
+          <div class="bg-white rounded-xl shadow-sm border p-6">
+            <h3 class="text-lg font-semibold mb-4 flex items-center">
+              <i data-lucide="users" class="w-5 h-5 mr-2" style="color:#d82128;"></i>
+              Partner (2+2) Configuration
+            </h3>
+            <p class="text-sm text-gray-600 mb-4">Select institutions from CRM and add partner-specific marketing
+              content.</p>
+
+            <!-- Institution Selector -->
+            <div class="border rounded-lg p-4 mb-6">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3 items-end">
+                <div class="md:col-span-2">
+                  <label class="block text-sm font-medium mb-1">Select Institution</label>
+                  <select id="inst_select_22" class="w-full px-3 py-2 border rounded-lg text-sm">
+                    <option value="">-- Choose an institution --</option>
+                  </select>
+                </div>
+                <div>
+                  <button type="button" onclick="addPartner22()" class="w-full px-4 py-2 text-sm rounded-lg text-white"
+                    style="background-color:#d82128;">
+                    <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>Add Partner
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Partners List -->
+            <div id="partners_list_22" class="space-y-4">
+              <p class="text-sm text-gray-500">No partners yet. Select an institution and click Add.</p>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center justify-end gap-3 pt-6 mt-6 border-t">
+              <button type="button" onclick="previewPartners22()"
+                class="px-4 py-2 border rounded-lg text-sm hover:bg-gray-50">
+                <i data-lucide="eye" class="w-4 h-4 inline mr-1"></i>Preview
+              </button>
+              <button type="button" onclick="savePartners22()" class="px-6 py-2 rounded-lg text-white text-sm"
+                style="background-color:#d82128;">
+                <i data-lucide="save" class="w-4 h-4 inline mr-1"></i>Save Partners (2+2)
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section id="tab-partner-mba" class="tab-content">
+          <div class="bg-white rounded-xl shadow-sm border p-6">
+            <h3 class="text-lg font-semibold mb-4 flex items-center">
+              <i data-lucide="briefcase" class="w-5 h-5 mr-2" style="color:#d82128;"></i>
+              Partner (MBA) Configuration
+            </h3>
+            <p class="text-sm text-gray-600 mb-4">Select institutions from CRM and add partner-specific marketing
+              content.</p>
+
+            <!-- Institution Selector -->
+            <div class="border rounded-lg p-4 mb-6">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3 items-end">
+                <div class="md:col-span-2">
+                  <label class="block text-sm font-medium mb-1">Select Institution</label>
+                  <select id="inst_select_mba" class="w-full px-3 py-2 border rounded-lg text-sm">
+                    <option value="">-- Choose an institution --</option>
+                  </select>
+                </div>
+                <div>
+                  <button type="button" onclick="addPartnerMBA()" class="w-full px-4 py-2 text-sm rounded-lg text-white"
+                    style="background-color:#d82128;">
+                    <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>Add Partner
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Partners List -->
+            <div id="partners_list_mba" class="space-y-4">
+              <p class="text-sm text-gray-500">No partners yet. Select an institution and click Add.</p>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center justify-end gap-3 pt-6 mt-6 border-t">
+              <button type="button" onclick="previewPartnersMBA()"
+                class="px-4 py-2 border rounded-lg text-sm hover:bg-gray-50">
+                <i data-lucide="eye" class="w-4 h-4 inline mr-1"></i>Preview
+              </button>
+              <button type="button" onclick="savePartnersMBA()" class="px-6 py-2 rounded-lg text-white text-sm"
+                style="background-color:#d82128;">
+                <i data-lucide="save" class="w-4 h-4 inline mr-1"></i>Save Partners (MBA)
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section id="tab-faq" class="tab-content">
+          <div class="bg-white rounded-xl shadow-sm border p-6">
+            <h3 class="text-lg font-semibold mb-4 flex items-center">
+              <i data-lucide="help-circle" class="w-5 h-5 mr-2" style="color:#d82128;"></i>
+              FAQ Configuration
+            </h3>
+            <p class="text-sm text-gray-600 mb-4">Manage Frequently Asked Questions for the About Joint Program page.
+            </p>
+
+            <!-- Add FAQ Button -->
+            <div class="mb-6">
+              <button type="button" onclick="addFAQ()" class="px-4 py-2 text-sm rounded-lg text-white"
+                style="background-color:#d82128;">
+                <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>Add FAQ Item
+              </button>
+            </div>
+
+            <!-- FAQ List -->
+            <div id="faq_list" class="space-y-4">
+              <p class="text-sm text-gray-500">No FAQ items yet. Click "Add FAQ Item" to create one.</p>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center justify-end gap-3 pt-6 mt-6 border-t">
+              <button type="button" onclick="previewFAQ()" class="px-4 py-2 border rounded-lg text-sm hover:bg-gray-50">
+                <i data-lucide="eye" class="w-4 h-4 inline mr-1"></i>Preview
+              </button>
+              <button type="button" onclick="saveFAQ()" class="px-6 py-2 rounded-lg text-white text-sm"
+                style="background-color:#d82128;">
+                <i data-lucide="save" class="w-4 h-4 inline mr-1"></i>Save FAQ
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const LS_KEY = 'applylead_joint_universities';
+    function getData() { try { return JSON.parse(localStorage.getItem(LS_KEY)) || []; } catch { return []; } }
+
+    const DEFAULT_UNIS = [
+      { id: 'def-iuh', name: 'Industrial University of Ho Chi Minh City', abbrev: 'IUH', city: 'Ho Chi Minh City', website: 'https://iuh.edu.vn', contact: 'International Office', status: 'active', programs: ['1+3', '2+2'], logo: 'https://logo.clearbit.com/iuh.edu.vn', desc: 'Key technical partner supporting credit transfer pathways.' },
+      { id: 'def-ftu', name: 'Foreign Trade University', abbrev: 'FTU', city: 'Hanoi', website: 'https://ftu.edu.vn', contact: 'International Cooperation Dept.', status: 'active', programs: ['1+3'], logo: 'https://logo.clearbit.com/ftu.edu.vn', desc: 'Business-focused partner with transfer-friendly curricula.' },
+      { id: 'def-vlu', name: 'Van Lang University', abbrev: 'VLU', city: 'Ho Chi Minh City', website: 'https://vlu.edu.vn', contact: 'International Office', status: 'active', programs: ['1+3', '2+2'], logo: 'https://logo.clearbit.com/vlu.edu.vn', desc: 'Comprehensive partner with multiple joint pathways.' },
+    ];
+
+    function getAllData() {
+      const map = new Map();
+      const keyOf = (u) => ((u.abbrev || u.name || '').toLowerCase());
+      for (const u of DEFAULT_UNIS) { const k = keyOf(u); if (!k) continue; map.set(k, u); }
+      for (const u of getData()) { const k = keyOf(u); if (!k) continue; map.set(k, u); }
+      return Array.from(map.values());
+    }
+
+    function qs(k) { return new URLSearchParams(window.location.search).get(k); }
+
+    let currentUni = null;
+
+    function render() {
+      const id = qs('id');
+      const items = getAllData();
+      let uni = null;
+      uni = items.find(u => u.id === id) || items.find(u => (u.abbrev || '') === id) || items.find(u => (u.name || '') === id);
+      if (!uni) {
+        alert('University not found');
+        window.location.href = 'CRM-joint-program-universities.html';
+        return;
+      }
+      currentUni = uni;
+      document.getElementById('d_logo').src = uni.logo || '../../tiffin-university-logo.png';
+      document.getElementById('d_name').textContent = uni.name || '';
+      document.getElementById('d_abbrev').textContent = uni.abbrev || '';
+      document.getElementById('d_city').textContent = uni.city || '';
+      document.getElementById('d_status').textContent = (uni.status || '').toUpperCase();
+      document.getElementById('header_subtitle').textContent = `${uni.name || ''} (${uni.abbrev || ''})`;
+      loadHeroConfig();
+    }
+
+    // Tab switching
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-button').forEach(el => {
+        el.classList.remove('text-red-600');
+        el.classList.add('border-transparent', 'text-gray-500');
+        el.style.borderColor = 'transparent';
+        el.style.color = '';
+      });
+      document.getElementById('tab-' + tabName).classList.add('active');
+      event.target.classList.remove('border-transparent', 'text-gray-500');
+      event.target.style.borderColor = '#d82128';
+      event.target.style.color = '#d82128';
+      // Load config when switching to tabs
+      if (tabName === '1plus3') load13Config();
+      if (tabName === '2plus2') load22Config();
+      if (tabName === 'jmba') loadMBAConfig();
+      if (tabName === 'partner-13') { populateInstSelect13(); loadPartners13(); }
+      if (tabName === 'partner-22') { populateInstSelect22(); loadPartners22(); }
+      if (tabName === 'partner-mba') { populateInstSelectMBA(); loadPartnersMBA(); }
+      if (tabName === 'faq') loadFAQ();
+      lucide.createIcons();
+    }
+
+    // Hero Config localStorage key per university
+    function getHeroKey() { return `applylead_hero_${currentUni?.id || 'default'}`; }
+    function getHeroConfig() {
+      try { return JSON.parse(localStorage.getItem(getHeroKey())) || {}; } catch { return {}; }
+    }
+    function setHeroConfig(cfg) { localStorage.setItem(getHeroKey(), JSON.stringify(cfg)); }
+
+    function loadHeroConfig() {
+      const cfg = getHeroConfig();
+      document.getElementById('hero_bg').value = cfg.bg || '';
+      document.getElementById('hero_title').value = cfg.title || '';
+      document.getElementById('hero_desc').value = cfg.desc || '';
+      document.getElementById('hero_prog_13').checked = (cfg.programs || []).includes('1+3');
+      document.getElementById('hero_prog_22').checked = (cfg.programs || []).includes('2+2');
+      document.getElementById('hero_prog_mba').checked = (cfg.programs || []).includes('Joint MBA');
+      document.getElementById('hero_growth').value = cfg.growth || '';
+      document.getElementById('hero_offers').value = cfg.offers || '';
+    }
+
+    // Validate program selection (1-3)
+    function validatePrograms() {
+      const checks = document.querySelectorAll('.hero-prog-check');
+      const count = Array.from(checks).filter(c => c.checked).length;
+      const err = document.getElementById('progError');
+      if (count < 1 || count > 3) {
+        err.classList.remove('hidden');
+        return false;
+      }
+      err.classList.add('hidden');
+      return true;
+    }
+
+    document.querySelectorAll('.hero-prog-check').forEach(el => {
+      el.addEventListener('change', validatePrograms);
+    });
+
+    // Save hero config
+    document.getElementById('heroForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!validatePrograms()) { return; }
+      const progs = [];
+      if (document.getElementById('hero_prog_13').checked) progs.push('1+3');
+      if (document.getElementById('hero_prog_22').checked) progs.push('2+2');
+      if (document.getElementById('hero_prog_mba').checked) progs.push('Joint MBA');
+      const cfg = {
+        bg: document.getElementById('hero_bg').value.trim(),
+        title: document.getElementById('hero_title').value.trim(),
+        desc: document.getElementById('hero_desc').value.trim(),
+        programs: progs,
+        growth: document.getElementById('hero_growth').value.trim(),
+        offers: document.getElementById('hero_offers').value.trim(),
+      };
+      setHeroConfig(cfg);
+      alert('Hero Section configuration saved successfully!');
+    });
+
+    // Preview
+    function previewHero() {
+      const aboutPage = '../../Joint Program Student/html/About-Joint-Program.html';
+      window.open(aboutPage, '_blank');
+    }
+
+    // === 1+3 Program Config ===
+    function get13Key() { return `applylead_13_${currentUni?.id || 'default'}`; }
+    function get13Config() {
+      try { return JSON.parse(localStorage.getItem(get13Key())) || {}; } catch { return {}; }
+    }
+    function set13Config(cfg) { localStorage.setItem(get13Key(), JSON.stringify(cfg)); }
+
+    function load13Config() {
+      const cfg = get13Config();
+      // 4 rows
+      ['r1', 'r2', 'r3', 'r4'].forEach(r => {
+        const row = cfg[r] || {};
+        const titleEl = document.getElementById(r + '_title');
+        const imgEl = document.getElementById(r + '_img');
+        const descEl = document.getElementById(r + '_desc');
+        const bulletsEl = document.getElementById(r + '_bullets');
+        if (titleEl) titleEl.value = row.title || '';
+        if (imgEl) imgEl.value = row.img || '';
+        if (descEl) descEl.value = row.desc || '';
+        if (bulletsEl) bulletsEl.value = (row.bullets || []).join('\n');
+      });
+      // Success Stories
+      stories13 = cfg.stories || [];
+      renderStories();
+      // Parent Feedback
+      feedback13 = cfg.feedback || [];
+      renderFeedback();
+    }
+
+    let stories13 = [];
+    let feedback13 = [];
+
+    function renderStories() {
+      const list = document.getElementById('storiesList');
+      if (!list) return;
+      if (stories13.length === 0) {
+        list.innerHTML = '<p class="text-sm text-gray-500">No stories added yet.</p>';
+        return;
+      }
+      list.innerHTML = stories13.map((s, i) => `
+        <div class="border rounded-lg p-3 bg-gray-50">
+          <div class="flex items-start gap-3">
+            <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-2">
+              <input type="text" value="${s.name || ''}" placeholder="Student Name" onchange="stories13[${i}].name=this.value" class="px-2 py-1 border rounded text-sm" />
+              <input type="text" value="${'1+3'}" placeholder="Program" disabled class="px-2 py-1 border rounded text-sm bg-gray-100 text-gray-500" />
+              <input type="text" value="${s.university || ''}" placeholder="University" onchange="stories13[${i}].university=this.value" class="px-2 py-1 border rounded text-sm" />
+              <input type="text" value="${s.major || ''}" placeholder="Major" onchange="stories13[${i}].major=this.value" class="px-2 py-1 border rounded text-sm" />
+              <input type="url" value="${s.avatar || ''}" placeholder="Avatar URL" onchange="stories13[${i}].avatar=this.value" class="md:col-span-2 px-2 py-1 border rounded text-sm" />
+            </div>
+            <button type="button" onclick="removeStory(${i})" class="text-red-600 hover:bg-red-50 p-1 rounded">
+              <i data-lucide="trash" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <textarea placeholder="Quote..." onchange="stories13[${i}].quote=this.value" class="w-full mt-2 px-2 py-1 border rounded text-sm" rows="2">${s.quote || ''}</textarea>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function addStory() {
+      stories13.push({ name: '', program: '1+3', university: '', major: '', avatar: '', quote: '' });
+      renderStories();
+    }
+
+    function removeStory(i) {
+      stories13.splice(i, 1);
+      renderStories();
+    }
+
+    function renderFeedback() {
+      const list = document.getElementById('feedbackList');
+      if (!list) return;
+      if (feedback13.length === 0) {
+        list.innerHTML = '<p class="text-sm text-gray-500">No feedback added yet.</p>';
+        return;
+      }
+      list.innerHTML = feedback13.map((f, i) => `
+        <div class="border rounded-lg p-3 bg-gray-50">
+          <div class="flex items-start gap-3">
+            <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-2">
+              <input type="text" value="${'1+3'}" placeholder="Program" disabled class="px-2 py-1 border rounded text-sm bg-gray-100 text-gray-500" />
+              <input type="text" value="${f.cohort || ''}" placeholder="Cohort (e.g., 2023)" onchange="feedback13[${i}].cohort=this.value" class="px-2 py-1 border rounded text-sm" />
+            </div>
+            <button type="button" onclick="removeFeedback(${i})" class="text-red-600 hover:bg-red-50 p-1 rounded">
+              <i data-lucide="trash" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <textarea placeholder="Feedback comment..." onchange="feedback13[${i}].comment=this.value" class="w-full mt-2 px-2 py-1 border rounded text-sm" rows="2">${f.comment || ''}</textarea>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function addFeedback() {
+      feedback13.push({ program: '1+3', cohort: '', comment: '' });
+      renderFeedback();
+    }
+
+    function removeFeedback(i) {
+      feedback13.splice(i, 1);
+      renderFeedback();
+    }
+
+    // Save 1+3 config
+    document.getElementById('program13Form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const cfg = {
+        r1: {
+          title: document.getElementById('r1_title').value.trim(),
+          img: document.getElementById('r1_img').value.trim(),
+          desc: document.getElementById('r1_desc').value.trim(),
+          bullets: document.getElementById('r1_bullets').value.split('\n').map(l => l.trim()).filter(Boolean),
+        },
+        r2: {
+          title: document.getElementById('r2_title').value.trim(),
+          img: document.getElementById('r2_img').value.trim(),
+          bullets: document.getElementById('r2_bullets').value.split('\n').map(l => l.trim()).filter(Boolean),
+        },
+        r3: {
+          title: document.getElementById('r3_title').value.trim(),
+          img: document.getElementById('r3_img').value.trim(),
+          bullets: document.getElementById('r3_bullets').value.split('\n').map(l => l.trim()).filter(Boolean),
+        },
+        r4: {
+          title: document.getElementById('r4_title').value.trim(),
+          img: document.getElementById('r4_img').value.trim(),
+          bullets: document.getElementById('r4_bullets').value.split('\n').map(l => l.trim()).filter(Boolean),
+        },
+        stories: stories13,
+        feedback: feedback13,
+      };
+      set13Config(cfg);
+      alert('1+3 Program configuration saved successfully!');
+    });
+
+    function preview13() {
+      const aboutPage = '../../Joint Program Student/html/About-Joint-Program.html';
+      window.open(aboutPage, '_blank');
+    }
+
+    // === 2+2 Program Config ===
+    function get22Key() { return `applylead_22_${currentUni?.id || 'default'}`; }
+    function get22Config() {
+      try { return JSON.parse(localStorage.getItem(get22Key())) || {}; } catch { return {}; }
+    }
+    function set22Config(cfg) { localStorage.setItem(get22Key(), JSON.stringify(cfg)); }
+
+    function load22Config() {
+      const cfg = get22Config();
+      ['r1', 'r2', 'r3', 'r4'].forEach(r => {
+        const row = cfg[r] || {};
+        const titleEl = document.getElementById(r + '_title_22');
+        const imgEl = document.getElementById(r + '_img_22');
+        const bulletsEl = document.getElementById(r + '_bullets_22');
+        if (titleEl) titleEl.value = row.title || '';
+        if (imgEl) imgEl.value = row.img || '';
+        if (bulletsEl) bulletsEl.value = (row.bullets || []).join('\n');
+      });
+      stories22 = cfg.stories || [];
+      renderStories22();
+      feedback22 = cfg.feedback || [];
+      renderFeedback22();
+    }
+
+    let stories22 = [];
+    let feedback22 = [];
+
+    function renderStories22() {
+      const list = document.getElementById('storiesList22');
+      if (!list) return;
+      if (stories22.length === 0) {
+        list.innerHTML = '<p class="text-sm text-gray-500">No stories added yet.</p>';
+        return;
+      }
+      list.innerHTML = stories22.map((s, i) => `
+        <div class="border rounded-lg p-3 bg-gray-50">
+          <div class="flex items-start gap-3">
+            <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-2">
+              <input type="text" value="${s.name || ''}" placeholder="Student Name" onchange="stories22[${i}].name=this.value" class="px-2 py-1 border rounded text-sm" />
+              <input type="text" value="${'2+2'}" placeholder="Program" disabled class="px-2 py-1 border rounded text-sm bg-gray-100 text-gray-500" />
+              <input type="text" value="${s.university || ''}" placeholder="University" onchange="stories22[${i}].university=this.value" class="px-2 py-1 border rounded text-sm" />
+              <input type="text" value="${s.major || ''}" placeholder="Major" onchange="stories22[${i}].major=this.value" class="px-2 py-1 border rounded text-sm" />
+              <input type="url" value="${s.avatar || ''}" placeholder="Avatar URL" onchange="stories22[${i}].avatar=this.value" class="md:col-span-2 px-2 py-1 border rounded text-sm" />
+            </div>
+            <button type="button" onclick="removeStory22(${i})" class="text-red-600 hover:bg-red-50 p-1 rounded">
+              <i data-lucide="trash" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <textarea placeholder="Quote..." onchange="stories22[${i}].quote=this.value" class="w-full mt-2 px-2 py-1 border rounded text-sm" rows="2">${s.quote || ''}</textarea>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function addStory22() {
+      stories22.push({ name: '', program: '2+2', university: '', major: '', avatar: '', quote: '' });
+      renderStories22();
+    }
+
+    function removeStory22(i) {
+      stories22.splice(i, 1);
+      renderStories22();
+    }
+
+    function renderFeedback22() {
+      const list = document.getElementById('feedbackList22');
+      if (!list) return;
+      if (feedback22.length === 0) {
+        list.innerHTML = '<p class="text-sm text-gray-500">No feedback added yet.</p>';
+        return;
+      }
+      list.innerHTML = feedback22.map((f, i) => `
+        <div class="border rounded-lg p-3 bg-gray-50">
+          <div class="flex items-start gap-3">
+            <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-2">
+              <input type="text" value="${'2+2'}" placeholder="Program" disabled class="px-2 py-1 border rounded text-sm bg-gray-100 text-gray-500" />
+              <input type="text" value="${f.cohort || ''}" placeholder="Cohort (e.g., 2023)" onchange="feedback22[${i}].cohort=this.value" class="px-2 py-1 border rounded text-sm" />
+            </div>
+            <button type="button" onclick="removeFeedback22(${i})" class="text-red-600 hover:bg-red-50 p-1 rounded">
+              <i data-lucide="trash" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <textarea placeholder="Feedback comment..." onchange="feedback22[${i}].comment=this.value" class="w-full mt-2 px-2 py-1 border rounded text-sm" rows="2">${f.comment || ''}</textarea>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function addFeedback22() {
+      feedback22.push({ program: '2+2', cohort: '', comment: '' });
+      renderFeedback22();
+    }
+
+    function removeFeedback22(i) {
+      feedback22.splice(i, 1);
+      renderFeedback22();
+    }
+
+    document.getElementById('program22Form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const cfg = {
+        r1: {
+          title: document.getElementById('r1_title_22').value.trim(),
+          img: document.getElementById('r1_img_22').value.trim(),
+          bullets: document.getElementById('r1_bullets_22').value.split('\n').map(l => l.trim()).filter(Boolean),
+        },
+        r2: {
+          title: document.getElementById('r2_title_22').value.trim(),
+          img: document.getElementById('r2_img_22').value.trim(),
+          bullets: document.getElementById('r2_bullets_22').value.split('\n').map(l => l.trim()).filter(Boolean),
+        },
+        r3: {
+          title: document.getElementById('r3_title_22').value.trim(),
+          img: document.getElementById('r3_img_22').value.trim(),
+          bullets: document.getElementById('r3_bullets_22').value.split('\n').map(l => l.trim()).filter(Boolean),
+        },
+        r4: {
+          title: document.getElementById('r4_title_22').value.trim(),
+          img: document.getElementById('r4_img_22').value.trim(),
+          bullets: document.getElementById('r4_bullets_22').value.split('\n').map(l => l.trim()).filter(Boolean),
+        },
+        stories: stories22,
+        feedback: feedback22,
+      };
+      set22Config(cfg);
+      alert('2+2 Program configuration saved successfully!');
+    });
+
+    function preview22() {
+      const aboutPage = '../../Joint Program Student/html/About-Joint-Program.html';
+      window.open(aboutPage, '_blank');
+    }
+
+    // === Joint MBA Config ===
+    function getMBAKey() { return `applylead_mba_${currentUni?.id || 'default'}`; }
+    function getMBAConfig() {
+      try { return JSON.parse(localStorage.getItem(getMBAKey())) || {}; } catch { return {}; }
+    }
+    function setMBAConfig(cfg) { localStorage.setItem(getMBAKey(), JSON.stringify(cfg)); }
+
+    function loadMBAConfig() {
+      const cfg = getMBAConfig();
+      ['r1', 'r2', 'r3', 'r4'].forEach(r => {
+        const row = cfg[r] || {};
+        const titleEl = document.getElementById(r + '_title_mba');
+        const imgEl = document.getElementById(r + '_img_mba');
+        const bulletsEl = document.getElementById(r + '_bullets_mba');
+        if (titleEl) titleEl.value = row.title || '';
+        if (imgEl) imgEl.value = row.img || '';
+        if (bulletsEl) bulletsEl.value = (row.bullets || []).join('\n');
+      });
+      storiesMBA = cfg.stories || [];
+      renderStoriesMBA();
+      feedbackMBA = cfg.feedback || [];
+      renderFeedbackMBA();
+    }
+
+    let storiesMBA = [];
+    let feedbackMBA = [];
+
+    function renderStoriesMBA() {
+      const list = document.getElementById('storiesListMBA');
+      if (!list) return;
+      if (storiesMBA.length === 0) {
+        list.innerHTML = '<p class="text-sm text-gray-500">No stories added yet.</p>';
+        return;
+      }
+      list.innerHTML = storiesMBA.map((s, i) => `
+        <div class="border rounded-lg p-3 bg-gray-50">
+          <div class="flex items-start gap-3">
+            <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-2">
+              <input type="text" value="${s.name || ''}" placeholder="Student Name" onchange="storiesMBA[${i}].name=this.value" class="px-2 py-1 border rounded text-sm" />
+              <input type="text" value="${'MBA'}" placeholder="Program" disabled class="px-2 py-1 border rounded text-sm bg-gray-100 text-gray-500" />
+              <input type="text" value="${s.university || ''}" placeholder="University" onchange="storiesMBA[${i}].university=this.value" class="px-2 py-1 border rounded text-sm" />
+              <input type="text" value="${s.major || ''}" placeholder="Major" onchange="storiesMBA[${i}].major=this.value" class="px-2 py-1 border rounded text-sm" />
+              <input type="url" value="${s.avatar || ''}" placeholder="Avatar URL" onchange="storiesMBA[${i}].avatar=this.value" class="md:col-span-2 px-2 py-1 border rounded text-sm" />
+            </div>
+            <button type="button" onclick="removeStoryMBA(${i})" class="text-red-600 hover:bg-red-50 p-1 rounded">
+              <i data-lucide="trash" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <textarea placeholder="Quote..." onchange="storiesMBA[${i}].quote=this.value" class="w-full mt-2 px-2 py-1 border rounded text-sm" rows="2">${s.quote || ''}</textarea>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function addStoryMBA() {
+      storiesMBA.push({ name: '', program: 'MBA', university: '', major: '', avatar: '', quote: '' });
+      renderStoriesMBA();
+    }
+
+    function removeStoryMBA(i) {
+      storiesMBA.splice(i, 1);
+      renderStoriesMBA();
+    }
+
+    function renderFeedbackMBA() {
+      const list = document.getElementById('feedbackListMBA');
+      if (!list) return;
+      if (feedbackMBA.length === 0) {
+        list.innerHTML = '<p class="text-sm text-gray-500">No feedback added yet.</p>';
+        return;
+      }
+      list.innerHTML = feedbackMBA.map((f, i) => `
+        <div class="border rounded-lg p-3 bg-gray-50">
+          <div class="flex items-start gap-3">
+            <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-2">
+              <input type="text" value="${'MBA'}" placeholder="Program" disabled class="px-2 py-1 border rounded text-sm bg-gray-100 text-gray-500" />
+              <input type="text" value="${f.cohort || ''}" placeholder="Cohort (e.g., 2023)" onchange="feedbackMBA[${i}].cohort=this.value" class="px-2 py-1 border rounded text-sm" />
+            </div>
+            <button type="button" onclick="removeFeedbackMBA(${i})" class="text-red-600 hover:bg-red-50 p-1 rounded">
+              <i data-lucide="trash" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <textarea placeholder="Feedback comment..." onchange="feedbackMBA[${i}].comment=this.value" class="w-full mt-2 px-2 py-1 border rounded text-sm" rows="2">${f.comment || ''}</textarea>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function addFeedbackMBA() {
+      feedbackMBA.push({ program: 'MBA', cohort: '', comment: '' });
+      renderFeedbackMBA();
+    }
+
+    function removeFeedbackMBA(i) {
+      feedbackMBA.splice(i, 1);
+      renderFeedbackMBA();
+    }
+
+    document.getElementById('programMBAForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const cfg = {
+        r1: {
+          title: document.getElementById('r1_title_mba').value.trim(),
+          img: document.getElementById('r1_img_mba').value.trim(),
+          bullets: document.getElementById('r1_bullets_mba').value.split('\n').map(l => l.trim()).filter(Boolean),
+        },
+        r2: {
+          title: document.getElementById('r2_title_mba').value.trim(),
+          img: document.getElementById('r2_img_mba').value.trim(),
+          bullets: document.getElementById('r2_bullets_mba').value.split('\n').map(l => l.trim()).filter(Boolean),
+        },
+        r3: {
+          title: document.getElementById('r3_title_mba').value.trim(),
+          img: document.getElementById('r3_img_mba').value.trim(),
+          bullets: document.getElementById('r3_bullets_mba').value.split('\n').map(l => l.trim()).filter(Boolean),
+        },
+        r4: {
+          title: document.getElementById('r4_title_mba').value.trim(),
+          img: document.getElementById('r4_img_mba').value.trim(),
+          bullets: document.getElementById('r4_bullets_mba').value.split('\n').map(l => l.trim()).filter(Boolean),
+        },
+        stories: storiesMBA,
+        feedback: feedbackMBA,
+      };
+      setMBAConfig(cfg);
+      alert('Joint MBA configuration saved successfully!');
+    });
+
+    function previewMBA() {
+      const aboutPage = '../../Joint Program Student/html/About-Joint-Program.html';
+      window.open(aboutPage, '_blank');
+    }
+
+    // === Partner (1+3) ===
+    function getPartners13Key() { return `applylead_partners_13_${currentUni?.id || 'default'}`; }
+    function getPartners13() { try { return JSON.parse(localStorage.getItem(getPartners13Key())) || []; } catch { return []; } }
+    function setPartners13(list) { localStorage.setItem(getPartners13Key(), JSON.stringify(list)); }
+
+    // Try to fetch institutions from a known key; fallback to mock
+    function getInstitutions() {
+      try { const ls = JSON.parse(localStorage.getItem('applylead_institutions')) || []; if (Array.isArray(ls) && ls.length) return ls; } catch { }
+      // Minimal mock data; replace by real data wiring later
+      return [
+        { id: 'inst-asu', name: 'Angelo State University', location: 'San Angelo, Texas, USA', logo: 'https://www.angelo.edu/live/resource/image/_i/themes/global/assets/images/asu-logo-white-gold.rev.1600281398.svg' },
+        { id: 'inst-tiffin', name: 'Tiffin University', location: 'Tiffin, Ohio, USA', logo: 'https://ui-avatars.com/api/?name=Tiffin+University&background=d82128&color=fff' }
+      ];
+    }
+
+    function populateInstSelect13() {
+      const sel = document.getElementById('inst_select_13');
+      if (!sel) return;
+      const insts = getInstitutions();
+      // Keep the placeholder, then add options once
+      if (sel.dataset.populated === '1') return;
+      for (const i of insts) {
+        const opt = document.createElement('option');
+        opt.value = i.id;
+        opt.textContent = `${i.name} • ${i.location || ''}`;
+        sel.appendChild(opt);
+      }
+      sel.dataset.populated = '1';
+    }
+
+    let partners13 = [];
+
+    function renderPartners13() {
+      const wrap = document.getElementById('partners_list_13');
+      if (!wrap) return;
+      if (!partners13.length) { wrap.innerHTML = '<p class="text-sm text-gray-500">No partners yet. Select an institution and click Add.</p>'; return; }
+      const instMap = new Map(getInstitutions().map(i => [i.id, i]));
+      wrap.innerHTML = partners13.map((p, idx) => {
+        const inst = instMap.get(p.instId) || {};
+        const images = p.images || [];
+        const imagesHtml = images.length ? images.map((imgUrl, imgIdx) => `
+          <div class="flex items-center gap-2 p-2 border rounded-lg bg-white">
+            <img src="${imgUrl}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2740%27 height=%2740%27%3E%3Crect fill=%27%23ddd%27 width=%2740%27 height=%2740%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 font-size=%2712%27 fill=%27%23999%27%3ENo Img%3C/text%3E%3C/svg%3E'" class="w-16 h-16 rounded object-cover border" alt="Partner image" />
+            <input type="url" value="${imgUrl}" placeholder="Image URL" onchange="partners13[${idx}].images[${imgIdx}]=this.value; renderPartners13();" class="flex-1 px-3 py-2 border rounded-lg text-sm" />
+            <button type="button" onclick="removePartnerImage13(${idx}, ${imgIdx})" class="text-red-600 hover:bg-red-50 p-2 rounded" title="Remove image">
+              <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+          </div>
+        `).join('') : '<p class="text-xs text-gray-500 italic">No images yet.</p>';
+
+        return `
+          <div class="border-2 rounded-xl p-5 bg-white shadow-sm hover:shadow-md transition-shadow">
+            <!-- Header -->
+            <div class="flex items-start gap-4 pb-4 border-b mb-4">
+              <img src="${inst.logo || '../../tiffin-university-logo.png'}" class="w-16 h-16 rounded-lg object-contain bg-gray-50 border p-2" alt="logo" />
+              <div class="flex-1">
+                <div class="flex items-start justify-between">
+                  <div>
+                    <div class="font-bold text-lg text-gray-900">${inst.name || 'Unknown Institution'}</div>
+                    <div class="text-sm text-gray-500 flex items-center gap-1 mt-1">
+                      <i data-lucide="map-pin" class="w-3 h-3"></i>
+                      ${inst.location || 'Location not set'}
+                    </div>
+                  </div>
+                  <button type="button" onclick="removePartner13(${idx})" class="text-red-600 hover:bg-red-100 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1">
+                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    Remove
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Fields -->
+            <div class="space-y-4">
+              <!-- Brief -->
+              <div>
+                <label class="block text-sm font-semibold mb-2 text-gray-700">Brief</label>
+                <input type="text" value="${p.brief || ''}" placeholder="e.g., Affordable Excellence in Higher Education" onchange="partners13[${idx}].brief=this.value" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500" />
+              </div>
+
+              <!-- Description -->
+              <div>
+                <label class="block text-sm font-semibold mb-2 text-gray-700">Description</label>
+                <textarea rows="3" placeholder="Comprehensive description for marketing purposes..." onchange="partners13[${idx}].desc=this.value" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500">${p.desc || ''}</textarea>
+              </div>
+
+              <!-- Images Section -->
+              <div class="bg-gray-50 rounded-lg p-4 border">
+                <div class="flex items-center justify-between mb-3">
+                  <label class="text-sm font-semibold text-gray-700 flex items-center gap-2">
+                    <i data-lucide="images" class="w-4 h-4"></i>
+                    Partner Images (${images.length})
+                  </label>
+                  <button type="button" onclick="addPartnerImage13(${idx})" class="text-sm px-3 py-1.5 rounded-lg border border-gray-300 hover:bg-white flex items-center gap-1">
+                    <i data-lucide="plus" class="w-4 h-4"></i>
+                    Add Image
+                  </button>
+                </div>
+                <div class="space-y-2">
+                  ${imagesHtml}
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+      lucide.createIcons();
+    }
+
+    function addPartner13() {
+      const sel = document.getElementById('inst_select_13');
+      const instId = sel?.value || '';
+      if (!instId) { alert('Please select an institution'); return; }
+      if (partners13.find(p => p.instId === instId)) { alert('This institution is already added.'); return; }
+      partners13.push({ instId, brief: '', desc: '', images: [] });
+      renderPartners13();
+    }
+
+    function removePartner13(idx) {
+      if (confirm('Remove this partner?')) {
+        partners13.splice(idx, 1);
+        renderPartners13();
+      }
+    }
+
+    function addPartnerImage13(idx) {
+      if (!partners13[idx].images) partners13[idx].images = [];
+      partners13[idx].images.push('');
+      renderPartners13();
+    }
+
+    function removePartnerImage13(partnerIdx, imgIdx) {
+      partners13[partnerIdx].images.splice(imgIdx, 1);
+      renderPartners13();
+    }
+
+    function loadPartners13() { partners13 = getPartners13(); renderPartners13(); }
+    function savePartners13() { setPartners13(partners13); alert('Partners (1+3) saved successfully.'); }
+    function previewPartners13() { window.open('../../Joint Program Student/html/About-Joint-Program.html', '_blank'); }
+
+    // === Partner (2+2) ===
+    function getPartners22Key() { return `applylead_partners_22_${currentUni?.id || 'default'}`; }
+    function getPartners22() { try { return JSON.parse(localStorage.getItem(getPartners22Key())) || []; } catch { return []; } }
+    function setPartners22(list) { localStorage.setItem(getPartners22Key(), JSON.stringify(list)); }
+
+    function populateInstSelect22() {
+      const sel = document.getElementById('inst_select_22');
+      if (!sel) return;
+      const insts = getInstitutions();
+      if (sel.dataset.populated === '1') return;
+      for (const i of insts) {
+        const opt = document.createElement('option');
+        opt.value = i.id;
+        opt.textContent = `${i.name} • ${i.location || ''}`;
+        sel.appendChild(opt);
+      }
+      sel.dataset.populated = '1';
+    }
+
+    let partners22 = [];
+
+    function renderPartners22() {
+      const wrap = document.getElementById('partners_list_22');
+      if (!wrap) return;
+      if (!partners22.length) { wrap.innerHTML = '<p class="text-sm text-gray-500">No partners yet. Select an institution and click Add.</p>'; return; }
+      const instMap = new Map(getInstitutions().map(i => [i.id, i]));
+      wrap.innerHTML = partners22.map((p, idx) => {
+        const inst = instMap.get(p.instId) || {};
+        const images = p.images || [];
+        const imagesHtml = images.length ? images.map((imgUrl, imgIdx) => `
+          <div class="flex items-center gap-2 p-2 border rounded-lg bg-white">
+            <img src="${imgUrl}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2740%27 height=%2740%27%3E%3Crect fill=%27%23ddd%27 width=%2740%27 height=%2740%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 font-size=%2712%27 fill=%27%23999%27%3ENo Img%3C/text%3E%3C/svg%3E'" class="w-16 h-16 rounded object-cover border" alt="Partner image" />
+            <input type="url" value="${imgUrl}" placeholder="Image URL" onchange="partners22[${idx}].images[${imgIdx}]=this.value; renderPartners22();" class="flex-1 px-3 py-2 border rounded-lg text-sm" />
+            <button type="button" onclick="removePartnerImage22(${idx}, ${imgIdx})" class="text-red-600 hover:bg-red-50 p-2 rounded" title="Remove image">
+              <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+          </div>
+        `).join('') : '<p class="text-xs text-gray-500 italic">No images yet.</p>';
+
+        return `
+          <div class="border-2 rounded-xl p-5 bg-white shadow-sm hover:shadow-md transition-shadow">
+            <!-- Header -->
+            <div class="flex items-start gap-4 pb-4 border-b mb-4">
+              <img src="${inst.logo || '../../tiffin-university-logo.png'}" class="w-16 h-16 rounded-lg object-contain bg-gray-50 border p-2" alt="logo" />
+              <div class="flex-1">
+                <div class="flex items-start justify-between">
+                  <div>
+                    <div class="font-bold text-lg text-gray-900">${inst.name || 'Unknown Institution'}</div>
+                    <div class="text-sm text-gray-500 flex items-center gap-1 mt-1">
+                      <i data-lucide="map-pin" class="w-3 h-3"></i>
+                      ${inst.location || 'Location not set'}
+                    </div>
+                  </div>
+                  <button type="button" onclick="removePartner22(${idx})" class="text-red-600 hover:bg-red-100 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1">
+                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    Remove
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Fields -->
+            <div class="space-y-4">
+              <!-- Brief -->
+              <div>
+                <label class="block text-sm font-semibold mb-2 text-gray-700">Brief</label>
+                <input type="text" value="${p.brief || ''}" placeholder="e.g., Affordable Excellence in Higher Education" onchange="partners22[${idx}].brief=this.value" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500" />
+              </div>
+
+              <!-- Description -->
+              <div>
+                <label class="block text-sm font-semibold mb-2 text-gray-700">Description</label>
+                <textarea rows="3" placeholder="Comprehensive description for marketing purposes..." onchange="partners22[${idx}].desc=this.value" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500">${p.desc || ''}</textarea>
+              </div>
+
+              <!-- Images Section -->
+              <div class="bg-gray-50 rounded-lg p-4 border">
+                <div class="flex items-center justify-between mb-3">
+                  <label class="text-sm font-semibold text-gray-700 flex items-center gap-2">
+                    <i data-lucide="images" class="w-4 h-4"></i>
+                    Partner Images (${images.length})
+                  </label>
+                  <button type="button" onclick="addPartnerImage22(${idx})" class="text-sm px-3 py-1.5 rounded-lg border border-gray-300 hover:bg-white flex items-center gap-1">
+                    <i data-lucide="plus" class="w-4 h-4"></i>
+                    Add Image
+                  </button>
+                </div>
+                <div class="space-y-2">
+                  ${imagesHtml}
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+      lucide.createIcons();
+    }
+
+    function addPartner22() {
+      const sel = document.getElementById('inst_select_22');
+      const instId = sel?.value || '';
+      if (!instId) { alert('Please select an institution'); return; }
+      if (partners22.find(p => p.instId === instId)) { alert('This institution is already added.'); return; }
+      partners22.push({ instId, brief: '', desc: '', images: [] });
+      renderPartners22();
+    }
+
+    function removePartner22(idx) {
+      if (confirm('Remove this partner?')) {
+        partners22.splice(idx, 1);
+        renderPartners22();
+      }
+    }
+
+    function addPartnerImage22(idx) {
+      if (!partners22[idx].images) partners22[idx].images = [];
+      partners22[idx].images.push('');
+      renderPartners22();
+    }
+
+    function removePartnerImage22(partnerIdx, imgIdx) {
+      partners22[partnerIdx].images.splice(imgIdx, 1);
+      renderPartners22();
+    }
+
+    function loadPartners22() { partners22 = getPartners22(); renderPartners22(); }
+    function savePartners22() { setPartners22(partners22); alert('Partners (2+2) saved successfully.'); }
+    function previewPartners22() { window.open('../../Joint Program Student/html/About-Joint-Program.html', '_blank'); }
+
+    // === Partner (MBA) ===
+    function getPartnersMBAKey() { return `applylead_partners_mba_${currentUni?.id || 'default'}`; }
+    function getPartnersMBA() { try { return JSON.parse(localStorage.getItem(getPartnersMBAKey())) || []; } catch { return []; } }
+    function setPartnersMBA(list) { localStorage.setItem(getPartnersMBAKey(), JSON.stringify(list)); }
+
+    function populateInstSelectMBA() {
+      const sel = document.getElementById('inst_select_mba');
+      if (!sel) return;
+      const insts = getInstitutions();
+      if (sel.dataset.populated === '1') return;
+      for (const i of insts) {
+        const opt = document.createElement('option');
+        opt.value = i.id;
+        opt.textContent = `${i.name} • ${i.location || ''}`;
+        sel.appendChild(opt);
+      }
+      sel.dataset.populated = '1';
+    }
+
+    let partnersMBA = [];
+
+    function renderPartnersMBA() {
+      const wrap = document.getElementById('partners_list_mba');
+      if (!wrap) return;
+      if (!partnersMBA.length) { wrap.innerHTML = '<p class="text-sm text-gray-500">No partners yet. Select an institution and click Add.</p>'; return; }
+      const instMap = new Map(getInstitutions().map(i => [i.id, i]));
+      wrap.innerHTML = partnersMBA.map((p, idx) => {
+        const inst = instMap.get(p.instId) || {};
+        const images = p.images || [];
+        const imagesHtml = images.length ? images.map((imgUrl, imgIdx) => `
+          <div class="flex items-center gap-2 p-2 border rounded-lg bg-white">
+            <img src="${imgUrl}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2740%27 height=%2740%27%3E%3Crect fill=%27%23ddd%27 width=%2740%27 height=%2740%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 font-size=%2712%27 fill=%27%23999%27%3ENo Img%3C/text%3E%3C/svg%3E'" class="w-16 h-16 rounded object-cover border" alt="Partner image" />
+            <input type="url" value="${imgUrl}" placeholder="Image URL" onchange="partnersMBA[${idx}].images[${imgIdx}]=this.value; renderPartnersMBA();" class="flex-1 px-3 py-2 border rounded-lg text-sm" />
+            <button type="button" onclick="removePartnerImageMBA(${idx}, ${imgIdx})" class="text-red-600 hover:bg-red-50 p-2 rounded" title="Remove image">
+              <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+          </div>
+        `).join('') : '<p class="text-xs text-gray-500 italic">No images yet.</p>';
+
+        return `
+          <div class="border-2 rounded-xl p-5 bg-white shadow-sm hover:shadow-md transition-shadow">
+            <!-- Header -->
+            <div class="flex items-start gap-4 pb-4 border-b mb-4">
+              <img src="${inst.logo || '../../tiffin-university-logo.png'}" class="w-16 h-16 rounded-lg object-contain bg-gray-50 border p-2" alt="logo" />
+              <div class="flex-1">
+                <div class="flex items-start justify-between">
+                  <div>
+                    <div class="font-bold text-lg text-gray-900">${inst.name || 'Unknown Institution'}</div>
+                    <div class="text-sm text-gray-500 flex items-center gap-1 mt-1">
+                      <i data-lucide="map-pin" class="w-3 h-3"></i>
+                      ${inst.location || 'Location not set'}
+                    </div>
+                  </div>
+                  <button type="button" onclick="removePartnerMBA(${idx})" class="text-red-600 hover:bg-red-100 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1">
+                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    Remove
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Fields -->
+            <div class="space-y-4">
+              <!-- Brief -->
+              <div>
+                <label class="block text-sm font-semibold mb-2 text-gray-700">Brief</label>
+                <input type="text" value="${p.brief || ''}" placeholder="e.g., Executive MBA for Global Leaders" onchange="partnersMBA[${idx}].brief=this.value" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500" />
+              </div>
+
+              <!-- Description -->
+              <div>
+                <label class="block text-sm font-semibold mb-2 text-gray-700">Description</label>
+                <textarea rows="3" placeholder="Comprehensive description for marketing purposes..." onchange="partnersMBA[${idx}].desc=this.value" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500">${p.desc || ''}</textarea>
+              </div>
+
+              <!-- Images Section -->
+              <div class="bg-gray-50 rounded-lg p-4 border">
+                <div class="flex items-center justify-between mb-3">
+                  <label class="text-sm font-semibold text-gray-700 flex items-center gap-2">
+                    <i data-lucide="images" class="w-4 h-4"></i>
+                    Partner Images (${images.length})
+                  </label>
+                  <button type="button" onclick="addPartnerImageMBA(${idx})" class="text-sm px-3 py-1.5 rounded-lg border border-gray-300 hover:bg-white flex items-center gap-1">
+                    <i data-lucide="plus" class="w-4 h-4"></i>
+                    Add Image
+                  </button>
+                </div>
+                <div class="space-y-2">
+                  ${imagesHtml}
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+      lucide.createIcons();
+    }
+
+    function addPartnerMBA() {
+      const sel = document.getElementById('inst_select_mba');
+      const instId = sel?.value || '';
+      if (!instId) { alert('Please select an institution'); return; }
+      if (partnersMBA.find(p => p.instId === instId)) { alert('This institution is already added.'); return; }
+      partnersMBA.push({ instId, brief: '', desc: '', images: [] });
+      renderPartnersMBA();
+    }
+
+    function removePartnerMBA(idx) {
+      if (confirm('Remove this partner?')) {
+        partnersMBA.splice(idx, 1);
+        renderPartnersMBA();
+      }
+    }
+
+    function addPartnerImageMBA(idx) {
+      if (!partnersMBA[idx].images) partnersMBA[idx].images = [];
+      partnersMBA[idx].images.push('');
+      renderPartnersMBA();
+    }
+
+    function removePartnerImageMBA(partnerIdx, imgIdx) {
+      partnersMBA[partnerIdx].images.splice(imgIdx, 1);
+      renderPartnersMBA();
+    }
+
+    function loadPartnersMBA() { partnersMBA = getPartnersMBA(); renderPartnersMBA(); }
+    function savePartnersMBA() { setPartnersMBA(partnersMBA); alert('Partners (MBA) saved successfully.'); }
+    function previewPartnersMBA() { window.open('../../Joint Program Student/html/About-Joint-Program.html', '_blank'); }
+
+    // === FAQ ===
+    function getFAQKey() { return `applylead_faq_${currentUni?.id || 'default'}`; }
+    function getFAQ() { try { return JSON.parse(localStorage.getItem(getFAQKey())) || []; } catch { return []; } }
+    function setFAQ(list) { localStorage.setItem(getFAQKey(), JSON.stringify(list)); }
+
+    let faqItems = [];
+
+    function renderFAQ() {
+      const wrap = document.getElementById('faq_list');
+      if (!wrap) return;
+      if (!faqItems.length) { wrap.innerHTML = '<p class="text-sm text-gray-500">No FAQ items yet. Click "Add FAQ Item" to create one.</p>'; return; }
+
+      wrap.innerHTML = faqItems.map((faq, idx) => `
+        <div class="border-2 rounded-xl p-5 bg-white shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-700">FAQ #${idx + 1}</span>
+            </div>
+            <button type="button" onclick="removeFAQ(${idx})" class="text-red-600 hover:bg-red-100 px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1">
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+              Remove
+            </button>
+          </div>
+          
+          <div class="space-y-4">
+            <!-- Question -->
+            <div>
+              <label class="block text-sm font-semibold mb-2 text-gray-700">Question</label>
+              <input type="text" value="${faq.question || ''}" placeholder="e.g., Who is a good fit for 1+3 vs 2+2?" onchange="faqItems[${idx}].question=this.value" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500" />
+            </div>
+
+            <!-- Answer -->
+            <div>
+              <label class="block text-sm font-semibold mb-2 text-gray-700">Answer</label>
+              <textarea rows="3" placeholder="Provide a detailed answer..." onchange="faqItems[${idx}].answer=this.value" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-red-500 focus:border-red-500">${faq.answer || ''}</textarea>
+            </div>
+          </div>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function addFAQ() {
+      faqItems.push({ question: '', answer: '' });
+      renderFAQ();
+    }
+
+    function removeFAQ(idx) {
+      if (confirm('Remove this FAQ item?')) {
+        faqItems.splice(idx, 1);
+        renderFAQ();
+      }
+    }
+
+    function loadFAQ() { faqItems = getFAQ(); renderFAQ(); }
+    function saveFAQ() { setFAQ(faqItems); alert('FAQ saved successfully.'); }
+    function previewFAQ() { window.open('../../Joint Program Student/html/About-Joint-Program.html', '_blank'); }
+
+    render();
+    lucide.createIcons();
+  </script>
+</body>
+
+</html>
