@@ -1004,7 +1004,7 @@
                 <div class="container-w mx-auto px-4 py-0">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                         <div>
-                            <a href="Student-GSP-Detail.html"
+                            <a href="Student-GSP-Detail2.html"
                                 class="inline-flex items-center gap-2 text-sm font-semibold text-red-600 hover:text-red-700 underline">
                                 <h3 class="text-2xl md:text-3xl font-extrabold title-gradient">Guaranteed Scholarship
                                     Program</h3>
@@ -1133,7 +1133,7 @@
                 <div class="container-w mx-auto px-4 py-12">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                         <div class="order-2 md:order-2">
-                            <a href="Student-GSP-Detail2.html"
+                            <a href="Student-EDP-Detail.html"
                                 class="inline-flex items-center gap-2 text-sm font-semibold text-red-600 hover:text-red-700 underline">
                                 <h3 class="text-2xl md:text-3xl font-extrabold title-gradient">Elite Admission Program
                                 </h3>
@@ -1249,7 +1249,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     <!-- Copy from your left column (unchanged copy) -->
                     <div>
-                        <a href="Student-GSP-Detail.html"
+                        <a href="Student-IVY-Detail.html"
                             class="inline-flex items-center gap-2 text-sm font-semibold text-red-600 hover:text-red-700 underline">
                             <h3 class="text-2xl md:text-3xl font-extrabold title-gradient">IVY Global Preparation
                                 Program</h3>
@@ -2050,36 +2050,10 @@
                 </div>
 
                 <div>
-                    <label class="text-sm font-semibold">Programs to consult (optional, select multiple)</label>
-                    <div class="mt-2 grid grid-cols-1 gap-2" role="group" aria-label="Program selection">
-                        <label class="cursor-pointer">
-                            <input type="checkbox" name="programs" value="Guaranteed Scholarship Program"
-                                class="peer sr-only">
-                            <span
-                                class="block px-3 py-2 rounded-xl border text-sm hover:bg-gray-50 peer-checked:bg-red-50 peer-checked:border-red-300 peer-checked:text-red-700">Guaranteed
-                                Scholarship Program</span>
-                        </label>
-                        <label class="cursor-pointer">
-                            <input type="checkbox" name="programs" value="Elite Admission Program" class="peer sr-only">
-                            <span
-                                class="block px-3 py-2 rounded-xl border text-sm hover:bg-gray-50 peer-checked:bg-red-50 peer-checked:border-red-300 peer-checked:text-red-700">Elite
-                                Admission Program</span>
-                        </label>
-                        <label class="cursor-pointer">
-                            <input type="checkbox" name="programs" value="Ivy Global Student Program"
-                                class="peer sr-only">
-                            <span
-                                class="block px-3 py-2 rounded-xl border text-sm hover:bg-gray-50 peer-checked:bg-red-50 peer-checked:border-red-300 peer-checked:text-red-700">Ivy
-                                Global Student Program</span>
-                        </label>
-                        <label class="cursor-pointer">
-                            <input type="checkbox" name="programs" value="Joint Program (VN → US Transfer)"
-                                class="peer sr-only">
-                            <span
-                                class="block px-3 py-2 rounded-xl border text-sm hover:bg-gray-50 peer-checked:bg-red-50 peer-checked:border-red-300 peer-checked:text-red-700">Joint
-                                Program (VN → US Transfer)</span>
-                        </label>
-                    </div>
+                    <label class="text-sm font-semibold">Programs to consult (optional). Select program(s) and
+                        package(s)</label>
+                    <div id="programsList" class="mt-2 grid grid-cols-1 gap-2" role="group"
+                        aria-label="Program and package selection"><!-- JS render --></div>
                 </div>
 
                 <div>
@@ -2112,9 +2086,71 @@
             const form = document.getElementById('consultForm');
             function open() { modal.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
             function close() { modal.classList.add('hidden'); document.body.style.overflow = ''; }
-            document.querySelectorAll('[data-open-consult]')
-                .forEach(btn => btn.addEventListener('click', open));
+
+            // Programs and packages config (copied from Detail2)
+            const PROGRAMS_CONFIG = [
+                {
+                    program: 'Guaranteed Scholarship Program',
+                    packages: [
+                        { value: 'EF Scholarship Guarantee – 3–5 schools', hint: '' },
+                        { value: 'EF Scholarship Guarantee – 1 school', hint: '' }
+                    ]
+                },
+                {
+                    program: 'Ivy Global Student Program',
+                    packages: [
+                        { value: 'Ivy Global – Top 30 US – Standard', hint: 'Apply to 5–10 universities' },
+                        { value: 'Ivy Global – Top 30 US – VIP Career', hint: 'Apply to 5–10 universities (Standard + Career coaching)' },
+                        { value: 'Ivy Global – Top 30 US – President', hint: 'Application to 5–10 universities (VIP + Campus visits)' }
+                    ]
+                },
+                {
+                    program: 'Elite Admission Program',
+                    packages: [
+                        { value: 'Elite Admission – Top 100 US – Standard', hint: 'Apply to up to 5 universities' }
+                    ]
+                }
+            ];
+
+            function renderProgramsUI() {
+                const wrap = document.getElementById('programsList');
+                if (!wrap) return;
+                wrap.innerHTML = PROGRAMS_CONFIG.map(p => `
+                    <div class="border rounded-xl">
+                      <label class="flex items-center justify-between gap-3 p-3 cursor-pointer">
+                        <span class="text-sm font-medium">${p.program}</span>
+                        <input type="checkbox" name="programs" value="${p.program}" class="w-4 h-4">
+                      </label>
+                      <div class="px-3 pb-3 space-y-2 hidden" data-packages-for="${p.program}">
+                        ${p.packages.map(pkg => `
+                          <label class="flex items-center justify-between gap-3 p-2 rounded-lg border hover:bg-gray-50">
+                            <span class="text-sm">${pkg.value}${pkg.hint ? ` <span class='text-xs text-gray-500'>• ${pkg.hint}</span>` : ''}</span>
+                            <input type="checkbox" name="packages" value="${pkg.value}" class="w-4 h-4">
+                          </label>
+                        `).join('')}
+                      </div>
+                    </div>`).join('');
+
+                // show/collapse packages + auto-select if single
+                wrap.querySelectorAll('input[name="programs"]').forEach(chk => {
+                    chk.addEventListener('change', () => {
+                        const packs = wrap.querySelector(`[data-packages-for="${chk.value}"]`);
+                        if (!packs) return;
+                        packs.classList.toggle('hidden', !chk.checked);
+                        const pkgInputs = packs.querySelectorAll('input[name="packages"]');
+                        if (pkgInputs.length === 1) { pkgInputs[0].checked = chk.checked; }
+                        if (!chk.checked) pkgInputs.forEach(i => i.checked = false);
+                    });
+                });
+            }
+
+            // Event delegation for open
+            document.body.addEventListener('click', (e) => {
+                const btn = e.target.closest('[data-open-consult]');
+                if (btn) open();
+            });
             modal?.addEventListener('click', (e) => { if (e.target === modal || e.target.closest('[data-close]')) close(); });
+
             // Build next-days chip calendar (14 days)
             const grid = document.getElementById('timesGrid');
             const hidden = document.getElementById('timesValue');
@@ -2139,14 +2175,29 @@
                     grid.appendChild(btn);
                 }
             }
+
+            // Prefill defaults on open click: select Guaranteed Scholarship Program
+            document.body.addEventListener('click', (e) => {
+                const btn = e.target.closest('[data-open-consult]'); if (!btn) return;
+                // reset selections
+                document.querySelectorAll('#programsList input[name="programs"]').forEach(i => { i.checked = false; i.dispatchEvent(new Event('change')); });
+                document.querySelectorAll('#programsList input[name="packages"]').forEach(i => i.checked = false);
+                const pChk = document.querySelector('#programsList input[name="programs"][value="Guaranteed Scholarship Program"]');
+                if (pChk) { pChk.checked = true; pChk.dispatchEvent(new Event('change')); }
+            });
+
             form?.addEventListener('submit', (e) => {
                 if (!form.checkValidity()) { e.preventDefault(); form.reportValidity(); return; }
                 e.preventDefault();
                 close();
                 alert('Thanks! We\'ve received your consultation request.');
             });
+
+            // init
+            renderProgramsUI();
         })();
     </script>
+
 </body>
 
 </html>

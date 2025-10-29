@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +9,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { font-family: 'Inter', sans-serif; margin: 0; }
-        .gradient-bg { background: linear-gradient(to right top, #ffffff, #f5f5f5, #ebebeb); }
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(to right top, #ffffff, #f5f5f5, #ebebeb);
+        }
     </style>
 </head>
+
 <body class="bg-white">
     <div class="min-h-screen">
         <header class="h-16 bg-white shadow-sm relative">
@@ -23,7 +31,8 @@
                         </div>
                         <div class="text-gray-300">|</div>
                         <div class="w-48 h-16 flex items-center">
-                            <img src="https://ftu.edu.vn/images/stories/joomlart/logo.png" alt="FTU University" class="h-full object-contain">
+                            <img src="https://ftu.edu.vn/images/stories/joomlart/logo.png" alt="FTU University"
+                                class="h-full object-contain">
                         </div>
                     </a>
                 </div>
@@ -34,16 +43,19 @@
                         <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
                     </button>
                     <div class="relative">
-                        <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
+                        <button id="profile-menu"
+                            class="flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-full">
                             <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop"
-                                 alt="Profile"
-                                 class="w-8 h-8 rounded-full object-cover">
+                                alt="Profile" class="w-8 h-8 rounded-full object-cover">
                         </button>
-                        <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
-                            <a href="university-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        <div id="profile-dropdown"
+                            class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                            <a href="university-profile.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
                             </a>
-                            <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <a href="#" onclick="handleLogout()"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
                             </a>
                         </div>
@@ -51,9 +63,13 @@
                 </div>
             </div>
 
-            <nav class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center space-x-8">
-                <a href="University-Scholarship.html" class="text-gray-500 hover:text-gray-700 font-medium hover:border-b-2 hover:border-gray-300 pb-1">About Joint Program</a>
-                <a href="University-Student.html" class="text-black hover:text-gray-700 font-medium border-b-2 border-red-600 pb-1">Student</a>
+            <nav
+                class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center space-x-8">
+                <a href="University-Scholarship.html"
+                    class="text-gray-500 hover:text-gray-700 font-medium hover:border-b-2 hover:border-gray-300 pb-1">About
+                    Joint Program</a>
+                <a href="University-Student.html"
+                    class="text-black hover:text-gray-700 font-medium border-b-2 border-red-600 pb-1">Student</a>
             </nav>
         </header>
 
@@ -64,19 +80,24 @@
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <i data-lucide="search" class="h-5 w-5 text-gray-400"></i>
                         </div>
-                        <input type="text" id="searchInput" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm" placeholder="Search students...">
+                        <input type="text" id="searchInput"
+                            class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 sm:text-sm"
+                            placeholder="Search students...">
                     </div>
                     <div class="relative">
-                        <button id="filterButton" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                        <button id="filterButton"
+                            class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                             <i data-lucide="filter" class="h-4 w-4 mr-2"></i>
                             Filter
                             <i data-lucide="chevron-down" class="h-4 w-4 ml-2"></i>
                         </button>
-                        <div id="filterDropdown" class="hidden absolute right-0 mt-1 w-56 bg-white rounded-md shadow-lg z-10">
+                        <div id="filterDropdown"
+                            class="hidden absolute right-0 mt-1 w-56 bg-white rounded-md shadow-lg z-10">
                             <div class="p-4 space-y-4">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">Major</label>
-                                    <select id="majorFilter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
+                                    <select id="majorFilter"
+                                        class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
                                         <option value="">All Majors</option>
                                         <option value="Computer Science">Computer Science</option>
                                         <option value="Business Administration">Business Administration</option>
@@ -86,10 +107,12 @@
                                     </select>
                                 </div>
                                 <div class="flex justify-end space-x-2 pt-2">
-                                    <button id="resetFilters" type="button" class="inline-flex items-center px-3 py-1.5 border border-gray-300 rounded-md shadow-sm text-xs font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                    <button id="resetFilters" type="button"
+                                        class="inline-flex items-center px-3 py-1.5 border border-gray-300 rounded-md shadow-sm text-xs font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                                         Reset
                                     </button>
-                                    <button id="applyFilters" type="button" class="inline-flex items-center px-3 py-1.5 border border-transparent rounded-md shadow-sm text-xs font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                    <button id="applyFilters" type="button"
+                                        class="inline-flex items-center px-3 py-1.5 border border-transparent rounded-md shadow-sm text-xs font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                                         Apply Filters
                                     </button>
                                 </div>
@@ -97,7 +120,8 @@
                         </div>
                     </div>
                     <div class="relative">
-                        <button id="importButton" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                        <button id="importButton"
+                            class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                             <i data-lucide="upload" class="h-4 w-4 mr-2"></i>
                             Import Excel
                         </button>
@@ -106,41 +130,69 @@
                 </div>
             </div>
 
+            <!-- Program Tabs -->
+            <div id="programTabs" class="mb-4 px-6">
+                <div class="inline-flex rounded-lg border border-gray-200 bg-white overflow-hidden">
+                    <button type="button" data-program-tab="1+3 Program"
+                        class="px-4 py-2 text-sm font-medium border-r border-gray-200 text-white bg-red-600 border-red-600">
+                        1+3 Program
+                    </button>
+                    <button type="button" data-program-tab="2+2 Program"
+                        class="px-4 py-2 text-sm font-medium border-r border-gray-200 text-gray-700 bg-white">
+                        2+2 Program
+                    </button>
+                    <button type="button" data-program-tab="Joint MBA Program"
+                        class="px-4 py-2 text-sm font-medium text-gray-700 bg-white">
+                        Joint MBA Program
+                    </button>
+                </div>
+            </div>
+
             <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                 <div>
                     <table class="w-full table-auto divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     <div class="flex items-center">
                                         <span>Student Name</span>
                                     </div>
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Student Email
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Year
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Class
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Major
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Source
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Program
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Application Status
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Student Status
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Document Upload
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col"
+                                    class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Actions
                                 </th>
                             </tr>
@@ -154,26 +206,41 @@
                     <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
                         <div>
                             <p class="text-sm text-gray-700">
-                                Showing <span class="font-medium">1</span> to <span class="font-medium">10</span> of <span class="font-medium">20</span> results
+                                Showing <span class="font-medium">1</span> to <span class="font-medium">10</span> of
+                                <span class="font-medium">20</span> results
                             </p>
                         </div>
                         <div>
-                            <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
-                                <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                            <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
+                                aria-label="Pagination">
+                                <a href="#"
+                                    class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                                     <span class="sr-only">Previous</span>
-                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                        fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                            clip-rule="evenodd" />
                                     </svg>
                                 </a>
-                                <a href="#" aria-current="page" class="z-10 bg-red-50 border-red-500 text-red-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium">1</a>
-                                <a href="#" class="bg-white border-gray-300 text-gray-700 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">2</a>
-                                <a href="#" class="bg-white border-gray-300 text-gray-700 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">3</a>
-                                <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">...</span>
-                                <a href="#" class="bg-white border-gray-300 text-gray-700 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">8</a>
-                                <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                <a href="#" aria-current="page"
+                                    class="z-10 bg-red-50 border-red-500 text-red-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium">1</a>
+                                <a href="#"
+                                    class="bg-white border-gray-300 text-gray-700 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">2</a>
+                                <a href="#"
+                                    class="bg-white border-gray-300 text-gray-700 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">3</a>
+                                <span
+                                    class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">...</span>
+                                <a href="#"
+                                    class="bg-white border-gray-300 text-gray-700 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">8</a>
+                                <a href="#"
+                                    class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                                     <span class="sr-only">Next</span>
-                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                        fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                            clip-rule="evenodd" />
                                     </svg>
                                 </a>
                             </nav>
@@ -198,46 +265,56 @@
                     <div>
                         <label for="editName" class="block text-sm font-medium text-gray-700">Full Name</label>
                         <p id="modalName" class="mt-1 text-gray-900">Nguyen Van</p>
-                        <input type="text" id="editName" name="name" class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
+                        <input type="text" id="editName" name="name"
+                            class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
                     </div>
                     <div>
                         <label for="editEmail" class="block text-sm font-medium text-gray-700">Email</label>
                         <p id="modalEmail" class="mt-1 text-gray-900">nguyenvana@example.com</p>
-                        <input type="email" id="editEmail" name="email" class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
+                        <input type="email" id="editEmail" name="email"
+                            class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
                     </div>
                     <div>
                         <label for="editProgram" class="block text-sm font-medium text-gray-700">Program</label>
                         <p id="modalProgram" class="mt-1 text-gray-900">1+3 Transfer Program</p>
-                        <input type="text" id="editProgram" name="program" class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
+                        <input type="text" id="editProgram" name="program"
+                            class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
                     </div>
                     <div>
                         <label for="editMajor" class="block text-sm font-medium text-gray-700">Major</label>
                         <p id="modalMajor" class="mt-1 text-gray-900">Computer Science</p>
-                        <input type="text" id="editMajor" name="major" class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
+                        <input type="text" id="editMajor" name="major"
+                            class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
                     </div>
                     <div>
                         <label for="editSource" class="block text-sm font-medium text-gray-700">Source</label>
                         <p id="modalSource" class="mt-1 text-gray-900">FTU HCM</p>
-                        <input type="text" id="editSource" name="source" class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
+                        <input type="text" id="editSource" name="source"
+                            class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
                     </div>
                 </div>
                 <div class="pt-4 border-t border-gray-200">
                     <label for="editNotes" class="block text-sm font-medium text-gray-700 mb-2">Notes</label>
                     <p id="modalNotes" class="text-gray-600 text-sm mb-2">No additional notes available.</p>
-                    <textarea id="editNotes" name="notes" rows="3" class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm"></textarea>
+                    <textarea id="editNotes" name="notes" rows="3"
+                        class="hidden mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm"></textarea>
                 </div>
             </div>
             <div class="mt-5 flex justify-end space-x-3">
-                <button id="cancelEditBtn" type="button" class="hidden px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                <button id="cancelEditBtn" type="button"
+                    class="hidden px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                     Cancel
                 </button>
-                <button id="saveChangesBtn" type="button" class="hidden px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                <button id="saveChangesBtn" type="button"
+                    class="hidden px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                     Save Changes
                 </button>
-                <button id="closeModalBtn" type="button" class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                <button id="closeModalBtn" type="button"
+                    class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                     Close
                 </button>
-                <button id="editStudentBtn" type="button" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                <button id="editStudentBtn" type="button"
+                    class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                     Edit Student
                 </button>
             </div>
@@ -248,23 +325,38 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Sample student data
+        // Sample student data (fixed: 8 per program)
         const students = [
-            { id: 1, name: 'Nguyen Van', email: 'nguyenvana@example.com', major: 'Computer Science', source: 'FTU HCM', program: '1+3 Transfer Program', notes: 'Interested in AI and Machine Learning', scholarshipType: getRandomScholarshipType() },
-            { id: 2, name: 'Tran Thi', email: 'tranthib@example.com', major: 'Business Administration', source: 'FTU HN', program: '2+2 Transfer Program', notes: 'Program applicant', scholarshipType: getRandomScholarshipType() },
-            { id: 3, name: 'Le Van', email: 'levanc@example.com', major: 'Engineering', source: 'FTU HN', program: 'Direct Admission Program', notes: 'Transferred from another university', scholarshipType: getRandomScholarshipType() },
-            { id: 4, name: 'Pham Thi', email: 'phamthid@example.com', major: 'Data Science', source: 'FTU HCM', program: 'Joint MBA Program', notes: 'Has programming experience in Python', scholarshipType: getRandomScholarshipType() },
-            { id: 5, name: 'Hoang Van', email: 'hoangvane@example.com', major: 'Finance', source: 'FTU HCM', program: '1+3 Transfer Program', notes: 'Looking for part-time opportunities', scholarshipType: getRandomScholarshipType(), yearStart: '2024', className: 'Class A', status: 'In Progress' },
-            { id: 6, name: 'Nguyen Minh Chau', email: 'minhchau.nguyen@example.com', major: 'Information Systems', source: 'FTU HN', program: '2+2 Transfer Program', notes: 'Interested in product management', scholarshipType: getRandomScholarshipType(), yearStart: '2025', className: 'Class C', status: 'Under Review' },
-            { id: 7, name: 'Bui Gia Khang', email: 'giakhang.bui@example.com', major: 'Marketing', source: 'FTU HCM', program: 'Direct Admission Program', notes: 'Strong extracurricular activities', scholarshipType: getRandomScholarshipType(), yearStart: '2026', className: 'Class B', status: 'Approved', documentName: 'transcript.pdf' },
-            { id: 8, name: 'Do Thanh Ha', email: 'thanhha.do@example.com', major: 'Accounting', source: 'FTU HN', program: '1+3 Transfer Program', notes: 'CPA track', scholarshipType: getRandomScholarshipType(), yearStart: '2024', className: 'Class D', status: 'In Progress' },
-        ];
+            // 1+3 Program (8)
+            { id: 101, name: 'Nguyen Van A', email: 'nguyenvana@ftu.edu.vn', major: 'Computer Science', source: 'FTU HCM', program: '1+3 Transfer Program', notes: 'AI track', scholarshipType: '1+3 Program', yearStart: '2024', className: 'Class A', status: 'Missing Profile' },
+            { id: 102, name: 'Tran Thi B', email: 'tranthib@ftu.edu.vn', major: 'Data Science', source: 'FTU HN', program: '1+3 Transfer Program', notes: '', scholarshipType: '1+3 Program', yearStart: '2024', className: 'Class A', status: 'Complete Profile' },
+            { id: 103, name: 'Le Van C', email: 'levanc@ftu.edu.vn', major: 'Information Systems', source: 'FTU HCM', program: '1+3 Transfer Program', notes: '', scholarshipType: '1+3 Program', yearStart: '2025', className: 'Class B', status: 'In Application Progress' },
+            { id: 104, name: 'Pham Thi D', email: 'phamthid@ftu.edu.vn', major: 'Finance', source: 'FTU HN', program: '1+3 Transfer Program', notes: '', scholarshipType: '1+3 Program', yearStart: '2024', className: 'Class C', status: 'Pre-departure' },
+            { id: 105, name: 'Hoang Van E', email: 'hoangvane@ftu.edu.vn', major: 'Business Administration', source: 'FTU HCM', program: '1+3 Transfer Program', notes: 'Looking for internship', scholarshipType: '1+3 Program', yearStart: '2024', className: 'Class D', status: 'Arrival' },
+            { id: 106, name: 'Nguyen Minh F', email: 'minhfn@ftu.edu.vn', major: 'Engineering', source: 'FTU HN', program: '1+3 Transfer Program', notes: '', scholarshipType: '1+3 Program', yearStart: '2025', className: 'Class B', status: 'In Active' },
+            { id: 107, name: 'Bui Gia G', email: 'giag@ftu.edu.vn', major: 'Marketing', source: 'FTU HCM', program: '1+3 Transfer Program', notes: '', scholarshipType: '1+3 Program', yearStart: '2026', className: 'Class B', status: 'In Application Progress', documentName: 'transcript.pdf' },
+            { id: 108, name: 'Do Thanh H', email: 'thanhh@ftu.edu.vn', major: 'Accounting', source: 'FTU HN', program: '1+3 Transfer Program', notes: 'CPA track', scholarshipType: '1+3 Program', yearStart: '2024', className: 'Class D', status: 'Awaiting Registration' },
 
-        // Function to generate random scholarship type (single)
-        function getRandomScholarshipType() {
-            const types = ['1+3 Program', '2+2 Program', 'Joint MBA Program'];
-            return types[Math.floor(Math.random() * types.length)];
-        }
+            // 2+2 Program (8)
+            { id: 201, name: 'Nguyen Van I', email: 'nguyenani@ftu.edu.vn', major: 'Computer Science', source: 'FTU HN', program: '2+2 Transfer Program', notes: '', scholarshipType: '2+2 Program', yearStart: '2024', className: 'Class A', status: 'Missing Profile' },
+            { id: 202, name: 'Tran Thi K', email: 'trank@ftu.edu.vn', major: 'Data Science', source: 'FTU HCM', program: '2+2 Transfer Program', notes: '', scholarshipType: '2+2 Program', yearStart: '2024', className: 'Class A', status: 'Complete Profile' },
+            { id: 203, name: 'Le Van L', email: 'lelan@ftu.edu.vn', major: 'Information Systems', source: 'FTU HN', program: '2+2 Transfer Program', notes: '', scholarshipType: '2+2 Program', yearStart: '2025', className: 'Class C', status: 'In Application Progress' },
+            { id: 204, name: 'Pham Thi M', email: 'phamm@ftu.edu.vn', major: 'Finance', source: 'FTU HCM', program: '2+2 Transfer Program', notes: '', scholarshipType: '2+2 Program', yearStart: '2024', className: 'Class B', status: 'Pre-departure' },
+            { id: 205, name: 'Hoang Van N', email: 'hoangn@ftu.edu.vn', major: 'Business Administration', source: 'FTU HN', program: '2+2 Transfer Program', notes: '', scholarshipType: '2+2 Program', yearStart: '2024', className: 'Class D', status: 'Arrival' },
+            { id: 206, name: 'Nguyen Minh O', email: 'minho@ftu.edu.vn', major: 'Engineering', source: 'FTU HCM', program: '2+2 Transfer Program', notes: '', scholarshipType: '2+2 Program', yearStart: '2025', className: 'Class C', status: 'In Active' },
+            { id: 207, name: 'Bui Gia P', email: 'giap@ftu.edu.vn', major: 'Marketing', source: 'FTU HN', program: '2+2 Transfer Program', notes: '', scholarshipType: '2+2 Program', yearStart: '2026', className: 'Class B', status: 'In Application Progress' },
+            { id: 208, name: 'Do Thanh Q', email: 'thanhq@ftu.edu.vn', major: 'Accounting', source: 'FTU HCM', program: '2+2 Transfer Program', notes: '', scholarshipType: '2+2 Program', yearStart: '2024', className: 'Class D', status: 'Awaiting Registration' },
+
+            // Joint MBA Program (8)
+            { id: 301, name: 'Nguyen Van R', email: 'nguyenr@ftu.edu.vn', major: 'Finance', source: 'FTU HCM', program: 'Joint MBA Program', notes: '', scholarshipType: 'Joint MBA Program', yearStart: '2024', className: 'Class A', status: 'Missing Profile' },
+            { id: 302, name: 'Tran Thi S', email: 'trans@ftu.edu.vn', major: 'Business Administration', source: 'FTU HN', program: 'Joint MBA Program', notes: '', scholarshipType: 'Joint MBA Program', yearStart: '2024', className: 'Class A', status: 'Complete Profile' },
+            { id: 303, name: 'Le Van T', email: 'let@ftu.edu.vn', major: 'Marketing', source: 'FTU HCM', program: 'Joint MBA Program', notes: '', scholarshipType: 'Joint MBA Program', yearStart: '2025', className: 'Class B', status: 'In Application Progress' },
+            { id: 304, name: 'Pham Thi U', email: 'phamu@ftu.edu.vn', major: 'Accounting', source: 'FTU HN', program: 'Joint MBA Program', notes: '', scholarshipType: 'Joint MBA Program', yearStart: '2024', className: 'Class C', status: 'Pre-departure' },
+            { id: 305, name: 'Hoang Van V', email: 'hoangv@ftu.edu.vn', major: 'Information Systems', source: 'FTU HCM', program: 'Joint MBA Program', notes: '', scholarshipType: 'Joint MBA Program', yearStart: '2024', className: 'Class D', status: 'Arrival' },
+            { id: 306, name: 'Nguyen Minh W', email: 'minhw@ftu.edu.vn', major: 'Engineering', source: 'FTU HN', program: 'Joint MBA Program', notes: '', scholarshipType: 'Joint MBA Program', yearStart: '2025', className: 'Class C', status: 'In Active' },
+            { id: 307, name: 'Bui Gia X', email: 'giax@ftu.edu.vn', major: 'Computer Science', source: 'FTU HCM', program: 'Joint MBA Program', notes: '', scholarshipType: 'Joint MBA Program', yearStart: '2026', className: 'Class B', status: 'In Application Progress' },
+            { id: 308, name: 'Do Thanh Y', email: 'thanhy@ftu.edu.vn', major: 'Data Science', source: 'FTU HN', program: 'Joint MBA Program', notes: '', scholarshipType: 'Joint MBA Program', yearStart: '2024', className: 'Class D', status: 'Awaiting Registration' },
+        ];
 
         // DOM Elements
         const studentTableBody = document.getElementById('studentTableBody');
@@ -282,6 +374,7 @@
         const cancelEditBtn = document.getElementById('cancelEditBtn');
         const saveChangesBtn = document.getElementById('saveChangesBtn');
         const studentForm = document.getElementById('studentForm');
+        const programTabs = document.getElementById('programTabs');
         let currentStudent = null;
         let isEditMode = false;
 
@@ -290,13 +383,15 @@
             search: '',
             cohort: '',
             major: '',
-            source: ''
+            source: '',
+            // Default to the first tab: 1+3 Program
+            programType: '1+3 Program'
         };
 
         // Initialize the table with all students
         function renderStudents(studentsToRender) {
             studentTableBody.innerHTML = '';
-            
+
             if (studentsToRender.length === 0) {
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -331,7 +426,7 @@
                         </span>
                     </td>
                     <td class="px-6 py-4 whitespace-normal break-words">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusBadgeClass(student.status || 'In Progress')}">${student.status || 'In Progress'}</span>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusBadgeClass(student.status || 'Missing Profile')}">${student.status || 'Missing Profile'}</span>
                     </td>
                     <td class="px-6 py-4 whitespace-normal break-words text-sm">
                         <span class="text-gray-500 mr-3">${student.documentName || ''}</span>
@@ -403,21 +498,42 @@
         // Filter students based on current filters
         function filterStudents() {
             return students.filter(student => {
-                const matchesSearch = !currentFilters.search || 
+                const matchesSearch = !currentFilters.search ||
                     student.name.toLowerCase().includes(currentFilters.search.toLowerCase()) ||
                     student.email.toLowerCase().includes(currentFilters.search.toLowerCase());
                 const matchesCohort = !currentFilters.cohort || student.cohort === currentFilters.cohort;
                 const matchesMajor = !currentFilters.major || student.major === currentFilters.major;
                 const matchesSource = !currentFilters.source || student.source === currentFilters.source;
-                
-                return matchesSearch && matchesCohort && matchesMajor && matchesSource;
+                const matchesProgramType = !currentFilters.programType || student.scholarshipType === currentFilters.programType;
+
+                return matchesSearch && matchesCohort && matchesMajor && matchesSource && matchesProgramType;
             });
+        }
+
+        // Tabs handling
+        function setActiveTab(programType) {
+            currentFilters.programType = programType;
+            // Update tab button styles
+            if (programTabs) {
+                const buttons = programTabs.querySelectorAll('[data-program-tab]');
+                buttons.forEach(btn => {
+                    const isActive = btn.getAttribute('data-program-tab') === programType;
+                    btn.classList.toggle('bg-red-600', isActive);
+                    btn.classList.toggle('text-white', isActive);
+                    btn.classList.toggle('border-red-600', isActive);
+                    btn.classList.toggle('bg-white', !isActive);
+                    btn.classList.toggle('text-gray-700', !isActive);
+                });
+            }
+            // Re-render
+            const filteredStudents = filterStudents();
+            renderStudents(filteredStudents.slice(0, 10));
         }
 
         // Show student details in modal
         function showStudentDetails(student, editMode = false) {
             currentStudent = student;
-            
+
             // Set values in view mode
             document.getElementById('modalName').textContent = student.name;
             document.getElementById('modalEmail').textContent = student.email;
@@ -425,7 +541,7 @@
             document.getElementById('modalMajor').textContent = student.major;
             document.getElementById('modalSource').textContent = student.source;
             document.getElementById('modalNotes').textContent = student.notes || 'No additional notes available.';
-            
+
             // Set values in edit fields
             document.getElementById('editName').value = student.name;
             document.getElementById('editEmail').value = student.email;
@@ -433,48 +549,48 @@
             document.getElementById('editMajor').value = student.major;
             document.getElementById('editSource').value = student.source;
             document.getElementById('editNotes').value = student.notes || '';
-            
+
             // Toggle edit mode if needed
             if (editMode) {
                 setEditMode(true);
             } else {
                 setEditMode(false);
             }
-            
+
             // Show the modal
             document.getElementById('studentModal').classList.remove('hidden');
         }
-        
+
         // Toggle between view and edit modes
         function setEditMode(edit) {
             isEditMode = edit;
-            
+
             // Toggle view mode elements
             const viewElements = studentForm.querySelectorAll('p[id^="modal"]');
             viewElements.forEach(el => el.classList.toggle('hidden', edit));
-            
+
             // Toggle edit mode elements
             const editElements = studentForm.querySelectorAll('input, textarea');
             editElements.forEach(el => el.classList.toggle('hidden', !edit));
-            
+
             // Toggle buttons
             editStudentBtn.classList.toggle('hidden', edit);
             closeModalBtn.classList.toggle('hidden', edit);
             cancelEditBtn.classList.toggle('hidden', !edit);
             saveChangesBtn.classList.toggle('hidden', !edit);
         }
-        
+
         // Edit button click handler
         editStudentBtn.addEventListener('click', () => {
             setEditMode(true);
         });
-        
+
         // Cancel button click handler
         cancelEditBtn.addEventListener('click', () => {
             // Reset form to original values
             showStudentDetails(currentStudent, false);
         });
-        
+
         // Save button click handler
         saveChangesBtn.addEventListener('click', () => {
             // Update the student object with new values
@@ -487,17 +603,17 @@
                 source: document.getElementById('editSource').value,
                 notes: document.getElementById('editNotes').value
             };
-            
+
             // Update the student in the table
             updateStudentInTable(currentStudent);
-            
+
             // Switch back to view mode
             showStudentDetails(currentStudent, false);
-            
+
             // Show success message (you can replace this with a toast notification)
             alert('Student information updated successfully!');
         });
-        
+
         // Update student in the table
         function updateStudentInTable(updatedStudent) {
             const row = document.querySelector(`tr[data-student-id="${updatedStudent.id}"]`);
@@ -507,7 +623,7 @@
                 if (nameCell) {
                     nameCell.querySelector('div:first-child').textContent = updatedStudent.name;
                 }
-                
+
                 // Update other cells as needed
                 const cells = row.querySelectorAll('td');
                 if (cells[1]) cells[1].textContent = updatedStudent.email;
@@ -515,12 +631,12 @@
                 if (cells[3]) cells[3].textContent = updatedStudent.source;
             }
         }
-        
+
         // Event Listeners
         searchInput.addEventListener('input', (e) => {
             currentFilters.search = e.target.value;
             const filteredStudents = filterStudents();
-            renderStudents(filteredStudents);
+            renderStudents(filteredStudents.slice(0, 10));
         });
 
         filterButton.addEventListener('click', (e) => {
@@ -532,9 +648,9 @@
             currentFilters.cohort = document.getElementById('cohortFilter').value;
             currentFilters.major = document.getElementById('majorFilter').value;
             currentFilters.source = document.getElementById('sourceFilter').value;
-            
+
             const filteredStudents = filterStudents();
-            renderStudents(filteredStudents);
+            renderStudents(filteredStudents.slice(0, 10));
             filterDropdown.classList.add('hidden');
         });
 
@@ -542,16 +658,16 @@
             document.getElementById('cohortFilter').value = '';
             document.getElementById('majorFilter').value = '';
             document.getElementById('sourceFilter').value = '';
-            
+
             currentFilters = {
                 ...currentFilters,
                 cohort: '',
                 major: '',
                 source: ''
             };
-            
+
             const filteredStudents = filterStudents();
-            renderStudents(filteredStudents);
+            renderStudents(filteredStudents.slice(0, 8));
             filterDropdown.classList.add('hidden');
         });
 
@@ -621,17 +737,17 @@
             }
         });
 
-         // Handle logout
-         window.handleLogout = function () {
-                // Add your logout logic here
-                console.log('Logging out...');
-                // Example: window.location.href = '/logout';
-                // Show a confirmation dialog before logging out
-                if (confirm('Are you sure you want to log out?')) {
-                    // Perform logout action
-                    window.location.href = '../../login.html';
-                }
-            };
+        // Handle logout
+        window.handleLogout = function () {
+            // Add your logout logic here
+            console.log('Logging out...');
+            // Example: window.location.href = '/logout';
+            // Show a confirmation dialog before logging out
+            if (confirm('Are you sure you want to log out?')) {
+                // Perform logout action
+                window.location.href = '../../login.html';
+            }
+        };
 
         // Add this function to get different colors for different scholarship types
         function getScholarshipTypeClass(type) {
@@ -643,19 +759,34 @@
             return classes[type] || 'bg-gray-100 text-gray-800';
         }
 
-        // Status badge color mapping
+        // Status badge color mapping for Student Status steps
         function getStatusBadgeClass(status) {
             const map = {
-                'In Progress': 'bg-yellow-100 text-yellow-800',
-                'Under Review': 'bg-blue-100 text-blue-800',
-                'Approved': 'bg-green-100 text-green-800',
-                'Rejected': 'bg-red-100 text-red-800'
+                'Missing Profile': 'bg-red-100 text-red-800',
+                'Complete Profile': 'bg-yellow-100 text-yellow-800',
+                'In Application Progress': 'bg-green-100 text-green-800',
+                'Pre-departure': 'bg-green-100 text-green-800',
+                'Arrival': 'bg-green-100 text-green-800',
+                'In Active': 'bg-gray-200 text-gray-800',
+                'Awaiting Registration': 'bg-red-100 text-red-800'
             };
             return map[status] || 'bg-gray-100 text-gray-800';
         }
 
-        // Initial render
-        renderStudents(students);
+        // Wire up tab buttons
+        if (programTabs) {
+            const buttons = programTabs.querySelectorAll('[data-program-tab]');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const type = btn.getAttribute('data-program-tab');
+                    setActiveTab(type);
+                });
+            });
+        }
+
+        // Activate default tab
+        setActiveTab(currentFilters.programType);
     </script>
 </body>
+
 </html>

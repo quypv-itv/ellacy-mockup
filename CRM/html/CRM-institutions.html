@@ -566,7 +566,7 @@
 
                                 <!-- Optional: Partner University Checkbox -->
                                 <div class="bg-gray-50 rounded-lg p-4">
-                                    <p class="text-xs text-gray-500">Partner University (optional)</p>
+                                    <p class="text-xs text-gray-500">Partner University</p>
                                     <div class="view-mode">
                                         <p class="text-sm font-medium text-gray-900">No</p>
                                         <p class="text-xs text-gray-500">Mark if this institution is a partner
@@ -578,6 +578,13 @@
                                                 class="h-4 w-4 rounded border-gray-300">
                                             Partner University
                                         </label>
+                                        <div id="partnerBriefContainer" class="mt-3 hidden">
+                                            <label for="partnerBrief" class="block text-xs text-gray-500 mb-1">Partner
+                                                Brief</label>
+                                            <textarea id="partnerBrief" rows="3"
+                                                placeholder="Short brief about this partner..."
+                                                class="w-full text-xs border border-gray-300 rounded p-2"></textarea>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -2675,6 +2682,26 @@ Spring 2026</textarea>
             renderTiersTable();
             closeTierModal();
             showNotification('Tier saved', 'success');
+        });
+    </script>
+    <script>
+        // Toggle Partner Brief visibility based on checkbox state
+        document.addEventListener('DOMContentLoaded', () => {
+            const partnerChk = document.getElementById('isPartnerUniversity');
+            const briefContainer = document.getElementById('partnerBriefContainer');
+            function syncPartnerBrief() {
+                if (!partnerChk || !briefContainer) return;
+                if (partnerChk.checked) {
+                    briefContainer.classList.remove('hidden');
+                } else {
+                    briefContainer.classList.add('hidden');
+                }
+            }
+            if (partnerChk) {
+                partnerChk.addEventListener('change', syncPartnerBrief);
+                // Initial sync
+                syncPartnerBrief();
+            }
         });
     </script>
 </body>

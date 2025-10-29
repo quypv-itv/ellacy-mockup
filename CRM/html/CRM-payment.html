@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +18,7 @@
         }
     </style>
 </head>
+
 <body class="bg-gray-50">
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
@@ -54,7 +56,8 @@
                     <i data-lucide="user" class="w-5 h-5 mr-3"></i>
                     Students
                 </a>
-                <a href="CRM-payment.html" class="flex items-center px-6 py-3 text-white" style="background-color: #d82128;">
+                <a href="CRM-payment.html" class="flex items-center px-6 py-3 text-white"
+                    style="background-color: #d82128;">
                     <i data-lucide="credit-card" class="w-5 h-5 mr-3"></i>
                     Payments
                 </a>
@@ -78,7 +81,7 @@
                     <i data-lucide="shield" class="w-5 h-5 mr-3"></i>
                     User Admin
                 </a>
-                
+
                 <a href="CRM-Setting.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
                     <i data-lucide="settings" class="w-5 h-5 mr-3"></i>
                     Settings
@@ -98,7 +101,8 @@
                     <button class="p-2 hover:bg-gray-100 rounded-full">
                         <div class="relative">
                             <i data-lucide="bell" class="w-5 h-5 text-gray-600"></i>
-                            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                            <span
+                                class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
                         </div>
                     </button>
                     <div class="relative" id="profile-menu">
@@ -106,9 +110,12 @@
                             <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                                 alt="Admin profile" class="w-8 h-8 rounded-full object-cover">
                         </button>
-                        <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1">
-                            <a href="CRM-Setting.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onclick="handleLogout()">Logout</a>
+                        <div id="profile-dropdown"
+                            class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1">
+                            <a href="CRM-Setting.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                onclick="handleLogout()">Logout</a>
                         </div>
                     </div>
                 </div>
@@ -116,332 +123,1608 @@
 
             <!-- Main Content Area -->
             <main class="flex-1 overflow-y-auto p-6">
-                <!-- Summary Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-                    <!-- Total Payouts This Month -->
-                    <div class="bg-white rounded-lg shadow p-6">
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-sm font-medium text-gray-500">Total Payouts This Month</h3>
-                            <i data-lucide="dollar-sign" class="w-5 h-5 text-green-500"></i>
-                        </div>
-                        <div class="flex items-baseline">
-                            <span class="text-2xl font-bold text-gray-900">$45,280</span>
-                            <span class="ml-2 text-sm text-green-500">+12.5%</span>
-                        </div>
-                    </div>
-
-                    <!-- Outstanding Commission -->
-                    <div class="bg-white rounded-lg shadow p-6">
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-sm font-medium text-gray-500">Outstanding Commission</h3>
-                            <i data-lucide="wallet" class="w-5 h-5 text-yellow-500"></i>
-                        </div>
-                        <div class="flex items-baseline">
-                            <span class="text-2xl font-bold text-gray-900">$12,450</span>
-                            <span class="ml-2 text-sm text-gray-500">8 pending</span>
-                        </div>
-                    </div>
-
-                    <!-- Approved but Unpaid -->
-                    <div class="bg-white rounded-lg shadow p-6">
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-sm font-medium text-gray-500">Approved but Unpaid</h3>
-                            <i data-lucide="clock" class="w-5 h-5 text-blue-500"></i>
-                        </div>
-                        <div class="flex items-baseline">
-                            <span class="text-2xl font-bold text-gray-900">$28,900</span>
-                            <span class="ml-2 text-sm text-gray-500">15 payments</span>
-                        </div>
-                    </div>
-
-                    <!-- Scholarships Disbursed -->
-                    <div class="bg-white rounded-lg shadow p-6">
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-sm font-medium text-gray-500">Scholarships Disbursed</h3>
-                            <i data-lucide="graduation-cap" class="w-5 h-5 text-purple-500"></i>
-                        </div>
-                        <div class="flex items-baseline">
-                            <span class="text-2xl font-bold text-gray-900">$156,780</span>
-                            <span class="ml-2 text-sm text-gray-500">42 students</span>
-                        </div>
+                <!-- Tabs Navigation -->
+                <div class="bg-white rounded-lg shadow-sm mb-6">
+                    <div class="border-b border-gray-200">
+                        <nav class="flex gap-4 px-6">
+                            <button onclick="switchPaymentTab('overview')" id="tab-btn-overview"
+                                class="payment-tab-button border-b-2 py-3 px-2 text-sm font-medium"
+                                style="border-color:#d82128;color:#d82128;">Payments Overview</button>
+                            <button onclick="switchPaymentTab('config')" id="tab-btn-config"
+                                class="payment-tab-button border-b-2 border-transparent py-3 px-2 text-sm font-medium text-gray-500 hover:text-gray-700">Payment
+                                Config</button>
+                            <button onclick="switchPaymentTab('commission')" id="tab-btn-commission"
+                                class="payment-tab-button border-b-2 border-transparent py-3 px-2 text-sm font-medium text-gray-500 hover:text-gray-700 flex items-center gap-2">
+                                Agent Commission
+                            </button>
+                        </nav>
                     </div>
                 </div>
 
-                <!-- Filter & Search Bar -->
-                <div class="bg-white rounded-lg shadow mb-6">
-                    <div class="p-6">
-                        <div class="flex flex-wrap gap-4">
-                            <!-- Search Bar -->
-                            <div class="flex-1 min-w-[200px]">
-                                <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Search</label>
-                                <div class="relative">
-                                    <input type="text" id="search" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm pl-10" placeholder="Search by email, name or payout ID">
-                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        <i data-lucide="search" class="h-5 w-5 text-gray-400"></i>
+                <!-- Tab Content: Payments Overview -->
+                <div id="tab-overview" class="payment-tab-content">
+                    <!-- Summary Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                        <!-- Total Payouts This Month -->
+                        <div class="bg-white rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-sm font-medium text-gray-500">Total Payouts This Month</h3>
+                                <i data-lucide="dollar-sign" class="w-5 h-5 text-green-500"></i>
+                            </div>
+                            <div class="flex items-baseline">
+                                <span class="text-2xl font-bold text-gray-900">$45,280</span>
+                                <span class="ml-2 text-sm text-green-500">+12.5%</span>
+                            </div>
+                        </div>
+
+                        <!-- Outstanding Commission -->
+                        <div class="bg-white rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-sm font-medium text-gray-500">Outstanding Commission</h3>
+                                <i data-lucide="wallet" class="w-5 h-5 text-yellow-500"></i>
+                            </div>
+                            <div class="flex items-baseline">
+                                <span class="text-2xl font-bold text-gray-900">$12,450</span>
+                                <span class="ml-2 text-sm text-gray-500">8 pending</span>
+                            </div>
+                        </div>
+
+                        <!-- Approved but Unpaid -->
+                        <div class="bg-white rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-sm font-medium text-gray-500">Approved but Unpaid</h3>
+                                <i data-lucide="clock" class="w-5 h-5 text-blue-500"></i>
+                            </div>
+                            <div class="flex items-baseline">
+                                <span class="text-2xl font-bold text-gray-900">$28,900</span>
+                                <span class="ml-2 text-sm text-gray-500">15 payments</span>
+                            </div>
+                        </div>
+
+                        <!-- Scholarships Disbursed -->
+                        <div class="bg-white rounded-lg shadow p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-sm font-medium text-gray-500">Scholarships Disbursed</h3>
+                                <i data-lucide="graduation-cap" class="w-5 h-5 text-purple-500"></i>
+                            </div>
+                            <div class="flex items-baseline">
+                                <span class="text-2xl font-bold text-gray-900">$156,780</span>
+                                <span class="ml-2 text-sm text-gray-500">42 students</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filter & Search Bar -->
+                    <div class="bg-white rounded-lg shadow mb-6">
+                        <div class="p-6">
+                            <div class="flex flex-wrap gap-4">
+                                <!-- Search Bar -->
+                                <div class="flex-1 min-w-[200px]">
+                                    <label for="search"
+                                        class="block text-sm font-medium text-gray-700 mb-1">Search</label>
+                                    <div class="relative">
+                                        <input type="text" id="search"
+                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm pl-10"
+                                            placeholder="Search by email, name or payout ID">
+                                        <div
+                                            class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <i data-lucide="search" class="h-5 w-5 text-gray-400"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Payout Type Filter -->
+                                <div class="w-full sm:w-auto">
+                                    <label for="payout-type" class="block text-sm font-medium text-gray-700 mb-1">Payout
+                                        Type</label>
+                                    <select id="payout-type"
+                                        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                                        <option value="all">All Types</option>
+                                        <option value="commission">Agent Commission</option>
+                                        <option value="scholarship">Scholarship Disbursement</option>
+                                    </select>
+                                </div>
+
+                                <!-- Status Filter -->
+                                <div class="w-full sm:w-auto">
+                                    <label for="status"
+                                        class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                                    <select id="status"
+                                        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                                        <option value="all">All Status</option>
+                                        <option value="pending">Pending</option>
+                                        <option value="approved">Approved</option>
+                                        <option value="paid">Paid</option>
+                                    </select>
+                                </div>
+
+                                <!-- Date Range -->
+                                <div class="w-full sm:w-auto">
+                                    <label for="date-range" class="block text-sm font-medium text-gray-700 mb-1">Date
+                                        Range</label>
+                                    <select id="date-range"
+                                        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                                        <option value="this-month">This Month</option>
+                                        <option value="last-month">Last Month</option>
+                                        <option value="last-3-months">Last 3 Months</option>
+                                        <option value="custom">Custom Range</option>
+                                    </select>
+                                </div>
+
+                                <!-- Export Button -->
+                                <div class="w-full sm:w-auto flex items-end">
+                                    <button type="button"
+                                        class="w-full sm:w-auto inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-400 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                        <i data-lucide="download" class="-ml-1 mr-2 h-5 w-5"></i>
+                                        Export Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payments Table -->
+                    <div class="bg-white rounded-lg shadow overflow-hidden">
+                        <!-- Table Container with Horizontal Scroll -->
+                        <div class="overflow-x-auto">
+                            <!-- Table Container with Fixed Height and Vertical Scroll -->
+                            <div class="max-h-[calc(100vh-24rem)] overflow-y-auto">
+                                <div class="min-w-full align-middle inline-block">
+                                    <table class="min-w-full divide-y divide-gray-200">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"
+                                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    Recipient</th>
+                                                <th scope="col"
+                                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    Type</th>
+                                                <th scope="col"
+                                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    Application</th>
+                                                <th scope="col"
+                                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    Amount</th>
+                                                <th scope="col"
+                                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    Status</th>
+                                                <th scope="col"
+                                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    Payout Method</th>
+                                                <th scope="col"
+                                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    Date</th>
+                                                <th scope="col"
+                                                    class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="bg-white divide-y divide-gray-200">
+                                            <!-- Sample Row 1 -->
+                                            <tr>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="flex items-center">
+                                                        <div class="flex-shrink-0 h-10 w-10">
+                                                            <img class="h-10 w-10 rounded-full"
+                                                                src="https://ui-avatars.com/api/?name=John+Smith"
+                                                                alt="">
+                                                        </div>
+                                                        <div class="ml-4">
+                                                            <div class="text-sm font-medium text-gray-900">John Smith
+                                                            </div>
+                                                            <div class="text-sm text-gray-500">john@example.com</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <span
+                                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Commission</span>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-900">APP-2025-001</div>
+                                                    <div class="text-sm text-gray-500">MBA Program</div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm font-medium text-gray-900">$2,500</div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <span
+                                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Approved</span>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Bank
+                                                    Transfer</td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Apr 10,
+                                                    2025</td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                                    <button onclick="openPaymentDetails()"
+                                                        class="inline-flex items-center px-3 py-1.5 border border-blue-600 text-red-400 hover:bg-blue-50 rounded-md text-sm font-medium mr-2">
+                                                        <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
+                                                        View Details
+                                                    </button>
+                                                    <button
+                                                        class="inline-flex items-center px-3 py-1.5 border border-green-600 text-green-600 hover:bg-green-50 rounded-md text-sm font-medium">
+                                                        <i data-lucide="check" class="w-4 h-4 mr-1"></i>
+                                                        Mark as Paid
+                                                    </button>
+                                                </td>
+                                            </tr>
+
+                                            <!-- Sample Row 2 -->
+                                            <tr>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="flex items-center">
+                                                        <div class="flex-shrink-0 h-10 w-10">
+                                                            <img class="h-10 w-10 rounded-full"
+                                                                src="https://ui-avatars.com/api/?name=Sarah+Johnson"
+                                                                alt="">
+                                                        </div>
+                                                        <div class="ml-4">
+                                                            <div class="text-sm font-medium text-gray-900">Sarah Johnson
+                                                            </div>
+                                                            <div class="text-sm text-gray-500">sarah@university.edu
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <span
+                                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">Scholarship</span>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-900">APP-2025-002</div>
+                                                    <div class="text-sm text-gray-500">Computer Science</div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm font-medium text-gray-900">$5,000</div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <span
+                                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Paid</span>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Direct
+                                                    Deposit</td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Apr 8,
+                                                    2025</td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                                    <button onclick="openPaymentDetails()"
+                                                        class="text-red-400 hover:text-blue-900">View Details</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pagination -->
+                        <nav class="bg-white sticky bottom-0 px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6"
+                            aria-label="Pagination">
+                            <div class="hidden sm:block">
+                                <p class="text-sm text-gray-700">
+                                    Showing <span class="font-medium">1</span> to <span class="font-medium">10</span> of
+                                    <span class="font-medium">20</span> results
+                                </p>
+                            </div>
+                            <div class="flex-1 flex justify-between sm:justify-end">
+                                <button
+                                    class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">Previous</button>
+                                <button
+                                    class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">Next</button>
+                            </div>
+                        </nav>
+                    </div>
+
+                    <!-- Payment Details Modal -->
+                    <div id="payment-details-modal"
+                        class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 overflow-y-auto z-50">
+                        <div class="flex items-center justify-center min-h-screen p-4">
+                            <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full">
+                                <!-- Modal Header -->
+                                <div class="flex items-center justify-between p-6 border-b">
+                                    <h3 class="text-lg font-medium text-gray-900">Payment Details</h3>
+                                    <button onclick="closePaymentDetails()" class="text-gray-400 hover:text-gray-500">
+                                        <i data-lucide="x" class="h-6 w-6"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Modal Content -->
+                                <div class="p-6">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <!-- Recipient Info -->
+                                        <div>
+                                            <h4 class="text-sm font-medium text-gray-500 mb-4">Recipient Information
+                                            </h4>
+                                            <div class="space-y-3">
+                                                <div>
+                                                    <label class="block text-sm text-gray-500">Name</label>
+                                                    <p class="text-sm font-medium text-gray-900">John Smith</p>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-sm text-gray-500">Email</label>
+                                                    <p class="text-sm font-medium text-gray-900">john@example.com</p>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-sm text-gray-500">Bank Details</label>
+                                                    <p class="text-sm font-medium text-gray-900">**** **** **** 1234</p>
+                                                    <p class="text-sm text-gray-500">Bank of America</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Payment Details -->
+                                        <div>
+                                            <h4 class="text-sm font-medium text-gray-500 mb-4">Payment Details</h4>
+                                            <div class="space-y-3">
+                                                <div>
+                                                    <label class="block text-sm text-gray-500">Amount</label>
+                                                    <p class="text-sm font-medium text-gray-900">$2,500.00</p>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-sm text-gray-500">Type</label>
+                                                    <span
+                                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Commission</span>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-sm text-gray-500">Status</label>
+                                                    <span
+                                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Approved</span>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-sm text-gray-500">Date</label>
+                                                    <p class="text-sm font-medium text-gray-900">April 10, 2025</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Linked Application -->
+                                        <div class="md:col-span-2">
+                                            <h4 class="text-sm font-medium text-gray-500 mb-4">Linked Application</h4>
+                                            <div class="bg-gray-50 rounded-lg p-4">
+                                                <div class="flex items-center justify-between">
+                                                    <div>
+                                                        <p class="text-sm font-medium text-gray-900">APP-2025-001</p>
+                                                        <p class="text-sm text-gray-500">MBA Program at Harvard Business
+                                                            School</p>
+                                                    </div>
+                                                    <button
+                                                        class="text-red-400 hover:text-blue-900 text-sm font-medium">View
+                                                        Application</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Status History -->
+                                        <div class="md:col-span-2">
+                                            <h4 class="text-sm font-medium text-gray-500 mb-4">Status History</h4>
+                                            <div class="space-y-4">
+                                                <div class="flex items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <span class="h-2.5 w-2.5 rounded-full bg-green-500"></span>
+                                                    </div>
+                                                    <div class="ml-4 flex-1">
+                                                        <p class="text-sm font-medium text-gray-900">Approved</p>
+                                                        <p class="text-sm text-gray-500">Apr 10, 2025 at 2:30 PM</p>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <span class="h-2.5 w-2.5 rounded-full bg-gray-300"></span>
+                                                    </div>
+                                                    <div class="ml-4 flex-1">
+                                                        <p class="text-sm font-medium text-gray-900">Submitted</p>
+                                                        <p class="text-sm text-gray-500">Apr 8, 2025 at 10:15 AM</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Modal Footer -->
+                                <div class="bg-gray-50 px-6 py-4 flex justify-end space-x-3">
+                                    <button onclick="closePaymentDetails()"
+                                        class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Close</button>
+                                    <button
+                                        class="px-4 py-2 text-sm font-medium text-white bg-red-400 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Mark
+                                        as Paid</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Tab: Payments Overview -->
+
+                <!-- Tab Content: Payment Config -->
+                <div id="tab-config" class="payment-tab-content hidden">
+                    <!-- Payment Order Management Section -->
+                    <div class="bg-white rounded-xl shadow-sm border p-6 mb-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 flex items-center">
+                                    <i data-lucide="list-ordered" class="w-5 h-5 mr-2" style="color:#d82128;"></i>
+                                    Payment Order Management
+                                </h3>
+                                <p class="text-sm text-gray-600 mt-1">Manage payment installment orders (1st, 2nd, 3rd,
+                                    etc.)</p>
+                            </div>
+                            <button type="button" onclick="openAddPaymentOrderModal()"
+                                class="px-4 py-2 rounded-lg text-white text-sm font-medium flex items-center gap-2"
+                                style="background-color:#d82128;">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                                Add Payment Order
+                            </button>
+                        </div>
+
+                        <!-- Payment Orders Table -->
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th
+                                            class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Display Name
+                                        </th>
+                                        <th
+                                            class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Description
+                                        </th>
+                                        <th
+                                            class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Status
+                                        </th>
+                                        <th
+                                            class="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200" id="payment_orders_table_body">
+                                    <!-- Sample Row 1 -->
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="px-4 py-3">
+                                            <div class="text-sm font-medium text-gray-900">First Payment</div>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <div class="text-sm text-gray-600">Initial payment installment</div>
+                                        </td>
+                                        <td class="px-4 py-3 whitespace-nowrap">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                                <i data-lucide="check-circle" class="w-3 h-3 mr-1"></i>
+                                                Active
+                                            </span>
+                                        </td>
+                                        <td class="px-4 py-3 whitespace-nowrap text-right text-sm font-medium">
+                                            <button onclick="editPaymentOrder(1)"
+                                                class="text-gray-900 hover:text-gray-700 mr-3">
+                                                <i data-lucide="edit" class="w-4 h-4 inline"></i>
+                                            </button>
+                                            <button onclick="deletePaymentOrder(1)"
+                                                class="text-red-600 hover:text-red-800">
+                                                <i data-lucide="trash-2" class="w-4 h-4 inline"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Sample Row 2 -->
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="px-4 py-3">
+                                            <div class="text-sm font-medium text-gray-900">Second Payment</div>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <div class="text-sm text-gray-600">Second payment installment</div>
+                                        </td>
+                                        <td class="px-4 py-3 whitespace-nowrap">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                                <i data-lucide="check-circle" class="w-3 h-3 mr-1"></i>
+                                                Active
+                                            </span>
+                                        </td>
+                                        <td class="px-4 py-3 whitespace-nowrap text-right text-sm font-medium">
+                                            <button onclick="editPaymentOrder(2)"
+                                                class="text-gray-900 hover:text-gray-700 mr-3">
+                                                <i data-lucide="edit" class="w-4 h-4 inline"></i>
+                                            </button>
+                                            <button onclick="deletePaymentOrder(2)"
+                                                class="text-red-600 hover:text-red-800">
+                                                <i data-lucide="trash-2" class="w-4 h-4 inline"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Sample Row 3 -->
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="px-4 py-3">
+                                            <div class="text-sm font-medium text-gray-900">Third Payment</div>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <div class="text-sm text-gray-600">Third payment installment</div>
+                                        </td>
+                                        <td class="px-4 py-3 whitespace-nowrap">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                                <i data-lucide="check-circle" class="w-3 h-3 mr-1"></i>
+                                                Active
+                                            </span>
+                                        </td>
+                                        <td class="px-4 py-3 whitespace-nowrap text-right text-sm font-medium">
+                                            <button onclick="editPaymentOrder(3)"
+                                                class="text-gray-900 hover:text-gray-700 mr-3">
+                                                <i data-lucide="edit" class="w-4 h-4 inline"></i>
+                                            </button>
+                                            <button onclick="deletePaymentOrder(3)"
+                                                class="text-red-600 hover:text-red-800">
+                                                <i data-lucide="trash-2" class="w-4 h-4 inline"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Header with Add Button -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">Payment Configuration</h3>
+                            <p class="text-sm text-gray-600 mt-1">Configure payment installments for each program type
+                            </p>
+                        </div>
+                        <button type="button" onclick="openAddPaymentModal()"
+                            class="px-4 py-2 rounded-lg text-white text-sm font-medium flex items-center gap-2"
+                            style="background-color:#d82128;">
+                            <i data-lucide="plus" class="w-4 h-4"></i>
+                            Add Payment
+                        </button>
+                    </div>
+
+                    <!-- Filters -->
+                    <div class="bg-white rounded-xl shadow-sm border p-4 mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Filter by Program</label>
+                                <select id="filter_program" onchange="filterPayments()"
+                                    class="w-full px-3 py-2 border rounded-lg text-sm">
+                                    <option value="">All Programs</option>
+                                    <option value="ef_1_uni">EF Scholarship Guarantee (1 University)</option>
+                                    <option value="ef_3_5_uni">EF Scholarship Guarantee (3–5 Universities)</option>
+                                    <option value="elite_admission">Elite Admission Program</option>
+                                    <option value="ivy_standard">Ivy Global Program – Standard Package</option>
+                                    <option value="ivy_vip_career">Ivy Global Program – VIP Career Package</option>
+                                    <option value="ivy_president">Ivy Global Program – President Package</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Filter by Application
+                                    Step</label>
+                                <select id="filter_step" onchange="filterPayments()"
+                                    class="w-full px-3 py-2 border rounded-lg text-sm">
+                                    <option value="">All Steps</option>
+                                    <option value="initial_advising">Initial Advising</option>
+                                    <option value="application_in_progress">Application In Progress</option>
+                                    <option value="submitted_to_school">Submitted to School</option>
+                                    <option value="school_response">School Response</option>
+                                    <option value="offer_letter_issued">Offer Letter Issued</option>
+                                    <option value="committed_to_school">Committed to School</option>
+                                    <option value="visa_application">Visa Application</option>
+                                    <option value="pre_departure">Pre-Departure</option>
+                                    <option value="arrival">Arrival</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                                <select id="filter_status" onchange="filterPayments()"
+                                    class="w-full px-3 py-2 border rounded-lg text-sm">
+                                    <option value="">All Status</option>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Configured Payments Table -->
+                    <div class="bg-white rounded-xl shadow-sm border overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Program Type
+                                        </th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Payment Order
+                                        </th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Application Step
+                                        </th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Payment Type
+                                        </th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Amount/Percentage
+                                        </th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Status
+                                        </th>
+                                        <th
+                                            class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200" id="payments_config_table_body">
+                                    <!-- Sample Row 1 -->
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-medium text-gray-900">EF Scholarship Guarantee (1
+                                                University)</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">First Payment</div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="text-sm text-gray-900">Initial Advising</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">Fixed
+                                                Amount</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-semibold text-gray-900">$2000</div>
+                                            <div class="text-xs text-gray-500">fixed payment</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                                <i data-lucide="check-circle" class="w-3 h-3 mr-1"></i>
+                                                Active
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <button onclick="editPaymentConfig(1)"
+                                                class="text-gray-900 hover:text-gray-700 mr-3">
+                                                <i data-lucide="edit" class="w-4 h-4 inline"></i>
+                                            </button>
+                                            <button onclick="deletePaymentConfig(1)"
+                                                class="text-red-600 hover:text-red-800">
+                                                <i data-lucide="trash-2" class="w-4 h-4 inline"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Sample Row 2 -->
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-medium text-gray-900">EF Scholarship Guarantee (1
+                                                University)</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">Second Payment</div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="text-sm text-gray-900">Offer Letter Issued</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">Fixed
+                                                Amount</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-semibold text-gray-900">$1,500</div>
+                                            <div class="text-xs text-gray-500">fixed payment</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                                <i data-lucide="check-circle" class="w-3 h-3 mr-1"></i>
+                                                Active
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <button onclick="editPaymentConfig(2)"
+                                                class="text-gray-900 hover:text-gray-700 mr-3">
+                                                <i data-lucide="edit" class="w-4 h-4 inline"></i>
+                                            </button>
+                                            <button onclick="deletePaymentConfig(2)"
+                                                class="text-red-600 hover:text-red-800">
+                                                <i data-lucide="trash-2" class="w-4 h-4 inline"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Sample Row 3 -->
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-medium text-gray-900">EF Scholarship Guarantee (1
+                                                University)</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">Third Payment</div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="text-sm text-gray-900">Visa Application</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">Percentage</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-semibold text-gray-900">10%</div>
+                                            <div class="text-xs text-gray-500">of scholarship value</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                                <i data-lucide="check-circle" class="w-3 h-3 mr-1"></i>
+                                                Active
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <button onclick="editPaymentConfig(2)"
+                                                class="text-gray-900 hover:text-gray-700 mr-3">
+                                                <i data-lucide="edit" class="w-4 h-4 inline"></i>
+                                            </button>
+                                            <button onclick="deletePaymentConfig(2)"
+                                                class="text-red-600 hover:text-red-800">
+                                                <i data-lucide="trash-2" class="w-4 h-4 inline"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Empty State (hidden when there are payments) -->
+                        <div id="empty_state" class="hidden text-center py-12">
+                            <i data-lucide="file-text" class="w-16 h-16 mx-auto text-gray-400 mb-4"></i>
+                            <h3 class="text-lg font-medium text-gray-900 mb-2">No payment configurations yet</h3>
+                            <p class="text-sm text-gray-500 mb-6">Get started by adding your first payment configuration
+                            </p>
+                            <button onclick="openAddPaymentModal()"
+                                class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white"
+                                style="background-color:#d82128;">
+                                <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                                Add First Payment
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Add/Edit Payment Modal -->
+                    <div id="add_payment_modal"
+                        class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 overflow-y-auto z-50">
+                        <div class="flex items-center justify-center min-h-screen p-4">
+                            <div class="bg-white rounded-lg shadow-xl max-w-3xl w-full">
+                                <!-- Modal Header -->
+                                <div class="flex items-center justify-between p-6 border-b">
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-gray-900" id="modal_title">Add Payment
+                                            Configuration</h3>
+                                        <p class="text-sm text-gray-500 mt-1">Configure a new payment installment for a
+                                            program</p>
+                                    </div>
+                                    <button onclick="closeAddPaymentModal()" class="text-gray-400 hover:text-gray-500">
+                                        <i data-lucide="x" class="h-6 w-6"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Modal Content -->
+                                <div class="p-6">
+                                    <form id="payment_config_form" class="space-y-6">
+                                        <!-- Program Type -->
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                                Program Type <span class="text-red-500">*</span>
+                                            </label>
+                                            <select id="modal_program_type" required
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                                <option value="">-- Select Program --</option>
+                                                <option value="ef_1_uni">EF Scholarship Guarantee (1 University)
+                                                </option>
+                                                <option value="ef_3_5_uni">EF Scholarship Guarantee (3–5 Universities)
+                                                </option>
+                                                <option value="elite_admission">Elite Admission Program (Top 100 U.S.
+                                                    Universities)</option>
+                                                <option value="ivy_standard">Ivy Global Program – Standard Package (Top
+                                                    30 U.S.)</option>
+                                                <option value="ivy_vip_career">Ivy Global Program – VIP Career Package
+                                                    (Top 30 U.S.)</option>
+                                                <option value="ivy_president">Ivy Global Program – President Package
+                                                    (Top 30 U.S.)</option>
+                                            </select>
+                                            <p class="text-xs text-gray-500 mt-1">Select the program this payment
+                                                applies to</p>
+                                        </div>
+
+                                        <!-- Payment Order -->
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                                Payment Order <span class="text-red-500">*</span>
+                                            </label>
+                                            <select id="modal_payment_order" required
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                                <option value="">-- Select Order --</option>
+                                                <option value="1">First Payment
+                                                </option>
+                                                <option value="2">Second Payment
+                                                </option>
+                                                <option value="3">Third Payment</option>
+                                            </select>
+                                            <p class="text-xs text-gray-500 mt-1">Specify which installment number (1st,
+                                                2nd, 3rd, etc.)</p>
+                                        </div>
+
+                                        <!-- Application Step -->
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                                Application Step <span class="text-red-500">*</span>
+                                            </label>
+                                            <select id="modal_application_step" required
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                                <option value="">-- Select Step --</option>
+                                                <option value="initial_advising">Initial Advising</option>
+                                                <option value="application_in_progress">Application In Progress</option>
+                                                <option value="submitted_to_school">Submitted to School</option>
+                                                <option value="school_response">School Response</option>
+                                                <option value="offer_letter_issued">Offer Letter Issued</option>
+                                                <option value="committed_to_school">Committed to School</option>
+                                                <option value="visa_application">Visa Application</option>
+                                                <option value="pre_departure">Pre-Departure</option>
+                                                <option value="arrival">Arrival</option>
+                                            </select>
+                                            <p class="text-xs text-gray-500 mt-1">When should this payment be triggered
+                                                in the application process?</p>
+                                        </div>
+
+                                        <!-- Payment Type -->
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-3">
+                                                Payment Type <span class="text-red-500">*</span>
+                                            </label>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <!-- Fixed Amount Option -->
+                                                <label
+                                                    class="relative flex items-start p-4 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition-all"
+                                                    id="fixed_amount_option">
+                                                    <input type="radio" name="payment_type" value="fixed_amount"
+                                                        onchange="togglePaymentTypeInput('fixed_amount')"
+                                                        class="mt-1 w-4 h-4" style="accent-color:#d82128;" />
+                                                    <div class="ml-3 flex-1">
+                                                        <div class="flex items-center gap-2 mb-1">
+                                                            <i data-lucide="dollar-sign"
+                                                                class="w-4 h-4 text-gray-600"></i>
+                                                            <span class="font-medium text-gray-900">Fixed Amount</span>
+                                                        </div>
+                                                        <p class="text-xs text-gray-500">Specify an exact dollar amount
+                                                        </p>
+                                                        <div class="mt-3" id="fixed_amount_input_wrapper"
+                                                            style="display:none;">
+                                                            <input type="number" id="modal_fixed_amount"
+                                                                placeholder="Enter amount"
+                                                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                                                min="0" step="0.01" />
+                                                        </div>
+                                                    </div>
+                                                </label>
+
+                                                <!-- Percentage Option -->
+                                                <label
+                                                    class="relative flex items-start p-4 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition-all"
+                                                    id="percentage_option">
+                                                    <input type="radio" name="payment_type" value="percentage"
+                                                        onchange="togglePaymentTypeInput('percentage')"
+                                                        class="mt-1 w-4 h-4" style="accent-color:#d82128;" />
+                                                    <div class="ml-3 flex-1">
+                                                        <div class="flex items-center gap-2 mb-1">
+                                                            <i data-lucide="percent" class="w-4 h-4 text-gray-600"></i>
+                                                            <span class="font-medium text-gray-900">Percentage</span>
+                                                        </div>
+                                                        <p class="text-xs text-gray-500">Percentage of total scholarship
+                                                            value</p>
+                                                        <div class="mt-3" id="percentage_input_wrapper"
+                                                            style="display:none;">
+                                                            <input type="number" id="modal_percentage"
+                                                                placeholder="Enter percentage"
+                                                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                                                min="0" max="100" step="0.1" />
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <!-- Status -->
+                                        <div>
+                                            <label class="flex items-center gap-2">
+                                                <input type="checkbox" id="modal_status" checked class="w-4 h-4 rounded"
+                                                    style="accent-color:#d82128;" />
+                                                <span class="text-sm font-medium text-gray-700">Active (Enable this
+                                                    payment configuration)</span>
+                                            </label>
+                                        </div>
+
+                                        <!-- Description/Notes -->
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                                Notes (Optional)
+                                            </label>
+                                            <textarea id="modal_notes" rows="3"
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                                placeholder="Add any additional notes or context for this payment configuration..."></textarea>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <!-- Modal Footer -->
+                                <div class="bg-gray-50 px-6 py-4 flex justify-between items-center border-t">
+                                    <div class="text-xs text-gray-500">
+                                        <i data-lucide="info" class="w-3 h-3 inline mr-1"></i>
+                                        All fields marked with <span class="text-red-500">*</span> are required
+                                    </div>
+                                    <div class="flex gap-3">
+                                        <button type="button" onclick="closeAddPaymentModal()"
+                                            class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                                            Cancel
+                                        </button>
+                                        <button type="button" onclick="savePaymentConfiguration()"
+                                            class="px-6 py-2 text-sm font-medium text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                                            style="background-color:#d82128;">
+                                            <i data-lucide="save" class="w-4 h-4 inline mr-2"></i>
+                                            Save Configuration
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Payout Type Filter -->
-                            <div class="w-full sm:w-auto">
-                                <label for="payout-type" class="block text-sm font-medium text-gray-700 mb-1">Payout Type</label>
-                                <select id="payout-type" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
-                                    <option value="all">All Types</option>
-                                    <option value="commission">Agent Commission</option>
-                                    <option value="scholarship">Scholarship Disbursement</option>
-                                </select>
-                            </div>
-
-                            <!-- Status Filter -->
-                            <div class="w-full sm:w-auto">
-                                <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                                <select id="status" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
-                                    <option value="all">All Status</option>
-                                    <option value="pending">Pending</option>
-                                    <option value="approved">Approved</option>
-                                    <option value="paid">Paid</option>
-                                </select>
-                            </div>
-
-                            <!-- Date Range -->
-                            <div class="w-full sm:w-auto">
-                                <label for="date-range" class="block text-sm font-medium text-gray-700 mb-1">Date Range</label>
-                                <select id="date-range" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
-                                    <option value="this-month">This Month</option>
-                                    <option value="last-month">Last Month</option>
-                                    <option value="last-3-months">Last 3 Months</option>
-                                    <option value="custom">Custom Range</option>
-                                </select>
-                            </div>
-
-                            <!-- Export Button -->
-                            <div class="w-full sm:w-auto flex items-end">
-                                <button type="button" class="w-full sm:w-auto inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-400 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    <i data-lucide="download" class="-ml-1 mr-2 h-5 w-5"></i>
-                                    Export Report
-                                </button>
-                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- End Tab: Payment Config -->
 
-                <!-- Payments Table -->
-                <div class="bg-white rounded-lg shadow overflow-hidden">
-                    <!-- Table Container with Horizontal Scroll -->
-                    <div class="overflow-x-auto">
-                        <!-- Table Container with Fixed Height and Vertical Scroll -->
-                        <div class="max-h-[calc(100vh-24rem)] overflow-y-auto">
-                            <div class="min-w-full align-middle inline-block">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead>
-                                <tr>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Recipient</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Application</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Payout Method</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                <!-- Sample Row 1 -->
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center">
-                                            <div class="flex-shrink-0 h-10 w-10">
-                                                <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name=John+Smith" alt="">
-                                            </div>
-                                            <div class="ml-4">
-                                                <div class="text-sm font-medium text-gray-900">John Smith</div>
-                                                <div class="text-sm text-gray-500">john@example.com</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Commission</span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">APP-2025-001</div>
-                                        <div class="text-sm text-gray-500">MBA Program</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm font-medium text-gray-900">$2,500</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Approved</span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Bank Transfer</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Apr 10, 2025</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <button onclick="openPaymentDetails()" class="inline-flex items-center px-3 py-1.5 border border-blue-600 text-red-400 hover:bg-blue-50 rounded-md text-sm font-medium mr-2">
-                                            <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
-                                            View Details
-                                        </button>
-                                        <button class="inline-flex items-center px-3 py-1.5 border border-green-600 text-green-600 hover:bg-green-50 rounded-md text-sm font-medium">
-                                            <i data-lucide="check" class="w-4 h-4 mr-1"></i>
-                                            Mark as Paid
-                                        </button>
-                                    </td>
-                                </tr>
+                <!-- Tab Content: Agent Commission -->
+                <div id="tab-commission" class="payment-tab-content hidden">
+                    <!-- Header with Add Button -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 flex items-center">
+                                <i data-lucide="users" class="w-6 h-6 mr-2" style="color:#d82128;"></i>
+                                Agent Commission Configuration
+                            </h3>
+                            <p class="text-sm text-gray-600 mt-1">Configure commission rates for different agent levels
+                                and programs</p>
+                        </div>
+                        <button type="button" onclick="openAddCommissionModal()"
+                            class="px-4 py-2 rounded-lg text-white text-sm font-medium flex items-center gap-2"
+                            style="background-color:#d82128;">
+                            <i data-lucide="plus" class="w-4 h-4"></i>
+                            Add Commission
+                        </button>
+                    </div>
 
-                                <!-- Sample Row 2 -->
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center">
-                                            <div class="flex-shrink-0 h-10 w-10">
-                                                <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name=Sarah+Johnson" alt="">
-                                            </div>
-                                            <div class="ml-4">
-                                                <div class="text-sm font-medium text-gray-900">Sarah Johnson</div>
-                                                <div class="text-sm text-gray-500">sarah@university.edu</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">Scholarship</span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">APP-2025-002</div>
-                                        <div class="text-sm text-gray-500">Computer Science</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm font-medium text-gray-900">$5,000</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Paid</span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Direct Deposit</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Apr 8, 2025</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <button onclick="openPaymentDetails()" class="text-red-400 hover:text-blue-900">View Details</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <!-- Informational Note -->
+                    <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i data-lucide="info" class="w-5 h-5 text-red-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-red-800">
+                                    <strong>Important:</strong> Commission is triggered automatically after the
+                                    <strong>Third Payment</strong> from the student is verified and marked as paid.
+                                </p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Pagination -->
-                    <nav class="bg-white sticky bottom-0 px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6" aria-label="Pagination">
-                        <div class="hidden sm:block">
-                            <p class="text-sm text-gray-700">
-                                Showing <span class="font-medium">1</span> to <span class="font-medium">10</span> of <span class="font-medium">20</span> results
-                            </p>
-                        </div>
-                        <div class="flex-1 flex justify-between sm:justify-end">
-                            <button class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">Previous</button>
-                            <button class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">Next</button>
-                        </div>
-                    </nav>
-                </div>
+                    <!-- Commission Table -->
+                    <div class="bg-white rounded-xl shadow-sm border overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th
+                                            class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-10">
+                                            <!-- Expand/Collapse column -->
+                                        </th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Program Name
+                                        </th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Type
+                                        </th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            LA (Local Agent)
+                                        </th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            L1 (Level 1)
+                                        </th>
+                                        <th
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            L2 (Level 2)
+                                        </th>
+                                        <th
+                                            class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white" id="commission_table_body">
+                                    <!-- Sample Row 1 - EF Scholarship -->
+                                    <tr class="hover:bg-gray-50 border-b border-gray-200">
+                                        <td class="px-4 py-4 whitespace-nowrap">
+                                            <button onclick="toggleParentDetails(1)"
+                                                class="text-gray-500 hover:text-gray-700 transition-transform duration-200"
+                                                id="expand_btn_1">
+                                                <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                                            </button>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="text-sm font-medium text-gray-900">EF Scholarship Guarantee
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                                Percentage
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-semibold text-gray-900">20%</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-semibold text-gray-900">30%</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-semibold text-gray-900">40%</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <button onclick="editCommission(1)"
+                                                class="text-gray-900 hover:text-gray-700 mr-3">
+                                                <i data-lucide="edit" class="w-4 h-4 inline"></i>
+                                            </button>
+                                            <button onclick="deleteCommission(1)"
+                                                class="text-red-600 hover:text-red-800">
+                                                <i data-lucide="trash-2" class="w-4 h-4 inline"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Expandable Parent Agent Details Row 1 -->
+                                    <tr id="parent_details_1" class="hidden bg-gray-50">
+                                        <td colspan="7" class="px-4 py-4">
+                                            <div class="ml-10 mr-6 p-4 bg-white border border-gray-200 rounded-lg">
+                                                <div class="flex items-center gap-2 mb-3">
+                                                    <i data-lucide="git-branch" class="w-4 h-4 text-red-600"></i>
+                                                    <h4 class="text-sm font-semibold text-gray-900">Parent Agent
+                                                        Commission Configuration</h4>
+                                                </div>
+                                                <div class="space-y-2 ml-6">
+                                                    <div class="flex items-center gap-3 text-sm">
+                                                        <span class="text-gray-400">├─</span>
+                                                        <span
+                                                            class="px-2 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">L1</span>
+                                                        <span class="text-gray-700">receives</span>
+                                                        <span class="font-semibold text-gray-900">10%</span>
+                                                        <span class="text-gray-500 text-xs">when LA completes a
+                                                            sale</span>
+                                                    </div>
+                                                    <div class="flex items-center gap-3 text-sm">
+                                                        <span class="text-gray-400">└─</span>
+                                                        <span
+                                                            class="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">L2</span>
+                                                        <span class="text-gray-700">receives</span>
+                                                        <span class="font-semibold text-gray-900">5%</span>
+                                                        <span class="text-gray-500 text-xs">when LA completes a
+                                                            sale</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
 
-                <!-- Payment Details Modal -->
-                <div id="payment-details-modal" class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 overflow-y-auto z-50">
+                                    <!-- Sample Row 2 - Elite Admission -->
+                                    <tr class="hover:bg-gray-50 border-b border-gray-200">
+                                        <td class="px-4 py-4 whitespace-nowrap">
+                                            <button onclick="toggleParentDetails(2)"
+                                                class="text-gray-500 hover:text-gray-700 transition-transform duration-200"
+                                                id="expand_btn_2">
+                                                <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                                            </button>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="text-sm font-medium text-gray-900">Elite Admission</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                                Percentage
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-semibold text-gray-900">20%</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-semibold text-gray-900">30%</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-semibold text-gray-900">40%</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <button onclick="editCommission(2)"
+                                                class="text-gray-900 hover:text-gray-700 mr-3">
+                                                <i data-lucide="edit" class="w-4 h-4 inline"></i>
+                                            </button>
+                                            <button onclick="deleteCommission(2)"
+                                                class="text-red-600 hover:text-red-800">
+                                                <i data-lucide="trash-2" class="w-4 h-4 inline"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Expandable Parent Agent Details Row 2 -->
+                                    <tr id="parent_details_2" class="hidden bg-gray-50">
+                                        <td colspan="7" class="px-4 py-4">
+                                            <div class="ml-10 mr-6 p-4 bg-white border border-gray-200 rounded-lg">
+                                                <div class="flex items-center gap-2 mb-3">
+                                                    <i data-lucide="git-branch" class="w-4 h-4 text-red-600"></i>
+                                                    <h4 class="text-sm font-semibold text-gray-900">Parent Agent
+                                                        Commission Configuration</h4>
+                                                </div>
+                                                <div class="space-y-2 ml-6">
+                                                    <div class="flex items-center gap-3 text-sm">
+                                                        <span class="text-gray-400">├─</span>
+                                                        <span
+                                                            class="px-2 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">L1</span>
+                                                        <span class="text-gray-700">receives</span>
+                                                        <span class="font-semibold text-gray-900">12%</span>
+                                                        <span class="text-gray-500 text-xs">when LA completes a
+                                                            sale</span>
+                                                    </div>
+                                                    <div class="flex items-center gap-3 text-sm">
+                                                        <span class="text-gray-400">└─</span>
+                                                        <span
+                                                            class="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">L2</span>
+                                                        <span class="text-gray-700">receives</span>
+                                                        <span class="font-semibold text-gray-900">8%</span>
+                                                        <span class="text-gray-500 text-xs">when LA completes a
+                                                            sale</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Sample Row 3 - Ivy Global Package A -->
+                                    <tr class="hover:bg-gray-50 border-b border-gray-200">
+                                        <td class="px-4 py-4 whitespace-nowrap">
+                                            <button onclick="toggleParentDetails(3)"
+                                                class="text-gray-500 hover:text-gray-700 transition-transform duration-200"
+                                                id="expand_btn_3">
+                                                <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                                            </button>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="text-sm font-medium text-gray-900">Ivy Global - Package A</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                                Fixed Amount
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-semibold text-gray-900">$3,000</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-semibold text-gray-900">$4,000</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-semibold text-gray-900">$5,000</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <button onclick="editCommission(3)"
+                                                class="text-gray-900 hover:text-gray-700 mr-3">
+                                                <i data-lucide="edit" class="w-4 h-4 inline"></i>
+                                            </button>
+                                            <button onclick="deleteCommission(3)"
+                                                class="text-red-600 hover:text-red-800">
+                                                <i data-lucide="trash-2" class="w-4 h-4 inline"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Expandable Parent Agent Details Row 3 -->
+                                    <tr id="parent_details_3" class="hidden bg-gray-50">
+                                        <td colspan="7" class="px-4 py-4">
+                                            <div class="ml-10 mr-6 p-4 bg-white border border-gray-200 rounded-lg">
+                                                <div class="flex items-center gap-2 mb-3">
+                                                    <i data-lucide="git-branch" class="w-4 h-4 text-red-600"></i>
+                                                    <h4 class="text-sm font-semibold text-gray-900">Parent Agent
+                                                        Commission Configuration</h4>
+                                                </div>
+                                                <div class="space-y-2 ml-6">
+                                                    <div class="flex items-center gap-3 text-sm">
+                                                        <span class="text-gray-400">├─</span>
+                                                        <span
+                                                            class="px-2 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">L1</span>
+                                                        <span class="text-gray-700">receives</span>
+                                                        <span class="font-semibold text-gray-900">$1,500</span>
+                                                        <span class="text-gray-500 text-xs">when LA completes a
+                                                            sale</span>
+                                                    </div>
+                                                    <div class="flex items-center gap-3 text-sm">
+                                                        <span class="text-gray-400">└─</span>
+                                                        <span
+                                                            class="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">L2</span>
+                                                        <span class="text-gray-700">receives</span>
+                                                        <span class="font-semibold text-gray-900">$1,000</span>
+                                                        <span class="text-gray-500 text-xs">when LA completes a
+                                                            sale</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Sample Row 4 - Ivy Global Package B -->
+                                    <tr class="hover:bg-gray-50 border-b border-gray-200">
+                                        <td class="px-4 py-4 whitespace-nowrap">
+                                            <button onclick="toggleParentDetails(4)"
+                                                class="text-gray-500 hover:text-gray-700 transition-transform duration-200"
+                                                id="expand_btn_4">
+                                                <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                                            </button>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="text-sm font-medium text-gray-900">Ivy Global - Package B</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                                Fixed Amount
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-semibold text-gray-900">$3,500</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-semibold text-gray-900">$4,500</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-semibold text-gray-900">$5,500</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <button onclick="editCommission(4)"
+                                                class="text-gray-900 hover:text-gray-700 mr-3">
+                                                <i data-lucide="edit" class="w-4 h-4 inline"></i>
+                                            </button>
+                                            <button onclick="deleteCommission(4)"
+                                                class="text-red-600 hover:text-red-800">
+                                                <i data-lucide="trash-2" class="w-4 h-4 inline"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Expandable Parent Agent Details Row 4 -->
+                                    <tr id="parent_details_4" class="hidden bg-gray-50">
+                                        <td colspan="7" class="px-4 py-4">
+                                            <div class="ml-10 mr-6 p-4 bg-white border border-gray-200 rounded-lg">
+                                                <div class="flex items-center gap-2 mb-3">
+                                                    <i data-lucide="git-branch" class="w-4 h-4 text-red-600"></i>
+                                                    <h4 class="text-sm font-semibold text-gray-900">Parent Agent
+                                                        Commission Configuration</h4>
+                                                </div>
+                                                <div class="space-y-2 ml-6">
+                                                    <div class="flex items-center gap-3 text-sm">
+                                                        <span class="text-gray-400">└─</span>
+                                                        <span
+                                                            class="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">L2</span>
+                                                        <span class="text-gray-700">receives</span>
+                                                        <span class="font-semibold text-gray-900">$1,500</span>
+                                                        <span class="text-gray-500 text-xs">when L1 completes a
+                                                            sale</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Sample Row 5 - Ivy Global Package C (L2 - No Parents) -->
+                                    <tr class="hover:bg-gray-50 border-b border-gray-200">
+                                        <td class="px-4 py-4 whitespace-nowrap">
+                                            <!-- No expand button for L2 since it has no parents -->
+                                            <div class="w-5 h-5"></div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="text-sm font-medium text-gray-900">Ivy Global - Package C</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                                Fixed Amount
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-semibold text-gray-900">$4,000</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-semibold text-gray-900">$5,000</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-semibold text-gray-900">$6,000</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <button onclick="editCommission(5)"
+                                                class="text-gray-900 hover:text-gray-700 mr-3">
+                                                <i data-lucide="edit" class="w-4 h-4 inline"></i>
+                                            </button>
+                                            <button onclick="deleteCommission(5)"
+                                                class="text-red-600 hover:text-red-800">
+                                                <i data-lucide="trash-2" class="w-4 h-4 inline"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Tab: Agent Commission -->
+
+                <!-- Add/Edit Payment Order Modal -->
+                <div id="add_payment_order_modal"
+                    class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 overflow-y-auto z-50">
                     <div class="flex items-center justify-center min-h-screen p-4">
-                        <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full">
+                        <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full">
                             <!-- Modal Header -->
                             <div class="flex items-center justify-between p-6 border-b">
-                                <h3 class="text-lg font-medium text-gray-900">Payment Details</h3>
-                                <button onclick="closePaymentDetails()" class="text-gray-400 hover:text-gray-500">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900" id="payment_order_modal_title">Add
+                                        Payment Order</h3>
+                                    <p class="text-sm text-gray-500 mt-1">Create a new payment installment order</p>
+                                </div>
+                                <button onclick="closeAddPaymentOrderModal()" class="text-gray-400 hover:text-gray-500">
                                     <i data-lucide="x" class="h-6 w-6"></i>
                                 </button>
                             </div>
 
                             <!-- Modal Content -->
                             <div class="p-6">
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <!-- Recipient Info -->
+                                <form id="payment_order_form" class="space-y-6">
+                                    <!-- Display Name -->
                                     <div>
-                                        <h4 class="text-sm font-medium text-gray-500 mb-4">Recipient Information</h4>
-                                        <div class="space-y-3">
-                                            <div>
-                                                <label class="block text-sm text-gray-500">Name</label>
-                                                <p class="text-sm font-medium text-gray-900">John Smith</p>
-                                            </div>
-                                            <div>
-                                                <label class="block text-sm text-gray-500">Email</label>
-                                                <p class="text-sm font-medium text-gray-900">john@example.com</p>
-                                            </div>
-                                            <div>
-                                                <label class="block text-sm text-gray-500">Bank Details</label>
-                                                <p class="text-sm font-medium text-gray-900">**** **** **** 1234</p>
-                                                <p class="text-sm text-gray-500">Bank of America</p>
-                                            </div>
-                                        </div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                                            Display Name <span class="text-red-500">*</span>
+                                        </label>
+                                        <input type="text" id="order_display_name" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                            placeholder="e.g., First Payment, Second Payment">
+                                        <p class="text-xs text-gray-500 mt-1">How this order will appear in dropdowns
+                                        </p>
                                     </div>
 
-                                    <!-- Payment Details -->
+                                    <!-- Description -->
                                     <div>
-                                        <h4 class="text-sm font-medium text-gray-500 mb-4">Payment Details</h4>
-                                        <div class="space-y-3">
-                                            <div>
-                                                <label class="block text-sm text-gray-500">Amount</label>
-                                                <p class="text-sm font-medium text-gray-900">$2,500.00</p>
-                                            </div>
-                                            <div>
-                                                <label class="block text-sm text-gray-500">Type</label>
-                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Commission</span>
-                                            </div>
-                                            <div>
-                                                <label class="block text-sm text-gray-500">Status</label>
-                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Approved</span>
-                                            </div>
-                                            <div>
-                                                <label class="block text-sm text-gray-500">Date</label>
-                                                <p class="text-sm font-medium text-gray-900">April 10, 2025</p>
-                                            </div>
-                                        </div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                                            Description
+                                        </label>
+                                        <textarea id="order_description" rows="3"
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                            placeholder="Brief description of this payment order..."></textarea>
                                     </div>
 
-                                    <!-- Linked Application -->
-                                    <div class="md:col-span-2">
-                                        <h4 class="text-sm font-medium text-gray-500 mb-4">Linked Application</h4>
-                                        <div class="bg-gray-50 rounded-lg p-4">
-                                            <div class="flex items-center justify-between">
-                                                <div>
-                                                    <p class="text-sm font-medium text-gray-900">APP-2025-001</p>
-                                                    <p class="text-sm text-gray-500">MBA Program at Harvard Business School</p>
-                                                </div>
-                                                <button class="text-red-400 hover:text-blue-900 text-sm font-medium">View Application</button>
-                                            </div>
-                                        </div>
+                                    <!-- Status -->
+                                    <div>
+                                        <label class="flex items-center gap-2">
+                                            <input type="checkbox" id="order_status" checked class="w-4 h-4 rounded"
+                                                style="accent-color:#d82128;" />
+                                            <span class="text-sm font-medium text-gray-700">Active (Available for
+                                                selection)</span>
+                                        </label>
                                     </div>
-
-                                    <!-- Status History -->
-                                    <div class="md:col-span-2">
-                                        <h4 class="text-sm font-medium text-gray-500 mb-4">Status History</h4>
-                                        <div class="space-y-4">
-                                            <div class="flex items-center">
-                                                <div class="flex-shrink-0">
-                                                    <span class="h-2.5 w-2.5 rounded-full bg-green-500"></span>
-                                                </div>
-                                                <div class="ml-4 flex-1">
-                                                    <p class="text-sm font-medium text-gray-900">Approved</p>
-                                                    <p class="text-sm text-gray-500">Apr 10, 2025 at 2:30 PM</p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center">
-                                                <div class="flex-shrink-0">
-                                                    <span class="h-2.5 w-2.5 rounded-full bg-gray-300"></span>
-                                                </div>
-                                                <div class="ml-4 flex-1">
-                                                    <p class="text-sm font-medium text-gray-900">Submitted</p>
-                                                    <p class="text-sm text-gray-500">Apr 8, 2025 at 10:15 AM</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
 
                             <!-- Modal Footer -->
-                            <div class="bg-gray-50 px-6 py-4 flex justify-end space-x-3">
-                                <button onclick="closePaymentDetails()" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Close</button>
-                                <button class="px-4 py-2 text-sm font-medium text-white bg-red-400 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Mark as Paid</button>
+                            <div class="bg-gray-50 px-6 py-4 flex justify-end gap-3 border-t">
+                                <button type="button" onclick="closeAddPaymentOrderModal()"
+                                    class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">
+                                    Cancel
+                                </button>
+                                <button type="button" onclick="savePaymentOrder()"
+                                    class="px-6 py-2 text-sm font-medium text-white rounded-lg"
+                                    style="background-color:#d82128;">
+                                    <i data-lucide="save" class="w-4 h-4 inline mr-2"></i>
+                                    Save Order
+                                </button>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add/Edit Commission Modal -->
+                <div id="add_commission_modal"
+                    class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 overflow-y-auto z-50">
+                    <div class="flex items-center justify-center min-h-screen p-4">
+                        <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full">
+                            <!-- Modal Header -->
+                            <div class="flex items-center justify-between p-6 border-b">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900" id="commission_modal_title">Add
+                                        Commission Configuration</h3>
+                                    <p class="text-sm text-gray-500 mt-1">Configure commission rates for agent levels
+                                    </p>
+                                </div>
+                                <button onclick="closeAddCommissionModal()" class="text-gray-400 hover:text-gray-500">
+                                    <i data-lucide="x" class="h-6 w-6"></i>
+                                </button>
+                            </div>
+
+                            <!-- Modal Content -->
+                            <div class="p-6">
+                                <form id="commission_form" class="space-y-6">
+                                    <!-- Program Name -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                                            Program Name <span class="text-red-500">*</span>
+                                        </label>
+                                        <select id="commission_program_code" required
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                            <option value="">-- Select Program Name --</option>
+                                            <option value="SP1A">EF Scholarship Guarantee</option>
+                                            <option value="SP2">Elite Admission</option>
+                                            <option value="SP3A">Ivy Global - Package A</option>
+                                            <option value="SP3B">Ivy Global - Package B</option>
+                                            <option value="SP3C">Ivy Global - Package C</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Agent Level Selection -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                                            Agent Level <span class="text-red-500">*</span>
+                                        </label>
+                                        <select id="commission_agent_level" required
+                                            onchange="renderParentAgentSections()"
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                            <option value="">-- Select Agent Level --</option>
+                                            <option value="LA">LA - Local Agent (has 2 parent agents: L1, L2)</option>
+                                            <option value="L1">L1 - Level 1 Agent (has 1 parent agent: L2)</option>
+                                            <option value="L2">L2 - Level 2 Agent (no parent agents)</option>
+                                        </select>
+                                        <p class="text-xs text-gray-500 mt-1">
+                                            <i data-lucide="info" class="w-3 h-3 inline mr-1"></i>
+                                            Hierarchy: LA → L1 → L2
+                                        </p>
+                                    </div>
+
+                                    <!-- Commission Type -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-3">
+                                            Commission Type <span class="text-red-500">*</span>
+                                        </label>
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <label
+                                                class="relative flex items-center p-4 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition-all"
+                                                id="percentage_commission_option">
+                                                <input type="radio" name="commission_type" value="percentage"
+                                                    onchange="toggleCommissionTypeInput('percentage')" class="w-4 h-4"
+                                                    style="accent-color:#d82128;" />
+                                                <div class="ml-3 flex-1">
+                                                    <div class="flex items-center gap-2">
+                                                        <i data-lucide="percent" class="w-4 h-4 text-gray-600"></i>
+                                                        <span class="font-medium text-gray-900">Percentage</span>
+                                                    </div>
+                                                    <p class="text-xs text-gray-500 mt-1">Commission as % of scholarship
+                                                        value</p>
+                                                </div>
+                                            </label>
+                                            <label
+                                                class="relative flex items-center p-4 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition-all"
+                                                id="fixed_commission_option">
+                                                <input type="radio" name="commission_type" value="fixed"
+                                                    onchange="toggleCommissionTypeInput('fixed')" class="w-4 h-4"
+                                                    style="accent-color:#d82128;" />
+                                                <div class="ml-3 flex-1">
+                                                    <div class="flex items-center gap-2">
+                                                        <i data-lucide="dollar-sign" class="w-4 h-4 text-gray-600"></i>
+                                                        <span class="font-medium text-gray-900">Fixed Amount</span>
+                                                    </div>
+                                                    <p class="text-xs text-gray-500 mt-1">Fixed dollar amount</p>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Primary Agent Commission -->
+                                    <div class="border-t pt-4" id="primary_agent_section">
+                                        <h4 class="text-sm font-medium text-gray-900 mb-4 flex items-center gap-2">
+                                            <i data-lucide="user" class="w-4 h-4" style="color:#d82128;"></i>
+                                            Primary Agent Commission
+                                        </h4>
+                                        <div class="grid grid-cols-3 gap-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                                    LA (Local Agent) <span class="text-red-500">*</span>
+                                                </label>
+                                                <div class="relative">
+                                                    <span class="absolute left-3 top-2.5 text-gray-500 text-sm"
+                                                        id="la_prefix">%</span>
+                                                    <input type="number" id="commission_la" required
+                                                        class="w-full pl-8 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                                        placeholder="0" min="0" step="0.01">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                                    L1 (Level 1) <span class="text-red-500">*</span>
+                                                </label>
+                                                <div class="relative">
+                                                    <span class="absolute left-3 top-2.5 text-gray-500 text-sm"
+                                                        id="l1_prefix">%</span>
+                                                    <input type="number" id="commission_l1" required
+                                                        class="w-full pl-8 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                                        placeholder="0" min="0" step="0.01">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                                    L2 (Level 2) <span class="text-red-500">*</span>
+                                                </label>
+                                                <div class="relative">
+                                                    <span class="absolute left-3 top-2.5 text-gray-500 text-sm"
+                                                        id="l2_prefix">%</span>
+                                                    <input type="number" id="commission_l2" required
+                                                        class="w-full pl-8 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                                        placeholder="0" min="0" step="0.01">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Parent Agent Sections (Dynamic) -->
+                                    <div id="parent_agents_container" class="space-y-4">
+                                        <!-- Parent agent sections will be rendered here dynamically -->
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Modal Footer -->
+                            <div class="bg-gray-50 px-6 py-4 flex justify-end gap-3 border-t">
+                                <button type="button" onclick="closeAddCommissionModal()"
+                                    class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">
+                                    Cancel
+                                </button>
+                                <button type="button" onclick="saveCommission()"
+                                    class="px-6 py-2 text-sm font-medium text-white rounded-lg"
+                                    style="background-color:#d82128;">
+                                    <i data-lucide="save" class="w-4 h-4 inline mr-2"></i>
+                                    Save Commission
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success/Error Toast Notification -->
+                <div id="toast_notification" class="hidden fixed bottom-4 right-4 z-50">
+                    <div class="bg-white rounded-lg shadow-lg border-l-4 p-4 max-w-md" id="toast_content">
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 flex-shrink-0" id="toast_icon"></i>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-900" id="toast_title">Success</p>
+                                <p class="text-sm text-gray-500 mt-1" id="toast_message">Payment configuration saved
+                                    successfully</p>
+                            </div>
+                            <button onclick="closeToast()" class="text-gray-400 hover:text-gray-500">
+                                <i data-lucide="x" class="w-4 h-4"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -449,16 +1732,554 @@
         </div>
     </div>
 
+    <script>
+        // Modal Functions
+        function openAddPaymentModal() {
+            document.getElementById('add_payment_modal').classList.remove('hidden');
+            document.getElementById('modal_title').textContent = 'Add Payment Configuration';
+            document.getElementById('payment_config_form').reset();
+            lucide.createIcons();
+        }
+
+        function closeAddPaymentModal() {
+            document.getElementById('add_payment_modal').classList.add('hidden');
+        }
+
+        function editPaymentConfig(id) {
+            document.getElementById('add_payment_modal').classList.remove('hidden');
+            document.getElementById('modal_title').textContent = 'Edit Payment Configuration';
+            // Load existing data here
+            lucide.createIcons();
+        }
+
+        function togglePaymentTypeInput(type) {
+            const fixedWrapper = document.getElementById('fixed_amount_input_wrapper');
+            const percentageWrapper = document.getElementById('percentage_input_wrapper');
+            const fixedOption = document.getElementById('fixed_amount_option');
+            const percentageOption = document.getElementById('percentage_option');
+
+            if (type === 'fixed_amount') {
+                fixedWrapper.style.display = 'block';
+                percentageWrapper.style.display = 'none';
+                fixedOption.classList.add('border-red-500', 'bg-red-50');
+                percentageOption.classList.remove('border-red-500', 'bg-red-50');
+                document.getElementById('modal_fixed_amount').required = true;
+                document.getElementById('modal_percentage').required = false;
+            } else {
+                fixedWrapper.style.display = 'none';
+                percentageWrapper.style.display = 'block';
+                percentageOption.classList.add('border-red-500', 'bg-red-50');
+                fixedOption.classList.remove('border-red-500', 'bg-red-50');
+                document.getElementById('modal_percentage').required = true;
+                document.getElementById('modal_fixed_amount').required = false;
+            }
+        }
+
+        function savePaymentConfiguration() {
+            // Validate form
+            const form = document.getElementById('payment_config_form');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            // Get form data
+            const data = {
+                program_type: document.getElementById('modal_program_type').value,
+                payment_order: document.getElementById('modal_payment_order').value,
+                application_step: document.getElementById('modal_application_step').value,
+                payment_type: document.querySelector('input[name="payment_type"]:checked').value,
+                value: document.querySelector('input[name="payment_type"]:checked').value === 'fixed_amount'
+                    ? document.getElementById('modal_fixed_amount').value
+                    : document.getElementById('modal_percentage').value,
+                status: document.getElementById('modal_status').checked ? 'active' : 'inactive',
+                notes: document.getElementById('modal_notes').value
+            };
+
+            console.log('Saving payment configuration:', data);
+
+            // TODO: Send to backend API
+            // Example: fetch('/api/payment-config', { method: 'POST', body: JSON.stringify(data) })
+
+            // Show success toast
+            showToast('success', 'Success', 'Payment configuration saved successfully');
+            closeAddPaymentModal();
+
+            // Reload table
+            // filterPayments();
+        }
+
+        function deletePaymentConfig(id) {
+            if (confirm('Are you sure you want to delete this payment configuration?')) {
+                console.log('Deleting payment config:', id);
+                showToast('success', 'Deleted', 'Payment configuration deleted successfully');
+                // TODO: Call API and reload table
+            }
+        }
+
+        function filterPayments() {
+            const program = document.getElementById('filter_program').value;
+            const step = document.getElementById('filter_step').value;
+            const status = document.getElementById('filter_status').value;
+
+            console.log('Filtering payments:', { program, step, status });
+            // TODO: Filter table rows or reload from API
+        }
+
+        function showToast(type, title, message) {
+            const toast = document.getElementById('toast_notification');
+            const content = document.getElementById('toast_content');
+            const icon = document.getElementById('toast_icon');
+
+            // Set colors based on type
+            if (type === 'success') {
+                content.classList.remove('border-red-500');
+                content.classList.add('border-green-500');
+                icon.classList.remove('text-red-500');
+                icon.classList.add('text-green-500');
+            } else {
+                content.classList.remove('border-green-500');
+                content.classList.add('border-red-500');
+                icon.classList.remove('text-green-500');
+                icon.classList.add('text-red-500');
+            }
+
+            document.getElementById('toast_title').textContent = title;
+            document.getElementById('toast_message').textContent = message;
+            toast.classList.remove('hidden');
+            lucide.createIcons();
+
+            // Auto hide after 3 seconds
+            setTimeout(() => closeToast(), 3000);
+        }
+
+        function closeToast() {
+            document.getElementById('toast_notification').classList.add('hidden');
+        }
+
+        // Payment Order Management Functions
+        function openAddPaymentOrderModal() {
+            document.getElementById('add_payment_order_modal').classList.remove('hidden');
+            document.getElementById('payment_order_modal_title').textContent = 'Add Payment Order';
+            document.getElementById('payment_order_form').reset();
+            lucide.createIcons();
+        }
+
+        function closeAddPaymentOrderModal() {
+            document.getElementById('add_payment_order_modal').classList.add('hidden');
+        }
+
+        function editPaymentOrder(id) {
+            document.getElementById('add_payment_order_modal').classList.remove('hidden');
+            document.getElementById('payment_order_modal_title').textContent = 'Edit Payment Order';
+            // TODO: Load existing data
+            // Example: const order = getPaymentOrderById(id);
+            // document.getElementById('order_number').value = order.number;
+            // document.getElementById('order_display_name').value = order.name;
+            // document.getElementById('order_description').value = order.description;
+            // document.getElementById('order_status').checked = order.status === 'active';
+            lucide.createIcons();
+        }
+
+        function savePaymentOrder() {
+            const form = document.getElementById('payment_order_form');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const data = {
+                order_number: document.getElementById('order_number').value,
+                display_name: document.getElementById('order_display_name').value,
+                description: document.getElementById('order_description').value,
+                status: document.getElementById('order_status').checked ? 'active' : 'inactive'
+            };
+
+            console.log('Saving payment order:', data);
+
+            // TODO: Send to backend API
+            // Example: fetch('/api/payment-orders', { method: 'POST', body: JSON.stringify(data) })
+
+            showToast('success', 'Success', 'Payment order saved successfully');
+            closeAddPaymentOrderModal();
+
+            // TODO: Reload payment orders table
+            // loadPaymentOrders();
+        }
+
+        function deletePaymentOrder(id) {
+            if (confirm('Are you sure you want to delete this payment order? This may affect existing payment configurations.')) {
+                console.log('Deleting payment order:', id);
+                showToast('success', 'Deleted', 'Payment order deleted successfully');
+                // TODO: Call API and reload table
+            }
+        }
+
+        // ===== Tab Switching =====
+        function switchPaymentTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.payment-tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+
+            // Remove active styling from all buttons
+            document.querySelectorAll('.payment-tab-button').forEach(btn => {
+                btn.classList.remove('border-red-500');
+                btn.classList.add('border-transparent', 'text-gray-500');
+                btn.style.color = '';
+                btn.style.borderColor = '';
+            });
+
+            // Show selected tab
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+
+            // Add active styling to clicked button
+            const activeBtn = document.getElementById('tab-btn-' + tabName);
+            activeBtn.classList.remove('border-transparent', 'text-gray-500');
+            activeBtn.classList.add('border-red-500');
+            activeBtn.style.color = '#d82128';
+            activeBtn.style.borderColor = '#d82128';
+
+            // Refresh icons
+            lucide.createIcons();
+        }
+
+        // ===== Commission Management Functions =====
+        const programData = {
+            'SP1A': { name: 'EF Scholarship Guarantee', defaultType: 'percentage' },
+            'SP2': { name: 'Elite Admission', defaultType: 'percentage' },
+            'SP3A': { name: 'Ivy Global - Package A', defaultType: 'fixed' },
+            'SP3B': { name: 'Ivy Global - Package B', defaultType: 'fixed' },
+            'SP3C': { name: 'Ivy Global - Package C', defaultType: 'fixed' }
+        };
+
+        function openAddCommissionModal() {
+            document.getElementById('add_commission_modal').classList.remove('hidden');
+            document.getElementById('commission_modal_title').textContent = 'Add Commission Configuration';
+            document.getElementById('commission_form').reset();
+            document.getElementById('commission_program_name').value = '';
+            lucide.createIcons();
+        }
+
+        function closeAddCommissionModal() {
+            document.getElementById('add_commission_modal').classList.add('hidden');
+        }
+
+        function editCommission(id) {
+            document.getElementById('add_commission_modal').classList.remove('hidden');
+            document.getElementById('commission_modal_title').textContent = 'Edit Commission Configuration';
+            // TODO: Load existing data
+            // Example data loading:
+            // const commission = getCommissionById(id);
+            // document.getElementById('commission_program_code').value = commission.code;
+            // Auto-trigger program change to fill name
+            // handleProgramCodeChange();
+            lucide.createIcons();
+        }
+
+        function deleteCommission(id) {
+            if (confirm('Are you sure you want to delete this commission configuration?')) {
+                console.log('Deleting commission:', id);
+                showToast('success', 'Deleted', 'Commission configuration deleted successfully');
+                // TODO: Call API and reload table
+            }
+        }
+
+        // Toggle parent agent details row
+        function toggleParentDetails(rowId) {
+            const detailsRow = document.getElementById(`parent_details_${rowId}`);
+            const expandBtn = document.getElementById(`expand_btn_${rowId}`);
+            const icon = expandBtn.querySelector('i');
+
+            if (detailsRow.classList.contains('hidden')) {
+                // Expand
+                detailsRow.classList.remove('hidden');
+                icon.setAttribute('data-lucide', 'chevron-down');
+                expandBtn.classList.add('rotate-90');
+            } else {
+                // Collapse
+                detailsRow.classList.add('hidden');
+                icon.setAttribute('data-lucide', 'chevron-right');
+                expandBtn.classList.remove('rotate-90');
+            }
+
+            // Refresh lucide icons
+            lucide.createIcons();
+        }
+
+        // Agent hierarchy definition
+        const agentHierarchy = {
+            'LA': ['L1', 'L2'],  // LA has 2 parent agents
+            'L1': ['L2'],        // L1 has 1 parent agent
+            'L2': []             // L2 has no parent agents
+        };
+
+        function toggleCommissionTypeInput(type) {
+            const percentageOption = document.getElementById('percentage_commission_option');
+            const fixedOption = document.getElementById('fixed_commission_option');
+            const laPrefix = document.getElementById('la_prefix');
+            const l1Prefix = document.getElementById('l1_prefix');
+            const l2Prefix = document.getElementById('l2_prefix');
+
+            if (type === 'percentage') {
+                percentageOption.classList.add('border-red-500', 'bg-red-50');
+                fixedOption.classList.remove('border-red-500', 'bg-red-50');
+                laPrefix.textContent = '%';
+                l1Prefix.textContent = '%';
+                l2Prefix.textContent = '%';
+
+                // Set max to 100 for percentage
+                document.getElementById('commission_la').max = '100';
+                document.getElementById('commission_l1').max = '100';
+                document.getElementById('commission_l2').max = '100';
+            } else {
+                fixedOption.classList.add('border-red-500', 'bg-red-50');
+                percentageOption.classList.remove('border-red-500', 'bg-red-50');
+                laPrefix.textContent = '$';
+                l1Prefix.textContent = '$';
+                l2Prefix.textContent = '$';
+
+                // Remove max for fixed amount
+                document.getElementById('commission_la').removeAttribute('max');
+                document.getElementById('commission_l1').removeAttribute('max');
+                document.getElementById('commission_l2').removeAttribute('max');
+            }
+
+            // Update parent agent prefixes if they exist
+            updateParentAgentPrefixes(type);
+            lucide.createIcons();
+        }
+
+        function updateParentAgentPrefixes(type) {
+            const prefix = type === 'percentage' ? '%' : '$';
+            const maxValue = type === 'percentage' ? '100' : '';
+
+            // Update all parent agent input prefixes
+            document.querySelectorAll('[id^="parent_prefix_"]').forEach(el => {
+                el.textContent = prefix;
+            });
+
+            // Update max attributes
+            document.querySelectorAll('[id^="parent_commission_"]').forEach(input => {
+                if (type === 'percentage') {
+                    input.max = maxValue;
+                } else {
+                    input.removeAttribute('max');
+                }
+            });
+        }
+
+        // Render parent agent sections based on selected agent level
+        function renderParentAgentSections() {
+            const agentLevel = document.getElementById('commission_agent_level').value;
+            const container = document.getElementById('parent_agents_container');
+
+            // Clear existing parent sections
+            container.innerHTML = '';
+
+            if (!agentLevel) {
+                return;
+            }
+
+            const parents = agentHierarchy[agentLevel];
+            if (!parents || parents.length === 0) {
+                return;
+            }
+
+            // Get current commission type to set correct prefix
+            const commissionType = document.querySelector('input[name="commission_type"]:checked');
+            const prefix = commissionType && commissionType.value === 'percentage' ? '%' : '$';
+            const maxAttr = commissionType && commissionType.value === 'percentage' ? 'max="100"' : '';
+
+            // Render each parent agent section
+            parents.forEach((parentLevel, index) => {
+                const section = document.createElement('div');
+                section.className = 'border-t pt-4 mt-4';
+                section.innerHTML = `
+                    <div class="bg-red-50 border-l-4 border-red-500 rounded-lg p-4">
+                        <h4 class="text-sm font-medium text-gray-900 mb-3 flex items-center gap-2">
+                            <i data-lucide="arrow-up-right" class="w-4 h-4 text-red-600"></i>
+                            Parent Agent ${index + 1}: ${parentLevel}
+                            <span class="ml-2 px-2 py-0.5 rounded-full text-xs font-medium ${parentLevel === 'L1' ? 'bg-purple-100 text-purple-800' : 'bg-green-100 text-green-800'
+                    }">${parentLevel}</span>
+                        </h4>
+                        <p class="text-xs text-gray-600 mb-3">
+                            This agent automatically receives commission when ${agentLevel} completes a sale
+                        </p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Commission Value <span class="text-red-500">*</span>
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute left-3 top-2.5 text-gray-500 text-sm" id="parent_prefix_${parentLevel.toLowerCase()}">${prefix}</span>
+                                    <input
+                                        type="number"
+                                        id="parent_commission_${parentLevel.toLowerCase()}"
+                                        required
+                                        min="0"
+                                        ${maxAttr}
+                                        step="0.01"
+                                        class="w-full pl-8 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                        placeholder="0.00"
+                                    />
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Notes (Optional)
+                                </label>
+                                <input
+                                    type="text"
+                                    id="parent_notes_${parentLevel.toLowerCase()}"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                    placeholder="Additional info..."
+                                />
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(section);
+            });
+
+            lucide.createIcons();
+        }
+
+        // Auto-fill program name when program code is selected
+        document.addEventListener('DOMContentLoaded', function () {
+            const programCodeSelect = document.getElementById('commission_program_code');
+            if (programCodeSelect) {
+                programCodeSelect.addEventListener('change', function () {
+                    const code = this.value;
+                    const programNameInput = document.getElementById('commission_program_name');
+
+                    if (code && programData[code]) {
+                        programNameInput.value = programData[code].name;
+
+                        // Auto-select commission type based on program
+                        const defaultType = programData[code].defaultType;
+                        const radioButton = document.querySelector(`input[name="commission_type"][value="${defaultType}"]`);
+                        if (radioButton) {
+                            radioButton.checked = true;
+                            toggleCommissionTypeInput(defaultType);
+                        }
+                    } else {
+                        programNameInput.value = '';
+                    }
+                });
+            }
+        });
+
+        function saveCommission() {
+            const form = document.getElementById('commission_form');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const agentLevel = document.getElementById('commission_agent_level').value;
+            if (!agentLevel) {
+                alert('Please select an agent level');
+                return;
+            }
+
+            const commissionType = document.querySelector('input[name="commission_type"]:checked');
+            if (!commissionType) {
+                alert('Please select a commission type (Percentage or Fixed Amount)');
+                return;
+            }
+
+            // Collect parent agents data
+            const parents = [];
+            const parentLevels = agentHierarchy[agentLevel];
+
+            if (parentLevels && parentLevels.length > 0) {
+                for (const level of parentLevels) {
+                    const valueInput = document.getElementById(`parent_commission_${level.toLowerCase()}`);
+                    if (!valueInput || !valueInput.value) {
+                        alert(`Please fill in commission value for parent agent ${level}`);
+                        return;
+                    }
+
+                    parents.push({
+                        level: level,
+                        commissionType: commissionType.value,
+                        value: parseFloat(valueInput.value),
+                        notes: document.getElementById(`parent_notes_${level.toLowerCase()}`)?.value || ''
+                    });
+                }
+            }
+
+            const data = {
+                program_code: document.getElementById('commission_program_code').value,
+                program_name: document.getElementById('commission_program_name').value,
+                agent: agentLevel,
+                commission_type: commissionType.value,
+                la: parseFloat(document.getElementById('commission_la').value),
+                l1: parseFloat(document.getElementById('commission_l1').value),
+                l2: parseFloat(document.getElementById('commission_l2').value),
+                parents: parents
+            };
+
+            console.log('=== Commission Configuration ===');
+            console.log(JSON.stringify(data, null, 2));
+
+            // TODO: Send to backend API
+            // Example: fetch('/api/commissions', { method: 'POST', body: JSON.stringify(data) })
+
+            showToast('success', 'Success', `Commission configuration for ${agentLevel} saved successfully`);
+            closeAddCommissionModal();
+
+            // TODO: Reload commission table
+            // loadCommissions();
+        }
+
+        // Legacy functions (keep for compatibility)
+        function loadPaymentConfig() {
+            // Deprecated - keeping for backwards compatibility
+            console.log('loadPaymentConfig called - this function is deprecated');
+        }
+
+        function toggleFirstPaymentType(type) {
+            // Deprecated
+        }
+
+        function toggleSecondPaymentType(type) {
+            // Deprecated
+        }
+
+        function toggleThirdPaymentType(type) {
+            // Deprecated
+        }
+
+        function resetPaymentConfig() {
+            // Deprecated
+        }
+
+        function savePaymentConfig() {
+            // Deprecated
+        }
+
+        function getPaymentConfig(programType) {
+            // Deprecated
+            return {};
+        }
+    </script>
+
     <!-- AI Assistant Floating Button -->
     <div id="ai-assistant" class="fixed bottom-6 right-6" style="z-index: 10000;">
-        <button id="ai-toggle" class="w-14 h-14 rounded-full text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center" style="background-color: #d82128;">
+        <button id="ai-toggle"
+            class="w-14 h-14 rounded-full text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
+            style="background-color: #d82128;">
             <i data-lucide="message-circle" class="w-6 h-6"></i>
         </button>
-        
+
         <!-- AI Chat Panel -->
-        <div id="ai-chat-panel" class="hidden absolute bottom-16 right-0 w-80 h-96 bg-white rounded-lg shadow-xl border border-gray-200">
+        <div id="ai-chat-panel"
+            class="hidden absolute bottom-16 right-0 w-80 h-96 bg-white rounded-lg shadow-xl border border-gray-200">
             <!-- Chat Header -->
-            <div class="flex items-center justify-between p-4 border-b border-gray-200" style="background-color: #d82128;">
+            <div class="flex items-center justify-between p-4 border-b border-gray-200"
+                style="background-color: #d82128;">
                 <div class="flex items-center">
                     <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-3">
                         <i data-lucide="bot" class="w-4 h-4" style="color: #d82128;"></i>
@@ -472,7 +2293,7 @@
                     <i data-lucide="x" class="w-4 h-4"></i>
                 </button>
             </div>
-            
+
             <!-- Chat Messages -->
             <div id="chat-messages" class="flex-1 p-4 h-64 overflow-y-auto">
                 <div class="mb-4">
@@ -481,16 +2302,18 @@
                             <i data-lucide="bot" class="w-3 h-3" style="color: #d82128;"></i>
                         </div>
                         <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
-                            <p class="text-sm text-gray-800">Hello! I can help you with payment processing, commission calculations, and financial reporting. What would you like to know?</p>
+                            <p class="text-sm text-gray-800">Hello! I can help you with payment processing, commission
+                                calculations, and financial reporting. What would you like to know?</p>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Chat Input -->
             <div class="p-4 border-t border-gray-200">
                 <div class="flex items-center">
-                    <input type="text" id="chat-input" placeholder="Ask about payments..." class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                    <input type="text" id="chat-input" placeholder="Ask about payments..."
+                        class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500">
                     <button id="send-message" class="ml-2 p-2 rounded-lg text-white" style="background-color: #d82128;">
                         <i data-lucide="send" class="w-4 h-4"></i>
                     </button>
@@ -501,7 +2324,7 @@
 
     <script>
         // Initialize Lucide icons
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             lucide.createIcons();
 
             // Initialize Select2
@@ -552,7 +2375,7 @@
         function addMessage(message, isUser = false) {
             const messageDiv = document.createElement('div');
             messageDiv.className = 'mb-4';
-            
+
             if (isUser) {
                 messageDiv.innerHTML = `
                     <div class="flex items-start justify-end">
@@ -573,7 +2396,7 @@
                     </div>
                 `;
             }
-            
+
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
             lucide.createIcons();
@@ -584,7 +2407,7 @@
             if (message) {
                 addMessage(message, true);
                 chatInput.value = '';
-                
+
                 // Simulate AI response
                 setTimeout(() => {
                     const responses = [
@@ -616,6 +2439,216 @@
             document.getElementById('payment-details-modal').classList.add('hidden');
             document.body.style.overflow = '';
         }
+
+        // Tab Switching for Payment Tabs
+        function switchPaymentTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.payment-tab-content').forEach(tab => tab.classList.add('hidden'));
+            // Remove active state from all tab buttons
+            document.querySelectorAll('.payment-tab-button').forEach(btn => {
+                btn.classList.remove('text-red-600');
+                btn.classList.add('border-transparent', 'text-gray-500');
+                btn.style.borderColor = '';
+                btn.style.color = '';
+            });
+            // Show selected tab content
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+            // Add active state to clicked button
+            const activeBtn = document.getElementById('tab-btn-' + tabName);
+            activeBtn.classList.remove('border-transparent', 'text-gray-500');
+            activeBtn.style.borderColor = '#d82128';
+            activeBtn.style.color = '#d82128';
+
+            lucide.createIcons();
+        }
+
+        // Payment Config Management
+        function getPaymentConfigKey(programType) {
+            return `applylead_payment_config_${programType}`;
+        }
+
+        function getPaymentConfig(programType) {
+            try {
+                return JSON.parse(localStorage.getItem(getPaymentConfigKey(programType))) || {};
+            } catch {
+                return {};
+            }
+        }
+
+        function setPaymentConfig(programType, config) {
+            localStorage.setItem(getPaymentConfigKey(programType), JSON.stringify(config));
+        }
+
+        // Toggle functions for payment type selection
+        function toggleFirstPaymentType(type) {
+            const amountInput = document.getElementById('first_amount');
+            const percentageInput = document.getElementById('first_percentage');
+
+            if (type === 'amount') {
+                amountInput.disabled = false;
+                percentageInput.disabled = true;
+                percentageInput.value = '';
+            } else {
+                amountInput.disabled = true;
+                amountInput.value = '';
+                percentageInput.disabled = false;
+            }
+        }
+
+        function toggleSecondPaymentType(type) {
+            const amountInput = document.getElementById('second_amount');
+            const percentageInput = document.getElementById('second_percentage');
+
+            if (type === 'amount') {
+                amountInput.disabled = false;
+                percentageInput.disabled = true;
+                percentageInput.value = '';
+            } else {
+                amountInput.disabled = true;
+                amountInput.value = '';
+                percentageInput.disabled = false;
+            }
+        }
+
+        function toggleThirdPaymentType(type) {
+            const amountInput = document.getElementById('third_amount');
+            const percentageInput = document.getElementById('third_percentage');
+
+            if (type === 'amount') {
+                amountInput.disabled = false;
+                percentageInput.disabled = true;
+                percentageInput.value = '';
+            } else {
+                amountInput.disabled = true;
+                amountInput.value = '';
+                percentageInput.disabled = false;
+            }
+        }
+
+        function loadPaymentConfig() {
+            const programType = document.getElementById('program_type').value;
+            if (!programType) {
+                document.getElementById('payment_stages_config').classList.add('hidden');
+                return;
+            }
+
+            // Show payment stages config
+            document.getElementById('payment_stages_config').classList.remove('hidden');
+
+            // Load saved config
+            const config = getPaymentConfig(programType);
+
+            // First Payment
+            if (config.first?.type === 'amount') {
+                document.querySelector('input[name="first_type"][value="amount"]').checked = true;
+                toggleFirstPaymentType('amount');
+                document.getElementById('first_amount').value = config.first.value || '';
+            } else if (config.first?.type === 'percentage') {
+                document.querySelector('input[name="first_type"][value="percentage"]').checked = true;
+                toggleFirstPaymentType('percentage');
+                document.getElementById('first_percentage').value = config.first.value || '';
+            }
+            document.getElementById('first_step').value = config.first?.step || '';
+
+            // Second Payment
+            if (config.second?.type === 'amount') {
+                document.querySelector('input[name="second_type"][value="amount"]').checked = true;
+                toggleSecondPaymentType('amount');
+                document.getElementById('second_amount').value = config.second.value || '';
+            } else if (config.second?.type === 'percentage') {
+                document.querySelector('input[name="second_type"][value="percentage"]').checked = true;
+                toggleSecondPaymentType('percentage');
+                document.getElementById('second_percentage').value = config.second.value || '';
+            }
+            document.getElementById('second_step').value = config.second?.step || '';
+
+            // Third Payment
+            if (config.third?.type === 'amount') {
+                document.querySelector('input[name="third_type"][value="amount"]').checked = true;
+                toggleThirdPaymentType('amount');
+                document.getElementById('third_amount').value = config.third.value || '';
+            } else if (config.third?.type === 'percentage') {
+                document.querySelector('input[name="third_type"][value="percentage"]').checked = true;
+                toggleThirdPaymentType('percentage');
+                document.getElementById('third_percentage').value = config.third.value || '';
+            }
+            document.getElementById('third_step').value = config.third?.step || '';
+
+            lucide.createIcons();
+        }
+
+        function savePaymentConfig() {
+            const programType = document.getElementById('program_type').value;
+            if (!programType) {
+                alert('Please select a program type first.');
+                return;
+            }
+
+            // Build config based on selected radio buttons
+            const config = {};
+
+            // First Payment
+            const firstType = document.querySelector('input[name="first_type"]:checked')?.value;
+            if (firstType) {
+                config.first = {
+                    type: firstType,
+                    value: firstType === 'amount' ? document.getElementById('first_amount').value : document.getElementById('first_percentage').value,
+                    step: document.getElementById('first_step').value
+                };
+            }
+
+            // Second Payment
+            const secondType = document.querySelector('input[name="second_type"]:checked')?.value;
+            if (secondType) {
+                config.second = {
+                    type: secondType,
+                    value: secondType === 'amount' ? document.getElementById('second_amount').value : document.getElementById('second_percentage').value,
+                    step: document.getElementById('second_step').value
+                };
+            }
+
+            // Third Payment
+            const thirdType = document.querySelector('input[name="third_type"]:checked')?.value;
+            if (thirdType) {
+                config.third = {
+                    type: thirdType,
+                    value: thirdType === 'amount' ? document.getElementById('third_amount').value : document.getElementById('third_percentage').value,
+                    step: document.getElementById('third_step').value
+                };
+            }
+
+            setPaymentConfig(programType, config);
+            alert(`Payment configuration for ${programType} saved successfully!`);
+        }
+
+        function resetPaymentConfig() {
+            if (confirm('Are you sure you want to reset all fields? This will clear the current values.')) {
+                // Reset First Payment
+                document.querySelectorAll('input[name="first_type"]').forEach(r => r.checked = false);
+                document.getElementById('first_amount').value = '';
+                document.getElementById('first_amount').disabled = true;
+                document.getElementById('first_percentage').value = '';
+                document.getElementById('first_percentage').disabled = true;
+                document.getElementById('first_step').value = '';
+
+                // Reset Second Payment
+                document.querySelectorAll('input[name="second_type"]').forEach(r => r.checked = false);
+                document.getElementById('second_amount').value = '';
+                document.getElementById('second_amount').disabled = true;
+                document.getElementById('second_percentage').value = '';
+                document.getElementById('second_percentage').disabled = true;
+                document.getElementById('second_step').value = '';
+
+                // Reset Third Payment
+                document.querySelectorAll('input[name="third_type"]').forEach(r => r.checked = false);
+                document.getElementById('third_amount').value = '';
+                document.getElementById('third_amount').disabled = true;
+                document.getElementById('third_percentage').value = '';
+                document.getElementById('third_percentage').disabled = true;
+                document.getElementById('third_step').value = '';
+            }
+        }
     </script>
 </body>
+
 </html>
