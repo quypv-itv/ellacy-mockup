@@ -166,9 +166,16 @@
                         class="w-full px-3 py-2 border rounded-lg"></textarea>
                     </div>
                     <div>
-                      <label class="block text-sm font-medium mb-2">Image URL</label>
-                      <input type="url" id="uni_intro_image" placeholder="https://..."
-                        class="w-full px-3 py-2 border rounded-lg" />
+                      <label class="block text-sm font-medium mb-2">University Image</label>
+                      <div class="flex items-center gap-3">
+                        <input type="file" id="uni_intro_image" accept="image/*" class="hidden"
+                          onchange="previewImage(this, 'uni_intro_preview')" />
+                        <button type="button" onclick="document.getElementById('uni_intro_image').click()"
+                          class="px-4 py-2 border rounded-lg hover:bg-gray-50 flex items-center gap-2">
+                          <i data-lucide="upload" class="w-4 h-4"></i>Upload Image
+                        </button>
+                        <img id="uni_intro_preview" class="hidden h-16 w-16 object-cover rounded border" />
+                      </div>
                       <p class="text-xs text-gray-500 mt-1">University campus or representative image</p>
                     </div>
                   </div>
@@ -196,9 +203,16 @@
                           class="w-full px-2 py-1.5 border rounded text-sm" />
                       </div>
                       <div>
-                        <label class="block text-xs font-medium mb-1">Icon/Image URL</label>
-                        <input type="url" id="prog_13_icon" placeholder="https://..."
-                          class="w-full px-2 py-1.5 border rounded text-sm" />
+                        <label class="block text-xs font-medium mb-1">Image</label>
+                        <div class="flex items-center gap-2">
+                          <input type="file" id="prog_13_icon" accept="image/*" class="hidden"
+                            onchange="previewImage(this, 'prog_13_preview')" />
+                          <button type="button" onclick="document.getElementById('prog_13_icon').click()"
+                            class="px-3 py-1.5 border rounded text-sm hover:bg-gray-50 flex items-center gap-1">
+                            <i data-lucide="upload" class="w-3 h-3"></i>Upload
+                          </button>
+                          <img id="prog_13_preview" class="hidden h-10 w-10 object-cover rounded border" />
+                        </div>
                       </div>
                     </div>
                     <div class="mt-3">
@@ -221,9 +235,16 @@
                           class="w-full px-2 py-1.5 border rounded text-sm" />
                       </div>
                       <div>
-                        <label class="block text-xs font-medium mb-1">Icon/Image URL</label>
-                        <input type="url" id="prog_22_icon" placeholder="https://..."
-                          class="w-full px-2 py-1.5 border rounded text-sm" />
+                        <label class="block text-xs font-medium mb-1">Image</label>
+                        <div class="flex items-center gap-2">
+                          <input type="file" id="prog_22_icon" accept="image/*" class="hidden"
+                            onchange="previewImage(this, 'prog_22_preview')" />
+                          <button type="button" onclick="document.getElementById('prog_22_icon').click()"
+                            class="px-3 py-1.5 border rounded text-sm hover:bg-gray-50 flex items-center gap-1">
+                            <i data-lucide="upload" class="w-3 h-3"></i>Upload
+                          </button>
+                          <img id="prog_22_preview" class="hidden h-10 w-10 object-cover rounded border" />
+                        </div>
                       </div>
                     </div>
                     <div class="mt-3">
@@ -246,9 +267,16 @@
                           class="w-full px-2 py-1.5 border rounded text-sm" />
                       </div>
                       <div>
-                        <label class="block text-xs font-medium mb-1">Icon/Image URL</label>
-                        <input type="url" id="prog_mba_icon" placeholder="https://..."
-                          class="w-full px-2 py-1.5 border rounded text-sm" />
+                        <label class="block text-xs font-medium mb-1">Image</label>
+                        <div class="flex items-center gap-2">
+                          <input type="file" id="prog_mba_icon" accept="image/*" class="hidden"
+                            onchange="previewImage(this, 'prog_mba_preview')" />
+                          <button type="button" onclick="document.getElementById('prog_mba_icon').click()"
+                            class="px-3 py-1.5 border rounded text-sm hover:bg-gray-50 flex items-center gap-1">
+                            <i data-lucide="upload" class="w-3 h-3"></i>Upload
+                          </button>
+                          <img id="prog_mba_preview" class="hidden h-10 w-10 object-cover rounded border" />
+                        </div>
                       </div>
                     </div>
                     <div class="mt-3">
@@ -266,7 +294,7 @@
               <div class="border rounded-lg p-4">
                 <div class="flex items-center justify-between mb-3">
                   <h4 class="font-semibold">Student Stories</h4>
-                  <button type="button" onclick="addStory()"
+                  <button type="button" onclick="addStoryIntro()"
                     class="text-sm px-3 py-1 rounded-lg border hover:bg-gray-50">
                     <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>Add Story
                   </button>
@@ -280,7 +308,7 @@
               <div class="border rounded-lg p-4">
                 <div class="flex items-center justify-between mb-3">
                   <h4 class="font-semibold">Parent Feedback</h4>
-                  <button type="button" onclick="addFeedback()"
+                  <button type="button" onclick="addFeedbackIntro()"
                     class="text-sm px-3 py-1 rounded-lg border hover:bg-gray-50">
                     <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>Add Feedback
                   </button>
@@ -457,7 +485,8 @@
                 <div class="border rounded-lg p-4">
                   <div class="flex items-center justify-between mb-4">
                     <h4 class="font-semibold">Content Rows (Text/Image Alternating)</h4>
-                    <button type="button" onclick="addContentRow13()" class="text-sm px-3 py-1 rounded-lg text-white" style="background-color:#d82128;">
+                    <button type="button" onclick="addContentRow13()" class="text-sm px-3 py-1 rounded-lg text-white"
+                      style="background-color:#d82128;">
                       <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>Add Another Row
                     </button>
                   </div>
@@ -475,7 +504,7 @@
                       <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>Add Story
                     </button>
                   </div>
-                  <div id="storiesList" class="space-y-3">
+                  <div id="storiesList13" class="space-y-3">
                     <!-- Stories will be rendered here -->
                   </div>
                 </div>
@@ -489,7 +518,7 @@
                       <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>Add Feedback
                     </button>
                   </div>
-                  <div id="feedbackList" class="space-y-3">
+                  <div id="feedbackList13" class="space-y-3">
                     <!-- Feedback will be rendered here -->
                   </div>
                 </div>
@@ -523,7 +552,8 @@
                 <div class="border rounded-lg p-4">
                   <div class="flex items-center justify-between mb-4">
                     <h4 class="font-semibold">Content Rows (Text/Image Alternating)</h4>
-                    <button type="button" onclick="addContentRow22()" class="text-sm px-3 py-1 rounded-lg text-white" style="background-color:#d82128;">
+                    <button type="button" onclick="addContentRow22()" class="text-sm px-3 py-1 rounded-lg text-white"
+                      style="background-color:#d82128;">
                       <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>Add Another Row
                     </button>
                   </div>
@@ -588,7 +618,8 @@
                 <div class="border rounded-lg p-4">
                   <div class="flex items-center justify-between mb-4">
                     <h4 class="font-semibold">Content Rows (Text/Image Alternating)</h4>
-                    <button type="button" onclick="addContentRowMBA()" class="text-sm px-3 py-1 rounded-lg text-white" style="background-color:#d82128;">
+                    <button type="button" onclick="addContentRowMBA()" class="text-sm px-3 py-1 rounded-lg text-white"
+                      style="background-color:#d82128;">
                       <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>Add Another Row
                     </button>
                   </div>
@@ -1054,6 +1085,82 @@
       lucide.createIcons();
     }
 
+    // University Introduction Stories & Feedback Management
+    let storiesIntro = [];
+    let feedbackIntro = [];
+
+    function renderStoriesIntro() {
+      const list = document.getElementById('storiesList');
+      if (!list) return;
+      if (storiesIntro.length === 0) {
+        list.innerHTML = '<p class="text-sm text-gray-500">No stories added yet.</p>';
+        return;
+      }
+      list.innerHTML = storiesIntro.map((s, i) => `
+        <div class="border rounded-lg p-3 bg-gray-50">
+          <div class="flex items-start gap-3">
+            <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-2">
+              <input type="text" value="${s.name || ''}" placeholder="Student Name" onchange="storiesIntro[${i}].name=this.value" class="px-2 py-1 border rounded text-sm" />
+              <input type="text" value="${s.program || ''}" placeholder="Program" onchange="storiesIntro[${i}].program=this.value" class="px-2 py-1 border rounded text-sm" />
+              <input type="text" value="${s.university || ''}" placeholder="University" onchange="storiesIntro[${i}].university=this.value" class="px-2 py-1 border rounded text-sm" />
+              <input type="text" value="${s.major || ''}" placeholder="Major" onchange="storiesIntro[${i}].major=this.value" class="px-2 py-1 border rounded text-sm" />
+              <input type="url" value="${s.avatar || ''}" placeholder="Avatar URL" onchange="storiesIntro[${i}].avatar=this.value" class="md:col-span-2 px-2 py-1 border rounded text-sm" />
+            </div>
+            <button type="button" onclick="removeStoryIntro(${i})" class="text-red-600 hover:bg-red-50 p-1 rounded">
+              <i data-lucide="trash" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <textarea placeholder="Quote..." onchange="storiesIntro[${i}].quote=this.value" class="w-full mt-2 px-2 py-1 border rounded text-sm" rows="2">${s.quote || ''}</textarea>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function addStoryIntro() {
+      storiesIntro.push({ name: '', program: '', university: '', major: '', avatar: '', quote: '' });
+      renderStoriesIntro();
+    }
+
+    function removeStoryIntro(i) {
+      storiesIntro.splice(i, 1);
+      renderStoriesIntro();
+    }
+
+    function renderFeedbackIntro() {
+      const list = document.getElementById('feedbackList');
+      if (!list) return;
+      if (feedbackIntro.length === 0) {
+        list.innerHTML = '<p class="text-sm text-gray-500">No feedback added yet.</p>';
+        return;
+      }
+      list.innerHTML = feedbackIntro.map((f, i) => `
+        <div class="border rounded-lg p-3 bg-gray-50">
+          <div class="flex items-start gap-3">
+            <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-2">
+              <input type="text" value="${f.program || ''}" placeholder="Program" onchange="feedbackIntro[${i}].program=this.value" class="px-2 py-1 border rounded text-sm" />
+              <input type="text" value="${f.cohort || ''}" placeholder="Cohort (e.g., 2023)" onchange="feedbackIntro[${i}].cohort=this.value" class="px-2 py-1 border rounded text-sm" />
+            </div>
+            <button type="button" onclick="removeFeedbackIntro(${i})" class="text-red-600 hover:bg-red-50 p-1 rounded">
+              <i data-lucide="trash" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <textarea placeholder="Feedback comment..." onchange="feedbackIntro[${i}].comment=this.value" class="w-full mt-2 px-2 py-1 border rounded text-sm" rows="2">${f.comment || ''}</textarea>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function addFeedbackIntro() {
+      feedbackIntro.push({ program: '', cohort: '', comment: '' });
+      renderFeedbackIntro();
+    }
+
+    function removeFeedbackIntro(i) {
+      feedbackIntro.splice(i, 1);
+      renderFeedbackIntro();
+    }
+
+    // 1+3 Program Management
     function load13Config() {
       const cfg = get13Config();
       // Load content rows
@@ -1072,7 +1179,7 @@
     let contentRows13 = [];
 
     function renderStories() {
-      const list = document.getElementById('storiesList');
+      const list = document.getElementById('storiesList13');
       if (!list) return;
       if (stories13.length === 0) {
         list.innerHTML = '<p class="text-sm text-gray-500">No stories added yet.</p>';
@@ -1109,7 +1216,7 @@
     }
 
     function renderFeedback() {
-      const list = document.getElementById('feedbackList');
+      const list = document.getElementById('feedbackList13');
       if (!list) return;
       if (feedback13.length === 0) {
         list.innerHTML = '<p class="text-sm text-gray-500">No feedback added yet.</p>';
@@ -2057,10 +2164,10 @@
         return;
       }
       list.innerHTML = carouselSlides.map((slide, i) => `
-        <div class="border rounded-lg p-4 bg-gray-50">
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-sm font-semibold text-gray-700">Slide ${i + 1}</span>
-            <button type="button" onclick="removeCarouselSlide(${i})" class="text-red-600 hover:bg-red-50 p-1 rounded">
+        <div class="border rounded-lg p-3 bg-gray-50">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm font-medium">Slide ${i + 1}</span>
+            <button type="button" onclick="removeCarouselSlide(${i})" class="p-1 hover:bg-red-50 text-red-600 rounded">
               <i data-lucide="trash-2" class="w-4 h-4"></i>
             </button>
           </div>
@@ -2071,14 +2178,50 @@
               <p class="text-xs text-gray-500 mt-1">You can use HTML for formatting (bold, colors, etc.)</p>
             </div>
             <div>
-              <label class="block text-xs font-medium mb-1">Image URL</label>
-              <input type="url" value="${slide.image || ''}" onchange="carouselSlides[${i}].image=this.value" placeholder="https://..." class="w-full px-3 py-2 border rounded text-sm" />
+              <label class="block text-xs font-medium mb-1">Slide Image</label>
+              <div class="flex items-center gap-2">
+                <input type="file" id="carousel_img_${i}" accept="image/*" class="hidden" onchange="uploadCarouselImage(${i}, this)" />
+                <button type="button" onclick="document.getElementById('carousel_img_${i}').click()" class="px-3 py-1.5 border rounded text-sm hover:bg-gray-50 flex items-center gap-1">
+                  <i data-lucide="upload" class="w-3 h-3"></i>Upload
+                </button>
+                <img id="carousel_preview_${i}" src="${slide.image || ''}" class="${slide.image ? '' : 'hidden'} h-12 w-12 object-cover rounded border" />
+              </div>
               <p class="text-xs text-gray-500 mt-1">Image will display on the right side</p>
             </div>
           </div>
         </div>
       `).join('');
       lucide.createIcons();
+    }
+
+    // Image upload and preview handlers
+    function previewImage(input, previewId) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const preview = document.getElementById(previewId);
+          if (preview) {
+            preview.src = e.target.result;
+            preview.classList.remove('hidden');
+          }
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    function uploadCarouselImage(index, input) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          carouselSlides[index].image = e.target.result;
+          const preview = document.getElementById(`carousel_preview_${index}`);
+          if (preview) {
+            preview.src = e.target.result;
+            preview.classList.remove('hidden');
+          }
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
     }
 
     // Landing Stories Management

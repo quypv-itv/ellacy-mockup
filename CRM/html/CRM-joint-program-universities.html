@@ -113,37 +113,31 @@
       <main class="flex-1 overflow-y-auto p-6 w-full max-w-none">
         <!-- Actions -->
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
-          <div class="flex gap-2">
-            <button id="btnAdd" class="px-4 py-2 rounded-lg text-white" style="background-color:#d82128">Add
-              University</button>
-            <button id="btnExport" class="px-4 py-2 rounded-lg border">Export JSON</button>
-            <label class="px-4 py-2 rounded-lg border cursor-pointer">
-              <input type="file" id="importFile" accept="application/json" class="hidden" />
-              Import JSON
-            </label>
-          </div>
-          <div class="flex gap-2">
+          <!-- Left: Search + Filters -->
+          <div class="flex gap-2 order-2 sm:order-1">
             <input id="search" type="text" placeholder="Search by name..."
               class="px-3 py-2 border rounded-lg text-sm w-64" />
             <button id="btnFilters" class="px-4 py-2 rounded-lg border">Filters</button>
           </div>
+          <!-- Right: Add + Export/Import -->
+          <div class="flex gap-2 order-1 sm:order-2 sm:ml-auto">
+            <button id="btnAdd" class="px-4 py-2 rounded-lg text-white" style="background-color:#d82128">+ Add
+              University</button>
+          </div>
         </div>
 
         <!-- Table -->
-        <div class="bg-white rounded-xl shadow-sm border">
-          <div class="overflow-x-auto">
+        <div class="bg-white rounded-xl shadow-sm border overflow-visible min-h-[720px]">
+          <div class="overflow-x-auto pb-24">
             <table class="min-w-full text-sm">
               <thead class="bg-gray-50 text-gray-600">
                 <tr>
-                  <th class="text-left px-4 py-3">Logo</th>
-                  <th class="text-left px-4 py-3">Name</th>
-                  <th class="text-left px-4 py-3">Abbrev</th>
-                  <th class="text-left px-4 py-3">City</th>
-                  <th class="text-left px-4 py-3">Website</th>
-                  <th class="text-left px-4 py-3">Contact</th>
+                  <th class="text-left px-4 py-3">University Name</th>
+                  <th class="text-left px-4 py-3">Abbreviation</th>
+                  <th class="text-left px-4 py-3">Email</th>
+                  <th class="text-left px-4 py-3">Phone Number</th>
                   <th class="text-left px-4 py-3">Status</th>
-                  <th class="text-left px-4 py-3">Programs</th>
-                  <th class="text-left px-4 py-3">Last Updated</th>
+                  <th class="text-left px-4 py-3">Created</th>
                   <th class="text-right px-4 py-3">Actions</th>
                 </tr>
               </thead>
@@ -200,13 +194,14 @@
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
-            <label class="block text-sm font-medium mb-1">Website</label>
-            <input id="website" type="url" placeholder="https://university.edu.vn"
+            <label class="block text-sm font-medium mb-1">Email</label>
+            <input id="email" type="email" placeholder="contact@university.edu.vn"
               class="w-full px-3 py-2 border rounded-lg" />
           </div>
           <div>
-            <label class="block text-sm font-medium mb-1">Contact (name)</label>
-            <input id="contact" type="text" placeholder="Contact person" class="w-full px-3 py-2 border rounded-lg" />
+            <label class="block text-sm font-medium mb-1">Phone Number</label>
+            <input id="phone" type="tel" placeholder="e.g., +84 912 345 678"
+              class="w-full px-3 py-2 border rounded-lg" />
           </div>
         </div>
         <div>
@@ -264,11 +259,39 @@
     function getData() { try { return JSON.parse(localStorage.getItem(LS_KEY)) || []; } catch { return []; } }
     function setData(arr) { localStorage.setItem(LS_KEY, JSON.stringify(arr)); }
 
+    // One-time migration to backfill email/phone for existing items
+    const MIGR_KEY = 'applylead_joint_universities_migrated_v2';
+    function mockEmailPhone(u) {
+      const base = ((u.abbrev || u.name || 'university') + '').toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '').slice(0, 16) || 'university';
+      const email = `${base}@university.edu.vn`;
+      // Deterministic pseudo-phone from id/hash
+      const s = (u.id || base);
+      let h = 0; for (let i = 0; i < s.length; i++) { h = (h * 33 + s.charCodeAt(i)) >>> 0; }
+      const digits = ('' + (h % 100000000)).padStart(8, '0');
+      const phone = `+84 9${digits.slice(0, 1)} ${digits.slice(1, 4)} ${digits.slice(4)}`;
+      return { email, phone };
+    }
+    function migrateEmailPhoneOnce() {
+      if (localStorage.getItem(MIGR_KEY)) return;
+      const data = getData();
+      let changed = false;
+      for (const u of data) {
+        if (!u.email || !u.phone) {
+          const m = mockEmailPhone(u);
+          if (!u.email) u.email = m.email;
+          if (!u.phone) u.phone = m.phone;
+          changed = true;
+        }
+      }
+      if (changed) setData(data);
+      localStorage.setItem(MIGR_KEY, '1');
+    }
+
     // Default universities (always shown even without localStorage)
     const DEFAULT_UNIS = [
-      { id: 'def-iuh', name: 'Industrial University of Ho Chi Minh City', abbrev: 'IUH', city: 'Ho Chi Minh City', website: 'https://iuh.edu.vn', contact: 'International Office', status: 'active', programs: ['1+3', '2+2'], logo: 'https://logo.clearbit.com/iuh.edu.vn', desc: 'Key technical partner supporting credit transfer pathways.', updatedAt: Date.now() },
-      { id: 'def-ftu', name: 'Foreign Trade University', abbrev: 'FTU', city: 'Hanoi', website: 'https://ftu.edu.vn', contact: 'International Cooperation Dept.', status: 'active', programs: ['1+3'], logo: 'https://logo.clearbit.com/ftu.edu.vn', desc: 'Business-focused partner with transfer-friendly curricula.', updatedAt: Date.now() },
-      { id: 'def-vlu', name: 'Van Lang University', abbrev: 'VLU', city: 'Ho Chi Minh City', website: 'https://vlu.edu.vn', contact: 'International Office', status: 'active', programs: ['1+3', '2+2'], logo: 'https://logo.clearbit.com/vlu.edu.vn', desc: 'Comprehensive partner with multiple joint pathways.', updatedAt: Date.now() },
+      { id: 'def-iuh', name: 'Industrial University of Ho Chi Minh City', abbrev: 'IUH', email: 'intl@iuh.edu.vn', phone: '+84 28 38940390', status: 'active', programs: ['1+3', '2+2'], logo: 'https://logo.clearbit.com/iuh.edu.vn', updatedAt: Date.now() },
+      { id: 'def-ftu', name: 'Foreign Trade University', abbrev: 'FTU', email: 'ico@ftu.edu.vn', phone: '+84 24 3259 5158', status: 'active', programs: ['1+3'], logo: 'https://logo.clearbit.com/ftu.edu.vn', updatedAt: Date.now() },
+      { id: 'def-vlu', name: 'Van Lang University', abbrev: 'VLU', email: 'international@vlu.edu.vn', phone: '+84 28 7105 9999', status: 'active', programs: ['1+3', '2+2'], logo: 'https://logo.clearbit.com/vlu.edu.vn', updatedAt: Date.now() },
     ];
 
     function getAllData() {
@@ -303,31 +326,56 @@
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td class="px-4 py-3">
-          <img src="${u.logo || '../../tiffin-university-logo.png'}" alt="logo" class="w-10 h-10 rounded object-contain bg-gray-50 border" />
-        </td>
-        <td class="px-4 py-3">
           <div class="font-medium">${u.name || ''}</div>
           <div class="text-xs text-gray-500">${(u.desc || '').slice(0, 80)}</div>
         </td>
         <td class="px-4 py-3">${u.abbrev || ''}</td>
-        <td class="px-4 py-3">${u.city || ''}</td>
-        <td class="px-4 py-3">${u.website ? `<a href="${u.website}" target="_blank" class="text-blue-600 hover:underline">${new URL(u.website).hostname}</a>` : ''}</td>
-        <td class="px-4 py-3">${u.contact || ''}</td>
+        <td class="px-4 py-3">${u.email || ''}</td>
+        <td class="px-4 py-3">${u.phone || ''}</td>
         <td class="px-4 py-3">
           <span class="px-2 py-0.5 rounded-full text-xs ${u.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'}">${u.status || 'inactive'}</span>
         </td>
-        <td class="px-4 py-3">
-          ${(u.programs || []).map(p => `<span class="px-2 py-0.5 rounded-full text-xs bg-red-50 text-red-700 mr-1">${p}</span>`).join('')}
-        </td>
         <td class="px-4 py-3">${u.updatedAt ? new Date(u.updatedAt).toLocaleString() : '-'}</td>
-        <td class="px-4 py-3 text-right whitespace-nowrap">
-          <div class="inline-flex items-center gap-2">
-            <button class="inline-flex items-center px-2 py-1 border rounded-lg" onclick='onEdit("${u.id}")'><i data-lucide="pencil" class="w-4 h-4 mr-1"></i>Edit</button>
-            <button class="inline-flex items-center px-2 py-1 border rounded-lg" onclick='onConfig("${u.id}")'><i data-lucide="settings" class="w-4 h-4 mr-1"></i>Config</button>
-            <button class="inline-flex items-center px-2 py-1 border rounded-lg text-red-600" onclick='onDelete("${u.id}")'><i data-lucide="trash" class="w-4 h-4 mr-1"></i>Delete</button>
+        <td class="px-4 py-3 text-right whitespace-nowrap relative">
+          <button class="inline-flex items-center px-2 py-1 border rounded-lg" onclick='toggleMenu("${u.id}")'>
+            <i data-lucide="more-vertical" class="w-4 h-4"></i>
+          </button>
+          <div id="menu_${u.id}" class="hidden absolute right-0 mt-2 w-40 bg-white border rounded-lg shadow-lg z-10 text-left">
+            <button class="w-full px-3 py-2 text-left hover:bg-gray-50 flex items-center gap-2" onclick='onEdit("${u.id}")'>
+              <i data-lucide="pencil" class="w-4 h-4"></i><span>Edit</span>
+            </button>
+            <button class="w-full px-3 py-2 text-left hover:bg-gray-50 flex items-center gap-2" onclick='onConfig("${u.id}")'>
+              <i data-lucide="settings" class="w-4 h-4"></i><span>Config</span>
+            </button>
+            <button class="w-full px-3 py-2 text-left hover:bg-gray-50 flex items-center gap-2" onclick='onInactivate("${u.id}")'>
+              <i data-lucide="slash" class="w-4 h-4"></i><span>Inactivate</span>
+            </button>
+            <button class="w-full px-3 py-2 text-left hover:bg-gray-50 text-red-600 flex items-center gap-2" onclick='onDelete("${u.id}")'>
+              <i data-lucide="trash" class="w-4 h-4"></i><span>Delete</span>
+            </button>
           </div>
         </td>`;
       return tr;
+    }
+
+    function onInactivate(id) {
+      const data = getData();
+      const idx = data.findIndex(u => u.id === id);
+      if (idx === -1) return;
+      data[idx] = { ...data[idx], status: 'inactive', updatedAt: Date.now() };
+      setData(data);
+      migrateEmailPhoneOnce();
+      render();
+    }
+
+    function toggleMenu(id) {
+      hideAllMenus();
+      const el = document.getElementById(`menu_${id}`);
+      if (el) el.classList.toggle('hidden');
+    }
+
+    function hideAllMenus() {
+      document.querySelectorAll('[id^="menu_"]').forEach(el => el.classList.add('hidden'));
     }
 
     function openModal(editing = null) {
@@ -340,8 +388,8 @@
       document.getElementById('abbrev').value = editing?.abbrev || '';
       document.getElementById('status').value = editing?.status || 'active';
       document.getElementById('logo').value = editing?.logo || '';
-      document.getElementById('website').value = editing?.website || '';
-      document.getElementById('contact').value = editing?.contact || '';
+      document.getElementById('email').value = editing?.email || '';
+      document.getElementById('phone').value = editing?.phone || '';
       document.getElementById('desc').value = editing?.desc || '';
       document.getElementById('prog_13').checked = (editing?.programs || []).includes('1+3');
       document.getElementById('prog_22').checked = (editing?.programs || []).includes('2+2');
@@ -404,8 +452,8 @@
         abbrev: document.getElementById('abbrev').value.trim(),
         status: document.getElementById('status').value,
         logo: document.getElementById('logo').value.trim(),
-        website: document.getElementById('website').value.trim(),
-        contact: document.getElementById('contact').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
         desc: document.getElementById('desc').value.trim(),
         programs: programsSel,
         ...(isNew ? { password: passwordVal } : {}),
@@ -421,19 +469,40 @@
 
     if (search) search.addEventListener('input', render);
     if (filterStatus) filterStatus.addEventListener('change', render);
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      if (!(target.closest && target.closest('[id^="menu_"]')) && !(target.closest && target.closest('button[onclick^="toggleMenu"]'))) {
+        hideAllMenus();
+      }
+    });
 
-    btnExport.addEventListener('click', () => {
-      const blob = new Blob([JSON.stringify(getData(), null, 2)], { type: 'application/json' });
+    if (btnExport) btnExport.addEventListener('click', () => {
+      // Export without logo field
+      const cleaned = getData().map(({ logo, ...rest }) => rest);
+      const blob = new Blob([JSON.stringify(cleaned, null, 2)], { type: 'application/json' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
       a.download = 'joint_program_universities.json';
       a.click();
     });
 
-    importFile.addEventListener('change', (e) => {
+    if (importFile) importFile.addEventListener('change', (e) => {
       const file = e.target.files[0]; if (!file) return;
       const reader = new FileReader();
-      reader.onload = () => { try { const arr = JSON.parse(reader.result); if (Array.isArray(arr)) { setData(arr); render(); } } catch { alert('Invalid JSON'); } };
+      reader.onload = () => {
+        try {
+          const arr = JSON.parse(reader.result);
+          if (Array.isArray(arr)) {
+            // Clean any 'logo' field on import
+            const cleaned = arr.map(u => {
+              const { logo, ...rest } = u || {};
+              return rest;
+            });
+            setData(cleaned);
+            render();
+          }
+        } catch { alert('Invalid JSON'); }
+      };
       reader.readAsText(file);
       e.target.value = '';
     });
@@ -452,18 +521,6 @@
           class="w-5 h-5"></i></button>
     </div>
     <div class="p-5 space-y-5 flex-1 overflow-y-auto">
-      <div>
-        <div class="text-sm font-medium mb-2">Programs</div>
-        <label class="flex items-center gap-2 text-sm mb-1"><input type="checkbox" id="f_prog_13" /> 1+3</label>
-        <label class="flex items-center gap-2 text-sm mb-1"><input type="checkbox" id="f_prog_22" /> 2+2</label>
-        <label class="flex items-center gap-2 text-sm mb-1"><input type="checkbox" id="f_prog_mba" /> Joint MBA</label>
-      </div>
-      <div>
-        <div class="text-sm font-medium mb-2">City</div>
-        <select id="f_city_select" class="w-full px-3 py-2 border rounded-lg text-sm">
-          <option value="">All Cities</option>
-        </select>
-      </div>
       <div>
         <div class="text-sm font-medium mb-2">Status</div>
         <select id="f_status" class="w-full px-3 py-2 border rounded-lg text-sm">
@@ -491,23 +548,11 @@
     const filtersCancel = document.getElementById('filtersCancel');
     const filtersApply = document.getElementById('filtersApply');
     const filtersClear = document.getElementById('filtersClear');
-    const f_prog_13 = document.getElementById('f_prog_13');
-    const f_prog_22 = document.getElementById('f_prog_22');
-    const f_prog_mba = document.getElementById('f_prog_mba');
-    const f_city_select = document.getElementById('f_city_select');
     const f_status = document.getElementById('f_status');
 
-    let filterPrograms = new Set();
-    let filterCity = '';
     let filterStatusDrawer = '';
 
     function openFilters() {
-      // populate city options dynamically from current data
-      const cities = Array.from(new Set(getAllData().map(u => (u.city || '').trim()).filter(Boolean))).sort();
-      const current = f_city_select.value; // preserve selection if any
-      f_city_select.innerHTML = '<option value="">All Cities</option>' + cities.map(c=>`<option value="${c}">${c}</option>`).join('');
-      if (cities.includes(current)) { f_city_select.value = current; }
-      // show drawer
       filtersDrawer.classList.remove('hidden');
       filtersOverlay.classList.remove('hidden');
     }
@@ -518,16 +563,9 @@
     filtersCancel.addEventListener('click', closeFilters);
     filtersOverlay.addEventListener('click', closeFilters);
     filtersClear.addEventListener('click', () => {
-      f_prog_13.checked = f_prog_22.checked = f_prog_mba.checked = false;
-      f_city_select.value = '';
       f_status.value = '';
     });
     filtersApply.addEventListener('click', () => {
-      filterPrograms = new Set();
-      if (f_prog_13.checked) filterPrograms.add('1+3');
-      if (f_prog_22.checked) filterPrograms.add('2+2');
-      if (f_prog_mba.checked) filterPrograms.add('Joint MBA');
-      filterCity = (f_city_select.value || '').toLowerCase();
       filterStatusDrawer = f_status.value || '';
       closeFilters();
       render();
@@ -542,9 +580,7 @@
         const matchQuery = !q || (u.name || '').toLowerCase().includes(q) || (u.abbrev || '').toLowerCase().includes(q);
         const statusToUse = (filterStatusDrawer || st);
         const matchStatus = !statusToUse || u.status === statusToUse;
-        const matchProg = filterPrograms.size === 0 || (u.programs || []).some(p => filterPrograms.has(p));
-        const matchCity = !filterCity || (u.city || '').toLowerCase() === filterCity;
-        return matchQuery && matchStatus && matchProg && matchCity;
+        return matchQuery && matchStatus;
       });
       tbody.innerHTML = '';
       if (data.length === 0) {

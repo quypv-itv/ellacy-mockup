@@ -51,39 +51,86 @@
     class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white focus:text-black focus:px-3 focus:py-2 focus:rounded-lg">Skip
     to content</a>
 
-  <!-- Header -->
+  <!-- Header with Navigation -->
   <header class="bg-white shadow-sm sticky top-0 z-10">
     <div class="px-6 py-4">
       <div class="flex items-center justify-between">
         <!-- Logo -->
         <div class="flex items-center">
-          <a href="#" class="flex items-center">
-            <img src="../../ApplyLead_logo.png" alt="ApplyLead / Ellacy Logo" class="h-8 w-auto mr-4" loading="lazy"
-              width="160" height="40">
-            <span class="text-sm text-gray-600 bg-gray-100 px-2 py-1 rounded-full">Student</span>
+          <a href="Student-Dashboard.html" class="flex items-center">
+            <img src="../../ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-4">
+            <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Student</span>
           </a>
         </div>
-        <!-- Nav -->
+
+        <!-- Navigation Menu -->
         <nav class="hidden md:flex items-center space-x-3">
-          <a href="#program"
-            class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors"><i
-              data-lucide="badge-check" class="w-4 h-4 mr-2"></i>Elite Admission</a>
-          <a href="#included"
-            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors"><i
-              data-lucide="list-checks" class="w-4 h-4 mr-2"></i>What’s Included</a>
-          <a href="#pricing"
-            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors"><i
-              data-lucide="badge-dollar" class="w-4 h-4 mr-2"></i>Pricing</a>
-          <a href="#faqs"
-            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors"><i
-              data-lucide="help-circle" class="w-4 h-4 mr-2"></i>FAQs</a>
+          <a href="Student-Dashboard.html"
+            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+            <i data-lucide="layout-dashboard" class="w-4 h-4 mr-2"></i>
+            Dashboard
+          </a>
+          <a href="Student-product-page.html"
+            class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors">
+            <i data-lucide="package" class="w-4 h-4 mr-2"></i>
+            Ellacy Program
+          </a>
+          <a href="Student-find-program.html"
+            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+            <i data-lucide="search" class="w-4 h-4 mr-2"></i>
+            University
+          </a>
+          <a href="Student-favorites.html"
+            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+            <i data-lucide="heart" class="w-4 h-4 mr-2"></i>
+            Favorites (4)
+          </a>
+          <a href="Student-my-application.html"
+            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+            <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
+            My Applications (8)
+          </a>
+          <a href="Student-payment.html"
+            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+            <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
+            Payment
+          </a>
         </nav>
-        <!-- Right -->
-        <div class="flex items-center gap-3">
-          <button type="button" data-open-consult aria-controls="consultModal" aria-expanded="false"
-            class="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-xl font-semibold hover:bg-red-500">
-            Book consultation <i data-lucide="arrow-right" class="w-4 h-4"></i>
+
+        <!-- Right Side -->
+        <div class="flex items-center space-x-4">
+          <a href="Student-messages.html" class="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg"
+            title="Messages">
+            <i data-lucide="mail" class="w-5 h-5"></i>
+          </a>
+
+          <button class="relative p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg"
+            title="Notifications">
+            <i data-lucide="bell" class="w-5 h-5"></i>
+            <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
           </button>
+
+          <!-- Profile Dropdown -->
+          <div class="relative">
+            <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-50 rounded-lg">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" alt="Profile"
+                class="w-8 h-8 rounded-full object-cover">
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div id="profile-dropdown"
+              class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+              <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
+              </a>
+              <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
+              </a>
+              <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -535,7 +582,8 @@
         </div>
         <div>
           <label class="text-sm font-semibold">Programs to consult (optional). Select program(s) and package(s)</label>
-          <div id="programsList" class="mt-2 grid grid-cols-1 gap-2" role="group" aria-label="Program and package selection"><!-- JS render --></div>
+          <div id="programsList" class="mt-2 grid grid-cols-1 gap-2" role="group"
+            aria-label="Program and package selection"><!-- JS render --></div>
         </div>
         <div>
           <label class="text-sm font-semibold">Note</label>
@@ -581,18 +629,24 @@
 
       // Programs and packages config (copied from Detail2)
       const PROGRAMS_CONFIG = [
-        { program: 'Guaranteed Scholarship Program', packages: [
-          { value: 'EF Scholarship Guarantee – 3–5 schools', hint: '' },
-          { value: 'EF Scholarship Guarantee – 1 school', hint: '' }
-        ]},
-        { program: 'Ivy Global Student Program', packages: [
-          { value: 'Ivy Global – Top 30 US – Standard', hint: 'Apply to 5–10 universities' },
-          { value: 'Ivy Global – Top 30 US – VIP Career', hint: 'Apply to 5–10 universities (Standard + Career coaching)' },
-          { value: 'Ivy Global – Top 30 US – President', hint: 'Application to 5–10 universities (VIP + Campus visits)' }
-        ]},
-        { program: 'Elite Admission Program', packages: [
-          { value: 'Elite Admission – Top 100 US – Standard', hint: 'Apply to up to 5 universities' }
-        ]}
+        {
+          program: 'Guaranteed Scholarship Program', packages: [
+            { value: 'EF Scholarship Guarantee – 3–5 schools', hint: '' },
+            { value: 'EF Scholarship Guarantee – 1 school', hint: '' }
+          ]
+        },
+        {
+          program: 'Ivy Global Student Program', packages: [
+            { value: 'Ivy Global – Top 30 US – Standard', hint: 'Apply to 5–10 universities' },
+            { value: 'Ivy Global – Top 30 US – VIP Career', hint: 'Apply to 5–10 universities (Standard + Career coaching)' },
+            { value: 'Ivy Global – Top 30 US – President', hint: 'Application to 5–10 universities (VIP + Campus visits)' }
+          ]
+        },
+        {
+          program: 'Elite Admission Program', packages: [
+            { value: 'Elite Admission – Top 100 US – Standard', hint: 'Apply to up to 5 universities' }
+          ]
+        }
       ];
 
       function renderProgramsUI() {

@@ -136,66 +136,105 @@
 
     /* marquee animation for partner logos */
     @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
     }
+
     .animate-scroll {
       width: max-content;
       animation: marquee 40s linear infinite;
     }
-    .animate-scroll:hover { animation-play-state: paused; }
+
+    .animate-scroll:hover {
+      animation-play-state: paused;
+    }
   </style>
 </head>
 
 <body class="bg-gray-50 text-gray-900">
-  <!-- HEADER -->
-  <header class="bg-white shadow-sm sticky top-0 z-20">
+  <!-- Header with Navigation -->
+  <header class="bg-white shadow-sm sticky top-0 z-10">
     <div class="px-6 py-4">
       <div class="flex items-center justify-between">
+        <!-- Logo -->
         <div class="flex items-center">
           <a href="Student-Dashboard.html" class="flex items-center">
-            <img src="../../ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-4" />
+            <img src="../../ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-4">
             <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Student</span>
           </a>
         </div>
+
+        <!-- Navigation Menu -->
         <nav class="hidden md:flex items-center space-x-3">
           <a href="Student-Dashboard.html"
-            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors"><i
-              data-lucide="layout-dashboard" class="w-4 h-4 mr-2"></i>Dashboard</a>
-          <a href="#"
-            class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors"><i
-              data-lucide="package" class="w-4 h-4 mr-2"></i>Ivy Global</a>
+            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+            <i data-lucide="layout-dashboard" class="w-4 h-4 mr-2"></i>
+            Dashboard
+          </a>
+          <a href="Student-product-page.html"
+            class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors">
+            <i data-lucide="package" class="w-4 h-4 mr-2"></i>
+            Ellacy Program
+          </a>
           <a href="Student-find-program.html"
-            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors"><i
-              data-lucide="search" class="w-4 h-4 mr-2"></i>University</a>
+            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+            <i data-lucide="search" class="w-4 h-4 mr-2"></i>
+            University
+          </a>
           <a href="Student-favorites.html"
-            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors"><i
-              data-lucide="heart" class="w-4 h-4 mr-2"></i>Favorites (4)</a>
+            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+            <i data-lucide="heart" class="w-4 h-4 mr-2"></i>
+            Favorites (4)
+          </a>
           <a href="Student-my-application.html"
-            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors"><i
-              data-lucide="file-text" class="w-4 h-4 mr-2"></i>My Applications (8)</a>
+            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+            <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
+            My Applications (8)
+          </a>
           <a href="Student-payment.html"
-            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors"><i
-              data-lucide="credit-card" class="w-4 h-4 mr-2"></i>Payment</a>
+            class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+            <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
+            Payment
+          </a>
         </nav>
+
+        <!-- Right Side -->
         <div class="flex items-center space-x-4">
           <a href="Student-messages.html" class="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg"
-            title="Messages"><i data-lucide="mail" class="w-5 h-5"></i></a>
+            title="Messages">
+            <i data-lucide="mail" class="w-5 h-5"></i>
+          </a>
+
           <button class="relative p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg"
-            title="Notifications"><i data-lucide="bell" class="w-5 h-5"></i><span
-              class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span></button>
+            title="Notifications">
+            <i data-lucide="bell" class="w-5 h-5"></i>
+            <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+          </button>
+
+          <!-- Profile Dropdown -->
           <div class="relative">
-            <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-50 rounded-lg"><img
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" alt="Profile"
-                class="w-8 h-8 rounded-full object-cover" /></button>
+            <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-50 rounded-lg">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" alt="Profile"
+                class="w-8 h-8 rounded-full object-cover">
+            </button>
+
+            <!-- Dropdown Menu -->
             <div id="profile-dropdown"
               class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
-              <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"><i
-                  data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile</a>
-              <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"><i
-                  data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings</a>
-              <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"><i
-                  data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout</a>
+              <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
+              </a>
+              <a href="Student-profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
+              </a>
+              <a href="#" onclick="handleLogout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
+              </a>
             </div>
           </div>
         </div>
@@ -534,60 +573,113 @@
         <div class="bg-gradient-to-r from-amber-50 to-white border border-amber-200 rounded-2xl px-4 py-3 shadow-inner">
           <div class="relative overflow-hidden rounded-xl">
             <div class="animate-scroll flex items-center gap-6 px-6 py-4">
-              <div class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRks8whHa4TIvKbDfUTh2lj7UX787HDFm4lLA&s" alt="Harvard" class="max-w-[80%] max-h-[80%] object-contain">
+              <div
+                class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRks8whHa4TIvKbDfUTh2lj7UX787HDFm4lLA&s"
+                  alt="Harvard" class="max-w-[80%] max-h-[80%] object-contain">
               </div>
-              <div class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm">
-                <img src="https://png.pngtree.com/png-clipart/20220530/original/pngtree-columbia-university-png-image_7775958.png" alt="Columbia" class="max-w-[80%] max-h-[80%] object-contain">
+              <div
+                class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm">
+                <img
+                  src="https://png.pngtree.com/png-clipart/20220530/original/pngtree-columbia-university-png-image_7775958.png"
+                  alt="Columbia" class="max-w-[80%] max-h-[80%] object-contain">
               </div>
-              <div class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm">
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/58/University_of_Washington_seal.svg/1200px-University_of_Washington_seal.svg.png" alt="University of Washington" class="max-w-[80%] max-h-[80%] object-contain">
+              <div
+                class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/en/thumb/5/58/University_of_Washington_seal.svg/1200px-University_of_Washington_seal.svg.png"
+                  alt="University of Washington" class="max-w-[80%] max-h-[80%] object-contain">
               </div>
-              <div class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Seal_of_the_University_of_California%2C_San_Diego.svg" alt="UC San Diego" class="max-w-[80%] max-h-[80%] object-contain">
+              <div
+                class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Seal_of_the_University_of_California%2C_San_Diego.svg"
+                  alt="UC San Diego" class="max-w-[80%] max-h-[80%] object-contain">
               </div>
-              <div class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm">
-                <img src="https://crystalpng.com/wp-content/uploads/2025/04/uiuc-logo.png" alt="UIUC" class="max-w-[80%] max-h-[80%] object-contain">
+              <div
+                class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm">
+                <img src="https://crystalpng.com/wp-content/uploads/2025/04/uiuc-logo.png" alt="UIUC"
+                  class="max-w-[80%] max-h-[80%] object-contain">
               </div>
-              <div class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm">
-                <img src="https://1000logos.net/wp-content/uploads/2022/08/NYU-Logo.jpg" alt="NYU" class="max-w-[80%] max-h-[80%] object-contain">
+              <div
+                class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm">
+                <img src="https://1000logos.net/wp-content/uploads/2022/08/NYU-Logo.jpg" alt="NYU"
+                  class="max-w-[80%] max-h-[80%] object-contain">
               </div>
-              <div class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm">
-                <img src="https://upload.wikimedia.org/wikipedia/en/3/31/UBC_CoA.svg" alt="UBC" class="max-w-[80%] max-h-[80%] object-contain">
+              <div
+                class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm">
+                <img src="https://upload.wikimedia.org/wikipedia/en/3/31/UBC_CoA.svg" alt="UBC"
+                  class="max-w-[80%] max-h-[80%] object-contain">
               </div>
-              <div class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm">
-                <img src="https://upload.wikimedia.org/wikipedia/en/2/29/McGill_University_CoA.svg" alt="McGill" class="max-w-[80%] max-h-[80%] object-contain">
+              <div
+                class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm">
+                <img src="https://upload.wikimedia.org/wikipedia/en/2/29/McGill_University_CoA.svg" alt="McGill"
+                  class="max-w-[80%] max-h-[80%] object-contain">
               </div>
-              <div class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm">
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1200px-Utoronto_coa.svg.png" alt="University of Toronto" class="max-w-[80%] max-h-[80%] object-contain">
+              <div
+                class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1200px-Utoronto_coa.svg.png"
+                  alt="University of Toronto" class="max-w-[80%] max-h-[80%] object-contain">
               </div>
               <!-- duplicate set for seamless scroll -->
-              <div class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm" aria-hidden="true">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRks8whHa4TIvKbDfUTh2lj7UX787HDFm4lLA&s" alt="" class="max-w-[80%] max-h-[80%] object-contain">
+              <div
+                class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm"
+                aria-hidden="true">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRks8whHa4TIvKbDfUTh2lj7UX787HDFm4lLA&s"
+                  alt="" class="max-w-[80%] max-h-[80%] object-contain">
               </div>
-              <div class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm" aria-hidden="true">
-                <img src="https://png.pngtree.com/png-clipart/20220530/original/pngtree-columbia-university-png-image_7775958.png" alt="" class="max-w-[80%] max-h-[80%] object-contain">
+              <div
+                class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm"
+                aria-hidden="true">
+                <img
+                  src="https://png.pngtree.com/png-clipart/20220530/original/pngtree-columbia-university-png-image_7775958.png"
+                  alt="" class="max-w-[80%] max-h-[80%] object-contain">
               </div>
-              <div class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm" aria-hidden="true">
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/58/University_of_Washington_seal.svg/1200px-University_of_Washington_seal.svg.png" alt="" class="max-w-[80%] max-h-[80%] object-contain">
+              <div
+                class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm"
+                aria-hidden="true">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/en/thumb/5/58/University_of_Washington_seal.svg/1200px-University_of_Washington_seal.svg.png"
+                  alt="" class="max-w-[80%] max-h-[80%] object-contain">
               </div>
-              <div class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm" aria-hidden="true">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Seal_of_the_University_of_California%2C_San_Diego.svg" alt="" class="max-w-[80%] max-h-[80%] object-contain">
+              <div
+                class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm"
+                aria-hidden="true">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Seal_of_the_University_of_California%2C_San_Diego.svg"
+                  alt="" class="max-w-[80%] max-h-[80%] object-contain">
               </div>
-              <div class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm" aria-hidden="true">
-                <img src="https://crystalpng.com/wp-content/uploads/2025/04/uiuc-logo.png" alt="" class="max-w-[80%] max-h-[80%] object-contain">
+              <div
+                class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm"
+                aria-hidden="true">
+                <img src="https://crystalpng.com/wp-content/uploads/2025/04/uiuc-logo.png" alt=""
+                  class="max-w-[80%] max-h-[80%] object-contain">
               </div>
-              <div class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm" aria-hidden="true">
-                <img src="https://1000logos.net/wp-content/uploads/2022/08/NYU-Logo.jpg" alt="" class="max-w-[80%] max-h-[80%] object-contain">
+              <div
+                class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm"
+                aria-hidden="true">
+                <img src="https://1000logos.net/wp-content/uploads/2022/08/NYU-Logo.jpg" alt=""
+                  class="max-w-[80%] max-h-[80%] object-contain">
               </div>
-              <div class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm" aria-hidden="true">
-                <img src="https://upload.wikimedia.org/wikipedia/en/3/31/UBC_CoA.svg" alt="" class="max-w-[80%] max-h-[80%] object-contain">
+              <div
+                class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm"
+                aria-hidden="true">
+                <img src="https://upload.wikimedia.org/wikipedia/en/3/31/UBC_CoA.svg" alt=""
+                  class="max-w-[80%] max-h-[80%] object-contain">
               </div>
-              <div class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm" aria-hidden="true">
-                <img src="https://upload.wikimedia.org/wikipedia/en/2/29/McGill_University_CoA.svg" alt="" class="max-w-[80%] max-h-[80%] object-contain">
+              <div
+                class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm"
+                aria-hidden="true">
+                <img src="https://upload.wikimedia.org/wikipedia/en/2/29/McGill_University_CoA.svg" alt=""
+                  class="max-w-[80%] max-h-[80%] object-contain">
               </div>
-              <div class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm" aria-hidden="true">
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1200px-Utoronto_coa.svg.png" alt="" class="max-w-[80%] max-h-[80%] object-contain">
+              <div
+                class="w-[96px] h-[96px] flex items-center justify-center bg-white rounded-xl border border-amber-200 shadow-sm"
+                aria-hidden="true">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1200px-Utoronto_coa.svg.png"
+                  alt="" class="max-w-[80%] max-h-[80%] object-contain">
               </div>
             </div>
           </div>

@@ -1,739 +1,674 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APPLYLEAD - Your Gateway to Global Education</title>
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Inter Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #F9F9F9;
-        }
-        .hero-gradient {
-            background: linear-gradient(135deg, #d82128 0%, #1a1a1a 100%);
-        }
-        .floating-animation {
-            animation: float 6s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        .fade-in {
-            animation: fadeIn 0.8s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APPLYLEAD - Your Gateway to Global Education</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Inter Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F9F9F9;
+    }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, #d82128 0%, #1a1a1a 100%);
+    }
+
+    .floating-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
+
 <body class="min-h-screen" style="background-color: #F9F9F9;">
-    <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <img src="ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-3">
-                </div>
-                
-                <!-- Navigation -->
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#scholarships" class="text-black hover:text-gray-700 font-medium">Scholarships</a>
-                    <a href="#universities" class="text-black hover:text-gray-700 font-medium">Universities</a>
-                    <a href="#about" class="text-black hover:text-gray-700 font-medium">About</a>
-                    <a href="#contact" class="text-black hover:text-gray-700 font-medium">Contact</a>
-                </nav>
-                
-                <!-- CTA Buttons -->
-                <div class="flex items-center space-x-4">
-                    <a href="login.html" class="border border-gray-300 text-black px-4 py-2 rounded-lg hover:bg-gray-50 font-medium">Sign In</a>
-                    <a href="Students/htmls/Student-sign-up.html" class="text-white px-6 py-2 rounded-lg font-medium transition-colors" style="background-color: #d82128;" onmouseover="this.style.backgroundColor='#d82128'" onmouseout="this.style.backgroundColor='#d82128'">Get Started</a>
-                </div>
-            </div>
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <img src="ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-3">
         </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero-gradient text-white py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="fade-in">
-                    <h1 class="text-5xl font-bold mb-6">Your Gateway to Global Education</h1>
-                    <p class="text-xl mb-8 text-white/90">Connect with top universities worldwide through Ellacy Foundation. Find scholarships. Get expert guidance. Start your study abroad journey today.</p>
-                    
-                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
-                        <a href="Students/htmls/Student-sign-up.html" class="bg-white text-black px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors text-center">Get Started as Student</a>
-                        <a href="#agent-section" class="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-black transition-colors text-center">Join as Education Agent</a>
-                    </div>
-                    
-                    <p class="text-white/80">Join 50,000+ students already studying abroad</p>
-                </div>
-                
-                <div class="floating-animation">
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=400&fit=crop" alt="Students in academic setting" class="rounded-2xl shadow-2xl">
-                </div>
-            </div>
+        <!-- Navigation -->
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="#search" class="text-black hover:text-gray-700 font-medium">Search</a>
+          <a href="#programs" class="text-black hover:text-gray-700 font-medium">Programs</a>
+          <a href="#partners" class="text-black hover:text-gray-700 font-medium">Partners</a>
+          <a href="#faq" class="text-black hover:text-gray-700 font-medium">FAQ</a>
+        </nav>
+
+        <!-- CTA Buttons -->
+        <div class="flex items-center space-x-4">
+          <a href="login.html"
+            class="border border-gray-300 text-black px-4 py-2 rounded-lg hover:bg-gray-50 font-medium">Sign In</a>
+          <a href="Students/htmls/Student-sign-up.html"
+            class="text-white px-6 py-2 rounded-lg font-medium transition-colors" style="background-color: #d82128;"
+            onmouseover="this.style.backgroundColor='#d82128'" onmouseout="this.style.backgroundColor='#d82128'">Get
+            Started</a>
         </div>
-    </section>
-
-    <!-- News and Events Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-black mb-4">Latest News & Upcoming Events</h2>
-                <p class="text-xl text-black">Stay updated with the latest opportunities and events</p>
-            </div>
-            
-            <div class="relative overflow-hidden rounded-3xl bg-gray-50">
-                <div id="newsCarousel" class="flex transition-transform duration-500 ease-in-out">
-                    <div class="w-full flex-shrink-0 p-8">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                            <div>
-                                <span class="px-3 py-1 rounded-full text-xs font-medium text-white mb-4 inline-block" style="background-color: #d82128;">University Fair</span>
-                                <h3 class="text-2xl font-bold text-black mb-4">Global Education Fair 2024</h3>
-                                <p class="text-black mb-4">Meet representatives from 100+ universities worldwide. December 15-17, 2024 in Ho Chi Minh City</p>
-                                <a href="#" class="text-red-600 font-semibold hover:underline">Register Now →</a>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=250&fit=crop" alt="Education Fair" class="rounded-xl">
-                        </div>
-                    </div>
-                    <div class="w-full flex-shrink-0 p-8">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                            <div>
-                                <span class="px-3 py-1 rounded-full text-xs font-medium text-white mb-4 inline-block" style="background-color: #d82128;">Partnership</span>
-                                <h3 class="text-2xl font-bold text-black mb-4">New Partnership with MIT</h3>
-                                <p class="text-black mb-4">Exclusive scholarship opportunities now available for Vietnamese students applying to MIT programs</p>
-                                <a href="#" class="text-red-600 font-semibold hover:underline">Learn More →</a>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1549451371-64aa98a6f660?w=400&h=250&fit=crop" alt="MIT Partnership" class="rounded-xl">
-                        </div>
-                    </div>
-                </div>
-                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                    <button class="w-3 h-3 rounded-full bg-red-600"></button>
-                    <button class="w-3 h-3 rounded-full bg-gray-300"></button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Ellacy Foundation Section -->
-    <section class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-black mb-4">About Ellacy Foundation</h2>
-                <p class="text-xl text-black italic mb-8">"Empowering global education through innovative technology and personalized guidance"</p>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-                <div>
-                    <h3 class="text-2xl font-bold text-black mb-6">Our Mission & Vision</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <h4 class="font-semibold text-black mb-2">Mission</h4>
-                            <p class="text-black">Making international education accessible to all students worldwide</p>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-black mb-2">Vision</h4>
-                            <p class="text-black">Bridging cultures through education and creating global opportunities</p>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-black mb-2">Values</h4>
-                            <p class="text-black">Excellence, Integrity, Innovation, Inclusivity</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="text-center p-6 bg-white rounded-xl shadow-md">
-                        <div class="text-3xl font-bold mb-2" style="color: #d82128;">10+</div>
-                        <p class="text-black font-medium">Years of Operation</p>
-                    </div>
-                    <div class="text-center p-6 bg-white rounded-xl shadow-md">
-                        <div class="text-3xl font-bold mb-2" style="color: #d82128;">100+</div>
-                        <p class="text-black font-medium">Countries Served</p>
-                    </div>
-                    <div class="text-center p-6 bg-white rounded-xl shadow-md">
-                        <div class="text-3xl font-bold mb-2" style="color: #d82128;">500+</div>
-                        <p class="text-black font-medium">Partner Institutions</p>
-                    </div>
-                    <div class="text-center p-6 bg-white rounded-xl shadow-md">
-                        <div class="text-3xl font-bold mb-2" style="color: #d82128;">50K+</div>
-                        <p class="text-black font-medium">Students Supported</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center">
-                <a href="#about" class="text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors" style="background-color: #d82128;" onmouseover="this.style.backgroundColor='#d82128'" onmouseout="this.style.backgroundColor='#d82128'">Learn More About Us</a>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Enhanced Scholarship Information Section -->
-    <section id="scholarships" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-black mb-4">Scholarship Opportunities</h2>
-                <p class="text-xl text-black">Comprehensive funding support for your international education journey</p>
-            </div>
-            
-            <!-- Scholarship Categories -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                <div class="bg-white rounded-3xl shadow-md p-6 border-l-4" style="border-color: #d82128;">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-black">Merit-Based Scholarships</h3>
-                        <span class="px-3 py-1 rounded-full text-xs font-medium text-white" style="background-color: #d82128;">Up to $50,000</span>
-                    </div>
-                    <p class="text-black mb-4">For academic excellence and outstanding achievements in various fields of study</p>
-                    <div class="text-sm text-gray-600">
-                        <p>• GPA requirements: 3.5+</p>
-                        <p>• Available for all study levels</p>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-3xl shadow-md p-6 border-l-4" style="border-color: #d82128;">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-black">Need-Based Financial Aid</h3>
-                        <span class="px-3 py-1 rounded-full text-xs font-medium text-white" style="background-color: #d82128;">Up to $30,000</span>
-                    </div>
-                    <p class="text-black mb-4">Support for students with financial constraints to pursue their education dreams</p>
-                    <div class="text-sm text-gray-600">
-                        <p>• Income-based assessment</p>
-                        <p>• Family financial documentation required</p>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-3xl shadow-md p-6 border-l-4" style="border-color: #d82128;">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-black">STEM Excellence Awards</h3>
-                        <span class="px-3 py-1 rounded-full text-xs font-medium text-white" style="background-color: #d82128;">Up to $25,000</span>
-                    </div>
-                    <p class="text-black mb-4">Supporting innovation in Science, Technology, Engineering, and Mathematics</p>
-                    <div class="text-sm text-gray-600">
-                        <p>• STEM field requirements</p>
-                        <p>• Research project portfolio</p>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-3xl shadow-md p-6 border-l-4" style="border-color: #d82128;">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-black">Diversity & Inclusion Grants</h3>
-                        <span class="px-3 py-1 rounded-full text-xs font-medium text-white" style="background-color: #d82128;">Up to $15,000</span>
-                    </div>
-                    <p class="text-black mb-4">Promoting educational diversity and inclusive learning environments</p>
-                    <div class="text-sm text-gray-600">
-                        <p>• Underrepresented groups</p>
-                        <p>• Community service record</p>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-3xl shadow-md p-6 border-l-4" style="border-color: #d82128;">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-black">Regional Scholarships</h3>
-                        <span class="px-3 py-1 rounded-full text-xs font-medium text-white" style="background-color: #d82128;">Up to $20,000</span>
-                    </div>
-                    <p class="text-black mb-4">Country-specific funding opportunities and government partnerships</p>
-                    <div class="text-sm text-gray-600">
-                        <p>• Citizenship requirements</p>
-                        <p>• Regional study preferences</p>
-                    </div>
-                </div>
-            </div>
-            
-           
-            
-            <div class="text-center">
-                <a href="#" class="text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors" style="background-color: #d82128;" onmouseover="this.style.backgroundColor='#d82128'" onmouseout="this.style.backgroundColor='#d82128'">Explore All Scholarships</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Partnership Schools Section -->
-    <section id="universities" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-black mb-4">Our University Partners</h2>
-                <p class="text-xl text-black">Connecting you with leading institutions worldwide</p>
-            </div>
-            
-            <!-- Partner Categories -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                <div class="bg-white rounded-3xl shadow-md p-8 text-center">
-                    <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background-color: #d82128;">
-                        <i data-lucide="trophy" class="w-8 h-8 text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-black mb-4">Top-Ranked Universities</h3>
-                    <p class="text-black mb-4">Ivy League and Russell Group institutions with world-class programs</p>
-                    <div class="text-sm text-gray-600">
-                        <p>• Harvard, MIT, Stanford</p>
-                        <p>• Oxford, Cambridge</p>
-                        <p>• University of Toronto</p>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-3xl shadow-md p-8 text-center">
-                    <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background-color: #d82128;">
-                        <i data-lucide="microscope" class="w-8 h-8 text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-black mb-4">Specialized Programs</h3>
-                    <p class="text-black mb-4">Technical, medical, and professional schools with focused expertise</p>
-                    <div class="text-sm text-gray-600">
-                        <p>• Medical Schools</p>
-                        <p>• Engineering Institutes</p>
-                        <p>• Business Schools</p>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-3xl shadow-md p-8 text-center">
-                    <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background-color: #d82128;">
-                        <i data-lucide="globe" class="w-8 h-8 text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-black mb-4">Regional Excellence</h3>
-                    <p class="text-black mb-4">Leading universities by country and region with strong local connections</p>
-                    <div class="text-sm text-gray-600">
-                        <p>• Australia: Melbourne, Sydney</p>
-                        <p>• Germany: TUM, Heidelberg</p>
-                        <p>• Singapore: NUS, NTU</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Partner Statistics -->
-            <div class="bg-gray-50 rounded-3xl p-8 mb-12">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div>
-                        <div class="text-4xl font-bold mb-2" style="color: #d82128;">500+</div>
-                        <p class="text-black font-semibold">Partner Universities</p>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-bold mb-2" style="color: #d82128;">50+</div>
-                        <p class="text-black font-semibold">Countries Represented</p>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-bold mb-2" style="color: #d82128;">10,000+</div>
-                        <p class="text-black font-semibold">Scholarships Available</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center">
-                <a href="#" class="text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors" style="background-color: #d82128;" onmouseover="this.style.backgroundColor='#d82128'" onmouseout="this.style.backgroundColor='#d82128'">View All Partners</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Enhanced Statistics Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-black mb-4">Our Impact in Numbers</h2>
-                <p class="text-xl text-black">Measurable success in international education</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                <div class="bg-white rounded-3xl shadow-md p-8 text-center">
-                    <div class="text-5xl font-bold mb-4" style="color: #d82128;">50,000+</div>
-                    <h3 class="text-xl font-bold text-black mb-2">Successful Placements</h3>
-                    <p class="text-gray-600">Students successfully placed in universities worldwide</p>
-                </div>
-                
-                <div class="bg-white rounded-3xl shadow-md p-8 text-center">
-                    <div class="text-5xl font-bold mb-4" style="color: #d82128;">95%</div>
-                    <h3 class="text-xl font-bold text-black mb-2">Visa Approval Rate</h3>
-                    <p class="text-gray-600">Industry-leading success rate for student visas</p>
-                </div>
-                
-                <div class="bg-white rounded-3xl shadow-md p-8 text-center">
-                    <div class="text-5xl font-bold mb-4" style="color: #d82128;">$100M+</div>
-                    <h3 class="text-xl font-bold text-black mb-2">Scholarships Secured</h3>
-                    <p class="text-gray-600">Total funding obtained for our students</p>
-                </div>
-                
-                <div class="bg-white rounded-3xl shadow-md p-8 text-center">
-                    <div class="text-5xl font-bold mb-4" style="color: #d82128;">500+</div>
-                    <h3 class="text-xl font-bold text-black mb-2">Partner Universities</h3>
-                    <p class="text-gray-600">Institutions worldwide in our network</p>
-                </div>
-                
-                <div class="bg-white rounded-3xl shadow-md p-8 text-center">
-                    <div class="text-5xl font-bold mb-4" style="color: #d82128;">100+</div>
-                    <h3 class="text-xl font-bold text-black mb-2">Countries Served</h3>
-                    <p class="text-gray-600">Nations represented in our global community</p>
-                </div>
-                
-                <div class="bg-white rounded-3xl shadow-md p-8 text-center">
-                    <div class="text-5xl font-bold mb-4" style="color: #d82128;">$15,000</div>
-                    <h3 class="text-xl font-bold text-black mb-2">Average Scholarship</h3>
-                    <p class="text-gray-600">Mean scholarship amount per student</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Enhanced Testimonials Section (Students + Parents) -->
-    <section class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-black mb-4">Success Stories</h2>
-                <p class="text-xl text-black">Hear from students and parents who achieved their dreams with APPLYLEAD</p>
-            </div>
-            
-            <!-- Student Testimonials -->
-            <div class="mb-16">
-                <h3 class="text-2xl font-bold text-black mb-8 text-center">Student Testimonials</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-white rounded-3xl shadow-md p-8">
-                        <div class="flex items-center mb-6">
-                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face" alt="Long Le" class="w-16 h-16 rounded-full mr-4">
-                            <div>
-                                <h4 class="font-bold text-black">Long Le</h4>
-                                <p class="text-black">University of Toronto, Canada</p>
-                                <div class="flex text-yellow-400 mt-1">
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-black italic">"APPLYLEAD helped me secure a $20,000 scholarship at University of Toronto. The guidance was exceptional!"</p>
-                    </div>
-                    
-                    <div class="bg-white rounded-3xl shadow-md p-8">
-                        <div class="flex items-center mb-6">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Sarah Chen" class="w-16 h-16 rounded-full mr-4">
-                            <div>
-                                <h4 class="font-bold text-black">Sarah Chen</h4>
-                                <p class="text-black">MIT, USA</p>
-                                <div class="flex text-yellow-400 mt-1">
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-black italic">"From application to visa, the support was incredible. Now studying Computer Science at MIT!"</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Parent Testimonials -->
-            <div class="mb-16">
-                <h3 class="text-2xl font-bold text-black mb-8 text-center">Parent Testimonials</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-white rounded-3xl shadow-md p-8">
-                        <div class="flex items-center mb-6">
-                            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=80&h=80&fit=crop&crop=face" alt="Mrs. Nguyen" class="w-16 h-16 rounded-full mr-4">
-                            <div>
-                                <h4 class="font-bold text-black">Mrs. Nguyen</h4>
-                                <p class="text-black">Parent</p>
-                                <div class="flex text-yellow-400 mt-1">
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-black italic">"As parents, we were worried about the process. APPLYLEAD made everything transparent and manageable."</p>
-                    </div>
-                    
-                    <div class="bg-white rounded-3xl shadow-md p-8">
-                        <div class="flex items-center mb-6">
-                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Mr. Smith" class="w-16 h-16 rounded-full mr-4">
-                            <div>
-                                <h4 class="font-bold text-black">Mr. Smith</h4>
-                                <p class="text-black">Parent</p>
-                                <div class="flex text-yellow-400 mt-1">
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-black italic">"The financial guidance helped us plan better. Our daughter is now at Oxford!"</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Video Testimonials Section -->
-            <div class="text-center">
-                <h3 class="text-2xl font-bold text-black mb-8">Video Success Stories</h3>
-                <div class="bg-gray-100 rounded-3xl p-12">
-                    <div class="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center" style="background-color: #d82128;">
-                        <i data-lucide="play" class="w-12 h-12 text-white"></i>
-                    </div>
-                    <p class="text-black mb-6">Watch inspiring stories from our students and their families</p>
-                    <button class="text-white px-8 py-3 rounded-xl font-semibold transition-colors" style="background-color: #d82128;" onmouseover="this.style.backgroundColor='#d82128'" onmouseout="this.style.backgroundColor='#d82128'">Watch Success Stories</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Marketing Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-black mb-4">Why APPLYLEAD Stands Out</h2>
-                <p class="text-xl text-black">Discover what makes us the leading choice for international education</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-                <div>
-                    <h3 class="text-2xl font-bold text-black mb-8">Competitive Advantages</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" style="background-color: #d82128;">
-                                <i data-lucide="brain" class="w-6 h-6 text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-black mb-2">Technology-Driven Matching</h4>
-                                <p class="text-black">AI-powered program and scholarship recommendations tailored to your profile</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" style="background-color: #d82128;">
-                                <i data-lucide="heart-handshake" class="w-6 h-6 text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-black mb-2">Comprehensive Support</h4>
-                                <p class="text-black">End-to-end guidance from application to arrival in your destination country</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" style="background-color: #d82128;">
-                                <i data-lucide="network" class="w-6 h-6 text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-black mb-2">Global Network</h4>
-                                <p class="text-black">Extensive partnerships with top universities worldwide</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" style="background-color: #d82128;">
-                                <i data-lucide="trophy" class="w-6 h-6 text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-black mb-2">Proven Track Record</h4>
-                                <p class="text-black">95% visa success rate and $100M+ in scholarships secured</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="text-2xl font-bold text-black mb-8">What We Guarantee</h3>
-                    <div class="space-y-6">
-                        <div class="bg-gray-50 rounded-xl p-6">
-                            <h4 class="font-bold text-black mb-2">Free Initial Consultation</h4>
-                            <p class="text-black">No-cost assessment and personalized guidance to start your journey</p>
-                        </div>
-                        
-                        <div class="bg-gray-50 rounded-xl p-6">
-                            <h4 class="font-bold text-black mb-2">Transparent Process</h4>
-                            <p class="text-black">Clear timelines and milestone tracking throughout your application</p>
-                        </div>
-                        
-                        <div class="bg-gray-50 rounded-xl p-6">
-                            <h4 class="font-bold text-black mb-2">24/7 Support</h4>
-                            <p class="text-black">Round-the-clock assistance during critical application periods</p>
-                        </div>
-                        
-                        <div class="bg-gray-50 rounded-xl p-6">
-                            <h4 class="font-bold text-black mb-2">Success Guarantee</h4>
-                            <p class="text-black">Commitment to your success with comprehensive refund policies</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </section>
-
-
-    <!-- Call to Action Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-black mb-4">Ready to Start Your Journey?</h2>
-                <p class="text-xl text-black">Take the first step towards your international education dreams</p>
-            </div>
-            
-            <!-- Primary CTAs -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                <div class="bg-gradient-to-r from-red-600 to-red-700 rounded-3xl p-8 text-white text-center">
-                    <h3 class="text-2xl font-bold mb-4">For Students</h3>
-                    <p class="mb-6">Start your application today and get a free consultation worth $200</p>
-                    <a href="Students/htmls/Student-sign-up.html" class="bg-white text-red-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors inline-block">Apply Now as Student</a>
-                </div>
-                
-                <div class="bg-white border-2 border-red-600 rounded-3xl p-8 text-center">
-                    <h3 class="text-2xl font-bold mb-4 text-black">For Education Agents</h3>
-                    <p class="mb-6 text-black">Join our partner network and start earning commissions today</p>
-                    <a href="#agent-section" class="bg-red-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-red-700 transition-colors inline-block">Join as Education Agent</a>
-                </div>
-            </div>
-            
-            <!-- Secondary CTAs -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <div class="text-center p-6 bg-gray-50 rounded-xl">
-                    <i data-lucide="calendar" class="w-12 h-12 mx-auto mb-4" style="color: #d82128;"></i>
-                    <h4 class="font-bold text-black mb-2">Schedule Free Consultation</h4>
-                    <p class="text-black mb-4">Book a call with our education counselors</p>
-                    <a href="#" class="text-red-600 font-semibold hover:underline">Book Now →</a>
-                </div>
-                
-                <div class="text-center p-6 bg-gray-50 rounded-xl">
-                    <i data-lucide="download" class="w-12 h-12 mx-auto mb-4" style="color: #d82128;"></i>
-                    <h4 class="font-bold text-black mb-2">Download Program Guide</h4>
-                    <p class="text-black mb-4">Comprehensive PDF with program details</p>
-                    <a href="#" class="text-red-600 font-semibold hover:underline">Download →</a>
-                </div>
-                
-                <div class="text-center p-6 bg-gray-50 rounded-xl">
-                    <i data-lucide="play-circle" class="w-12 h-12 mx-auto mb-4" style="color: #d82128;"></i>
-                    <h4 class="font-bold text-black mb-2">Watch Success Stories</h4>
-                    <p class="text-black mb-4">Video testimonials and case studies</p>
-                    <a href="#" class="text-red-600 font-semibold hover:underline">Watch Now →</a>
-                </div>
-            </div>
-            
-            <!-- Contact Information -->
-            <div class="text-center">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                    <div>
-                        <i data-lucide="phone" class="w-8 h-8 mx-auto mb-2" style="color: #d82128;"></i>
-                        <p class="font-semibold text-black">Call Us</p>
-                        <p class="text-black">+1 (555) 123-4567</p>
-                        <p class="text-sm text-gray-600">Available 24/7</p>
-                    </div>
-                    <div>
-                        <i data-lucide="mail" class="w-8 h-8 mx-auto mb-2" style="color: #d82128;"></i>
-                        <p class="font-semibold text-black">Email Us</p>
-                        <p class="text-black">support@applylead.com</p>
-                        <p class="text-sm text-gray-600">Response within 2 hours</p>
-                    </div>
-                    <div>
-                        <i data-lucide="message-circle" class="w-8 h-8 mx-auto mb-2" style="color: #d82128;"></i>
-                        <p class="font-semibold text-black">Live Chat</p>
-                        <p class="text-black">Available Now</p>
-                        <p class="text-sm text-gray-600">Instant support</p>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-black text-white py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-                <div>
-                    <div class="flex items-center mb-6">
-                        <img src="ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-3">
-                    </div>
-                    <p class="text-white/80">Your gateway to global education opportunities</p>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">For Students</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-white/80 hover:text-white">Find Scholarships</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-white">Application Guide</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-white">Visa Support</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">For Agents</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-white/80 hover:text-white">Partner Scholarships</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-white">Agent Resources</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-white">Commission Structure</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-white">Training Materials</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Support</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-white/80 hover:text-white">Help Center</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-white">Contact Us</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-white">Live Chat</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-white">FAQ</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-white/60">&copy; 2024 APPLYLEAD. All rights reserved.</p>
-                <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="#" class="text-white/60 hover:text-white">Privacy Policy</a>
-                    <a href="#" class="text-white/60 hover:text-white">Terms of Service</a>
-                    <a href="#" class="text-white/60 hover:text-white">Cookie Policy</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Live Chat Widget -->
-    <div class="fixed bottom-6 right-6 z-50">
-        <button id="chatWidget" class="w-16 h-16 rounded-full text-white shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center" style="background-color: #d82128;">
-            <i data-lucide="message-circle" class="w-8 h-8"></i>
-        </button>
+      </div>
     </div>
+  </header>
 
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
+  <!-- SECTION: HERO -->
+  <section id="hero" data-testid="section-hero" class="relative py-24 bg-[#111111] text-white">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-[#D82128] opacity-20 blur-3xl"></div>
+      <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-white opacity-5 blur-3xl"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+            <span style="color: #ff565b;">Empowering Students to Study Abroad</span>
+            <span class="text-white"> with Scholarships and Success.</span>
+          </h1>
+          <p class="mt-6 text-lg md:text-xl text-white/80">ApplyLead helps students find programs, secure scholarships,
+            and achieve global admission goals.</p>
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a href="Students/htmls/Student-sign-up.html" data-testid="cta-get-started"
+              class="inline-flex items-center rounded-xl bg-[#D82128] px-6 py-3 font-semibold text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500">Register
+              Now ⮕</a>
+          </div>
+        </div>
+        <div>
+          <div class="relative overflow-hidden rounded-2xl ring-1 ring-white/10 bg-black/30">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1400&auto=format&fit=crop"
+              alt="Students collaborating" class="h-full w-full object-cover">
+            <button id="heroPlay" aria-label="Play intro video"
+              class="absolute inset-0 m-auto h-16 w-16 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition">
+              <i data-lucide="play" class="h-8 w-8 text-white"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        // Chat Widget Functionality
-        document.getElementById('chatWidget').addEventListener('click', function() {
-            alert('Live chat feature coming soon! For immediate assistance, please contact us at support@applylead.com');
+  <!-- SECTION: SEARCH -->
+  <section id="search" data-testid="section-search" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-black">Find Your Perfect Program</h2>
+        <p class="mt-3 text-black/80">Search 1,000+ schools and programs through our partner network.</p>
+      </div>
+      <form id="programSearchForm" class="relative rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div class="relative">
+            <label for="program" class="sr-only">Program</label>
+            <input id="program" name="program" data-testid="input-program" type="text"
+              placeholder="Program (e.g., Computer Science)"
+              class="w-full rounded-xl border-gray-300 focus:border-[#D82128] focus:ring-[#D82128] px-4 py-3" />
+            <i data-lucide="book-open" class="absolute right-3 top-3.5 h-5 w-5 text-gray-400"></i>
+          </div>
+          <div class="relative">
+            <label for="country" class="sr-only">Country</label>
+            <select id="country" name="country" data-testid="select-country"
+              class="w-full appearance-none rounded-xl border-gray-300 focus:border-[#D82128] focus:ring-[#D82128] px-4 py-3 pr-10">
+              <option value="">Country</option>
+              <option>USA</option>
+              <option>Canada</option>
+              <option>UK</option>
+              <option>Australia</option>
+              <option>Singapore</option>
+            </select>
+            <i data-lucide="map-pin" class="pointer-events-none absolute right-3 top-3.5 h-5 w-5 text-gray-400"></i>
+          </div>
+          <div class="relative">
+            <label for="degree" class="sr-only">Degree Level</label>
+            <select id="degree" name="degree" data-testid="select-degree"
+              class="w-full appearance-none rounded-xl border-gray-300 focus:border-[#D82128] focus:ring-[#D82128] px-4 py-3 pr-10">
+              <option value="">Degree Level</option>
+              <option>Undergraduate</option>
+              <option>Postgraduate</option>
+              <option>MBA</option>
+              <option>PhD</option>
+              <option>Diploma</option>
+            </select>
+            <i data-lucide="graduation-cap"
+              class="pointer-events-none absolute right-3 top-3.5 h-5 w-5 text-gray-400"></i>
+          </div>
+          <div class="flex items-stretch">
+            <button type="button" id="btnSearchPrograms" data-testid="btn-search-programs"
+              class="w-full rounded-xl bg-[#D82128] px-6 py-3 font-semibold text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 flex items-center justify-center">
+              <i data-lucide="search" class="mr-2 h-5 w-5"></i>
+              Search
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- SECTION: METRICS -->
+  <section id="metrics" data-testid="section-metrics" class="py-20 bg-[#F9F9F9]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-black">Why Students Choose ApplyLead</h2>
+        <p class="mt-3 text-black/70">We combine scholarships, expert guidance, and a trusted global network.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="rounded-2xl bg-white p-6 shadow-sm">
+          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#D82128]">
+            <i data-lucide="badge-check" class="h-6 w-6 text-white"></i>
+          </div>
+          <div class="text-3xl font-extrabold" style="color:#D82128">3,200+</div>
+          <p class="mt-1 font-semibold text-black">Scholarship Offers</p>
+        </div>
+        <div class="rounded-2xl bg-white p-6 shadow-sm">
+          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#D82128]">
+            <i data-lucide="shield-check" class="h-6 w-6 text-white"></i>
+          </div>
+          <div class="text-3xl font-extrabold" style="color:#D82128">97%</div>
+          <p class="mt-1 font-semibold text-black">Visa Success Rate</p>
+        </div>
+        <div class="rounded-2xl bg-white p-6 shadow-sm">
+          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#D82128]">
+            <i data-lucide="building-2" class="h-6 w-6 text-white"></i>
+          </div>
+          <div class="text-3xl font-extrabold" style="color:#D82128">500+</div>
+          <p class="mt-1 font-semibold text-black">Partner Universities</p>
+        </div>
+        <div class="rounded-2xl bg-white p-6 shadow-sm">
+          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#D82128]">
+            <i data-lucide="clock-9" class="h-6 w-6 text-white"></i>
+          </div>
+          <div class="text-3xl font-extrabold" style="color:#D82128">72h</div>
+          <p class="mt-1 font-semibold text-black">Profile Review</p>
+        </div>
+      </div>
+      <div class="mt-10 text-center">
+        <a href="Students/htmls/Student-sign-up.html"
+          class="inline-flex rounded-xl bg-[#D82128] px-8 py-3 font-semibold text-white hover:bg-red-600"
+          data-testid="cta-start-profile">Start Your Profile</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: PROGRAMS -->
+  <section id="programs" data-testid="section-programs" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-black">Our Programs</h2>
+        <p class="mt-3 text-black/70">Choose your best pathway to global success.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="rounded-2xl border border-gray-200 p-6 hover:border-[#D82128] transition">
+          <h3 class="text-xl font-bold text-black">Guaranteed Scholarship Program</h3>
+          <p class="mt-3 text-black/80">Get matched with scholarships tailored to your profile and achievements.</p>
+          <a href="#" class="mt-4 inline-flex items-center font-semibold text-[#D82128]">Learn More <i
+              data-lucide="arrow-right" class="ml-1 h-4 w-4"></i></a>
+        </div>
+        <div class="rounded-2xl border border-gray-200 p-6 hover:border-[#D82128] transition">
+          <h3 class="text-xl font-bold text-black">Elite Admission Program</h3>
+          <p class="mt-3 text-black/80">Strategic guidance for top-tier universities and competitive programs.</p>
+          <a href="#" class="mt-4 inline-flex items-center font-semibold text-[#D82128]">Learn More <i
+              data-lucide="arrow-right" class="ml-1 h-4 w-4"></i></a>
+        </div>
+        <div class="rounded-2xl border border-gray-200 p-6 hover:border-[#D82128] transition">
+          <h3 class="text-xl font-bold text-black">Ivy Global Program</h3>
+          <p class="mt-3 text-black/80">Holistic preparation for Ivy League and world top-50 admissions.</p>
+          <a href="#" class="mt-4 inline-flex items-center font-semibold text-[#D82128]">Learn More <i
+              data-lucide="arrow-right" class="ml-1 h-4 w-4"></i></a>
+        </div>
+        <div class="rounded-2xl border border-gray-200 p-6 hover:border-[#D82128] transition">
+          <h3 class="text-xl font-bold text-black">Joint Program</h3>
+          <p class="mt-3 text-black/80">Flexible pathways with partner universities and credit transfers.</p>
+          <a href="#" class="mt-4 inline-flex items-center font-semibold text-[#D82128]">Learn More <i
+              data-lucide="arrow-right" class="ml-1 h-4 w-4"></i></a>
+        </div>
+      </div>
+      <div class="mt-10 text-center">
+        <a href="Students/htmls/Student-sign-up.html"
+          class="inline-flex rounded-xl bg-[#D82128] px-8 py-3 font-semibold text-white hover:bg-red-600"
+          data-testid="cta-register-now">Register Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: PARTNERS -->
+  <section id="partners" data-testid="section-partners" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-black">Trusted Partners & Universities</h2>
+        <p class="mt-3 text-black/70">Explore ApplyLead’s global network.</p>
+      </div>
+      <div role="tablist" aria-label="Regions" class="mb-8 flex flex-wrap gap-2 border-b border-gray-200">
+        <button class="tab-btn px-4 py-2 font-medium text-black border-b-2 border-[#D82128]" aria-selected="true"
+          data-tab-target="#tab-usa">USA</button>
+        <button class="tab-btn px-4 py-2 font-medium text-black/70 hover:text-black" aria-selected="false"
+          data-tab-target="#tab-canada">Canada</button>
+        <button class="tab-btn px-4 py-2 font-medium text-black/70 hover:text-black" aria-selected="false"
+          data-tab-target="#tab-uk">UK</button>
+        <button class="tab-btn px-4 py-2 font-medium text-black/70 hover:text-black" aria-selected="false"
+          data-tab-target="#tab-aus">Australia</button>
+        <button class="tab-btn px-4 py-2 font-medium text-black/70 hover:text-black" aria-selected="false"
+          data-tab-target="#tab-asia">Asia</button>
+      </div>
+      <div class="space-y-8">
+        <div id="tab-usa" data-tab-panel class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+          <img src="tiffin-university-logo.png" alt="Tiffin University"
+            class="mx-auto h-12 object-contain filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
+          <img src="https://images.unsplash.com/photo-1581091223137-7c54b257227d?q=80&w=400&auto=format&fit=crop"
+            alt="Partner"
+            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
+          <img src="https://images.unsplash.com/photo-1517503737683-233ed1771cd7?q=80&w=400&auto=format&fit=crop"
+            alt="Partner"
+            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
+          <img src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=400&auto=format&fit=crop"
+            alt="Partner"
+            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
+        </div>
+        <div id="tab-canada" data-tab-panel class="hidden grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+          <img src="tiffin-university-logo.png" alt="Partner"
+            class="mx-auto h-12 object-contain filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
+          <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?q=80&w=400&auto=format&fit=crop"
+            alt="Partner"
+            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
+          <img src="https://images.unsplash.com/photo-1470723710355-95304d8aece4?q=80&w=400&auto=format&fit=crop"
+            alt="Partner"
+            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
+          <img src="https://images.unsplash.com/photo-1517976487492-576ea35d0df4?q=80&w=400&auto=format&fit=crop"
+            alt="Partner"
+            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
+        </div>
+        <div id="tab-uk" data-tab-panel class="hidden grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+          <img src="tiffin-university-logo.png" alt="Partner"
+            class="mx-auto h-12 object-contain filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
+          <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=400&auto=format&fit=crop"
+            alt="Partner"
+            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=400&auto=format&fit=crop"
+            alt="Partner"
+            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
+          <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=400&auto=format&fit=crop"
+            alt="Partner"
+            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
+        </div>
+        <div id="tab-aus" data-tab-panel class="hidden grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+          <img src="tiffin-university-logo.png" alt="Partner"
+            class="mx-auto h-12 object-contain filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
+          <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=400&auto=format&fit=crop"
+            alt="Partner"
+            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=400&auto=format&fit=crop"
+            alt="Partner"
+            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
+          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=400&auto=format&fit=crop"
+            alt="Partner"
+            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
+        </div>
+        <div id="tab-asia" data-tab-panel class="hidden grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+          <img src="tiffin-university-logo.png" alt="Partner"
+            class="mx-auto h-12 object-contain filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
+          <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?q=80&w=400&auto=format&fit=crop"
+            alt="Partner"
+            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
+          <img src="https://images.unsplash.com/photo-1543349689-9a4d426bee8e?q=80&w=400&auto=format&fit=crop"
+            alt="Partner"
+            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
+          <img src="https://images.unsplash.com/photo-1491841651911-c44c30c34548?q=80&w=400&auto=format&fit=crop"
+            alt="Partner"
+            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
+        </div>
+      </div>
+      <div class="mt-8 overflow-hidden rounded-xl">
+        <div class="bg-[#D82128] px-6 py-4 text-center text-white font-semibold">Over $3.2M in scholarships available
+          this intake.</div>
+      </div>
+      <div class="mt-6 text-center">
+        <a href="#" data-testid="cta-view-all-scholarships"
+          class="inline-flex rounded-xl bg-[#D82128] px-8 py-3 font-semibold text-black hover:bg-red-600">View All
+          Scholarships</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: SUCCESS -->
+  <section id="success" data-testid="section-success" class="py-20 bg-[#111111] text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold">Student Success Stories</h2>
+        <p class="mt-3 text-white/80">Real results. Real impact.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10">
+          <img
+            src="https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=400&auto=format&fit=crop&crop=faces"
+            alt="Student" class="mb-4 h-40 w-full rounded-xl object-cover">
+          <h4 class="font-semibold">Long Le • University of Toronto</h4>
+          <p class="mt-2 text-white/80">“ApplyLead helped me secure a $20,000 scholarship. The guidance was
+            exceptional.”</p>
+        </div>
+        <div class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10">
+          <img
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop&crop=faces"
+            alt="Student" class="mb-4 h-40 w-full rounded-xl object-cover">
+          <h4 class="font-semibold">Sarah Chen • MIT</h4>
+          <p class="mt-2 text-white/80">“From application to visa, the support was incredible. Now I’m at MIT CS.”</p>
+        </div>
+        <div class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10">
+          <img
+            src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=400&auto=format&fit=crop&crop=faces"
+            alt="Student" class="mb-4 h-40 w-full rounded-xl object-cover">
+          <h4 class="font-semibold">Minh Tran • Oxford</h4>
+          <p class="mt-2 text-white/80">“The team made everything transparent and achievable. I’m proud to be at
+            Oxford.”</p>
+        </div>
+      </div>
+      <div class="mt-10 text-center">
+        <button
+          class="inline-flex items-center rounded-xl border border-white/40 px-8 py-3 font-semibold text-white hover:bg-white hover:text-black"
+          data-testid="cta-more-stories">
+          See More Stories
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: CHANNEL -->
+  <section id="channel" data-testid="section-channel" class="py-20 bg-[#F9F9F9]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-black">Partner with ApplyLead</h2>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100">
+          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#D82128]"><i
+              data-lucide="users" class="h-6 w-6 text-white"></i></div>
+          <h3 class="text-xl font-bold text-black">For Agents</h3>
+          <ul class="mt-4 list-disc pl-5 text-black/80 space-y-1">
+            <li>Verified student profiles</li>
+            <li>Transparent commission tracking</li>
+            <li>Training and marketing support</li>
+          </ul>
+          <div class="mt-6"><a href="#" data-testid="cta-join-agents"
+              class="inline-flex rounded-xl bg-[#D82128] px-6 py-3 font-semibold text-white hover:bg-red-600">Join
+              Now</a></div>
+        </div>
+        <div class="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100">
+          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#D82128]"><i
+              data-lucide="building" class="h-6 w-6 text-white"></i></div>
+          <h3 class="text-xl font-bold text-black">For Universities</h3>
+          <ul class="mt-4 list-disc pl-5 text-black/80 space-y-1">
+            <li>Pre-qualified applications</li>
+            <li>Regional marketing exposure</li>
+            <li>Data-driven insights</li>
+          </ul>
+          <div class="mt-6"><a href="#" data-testid="cta-join-universities"
+              class="inline-flex rounded-xl bg-[#D82128] px-6 py-3 font-semibold text-white hover:bg-red-600">Join
+              Now</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: CTA FINAL -->
+  <section id="cta-final" data-testid="section-cta-final"
+    class="py-20 bg-gradient-to-br from-[#D82128] to-[#111111] text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold leading-tight">Students, Agents, and Universities — Join ApplyLead
+        Today.</h2>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <a href="Students/htmls/Student-sign-up.html" data-testid="cta-register-student"
+          class="inline-flex items-center rounded-xl border border-white px-6 py-3 font-semibold text-white hover:bg-white hover:text-black">Register
+          as Student</a>
+        <a href="#" data-testid="cta-register-agent"
+          class="inline-flex items-center rounded-xl border border-white px-6 py-3 font-semibold text-white hover:bg-white hover:text-black">Register
+          as Agent</a>
+        <a href="#" data-testid="cta-register-university"
+          class="inline-flex items-center rounded-xl border border-white px-6 py-3 font-semibold text-white hover:bg-white hover:text-black">Register
+          as University</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: FAQ -->
+  <section id="faq" data-testid="section-faq" class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-black text-center">Frequently Asked Questions</h2>
+      <div class="mt-8 divide-y divide-black/10 border border-black rounded-2xl">
+        <div class="faq-item">
+          <button class="flex w-full items-center justify-between px-6 py-4 text-left font-semibold hover:bg-red-50"
+            aria-expanded="false">
+            <span>How do I qualify for scholarships?</span>
+            <i data-lucide="chevron-down" class="h-5 w-5"></i>
+          </button>
+          <div class="hidden px-6 pb-4 text-black/80">Merit, need-based, and regional scholarships are available. Create
+            a profile to see personalized options.</div>
+        </div>
+        <div class="faq-item">
+          <button class="flex w-full items-center justify-between px-6 py-4 text-left font-semibold hover:bg-red-50"
+            aria-expanded="false">
+            <span>Do I need to pay before getting admission?</span>
+            <i data-lucide="chevron-down" class="h-5 w-5"></i>
+          </button>
+          <div class="hidden px-6 pb-4 text-black/80">No upfront payment is required for profile creation. Some programs
+            have application fees set by universities.</div>
+        </div>
+        <div class="faq-item">
+          <button class="flex w-full items-center justify-between px-6 py-4 text-left font-semibold hover:bg-red-50"
+            aria-expanded="false">
+            <span>What countries can I apply to?</span>
+            <i data-lucide="chevron-down" class="h-5 w-5"></i>
+          </button>
+          <div class="hidden px-6 pb-4 text-black/80">USA, Canada, UK, Australia, Singapore, and many more via our
+            partner network.</div>
+        </div>
+        <div class="faq-item">
+          <button class="flex w-full items-center justify-between px-6 py-4 text-left font-semibold hover:bg-red-50"
+            aria-expanded="false">
+            <span>How fast is the profile review?</span>
+            <i data-lucide="chevron-down" class="h-5 w-5"></i>
+          </button>
+          <div class="hidden px-6 pb-4 text-black/80">Standard profile reviews are completed within 72 hours.</div>
+        </div>
+        <div class="faq-item">
+          <button class="flex w-full items-center justify-between px-6 py-4 text-left font-semibold hover:bg-red-50"
+            aria-expanded="false">
+            <span>Do you support visa applications?</span>
+            <i data-lucide="chevron-down" class="h-5 w-5"></i>
+          </button>
+          <div class="hidden px-6 pb-4 text-black/80">Yes, our advisory includes visa preparation with a 97% success
+            rate.</div>
+        </div>
+        <div class="faq-item">
+          <button class="flex w-full items-center justify-between px-6 py-4 text-left font-semibold hover:bg-red-50"
+            aria-expanded="false">
+            <span>Can agents and universities partner with ApplyLead?</span>
+            <i data-lucide="chevron-down" class="h-5 w-5"></i>
+          </button>
+          <div class="hidden px-6 pb-4 text-black/80">Yes. Visit the Partner Channel section to join and access partner
+            tools.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: FOOTER -->
+  <footer id="footer" data-testid="section-footer" class="bg-[#111111] text-[#EEEEEE] py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
+        <div>
+          <div class="flex items-center mb-6">
+            <img src="ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-3">
+            <span class="font-semibold">ApplyLead</span>
+          </div>
+          <p class="text-white/70">Your gateway to global education opportunities.</p>
+          <div class="mt-4 flex items-center gap-3">
+            <a href="#" class="text-white/70 hover:text-[#D82128]"><i data-lucide="facebook" class="h-5 w-5"></i></a>
+            <a href="#" class="text-white/70 hover:text-[#D82128]"><i data-lucide="twitter" class="h-5 w-5"></i></a>
+            <a href="#" class="text-white/70 hover:text-[#D82128]"><i data-lucide="instagram" class="h-5 w-5"></i></a>
+            <a href="#" class="text-white/70 hover:text-[#D82128]"><i data-lucide="linkedin" class="h-5 w-5"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Programs</h4>
+          <ul class="space-y-2">
+            <li><a href="#programs" class="text-white/70 hover:text-white">Guaranteed Scholarship</a></li>
+            <li><a href="#programs" class="text-white/70 hover:text-white">Elite Admission</a></li>
+            <li><a href="#programs" class="text-white/70 hover:text-white">Ivy Global</a></li>
+            <li><a href="#programs" class="text-white/70 hover:text-white">Joint Program</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Resources</h4>
+          <ul class="space-y-2">
+            <li><a href="#faq" class="text-white/70 hover:text-white">FAQ</a></li>
+            <li><a href="#search" class="text-white/70 hover:text-white">Search Programs</a></li>
+            <li><a href="#partners" class="text-white/70 hover:text-white">Scholarships</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Partners</h4>
+          <ul class="space-y-2">
+            <li><a href="#channel" class="text-white/70 hover:text-white">For Agents</a></li>
+            <li><a href="#channel" class="text-white/70 hover:text-white">For Universities</a></li>
+            <li><a href="#partners" class="text-white/70 hover:text-white">Partner Network</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Company</h4>
+          <ul class="space-y-2">
+            <li><a href="#hero" class="text-white/70 hover:text-white">About</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white">Careers</a></li>
+            <li><a href="#" class="text-white/70 hover:text-white">Contact</a></li>
+          </ul>
+          <div class="mt-6">
+            <label for="lang" class="sr-only">Language</label>
+            <select id="lang" class="bg-[#222] text-white/90 rounded-lg px-3 py-2">
+              <option>EN</option>
+              <option>VI</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-white/60">© ApplyLead 2025</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="#" class="text-white/60 hover:text-white">Terms of Use</a>
+          <a href="#" class="text-white/60 hover:text-white">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Hero video overlay
+    function openHeroVideo() {
+      let overlay = document.getElementById('videoOverlay');
+      if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'videoOverlay';
+        overlay.className = 'fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4';
+        overlay.innerHTML = `
+              <div class="relative w-full max-w-3xl aspect-video bg-black rounded-xl overflow-hidden shadow-xl">
+                <button aria-label="Close video" class="absolute -top-3 -right-3 bg-white text-black rounded-full w-8 h-8 flex items-center justify-center">×</button>
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/ysz5S6PUM-U?autoplay=1" title="ApplyLead Intro Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>`;
+        document.body.appendChild(overlay);
+        overlay.querySelector('button').addEventListener('click', () => overlay.remove());
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+      }
+    }
+    const heroBtn = document.getElementById('btnWatchHero');
+    const heroPlay = document.getElementById('heroPlay');
+    if (heroBtn) heroBtn.addEventListener('click', openHeroVideo);
+    if (heroPlay) heroPlay.addEventListener('click', openHeroVideo);
+
+    // Smooth Scrolling for Navigation Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add scroll effect to header
+    window.addEventListener('scroll', function () {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.classList.add('shadow-lg');
+      } else {
+        header.classList.remove('shadow-lg');
+      }
+    });
+
+    // Partners tabs
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('[data-tab-panel]');
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetSel = btn.getAttribute('data-tab-target');
+        tabPanels.forEach(p => p.classList.add('hidden'));
+        const active = document.querySelector(targetSel);
+        if (active) active.classList.remove('hidden');
+        tabButtons.forEach(b => {
+          b.setAttribute('aria-selected', 'false');
+          b.classList.remove('border-[#D82128]', 'text-black');
+          b.classList.add('text-black/70');
         });
+        btn.setAttribute('aria-selected', 'true');
+        btn.classList.add('border-[#D82128]', 'text-black');
+        btn.classList.remove('text-black/70');
+      });
+    });
 
-        // Smooth Scrolling for Navigation Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add scroll effect to header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.classList.add('shadow-lg');
-            } else {
-                header.classList.remove('shadow-lg');
-            }
-        });
-    </script>
+    // FAQ accordions
+    document.querySelectorAll('#faq .faq-item > button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        const content = btn.parentElement.querySelector('div');
+        if (content) content.classList.toggle('hidden');
+      });
+    });
+  </script>
 </body>
+
 </html>

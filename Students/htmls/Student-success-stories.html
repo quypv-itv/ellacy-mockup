@@ -10,10 +10,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" />
-    <script src="https://unpkg.com/lucide@latest" defer></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         .container-w {
@@ -64,19 +67,28 @@
     </style>
 </head>
 
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-white text-gray-900">
+    <!-- Header with Navigation -->
     <header class="bg-white shadow-sm sticky top-0 z-10">
         <div class="px-6 py-4">
             <div class="flex items-center justify-between">
+                <!-- Logo -->
                 <div class="flex items-center">
                     <a href="Student-Dashboard.html" class="flex items-center">
                         <img src="../../ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-4">
                         <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">Student</span>
                     </a>
                 </div>
+
+                <!-- Navigation Menu -->
                 <nav class="hidden md:flex items-center space-x-3">
-                    <a href="Student-product-page.html"
+                    <a href="Student-Dashboard.html"
                         class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <i data-lucide="layout-dashboard" class="w-4 h-4 mr-2"></i>
+                        Dashboard
+                    </a>
+                    <a href="Student-product-page.html"
+                        class="flex items-center text-red-600 bg-red-50 px-3 py-2 rounded-lg font-medium transition-colors">
                         <i data-lucide="package" class="w-4 h-4 mr-2"></i>
                         Ellacy Program
                     </a>
@@ -85,39 +97,188 @@
                         <i data-lucide="search" class="w-4 h-4 mr-2"></i>
                         University
                     </a>
+                    <a href="Student-favorites.html"
+                        class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <i data-lucide="heart" class="w-4 h-4 mr-2"></i>
+                        Favorites (4)
+                    </a>
+                    <a href="Student-my-application.html"
+                        class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
+                        My Applications (8)
+                    </a>
+                    <a href="Student-payment.html"
+                        class="flex items-center text-gray-600 hover:text-red-600 px-3 py-2 rounded-lg font-medium transition-colors">
+                        <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i>
+                        Payment
+                    </a>
                 </nav>
+
+                <!-- Right Side -->
+                <div class="flex items-center space-x-4">
+                    <a href="Student-messages.html"
+                        class="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg" title="Messages">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </a>
+
+                    <button class="relative p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg"
+                        title="Notifications">
+                        <i data-lucide="bell" class="w-5 h-5"></i>
+                        <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                    </button>
+
+                    <!-- Profile Dropdown -->
+                    <div class="relative">
+                        <button id="profile-menu" class="flex items-center space-x-2 p-2 hover:bg-gray-50 rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop"
+                                alt="Profile" class="w-8 h-8 rounded-full object-cover">
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div id="profile-dropdown"
+                            class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1 z-50">
+                            <a href="Student-profile.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="user" class="w-4 h-4 inline-block mr-2"></i> Profile
+                            </a>
+                            <a href="Student-profile.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="settings" class="w-4 h-4 inline-block mr-2"></i> Settings
+                            </a>
+                            <a href="#" onclick="handleLogout()"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i data-lucide="log-out" class="w-4 h-4 inline-block mr-2"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- Hero -->
-        <section class="relative border-b">
-            <div class="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1920&auto=format&fit=crop"
-                    class="w-full h-full object-cover" alt="Success Stories">
-                <div class="absolute inset-0 bg-black/50"></div>
-            </div>
-            <div class="relative container-w mx-auto px-4 py-16 md:py-24 text-center text-white">
-                <h1 class="text-3xl md:text-5xl font-extrabold">Success Stories</h1>
-                <p class="mt-3 text-white/90 max-w-2xl mx-auto">Real students. Real scholarships. Real outcomes.</p>
-                <div class="mt-6 flex justify-center">
-                    <a href="#stories"
-                        class="btn-shimmer inline-flex items-center gap-2 bg-red-600 text-white px-5 py-3 rounded-xl font-semibold hover:bg-red-500">
-                        Explore Stories <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
+        <!-- SECTION: HERO -->
+        <section id="hero" data-testid="hero" class="relative bg-gradient-to-br from-rose-50 to-amber-50">
+            <div class="container-w mx-auto px-4 py-16 md:py-24">
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900">From Vietnam to
+                            the World – Real Scholarship Success Stories</h1>
+                        <p class="mt-4 text-gray-600 max-w-2xl">Discover how students secured scholarships, visas, and
+                            their dream universities with expert guidance.</p>
+                        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+                            <a href="#stories" aria-label="See Success Stories"
+                                class="btn-shimmer inline-flex justify-center items-center px-6 py-3 rounded-xl font-semibold bg-red-600 text-white hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600">See
+                                Stories</a>
+                            <button type="button" data-open-consult aria-label="Get Free Consultation"
+                                class="inline-flex justify-center items-center px-6 py-3 rounded-xl font-semibold border border-slate-200 text-slate-800 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600">Get
+                                Free Consultation</button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="relative aspect-video rounded-2xl overflow-hidden border bg-slate-900">
+                            <img src="https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=1600&auto=format&fit=crop"
+                                alt="Student testimonial video cover"
+                                class="absolute inset-0 w-full h-full object-cover opacity-70">
+                            <button type="button" aria-label="Play video"
+                                class="absolute inset-0 m-auto h-16 w-16 rounded-full bg-white/90 text-slate-900 grid place-items-center shadow ring-2 ring-white/80 focus:outline-none focus:ring-4 focus:ring-red-600">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Stories Grid -->
-        <section id="stories" class="bg-white border-y">
+        <!-- SECTION: METRICS -->
+        <section id="metrics" data-testid="metrics" class="bg-white">
+            <div class="container-w mx-auto px-4 py-12">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
+                    <div class="rounded-2xl border p-6 text-center">
+                        <div class="mx-auto mb-2 h-10 w-10 rounded-full bg-red-50 grid place-items-center text-red-600">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M16 11c1.66 0 2.99-1.79 2.99-4S17.66 3 16 3s-3 1.79-3 4 1.34 4 3 4zm-8 0c1.66 0 2.99-1.79 2.99-4S9.66 3 8 3 5 4.79 5 7s1.34 4 3 4zm0 2c-2.33 0-7 1.17-7 3.5V19c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-2.5C15 14.17 10.33 13 8 13zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.95 1.97 3.45V19c0 .35-.07.69-.18 1H22c.55 0 1-.45 1-1v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+                            </svg>
+                        </div>
+                        <div class="text-3xl md:text-4xl font-extrabold text-red-600">500+</div>
+                        <div class="mt-1 text-sm text-gray-600">Students placed</div>
+                    </div>
+                    <div class="rounded-2xl border p-6 text-center">
+                        <div class="mx-auto mb-2 h-10 w-10 rounded-full bg-red-50 grid place-items-center text-red-600">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm1 16h-2v-2H9v-2h2V9h2v4h2v2h-2v2z" />
+                            </svg>
+                        </div>
+                        <div class="text-3xl md:text-4xl font-extrabold text-red-600">$3.2M</div>
+                        <div class="mt-1 text-sm text-gray-600">In scholarships awarded</div>
+                    </div>
+                    <div class="rounded-2xl border p-6 text-center">
+                        <div class="mx-auto mb-2 h-10 w-10 rounded-full bg-red-50 grid place-items-center text-red-600">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M9 16.2l-3.5-3.5-1.4 1.4L9 19 20.3 7.7l-1.4-1.4z" />
+                            </svg>
+                        </div>
+                        <div class="text-3xl md:text-4xl font-extrabold text-red-600">97%</div>
+                        <div class="mt-1 text-sm text-gray-600">Visa success rate</div>
+                    </div>
+                </div>
+                <p class="mt-8 text-center text-gray-600 max-w-3xl mx-auto">Our advisors and partner universities help
+                    students craft winning applications, prepare for visa interviews, and secure the best-fit
+                    scholarships worldwide.</p>
+                <div class="mt-6 flex justify-center">
+                    <a href="#cta-final"
+                        class="inline-flex items-center px-4 py-2 rounded-lg border border-slate-200 text-slate-800 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600">Start
+                        Your Profile</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: FILTERABLE STORIES GRID -->
+        <section id="stories" data-testid="stories-grid" class="bg-white border-y">
             <div class="container-w mx-auto px-4 py-12">
                 <div class="text-center mb-8">
-                    <h2 class="text-2xl md:text-3xl font-extrabold title-gradient">Featured Stories</h2>
-                    <p class="title-sub">Scholarships and outcomes achieved with Ellacy.</p>
-                    <div class="title-divider"></div>
+                    <h2 class="text-2xl md:text-3xl font-extrabold">Featured Stories</h2>
+                    <p class="mt-2 text-gray-600">Scholarships and outcomes achieved with Ellacy.</p>
                 </div>
+                <form class="mb-6 grid grid-cols-1 sm:grid-cols-3 gap-3" aria-label="Filter success stories">
+                    <div>
+                        <label for="filter-country" class="sr-only">Country</label>
+                        <select id="filter-country" data-testid="filter-country"
+                            class="w-full rounded-xl border py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-red-600">
+                            <option>All Countries</option>
+                            <option>USA</option>
+                            <option>Canada</option>
+                            <option>UK</option>
+                            <option>Australia</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="filter-degree" class="sr-only">Degree</label>
+                        <select id="filter-degree" data-testid="filter-degree"
+                            class="w-full rounded-xl border py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-red-600">
+                            <option>All Degrees</option>
+                            <option>Undergrad</option>
+                            <option>Master</option>
+                            <option>PhD</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="filter-year" class="sr-only">Year</label>
+                        <select id="filter-year" data-testid="filter-year"
+                            class="w-full rounded-xl border py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-red-600">
+                            <option>All Years</option>
+                            <option>2026</option>
+                            <option>2025</option>
+                            <option>2024</option>
+                            <option>2023</option>
+                            <option>2022</option>
+                        </select>
+                    </div>
+                </form>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <article class="bg-white border rounded-2xl overflow-hidden shadow-sm">
                         <div class="relative aspect-[16/9]"><img
@@ -125,9 +286,12 @@
                                 class="absolute inset-0 w-full h-full object-cover" alt="Thùy Linh story"></div>
                         <div class="p-4 text-sm">
                             <div class="font-bold">Thùy Linh</div>
-                            <div class="text-gray-600">100% Scholarship • ASU</div>
+                            <div class="text-gray-600">100% Scholarship • Arizona State University</div>
                             <p class="mt-2 text-gray-700">From a small town to Texas; now an international student
                                 ambassador.</p>
+                            <a href="#story-modal"
+                                class="mt-3 inline-flex items-center gap-2 text-red-600 hover:text-red-500 font-semibold"
+                                aria-label="Read more about Thùy Linh">Read More</a>
                         </div>
                     </article>
                     <article class="bg-white border rounded-2xl overflow-hidden shadow-sm">
@@ -136,9 +300,12 @@
                                 class="absolute inset-0 w-full h-full object-cover" alt="Phương Anh story"></div>
                         <div class="p-4 text-sm">
                             <div class="font-bold">Phương Anh</div>
-                            <div class="text-gray-600">$24,000/year Scholarship</div>
+                            <div class="text-gray-600">$24,000/year Scholarship • California State University</div>
                             <p class="mt-2 text-gray-700">Internship to full-time role in California after graduation.
                             </p>
+                            <a href="#story-modal"
+                                class="mt-3 inline-flex items-center gap-2 text-red-600 hover:text-red-500 font-semibold"
+                                aria-label="Read more about Phương Anh">Read More</a>
                         </div>
                     </article>
                     <article class="bg-white border rounded-2xl overflow-hidden shadow-sm">
@@ -147,88 +314,440 @@
                                 class="absolute inset-0 w-full h-full object-cover" alt="Kiên Nguyễn story"></div>
                         <div class="p-4 text-sm">
                             <div class="font-bold">Kiên Nguyễn</div>
-                            <div class="text-gray-600">MBA-IT • Tech Career</div>
+                            <div class="text-gray-600">MBA-IT Scholarship • University of Technology</div>
                             <p class="mt-2 text-gray-700">From MBA in IT to Google Cloud with the right roadmap and
                                 mentoring.</p>
+                            <a href="#story-modal"
+                                class="mt-3 inline-flex items-center gap-2 text-red-600 hover:text-red-500 font-semibold"
+                                aria-label="Read more about Kiên Nguyễn">Read More</a>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- Testimonials -->
-        <section class="bg-white border-y">
+        <!-- SECTION: VIDEO TESTIMONIALS -->
+        <section id="testimonials" data-testid="testimonials" class="bg-white border-y">
             <div class="container-w mx-auto px-4 py-12">
                 <div class="text-center mb-8">
-                    <h2 class="text-2xl md:text-3xl font-extrabold title-gradient">What students say</h2>
-                    <div class="title-divider"></div>
+                    <h2 class="text-2xl md:text-3xl font-extrabold">Video Testimonials</h2>
+                    <p class="mt-2 text-gray-600">Hear directly from students about their journey and results.</p>
                 </div>
-                <div class="grid md:grid-cols-3 gap-4 text-sm">
-                    <div class="bg-gray-50 border rounded-2xl p-5">
-                        <div class="flex items-center gap-3">
-                            <img class="w-10 h-10 rounded-full object-cover"
-                                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=300&auto=format&fit=crop"
-                                alt="A." />
-                            <div>
-                                <div class="font-semibold">An N.</div>
-                                <div class="text-xs text-gray-500">ASU • Scholarship</div>
+                <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-2" role="region"
+                    aria-label="Student video testimonials">
+                    <article class="min-w-[280px] sm:min-w-[340px] snap-start rounded-2xl border bg-white shadow-sm">
+                        <div class="relative aspect-video overflow-hidden rounded-t-2xl bg-slate-200">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop"
+                                alt="Student video thumbnail" class="absolute inset-0 w-full h-full object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="sr-only">Play video</span>
+                                <span
+                                    class="h-12 w-12 rounded-full bg-white/90 text-slate-900 grid place-items-center shadow">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </span>
                             </div>
                         </div>
-                        <p class="mt-3 text-gray-700">Ellacy helped me tailor my essays and secure an interview-winning
-                            application.</p>
-                    </div>
-                    <div class="bg-gray-50 border rounded-2xl p-5">
-                        <div class="flex items-center gap-3">
-                            <img class="w-10 h-10 rounded-full object-cover"
-                                src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?q=80&w=300&auto=format&fit=crop"
-                                alt="B." />
-                            <div>
-                                <div class="font-semibold">Bao P.</div>
-                                <div class="text-xs text-gray-500">ONU • Scholarship</div>
+                        <div class="p-4">
+                            <div class="font-semibold">Minh T.</div>
+                            <div class="text-sm text-gray-500">University of Toronto</div>
+                            <p class="mt-2 text-gray-700">“The mentorship and essay reviews were the game changer.”</p>
+                        </div>
+                    </article>
+                    <article class="min-w-[280px] sm:min-w-[340px] snap-start rounded-2xl border bg-white shadow-sm">
+                        <div class="relative aspect-video overflow-hidden rounded-t-2xl bg-slate-200">
+                            <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=1200&auto=format&fit=crop"
+                                alt="Student video thumbnail" class="absolute inset-0 w-full h-full object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="sr-only">Play video</span>
+                                <span
+                                    class="h-12 w-12 rounded-full bg-white/90 text-slate-900 grid place-items-center shadow">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </span>
                             </div>
                         </div>
-                        <p class="mt-3 text-gray-700">Visa prep was clear and practical. I felt confident on interview
-                            day.</p>
-                    </div>
-                    <div class="bg-gray-50 border rounded-2xl p-5">
-                        <div class="flex items-center gap-3">
-                            <img class="w-10 h-10 rounded-full object-cover"
-                                src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=300&auto=format&fit=crop"
-                                alt="C." />
-                            <div>
-                                <div class="font-semibold">Chi L.</div>
-                                <div class="text-xs text-gray-500">Butler • Scholarship</div>
+                        <div class="p-4">
+                            <div class="font-semibold">Lan P.</div>
+                            <div class="text-sm text-gray-500">Monash University</div>
+                            <p class="mt-2 text-gray-700">“Scholarship offers came from multiple universities.”</p>
+                        </div>
+                    </article>
+                    <article class="min-w-[280px] sm:min-w-[340px] snap-start rounded-2xl border bg-white shadow-sm">
+                        <div class="relative aspect-video overflow-hidden rounded-t-2xl bg-slate-200">
+                            <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=1200&auto=format&fit=crop"
+                                alt="Student video thumbnail" class="absolute inset-0 w-full h-full object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="sr-only">Play video</span>
+                                <span
+                                    class="h-12 w-12 rounded-full bg-white/90 text-slate-900 grid place-items-center shadow">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </span>
                             </div>
                         </div>
-                        <p class="mt-3 text-gray-700">Great mentoring and networking support. It made all the
-                            difference.</p>
-                    </div>
+                        <div class="p-4">
+                            <div class="font-semibold">Khoa N.</div>
+                            <div class="text-sm text-gray-500">Arizona State University</div>
+                            <p class="mt-2 text-gray-700">“I landed a research assistantship in my first semester.”</p>
+                        </div>
+                    </article>
+                    <article class="min-w-[280px] sm:min-w-[340px] snap-start rounded-2xl border bg-white shadow-sm">
+                        <div class="relative aspect-video overflow-hidden rounded-t-2xl bg-slate-200">
+                            <img src="https://images.unsplash.com/photo-1542626991-48fb87a2b5c3?q=80&w=1200&auto=format&fit=crop"
+                                alt="Student video thumbnail" class="absolute inset-0 w-full h-full object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="sr-only">Play video</span>
+                                <span
+                                    class="h-12 w-12 rounded-full bg-white/90 text-slate-900 grid place-items-center shadow">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="font-semibold">Thao H.</div>
+                            <div class="text-sm text-gray-500">University of Melbourne</div>
+                            <p class="mt-2 text-gray-700">“Interview prep made me confident and calm.”</p>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Video Highlight -->
-        <section class="bg-white border-y">
-            <div class="container-w mx-auto px-4 py-12">
-                <div class="text-center mb-8">
-                    <h2 class="text-2xl md:text-3xl font-extrabold title-gradient">Student highlight video</h2>
-                    <div class="title-divider"></div>
-                </div>
-                <div class="aspect-video w-full rounded-2xl overflow-hidden border bg-black">
-                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                        title="Student highlight" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <div class="mt-6 flex justify-center">
+        <!-- SECTION: CLOSING CTA -->
+        <section id="cta-final" data-testid="cta-final" class="relative">
+            <div class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1920&auto=format&fit=crop"
+                    alt="Students celebrating scholarship success" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/50"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-black/30 via-red-600/30 to-transparent"></div>
+            </div>
+            <div class="relative container-w mx-auto px-4 py-14 md:py-20 text-center text-white">
+                <h3 class="text-2xl md:text-3xl font-extrabold drop-shadow-sm">You could be next – Apply for your dream
+                    scholarship today!</h3>
+                <p class="mt-2 text-white/90 max-w-2xl mx-auto">Build your profile in minutes and get matched to
+                    scholarships and universities.</p>
+                <div class="mt-6">
                     <a href="Student-find-program.html"
-                        class="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold border hover:bg-gray-50">
-                        Find scholarships <i data-lucide="search" class="w-4 h-4"></i>
+                        class="inline-flex items-center gap-2 bg-white text-slate-900 px-6 py-3 rounded-xl font-semibold hover:bg-white/95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">Get
+                        Started
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                            class="ml-1">
+                            <path d="M12 4l1.41 1.41L8.83 10H20v2H8.83l4.58 4.59L12 18l-8-8 8-8z" />
+                        </svg>
                     </a>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Consultation Modal -->
+    <div id="consultModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="relative z-10 w-[92%] max-w-xl max-h-[85vh] overflow-y-auto rounded-2xl bg-white shadow-2xl">
+            <div class="flex items-center justify-between px-5 py-4 border-b">
+                <h4 class="text-lg font-extrabold">Book a scholarship consultation</h4>
+                <button type="button" class="p-2 rounded hover:bg-gray-100" data-close aria-label="Close">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true">
+                        <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </button>
+            </div>
+            <form id="consultForm" class="p-5 grid gap-4">
+                <input type="hidden" name="planCode" id="planCode" />
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-sm font-semibold">Name <span class="text-red-600">*</span></label>
+                        <input name="name" required type="text"
+                            class="mt-1 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
+                            placeholder="Your full name">
+                    </div>
+                    <div>
+                        <label class="text-sm font-semibold">Email <span class="text-red-600">*</span></label>
+                        <input name="email" required type="email"
+                            class="mt-1 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
+                            placeholder="you@example.com">
+                    </div>
+                </div>
+                <div>
+                    <label class="text-sm font-semibold">Phone (optional)</label>
+                    <div class="mt-1 flex gap-2">
+                        <select name="dial"
+                            class="w-28 rounded-xl border px-2 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">
+                            <option value="+84">+84 (VN)</option>
+                            <option value="+1">+1 (US)</option>
+                            <option value="+65">+65 (SG)</option>
+                            <option value="+61">+61 (AU)</option>
+                            <option value="+44">+44 (UK)</option>
+                        </select>
+                        <input name="phone" type="tel"
+                            class="flex-1 rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
+                            placeholder="Phone number">
+                    </div>
+                </div>
+                <div>
+                    <label class="text-sm font-semibold">Programs to consult (optional). Select program(s) and
+                        package(s)</label>
+                    <div id="programsList" class="mt-2 grid grid-cols-1 gap-2" role="group"
+                        aria-label="Program and package selection"></div>
+                </div>
+                <div>
+                    <label class="text-sm font-semibold">Note</label>
+                    <textarea name="note" rows="3"
+                        class="mt-1 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
+                        placeholder="Tell us your goals or questions"></textarea>
+                </div>
+                <div>
+                    <label class="text-sm font-semibold">Preferred dates (pick multiple)</label>
+                    <div id="timesGrid" class="mt-2 grid grid-cols-2 sm:grid-cols-3 gap-2"></div>
+                    <input type="hidden" name="dates" id="timesValue" />
+                    <div class="mt-1 text-[11px] text-gray-500">Select any available dates in the next 2 weeks.</div>
+                </div>
+                <div class="flex items-center justify-end gap-3 pt-2">
+                    <button type="button" class="px-4 py-2 rounded-xl border hover:bg-gray-50"
+                        data-close>Cancel</button>
+                    <button type="submit"
+                        class="px-4 py-2 rounded-xl bg-red-600 text-white hover:bg-red-500">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        (() => {
+            const modal = document.getElementById('consultModal');
+            const form = document.getElementById('consultForm');
+
+            const PROGRAMS_CONFIG = [
+                {
+                    program: 'Guaranteed Scholarship Program', packages: [
+                        { value: 'EF Scholarship Guarantee – 3–5 schools', hint: '' },
+                        { value: 'EF Scholarship Guarantee – 1 school', hint: '' }
+                    ]
+                },
+                {
+                    program: 'Ivy Global Student Program', packages: [
+                        { value: 'Ivy Global – Top 30 US – Standard', hint: 'Apply to 5–10 universities' },
+                        { value: 'Ivy Global – Top 30 US – VIP Career', hint: 'Apply to 5–10 universities (Standard + Career coaching)' },
+                        { value: 'Ivy Global – Top 30 US – President', hint: 'Application to 5–10 universities (VIP + Campus visits)' }
+                    ]
+                },
+                {
+                    program: 'Elite Admission Program', packages: [
+                        { value: 'Elite Admission – Top 100 US – Standard', hint: 'Apply to up to 5 universities' }
+                    ]
+                },
+                {
+                    program: 'Joint Program (VN → US Transfer)', packages: [
+                        { value: 'Joint Program – 2+2', hint: '2 years in VN + 2 years in US' },
+                        { value: 'Joint Program – 1+3', hint: '1 year in VN + 3 years in US' }
+                    ]
+                }
+            ];
+
+            function renderProgramsUI() {
+                const wrap = document.getElementById('programsList');
+                if (!wrap) return;
+                wrap.innerHTML = PROGRAMS_CONFIG.map(p => `
+          <div class="border rounded-xl">
+            <label class="flex items-center justify-between gap-3 p-3 cursor-pointer">
+              <span class="text-sm font-medium">${p.program}</span>
+              <input type="checkbox" name="programs" value="${p.program}" class="w-4 h-4">
+            </label>
+            <div class="px-3 pb-3 space-y-2 hidden" data-packages-for="${p.program}">
+              ${p.packages.map(pkg => `
+                <label class="flex items-center justify-between gap-3 p-2 rounded-lg border hover:bg-gray-50">
+                  <span class="text-sm">${pkg.value}${pkg.hint ? ` <span class='text-xs text-gray-500'>• ${pkg.hint}</span>` : ''}</span>
+                  <input type="checkbox" name="packages" value="${pkg.value}" class="w-4 h-4">
+                </label>
+              `).join('')}
+            </div>
+          </div>
+        `).join('');
+                wrap.querySelectorAll('input[name="programs"]').forEach(chk => {
+                    chk.addEventListener('change', () => {
+                        const packs = wrap.querySelector(`[data-packages-for="${chk.value}"]`);
+                        if (!packs) return;
+                        packs.classList.toggle('hidden', !chk.checked);
+                        const pkgInputs = packs.querySelectorAll('input[name="packages"]');
+                        if (pkgInputs.length === 1) { pkgInputs[0].checked = chk.checked; }
+                        if (!chk.checked) { pkgInputs.forEach(i => i.checked = false); }
+                    });
+                });
+            }
+
+            function open() { modal.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+            function close() { modal.classList.add('hidden'); document.body.style.overflow = ''; }
+
+            document.body.addEventListener('click', (e) => { const btn = e.target.closest('[data-open-consult]'); if (!btn) return; if (!document.getElementById('programsList').children.length) { renderProgramsUI(); } open(); });
+            modal?.addEventListener('click', (e) => { if (e.target === modal || e.target.closest('[data-close]')) close(); });
+
+            // Build next 14 days grid
+            const grid = document.getElementById('timesGrid');
+            const hidden = document.getElementById('timesValue');
+            if (grid && hidden) {
+                const sel = new Set();
+                const fmt = (d) => d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                for (let i = 0; i < 14; i++) {
+                    const d = new Date(); d.setDate(d.getDate() + i + 1);
+                    const iso = d.toISOString().split('T')[0];
+                    const btn = document.createElement('button');
+                    btn.type = 'button'; btn.className = 'px-3 py-2 rounded-xl border text-sm hover:bg-gray-50';
+                    btn.dataset.date = iso; btn.textContent = fmt(d);
+                    btn.addEventListener('click', () => {
+                        if (sel.has(iso)) sel.delete(iso); else sel.add(iso);
+                        btn.classList.toggle('bg-red-50'); btn.classList.toggle('border-red-300'); btn.classList.toggle('text-red-700');
+                        hidden.value = Array.from(sel).sort().join(',');
+                    });
+                    grid.appendChild(btn);
+                }
+            }
+
+            form?.addEventListener('submit', (e) => { if (!form.checkValidity()) { e.preventDefault(); form.reportValidity(); return; } e.preventDefault(); close(); alert("Thanks! We've received your consultation request."); });
+
+            // init
+            renderProgramsUI();
+        })();
+    </script>
+    <!-- SECTION: STORY DETAIL MODAL -->
+    <div id="story-modal" data-testid="story-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/50" aria-hidden="true"></div>
+        <div class="relative mx-auto my-8 w-[92%] max-w-4xl bg-white rounded-2xl shadow-xl overflow-hidden"
+            role="dialog" aria-modal="true" aria-labelledby="storyModalTitle">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1600&auto=format&fit=crop"
+                    alt="Student hero" class="w-full h-56 object-cover">
+                <button type="button"
+                    class="absolute top-3 right-3 px-3 py-2 rounded-lg bg-white/90 text-slate-900 border hover:bg-white focus:outline-none focus:ring-2 focus:ring-red-600"
+                    aria-label="Close modal">Close</button>
+            </div>
+            <div class="p-6 space-y-6 text-sm">
+                <h3 id="storyModalTitle" class="text-lg font-semibold">Student Name — Scholarship Title</h3>
+                <blockquote class="rounded-xl bg-gray-50 p-4 border">
+                    “Short inspirational quote from the student about their experience and result.”
+                </blockquote>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="rounded-xl bg-gray-50 p-4">
+                        <div class="text-xs uppercase text-gray-500">Profile</div>
+                        <ul class="mt-2 list-disc list-inside text-gray-700">
+                            <li>GPA: 3.8/4.0</li>
+                            <li>IELTS: 7.5 (or TOEFL 105)</li>
+                            <li>SAT/GRE: 1500 / 320</li>
+                        </ul>
+                    </div>
+                    <div class="rounded-xl bg-gray-50 p-4">
+                        <div class="text-xs uppercase text-gray-500">Scholarship Details</div>
+                        <ul class="mt-2 list-disc list-inside text-gray-700">
+                            <li>Name: Presidential Excellence</li>
+                            <li>Amount: $24,000/year</li>
+                            <li>University: Sample University</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="rounded-xl bg-gray-50 p-4">
+                    <div class="text-xs uppercase text-gray-500">Application Timeline</div>
+                    <ol class="mt-2 list-decimal list-inside text-gray-700 space-y-1">
+                        <li>Aug–Sep: Profile review and university shortlist</li>
+                        <li>Oct–Nov: Essays, recommendations, and submission</li>
+                        <li>Dec–Jan: Scholarship interview prep and results</li>
+                        <li>Feb–Mar: Visa preparation and flight booking</li>
+                    </ol>
+                </div>
+                <div class="rounded-xl bg-gray-50 p-4">
+                    <div class="text-xs uppercase text-gray-500">Tips</div>
+                    <ul class="mt-2 list-disc list-inside text-gray-700 space-y-1">
+                        <li>Start early and be consistent with drafts and feedback.</li>
+                        <li>Show impact with specific achievements and outcomes.</li>
+                        <li>Prepare for interviews with mock sessions.</li>
+                    </ul>
+                </div>
+                <div>
+                    <a href="#cta-final"
+                        class="inline-flex items-center px-4 py-2 rounded-lg bg-red-600 text-white font-semibold hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600">I
+                        want a similar result</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- No JS required for sample modal/filters/carousel -->
+
+    <!-- SECTION: FOOTER -->
+    <footer id="footer" data-testid="footer" class="bg-white border-t">
+        <div class="container-w mx-auto px-4 py-12">
+            <!-- <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 text-sm">
+          <div>
+            <div class="font-semibold text-slate-900">Programs</div>
+            <ul class="mt-3 space-y-2 text-gray-600">
+              <li><a href="#hero" class="hover:text-[#3B82F6]">Undergraduate</a></li>
+              <li><a href="#hero" class="hover:text-[#3B82F6]">Master</a></li>
+              <li><a href="#hero" class="hover:text-[#3B82F6]">PhD</a></li>
+              <li><a href="#hero" class="hover:text-[#3B82F6]">Language Pathway</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold text-slate-900">Resources</div>
+            <ul class="mt-3 space-y-2 text-gray-600">
+              <li><a href="#metrics" class="hover:text-[#3B82F6]">Scholarships Guide</a></li>
+              <li><a href="#stories" class="hover:text-[#3B82F6]">Success Stories</a></li>
+              <li><a href="#testimonials" class="hover:text-[#3B82F6]">Testimonials</a></li>
+              <li><a href="#cta-final" class="hover:text-[#3B82F6]">Get Consultation</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold text-slate-900">Partners</div>
+            <ul class="mt-3 space-y-2 text-gray-600">
+              <li><a href="#footer" class="hover:text-[#3B82F6]">Universities</a></li>
+              <li><a href="#footer" class="hover:text-[#3B82F6]">Agents</a></li>
+              <li><a href="#footer" class="hover:text-[#3B82F6]">High Schools</a></li>
+              <li><a href="#footer" class="hover:text-[#3B82F6]">Scholarship Funds</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold text-slate-900">Company</div>
+            <ul class="mt-3 space-y-2 text-gray-600">
+              <li><a href="#footer" class="hover:text-[#3B82F6]">About</a></li>
+              <li><a href="#footer" class="hover:text-[#3B82F6]">Careers</a></li>
+              <li><a href="#footer" class="hover:text-[#3B82F6]">Contact</a></li>
+              <li><a href="#footer" class="hover:text-[#3B82F6]">Support</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-10 flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
+          <div class="flex items-center gap-4 text-sm text-gray-600">
+            <a href="#footer" class="hover:text-red-600" aria-label="Visit our Facebook">Facebook</a>
+            <a href="#footer" class="hover:text-red-600" aria-label="Visit our LinkedIn">LinkedIn</a>
+            <a href="#footer" class="hover:text-red-600" aria-label="Visit our YouTube">YouTube</a>
+          </div>
+          <div class="flex items-center gap-3" aria-label="Language switcher">
+            <span class="text-sm text-gray-600">Language:</span>
+            <div class="inline-flex rounded-xl border overflow-hidden">
+              <button type="button" class="px-3 py-1.5 text-sm bg-[#3B82F6] text-white">EN</button>
+              <button type="button" class="px-3 py-1.5 text-sm hover:bg-gray-50">VI</button>
+            </div>
+          </div>
+        </div> -->
+            <div
+                class="mt-8 pt-6 border-t flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-gray-600">
+                <div> 2025 Ellacy. All rights reserved.</div>
+                <div class="flex items-center gap-4">
+                    <a href="#footer" class="hover:text-red-600">Terms</a>
+                    <a href="#footer" class="hover:text-red-600">Privacy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 </body>
 
 </html>
