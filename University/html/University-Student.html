@@ -251,6 +251,252 @@
         </main>
     </div>
 
+    <!-- Document Upload Modal -->
+    <div id="documentUploadModal"
+        class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+        <div class="relative top-10 mx-auto p-6 border w-11/12 md:w-3/4 lg:w-2/3 shadow-lg rounded-2xl bg-white mb-10">
+            <div class="flex justify-between items-center pb-4 border-b">
+                <h3 class="text-xl font-semibold text-gray-900">Update Student Documents</h3>
+                <button id="closeDocumentModal" class="text-gray-400 hover:text-gray-500">
+                    <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+            </div>
+
+            <div class="mt-4">
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <p class="text-sm text-gray-700"><span class="font-semibold">Student:</span> <span
+                            id="uploadStudentName">-</span></p>
+                    <p class="text-sm text-gray-700 mt-1"><span class="font-semibold">Email:</span> <span
+                            id="uploadStudentEmail">-</span></p>
+                </div>
+
+                <!-- Sub-tabs Navigation -->
+                <div class="border-b mb-4">
+                    <div class="flex space-x-8">
+                        <button
+                            class="upload-subtab-btn active py-3 text-sm font-medium transition-colors border-b-2 border-red-600 text-red-600"
+                            data-subtab="general-documents">
+                            Admission Documents
+                        </button>
+                    </div>
+                </div>
+
+                <!-- General Documents Content -->
+                <div id="general-documents" class="upload-subtab-content active space-y-4">
+                    <!-- CV/Resume -->
+                    <div class="flex items-center justify-between p-4 border rounded-xl">
+                        <div class="flex items-center">
+                            <i data-lucide="file-text" class="w-5 h-5 text-green-600 mr-3"></i>
+                            <div>
+                                <p class="font-medium">CV/Resume</p>
+                                <p class="text-sm text-gray-500">resume_john_doe.pdf</p>
+                                <p class="text-xs text-green-600 mt-1">Verified by Michael Chen (Agent) on 10/20/2025
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="relative group">
+                                <i data-lucide="info" class="w-4 h-4 text-gray-400 cursor-help"></i>
+                                <div
+                                    class="absolute z-10 right-0 hidden group-hover:block w-64 p-2 text-xs text-gray-700 bg-white border border-gray-200 rounded shadow-lg">
+                                    Document has been reviewed and approved by the agent. All information is accurate
+                                    and meets requirements.
+                                </div>
+                            </div>
+                            <button class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-gray-100"
+                                title="Delete file">
+                                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Academic Transcript -->
+                    <div class="flex items-center justify-between p-4 border rounded-xl mt-3">
+                        <div class="flex items-center">
+                            <i data-lucide="file-text" class="w-5 h-5 text-orange-600 mr-3"></i>
+                            <div>
+                                <p class="font-medium">Academic Transcript</p>
+                                <p class="text-sm text-gray-500">transcript_2023.pdf</p>
+                                <p class="text-xs text-orange-600 mt-1">Pending review</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="relative group">
+                                <i data-lucide="info" class="w-4 h-4 text-gray-400 cursor-help"></i>
+                                <div
+                                    class="absolute z-10 right-0 hidden group-hover:block w-64 p-2 text-xs text-gray-700 bg-white border border-gray-200 rounded shadow-lg">
+                                    Document has been uploaded and is waiting for agent/advisor review. You will be
+                                    notified once reviewed.
+                                </div>
+                            </div>
+                            <button class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-gray-100"
+                                title="Delete file">
+                                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ID/Passport Copy -->
+                    <div class="flex items-center justify-between p-4 border rounded-xl mt-3">
+                        <div class="flex items-center">
+                            <i data-lucide="file-text" class="w-5 h-5 text-green-600 mr-3"></i>
+                            <div>
+                                <p class="font-medium">ID/Passport Copy</p>
+                                <p class="text-sm text-gray-500">passport_id_scan.pdf</p>
+                                <p class="text-xs text-green-600 mt-1">Verified by Michael Chen (Agent) on 10/20/2025
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="relative group">
+                                <i data-lucide="info" class="w-4 h-4 text-gray-400 cursor-help"></i>
+                                <div
+                                    class="absolute z-10 right-0 hidden group-hover:block w-64 p-2 text-xs text-gray-700 bg-white border border-gray-200 rounded shadow-lg">
+                                    Document has been reviewed and approved by the agent. All information is accurate
+                                    and meets requirements.
+                                </div>
+                            </div>
+                            <button class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-gray-100"
+                                title="Delete file">
+                                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- English Proficiency Test (Rejected Example) -->
+                    <div class="flex items-center justify-between p-4 border rounded-xl mt-3 bg-red-50">
+                        <div class="flex items-center">
+                            <i data-lucide="file-text" class="w-5 h-5 text-red-600 mr-3"></i>
+                            <div>
+                                <p class="font-medium">English Proficiency Test</p>
+                                <p class="text-sm text-gray-500">ielts_score_old.pdf</p>
+                                <p class="text-xs text-red-600 mt-1">Rejected by James Lee (Advisor) on 10/19/2025</p>
+                                <p class="text-xs text-red-700 mt-1 font-medium">Reason: Score report is expired. Please
+                                    upload a valid test result within 2 years.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="relative group">
+                                <i data-lucide="info" class="w-4 h-4 text-red-400 cursor-help"></i>
+                                <div
+                                    class="absolute z-10 right-0 hidden group-hover:block w-64 p-2 text-xs text-gray-700 bg-white border border-gray-200 rounded shadow-lg">
+                                    Document was reviewed but did not meet requirements. Please review the rejection
+                                    reason and upload a corrected version.
+                                </div>
+                            </div>
+                            <input type="file" id="eptReuploadModal" class="hidden" accept=".pdf,.doc,.docx">
+                            <button onclick="document.getElementById('eptReuploadModal').click()"
+                                class="px-3 py-1 bg-red-600 text-white text-xs rounded-lg hover:bg-red-700 flex items-center gap-1"
+                                title="Re-upload document">
+                                <i data-lucide="upload" class="w-3 h-3"></i>
+                                Re-upload
+                            </button>
+                            <button class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-gray-100"
+                                title="Delete file">
+                                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- English Proficiency Test -->
+                    <div class="flex items-center justify-between p-4 border rounded-xl mt-3">
+                        <div class="flex items-center">
+                            <i data-lucide="file-text" class="w-5 h-5 text-gray-400 mr-3"></i>
+                            <div>
+                                <p class="font-medium">English Proficiency Test <span class="text-red-600">*</span></p>
+                                <p class="text-sm text-gray-500">e.g., IELTS, TOEFL, Duolingo</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-gray-500 text-xs">Not Uploaded</span>
+                            <div class="relative">
+                                <input type="file" id="eptUploadModal" class="hidden" accept=".pdf,.doc,.docx">
+                                <button onclick="document.getElementById('eptUploadModal').click()"
+                                    class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-gray-100"
+                                    title="Upload file">
+                                    <i data-lucide="upload" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recommendation Letters -->
+                    <div class="flex items-center justify-between p-4 border rounded-xl mt-3">
+                        <div class="flex items-center">
+                            <i data-lucide="file-text" class="w-5 h-5 text-gray-400 mr-3"></i>
+                            <div>
+                                <p class="font-medium">Recommendation Letters <span class="text-red-600">*</span></p>
+                                <p class="text-sm text-gray-500">At least 2 letters required</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-gray-500 text-xs">0/2 Uploaded</span>
+                            <button class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-gray-100"
+                                title="Upload file">
+                                <i data-lucide="upload" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Statement of Purpose -->
+                    <div class="flex items-center justify-between p-4 border rounded-xl mt-3">
+                        <div class="flex items-center">
+                            <i data-lucide="file-text" class="w-5 h-5 text-gray-400 mr-3"></i>
+                            <div>
+                                <p class="font-medium">Statement of Purpose <span class="text-red-600">*</span></p>
+                                <p class="text-sm text-gray-500">Your academic and career goals</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-gray-500 text-xs">Not Uploaded</span>
+                            <div class="relative">
+                                <input type="file" id="sopUploadModal" class="hidden" accept=".pdf,.doc,.docx">
+                                <button onclick="document.getElementById('sopUploadModal').click()"
+                                    class="p-2 text-gray-500 hover:text-red-600 rounded-full hover:bg-gray-100"
+                                    title="Upload file">
+                                    <i data-lucide="upload" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Documents Upload -->
+                    <div class="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center">
+                        <div class="flex flex-col items-center justify-center space-y-3">
+                            <div class="p-3 bg-gray-100 rounded-full">
+                                <i data-lucide="upload" class="w-6 h-6 text-gray-500"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-700">Upload Additional Documents</p>
+                                <p class="text-xs text-gray-500 mt-1">PDF, DOCX, JPG, PNG (Max. 10MB each)</p>
+                            </div>
+                            <label
+                                class="cursor-pointer mt-2 px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-lg hover:bg-red-700 transition-colors">
+                                Choose Files
+                                <input type="file" class="hidden" multiple>
+                            </label>
+                        </div>
+                        <div class="mt-4 text-xs text-gray-500">
+                            You can upload test scores, recommendation letters, personal statements, or any
+                            other supporting documents.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex justify-end space-x-3 border-t pt-4">
+                <button id="closeDocumentModalBtn" type="button"
+                    class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                    Close
+                </button>
+                <button type="button"
+                    class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                    Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Student Detail Modal -->
     <div id="studentModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
         <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-2/3 lg:w-1/2 shadow-lg rounded-md bg-white">
@@ -431,7 +677,6 @@
                     <td class="px-6 py-4 whitespace-normal break-words text-sm">
                         <span class="text-gray-500 mr-3">${student.documentName || ''}</span>
                         <button id="upload-btn-${student.id}" class="inline-flex items-center px-3 py-1.5 rounded-md bg-red-600 text-white hover:bg-red-700">Upload</button>
-                        <input id="upload-input-${student.id}" type="file" class="hidden" accept="application/pdf,image/*">
                     </td>
                     <td class="px-6 py-4 whitespace-normal break-words text-right text-sm font-medium">
                         <div class="flex items-center justify-end space-x-2">
@@ -460,13 +705,10 @@
 
                 // Attach upload handlers
                 const btn = document.getElementById(`upload-btn-${student.id}`);
-                const input = document.getElementById(`upload-input-${student.id}`);
-                if (btn && input) {
-                    btn.addEventListener('click', () => input.click());
-                    input.addEventListener('change', () => {
-                        if (input.files && input.files.length > 0) {
-                            alert(`Uploaded for ${student.name}: ${input.files[0].name}`);
-                        }
+                if (btn) {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        openDocumentUploadModal(student);
                     });
                 }
             });
@@ -783,6 +1025,75 @@
                 });
             });
         }
+
+        // Document Upload Modal Handlers
+        const documentUploadModal = document.getElementById('documentUploadModal');
+        const closeDocumentModal = document.getElementById('closeDocumentModal');
+        const closeDocumentModalBtn = document.getElementById('closeDocumentModalBtn');
+
+        // Function to open document upload modal
+        function openDocumentUploadModal(student) {
+            document.getElementById('uploadStudentName').textContent = student.name;
+            document.getElementById('uploadStudentEmail').textContent = student.email;
+            documentUploadModal.classList.remove('hidden');
+
+            // Re-initialize Lucide icons for the modal
+            setTimeout(() => {
+                lucide.createIcons();
+            }, 100);
+        }
+
+        // Function to close document upload modal
+        function closeDocumentUploadModalHandler() {
+            documentUploadModal.classList.add('hidden');
+        }
+
+        // Event listeners for closing document modal
+        if (closeDocumentModal) {
+            closeDocumentModal.addEventListener('click', closeDocumentUploadModalHandler);
+        }
+        if (closeDocumentModalBtn) {
+            closeDocumentModalBtn.addEventListener('click', closeDocumentUploadModalHandler);
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === documentUploadModal) {
+                closeDocumentUploadModalHandler();
+            }
+        });
+
+        // Handle sub-tabs in document upload modal
+        document.querySelectorAll('.upload-subtab-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const targetTab = this.getAttribute('data-subtab');
+
+                // Update tab buttons
+                document.querySelectorAll('.upload-subtab-btn').forEach(btn => {
+                    btn.classList.remove('active', 'border-red-600', 'text-red-600');
+                    btn.classList.add('border-transparent', 'text-gray-500');
+                });
+                this.classList.add('active', 'border-red-600', 'text-red-600');
+                this.classList.remove('border-transparent', 'text-gray-500');
+
+                // Update content visibility
+                document.querySelectorAll('.upload-subtab-content').forEach(content => {
+                    content.classList.add('hidden');
+                    content.classList.remove('active');
+                });
+                const targetContent = document.getElementById(targetTab);
+                if (targetContent) {
+                    targetContent.classList.remove('hidden');
+                    targetContent.classList.add('active');
+                }
+
+                // Re-initialize icons after tab switch
+                lucide.createIcons();
+            });
+        });
+
+        // Make openDocumentUploadModal globally accessible for upload button handlers
+        window.openDocumentUploadModal = openDocumentUploadModal;
 
         // Activate default tab
         setActiveTab(currentFilters.programType);

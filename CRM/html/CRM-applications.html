@@ -24,7 +24,7 @@
 <body class="bg-white">
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
-        <aside class="fixed left-0 top-0 h-screen w-64 bg-white shadow-lg">
+        <aside class="fixed left-0 top-0 h-screen w-80 bg-white shadow-lg overflow-y-auto overflow-x-hidden flex flex-col">
             <div class="p-6">
                 <div class="flex items-center mb-2">
                     <img src="../../ApplyLead_logo.png" alt="ApplyLead" class="h-9">
@@ -38,10 +38,30 @@
                     <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>
                     Dashboard
                 </a>
-                <a href="#" class="flex items-center px-6 py-3 text-white" style="background-color: #d82128;">
-                    <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>
-                    Applications
-                </a>
+                <!-- Application Management (Parent Menu) -->
+                <div class="menu-parent">
+                    <button id="app-management-toggle"
+                        class="flex items-center justify-between w-full px-6 py-3 text-gray-600 hover:bg-gray-50">
+                        <div class="flex items-center">
+                            <i data-lucide="file-text" class="w-5 h-5 mr-3"></i>
+                            <span>Application Management</span>
+                        </div>
+                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform" id="app-management-chevron"></i>
+                    </button>
+                    <!-- Submenu -->
+                    <div id="app-management-submenu" class="bg-gray-50">
+                        <a href="CRM-applications.html"
+                            class="flex items-center pl-14 pr-6 py-2.5 text-sm text-white" style="background-color: #d82128;">
+                            <i data-lucide="list" class="w-4 h-4 mr-3"></i>
+                            Applications
+                        </a>
+                        <a href="CRM-application-steps-config.html"
+                            class="flex items-center pl-14 pr-6 py-2.5 text-sm text-gray-600 hover:bg-gray-100">
+                            <i data-lucide="settings-2" class="w-4 h-4 mr-3"></i>
+                            Application Steps Config
+                        </a>
+                    </div>
+                </div>
                 <a href="CRM-agent.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-red-50">
                     <i data-lucide="users" class="w-5 h-5 mr-3"></i>
                     Agents
@@ -93,7 +113,7 @@
         </aside>
 
         <!-- Main Content -->
-        <div class="ml-64 flex-1 flex flex-col overflow-hidden">
+        <div class="ml-80 flex-1 flex flex-col overflow-hidden">
             <!-- Header -->
             <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6">
                 <h2 class="text-xl font-semibold text-gray-900">Applications</h2>
@@ -1279,6 +1299,20 @@
         // Handle logout
         function handleLogout() {
             window.location.href = '../../login.html';
+        }
+
+        // Application Management Menu Toggle
+        const appManagementToggle = document.getElementById('app-management-toggle');
+        const appManagementSubmenu = document.getElementById('app-management-submenu');
+        const appManagementChevron = document.getElementById('app-management-chevron');
+
+        if (appManagementToggle && appManagementSubmenu && appManagementChevron) {
+            appManagementToggle.addEventListener('click', () => {
+                appManagementSubmenu.classList.toggle('hidden');
+                appManagementChevron.style.transform = appManagementSubmenu.classList.contains('hidden') 
+                    ? 'rotate(0deg)' 
+                    : 'rotate(180deg)';
+            });
         }
 
         // Profile Dropdown Toggle

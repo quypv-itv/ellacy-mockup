@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Steps Configuration - APPLYLEAD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Quill Rich Text Editor -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .step-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .step-content.expanded {
+            max-height: 5000px;
+            overflow-y: visible;
+        }
+
+        .step-card {
+            overflow: visible;
+            background: white;
+            border: 2px solid #e5e7eb;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .step-header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            color: #1a1a1a;
+            border-bottom: 3px solid #d82128;
+            transition: all 0.3s;
+        }
+
+        .step-header:hover {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            color: #991b1b;
+        }
+
+        .step-header:hover i {
+            color: #991b1b;
+        }
+
+        .step-header i {
+            color: #d82128;
+            transition: color 0.3s;
+        }
+
+        .ql-editor {
+            min-height: 200px;
+        }
+
+        .content-blocks-container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1rem;
+            grid-auto-rows: minmax(100px, auto);
+            padding: 1rem;
+            background: rgba(248, 249, 250, 0.5);
+            border-radius: 0.5rem;
+            border: 1px solid #e9ecef;
+            min-height: 0;
+        }
+
+        .content-blocks-container:empty {
+            display: none;
+        }
+
+        .content-block {
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s;
+            cursor: default;
+            position: relative;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .content-block:hover {
+            border-color: #d82128;
+            box-shadow: 0 4px 12px rgba(216, 33, 40, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .content-block[data-cols="12"] {
+            grid-column: span 12;
+        }
+
+        .content-block[data-cols="11"] {
+            grid-column: span 11;
+        }
+
+        .content-block[data-cols="10"] {
+            grid-column: span 10;
+        }
+
+        .content-block[data-cols="9"] {
+            grid-column: span 9;
+        }
+
+        .content-block[data-cols="8"] {
+            grid-column: span 8;
+        }
+
+        .content-block[data-cols="7"] {
+            grid-column: span 7;
+        }
+
+        .content-block[data-cols="6"] {
+            grid-column: span 6;
+        }
+
+        .content-block[data-cols="5"] {
+            grid-column: span 5;
+        }
+
+        .content-block[data-cols="4"] {
+            grid-column: span 4;
+        }
+
+        .content-block[data-cols="3"] {
+            grid-column: span 3;
+        }
+
+        .content-block[data-cols="2"] {
+            grid-column: span 2;
+        }
+
+        .content-block[data-cols="1"] {
+            grid-column: span 1;
+        }
+
+        .content-block[data-rows="1"] {
+            grid-row: span 1;
+        }
+
+        .content-block[data-rows="2"] {
+            grid-row: span 2;
+        }
+
+        .content-block[data-rows="3"] {
+            grid-row: span 3;
+        }
+
+        .content-block[data-rows="4"] {
+            grid-row: span 4;
+        }
+
+        .content-block[data-rows="5"] {
+            grid-row: span 5;
+        }
+
+        .content-block.dragging {
+            opacity: 0.5;
+            transform: scale(0.95);
+            box-shadow: 0 8px 24px rgba(216, 33, 40, 0.3);
+        }
+
+        .content-block.drag-over {
+            border-color: #d82128;
+            border-style: dashed;
+            border-width: 3px;
+            background: rgba(216, 33, 40, 0.05);
+        }
+
+        .content-block.resizing {
+            border-color: #d82128;
+            border-width: 3px;
+            box-shadow: 0 0 0 4px rgba(216, 33, 40, 0.1);
+        }
+
+        .resize-handle {
+            position: absolute;
+            z-index: 10;
+        }
+
+        .resize-handle-right {
+            right: -6px;
+            top: 0;
+            bottom: 0;
+            width: 12px;
+            cursor: ew-resize;
+        }
+
+        .resize-handle-left {
+            left: -6px;
+            top: 0;
+            bottom: 0;
+            width: 12px;
+            cursor: ew-resize;
+        }
+
+        .resize-handle-top {
+            left: 0;
+            right: 0;
+            top: -6px;
+            height: 12px;
+            cursor: ns-resize;
+        }
+
+        .resize-handle-bottom {
+            left: 0;
+            right: 0;
+            bottom: -6px;
+            height: 12px;
+            cursor: ns-resize;
+        }
+
+        .resize-handle-right::after,
+        .resize-handle-left::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 40px;
+            background: #d82128;
+            border-radius: 2px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .resize-handle-right::after {
+            right: 4px;
+        }
+
+        .resize-handle-left::after {
+            left: 4px;
+        }
+
+        .resize-handle-top::after,
+        .resize-handle-bottom::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 4px;
+            width: 40px;
+            background: #d82128;
+            border-radius: 2px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .resize-handle-top::after {
+            top: 4px;
+        }
+
+        .resize-handle-bottom::after {
+            bottom: 4px;
+        }
+
+        .content-block:hover .resize-handle::after {
+            opacity: 0.5;
+        }
+
+        .resize-handle:hover::after,
+        .resize-handle.active::after {
+            opacity: 1 !important;
+        }
+
+        .grip-vertical {
+            cursor: grab;
+        }
+
+        .grip-vertical:active {
+            cursor: grabbing;
+        }
+
+        .block-position {
+            min-width: 32px;
+            height: 32px;
+        }
+
+        .width-indicator {
+            position: absolute;
+            top: -35px;
+            right: 0;
+            background: linear-gradient(135deg, #d82128 0%, #a01a20 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            opacity: 0;
+            transition: all 0.2s;
+            pointer-events: none;
+            box-shadow: 0 4px 12px rgba(216, 33, 40, 0.4);
+        }
+
+        .width-indicator.show {
+            opacity: 1;
+            transform: translateY(-4px);
+        }
+
+        /* Role Tabs Styling */
+        .role-tab {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border-bottom: 3px solid transparent;
+            background: transparent;
+            color: #6b7280;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .role-tab:hover {
+            color: #374151;
+            background: #f9fafb;
+        }
+
+        .role-tab.active {
+            color: #d82128;
+            border-bottom-color: #d82128;
+            background: #fef2f2;
+        }
+
+        .role-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 1.25rem;
+            height: 1.25rem;
+            padding: 0 0.375rem;
+            background: #e5e7eb;
+            color: #6b7280;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .role-tab.active .role-badge {
+            background: #d82128;
+            color: white;
+        }
+
+        /* Role Context Banner */
+        .role-context-banner {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border: 1px solid #93c5fd;
+        }
+
+        .role-context-banner[data-current-role="student"] {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-color: #93c5fd;
+            color: #1e40af;
+        }
+
+        .role-context-banner[data-current-role="agent"] {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-color: #6ee7b7;
+            color: #065f46;
+        }
+
+        .role-context-banner[data-current-role="admin"] {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-color: #fca5a5;
+            color: #991b1b;
+        }
+
+        /* Permissions checkbox accent color */
+        .permission-toggle {
+            accent-color: #d82128;
+        }
+        .permission-toggle:focus,
+        .permission-toggle:focus-visible {
+            outline: 2px solid #d82128;
+            outline-offset: 2px;
+            box-shadow: 0 0 0 3px rgba(216, 33, 40, 0.2);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside
+            class="fixed left-0 top-0 h-screen w-80 bg-white shadow-lg overflow-y-auto overflow-x-hidden flex flex-col">
+            <div class="p-6">
+                <div class="flex items-center mb-2">
+                    <img src="../../ApplyLead_logo.png" alt="ApplyLead" class="h-9">
+                </div>
+                <div class="flex items-center">
+                    <span class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">Admin</span>
+                </div>
+            </div>
+            <nav class="mt">
+                <a href="CRM-dashboard.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5 mr-3"></i>Dashboard
+                </a>
+                <div class="menu-parent">
+                    <button id="app-management-toggle"
+                        class="flex items-center justify-between w-full px-6 py-3 text-gray-600 hover:bg-gray-50">
+                        <div class="flex items-center">
+                            <i data-lucide="file-text" class="w-5 h-5 mr-3"></i><span>Application Management</span>
+                        </div>
+                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform"
+                            id="app-management-chevron"></i>
+                    </button>
+                    <div id="app-management-submenu" class="bg-gray-50">
+                        <a href="CRM-applications.html"
+                            class="flex items-center pl-14 pr-6 py-2.5 text-sm text-gray-600 hover:bg-gray-100">
+                            <i data-lucide="list" class="w-4 h-4 mr-3"></i>Applications
+                        </a>
+                        <a href="CRM-application-steps-config.html"
+                            class="flex items-center pl-14 pr-6 py-2.5 text-sm text-white"
+                            style="background-color: #d82128;">
+                            <i data-lucide="settings-2" class="w-4 h-4 mr-3"></i>Application Steps Config
+                        </a>
+                    </div>
+                </div>
+                <a href="CRM-agent.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+                        data-lucide="users" class="w-5 h-5 mr-3"></i>Agents</a>
+                <a href="CRM-scholarships.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+                        data-lucide="graduation-cap" class="w-5 h-5 mr-3"></i>Scholarships</a>
+                <a href="CRM-institutions.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+                        data-lucide="building" class="w-5 h-5 mr-3"></i>Institutions</a>
+                <a href="CRM-students.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+                        data-lucide="user" class="w-5 h-5 mr-3"></i>Students</a>
+                <a href="CRM-payment.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+                        data-lucide="credit-card" class="w-5 h-5 mr-3"></i>Payments</a>
+                <a href="CRM-tasks.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+                        data-lucide="check-circle" class="w-5 h-5 mr-3"></i>Tasks</a>
+                <a href="CRM-Campaigns.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+                        data-lucide="brick-wall-shield" class="w-5 h-5 mr-3"></i>Campaigns</a>
+                <a href="CRM-report.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+                        data-lucide="bar-chart" class="w-5 h-5 mr-3"></i>Reports</a>
+                <a href="CRM-messages.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+                        data-lucide="message-circle" class="w-5 h-5 mr-3"></i>Messages</a>
+                <a href="CRM-user-admin.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+                        data-lucide="shield" class="w-5 h-5 mr-3"></i>User Admin</a>
+                <a href="CRM-joint-program-config.html"
+                    class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i data-lucide="book-open"
+                        class="w-5 h-5 mr-3"></i>Ellacy Program</a>
+                <a href="CRM-joint-program-universities.html"
+                    class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i data-lucide="building-2"
+                        class="w-5 h-5 mr-3"></i>Joint Program Universities</a>
+                <a href="CRM-Setting.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"><i
+                        data-lucide="settings" class="w-5 h-5 mr-3"></i>Settings</a>
+            </nav>
+            <div class="mt-auto px-6 py-4 border-t border-gray-200">
+                <p class="text-sm text-gray-600 text-center">Designed & developed by Innotech Viet Nam</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="ml-80 flex-1 flex flex-col overflow-hidden">
+            <header class="h-16 bg-white shadow-sm flex items-center justify-between px-6">
+                <h2 class="text-xl font-semibold text-gray-800">Application Steps Configuration</h2>
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 hover:bg-gray-100 rounded-full"><i data-lucide="bell"
+                            class="w-5 h-5 text-gray-600"></i></button>
+                    <div class="relative" id="profile-menu">
+                        <button class="flex items-center">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                alt="Admin" class="w-8 h-8 rounded-full object-cover">
+                        </button>
+                        <div id="profile-dropdown"
+                            class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-1">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                onclick="handleLogout()">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="flex-1 overflow-y-auto p-6">
+                <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-start">
+                            <i data-lucide="info" class="w-6 h-6 text-red-600 flex-shrink-0"></i>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Configure Application Process Steps
+                                </h3>
+                                <p class="text-gray-600">Customize the title, brief description, and main content for
+                                    each step in the application process. These configurations will be displayed to
+                                    agents and students.</p>
+                            </div>
+                        </div>
+                        <div class="ml-auto flex items-center">
+                            <div
+                                class="flex items-baseline bg-red-50 border border-red-200 px-4 py-2 rounded-lg shadow-sm">
+                                <span class="text-2xl font-bold text-red-600 leading-none mr-2">9</span>
+                                <span class="text-xs font-medium text-gray-700">Total Steps</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center mb-6">
+                    <div class="flex items-center space-x-3">
+                        <button id="expand-all-btn"
+                            class="px-4 py-2 text-sm text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center">
+                            <i data-lucide="chevrons-down" class="w-4 h-4 mr-2"></i>Expand All
+                        </button>
+                        <button id="collapse-all-btn"
+                            class="px-4 py-2 text-sm text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center">
+                            <i data-lucide="chevrons-up" class="w-4 h-4 mr-2"></i>Collapse All
+                        </button>
+                    </div>
+                    <button id="save-all-btn" class="px-6 py-2 text-white rounded-lg hover:bg-red-700 flex items-center"
+                        style="background-color: #d82128;">
+                        <i data-lucide="save" class="w-4 h-4 mr-2"></i>Save All Changes
+                    </button>
+                </div>
+
+                <div class="space-y-4" id="steps-container"></div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        const stepsData = [
+            { id: 1, title: 'Initial Advising', brief: 'Review student information and profile', content: 'At this step, you need to review the student\'s information.', contentByRole: { student: [{ type: 'text', id: 's1-1', cols: 8, content: '<p>Your consultant will provide initial advising based on your selected program and review your background information, including academic performance, English proficiency, visa history, family background, and financial status.</p><p><strong>Please ensure your profile is complete</strong> to receive the best support.</p>' }, { type: 'checklist', id: 's1-2', cols: 4, title: 'Profile Completion', items: ['Update academic records', 'Add English test scores', 'Complete financial information', 'Upload passport copy'] }], agent: [{ type: 'text', id: 'a1-1', cols: 6, content: '<p>Review student profile and assess eligibility for selected programs. Verify academic credentials, English proficiency scores, and financial capacity.</p><p>Schedule initial consultation within <strong>24-48 hours</strong> of application submission.</p>' }, { type: 'checklist', id: 'a1-2', cols: 6, title: 'Agent Review Checklist', items: ['Review academic transcripts', 'Check English test scores (TOEFL/IELTS)', 'Verify financial documents', 'Assess visa history', 'Schedule advising session'] }, { type: 'section', id: 'a1-3', cols: 12, title: 'Contact Information', content: 'Student Email: student@example.com<br>Phone: +1 234 567 8900<br>Preferred Communication: Email' }], admin: [{ type: 'text', id: 'ad1-1', cols: 6, content: '<p>Monitor agent performance and ensure quality advising standards. Track completion rates and student satisfaction.</p><p><strong>KPI Target:</strong> 95% completion rate within 48 hours</p>' }, { type: 'section', id: 'ad1-2', cols: 6, title: 'Performance Metrics', content: 'Agents Active: 12<br>Avg Response Time: 6 hours<br>Student Satisfaction: 4.8/5.0<br>Completion Rate: 94%' }] } },
+            { id: 2, title: 'Application In Progress', brief: 'Collect and upload application documents', content: 'At this stage, students prepare documents.', contentByRole: { student: [{ type: 'text', id: 's2-1', cols: 12, content: '<p>Please upload all required documents for your application. Make sure all documents are <strong>clear, complete, and in PDF format</strong>.</p><ul><li>Maximum file size: 10MB per document</li><li>All documents must be in English or officially translated</li></ul>' }, { type: 'document', id: 's2-2', cols: 12, title: 'Required Documents', fields: ['Academic Transcripts', 'English Proficiency Test (TOEFL/IELTS)', 'Passport Copy', 'CV/Resume', 'Letters of Recommendation', 'Financial Documents'] }], agent: [{ type: 'text', id: 'a2-1', cols: 6, content: '<p>Review and verify all submitted documents. Ensure documents meet university requirements before final submission.</p><p><strong>Quality Check Required:</strong> All documents must be legible and complete.</p>' }, { type: 'checklist', id: 'a2-2', cols: 6, title: 'Document Verification', items: ['Verify transcript authenticity', 'Check English scores validity date', 'Review CV completeness', 'Confirm all documents in English', 'Approve for submission'] }, { type: 'section', id: 'a2-3', cols: 12, title: 'Internal Notes', content: 'Document Quality: Good<br>Missing Items: None<br>Follow-up: Not required<br>Ready for Submission: Yes' }], admin: [{ type: 'text', id: 'ad2-1', cols: 12, content: '<p>Track document submission rates and identify bottlenecks in the application process.</p><p>Monitor average completion time by document type.</p>' }, { type: 'section', id: 'ad2-2', cols: 12, title: 'System Metrics', content: 'Applications In Progress: 45<br>Avg Completion Time: 5.2 days<br>Document Rejection Rate: 8%<br>Re-upload Requests: 12' }] } },
+            { id: 3, title: 'Submitted to School', brief: 'Application sent to institution', content: 'Application submitted successfully.', contentByRole: { student: [{ type: 'text', id: 's3-1', cols: 7, content: '<p><strong>Congratulations!</strong> Your application has been successfully submitted to the university.</p><p>The university will review your application and may request additional information if needed. Expected review time: <strong>2-6 weeks</strong>.</p>' }, { type: 'checklist', id: 's3-2', cols: 5, title: 'Next Steps', items: ['Application submitted ✓', 'Confirmation email received', 'Track application status regularly', 'Check email for university updates', 'Await response from admissions'] }], agent: [{ type: 'text', id: 'a3-1', cols: 12, content: '<p>Monitor application status and coordinate with university admissions office. Prepare to provide additional information if requested.</p><p>Set follow-up reminder for <strong>2 weeks</strong> after submission.</p>' }, { type: 'section', id: 'a3-2', cols: 12, title: 'University Contact', content: 'University: Example University<br>Admissions Officer: Dr. Jane Smith<br>Email: admissions@university.edu<br>Phone: +1 555 123 4567<br>Expected Review: 2-4 weeks' }], admin: [{ type: 'text', id: 'ad3-1', cols: 6, content: '<p>Track submission success rates and university response times. Identify partnerships requiring attention.</p>' }, { type: 'section', id: 'ad3-2', cols: 6, title: 'Partner Metrics', content: 'Total Submissions This Month: 67<br>Avg University Response Time: 18 days<br>Response Rate: 98%<br>Pending Reviews: 23' }] } },
+            { id: 4, title: 'School Response', brief: 'Awaiting decision', content: 'University is reviewing.', contentByRole: { student: [{ type: 'text', id: 's4-1', content: '<p>The university is reviewing your application. Please check your email regularly for updates.</p><p><strong>Response time typically ranges from 2-6 weeks.</strong> You may be contacted for an interview or additional documents.</p>' }], agent: [{ type: 'text', id: 'a4-1', content: '<p>Follow up with university if review exceeds expected timeline. Prepare student for potential interview or additional document requests.</p><p>Monitor application portal daily for status updates.</p>' }, { type: 'checklist', id: 'a4-2', title: 'Monitoring Tasks', items: ['Check application status daily', 'Monitor email communications', 'Prepare student for interview', 'Draft responses for document requests', 'Update student on progress weekly'] }], admin: [{ type: 'text', id: 'ad4-1', content: '<p>Analyze review timelines and approval rates by university. Identify patterns for process improvement.</p>' }, { type: 'section', id: 'ad4-2', title: 'Review Analytics', content: 'Avg Review Time: 21 days<br>Fastest University: 7 days<br>Slowest University: 42 days<br>Approval Rate Trend: ↑ 5%' }] } },
+            { id: 5, title: 'Offer Letter Issued', brief: 'Offer received', content: 'Congratulations!', contentByRole: { student: [{ type: 'text', id: 's5-1', cols: 12, content: '<p><strong>🎉 Congratulations!</strong> You have received an offer of admission!</p><p>Please review the offer carefully including program details, tuition fees, and <strong>acceptance deadline</strong>. Download all documents for your records.</p>' }, { type: 'document', id: 's5-2', cols: 7, title: 'Offer Documents', fields: ['Official Offer Letter', 'Program Details & Curriculum', 'Tuition Fee Breakdown', 'Scholarship Information (if applicable)'] }, { type: 'checklist', id: 's5-3', cols: 5, title: 'Review Checklist', items: ['Download offer letter', 'Review program details', 'Check acceptance deadline', 'Verify tuition fees', 'Review scholarship terms', 'Decide on acceptance'] }], agent: [{ type: 'text', id: 'a5-1', cols: 12, content: '<p>Guide student through offer review process. Explain terms, deadlines, and next steps for acceptance.</p><p><strong>Action Required:</strong> Schedule congratulatory call within 24 hours.</p>' }, { type: 'checklist', id: 'a5-2', cols: 12, title: 'Agent Tasks', items: ['Congratulate student personally', 'Explain offer terms in detail', 'Discuss financial obligations', 'Set acceptance deadline reminder', 'Prepare acceptance documents', 'Answer student questions'] }], admin: [{ type: 'text', id: 'ad5-1', cols: 6, content: '<p>Track offer acceptance rates and identify factors influencing student decisions.</p>' }, { type: 'section', id: 'ad5-2', cols: 6, title: 'Offer Statistics', content: 'Offers Issued This Month: 34<br>Acceptance Rate: 78%<br>Decline Rate: 15%<br>Still Deciding: 7%<br>Avg Decision Time: 8 days' }] } },
+            { id: 6, title: 'Committed to School', brief: 'Enrollment confirmed', content: 'Enrollment confirmed.', contentByRole: { student: [{ type: 'text', id: 's6-1', content: '<p><strong>Welcome to your new university!</strong> Your enrollment is confirmed.</p><p>The university will begin processing your <strong>I-20 document</strong> for visa application. This typically takes 1-2 weeks.</p>' }, { type: 'document', id: 's6-2', title: 'Enrollment Documents', fields: ['Acceptance Confirmation', 'Enrollment Deposit Receipt', 'Housing Application', 'Course Registration Form'] }], agent: [{ type: 'text', id: 'a6-1', content: '<p>Support student with enrollment confirmation and initial document processing. Coordinate with university for I-20 issuance.</p><p>Begin preparation for visa application stage.</p>' }, { type: 'checklist', id: 'a6-2', title: 'Enrollment Tasks', items: ['Confirm deposit payment received', 'Submit enrollment forms to university', 'Request I-20 document processing', 'Assist with housing application', 'Provide orientation schedule', 'Share visa preparation timeline'] }], admin: [{ type: 'text', id: 'ad6-1', content: '<p>Monitor enrollment confirmation rates and track I-20 processing times across partner universities.</p>' }, { type: 'section', id: 'ad6-2', title: 'Enrollment Metrics', content: 'Enrollments This Month: 28<br>Avg I-20 Processing: 12 days<br>Housing Application Rate: 89%<br>Deposit Payment Rate: 100%' }] } },
+            { id: 7, title: 'Visa Application', brief: 'Apply for student visa', content: 'Visa process begins.', contentByRole: { student: [{ type: 'text', id: 's7-1', cols: 12, content: '<p>Prepare for your <strong>F-1 Student Visa</strong> application. Complete DS-160 form, schedule embassy interview, and gather required documents.</p><p><strong>Important:</strong> Interview preparation is crucial for visa approval.</p>' }, { type: 'document', id: 's7-2', cols: 6, title: 'Visa Documents', fields: ['I-20 Form from University', 'DS-160 Confirmation Page', 'SEVIS Fee Payment Receipt', 'Visa Interview Appointment', 'Passport (valid 6+ months)', 'Financial Evidence', 'Passport Photos (2x2 inches)'] }, { type: 'checklist', id: 's7-3', cols: 6, title: 'Visa Process', items: ['Complete DS-160 form online', 'Pay SEVIS I-901 fee ($350)', 'Schedule visa interview appointment', 'Prepare financial documents', 'Get passport photos taken', 'Practice interview questions', 'Attend visa interview'] }], agent: [{ type: 'text', id: 'a7-1', cols: 4, content: '<p>Guide student through visa application process. Provide comprehensive interview preparation and document verification support.</p><p><strong>Success Rate Target:</strong> 95% visa approval</p>' }, { type: 'checklist', id: 'a7-2', cols: 4, title: 'Agent Support Tasks', items: ['Review DS-160 form completion', 'Verify all financial documents', 'Conduct mock visa interview', 'Provide embassy guidelines & tips', 'Review common interview questions', 'Follow up post-interview within 24hrs'] }, { type: 'section', id: 'a7-3', cols: 4, title: 'Interview Preparation', content: '<strong>Common Questions:</strong><br>- Why this university?<br>- What will you study?<br>- How will you fund your education?<br>- What are your career plans?<br>- Why study in the USA?' }], admin: [{ type: 'text', id: 'ad7-1', cols: 12, content: '<p>Track visa approval rates by country and identify common rejection reasons for process improvement.</p>' }, { type: 'section', id: 'ad7-2', cols: 12, title: 'Visa Analytics', content: 'Overall Approval Rate: 92%<br>Rejection Rate: 6%<br>Administrative Processing: 2%<br>Avg Interview Wait Time: 23 days<br>Top Rejection Reason: Insufficient financial evidence' }] } },
+            { id: 8, title: 'Pre-Departure', brief: 'Prepare for journey', content: 'Final preparations.', contentByRole: { student: [{ type: 'text', id: 's8-1', cols: 5, content: '<p><strong>Get ready for your journey!</strong> Complete all pre-departure tasks to ensure a smooth transition.</p><p>Attend our mandatory pre-departure orientation session. Book flights at least 1 week before term starts.</p>' }, { type: 'checklist', id: 's8-2', cols: 7, title: 'Pre-Departure Checklist', items: ['Book flight tickets', 'Arrange on-campus/off-campus accommodation', 'Attend pre-departure orientation', 'Pack all important documents', 'Open US bank account (if possible)', 'Purchase health insurance', 'Arrange airport pickup service', 'Pack essential items', 'Inform family of travel details'] }], agent: [{ type: 'text', id: 'a8-1', cols: 4, content: '<p>Assist student with final travel preparations. Provide comprehensive pre-departure checklist and conduct orientation session.</p><p><strong>Ensure student has:</strong> Accommodation confirmed, flight booked, all documents packed.</p>' }, { type: 'checklist', id: 'a8-2', cols: 4, title: 'Agent Final Tasks', items: ['Confirm flight details with student', 'Verify accommodation booking', 'Conduct pre-departure orientation', 'Provide local emergency contacts', 'Share arrival day guidelines', 'Give campus map and resources', 'Schedule post-arrival check-in'] }, { type: 'section', id: 'a8-3', cols: 4, title: 'Pre-Departure Resources', content: '<strong>Essential Contacts:</strong><br>University International Office: +1-555-1000<br>Housing Office: +1-555-2000<br>Emergency: 911<br>Student Helpline: +1-555-3000<br><br><strong>Arrival Day:</strong> Report to International Student Office' }], admin: [{ type: 'text', id: 'ad8-1', cols: 12, content: '<p>Monitor pre-departure completion rates and gather feedback for orientation program improvement.</p>' }, { type: 'section', id: 'ad8-2', cols: 12, title: 'Pre-Departure Metrics', content: 'Orientation Attendance: 96%<br>Accommodation Booking Rate: 91%<br>Travel Insurance Uptake: 88%<br>Airport Pickup Requests: 67%<br>Student Satisfaction: 4.7/5.0' }] } },
+            { id: 9, title: 'Arrival', brief: 'Welcome to campus', content: 'Welcome!', contentByRole: { student: [{ type: 'text', id: 's9-1', content: '<p><strong>🎓 Welcome to your new home!</strong> Complete check-in procedures at your university and attend orientation sessions.</p><p>First week is crucial - attend all sessions, meet your academic advisor, and start settling into campus life.</p>' }, { type: 'checklist', id: 's9-2', title: 'Arrival Checklist', items: ['Complete university check-in', 'Activate student ID card', 'Attend international student orientation', 'Meet with academic advisor', 'Set up campus email & portal', 'Explore campus facilities', 'Open local bank account', 'Get local SIM card', 'Join student organizations'] }], agent: [{ type: 'text', id: 'a9-1', content: '<p>Confirm successful arrival and initial settlement. Provide ongoing support for first weeks on campus.</p><p><strong>Follow-up:</strong> Check in with student after 1 week, 1 month, and 3 months.</p>' }, { type: 'checklist', id: 'a9-2', title: 'Post-Arrival Support', items: ['Confirm safe arrival', 'Check accommodation status', 'Verify university enrollment completed', 'Provide local support contacts', 'Address any immediate concerns', 'Schedule 1-week follow-up call', 'Share cultural adjustment resources'] }], admin: [{ type: 'text', id: 'ad9-1', content: '<p>Track successful arrivals and gather feedback for continuous program improvement. Monitor student satisfaction in initial weeks.</p>' }, { type: 'section', id: 'ad9-2', title: 'Arrival Metrics', content: 'Successful Arrivals: 27/28 (96%)<br>Initial Satisfaction Score: 4.6/5.0<br>Support Requests (Week 1): 15<br>Common Issues: Housing (40%), Banking (30%), Course Registration (20%)<br>Resolution Time: Avg 2 days' }] } }
+        ];
+
+        function createStepCard(step) {
+            return `
+                <div class="step-card bg-white rounded-xl shadow-sm border border-gray-200" data-step="${step.id}">
+                    <div class="step-header flex items-center justify-between p-5 cursor-pointer hover:bg-gray-50">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full bg-red-100 text-red-600 font-semibold">${step.id}</div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">${step.title}</h3>
+                                <p class="text-sm text-gray-500">${step.brief}</p>
+                            </div>
+                        </div>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform"></i>
+                    </div>
+                    <div class="step-content">
+                        <div class="p-6 border-t border-gray-200 space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Step Title</label>
+                                <input type="text" class="title-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" value="${step.title}">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Brief Description</label>
+                                <input type="text" class="brief-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" value="${step.brief}">
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <label class="block text-sm font-medium text-gray-700">Main Content Builder</label>
+                                    <button class="preview-btn px-3 py-1.5 text-xs text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center">
+                                        <i data-lucide="eye" class="w-3 h-3 mr-1"></i>Preview
+                                    </button>
+                                </div>
+                                
+                                <!-- Role Tabs -->
+                                <div class="role-tabs-container mb-4">
+                                    <div class="flex items-center space-x-2 border-b border-gray-200">
+                                        <button class="role-tab active" data-role="student">
+                                            <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+                                            <span>Student</span>
+                                            <span class="role-badge">0</span>
+                                        </button>
+                                        <button class="role-tab" data-role="agent">
+                                            <i data-lucide="briefcase" class="w-4 h-4"></i>
+                                            <span>Agent</span>
+                                            <span class="role-badge">0</span>
+                                        </button>
+                                        <button class="role-tab" data-role="admin">
+                                            <i data-lucide="shield" class="w-4 h-4"></i>
+                                            <span>Admin & Advisor</span>
+                                            <span class="role-badge">0</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Role Context Banner -->
+                                <div class="role-context-banner mb-3 p-3 rounded-lg flex items-center justify-between" data-current-role="student">
+                                    <div class="flex items-center space-x-2">
+                                        <i data-lucide="info" class="w-4 h-4"></i>
+                                        <span class="text-sm font-medium">Editing content for: <strong class="role-name">STUDENT VIEW</strong></span>
+                                    </div>
+                                    <div class="relative copy-from-container">
+                                        <button class="copy-from-role-btn text-xs px-3 py-1.5 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center space-x-1">
+                                            <i data-lucide="copy" class="w-3 h-3"></i>
+                                            <span>Copy From</span>
+                                            <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                                        </button>
+                                        <div class="copy-from-menu hidden absolute right-0 top-full mt-2 bg-white border border-gray-200 rounded-lg shadow-lg z-50 min-w-[180px]">
+                                            <button class="copy-from-student w-full px-4 py-2 text-left text-sm hover:bg-blue-50 flex items-center space-x-2" data-from-role="student">
+                                                <i data-lucide="graduation-cap" class="w-4 h-4 text-blue-600"></i>
+                                                <span>Student</span>
+                                            </button>
+                                            <button class="copy-from-agent w-full px-4 py-2 text-left text-sm hover:bg-green-50 flex items-center space-x-2" data-from-role="agent">
+                                                <i data-lucide="briefcase" class="w-4 h-4 text-green-600"></i>
+                                                <span>Agent</span>
+                                            </button>
+                                            <button class="copy-from-admin w-full px-4 py-2 text-left text-sm hover:bg-red-50 flex items-center space-x-2" data-from-role="admin">
+                                                <i data-lucide="shield" class="w-4 h-4 text-red-600"></i>
+                                                <span>Admin & Advisor</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Permissions Box (per role) -->
+                                <div class="permissions-box mb-4 p-4 border border-gray-200 rounded-lg bg-gray-50">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div class="text-sm font-medium">Permissions for: <strong class="perm-role-name">STUDENT</strong></div>
+                                        <div class="text-xs text-gray-500">Controls allowed actions in this step</div>
+                                    </div>
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                        <label class="flex items-center space-x-2 text-sm">
+                                            <input type="checkbox" class="permission-toggle w-4 h-4 text-red-600 rounded" data-action="view">
+                                            <span>View</span>
+                                        </label>
+                                        <label class="flex items-center space-x-2 text-sm">
+                                            <input type="checkbox" class="permission-toggle w-4 h-4 text-red-600 rounded" data-action="rejectCancel">
+                                            <span>Reject & Cancel Application</span>
+                                        </label>
+                                        <label class="flex items-center space-x-2 text-sm">
+                                            <input type="checkbox" class="permission-toggle w-4 h-4 text-red-600 rounded" data-action="updateStep">
+                                            <span>Update Step</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="content-blocks-container space-y-3 mb-3" data-step-id="${step.id}" data-role="student"></div>
+                                <div class="relative">
+                                    <button class="add-block-btn w-full px-5 py-4 border-2 border-dashed border-red-300 rounded-lg text-gray-700 bg-white hover:bg-red-600 hover:text-white hover:border-red-600 flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-xl">
+                                        <i data-lucide="plus" class="w-5 h-5 mr-2"></i>
+                                        <span class="font-semibold">Add Content Block</span>
+                                    </button>
+                                    <div class="block-type-menu hidden absolute top-full left-0 right-0 mt-2 bg-white border-2 border-gray-200 rounded-lg shadow-xl z-50 overflow-hidden">
+                                        <button class="add-text-block w-full px-5 py-4 text-left hover:bg-red-50 hover:border-l-4 hover:border-l-red-600 flex items-center border-b border-gray-200 transition-all duration-200 group">
+                                            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center mr-4 group-hover:bg-red-600 transition-all">
+                                                <i data-lucide="align-left" class="w-5 h-5 text-red-600 group-hover:text-white"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-sm text-gray-900">Rich Text</div>
+                                                <div class="text-xs text-gray-600">Add formatted text with editor</div>
+                                            </div>
+                                        </button>
+                                        <button class="add-document-block w-full px-5 py-4 text-left hover:bg-red-50 hover:border-l-4 hover:border-l-red-600 flex items-center border-b border-gray-200 transition-all duration-200 group">
+                                            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center mr-4 group-hover:bg-red-600 transition-all">
+                                                <i data-lucide="file-up" class="w-5 h-5 text-red-600 group-hover:text-white"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-sm text-gray-900">Document Upload</div>
+                                                <div class="text-xs text-gray-600">Request file uploads</div>
+                                            </div>
+                                        </button>
+                                        <button class="add-checklist-block w-full px-5 py-4 text-left hover:bg-red-50 hover:border-l-4 hover:border-l-red-600 flex items-center border-b border-gray-200 transition-all duration-200 group">
+                                            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center mr-4 group-hover:bg-red-600 transition-all">
+                                                <i data-lucide="check-square" class="w-5 h-5 text-red-600 group-hover:text-white"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-sm text-gray-900">Checklist</div>
+                                                <div class="text-xs text-gray-600">Create task lists</div>
+                                            </div>
+                                        </button>
+                                        <button class="add-section-block w-full px-5 py-4 text-left hover:bg-red-50 hover:border-l-4 hover:border-l-red-600 flex items-center transition-all duration-200 group">
+                                            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center mr-4 group-hover:bg-red-600 transition-all">
+                                                <i data-lucide="layout" class="w-5 h-5 text-red-600 group-hover:text-white"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-sm text-gray-900">Custom Section</div>
+                                                <div class="text-xs text-gray-600">Add custom content block</div>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-end space-x-3 pt-4 border-t">
+                                <button class="cancel-btn px-4 py-2 text-sm text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">Cancel</button>
+                                <button class="save-btn px-4 py-2 text-sm text-white rounded-lg hover:bg-red-700" style="background-color: #d82128;">Save Step</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+        }
+
+        let blockCounter = 0;
+        const quillInstances = {};
+
+        function createRichTextBlock() {
+            const id = `text-block-${blockCounter++}`;
+            return `
+                <div class="content-block bg-white border-2 border-gray-200 rounded-lg" data-block-type="text" data-block-id="${id}" data-cols="12" data-rows="1" draggable="true">
+                    <div class="width-indicator">100%</div>
+                    <div class="resize-handle resize-handle-right" data-direction="right"></div>
+                    <div class="resize-handle resize-handle-left" data-direction="left"></div>
+                    <div class="resize-handle resize-handle-top" data-direction="top"></div>
+                    <div class="resize-handle resize-handle-bottom" data-direction="bottom"></div>
+                    <div class="block-header flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-white rounded-t-lg cursor-pointer hover:from-red-50 hover:to-red-100 transition-all duration-300 border-b-2 border-gray-200 hover:border-red-400">
+                        <div class="flex items-center space-x-3">
+                            <div class="flex items-center justify-center w-8 h-8 bg-red-600 text-white rounded-full text-xs font-bold block-position shadow-md">#</div>
+                            <i data-lucide="grip-vertical" class="w-5 h-5 text-gray-600 hover:text-red-600 transition-colors"></i>
+                            <span class="text-xs font-semibold text-white bg-red-600 px-3 py-1.5 rounded-full shadow-md">📝 Rich Text</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="delete-block-btn p-2 text-gray-600 hover:text-red-600 rounded-lg hover:bg-red-50 transition-all duration-200" title="Delete"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                    <div class="block-body p-4 border-t border-gray-200">
+                        <div id="${id}" class="bg-white border border-gray-300 rounded"></div>
+                    </div>
+                </div>`;
+        }
+
+        function createDocumentBlock() {
+            const id = `doc-block-${blockCounter++}`;
+            return `
+                <div class="content-block bg-white border-2 border-gray-200 rounded-lg" data-block-type="document" data-block-id="${id}" data-cols="12" data-rows="1" draggable="true">
+                    <div class="width-indicator">100%</div>
+                    <div class="resize-handle resize-handle-right" data-direction="right"></div>
+                    <div class="resize-handle resize-handle-left" data-direction="left"></div>
+                    <div class="resize-handle resize-handle-top" data-direction="top"></div>
+                    <div class="resize-handle resize-handle-bottom" data-direction="bottom"></div>
+                    <div class="block-header flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-white rounded-t-lg cursor-pointer hover:from-red-50 hover:to-red-100 transition-all duration-300 border-b-2 border-gray-200 hover:border-red-400">
+                        <div class="flex items-center space-x-3">
+                            <div class="flex items-center justify-center w-8 h-8 bg-red-600 text-white rounded-full text-xs font-bold block-position shadow-md">#</div>
+                            <i data-lucide="grip-vertical" class="w-5 h-5 text-gray-600 hover:text-red-600 transition-colors"></i>
+                            <span class="text-xs font-semibold text-white bg-red-600 px-3 py-1.5 rounded-full shadow-md">📤 Document Upload</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="delete-block-btn p-2 text-gray-600 hover:text-red-600 rounded-lg hover:bg-red-50 transition-all duration-200" title="Delete"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                    <div class="block-body p-4 border-t border-gray-200 space-y-3">
+                        <input type="text" placeholder="Section Title (e.g., Required Documents)" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium">
+                        <textarea placeholder="Instructions for users..." rows="2" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"></textarea>
+                        <div class="space-y-2">
+                            <input type="text" placeholder="Document name (e.g., CV/Resume)" class="w-full px-3 py-2 border border-gray-300 rounded text-sm">
+                            <button class="add-doc-field-btn text-sm text-red-600 hover:text-red-700 flex items-center"><i data-lucide="plus" class="w-3 h-3 mr-1"></i>Add another document</button>
+                        </div>
+                    </div>
+                </div>`;
+        }
+
+        function createChecklistBlock() {
+            const id = `checklist-block-${blockCounter++}`;
+            return `
+                <div class="content-block bg-white border-2 border-gray-200 rounded-lg" data-block-type="checklist" data-block-id="${id}" data-cols="12" data-rows="1" draggable="true">
+                    <div class="width-indicator">100%</div>
+                    <div class="resize-handle resize-handle-right" data-direction="right"></div>
+                    <div class="resize-handle resize-handle-left" data-direction="left"></div>
+                    <div class="resize-handle resize-handle-top" data-direction="top"></div>
+                    <div class="resize-handle resize-handle-bottom" data-direction="bottom"></div>
+                    <div class="block-header flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-white rounded-t-lg cursor-pointer hover:from-red-50 hover:to-red-100 transition-all duration-300 border-b-2 border-gray-200 hover:border-red-400">
+                        <div class="flex items-center space-x-3">
+                            <div class="flex items-center justify-center w-8 h-8 bg-red-600 text-white rounded-full text-xs font-bold block-position shadow-md">#</div>
+                            <i data-lucide="grip-vertical" class="w-5 h-5 text-gray-600 hover:text-red-600 transition-colors"></i>
+                            <span class="text-xs font-semibold text-white bg-red-600 px-3 py-1.5 rounded-full shadow-md">✅ Checklist</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="delete-block-btn p-2 text-gray-600 hover:text-red-600 rounded-lg hover:bg-red-50 transition-all duration-200" title="Delete"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                    <div class="block-body p-4 border-t border-gray-200 space-y-3">
+                        <input type="text" placeholder="Checklist Title" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium">
+                        <div class="checklist-items space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <input type="checkbox" class="w-4 h-4 text-red-600 rounded" disabled>
+                                <input type="text" placeholder="Checklist item" class="flex-1 px-3 py-1.5 border border-gray-300 rounded text-sm">
+                                <button class="remove-item-btn text-gray-400 hover:text-red-600"><i data-lucide="x" class="w-4 h-4"></i></button>
+                            </div>
+                        </div>
+                        <button class="add-checklist-item-btn text-sm text-red-600 hover:text-red-700 flex items-center"><i data-lucide="plus" class="w-3 h-3 mr-1"></i>Add item</button>
+                    </div>
+                </div>`;
+        }
+
+        function createSectionBlock() {
+            const id = `section-block-${blockCounter++}`;
+            return `
+                <div class="content-block bg-white border-2 border-gray-200 rounded-lg" data-block-type="section" data-block-id="${id}" data-cols="12" data-rows="1" draggable="true">
+                    <div class="width-indicator">100%</div>
+                    <div class="resize-handle resize-handle-right" data-direction="right"></div>
+                    <div class="resize-handle resize-handle-left" data-direction="left"></div>
+                    <div class="resize-handle resize-handle-top" data-direction="top"></div>
+                    <div class="resize-handle resize-handle-bottom" data-direction="bottom"></div>
+                    <div class="block-header flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-white rounded-t-lg cursor-pointer hover:from-red-50 hover:to-red-100 transition-all duration-300 border-b-2 border-gray-200 hover:border-red-400">
+                        <div class="flex items-center space-x-3">
+                            <div class="flex items-center justify-center w-8 h-8 bg-red-600 text-white rounded-full text-xs font-bold block-position shadow-md">#</div>
+                            <i data-lucide="grip-vertical" class="w-5 h-5 text-gray-600 hover:text-red-600 transition-colors"></i>
+                            <span class="text-xs font-semibold text-white bg-red-600 px-3 py-1.5 rounded-full shadow-md">📋 Custom Section</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="delete-block-btn p-2 text-gray-600 hover:text-red-600 rounded-lg hover:bg-red-50 transition-all duration-200" title="Delete"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                    <div class="block-body p-4 border-t border-gray-200 space-y-3">
+                        <input type="text" placeholder="Section Title (e.g., Tiffin University Details)" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium">
+                        <div id="${id}" class="bg-white border border-gray-300 rounded"></div>
+                    </div>
+                </div>`;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            lucide.createIcons();
+            const container = document.getElementById('steps-container');
+            stepsData.forEach(step => container.innerHTML += createStepCard(step));
+            lucide.createIcons();
+
+            // Current role tracker
+            let currentRole = 'student';
+
+            // Ensure default permissions for all steps
+            stepsData.forEach(step => ensureStepPermissions(step));
+
+            // Load default student blocks for all steps
+            document.querySelectorAll('.step-card').forEach(stepCard => {
+                loadRoleBlocks(stepCard, 'student');
+                loadPermissionsUI(stepCard, 'student');
+            });
+
+            // Toggle step cards
+            document.querySelectorAll('.step-header').forEach(header => {
+                header.addEventListener('click', function () {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('i[data-lucide="chevron-down"]');
+                    content.classList.toggle('expanded');
+                    icon.style.transform = content.classList.contains('expanded') ? 'rotate(180deg)' : 'rotate(0deg)';
+                });
+            });
+
+            // Role Tab Switching
+            document.addEventListener('click', (e) => {
+                const roleTab = e.target.closest('.role-tab');
+                if (roleTab) {
+                    const newRole = roleTab.getAttribute('data-role');
+                    const stepCard = roleTab.closest('.step-card');
+                    const container = stepCard.querySelector('.content-blocks-container');
+                    const banner = stepCard.querySelector('.role-context-banner');
+
+                    // Update active tab
+                    stepCard.querySelectorAll('.role-tab').forEach(tab => tab.classList.remove('active'));
+                    roleTab.classList.add('active');
+
+                    // Update current role
+                    currentRole = newRole;
+                    container.setAttribute('data-role', newRole);
+                    banner.setAttribute('data-current-role', newRole);
+
+                    // Update banner text
+                    const roleNames = { student: 'STUDENT VIEW', agent: 'AGENT & ADVISOR VIEW', admin: 'ADMIN VIEW' };
+                    banner.querySelector('.role-name').textContent = roleNames[newRole];
+
+                    // Load role-specific blocks
+                    loadRoleBlocks(stepCard, newRole);
+                    // Load permissions UI for selected role
+                    loadPermissionsUI(stepCard, newRole);
+
+                    lucide.createIcons();
+                }
+            });
+
+            // Load blocks for specific role
+            function loadRoleBlocks(stepCard, role) {
+                const stepId = stepCard.getAttribute('data-step');
+                const step = stepsData.find(s => s.id == stepId);
+                const container = stepCard.querySelector('.content-blocks-container');
+
+                // Clear current blocks
+                container.innerHTML = '';
+
+                // Load and render blocks for this role
+                const blocks = step.contentByRole[role] || [];
+                blocks.forEach(blockData => {
+                    if (blockData.type === 'text') {
+                        const html = createRichTextBlock();
+                        container.insertAdjacentHTML('beforeend', html);
+                        const newBlock = container.lastElementChild;
+                        const editorId = newBlock.querySelector('[id^="text-block-"]').id;
+                        blockData.id = editorId;
+                        // Apply column width if specified
+                        if (blockData.cols) {
+                            newBlock.setAttribute('data-cols', blockData.cols);
+                        }
+                        quillInstances[editorId] = new Quill(`#${editorId}`, { theme: 'snow', modules: { toolbar: [['bold', 'italic', 'underline'], ['link'], [{ 'list': 'ordered' }, { 'list': 'bullet' }]] } });
+                        // Set content if available
+                        if (blockData.content) {
+                            quillInstances[editorId].root.innerHTML = blockData.content;
+                        }
+                    } else if (blockData.type === 'document') {
+                        const html = createDocumentBlock();
+                        container.insertAdjacentHTML('beforeend', html);
+                        const newBlock = container.lastElementChild;
+                        blockData.id = newBlock.getAttribute('data-block-id');
+                        // Apply column width if specified
+                        if (blockData.cols) {
+                            newBlock.setAttribute('data-cols', blockData.cols);
+                        }
+                        // Set title if available
+                        if (blockData.title) {
+                            const titleInput = newBlock.querySelector('input[placeholder*="Section Title"]');
+                            if (titleInput) titleInput.value = blockData.title;
+                        }
+                    } else if (blockData.type === 'checklist') {
+                        const html = createChecklistBlock();
+                        container.insertAdjacentHTML('beforeend', html);
+                        const newBlock = container.lastElementChild;
+                        blockData.id = newBlock.getAttribute('data-block-id');
+                        // Apply column width if specified
+                        if (blockData.cols) {
+                            newBlock.setAttribute('data-cols', blockData.cols);
+                        }
+                        // Set title if available
+                        if (blockData.title) {
+                            const titleInput = newBlock.querySelector('input[placeholder="Checklist Title"]');
+                            if (titleInput) titleInput.value = blockData.title;
+                        }
+                        // Populate checklist items
+                        if (blockData.items && blockData.items.length > 0) {
+                            const itemsContainer = newBlock.querySelector('.checklist-items');
+                            if (itemsContainer) {
+                                itemsContainer.innerHTML = '';
+                                blockData.items.forEach(item => {
+                                    itemsContainer.insertAdjacentHTML('beforeend', `
+                                        <div class="flex items-center space-x-2">
+                                            <input type="checkbox" class="w-4 h-4 text-red-600 rounded" disabled>
+                                            <input type="text" value="${item}" class="flex-1 px-3 py-1.5 border border-gray-300 rounded text-sm">
+                                            <button class="remove-item-btn text-gray-400 hover:text-red-600"><i data-lucide="x" class="w-4 h-4"></i></button>
+                                        </div>
+                                    `);
+                                });
+                            }
+                        }
+                    } else if (blockData.type === 'section') {
+                        const html = createSectionBlock();
+                        container.insertAdjacentHTML('beforeend', html);
+                        const newBlock = container.lastElementChild;
+                        const editorId = newBlock.querySelector('[id^="section-block-"]').id;
+                        blockData.id = editorId;
+                        // Apply column width if specified
+                        if (blockData.cols) {
+                            newBlock.setAttribute('data-cols', blockData.cols);
+                        }
+                        // Set title if available
+                        if (blockData.title) {
+                            const titleInput = newBlock.querySelector('input[placeholder*="Section Title"]');
+                            if (titleInput) titleInput.value = blockData.title;
+                        }
+                        quillInstances[editorId] = new Quill(`#${editorId}`, { theme: 'snow', modules: { toolbar: [['bold', 'italic'], ['link']] } });
+                        // Set content if available
+                        if (blockData.content) {
+                            quillInstances[editorId].root.innerHTML = blockData.content;
+                        }
+                    }
+                });
+
+                lucide.createIcons();
+                updateBlockPositions(container);
+                updateRoleBadges(stepCard);
+            }
+
+            // Ensure a step has permissions object with defaults
+            function ensureStepPermissions(step) {
+                const defaults = { view: true, reject: false, cancel: false, updateStep: false };
+                if (!step.permissions) {
+                    step.permissions = {
+                        student: { ...defaults },
+                        agent: { view: true, reject: true, cancel: true, updateStep: true },
+                        admin: { view: true, reject: true, cancel: true, updateStep: true },
+                    };
+                } else {
+                    ['student', 'agent', 'admin'].forEach(r => {
+                        step.permissions[r] = { ...defaults, ...(step.permissions[r] || {}) };
+                    });
+                }
+            }
+
+            // Load permissions UI values into checkboxes for given role
+            function loadPermissionsUI(stepCard, role) {
+                const stepId = stepCard.getAttribute('data-step');
+                const step = stepsData.find(s => s.id == stepId);
+                ensureStepPermissions(step);
+                const box = stepCard.querySelector('.permissions-box');
+                if (!box) return;
+                const roleLabel = { student: 'STUDENT', agent: 'AGENT & ADVISOR', admin: 'ADMIN' };
+                box.querySelector('.perm-role-name').textContent = roleLabel[role];
+                box.querySelectorAll('.permission-toggle').forEach(input => {
+                    const action = input.getAttribute('data-action');
+                    if (action === 'rejectCancel') {
+                        input.checked = !!(step.permissions[role].reject || step.permissions[role].cancel);
+                    } else {
+                        input.checked = !!step.permissions[role][action];
+                    }
+                });
+            }
+
+            // Update role badge counters
+            function updateRoleBadges(stepCard) {
+                const stepId = stepCard.getAttribute('data-step');
+                const step = stepsData.find(s => s.id == stepId);
+
+                stepCard.querySelectorAll('.role-tab').forEach(tab => {
+                    const role = tab.getAttribute('data-role');
+                    const count = step.contentByRole[role]?.length || 0;
+                    tab.querySelector('.role-badge').textContent = count;
+                });
+            }
+
+            // Handle permission toggle changes
+            document.addEventListener('change', (e) => {
+                const toggle = e.target.closest('.permission-toggle');
+                if (toggle) {
+                    const stepCard = toggle.closest('.step-card');
+                    const container = stepCard.querySelector('.content-blocks-container');
+                    const role = container.getAttribute('data-role');
+                    const stepId = stepCard.getAttribute('data-step');
+                    const step = stepsData.find(s => s.id == stepId);
+                    ensureStepPermissions(step);
+                    const action = toggle.getAttribute('data-action');
+                    if (action === 'rejectCancel') {
+                        // Combined control: set both reject and cancel to the same value
+                        step.permissions[role].reject = toggle.checked;
+                        step.permissions[role].cancel = toggle.checked;
+                    } else {
+                        step.permissions[role][action] = toggle.checked;
+                    }
+                }
+            });
+
+            // Add Block Menu Toggle
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.add-block-btn')) {
+                    const menu = e.target.closest('.relative').querySelector('.block-type-menu');
+                    menu.classList.toggle('hidden');
+                } else if (!e.target.closest('.block-type-menu')) {
+                    document.querySelectorAll('.block-type-menu').forEach(m => m.classList.add('hidden'));
+                }
+            });
+
+            // Update block position numbers
+            function updateBlockPositions(container) {
+                const blocks = container.querySelectorAll('.content-block');
+                blocks.forEach((block, index) => {
+                    const positionBadge = block.querySelector('.block-position');
+                    if (positionBadge) {
+                        positionBadge.textContent = index + 1;
+                    }
+                });
+            }
+
+            // Add Text Block
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.add-text-block')) {
+                    const container = e.target.closest('.step-content').querySelector('.content-blocks-container');
+                    const role = container.getAttribute('data-role');
+                    const stepCard = container.closest('.step-card');
+                    const stepId = stepCard.getAttribute('data-step');
+                    const step = stepsData.find(s => s.id == stepId);
+
+                    container.insertAdjacentHTML('beforeend', createRichTextBlock());
+                    lucide.createIcons();
+                    const newBlock = container.lastElementChild;
+                    const editorId = newBlock.querySelector('[id^="text-block-"]').id;
+                    quillInstances[editorId] = new Quill(`#${editorId}`, { theme: 'snow', modules: { toolbar: [['bold', 'italic', 'underline'], ['link'], [{ 'list': 'ordered' }, { 'list': 'bullet' }]] } });
+
+                    // Save to role data
+                    step.contentByRole[role].push({ type: 'text', id: editorId });
+
+                    updateBlockPositions(container);
+                    updateRoleBadges(stepCard);
+                    e.target.closest('.block-type-menu').classList.add('hidden');
+                }
+            });
+
+            // Add Document Block
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.add-document-block')) {
+                    const container = e.target.closest('.step-content').querySelector('.content-blocks-container');
+                    const role = container.getAttribute('data-role');
+                    const stepCard = container.closest('.step-card');
+                    const stepId = stepCard.getAttribute('data-step');
+                    const step = stepsData.find(s => s.id == stepId);
+
+                    container.insertAdjacentHTML('beforeend', createDocumentBlock());
+                    lucide.createIcons();
+
+                    const newBlock = container.lastElementChild;
+                    const blockId = newBlock.getAttribute('data-block-id');
+
+                    // Save to role data
+                    step.contentByRole[role].push({ type: 'document', id: blockId });
+
+                    updateBlockPositions(container);
+                    updateRoleBadges(stepCard);
+                    e.target.closest('.block-type-menu').classList.add('hidden');
+                }
+            });
+
+            // Add Checklist Block
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.add-checklist-block')) {
+                    const container = e.target.closest('.step-content').querySelector('.content-blocks-container');
+                    const role = container.getAttribute('data-role');
+                    const stepCard = container.closest('.step-card');
+                    const stepId = stepCard.getAttribute('data-step');
+                    const step = stepsData.find(s => s.id == stepId);
+
+                    container.insertAdjacentHTML('beforeend', createChecklistBlock());
+                    lucide.createIcons();
+
+                    const newBlock = container.lastElementChild;
+                    const blockId = newBlock.getAttribute('data-block-id');
+
+                    // Save to role data
+                    step.contentByRole[role].push({ type: 'checklist', id: blockId });
+
+                    updateBlockPositions(container);
+                    updateRoleBadges(stepCard);
+                    e.target.closest('.block-type-menu').classList.add('hidden');
+                }
+            });
+
+            // Add Section Block
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.add-section-block')) {
+                    const container = e.target.closest('.step-content').querySelector('.content-blocks-container');
+                    const role = container.getAttribute('data-role');
+                    const stepCard = container.closest('.step-card');
+                    const stepId = stepCard.getAttribute('data-step');
+                    const step = stepsData.find(s => s.id == stepId);
+
+                    container.insertAdjacentHTML('beforeend', createSectionBlock());
+                    lucide.createIcons();
+                    const newBlock = container.lastElementChild;
+                    const editorId = newBlock.querySelector('[id^="section-block-"]').id;
+                    quillInstances[editorId] = new Quill(`#${editorId}`, { theme: 'snow', modules: { toolbar: [['bold', 'italic'], ['link']] } });
+
+                    // Save to role data
+                    step.contentByRole[role].push({ type: 'section', id: editorId });
+
+                    updateBlockPositions(container);
+                    updateRoleBadges(stepCard);
+                    e.target.closest('.block-type-menu').classList.add('hidden');
+                }
+            });
+
+            // Resize Handle Functionality
+            let resizingBlock = null;
+            let resizeDirection = null;
+            let startX = 0;
+            let startY = 0;
+            let startCols = 0;
+            let startHeight = 0;
+            let containerWidth = 0;
+            let activeHandle = null;
+
+            document.addEventListener('mousedown', (e) => {
+                if (e.target.closest('.resize-handle')) {
+                    e.preventDefault();
+                    resizingBlock = e.target.closest('.content-block');
+                    activeHandle = e.target.closest('.resize-handle');
+                    resizeDirection = activeHandle.getAttribute('data-direction');
+                    const container = resizingBlock.parentNode;
+
+                    startX = e.clientX;
+                    startY = e.clientY;
+                    startCols = parseInt(resizingBlock.getAttribute('data-cols')) || 12;
+                    startHeight = resizingBlock.offsetHeight;
+                    containerWidth = container.offsetWidth;
+
+                    resizingBlock.classList.add('resizing');
+                    resizingBlock.setAttribute('draggable', 'false');
+                    activeHandle.classList.add('active');
+
+                    if (resizeDirection === 'right' || resizeDirection === 'left') {
+                        resizingBlock.querySelector('.width-indicator').classList.add('show');
+                        document.body.style.cursor = 'ew-resize';
+                    } else {
+                        document.body.style.cursor = 'ns-resize';
+                    }
+                    document.body.style.userSelect = 'none';
+                }
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (resizingBlock && resizeDirection) {
+                    e.preventDefault();
+
+                    if (resizeDirection === 'right') {
+                        const deltaX = e.clientX - startX;
+                        const colWidth = containerWidth / 12;
+                        const deltaCols = Math.round(deltaX / colWidth);
+                        let newCols = Math.max(1, Math.min(12, startCols + deltaCols));
+
+                        resizingBlock.setAttribute('data-cols', newCols);
+                        const percentage = Math.round((newCols / 12) * 100);
+                        resizingBlock.querySelector('.width-indicator').textContent = `${percentage}%`;
+                    }
+                    else if (resizeDirection === 'left') {
+                        const deltaX = startX - e.clientX;
+                        const colWidth = containerWidth / 12;
+                        const deltaCols = Math.round(deltaX / colWidth);
+                        let newCols = Math.max(1, Math.min(12, startCols + deltaCols));
+
+                        resizingBlock.setAttribute('data-cols', newCols);
+                        const percentage = Math.round((newCols / 12) * 100);
+                        resizingBlock.querySelector('.width-indicator').textContent = `${percentage}%`;
+                    }
+                    else if (resizeDirection === 'bottom') {
+                        const deltaY = e.clientY - startY;
+                        let newHeight = Math.max(100, startHeight + deltaY);
+                        resizingBlock.style.minHeight = newHeight + 'px';
+
+                        // Auto-calculate row span based on height
+                        const rowHeight = 100; // base row height from grid-auto-rows
+                        const calculatedRows = Math.max(1, Math.min(5, Math.round(newHeight / rowHeight)));
+                        resizingBlock.setAttribute('data-rows', calculatedRows);
+                    }
+                    else if (resizeDirection === 'top') {
+                        const deltaY = startY - e.clientY;
+                        let newHeight = Math.max(100, startHeight + deltaY);
+                        resizingBlock.style.minHeight = newHeight + 'px';
+
+                        // Auto-calculate row span based on height
+                        const rowHeight = 100; // base row height from grid-auto-rows
+                        const calculatedRows = Math.max(1, Math.min(5, Math.round(newHeight / rowHeight)));
+                        resizingBlock.setAttribute('data-rows', calculatedRows);
+                    }
+                }
+            });
+
+            document.addEventListener('mouseup', (e) => {
+                if (resizingBlock) {
+                    resizingBlock.classList.remove('resizing');
+                    resizingBlock.setAttribute('draggable', 'true');
+                    if (activeHandle) activeHandle.classList.remove('active');
+                    resizingBlock.querySelector('.width-indicator').classList.remove('show');
+
+                    document.body.style.cursor = '';
+                    document.body.style.userSelect = '';
+
+                    resizingBlock = null;
+                    resizeDirection = null;
+                    activeHandle = null;
+                }
+            });
+
+
+            // Delete Block (immediate, no confirm)
+            document.addEventListener('click', (e) => {
+                const btn = e.target.closest('.delete-block-btn');
+                if (btn) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const block = btn.closest('.content-block');
+                    if (!block) return;
+
+                    const container = block.parentNode;
+                    const role = container.getAttribute('data-role');
+                    const stepCard = container.closest('.step-card');
+                    const stepId = stepCard.getAttribute('data-step');
+                    const step = stepsData.find(s => s.id == stepId);
+                    const blockId = block.getAttribute('data-block-id');
+
+                    // Remove from role data
+                    const index = step.contentByRole[role].findIndex(b => b.id === blockId);
+                    if (index > -1) {
+                        step.contentByRole[role].splice(index, 1);
+                    }
+
+                    block.remove();
+                    updateBlockPositions(container);
+                    updateRoleBadges(stepCard);
+                }
+            });
+
+            // Update block position numbers
+            function updateBlockPositions(container) {
+                const blocks = container.querySelectorAll('.content-block');
+                blocks.forEach((block, index) => {
+                    const positionBadge = block.querySelector('.block-position');
+                    if (positionBadge) {
+                        positionBadge.textContent = index + 1;
+                    }
+                });
+            }
+
+            // Drag and Drop functionality
+            let draggedBlock = null;
+
+            document.addEventListener('dragstart', (e) => {
+                if (e.target.classList.contains('content-block')) {
+                    draggedBlock = e.target;
+                    e.target.classList.add('dragging');
+                    e.dataTransfer.effectAllowed = 'move';
+                }
+            });
+
+            document.addEventListener('dragend', (e) => {
+                if (e.target.classList.contains('content-block')) {
+                    e.target.classList.remove('dragging');
+                    document.querySelectorAll('.content-block').forEach(block => {
+                        block.classList.remove('drag-over');
+                    });
+                }
+            });
+
+            document.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                const target = e.target.closest('.content-block');
+                if (target && target !== draggedBlock) {
+                    e.dataTransfer.dropEffect = 'move';
+                    document.querySelectorAll('.content-block').forEach(block => {
+                        block.classList.remove('drag-over');
+                    });
+                    target.classList.add('drag-over');
+                }
+            });
+
+            document.addEventListener('drop', (e) => {
+                e.preventDefault();
+                const target = e.target.closest('.content-block');
+                if (target && target !== draggedBlock && draggedBlock) {
+                    const container = target.parentNode;
+                    const allBlocks = [...container.querySelectorAll('.content-block')];
+                    const draggedIndex = allBlocks.indexOf(draggedBlock);
+                    const targetIndex = allBlocks.indexOf(target);
+
+                    if (draggedIndex < targetIndex) {
+                        target.parentNode.insertBefore(draggedBlock, target.nextSibling);
+                    } else {
+                        target.parentNode.insertBefore(draggedBlock, target);
+                    }
+
+                    updateBlockPositions(container);
+                    target.classList.remove('drag-over');
+                }
+            });
+
+            // Add Checklist Item
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.add-checklist-item-btn')) {
+                    const itemsContainer = e.target.closest('.content-block').querySelector('.checklist-items');
+                    itemsContainer.insertAdjacentHTML('beforeend', `
+                        <div class="flex items-center space-x-2">
+                            <input type="checkbox" class="w-4 h-4 text-red-600 rounded" disabled>
+                            <input type="text" placeholder="Checklist item" class="flex-1 px-3 py-1.5 border border-gray-300 rounded text-sm">
+                            <button class="remove-item-btn text-gray-400 hover:text-red-600"><i data-lucide="x" class="w-4 h-4"></i></button>
+                        </div>`);
+                    lucide.createIcons();
+                }
+            });
+
+            // Remove Checklist Item
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.remove-item-btn')) {
+                    e.target.closest('.flex').remove();
+                }
+            });
+
+            // Toggle Copy From Menu
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.copy-from-role-btn')) {
+                    const menu = e.target.closest('.copy-from-container').querySelector('.copy-from-menu');
+                    menu.classList.toggle('hidden');
+                } else if (!e.target.closest('.copy-from-menu')) {
+                    document.querySelectorAll('.copy-from-menu').forEach(m => m.classList.add('hidden'));
+                }
+            });
+
+            // Copy From Role Handler
+            document.addEventListener('click', (e) => {
+                const copyBtn = e.target.closest('[data-from-role]');
+                if (copyBtn) {
+                    const fromRole = copyBtn.getAttribute('data-from-role');
+                    const stepCard = copyBtn.closest('.step-card');
+                    const stepId = stepCard.getAttribute('data-step');
+                    const step = stepsData.find(s => s.id == stepId);
+                    const container = stepCard.querySelector('.content-blocks-container');
+                    const currentRole = container.getAttribute('data-role');
+
+                    // Don't copy from same role
+                    if (fromRole === currentRole) {
+                        alert('Cannot copy from the same role!');
+                        return;
+                    }
+
+                    // Check if source has content
+                    if (!step.contentByRole[fromRole] || step.contentByRole[fromRole].length === 0) {
+                        alert(`No content to copy from ${fromRole === 'student' ? 'Student' : fromRole === 'agent' ? 'Agent & Advisor' : 'Admin'}!`);
+                        return;
+                    }
+
+                    // Confirm copy
+                    const roleNames = { student: 'Student', agent: 'Agent & Advisor', admin: 'Admin' };
+                    if (confirm(`Copy all content from ${roleNames[fromRole]} to ${roleNames[currentRole]}? This will replace existing content.`)) {
+                        // Copy blocks data
+                        step.contentByRole[currentRole] = JSON.parse(JSON.stringify(step.contentByRole[fromRole]));
+
+                        // Reload blocks with new IDs
+                        container.innerHTML = '';
+                        step.contentByRole[currentRole].forEach((blockData, index) => {
+                            let blockHtml = '';
+
+                            // Create new blocks based on type
+                            if (blockData.type === 'text') {
+                                blockHtml = createRichTextBlock();
+                                container.insertAdjacentHTML('beforeend', blockHtml);
+                                const newBlock = container.lastElementChild;
+                                const editorId = newBlock.querySelector('[id^="text-block-"]').id;
+                                blockData.id = editorId;
+                                quillInstances[editorId] = new Quill(`#${editorId}`, { theme: 'snow', modules: { toolbar: [['bold', 'italic', 'underline'], ['link'], [{ 'list': 'ordered' }, { 'list': 'bullet' }]] } });
+                            } else if (blockData.type === 'document') {
+                                blockHtml = createDocumentBlock();
+                                container.insertAdjacentHTML('beforeend', blockHtml);
+                                const newBlock = container.lastElementChild;
+                                blockData.id = newBlock.getAttribute('data-block-id');
+                            } else if (blockData.type === 'checklist') {
+                                blockHtml = createChecklistBlock();
+                                container.insertAdjacentHTML('beforeend', blockHtml);
+                                const newBlock = container.lastElementChild;
+                                blockData.id = newBlock.getAttribute('data-block-id');
+                            } else if (blockData.type === 'section') {
+                                blockHtml = createSectionBlock();
+                                container.insertAdjacentHTML('beforeend', blockHtml);
+                                const newBlock = container.lastElementChild;
+                                const editorId = newBlock.querySelector('[id^="section-block-"]').id;
+                                blockData.id = editorId;
+                                quillInstances[editorId] = new Quill(`#${editorId}`, { theme: 'snow', modules: { toolbar: [['bold', 'italic'], ['link']] } });
+                            }
+                        });
+
+                        lucide.createIcons();
+                        updateBlockPositions(container);
+                        updateRoleBadges(stepCard);
+                    }
+
+                    // Hide menu
+                    copyBtn.closest('.copy-from-menu').classList.add('hidden');
+                }
+            });
+
+            // Expand/Collapse All
+            document.getElementById('expand-all-btn').addEventListener('click', () => {
+                document.querySelectorAll('.step-content').forEach(c => c.classList.add('expanded'));
+                document.querySelectorAll('.step-header i[data-lucide="chevron-down"]').forEach(i => i.style.transform = 'rotate(180deg)');
+            });
+
+            document.getElementById('collapse-all-btn').addEventListener('click', () => {
+                document.querySelectorAll('.step-content').forEach(c => c.classList.remove('expanded'));
+                document.querySelectorAll('.step-header i[data-lucide="chevron-down"]').forEach(i => i.style.transform = 'rotate(0deg)');
+            });
+
+            // Save individual step
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.save-btn')) {
+                    const card = e.target.closest('.step-card');
+                    alert('Step configuration saved successfully!');
+                }
+            });
+
+            // Cancel button
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.cancel-btn')) {
+                    const card = e.target.closest('.step-card');
+                    card.querySelector('.content-blocks-container').innerHTML = '';
+                }
+            });
+
+            // Save All
+            document.getElementById('save-all-btn').addEventListener('click', () => {
+                alert('All changes saved successfully!');
+            });
+
+            // App Management Toggle
+            const appManagementToggle = document.getElementById('app-management-toggle');
+            const appManagementSubmenu = document.getElementById('app-management-submenu');
+            const appManagementChevron = document.getElementById('app-management-chevron');
+            if (appManagementToggle) {
+                appManagementToggle.addEventListener('click', () => {
+                    appManagementSubmenu.classList.toggle('hidden');
+                    appManagementChevron.style.transform = appManagementSubmenu.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+                });
+            }
+
+            // Profile Dropdown
+            const profileMenu = document.getElementById('profile-menu');
+            const profileDropdown = document.getElementById('profile-dropdown');
+            profileMenu.addEventListener('click', () => profileDropdown.classList.toggle('hidden'));
+            document.addEventListener('click', (e) => { if (!profileMenu.contains(e.target)) profileDropdown.classList.add('hidden'); });
+        });
+
+        function handleLogout() { window.location.href = '../../login.html'; }
+    </script>
+</body>
+
+</html>
