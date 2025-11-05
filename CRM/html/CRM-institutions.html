@@ -163,52 +163,205 @@
 
             <!-- Filter Drawer -->
             <div id="filter-drawer"
-                class="fixed top-0 right-0 h-full w-96 bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out z-50 overflow-y-auto">
-                <div class="p-4 border-b flex justify-between items-center sticky top-0 bg-white z-10">
-                    <h3 class="text-lg font-medium text-gray-900">Filters</h3>
-                    <button id="close-filter" class="text-gray-400 hover:text-red-400">
-                        <i data-lucide="x" class="w-6 h-6"></i>
-                    </button>
-                </div>
-                <div class="p-4 space-y-6">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Country / Region</label>
-                        <select class="w-full rounded-lg border-gray-300">
-                            <option value="">All Countries</option>
-                            <option value="au">Australia</option>
-                            <option value="uk">United Kingdom</option>
-                            <option value="us">United States</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Partnership Type</label>
-                        <select class="w-full rounded-lg border-gray-300">
-                            <option value="">All Types</option>
-                            <option value="direct">Direct</option>
-                            <option value="3rd-party">3rd-party</option>
-                            <option value="moa">MOA</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                        <select class="w-full rounded-lg border-gray-300">
-                            <option value="">All Status</option>
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
-                        </select>
+                class="fixed top-0 right-0 h-full w-96 bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out z-50 overflow-hidden flex flex-col">
+                <!-- Drawer Header -->
+                <div class="flex-shrink-0 border-b border-gray-200">
+                    <div class="p-4 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <button id="close-filter" class="text-gray-400 hover:text-gray-600 transition-colors"
+                                aria-label="Close">
+                                <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em"
+                                    fill="currentColor" aria-hidden="true" class="w-4 h-4">
+                                    <path
+                                        d="M799.86 166.31c.02 0 .04.02.08.06l57.69 57.7c.04.03.05.05.06.08a.12.12 0 010 .06c0 .03-.02.05-.06.09L569.93 512l287.7 287.7c.04.04.05.06.06.09a.12.12 0 010 .07c0 .02-.02.04-.06.08l-57.7 57.69c-.03.04-.05.05-.07.06a.12.12 0 01-.07 0c-.03 0-.05-.02-.09-.06L512 569.93l-287.7 287.7c-.04.04-.06.05-.09.06a.12.12 0 01-.07 0c-.02 0-.04-.02-.08-.06l-57.69-57.7c-.04-.03-.05-.05-.06-.07a.12.12 0 010-.07c0-.03.02-.05.06-.09L454.07 512l-287.7-287.7c-.04-.04-.05-.06-.06-.09a.12.12 0 010-.07c0-.02.02-.04.06-.08l57.7-57.69c.03-.04.05-.05.07-.06a.12.12 0 01.07 0c.03 0 .05.02.09.06L512 454.07l287.7-287.7c.04-.04.06-.05.09-.06a.12.12 0 01.07 0z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <div class="flex items-center gap-2">
+                                <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em"
+                                    fill="currentColor" aria-hidden="true" class="w-5 h-5 text-gray-700">
+                                    <path
+                                        d="M880.1 154H143.9c-24.5 0-39.8 26.7-27.5 48L349 597.4V838c0 17.7 14.3 32 32 32h262c17.7 0 32-14.3 32-32V597.4L907.7 202c12.2-21.3-3.1-48-27.6-48zM603.4 798H420.6V650h182.9v148zm9.6-226.6l-3.5 6.1H414.6l-3.5-6.1L294.2 226h435.4L612.9 571.4z">
+                                    </path>
+                                </svg>
+                                <h3 class="text-base font-semibold text-gray-900">Filter Institutions</h3>
+                            </div>
+                        </div>
+                        <button id="apply-filters"
+                            class="px-4 py-2 text-sm font-bold text-white rounded-md transition-all hover:opacity-90"
+                            style="background-color: #d82128;">
+                            Apply Filters
+                        </button>
                     </div>
                 </div>
+
+                <!-- Drawer Body -->
+                <div class="flex-1 overflow-y-auto p-6">
+                    <form class="space-y-6">
+                        <!-- Country / Region Filter -->
+                        <div class="ant-form-item">
+                            <div class="mb-2">
+                                <label for="country-filter" class="text-sm font-medium text-gray-700"
+                                    title="Country / Region">Country / Region</label>
+                            </div>
+                            <div>
+                                <div class="relative">
+                                    <select id="country-filter"
+                                        class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all appearance-none bg-white cursor-pointer hover:border-gray-400"
+                                        style="padding-right: 30px;">
+                                        <option value="">All Countries</option>
+                                        <option value="au">🇦🇺 Australia</option>
+                                        <option value="uk">🇬🇧 United Kingdom</option>
+                                        <option value="us">🇺🇸 United States</option>
+                                        <option value="ca">🇨🇦 Canada</option>
+                                        <option value="nz">🇳🇿 New Zealand</option>
+                                    </select>
+                                    <span
+                                        class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                                        <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em"
+                                            fill="currentColor" aria-hidden="true" class="w-3 h-3 text-gray-400">
+                                            <path
+                                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Partnership Type Filter -->
+                        <div class="ant-form-item">
+                            <div class="mb-2">
+                                <label for="partnership-filter" class="text-sm font-medium text-gray-700"
+                                    title="Partnership Type">Partnership Type</label>
+                            </div>
+                            <div>
+                                <div class="relative">
+                                    <select id="partnership-filter"
+                                        class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all appearance-none bg-white cursor-pointer hover:border-gray-400"
+                                        style="padding-right: 30px;">
+                                        <option value="">All Types</option>
+                                        <option value="direct">Direct Partnership</option>
+                                        <option value="3rd-party">3rd-party Partnership</option>
+                                        <option value="moa">MOA (Memorandum of Agreement)</option>
+                                        <option value="strategic">Strategic Partner</option>
+                                    </select>
+                                    <span
+                                        class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                                        <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em"
+                                            fill="currentColor" aria-hidden="true" class="w-3 h-3 text-gray-400">
+                                            <path
+                                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Status Filter -->
+                        <div class="ant-form-item">
+                            <div class="mb-2">
+                                <label for="status-filter" class="text-sm font-medium text-gray-700"
+                                    title="Status">Status</label>
+                            </div>
+                            <div>
+                                <div class="relative">
+                                    <select id="status-filter"
+                                        class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all appearance-none bg-white cursor-pointer hover:border-gray-400"
+                                        style="padding-right: 30px;">
+                                        <option value="">All Status</option>
+                                        <option value="active">Active</option>
+                                        <option value="inactive">Inactive</option>
+                                    </select>
+                                    <span
+                                        class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                                        <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em"
+                                            fill="currentColor" aria-hidden="true" class="w-3 h-3 text-gray-400">
+                                            <path
+                                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Divider -->
+                        <div class="border-t border-gray-200 my-6"></div>
+
+                        <!-- Institution Tier Filter -->
+                        <div class="ant-form-item">
+                            <div class="mb-2">
+                                <label for="tier-filter" class="text-sm font-medium text-gray-700"
+                                    title="Institution Tier">Institution Tier</label>
+                            </div>
+                            <div>
+                                <div class="relative">
+                                    <select id="tier-filter"
+                                        class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all appearance-none bg-white cursor-pointer hover:border-gray-400"
+                                        style="padding-right: 30px;">
+                                        <option value="">All Tiers</option>
+                                        <option value="elite">Elite Admission Scholarship</option>
+                                        <option value="premium">Premium Partner</option>
+                                        <option value="standard">Standard Partner</option>
+                                    </select>
+                                    <span
+                                        class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                                        <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em"
+                                            fill="currentColor" aria-hidden="true" class="w-3 h-3 text-gray-400">
+                                            <path
+                                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Institution Type Filter -->
+                        <div class="ant-form-item">
+                            <div class="mb-2">
+                                <label for="type-filter" class="text-sm font-medium text-gray-700"
+                                    title="Institution Type">Institution Type</label>
+                            </div>
+                            <div>
+                                <div class="relative">
+                                    <select id="type-filter"
+                                        class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all appearance-none bg-white cursor-pointer hover:border-gray-400"
+                                        style="padding-right: 30px;">
+                                        <option value="">All Types</option>
+                                        <option value="public">Public University</option>
+                                        <option value="private">Private University</option>
+                                        <option value="college">College</option>
+                                        <option value="community">Community College</option>
+                                    </select>
+                                    <span
+                                        class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                                        <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em"
+                                            fill="currentColor" aria-hidden="true" class="w-3 h-3 text-gray-400">
+                                            <path
+                                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
                 <!-- Drawer Footer -->
-                <div class="p-4 border-t flex justify-end space-x-3 sticky bottom-0 bg-white">
-                    <button id="reset-filters"
-                        class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
-                        Reset
-                    </button>
-                    <button id="apply-filters"
-                        class="px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors hover:opacity-90"
-                        style="background-color: #d82128;">
-                        Apply Filters
-                    </button>
+                <div class="flex-shrink-0 border-t border-gray-200 p-4 bg-white">
+                    <div class="flex justify-between items-center">
+                        <button id="reset-filters"
+                            class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 transition-colors">
+                            Reset All
+                        </button>
+                        <div class="text-xs text-gray-500">
+                            <span id="filter-count">0 filters applied</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -223,8 +376,8 @@
                             class="top-tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300"
                             data-top-tab="tiers">Institution Tiers</button>
                         <button
-                            class="top-tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300 hidden"
-                            data-top-tab="partners">Partner Universities</button>
+                            class="top-tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300"
+                            data-top-tab="intakes">Intakes</button>
                     </nav>
                 </div>
 
@@ -307,69 +460,6 @@
                     </div>
                 </section>
 
-                <!-- Panel: Partner Universities Carousel Config -->
-                <section id="panel-partners"
-                    class="top-tab-panel hidden mt-6 bg-white rounded-lg shadow-sm overflow-hidden">
-                    <div class="p-6 border-b flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="university" class="w-5 h-5 text-red-600"></i>
-                            <h3 class="text-lg font-semibold text-gray-900">Partner Universities Carousel Config</h3>
-                            <span class="ml-2 text-xs text-gray-500">Configures Students › Student-find-program
-                                carousel</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <button id="clearPartnersBtn"
-                                class="px-3 py-1 text-sm border rounded-lg text-red-600 hover:bg-red-50">Clear
-                                All</button>
-                            <button id="addPartnerBtn" class="px-4 py-2 text-sm text-white rounded-lg"
-                                style="background-color:#d82128;">
-                                <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>
-                                Add Partner
-                            </button>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <!-- Live Preview -->
-                        <div class="mb-6">
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="flex items-center gap-2">
-                                    <i data-lucide="play-circle" class="w-5 h-5 text-gray-500"></i>
-                                    <h4 class="text-sm font-semibold text-gray-800">Live Preview</h4>
-                                </div>
-                                <span class="text-xs text-gray-500">Auto-scroll • Hover to pause</span>
-                            </div>
-                            <div class="overflow-hidden border rounded-xl">
-                                <div id="partnersPreview" class="flex gap-4 partner-marquee min-w-max p-4 bg-white">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Data Table -->
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full divide-y divide-gray-200">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th class="px-4 py-2 text-left text-xs font-semibold text-gray-600">Logo URL
-                                        </th>
-                                        <th class="px-4 py-2 text-left text-xs font-semibold text-gray-600">Name</th>
-                                        <th class="px-4 py-2 text-left text-xs font-semibold text-gray-600">Location
-                                        </th>
-                                        <th class="px-4 py-2 text-left text-xs font-semibold text-gray-600">Description
-                                        </th>
-                                        <th class="px-4 py-2 text-left text-xs font-semibold text-gray-600">Hashtags
-                                        </th>
-                                        <th class="px-4 py-2 text-right text-xs font-semibold text-gray-600">Actions
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody id="partnersTableBody" class="divide-y divide-gray-100 bg-white"></tbody>
-                            </table>
-                            <p id="partnersEmptyState" class="text-sm text-gray-500 p-4 hidden">No partners yet. Click
-                                "Add Partner" to create one.</p>
-                        </div>
-                    </div>
-                </section>
-
                 <!-- Panel: Institution Tiers -->
                 <section id="panel-tiers" class="top-tab-panel hidden">
                     <div class="bg-white rounded-lg shadow-sm overflow-hidden">
@@ -416,12 +506,198 @@
                             "Add Institution Tier" to create one.</p>
                     </div>
                 </section>
+
+                <!-- Panel: Intakes -->
+                <section id="panel-intakes" class="top-tab-panel hidden">
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden p-6">
+                        <!-- Header -->
+                        <div class="mb-6">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Manage Intake Periods</h3>
+                            <p class="text-sm text-gray-500">Configure available intake seasons and their enrollment
+                                years. Toggle status to activate or deactivate specific intakes.</p>
+                        </div>
+
+                        <!-- Unsaved Changes Warning -->
+                        <div id="unsavedChangesWarning"
+                            class="hidden bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+                            <div class="flex items-center">
+                                <i data-lucide="alert-triangle" class="w-5 h-5 text-yellow-600 mr-3"></i>
+                                <div>
+                                    <p class="text-sm font-medium text-yellow-900">You have unsaved changes</p>
+                                    <p class="text-xs text-yellow-700">Click "Save Changes" to apply these settings.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Intakes Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                            <!-- Spring Intake -->
+                            <div class="border rounded-lg p-6 hover:shadow-md transition-shadow bg-gray-50">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
+                                            <i data-lucide="calendar" class="w-6 h-6 text-gray-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900">Spring</h4>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <label for="springYear" class="text-xs text-gray-700">Year</label>
+                                        <input type="number" id="springYear" value="2026" min="2024" max="2030"
+                                            class="w-20 px-2 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                                            onchange="markUnsavedChanges()">
+                                    </div>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-medium text-gray-700">Status</span>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" id="springStatus" class="sr-only peer intake-toggle"
+                                                data-season="spring" checked>
+                                            <div
+                                                class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-gray-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600">
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Summer Intake -->
+                            <div class="border rounded-lg p-6 hover:shadow-md transition-shadow bg-gray-50">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
+                                            <i data-lucide="calendar" class="w-6 h-6 text-gray-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900">Summer</h4>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <label for="summerYear" class="text-xs text-gray-700">Year</label>
+                                        <input type="number" id="summerYear" value="2026" min="2024" max="2030"
+                                            class="w-20 px-2 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                                            onchange="markUnsavedChanges()">
+                                    </div>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-medium text-gray-700">Status</span>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" id="summerStatus" class="sr-only peer intake-toggle"
+                                                data-season="summer" checked>
+                                            <div
+                                                class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-gray-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600">
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Fall Intake -->
+                            <div class="border rounded-lg p-6 hover:shadow-md transition-shadow bg-gray-50">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
+                                            <i data-lucide="calendar" class="w-6 h-6 text-gray-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900">Fall</h4>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <label for="fallYear" class="text-xs text-gray-700">Year</label>
+                                        <input type="number" id="fallYear" value="2025" min="2025" max="2030"
+                                            class="w-20 px-2 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                                            onchange="markUnsavedChanges()">
+                                    </div>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-medium text-gray-700">Status</span>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" id="fallStatus" class="sr-only peer intake-toggle"
+                                                data-season="fall">
+                                            <div
+                                                class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-gray-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600">
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Winter Intake -->
+                            <div class="border rounded-lg p-6 hover:shadow-md transition-shadow bg-gray-50">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
+                                            <i data-lucide="calendar" class="w-6 h-6 text-gray-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900">Winter</h4>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <label for="winterYear" class="text-xs text-gray-700">Year</label>
+                                        <input type="number" id="winterYear" value="2025" min="2024" max="2030"
+                                            class="w-20 px-2 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                                            onchange="markUnsavedChanges()">
+                                    </div>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-medium text-gray-700">Status</span>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" id="winterStatus" class="sr-only peer intake-toggle"
+                                                data-season="winter">
+                                            <div
+                                                class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-gray-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600">
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Info Banner -->
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+                            <div class="flex items-start">
+                                <i data-lucide="info" class="w-5 h-5 text-red-600 mr-3 flex-shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h5 class="text-sm font-medium text-red-900 mb-1">Important: Impact on Student &
+                                        Agency Views</h5>
+                                    <p class="text-xs text-red-700">Changes to intake settings will affect
+                                        <strong>University screen</strong> and <strong>Apply form</strong> pages. Active
+                                        intakes will be displayed during the
+                                        application process, while inactive intakes will be hidden. Please review
+                                        carefully before saving.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex justify-end gap-3">
+                            <button type="button" id="saveIntakesBtn" onclick="saveIntakes()"
+                                class="px-6 py-2 text-sm font-medium text-white rounded-lg hover:opacity-90"
+                                style="background-color: #d82128;">
+                                <i data-lucide="save" class="w-4 h-4 inline mr-2"></i>
+                                Save Changes
+                            </button>
+                        </div>
+                    </div>
+                </section>
             </main>
 
             <!-- Institution Detail Drawer -->
             <div id="institution-detail" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden">
-                <div class="absolute right-0 h-full w-3/5 bg-white shadow-xl">
-                    <div class="p-6 h-full flex flex-col">
+                <div class="absolute right-0 h-full w-3/5 bg-white shadow-xl overflow-y-auto">
+                    <div class="p-6 flex flex-col">
                         <div class="flex justify-between items-center mb-6">
                             <div>
                                 <h3 id="drawer-title" class="text-lg font-semibold text-gray-900">Institution Details
@@ -604,11 +880,14 @@
                                 <button
                                     class="tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300"
                                     data-tab="campus">Campus Life</button>
+                                <button
+                                    class="tab-link border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300"
+                                    data-tab="costs">Cost and Tuition</button>
                             </nav>
                         </div>
 
                         <!-- Tab Panels -->
-                        <div class="flex-1 overflow-y-auto">
+                        <div class="flex-1">
                             <!-- Overview Tab -->
                             <section id="tab-overview" class="tab-panel">
                                 <div class="space-y-6">
@@ -1132,6 +1411,112 @@ Spring 2026</textarea>
                                     </div>
                                 </div>
                             </section>
+
+                            <!-- Cost and Tuition Tab -->
+                            <section id="tab-costs" class="tab-panel hidden">
+                                <div class="space-y-6">
+                                    <!-- Tuition & Application (Application Fee + Tuition & Fees) -->
+                                    <div style="background: rgb(249, 250, 251); padding: 16px; border-radius: 8px;">
+                                        <h4 class="font-semibold text-gray-900 mb-4">Tuition & Application</h4>
+
+
+                                        <!-- Tuition & Fees moved here -->
+                                        <div class="mb-4">
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Tuition &
+                                                Fees</label>
+                                            <div class="view-mode">
+                                                <p class="text-sm text-gray-700">$34,000 - $38,000 per year</p>
+                                            </div>
+                                            <div class="edit-mode hidden">
+                                                <div style="display: flex; align-items: center; gap: 8px;">
+                                                    <input type="number" placeholder="Min"
+                                                        class="w-full px-3 py-2 text-sm border-gray-300 rounded"
+                                                        value="34000">
+                                                    <span
+                                                        style="color: rgb(153, 153, 153); font-size: 16px; font-weight: 500;">-</span>
+                                                    <input type="number" placeholder="Max"
+                                                        class="w-full px-3 py-2 text-sm border-gray-300 rounded"
+                                                        value="38000">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Application Fee
+                                                (Part of Ellacy Program)</label>
+                                            <div class="view-mode">
+                                                <p class="text-sm text-gray-700">$50</p>
+                                            </div>
+                                            <div class="edit-mode hidden">
+                                                <input type="number" placeholder="Enter application fee"
+                                                    class="w-full px-3 py-2 text-sm border-gray-300 rounded" value="50">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Living Costs -->
+                                    <div style="background: rgb(249, 250, 251); padding: 16px; border-radius: 8px;">
+                                        <h4 class="font-semibold text-gray-900 mb-4">Living Costs</h4>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">Living
+                                                    Expenses (Housing and Food) - Per Year</label>
+                                                <div class="view-mode">
+                                                    <p class="text-sm text-gray-700">$12,000 - $15,000</p>
+                                                </div>
+                                                <div class="edit-mode hidden">
+                                                    <input type="number" placeholder="Enter housing cost"
+                                                        class="w-full px-3 py-2 text-sm border-gray-300 rounded"
+                                                        value="12000">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">Books &
+                                                    Supplies - Per Year</label>
+                                                <div class="view-mode">
+                                                    <p class="text-sm text-gray-700">$1,200 - $1,500</p>
+                                                </div>
+                                                <div class="edit-mode hidden">
+                                                    <input type="number" placeholder="Enter books cost"
+                                                        class="w-full px-3 py-2 text-sm border-gray-300 rounded"
+                                                        value="1200">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Other Expenses -->
+                                    <div style="background: rgb(249, 250, 251); padding: 16px; border-radius: 8px;">
+                                        <h4 class="font-semibold text-gray-900 mb-4">Other Expenses (USD)</h4>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div>
+                                                <label
+                                                    class="block text-sm font-medium text-gray-700 mb-2">Transportation
+                                                    - Per Year</label>
+                                                <div class="view-mode">
+                                                    <p class="text-sm text-gray-700">$800 - $1,200</p>
+                                                </div>
+                                                <div class="edit-mode hidden">
+                                                    <input type="number" placeholder="Enter transportation cost"
+                                                        class="w-full px-3 py-2 text-sm border-gray-300 rounded"
+                                                        value="800">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label
+                                                    class="block text-sm font-medium text-gray-700 mb-2">Miscellaneous
+                                                    Personal Expenses - Per Year</label>
+                                                <div class="view-mode">
+                                                    <p class="text-sm text-gray-700">$2,000 - $3,000</p>
+                                                </div>
+                                                <div class="edit-mode hidden">
+                                                    <input type="number" placeholder="Enter personal expenses"
+                                                        class="w-full px-3 py-2 text-sm border-gray-300 rounded"
+                                                        value="2000">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
                         </div>
 
                         <!-- Admin Actions -->
@@ -1199,7 +1584,8 @@ Spring 2026</textarea>
                             <div class="flex justify-between items-center mb-6">
                                 <div>
                                     <h3 class="text-lg font-semibold text-gray-900">Add New Institution</h3>
-                                    <p class="text-sm text-gray-500">Enter basic information to get started</p>
+                                    <p class="text-sm text-gray-500">Enter basic info or paste a URL to fetch details
+                                        automatically.</p>
                                 </div>
                                 <button onclick="closeAddInstitutionModal()" class="text-gray-500 hover:text-gray-700">
                                     <i data-lucide="x" class="w-5 h-5"></i>
@@ -1230,6 +1616,10 @@ Spring 2026</textarea>
                                         <i data-lucide="zap" class="w-4 h-4 mr-2"></i>
                                         Fetch Info
                                     </button>
+                                    <button type="button" onclick="skipToManualEntry()"
+                                        class="ml-2 px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">
+                                        Skip to Review
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -1242,9 +1632,16 @@ Spring 2026</textarea>
                                     <p class="text-sm text-gray-500">AI is gathering data from the university website
                                     </p>
                                 </div>
-                                <button onclick="closeAddInstitutionModal()" class="text-gray-500 hover:text-gray-700">
-                                    <i data-lucide="x" class="w-5 h-5"></i>
-                                </button>
+                                <div class="flex items-center space-x-2">
+                                    <button onclick="skipToManualEntry()"
+                                        class="px-3 py-1 text-sm border border-gray-300 rounded-lg hover:bg-gray-50">
+                                        Skip to Review
+                                    </button>
+                                    <button onclick="closeAddInstitutionModal()"
+                                        class="text-gray-500 hover:text-gray-700">
+                                        <i data-lucide="x" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
                             </div>
 
                             <div class="text-center py-12">
@@ -1310,7 +1707,7 @@ Spring 2026</textarea>
                             </div>
 
                             <!-- This will be populated with the editable institution detail view -->
-                            <div id="review-content" class="max-h-96 overflow-y-auto">
+                            <div id="review-content" class="">
                                 <!-- Content will be dynamically populated -->
                             </div>
 
@@ -1578,7 +1975,13 @@ Spring 2026</textarea>
         function showNotification(message, type = 'success') {
             const notification = document.createElement('div');
             notification.className = `fixed top-4 right-4 px-6 py-3 rounded-lg text-white z-50 transition-all duration-300 transform translate-x-full`;
-            notification.style.backgroundColor = type === 'success' ? '#10B981' : type === 'error' ? '#EF4444' : '#3B82F6';
+            const colorMap = {
+                success: '#10B981',
+                error: '#EF4444',
+                info: '#3B82F6',
+                'brand-success': '#d82128'
+            };
+            notification.style.backgroundColor = colorMap[type] || colorMap.success;
             notification.textContent = message;
 
             document.body.appendChild(notification);
@@ -1904,6 +2307,7 @@ Spring 2026</textarea>
                         <button class="tab-link-review border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300" data-tab="programs">Scholarships</button>
                         <button class="tab-link-review border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300" data-tab="admissions">Admission Requirements</button>
                         <button class="tab-link-review border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300" data-tab="campus">Campus Life</button>
+                        <button class="tab-link-review border-b-2 border-transparent py-3 text-sm font-medium text-gray-600 hover:text-gray-800 hover:border-gray-300" data-tab="costs">Cost and Tuition</button>
                     </nav>
                 </div>
 
@@ -2038,6 +2442,78 @@ Spring 2026</textarea>
                                     <i data-lucide="zap" class="w-4 h-4 ml-2 text-yellow-500"></i>
                                 </h4>
                                 <textarea class="w-full text-sm text-gray-700 border-gray-300 rounded" rows="4">${fetchedData.campusLife.campusFacilities}</textarea>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Cost and Tuition Tab -->
+                    <section id="tab-review-costs" class="tab-panel-review hidden">
+                        <div class="space-y-6">
+                            <!-- Tuition & Application (includes Application Fee + Tuition & Fees) -->
+                            <div style="background: rgb(249, 250, 251); padding: 16px; border-radius: 8px;">
+                                <h4 class="font-semibold text-gray-900 mb-4 flex items-center">
+                                    Tuition & Application
+                                    <i data-lucide="zap" class="w-4 h-4 ml-2 text-yellow-500"></i>
+                                </h4>                               
+                                <div class="mb-4">
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Tuition & Fees</label>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <input type="number" placeholder="Min" class="w-full px-3 py-2 text-sm border-gray-300 rounded" value="${fetchedData.costAndTuition?.tuitionFee?.min || ''}">
+                                        <span style="color: rgb(153, 153, 153); font-size: 16px; font-weight: 500;">-</span>
+                                        <input type="number" placeholder="Max" class="w-full px-3 py-2 text-sm border-gray-300 rounded" value="${fetchedData.costAndTuition?.tuitionFee?.max || ''}">
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Application Fee (Part of Ellacy Program)</label>
+                                    <input type="number" placeholder="Enter application fee" class="w-full px-3 py-2 text-sm border-gray-300 rounded" value="${fetchedData.costAndTuition?.applicationFee || ''}">
+                                </div>
+                            </div>
+
+                            <!-- Living Costs -->
+                            <div style="background: rgb(249, 250, 251); padding: 16px; border-radius: 8px;">
+                                <h4 class="font-semibold text-gray-900 mb-4 flex items-center">
+                                    Living Costs
+                                    <i data-lucide="zap" class="w-4 h-4 ml-2 text-yellow-500"></i>
+                                </h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Living Expenses (Housing and Food) - Per Year</label>
+                                        <input type="number" placeholder="Enter housing cost" class="w-full px-3 py-2 text-sm border-gray-300 rounded" value="${fetchedData.costAndTuition?.livingExpenses || ''}">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Books & Supplies - Per Year</label>
+                                        <input type="number" placeholder="Enter books cost" class="w-full px-3 py-2 text-sm border-gray-300 rounded" value="${fetchedData.costAndTuition?.booksSupplies || ''}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Other Expenses -->
+                            <div style="background: rgb(249, 250, 251); padding: 16px; border-radius: 8px;">
+                                <h4 class="font-semibold text-gray-900 mb-4 flex items-center">
+                                    Other Expenses (USD)
+                                    <i data-lucide="zap" class="w-4 h-4 ml-2 text-yellow-500"></i>
+                                </h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Transportation - Per Year</label>
+                                        <input type="number" placeholder="Enter transportation cost" class="w-full px-3 py-2 text-sm border-gray-300 rounded" value="${fetchedData.costAndTuition?.transportation || ''}">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Miscellaneous Personal Expenses - Per Year</label>
+                                        <input type="number" placeholder="Enter personal expenses" class="w-full px-3 py-2 text-sm border-gray-300 rounded" value="${fetchedData.costAndTuition?.miscellaneous || ''}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Note Section -->
+                            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                                <div class="flex items-start">
+                                    <i data-lucide="alert-circle" class="w-5 h-5 text-yellow-600 mr-2 flex-shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <p class="text-sm font-medium text-yellow-900">AI-Generated Data</p>
+                                        <p class="text-xs text-yellow-700 mt-1">Please review and update the cost information as needed. These values are estimated and may not reflect current tuition rates.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -2682,6 +3158,178 @@ Spring 2026</textarea>
             renderTiersTable();
             closeTierModal();
             showNotification('Tier saved', 'success');
+        });
+
+        // ===== INTAKES MANAGEMENT =====
+        let hasUnsavedChanges = false;
+
+        function markUnsavedChanges() {
+            hasUnsavedChanges = true;
+            const warningBanner = document.getElementById('unsavedChangesWarning');
+            if (warningBanner) {
+                warningBanner.classList.remove('hidden');
+                if (window.lucide) lucide.createIcons();
+            }
+        }
+
+        function clearUnsavedChanges() {
+            hasUnsavedChanges = false;
+            const warningBanner = document.getElementById('unsavedChangesWarning');
+            if (warningBanner) {
+                warningBanner.classList.add('hidden');
+            }
+        }
+
+        function initializeIntakes() {
+            // Initialize status toggle listeners using event delegation
+            document.addEventListener('change', function (e) {
+                if (e.target.classList.contains('intake-toggle')) {
+                    const season = e.target.dataset.season;
+                    const statusText = document.getElementById(`${season}StatusText`);
+                    if (statusText) {
+                        updateIntakeStatus(season, e.target.checked, statusText);
+                        markUnsavedChanges();
+                    }
+                }
+            });
+
+            // Load saved intakes from localStorage
+            loadIntakesFromStorage();
+        }
+
+        function updateIntakeStatus(season, isActive, statusTextElement) {
+            if (isActive) {
+                statusTextElement.className = 'px-2 py-1 rounded-full bg-green-100 text-green-800';
+                statusTextElement.textContent = 'Active';
+            } else {
+                statusTextElement.className = 'px-2 py-1 rounded-full bg-gray-100 text-gray-800';
+                statusTextElement.textContent = 'Inactive';
+            }
+        }
+
+        // Helper to safely restore the Save button
+        function restoreSaveButton(btn) {
+            if (!btn) return;
+            btn.disabled = false;
+            btn.classList.remove('opacity-80', 'cursor-not-allowed');
+            btn.innerHTML = btn.dataset?.originalText || '<i data-lucide="save" class="w-4 h-4 inline mr-2"></i>Save Changes';
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function saveIntakes() {
+            const btn = document.getElementById('saveIntakesBtn');
+            if (btn) {
+                // Prevent double click while saving
+                if (btn.disabled) return;
+                btn.disabled = true;
+                btn.dataset.originalText = btn.innerHTML || '<i data-lucide="save" class="w-4 h-4 inline mr-2"></i>Save Changes';
+                btn.classList.add('opacity-80', 'cursor-not-allowed');
+                btn.innerHTML = '<i data-lucide="save" class="w-4 h-4 inline mr-2"></i>Saving...';
+                if (window.lucide) lucide.createIcons();
+            }
+
+            // Watchdog: ensure we always restore button even if anything fails
+            const watchdog = setTimeout(() => restoreSaveButton(btn), 5000);
+
+            // Optional: show a light info notice (commented to reduce noise)
+            // showNotification('Saving intake settings...', 'info');
+
+            // Simulate processing before saving & confirming
+            setTimeout(() => {
+                try {
+                    const getVal = (id) => {
+                        const el = document.getElementById(id);
+                        return el && typeof el.value !== 'undefined' ? el.value : '';
+                    };
+                    const getChecked = (id) => {
+                        const el = document.getElementById(id);
+                        return el && typeof el.checked !== 'undefined' ? !!el.checked : false;
+                    };
+
+                    const intakesData = {
+                        spring: { year: getVal('springYear'), status: getChecked('springStatus') },
+                        summer: { year: getVal('summerYear'), status: getChecked('summerStatus') },
+                        fall: { year: getVal('fallYear'), status: getChecked('fallStatus') },
+                        winter: { year: getVal('winterYear'), status: getChecked('winterStatus') }
+                    };
+
+                    // Mock save and always show success
+                    localStorage.setItem('intakesConfig', JSON.stringify(intakesData));
+                    console.log('Intakes saved:', intakesData);
+                } finally {
+                    // Restore button state FIRST to avoid getting stuck on errors below
+                    restoreSaveButton(btn);
+                    clearTimeout(watchdog);
+
+                    // Then clear warning and show success toast, but guard to avoid breaking UI
+                    try { clearUnsavedChanges(); } catch (e) { /* no-op */ }
+                    try {
+                        if (typeof showNotification === 'function') {
+                            showNotification('Intake settings saved successfully! Changes will be reflected in Student and Agency pages.', 'brand-success');
+                        }
+                    } catch (e) { /* no-op */ }
+                }
+            }, 1000);
+        }
+
+        function resetIntakes() {
+            if (confirm('Reset all intake settings to default values? This will immediately save and affect Student and Agency pages.')) {
+                const defaultIntakes = {
+                    spring: { year: '2025', status: true },
+                    summer: { year: '2025', status: true },
+                    fall: { year: '2025', status: true },
+                    winter: { year: '2026', status: false }
+                };
+
+                // Update UI
+                document.getElementById('springYear').value = defaultIntakes.spring.year;
+                document.getElementById('springStatus').checked = defaultIntakes.spring.status;
+                updateIntakeStatus('spring', defaultIntakes.spring.status, document.getElementById('springStatusText'));
+
+                document.getElementById('summerYear').value = defaultIntakes.summer.year;
+                document.getElementById('summerStatus').checked = defaultIntakes.summer.status;
+                updateIntakeStatus('summer', defaultIntakes.summer.status, document.getElementById('summerStatusText'));
+
+                document.getElementById('fallYear').value = defaultIntakes.fall.year;
+                document.getElementById('fallStatus').checked = defaultIntakes.fall.status;
+                updateIntakeStatus('fall', defaultIntakes.fall.status, document.getElementById('fallStatusText'));
+
+                document.getElementById('winterYear').value = defaultIntakes.winter.year;
+                document.getElementById('winterStatus').checked = defaultIntakes.winter.status;
+                updateIntakeStatus('winter', defaultIntakes.winter.status, document.getElementById('winterStatusText'));
+
+                // Save to localStorage
+                localStorage.setItem('intakesConfig', JSON.stringify(defaultIntakes));
+                clearUnsavedChanges();
+                showNotification('Intake settings reset to default', 'success');
+            }
+        }
+
+        function loadIntakesFromStorage() {
+            const saved = localStorage.getItem('intakesConfig');
+            if (saved) {
+                const intakesData = JSON.parse(saved);
+
+                // Update UI with saved values
+                Object.keys(intakesData).forEach(season => {
+                    const yearInput = document.getElementById(`${season}Year`);
+                    const statusCheckbox = document.getElementById(`${season}Status`);
+                    const statusText = document.getElementById(`${season}StatusText`);
+
+                    if (yearInput && intakesData[season].year) {
+                        yearInput.value = intakesData[season].year;
+                    }
+                    if (statusCheckbox && statusText) {
+                        statusCheckbox.checked = intakesData[season].status;
+                        updateIntakeStatus(season, intakesData[season].status, statusText);
+                    }
+                });
+            }
+        }
+
+        // Initialize intakes when DOM is ready
+        document.addEventListener('DOMContentLoaded', function () {
+            initializeIntakes();
         });
     </script>
     <script>

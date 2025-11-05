@@ -52,6 +52,24 @@
         transform: translateY(0);
       }
     }
+
+    @keyframes slideLoop {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .animate-slide {
+      animation: slideLoop 45s linear infinite;
+    }
+
+    .animate-slide:hover {
+      animation-play-state: paused;
+    }
   </style>
 </head>
 
@@ -87,380 +105,1770 @@
   </header>
 
   <!-- SECTION: HERO -->
-  <section id="hero" data-testid="section-hero" class="relative py-24 bg-[#111111] text-white">
-    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
-      <div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-[#D82128] opacity-20 blur-3xl"></div>
-      <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-white opacity-5 blur-3xl"></div>
-    </div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
-            <span style="color: #ff565b;">Empowering Students to Study Abroad</span>
-            <span class="text-white"> with Scholarships and Success.</span>
-          </h1>
-          <p class="mt-6 text-lg md:text-xl text-white/80">ApplyLead helps students find programs, secure scholarships,
-            and achieve global admission goals.</p>
-          <div class="mt-8 flex flex-wrap items-center gap-3">
-            <a href="Students/htmls/Student-sign-up.html" data-testid="cta-get-started"
-              class="inline-flex items-center rounded-xl bg-[#D82128] px-6 py-3 font-semibold text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500">Register
-              Now ⮕</a>
-          </div>
-        </div>
-        <div>
-          <div class="relative overflow-hidden rounded-2xl ring-1 ring-white/10 bg-black/30">
-            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1400&auto=format&fit=crop"
-              alt="Students collaborating" class="h-full w-full object-cover">
-            <button id="heroPlay" aria-label="Play intro video"
-              class="absolute inset-0 m-auto h-16 w-16 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition">
-              <i data-lucide="play" class="h-8 w-8 text-white"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION: SEARCH -->
-  <section id="search" data-testid="section-search" class="py-20 bg-white">
+  <section id="hero" data-testid="section-hero" class="relative py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl md:text-4xl font-bold text-black">Find Your Perfect Program</h2>
-        <p class="mt-3 text-black/80">Search 1,000+ schools and programs through our partner network.</p>
-      </div>
-      <form id="programSearchForm" class="relative rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div class="relative">
-            <label for="program" class="sr-only">Program</label>
-            <input id="program" name="program" data-testid="input-program" type="text"
-              placeholder="Program (e.g., Computer Science)"
-              class="w-full rounded-xl border-gray-300 focus:border-[#D82128] focus:ring-[#D82128] px-4 py-3" />
-            <i data-lucide="book-open" class="absolute right-3 top-3.5 h-5 w-5 text-gray-400"></i>
-          </div>
-          <div class="relative">
-            <label for="country" class="sr-only">Country</label>
-            <select id="country" name="country" data-testid="select-country"
-              class="w-full appearance-none rounded-xl border-gray-300 focus:border-[#D82128] focus:ring-[#D82128] px-4 py-3 pr-10">
-              <option value="">Country</option>
-              <option>USA</option>
-              <option>Canada</option>
-              <option>UK</option>
-              <option>Australia</option>
-              <option>Singapore</option>
-            </select>
-            <i data-lucide="map-pin" class="pointer-events-none absolute right-3 top-3.5 h-5 w-5 text-gray-400"></i>
-          </div>
-          <div class="relative">
-            <label for="degree" class="sr-only">Degree Level</label>
-            <select id="degree" name="degree" data-testid="select-degree"
-              class="w-full appearance-none rounded-xl border-gray-300 focus:border-[#D82128] focus:ring-[#D82128] px-4 py-3 pr-10">
-              <option value="">Degree Level</option>
-              <option>Undergraduate</option>
-              <option>Postgraduate</option>
-              <option>MBA</option>
-              <option>PhD</option>
-              <option>Diploma</option>
-            </select>
-            <i data-lucide="graduation-cap"
-              class="pointer-events-none absolute right-3 top-3.5 h-5 w-5 text-gray-400"></i>
-          </div>
-          <div class="flex items-stretch">
-            <button type="button" id="btnSearchPrograms" data-testid="btn-search-programs"
-              class="w-full rounded-xl bg-[#D82128] px-6 py-3 font-semibold text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 flex items-center justify-center">
-              <i data-lucide="search" class="mr-2 h-5 w-5"></i>
-              Search
-            </button>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
+            <span style="color: #d82128;">Your Gateway to</span>
+            <span class="text-black"> Global Education</span>
+          </h1>
+          <p class="mt-6 text-xl text-gray-600">Find scholarships, connect with top universities, and start your study
+            abroad journey with confidence.</p>
+          <!-- Standalone Register button (outside the card) -->
+          <div class="mt-4">
+            <a href="Students/htmls/Student-sign-up.html"
+              class="inline-flex items-center rounded-xl bg-[#D82128] px-5 py-2.5 font-semibold text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500">
+              Register Now
+              <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor"
+                aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 11-1.414-1.414L13.586 10H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
           </div>
         </div>
-      </form>
+
+        <div>
+          <div class="relative">
+            <!-- Video Player -->
+            <div class="relative overflow-hidden rounded-3xl shadow-2xl bg-black aspect-video">
+              <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1400&auto=format&fit=crop"
+                alt="ApplyLead Introduction" class="w-full h-full object-cover" />
+              <button id="heroPlay" aria-label="Play intro video"
+                class="absolute inset-0 m-auto h-20 w-20 rounded-full bg-[#D82128] flex items-center justify-center hover:bg-red-600 transition shadow-xl">
+                <i data-lucide="play" class="h-10 w-10 text-white ml-1"></i>
+              </button>
+            </div>
+
+            <!-- Floating Badge -->
+            <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 border border-gray-100">
+              <div class="flex items-center gap-3">
+                <div class="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center">
+                  <i data-lucide="shield-check" class="h-6 w-6 text-red-600"></i>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-black">97%</div>
+                  <div class="text-xs text-gray-600">Visa Success</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Moved: Advanced Search now appears directly under the Hero section -->
+      <section id="search" data-testid="section-search" class="py-20 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="rounded-3xl overflow-hidden shadow-2xl p-6 md:p-10"
+            style="background: linear-gradient(to right, #ff4949 0%, #971919 50%, #470404 100%);">
+            <div class="text-center mb-12">
+              <p class="mt-4 text-xl text-white font-medium">Find the perfect match for your educational goals</p>
+            </div>
+            <form id="programSearchForm"
+              class="relative rounded-2xl border-2 border-white/30 bg-white/95 backdrop-blur-sm p-8 shadow-xl">
+
+              <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+                <!-- Program (spans 2 on large) -->
+                <div class="relative lg:col-span-2">
+                  <i data-lucide="search" class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"></i>
+                  <input id="program" name="program" data-testid="input-program" type="text"
+                    class="w-full rounded-xl border border-gray-300 bg-transparent px-3 py-2 pl-10 text-base md:text-sm outline-none focus:border-[#D82128] focus:ring-2 focus:ring-red-200"
+                    placeholder="Search programs, universities..." />
+
+                </div>
+
+                <!-- Field of Study select -->
+                <div class="relative">
+                  <i data-lucide="graduation-cap"
+                    class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"></i>
+                  <select id="field-of-study" name="field-of-study" data-testid="select-field"
+                    class="w-full appearance-none rounded-xl border border-gray-300 bg-transparent px-3 py-2 pl-10 pr-8 text-sm outline-none focus:border-[#D82128] focus:ring-2 focus:ring-red-200">
+
+                    <option value="">Field of Study</option>
+                    <option>Business</option>
+                    <option>Engineering</option>
+                    <option>Computer Science</option>
+                    <option>Medicine</option>
+                    <option>Arts & Humanities</option>
+                    <option>Sciences</option>
+                    <option>Social Sciences</option>
+                    <option>Law</option>
+                  </select>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                    class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 opacity-50">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </div>
+
+                <!-- Country select -->
+                <div class="relative">
+                  <i data-lucide="map-pin" class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"></i>
+                  <select id="country" name="country" data-testid="select-country"
+                    class="w-full appearance-none rounded-xl border border-gray-300 bg-transparent px-3 py-2 pl-10 pr-8 text-sm outline-none focus:border-[#D82128] focus:ring-2 focus:ring-red-200">
+
+                    <option value="">Country</option>
+                    <option>USA</option>
+                    <option>Canada</option>
+                    <option>UK</option>
+                    <option>Australia</option>
+                    <option>Singapore</option>
+                    <option>Germany</option>
+                    <option>Netherlands</option>
+                  </select>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                    class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 opacity-50">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </div>
+
+                <!-- Degree Level select -->
+                <div class="relative">
+                  <i data-lucide="graduation-cap"
+                    class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"></i>
+                  <select id="degree" name="degree" data-testid="select-degree"
+                    class="w-full appearance-none rounded-xl border border-gray-300 bg-transparent px-3 py-2 pl-10 pr-8 text-sm outline-none focus:border-[#D82128] focus:ring-2 focus:ring-red-200">
+
+                    <option value="">Level</option>
+                    <option>Undergraduate</option>
+                    <option>Postgraduate</option>
+                    <option>MBA</option>
+                    <option>PhD</option>
+                    <option>Diploma</option>
+                  </select>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                    class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 opacity-50">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Footer row -->
+              <div class="mt-6 flex items-center justify-between">
+                <div class="flex items-center gap-2 text-sm text-gray-600">
+                  <i data-lucide="dollar-sign" class="h-4 w-4 text-[#D82128]"></i>
+                  <span class="font-medium">Filter by scholarship availability</span>
+                </div>
+                <button type="button" id="btnSearchPrograms" data-testid="btn-search-programs"
+                  class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#D82128] px-6 py-3 text-sm font-semibold text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 shadow-lg hover:shadow-xl transition-all hover:scale-105">
+                  <i data-lucide="search" class="h-4 w-4"></i>
+                  Search Programs
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
     </div>
   </section>
 
   <!-- SECTION: METRICS -->
-  <section id="metrics" data-testid="section-metrics" class="py-20 bg-[#F9F9F9]">
+  <section id="metrics" data-testid="section-metrics" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-black">Why Students Choose ApplyLead</h2>
-        <p class="mt-3 text-black/70">We combine scholarships, expert guidance, and a trusted global network.</p>
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-black">Trusted by Students Worldwide</h2>
+        <p class="mt-4 text-xl text-gray-600">Join thousands of successful students who achieved their dreams</p>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="rounded-2xl bg-white p-6 shadow-sm">
-          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#D82128]">
-            <i data-lucide="badge-check" class="h-6 w-6 text-white"></i>
+      <!-- Sliding metrics carousel -->
+      <div class="overflow-hidden">
+        <div class="flex gap-6 animate-slide">
+          <!-- First set of 8 cards -->
+          <div
+            class="flex-shrink-0 w-64 rounded-2xl bg-white border border-gray-200 p-8 text-center transition-all hover:shadow-lg hover:-translate-y-1">
+            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#C81E1E] text-white">
+              <i data-lucide="award" class="h-8 w-8"></i>
+            </div>
+            <div class="mb-2 text-4xl font-bold text-[#B91C1C]">3,200+</div>
+            <div class="text-base font-medium text-black">Scholarships Awarded</div>
           </div>
-          <div class="text-3xl font-extrabold" style="color:#D82128">3,200+</div>
-          <p class="mt-1 font-semibold text-black">Scholarship Offers</p>
-        </div>
-        <div class="rounded-2xl bg-white p-6 shadow-sm">
-          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#D82128]">
-            <i data-lucide="shield-check" class="h-6 w-6 text-white"></i>
+
+          <div
+            class="flex-shrink-0 w-64 rounded-2xl bg-white border border-gray-200 p-8 text-center transition-all hover:shadow-lg hover:-translate-y-1">
+            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#C81E1E] text-white">
+              <i data-lucide="shield-check" class="h-8 w-8"></i>
+            </div>
+            <div class="mb-2 text-4xl font-bold text-[#B91C1C]">97%</div>
+            <div class="text-base font-medium text-black">Visa Success Rate</div>
           </div>
-          <div class="text-3xl font-extrabold" style="color:#D82128">97%</div>
-          <p class="mt-1 font-semibold text-black">Visa Success Rate</p>
-        </div>
-        <div class="rounded-2xl bg-white p-6 shadow-sm">
-          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#D82128]">
-            <i data-lucide="building-2" class="h-6 w-6 text-white"></i>
+
+          <div
+            class="flex-shrink-0 w-64 rounded-2xl bg-white border border-gray-200 p-8 text-center transition-all hover:shadow-lg hover:-translate-y-1">
+            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#C81E1E] text-white">
+              <i data-lucide="building-2" class="h-8 w-8"></i>
+            </div>
+            <div class="mb-2 text-4xl font-bold text-[#B91C1C]">500+</div>
+            <div class="text-base font-medium text-black">Partner Universities</div>
           </div>
-          <div class="text-3xl font-extrabold" style="color:#D82128">500+</div>
-          <p class="mt-1 font-semibold text-black">Partner Universities</p>
-        </div>
-        <div class="rounded-2xl bg-white p-6 shadow-sm">
-          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#D82128]">
-            <i data-lucide="clock-9" class="h-6 w-6 text-white"></i>
+
+          <div
+            class="flex-shrink-0 w-64 rounded-2xl bg-white border border-gray-200 p-8 text-center transition-all hover:shadow-lg hover:-translate-y-1">
+            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#C81E1E] text-white">
+              <i data-lucide="zap" class="h-8 w-8"></i>
+            </div>
+            <div class="mb-2 text-4xl font-bold text-[#B91C1C]">72h</div>
+            <div class="text-base font-medium text-black">Fast Profile Review</div>
           </div>
-          <div class="text-3xl font-extrabold" style="color:#D82128">72h</div>
-          <p class="mt-1 font-semibold text-black">Profile Review</p>
+
+          <div
+            class="flex-shrink-0 w-64 rounded-2xl bg-white border border-gray-200 p-8 text-center transition-all hover:shadow-lg hover:-translate-y-1">
+            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#C81E1E] text-white">
+              <i data-lucide="users" class="h-8 w-8"></i>
+            </div>
+            <div class="mb-2 text-4xl font-bold text-[#B91C1C]">1.3M+</div>
+            <div class="text-base font-medium text-black">Students Helped</div>
+          </div>
+
+          <div
+            class="flex-shrink-0 w-64 rounded-2xl bg-white border border-gray-200 p-8 text-center transition-all hover:shadow-lg hover:-translate-y-1">
+            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#C81E1E] text-white">
+              <i data-lucide="globe" class="h-8 w-8"></i>
+            </div>
+            <div class="mb-2 text-4xl font-bold text-[#B91C1C]">140,000+</div>
+            <div class="text-base font-medium text-black">Global Programs</div>
+          </div>
+
+          <div
+            class="flex-shrink-0 w-64 rounded-2xl bg-white border border-gray-200 p-8 text-center transition-all hover:shadow-lg hover:-translate-y-1">
+            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#C81E1E] text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
+                <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
+                <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path>
+                <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path>
+                <path d="M10 6h4"></path>
+                <path d="M10 10h4"></path>
+                <path d="M10 14h4"></path>
+                <path d="M10 18h4"></path>
+              </svg>
+            </div>
+            <div class="mb-2 text-4xl font-bold text-[#B91C1C]">1,500+</div>
+            <div class="text-base font-medium text-black">Institutions Globally</div>
+          </div>
+
+          <div
+            class="flex-shrink-0 w-64 rounded-2xl bg-white border border-gray-200 p-8 text-center transition-all hover:shadow-lg hover:-translate-y-1">
+            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#C81E1E] text-white">
+              <i data-lucide="graduation-cap" class="h-8 w-8"></i>
+            </div>
+            <div class="mb-2 text-4xl font-bold text-[#B91C1C]">150+</div>
+            <div class="text-base font-medium text-black">Nationalities</div>
+          </div>
+
+          <!-- Duplicate set for seamless loop -->
+          <div
+            class="flex-shrink-0 w-64 rounded-2xl bg-white border border-gray-200 p-8 text-center transition-all hover:shadow-lg hover:-translate-y-1">
+            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#C81E1E] text-white">
+              <i data-lucide="award" class="h-8 w-8"></i>
+            </div>
+            <div class="mb-2 text-4xl font-bold text-[#B91C1C]">3,200+</div>
+            <div class="text-base font-medium text-black">Scholarships Awarded</div>
+          </div>
+
+          <div
+            class="flex-shrink-0 w-64 rounded-2xl bg-white border border-gray-200 p-8 text-center transition-all hover:shadow-lg hover:-translate-y-1">
+            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#C81E1E] text-white">
+              <i data-lucide="shield-check" class="h-8 w-8"></i>
+            </div>
+            <div class="mb-2 text-4xl font-bold text-[#B91C1C]">97%</div>
+            <div class="text-base font-medium text-black">Visa Success Rate</div>
+          </div>
+
+          <div
+            class="flex-shrink-0 w-64 rounded-2xl bg-white border border-gray-200 p-8 text-center transition-all hover:shadow-lg hover:-translate-y-1">
+            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#C81E1E] text-white">
+              <i data-lucide="building-2" class="h-8 w-8"></i>
+            </div>
+            <div class="mb-2 text-4xl font-bold text-[#B91C1C]">500+</div>
+            <div class="text-base font-medium text-black">Partner Universities</div>
+          </div>
+
+          <div
+            class="flex-shrink-0 w-64 rounded-2xl bg-white border border-gray-200 p-8 text-center transition-all hover:shadow-lg hover:-translate-y-1">
+            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#C81E1E] text-white">
+              <i data-lucide="zap" class="h-8 w-8"></i>
+            </div>
+            <div class="mb-2 text-4xl font-bold text-[#B91C1C]">72h</div>
+            <div class="text-base font-medium text-black">Fast Profile Review</div>
+          </div>
+
+          <div
+            class="flex-shrink-0 w-64 rounded-2xl bg-white border border-gray-200 p-8 text-center transition-all hover:shadow-lg hover:-translate-y-1">
+            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#C81E1E] text-white">
+              <i data-lucide="users" class="h-8 w-8"></i>
+            </div>
+            <div class="mb-2 text-4xl font-bold text-[#B91C1C]">1.3M+</div>
+            <div class="text-base font-medium text-black">Students Helped</div>
+          </div>
+
+          <div
+            class="flex-shrink-0 w-64 rounded-2xl bg-white border border-gray-200 p-8 text-center transition-all hover:shadow-lg hover:-translate-y-1">
+            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#C81E1E] text-white">
+              <i data-lucide="globe" class="h-8 w-8"></i>
+            </div>
+            <div class="mb-2 text-4xl font-bold text-[#B91C1C]">140,000+</div>
+            <div class="text-base font-medium text-black">Global Programs</div>
+          </div>
+
+          <div
+            class="flex-shrink-0 w-64 rounded-2xl bg-white border border-gray-200 p-8 text-center transition-all hover:shadow-lg hover:-translate-y-1">
+            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#C81E1E] text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
+                <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
+                <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path>
+                <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path>
+                <path d="M10 6h4"></path>
+                <path d="M10 10h4"></path>
+                <path d="M10 14h4"></path>
+                <path d="M10 18h4"></path>
+              </svg>
+            </div>
+            <div class="mb-2 text-4xl font-bold text-[#B91C1C]">1,500+</div>
+            <div class="text-base font-medium text-black">Institutions Globally</div>
+          </div>
+
+          <div
+            class="flex-shrink-0 w-64 rounded-2xl bg-white border border-gray-200 p-8 text-center transition-all hover:shadow-lg hover:-translate-y-1">
+            <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#C81E1E] text-white">
+              <i data-lucide="graduation-cap" class="h-8 w-8"></i>
+            </div>
+            <div class="mb-2 text-4xl font-bold text-[#B91C1C]">150+</div>
+            <div class="text-base font-medium text-black">Nationalities</div>
+          </div>
         </div>
       </div>
-      <div class="mt-10 text-center">
+      <div class="mt-16 text-center">
         <a href="Students/htmls/Student-sign-up.html"
-          class="inline-flex rounded-xl bg-[#D82128] px-8 py-3 font-semibold text-white hover:bg-red-600"
-          data-testid="cta-start-profile">Start Your Profile</a>
+          class="inline-flex items-center rounded-xl bg-[#D82128] px-10 py-4 text-lg font-semibold text-white hover:bg-red-600 shadow-lg hover:shadow-xl transition"
+          data-testid="cta-start-profile">
+          <i data-lucide="arrow-right" class="mr-2 h-5 w-5"></i>
+          Start Your Journey Today
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- SECTION: PROGRAMS -->
-  <section id="programs" data-testid="section-programs" class="py-20 bg-white">
+  <!-- SECTION: PROGRAMS - REDESIGNED -->
+  <section id="programs" data-testid="section-programs" class="py-20 bg-gradient-to-b from-white to-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-black">Our Programs</h2>
-        <p class="mt-3 text-black/70">Choose your best pathway to global success.</p>
+      <!-- Section Header -->
+      <div class="mb-16 text-center">
+        <h2 class="mb-5 text-4xl font-bold text-black md:text-5xl">Find Your Perfect Path</h2>
+        <p class="mx-auto max-w-3xl text-xl text-gray-600 leading-relaxed">Explore our specialized programs designed for
+          students, parents, and partners. Each pathway is crafted to maximize your success and unlock global
+          opportunities.</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="rounded-2xl border border-gray-200 p-6 hover:border-[#D82128] transition">
-          <h3 class="text-xl font-bold text-black">Guaranteed Scholarship Program</h3>
-          <p class="mt-3 text-black/80">Get matched with scholarships tailored to your profile and achievements.</p>
-          <a href="#" class="mt-4 inline-flex items-center font-semibold text-[#D82128]">Learn More <i
-              data-lucide="arrow-right" class="ml-1 h-4 w-4"></i></a>
+
+      <!-- Programs Grid -->
+      <div class="grid gap-8 md:grid-cols-2 lg:gap-10">
+        <!-- Card 1: Guaranteed Scholarship Program (MOST POPULAR) -->
+        <div
+          class="relative bg-white rounded-2xl border-2 border-gray-200 overflow-hidden group hover:border-[#D82128] hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+          <!-- Popular Badge -->
+          <div class="absolute top-4 right-4 z-10">
+            <span
+              class="inline-flex items-center px-3 py-1 rounded-full bg-[#D82128] text-white text-xs font-bold shadow-lg">
+              <i data-lucide="star" class="h-3 w-3 mr-1 fill-current"></i>
+              MOST POPULAR
+            </span>
+          </div>
+
+          <div class="p-8">
+            <!-- Icon & Title -->
+            <div class="mb-6">
+              <div
+                class="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#D82128] to-[#B91C1C] text-white mb-5 group-hover:scale-110 transition-transform duration-300">
+                <i data-lucide="award" class="h-8 w-8"></i>
+              </div>
+              <h3 class="font-bold text-2xl md:text-3xl text-black mb-3 group-hover:text-[#D82128] transition-colors">
+                Guaranteed Scholarship Program</h3>
+              <p class="text-base text-gray-600 leading-relaxed">Secure funding with exclusive scholarships matched to
+                your profile and academic achievements.</p>
+            </div>
+
+            <!-- Features List -->
+            <div class="mb-8 space-y-3">
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
+                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                </div>
+                <span class="text-gray-700">Up to <strong class="text-black">100% tuition coverage</strong></span>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
+                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                </div>
+                <span class="text-gray-700">Merit-based & need-based awards</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
+                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                </div>
+                <span class="text-gray-700">Personalized scholarship matching</span>
+              </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="#" data-modal-open="modal-scholarship"
+                class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border-2 border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-700 hover:border-[#D82128] hover:text-[#D82128] transition-all">
+                <i data-lucide="info" class="h-4 w-4"></i>
+                Learn More
+              </a>
+              <a href="Students/htmls/Student-sign-up.html"
+                class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-[#D82128] px-5 py-3 text-sm font-semibold text-white hover:bg-[#B91C1C] shadow-lg hover:shadow-xl transition-all group">
+                Apply Now
+                <i data-lucide="arrow-right" class="h-4 w-4 group-hover:translate-x-1 transition-transform"></i>
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="rounded-2xl border border-gray-200 p-6 hover:border-[#D82128] transition">
-          <h3 class="text-xl font-bold text-black">Elite Admission Program</h3>
-          <p class="mt-3 text-black/80">Strategic guidance for top-tier universities and competitive programs.</p>
-          <a href="#" class="mt-4 inline-flex items-center font-semibold text-[#D82128]">Learn More <i
-              data-lucide="arrow-right" class="ml-1 h-4 w-4"></i></a>
+
+        <!-- Card 2: Elite Admission Program -->
+        <div
+          class="relative bg-white rounded-2xl border-2 border-gray-200 overflow-hidden group hover:border-[#D82128] hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+          <div class="p-8">
+            <div class="mb-6">
+              <div
+                class="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#D82128] to-[#8B0000] text-white mb-5 group-hover:scale-110 transition-transform duration-300">
+                <i data-lucide="target" class="h-8 w-8"></i>
+              </div>
+              <h3 class="font-bold text-2xl md:text-3xl text-black mb-3 group-hover:text-[#D82128] transition-colors">
+                Elite Admission Program</h3>
+              <p class="text-base text-gray-600 leading-relaxed">Personalized guidance from admission experts to improve
+                your chances at top-tier universities.</p>
+            </div>
+
+            <div class="mb-8 space-y-3">
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
+                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                </div>
+                <span class="text-gray-700"><strong class="text-black">1-on-1 counseling</strong> sessions</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
+                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                </div>
+                <span class="text-gray-700">Application review & optimization</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
+                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                </div>
+                <span class="text-gray-700">Interview preparation & mock tests</span>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="#" data-modal-open="modal-elite-admission"
+                class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border-2 border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-700 hover:border-[#D82128] hover:text-[#D82128] transition-all">
+                <i data-lucide="info" class="h-4 w-4"></i>
+                Learn More
+              </a>
+              <a href="Students/htmls/Student-sign-up.html"
+                class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-[#D82128] px-5 py-3 text-sm font-semibold text-white hover:bg-[#B91C1C] shadow-lg hover:shadow-xl transition-all group">
+                Apply Now
+                <i data-lucide="arrow-right" class="h-4 w-4 group-hover:translate-x-1 transition-transform"></i>
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="rounded-2xl border border-gray-200 p-6 hover:border-[#D82128] transition">
-          <h3 class="text-xl font-bold text-black">Ivy Global Program</h3>
-          <p class="mt-3 text-black/80">Holistic preparation for Ivy League and world top-50 admissions.</p>
-          <a href="#" class="mt-4 inline-flex items-center font-semibold text-[#D82128]">Learn More <i
-              data-lucide="arrow-right" class="ml-1 h-4 w-4"></i></a>
+
+        <!-- Card 3: Ivy Global Program -->
+        <div
+          class="relative bg-white rounded-2xl border-2 border-gray-200 overflow-hidden group hover:border-[#D82128] hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+          <div class="p-8">
+            <div class="mb-6">
+              <div
+                class="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#B91C1C] to-[#7F0000] text-white mb-5 group-hover:scale-110 transition-transform duration-300">
+                <i data-lucide="globe" class="h-8 w-8"></i>
+              </div>
+              <h3 class="font-bold text-2xl md:text-3xl text-black mb-3 group-hover:text-[#D82128] transition-colors">
+                Ivy Global Program</h3>
+              <p class="text-base text-gray-600 leading-relaxed">Specialized support for Ivy League and world-renowned
+                institutions.</p>
+            </div>
+
+            <div class="mb-8 space-y-3">
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
+                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                </div>
+                <span class="text-gray-700"><strong class="text-black">Ivy League</strong> expertise</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
+                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                </div>
+                <span class="text-gray-700">Essay coaching & statement development</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
+                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                </div>
+                <span class="text-gray-700">Strategic profile building</span>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="#" data-modal-open="modal-ivy-global"
+                class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border-2 border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-700 hover:border-[#D82128] hover:text-[#D82128] transition-all">
+                <i data-lucide="info" class="h-4 w-4"></i>
+                Learn More
+              </a>
+              <a href="Students/htmls/Student-sign-up.html"
+                class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-[#D82128] px-5 py-3 text-sm font-semibold text-white hover:bg-[#B91C1C] shadow-lg hover:shadow-xl transition-all group">
+                Apply Now
+                <i data-lucide="arrow-right" class="h-4 w-4 group-hover:translate-x-1 transition-transform"></i>
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="rounded-2xl border border-gray-200 p-6 hover:border-[#D82128] transition">
-          <h3 class="text-xl font-bold text-black">Joint Program</h3>
-          <p class="mt-3 text-black/80">Flexible pathways with partner universities and credit transfers.</p>
-          <a href="#" class="mt-4 inline-flex items-center font-semibold text-[#D82128]">Learn More <i
-              data-lucide="arrow-right" class="ml-1 h-4 w-4"></i></a>
+
+        <!-- Card 4: Joint Program -->
+        <div
+          class="relative bg-white rounded-2xl border-2 border-gray-200 overflow-hidden group hover:border-[#D82128] hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+          <div class="p-8">
+            <div class="mb-6">
+              <div
+                class="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#DC2626] to-[#991B1B] text-white mb-5 group-hover:scale-110 transition-transform duration-300">
+                <i data-lucide="users" class="h-8 w-8"></i>
+              </div>
+              <h3 class="font-bold text-2xl md:text-3xl text-black mb-3 group-hover:text-[#D82128] transition-colors">
+                Joint Program</h3>
+              <p class="text-base text-gray-600 leading-relaxed">Dual-degree and joint-program opportunities with
+                partner institutions.</p>
+            </div>
+
+            <div class="mb-8 space-y-3">
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
+                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                </div>
+                <span class="text-gray-700"><strong class="text-black">Dual degrees</strong> from top
+                  universities</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
+                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                </div>
+                <span class="text-gray-700">Exchange programs worldwide</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
+                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                </div>
+                <span class="text-gray-700">Access to global network</span>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="#" data-modal-open="modal-joint-program"
+                class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border-2 border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-700 hover:border-[#D82128] hover:text-[#D82128] transition-all">
+                <i data-lucide="info" class="h-4 w-4"></i>
+                Learn More
+              </a>
+              <a href="Students/htmls/Student-sign-up.html"
+                class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-[#D82128] px-5 py-3 text-sm font-semibold text-white hover:bg-[#B91C1C] shadow-lg hover:shadow-xl transition-all group">
+                Apply Now
+                <i data-lucide="arrow-right" class="h-4 w-4 group-hover:translate-x-1 transition-transform"></i>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="mt-10 text-center">
+
+      <!-- Bottom CTA -->
+      <div class="mt-16 text-center">
+        <p class="text-gray-600 mb-6 text-lg">Not sure which program fits you best?</p>
         <a href="Students/htmls/Student-sign-up.html"
-          class="inline-flex rounded-xl bg-[#D82128] px-8 py-3 font-semibold text-white hover:bg-red-600"
-          data-testid="cta-register-now">Register Now</a>
+          class="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#D82128] to-[#B91C1C] px-8 py-4 text-base font-bold text-white hover:shadow-2xl hover:scale-105 transition-all duration-300">
+          <i data-lucide="calendar" class="h-5 w-5"></i>
+          Schedule a Free Consultation
+          <i data-lucide="arrow-right" class="h-5 w-5"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Program Modals -->
+  <div id="modal-scholarship" class="fixed inset-0 z-50 hidden items-center justify-center"
+    style="background: rgba(0,0,0,0.5);">
+    <div class="relative mx-auto w-[92%] max-w-2xl rounded-2xl bg-white p-8 shadow-2xl">
+      <button class="absolute right-4 top-4 rounded-lg p-2 hover:bg-gray-100" data-modal-close>
+        <i data-lucide="x" class="h-5 w-5"></i>
+      </button>
+      <div class="mb-6">
+        <div class="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-lg bg-[#D82128]/10">
+          <i data-lucide="award" class="h-8 w-8 text-[#D82128]"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-black">Guaranteed Scholarship Program</h3>
+        <p class="mt-2 text-black/70">Secure your education funding with our comprehensive scholarship matching service.
+        </p>
+      </div>
+      <div class="space-y-4 text-black/80">
+        <div>
+          <h4 class="font-semibold text-black mb-2">Program Overview</h4>
+          <p class="text-sm">Our Guaranteed Scholarship Program connects you with exclusive funding opportunities
+            matched to your academic profile, achievements, and financial needs. We work with 500+ universities offering
+            merit-based and need-based scholarships.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold text-black mb-2">What's Included</h4>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                class="h-4 w-4 text-[#D82128] mt-0.5 flex-shrink-0"></i><span>Personalized scholarship matching based on
+                your profile</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                class="h-4 w-4 text-[#D82128] mt-0.5 flex-shrink-0"></i><span>Access to scholarships covering up to 100%
+                tuition</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                class="h-4 w-4 text-[#D82128] mt-0.5 flex-shrink-0"></i><span>Application support and document
+                preparation</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                class="h-4 w-4 text-[#D82128] mt-0.5 flex-shrink-0"></i><span>Merit-based and need-based funding
+                options</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                class="h-4 w-4 text-[#D82128] mt-0.5 flex-shrink-0"></i><span>Continuous updates on new scholarship
+                opportunities</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-black mb-2">Eligibility</h4>
+          <p class="text-sm">Open to all students with strong academic records. Minimum GPA requirements vary by
+            scholarship provider.</p>
+        </div>
+      </div>
+      <div class="mt-8 flex gap-3">
+        <button class="flex-1 rounded-md border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-50"
+          data-modal-close>Close</button>
+        <a href="Students/htmls/Student-sign-up.html"
+          class="flex-1 rounded-md bg-[#D82128] px-4 py-2 text-center text-sm font-semibold text-white hover:bg-red-600">Apply
+          Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-elite-admission" class="fixed inset-0 z-50 hidden items-center justify-center"
+    style="background: rgba(0,0,0,0.5);">
+    <div class="relative mx-auto w-[92%] max-w-2xl rounded-2xl bg-white p-8 shadow-2xl">
+      <button class="absolute right-4 top-4 rounded-lg p-2 hover:bg-gray-100" data-modal-close>
+        <i data-lucide="x" class="h-5 w-5"></i>
+      </button>
+      <div class="mb-6">
+        <div class="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-lg bg-[#D82128]/10">
+          <i data-lucide="target" class="h-8 w-8 text-[#D82128]"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-black">Elite Admission Program</h3>
+        <p class="mt-2 text-black/70">Get personalized guidance from admission experts to maximize your chances at
+          top-tier universities.</p>
+      </div>
+      <div class="space-y-4 text-black/80">
+        <div>
+          <h4 class="font-semibold text-black mb-2">Program Overview</h4>
+          <p class="text-sm">The Elite Admission Program provides comprehensive support from experienced admission
+            counselors who have helped students gain acceptance to the world's most competitive universities.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold text-black mb-2">What's Included</h4>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                class="h-4 w-4 text-[#D82128] mt-0.5 flex-shrink-0"></i><span>One-on-one counseling sessions with
+                admission experts</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                class="h-4 w-4 text-[#D82128] mt-0.5 flex-shrink-0"></i><span>Complete application review and
+                optimization</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                class="h-4 w-4 text-[#D82128] mt-0.5 flex-shrink-0"></i><span>Essay coaching and personal statement
+                development</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                class="h-4 w-4 text-[#D82128] mt-0.5 flex-shrink-0"></i><span>Interview preparation and mock
+                interviews</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                class="h-4 w-4 text-[#D82128] mt-0.5 flex-shrink-0"></i><span>Strategic timeline planning and deadline
+                management</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-black mb-2">Success Rate</h4>
+          <p class="text-sm">Our Elite Admission Program boasts an 85% acceptance rate to top-50 universities worldwide.
+          </p>
+        </div>
+      </div>
+      <div class="mt-8 flex gap-3">
+        <button class="flex-1 rounded-md border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-50"
+          data-modal-close>Close</button>
+        <a href="Students/htmls/Student-sign-up.html"
+          class="flex-1 rounded-md bg-[#D82128] px-4 py-2 text-center text-sm font-semibold text-white hover:bg-red-600">Apply
+          Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-ivy-global" class="fixed inset-0 z-50 hidden items-center justify-center"
+    style="background: rgba(0,0,0,0.5);">
+    <div class="relative mx-auto w-[92%] max-w-2xl rounded-2xl bg-white p-8 shadow-2xl">
+      <button class="absolute right-4 top-4 rounded-lg p-2 hover:bg-gray-100" data-modal-close>
+        <i data-lucide="x" class="h-5 w-5"></i>
+      </button>
+      <div class="mb-6">
+        <div class="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-lg bg-[#D82128]/10">
+          <i data-lucide="globe" class="h-8 w-8 text-[#D82128]"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-black">Ivy Global Program</h3>
+        <p class="mt-2 text-black/70">Specialized support designed specifically for Ivy League and world-renowned
+          institution applications.</p>
+      </div>
+      <div class="space-y-4 text-black/80">
+        <div>
+          <h4 class="font-semibold text-black mb-2">Program Overview</h4>
+          <p class="text-sm">The Ivy Global Program is our premium offering designed for students targeting Ivy League
+            universities and other world-renowned institutions. Our counselors are alumni and admission experts from
+            these elite schools.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold text-black mb-2">What's Included</h4>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                class="h-4 w-4 text-[#D82128] mt-0.5 flex-shrink-0"></i><span>Ivy League-specific admission
+                strategies</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                class="h-4 w-4 text-[#D82128] mt-0.5 flex-shrink-0"></i><span>Premium essay coaching with Ivy
+                alumni</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                class="h-4 w-4 text-[#D82128] mt-0.5 flex-shrink-0"></i><span>Holistic profile building and
+                positioning</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                class="h-4 w-4 text-[#D82128] mt-0.5 flex-shrink-0"></i><span>Extracurricular activity guidance</span>
+            </li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                class="h-4 w-4 text-[#D82128] mt-0.5 flex-shrink-0"></i><span>Letters of recommendation strategy</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-black mb-2">Target Schools</h4>
+          <p class="text-sm">Harvard, Yale, Princeton, Stanford, MIT, Oxford, Cambridge, and other top-tier global
+            institutions.</p>
+        </div>
+      </div>
+      <div class="mt-8 flex gap-3">
+        <button class="flex-1 rounded-md border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-50"
+          data-modal-close>Close</button>
+        <a href="Students/htmls/Student-sign-up.html"
+          class="flex-1 rounded-md bg-[#D82128] px-4 py-2 text-center text-sm font-semibold text-white hover:bg-red-600">Apply
+          Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-joint-program" class="fixed inset-0 z-50 hidden items-center justify-center"
+    style="background: rgba(0,0,0,0.5);">
+    <div class="relative mx-auto w-[92%] max-w-2xl rounded-2xl bg-white p-8 shadow-2xl">
+      <button class="absolute right-4 top-4 rounded-lg p-2 hover:bg-gray-100" data-modal-close>
+        <i data-lucide="x" class="h-5 w-5"></i>
+      </button>
+      <div class="mb-6">
+        <div class="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-lg bg-[#D82128]/10">
+          <i data-lucide="users" class="h-8 w-8 text-[#D82128]"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-black">Joint Program</h3>
+        <p class="mt-2 text-black/70">Explore dual-degree and joint-program opportunities with partner institutions
+          worldwide.</p>
+      </div>
+      <div class="space-y-4 text-black/80">
+        <div>
+          <h4 class="font-semibold text-black mb-2">Program Overview</h4>
+          <p class="text-sm">The Joint Program opens doors to unique educational pathways including dual degrees,
+            exchange programs, and collaborative programs between multiple prestigious institutions.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold text-black mb-2">What's Included</h4>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                class="h-4 w-4 text-[#D82128] mt-0.5 flex-shrink-0"></i><span>Access to dual-degree program
+                opportunities</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                class="h-4 w-4 text-[#D82128] mt-0.5 flex-shrink-0"></i><span>International exchange program
+                coordination</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                class="h-4 w-4 text-[#D82128] mt-0.5 flex-shrink-0"></i><span>Partner university network
+                connections</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                class="h-4 w-4 text-[#D82128] mt-0.5 flex-shrink-0"></i><span>Credit transfer and curriculum planning
+                support</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                class="h-4 w-4 text-[#D82128] mt-0.5 flex-shrink-0"></i><span>Cultural preparation and integration
+                assistance</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-black mb-2">Benefits</h4>
+          <p class="text-sm">Earn degrees from multiple institutions, gain international experience, and expand your
+            global network while studying.</p>
+        </div>
+      </div>
+      <div class="mt-8 flex gap-3">
+        <button class="flex-1 rounded-md border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-50"
+          data-modal-close>Close</button>
+        <a href="Students/htmls/Student-sign-up.html"
+          class="flex-1 rounded-md bg-[#D82128] px-4 py-2 text-center text-sm font-semibold text-white hover:bg-red-600">Apply
+          Now</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Modal open/close functionality
+    (function () {
+      const modalTriggers = document.querySelectorAll('[data-modal-open]');
+      const modalClosers = document.querySelectorAll('[data-modal-close]');
+
+      modalTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          const modalId = trigger.getAttribute('data-modal-open');
+          const modal = document.getElementById(modalId);
+          if (modal) {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+          }
+        });
+      });
+
+      modalClosers.forEach(closer => {
+        closer.addEventListener('click', () => {
+          const modal = closer.closest('[id^="modal-"]');
+          if (modal) {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+          }
+        });
+      });
+
+      // Close modal on background click
+      document.querySelectorAll('[id^="modal-"]').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+          }
+        });
+      });
+
+      // Close on ESC key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('[id^="modal-"]').forEach(modal => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+          });
+        }
+      });
+    })();
+  </script>
+
+  <!-- Scroll Animation Styles -->
+  <style>
+    /* Base animation setup - all sections start invisible */
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    /* When section is visible */
+    .scroll-animate.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger animations for child items */
+    .scroll-animate.is-visible>div>.grid>div:nth-child(1),
+    .scroll-animate.is-visible .stagger-item:nth-child(1) {
+      animation: fadeSlideUp 0.6s ease-out 0.1s both;
+    }
+
+    .scroll-animate.is-visible>div>.grid>div:nth-child(2),
+    .scroll-animate.is-visible .stagger-item:nth-child(2) {
+      animation: fadeSlideUp 0.6s ease-out 0.2s both;
+    }
+
+    .scroll-animate.is-visible>div>.grid>div:nth-child(3),
+    .scroll-animate.is-visible .stagger-item:nth-child(3) {
+      animation: fadeSlideUp 0.6s ease-out 0.3s both;
+    }
+
+    .scroll-animate.is-visible>div>.grid>div:nth-child(4),
+    .scroll-animate.is-visible .stagger-item:nth-child(4) {
+      animation: fadeSlideUp 0.6s ease-out 0.4s both;
+    }
+
+    /* FAQ items stagger */
+    .scroll-animate.is-visible .faq-item:nth-child(1) {
+      animation: fadeSlideUp 0.5s ease-out 0.1s both;
+    }
+
+    .scroll-animate.is-visible .faq-item:nth-child(2) {
+      animation: fadeSlideUp 0.5s ease-out 0.15s both;
+    }
+
+    .scroll-animate.is-visible .faq-item:nth-child(3) {
+      animation: fadeSlideUp 0.5s ease-out 0.2s both;
+    }
+
+    .scroll-animate.is-visible .faq-item:nth-child(4) {
+      animation: fadeSlideUp 0.5s ease-out 0.25s both;
+    }
+
+    .scroll-animate.is-visible .faq-item:nth-child(5) {
+      animation: fadeSlideUp 0.5s ease-out 0.3s both;
+    }
+
+    .scroll-animate.is-visible .faq-item:nth-child(6) {
+      animation: fadeSlideUp 0.5s ease-out 0.35s both;
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Respect user preference for reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-animate {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .scroll-animate.is-visible>div>.grid>div,
+      .scroll-animate.is-visible .stagger-item,
+      .scroll-animate.is-visible .faq-item {
+        animation: none;
+      }
+    }
+  </style>
+
+  <!-- SECTION: SUCCESS -->
+  <section id="success" data-testid="section-success" class="py-20 bg-white scroll-animate">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12 text-center">
+        <h2 class="mb-4 text-3xl font-bold text-black md:text-4xl">Student Success Stories</h2>
+        <p class="mx-auto max-w-2xl text-lg text-black/70">Real students, real results. See how ApplyLead transformed
+          their educational journeys.</p>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2">
+        <!-- Testimonial 1 -->
+        <div
+          class="bg-white text-black flex flex-col gap-6 rounded-xl border border-gray-200 py-6 shadow-sm relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg stagger-item">
+          <div class="p-6">
+            <i data-lucide="quote" class="mb-4 h-6 w-6 text-[#D82128]/30"></i>
+            <p class="mb-6 text-base leading-relaxed">ApplyLead helped me secure a full scholarship to Stanford. The
+              Elite Admission Program gave me the confidence and guidance I needed to stand out.</p>
+            <div class="flex items-center gap-4">
+              <span
+                class="relative flex size-8 shrink-0 overflow-hidden rounded-full h-12 w-12 ring-2 ring-[#D82128]/10">
+                <img alt="Sarah Chen"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/asian-female-student-AfVSARow1v4PcNqyvXY0IBK8wTkgyt.jpg"
+                  class="aspect-square size-full" />
+              </span>
+              <div class="flex-1">
+                <div class="font-semibold">Sarah Chen</div>
+                <div class="text-sm text-black/70">Computer Science Student</div>
+                <div class="text-sm font-medium text-[#B91C1C]">Stanford University</div>
+              </div>
+              <div class="text-right">
+                <div class="text-sm text-black/60">Scholarship</div>
+                <div class="text-lg font-bold text-[#B91C1C]">$75,000</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div
+          class="bg-white text-black flex flex-col gap-6 rounded-xl border border-gray-200 py-6 shadow-sm relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg stagger-item">
+          <div class="p-6">
+            <i data-lucide="quote" class="mb-4 h-6 w-6 text-[#D82128]/30"></i>
+            <p class="mb-6 text-base leading-relaxed">The Ivy Global Program was a game-changer. My counselor helped me
+              craft compelling essays that showcased my unique story and leadership experience.</p>
+            <div class="flex items-center gap-4">
+              <span
+                class="relative flex size-8 shrink-0 overflow-hidden rounded-full h-12 w-12 ring-2 ring-[#D82128]/10">
+                <img alt="Michael Rodriguez"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/hispanic-male-student-vPF5XB2flDxXoOl9Ukq67xhb5TW57i.png"
+                  class="aspect-square size-full" />
+              </span>
+              <div class="flex-1">
+                <div class="font-semibold">Michael Rodriguez</div>
+                <div class="text-sm text-black/70">Business Administration</div>
+                <div class="text-sm font-medium text-[#B91C1C]">Harvard Business School</div>
+              </div>
+              <div class="text-right">
+                <div class="text-sm text-black/60">Scholarship</div>
+                <div class="text-lg font-bold text-[#B91C1C]">$90,000</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div
+          class="bg-white text-black flex flex-col gap-6 rounded-xl border border-gray-200 py-6 shadow-sm relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg stagger-item">
+          <div class="p-6">
+            <i data-lucide="quote" class="mb-4 h-6 w-6 text-[#D82128]/30"></i>
+            <p class="mb-6 text-base leading-relaxed">I never thought I could afford MIT, but ApplyLead connected me
+              with scholarships I didn't even know existed. Now I'm living my dream!</p>
+            <div class="flex items-center gap-4">
+              <span
+                class="relative flex size-8 shrink-0 overflow-hidden rounded-full h-12 w-12 ring-2 ring-[#D82128]/10">
+                <img alt="Priya Patel"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/indian-female-student-KvrmvVkWVixNL6JKPFH90AmhdN7UT7.png"
+                  class="aspect-square size-full" />
+              </span>
+              <div class="flex-1">
+                <div class="font-semibold">Priya Patel</div>
+                <div class="text-sm text-black/70">Engineering Student</div>
+                <div class="text-sm font-medium text-[#B91C1C]">MIT</div>
+              </div>
+              <div class="text-right">
+                <div class="text-sm text-black/60">Scholarship</div>
+                <div class="text-lg font-bold text-[#B91C1C]">$85,000</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 4 -->
+        <div
+          class="bg-white text-black flex flex-col gap-6 rounded-xl border border-gray-200 py-6 shadow-sm relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg stagger-item">
+          <div class="p-6">
+            <i data-lucide="quote" class="mb-4 h-6 w-6 text-[#D82128]/30"></i>
+            <p class="mb-6 text-base leading-relaxed">The Joint Program opened doors to international opportunities. I'm
+              now studying medicine at Oxford with full funding support.</p>
+            <div class="flex items-center gap-4">
+              <span
+                class="relative flex size-8 shrink-0 overflow-hidden rounded-full h-12 w-12 ring-2 ring-[#D82128]/10">
+                <img alt="James Wilson"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/black-male-student-v9NMUQQVdaQ1QfgiVyMsiWa1eKUymT.png"
+                  class="aspect-square size-full" />
+              </span>
+              <div class="flex-1">
+                <div class="font-semibold">James Wilson</div>
+                <div class="text-sm text-black/70">Medical Student</div>
+                <div class="text-sm font-medium text-[#B91C1C]">Oxford University</div>
+              </div>
+              <div class="text-right">
+                <div class="text-sm text-black/60">Scholarship</div>
+                <div class="text-lg font-bold text-[#B91C1C]">$120,000</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- SECTION: PARTNERS -->
-  <section id="partners" data-testid="section-partners" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl md:text-4xl font-bold text-black">Trusted Partners & Universities</h2>
-        <p class="mt-3 text-black/70">Explore ApplyLead’s global network.</p>
-      </div>
-      <div role="tablist" aria-label="Regions" class="mb-8 flex flex-wrap gap-2 border-b border-gray-200">
-        <button class="tab-btn px-4 py-2 font-medium text-black border-b-2 border-[#D82128]" aria-selected="true"
-          data-tab-target="#tab-usa">USA</button>
-        <button class="tab-btn px-4 py-2 font-medium text-black/70 hover:text-black" aria-selected="false"
-          data-tab-target="#tab-canada">Canada</button>
-        <button class="tab-btn px-4 py-2 font-medium text-black/70 hover:text-black" aria-selected="false"
-          data-tab-target="#tab-uk">UK</button>
-        <button class="tab-btn px-4 py-2 font-medium text-black/70 hover:text-black" aria-selected="false"
-          data-tab-target="#tab-aus">Australia</button>
-        <button class="tab-btn px-4 py-2 font-medium text-black/70 hover:text-black" aria-selected="false"
-          data-tab-target="#tab-asia">Asia</button>
-      </div>
-      <div class="space-y-8">
-        <div id="tab-usa" data-tab-panel class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-          <img src="tiffin-university-logo.png" alt="Tiffin University"
-            class="mx-auto h-12 object-contain filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
-          <img src="https://images.unsplash.com/photo-1581091223137-7c54b257227d?q=80&w=400&auto=format&fit=crop"
-            alt="Partner"
-            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
-          <img src="https://images.unsplash.com/photo-1517503737683-233ed1771cd7?q=80&w=400&auto=format&fit=crop"
-            alt="Partner"
-            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
-          <img src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=400&auto=format&fit=crop"
-            alt="Partner"
-            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
-        </div>
-        <div id="tab-canada" data-tab-panel class="hidden grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-          <img src="tiffin-university-logo.png" alt="Partner"
-            class="mx-auto h-12 object-contain filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
-          <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?q=80&w=400&auto=format&fit=crop"
-            alt="Partner"
-            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
-          <img src="https://images.unsplash.com/photo-1470723710355-95304d8aece4?q=80&w=400&auto=format&fit=crop"
-            alt="Partner"
-            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
-          <img src="https://images.unsplash.com/photo-1517976487492-576ea35d0df4?q=80&w=400&auto=format&fit=crop"
-            alt="Partner"
-            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
-        </div>
-        <div id="tab-uk" data-tab-panel class="hidden grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-          <img src="tiffin-university-logo.png" alt="Partner"
-            class="mx-auto h-12 object-contain filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
-          <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=400&auto=format&fit=crop"
-            alt="Partner"
-            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
-          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=400&auto=format&fit=crop"
-            alt="Partner"
-            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
-          <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=400&auto=format&fit=crop"
-            alt="Partner"
-            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
-        </div>
-        <div id="tab-aus" data-tab-panel class="hidden grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-          <img src="tiffin-university-logo.png" alt="Partner"
-            class="mx-auto h-12 object-contain filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
-          <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=400&auto=format&fit=crop"
-            alt="Partner"
-            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
-          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=400&auto=format&fit=crop"
-            alt="Partner"
-            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
-          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=400&auto=format&fit=crop"
-            alt="Partner"
-            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
-        </div>
-        <div id="tab-asia" data-tab-panel class="hidden grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-          <img src="tiffin-university-logo.png" alt="Partner"
-            class="mx-auto h-12 object-contain filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
-          <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?q=80&w=400&auto=format&fit=crop"
-            alt="Partner"
-            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
-          <img src="https://images.unsplash.com/photo-1543349689-9a4d426bee8e?q=80&w=400&auto=format&fit=crop"
-            alt="Partner"
-            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
-          <img src="https://images.unsplash.com/photo-1491841651911-c44c30c34548?q=80&w=400&auto=format&fit=crop"
-            alt="Partner"
-            class="mx-auto h-12 object-cover rounded bg-gray-100 filter grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition" />
-        </div>
-      </div>
-      <div class="mt-8 overflow-hidden rounded-xl">
-        <div class="bg-[#D82128] px-6 py-4 text-center text-white font-semibold">Over $3.2M in scholarships available
-          this intake.</div>
-      </div>
-      <div class="mt-6 text-center">
-        <a href="#" data-testid="cta-view-all-scholarships"
-          class="inline-flex rounded-xl bg-[#D82128] px-8 py-3 font-semibold text-black hover:bg-red-600">View All
-          Scholarships</a>
-      </div>
-    </div>
-  </section>
+  <section id="partners" data-testid="section-partners" class="py-24 bg-white scroll-animate">
 
-  <!-- SECTION: SUCCESS -->
-  <section id="success" data-testid="section-success" class="py-20 bg-[#111111] text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold">Student Success Stories</h2>
-        <p class="mt-3 text-white/80">Real results. Real impact.</p>
+        <h2 class="mb-4 text-4xl font-bold text-black md:text-5xl">Our Trusted University Partners</h2>
+        <p class="mx-auto max-w-2xl text-xl text-black/70">Explore our network of 500+ partner universities and discover
+          scholarship opportunities</p>
+
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10">
-          <img
-            src="https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=400&auto=format&fit=crop&crop=faces"
-            alt="Student" class="mb-4 h-40 w-full rounded-xl object-cover">
-          <h4 class="font-semibold">Long Le • University of Toronto</h4>
-          <p class="mt-2 text-white/80">“ApplyLead helped me secure a $20,000 scholarship. The guidance was
-            exceptional.”</p>
-        </div>
-        <div class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10">
-          <img
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop&crop=faces"
-            alt="Student" class="mb-4 h-40 w-full rounded-xl object-cover">
-          <h4 class="font-semibold">Sarah Chen • MIT</h4>
-          <p class="mt-2 text-white/80">“From application to visa, the support was incredible. Now I’m at MIT CS.”</p>
-        </div>
-        <div class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10">
-          <img
-            src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=400&auto=format&fit=crop&crop=faces"
-            alt="Student" class="mb-4 h-40 w-full rounded-xl object-cover">
-          <h4 class="font-semibold">Minh Tran • Oxford</h4>
-          <p class="mt-2 text-white/80">“The team made everything transparent and achievable. I’m proud to be at
-            Oxford.”</p>
-        </div>
+
+      <!-- Tabs segmented control -->
+      <div
+        class="bg-gray-100 text-black h-11 items-center justify-center rounded-lg p-1.5 grid w-full max-w-3xl mx-auto grid-cols-4 mb-10"
+        role="tablist" aria-label="Regions">
+        <button type="button" role="tab" aria-selected="true"
+          class="tab-btn inline-flex h-[34px] items-center justify-center rounded-md px-4 text-base font-medium data-[active=true]:bg-white data-[active=true]:shadow-sm"
+          data-active="true" data-tab-target="#tab-usa">USA</button>
+        <button type="button" role="tab" aria-selected="false"
+          class="tab-btn inline-flex h-[34px] items-center justify-center rounded-md px-4 text-base font-medium"
+          data-tab-target="#tab-uk">UK</button>
+        <button type="button" role="tab" aria-selected="false"
+          class="tab-btn inline-flex h-[34px] items-center justify-center rounded-md px-4 text-base font-medium"
+          data-tab-target="#tab-canada">Canada</button>
+        <button type="button" role="tab" aria-selected="false"
+          class="tab-btn inline-flex h-[34px] items-center justify-center rounded-md px-4 text-base font-medium"
+          data-tab-target="#tab-aus">Australia</button>
       </div>
-      <div class="mt-10 text-center">
-        <button
-          class="inline-flex items-center rounded-xl border border-white/40 px-8 py-3 font-semibold text-white hover:bg-white hover:text-black"
-          data-testid="cta-more-stories">
-          See More Stories
-        </button>
+
+      <!-- Panels -->
+      <div class="space-y-12">
+        <div id="tab-usa" data-tab-panel class="overflow-hidden transition-opacity duration-500">
+          <div class="flex gap-8 animate-slide">
+
+            <!-- Set 1: 8 cards -->
+            <!-- Card: Harvard -->
+            <div
+              class="flex-shrink-0 w-80 bg-white text-black flex flex-col rounded-2xl border border-gray-200 overflow-hidden group transition-all hover:shadow-2xl hover:-translate-y-1">
+              <!-- Campus Image -->
+              <div class="relative h-48 overflow-hidden bg-gray-100">
+                <img alt="Harvard University Campus"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  src="https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80">
+              </div>
+              <!-- Content -->
+              <div class="p-5">
+                <div class="flex items-start gap-3 mb-3">
+                  <div
+                    class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-white rounded-lg border border-gray-200 p-1">
+                    <img alt="Harvard" class="w-full h-full object-contain"
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/harvard-logo-oiBz7likOt1EEPvCOUYFRligQu5YeN.jpg">
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">Harvard
+                      University</h3>
+                    <div class="flex items-center gap-1 text-sm text-gray-600">
+                      <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
+                      <span>Cambridge, MA</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                  Founded in 1636, Harvard is the oldest institution of higher education in the US, offering world-class
+                  programs across all disciplines with unmatched resources.
+                </p>
+              </div>
+            </div>
+            <!-- Card: Stanford -->
+            <div
+              class="flex-shrink-0 w-80 bg-white text-black flex flex-col rounded-2xl border border-gray-200 overflow-hidden group transition-all hover:shadow-2xl hover:-translate-y-1">
+              <!-- Campus Image -->
+              <div class="relative h-48 overflow-hidden bg-gray-100">
+                <img alt="Stanford University Campus"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=800&q=80">
+              </div>
+              <!-- Content -->
+              <div class="p-5">
+                <div class="flex items-start gap-3 mb-3">
+                  <div
+                    class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-white rounded-lg border border-gray-200 p-1">
+                    <img alt="Stanford" class="w-full h-full object-contain"
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/stanford-logo-jjEU1MprKd2uQVLE3oF7HqBjLuxUXd.png">
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">Stanford
+                      University</h3>
+                    <div class="flex items-center gap-1 text-sm text-gray-600">
+                      <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
+                      <span>Stanford, CA</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                  Located in Silicon Valley, Stanford combines academic excellence with entrepreneurial spirit, offering
+                  cutting-edge research opportunities and strong industry connections.
+                </p>
+              </div>
+            </div>
+            <!-- Card: MIT -->
+            <div
+              class="flex-shrink-0 w-80 bg-white text-black flex flex-col rounded-2xl border border-gray-200 overflow-hidden group transition-all hover:shadow-2xl hover:-translate-y-1">
+              <div class="relative h-48 overflow-hidden bg-gray-100">
+                <img alt="MIT Campus"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=800&q=80">
+              </div>
+              <div class="p-5">
+                <div class="flex items-start gap-3 mb-3">
+                  <div
+                    class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-white rounded-lg border border-gray-200 p-1">
+                    <img alt="MIT" class="w-full h-full object-contain"
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/mit-logo-c4NRDjbRl1JGkls5iK8AbZGpxTqYUW.png">
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">MIT</h3>
+                    <div class="flex items-center gap-1 text-sm text-gray-600">
+                      <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
+                      <span>Cambridge, MA</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                  World leader in STEM education and research, MIT fosters innovation and hands-on learning with
+                  state-of-the-art facilities and collaborative environment.
+                </p>
+              </div>
+            </div>
+            <!-- Card: Yale -->
+            <div
+              class="flex-shrink-0 w-80 bg-white text-black flex flex-col rounded-2xl border border-gray-200 overflow-hidden group transition-all hover:shadow-2xl hover:-translate-y-1">
+              <div class="relative h-48 overflow-hidden bg-gray-100">
+                <img alt="Yale University Campus"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  src="https://imgs.search.brave.com/uOfisQFMuyQDVttIqcBpmZ2-qddYby_LonXfBgkaiGI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMjE5/MDk1OTY2MS9waG90/by95YWxlLXVuaXZl/cnNpdHktY2FtcHVz/LWluLW5ldy1oYXZl/bi1jb25uZWN0aWN1/dC11cy1vbi1zdW5k/YXktYXByaWwtNy0y/MDI0LWEtYmxvb21i/ZXJnLW5ld3MuanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPXhv/bVZHYXdRQm56amZl/TlRUbF95WkdLM2VX/Z2ZORmRaRWRXVFBP/WGktQ2c9">
+              </div>
+              <div class="p-5">
+                <div class="flex items-start gap-3 mb-3">
+                  <div
+                    class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-white rounded-lg border border-gray-200 p-1">
+                    <img alt="Yale" class="w-full h-full object-contain"
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/yale-logo-VMXm3ZiLyXiUUvmKS1Hw7gfOx0Sib7.jpg">
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">Yale
+                      University</h3>
+                    <div class="flex items-center gap-1 text-sm text-gray-600">
+                      <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
+                      <span>New Haven, CT</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                  An Ivy League institution known for its residential college system, Yale offers exceptional liberal
+                  arts education with strong programs in law, medicine, and humanities.
+                </p>
+              </div>
+            </div>
+            <!-- Card: Angelo State University -->
+            <div
+              class="flex-shrink-0 w-80 bg-white text-black flex flex-col rounded-2xl border border-gray-200 overflow-hidden group transition-all hover:shadow-2xl hover:-translate-y-1">
+              <div class="relative h-48 overflow-hidden bg-gray-100">
+                <img alt="Angelo State Campus"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&q=80">
+              </div>
+              <div class="p-5">
+                <div class="flex items-start gap-3 mb-3">
+                  <div
+                    class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-white rounded-lg border border-gray-200 p-1">
+                    <img alt="Angelo State" class="w-full h-full object-contain"
+                      src="https://imgs.search.brave.com/J1rlPTsdUnsYqNY_iSsQTQp-s6qi8VgZCZjBF660Mnw/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi81LzU5L0Fu/Z2Vsb3N0YXRlX3Vu/aXZfbG9nby5wbmcv/MjUwcHgtQW5nZWxv/c3RhdGVfdW5pdl9s/b2dvLnBuZw">
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">Angelo
+                      State University</h3>
+                    <div class="flex items-center gap-1 text-sm text-gray-600">
+                      <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
+                      <span>San Angelo, TX</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                  Part of the Texas Tech University System, ASU provides affordable quality education with personalized
+                  attention and strong career preparation programs.
+                </p>
+              </div>
+            </div>
+            <!-- Card: Tiffin University -->
+            <div
+              class="flex-shrink-0 w-80 bg-white text-black flex flex-col rounded-2xl border border-gray-200 overflow-hidden group transition-all hover:shadow-2xl hover:-translate-y-1">
+              <div class="relative h-48 overflow-hidden bg-gray-100">
+                <img alt="Tiffin University Campus"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=800&q=80">
+              </div>
+              <div class="p-5">
+                <div class="flex items-start gap-3 mb-3">
+                  <div
+                    class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-white rounded-lg border border-gray-200 p-1">
+                    <img alt="Tiffin" class="w-full h-full object-contain"
+                      src="https://imgs.search.brave.com/jP4_6KMrRw9JgPciUfhyW1TKQWJXmE8aF1ZUf7XqAbg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvZW4vdGh1bWIv/NC80MC9UaWZmaW5f/VW5pdmVyc2l0eV9z/ZWFsLnBuZy81MTJw/eC1UaWZmaW5fVW5p/dmVyc2l0eV9zZWFs/LnBuZw">
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">Tiffin
+                      University</h3>
+                    <div class="flex items-center gap-1 text-sm text-gray-600">
+                      <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
+                      <span>Tiffin, OH</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                  Known for business programs and global perspective, Tiffin offers hands-on learning with small class
+                  sizes and dedicated faculty support for student success.
+                </p>
+              </div>
+            </div>
+            <!-- Card: Rowan University -->
+            <div
+              class="flex-shrink-0 w-80 bg-white text-black flex flex-col rounded-2xl border border-gray-200 overflow-hidden group transition-all hover:shadow-2xl hover:-translate-y-1">
+              <div class="relative h-48 overflow-hidden bg-gray-100">
+                <img alt="Rowan University Campus"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80">
+              </div>
+              <div class="p-5">
+                <div class="flex items-start gap-3 mb-3">
+                  <div
+                    class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-white rounded-lg border border-gray-200 p-1">
+                    <img alt="Rowan" class="w-full h-full object-contain"
+                      src="https://imgs.search.brave.com/0RJJsPn4T5TDMnHSv8IyhtLsZH3rrUN7KIU4RwB7OT4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi81LzVlL1Jv/d2FuX3VuaXZfdGV4/dGxvZ28ucG5nLzI1/MHB4LVJvd2FuX3Vu/aXZfdGV4dGxvZ28u/cG5n">
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">Rowan
+                      University</h3>
+                    <div class="flex items-center gap-1 text-sm text-gray-600">
+                      <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
+                      <span>Glassboro, NJ</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                  A public research university with strong engineering and health sciences programs, Rowan combines
+                  affordability with exceptional academic quality and career outcomes.
+                </p>
+              </div>
+            </div>
+            <!-- Card: The Ohio State University -->
+            <div
+              class="flex-shrink-0 w-80 bg-white text-black flex flex-col rounded-2xl border border-gray-200 overflow-hidden group transition-all hover:shadow-2xl hover:-translate-y-1">
+              <div class="relative h-48 overflow-hidden bg-gray-100">
+                <img alt="Ohio State Campus"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=800&q=80">
+              </div>
+              <div class="p-5">
+                <div class="flex items-start gap-3 mb-3">
+                  <div
+                    class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-white rounded-lg border border-gray-200 p-1">
+                    <img alt="Ohio State" class="w-full h-full object-contain"
+                      src="https://www.osu.edu/images/osu-logo-stacked.svg">
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">The Ohio
+                      State University</h3>
+                    <div class="flex items-center gap-1 text-sm text-gray-600">
+                      <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
+                      <span>Columbus, OH</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                  One of America's largest universities, Ohio State offers comprehensive programs, world-class research
+                  facilities, and strong connections to industry leaders across all fields.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-uk" data-tab-panel class="hidden grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <!-- Oxford -->
+          <div
+            class="bg-white text-black flex flex-col rounded-2xl border border-gray-200 overflow-hidden group transition-all hover:shadow-2xl hover:-translate-y-1">
+            <div class="relative h-48 overflow-hidden bg-gray-100">
+              <img alt="Oxford University Campus"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                src="https://imgs.search.brave.com/Nz-GtFaSX0EEa5EZ5HsQxo87WpUVk4h_SLQ9D61mhKI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTYz/NDE1MjAxOC9waG90/by9veGZvcmQtdW5p/dmVyc2l0eS1lbmds/YW5kLXVrLWdyYWR1/YXRpb24tY2VyZW1v/bnkuanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPW5LZ3pqS0pf/VS11Uk96YVlSVGpG/VndscEhSX3dZMXlh/UzZHU2dud3lmdjA9">
+            </div>
+            <div class="p-5">
+              <div class="flex items-start gap-3 mb-3">
+                <div
+                  class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-white rounded-lg border border-gray-200 p-1">
+                  <img alt="Oxford University" class="w-full h-full object-contain"
+                    src="https://imgs.search.brave.com/fFkQNktGLiPAJVfQGJY6Bi_69lhDbr76RNr-fwLiU9M/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi8yLzJmL1Vu/aXZlcnNpdHlfb2Zf/T3hmb3JkLnN2Zy8y/NTBweC1Vbml2ZXJz/aXR5X29mX094Zm9y/ZC5zdmcucG5n">
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">Oxford
+                    University</h3>
+                  <div class="flex items-center gap-1 text-sm text-gray-600">
+                    <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
+                    <span>Oxford, UK</span>
+                  </div>
+                </div>
+              </div>
+              <p class="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                Oldest university in the English-speaking world, renowned for its collegiate system, world-leading
+                research, and tutorial-based teaching.
+              </p>
+            </div>
+          </div>
+          <!-- Cambridge -->
+          <div
+            class="bg-white text-black flex flex-col rounded-2xl border border-gray-200 overflow-hidden group transition-all hover:shadow-2xl hover:-translate-y-1">
+            <div class="relative h-48 overflow-hidden bg-gray-100">
+              <img alt="University of Cambridge Campus"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                src="https://imgs.search.brave.com/M68OevZ6HnqA5G9dxAH0y2xIzUUVvyJis0grhNuo1Sg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTUw/NjUyOTE4L3Bob3Rv/L2VsZXZhdGVkLXZp/ZXctb2YtdGhlLXNr/eWxpbmUtb2YtY2Ft/YnJpZGdlLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1NWW5z/VjVXeERGY25RYmV0/bnR3c3E3SWswVldl/WlR2QmNjOTRSLTBu/aHRBPQ">
+            </div>
+            <div class="p-5">
+              <div class="flex items-start gap-3 mb-3">
+                <div
+                  class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-white rounded-lg border border-gray-200 p-1">
+                  <img alt="University of Cambridge" class="w-full h-full object-contain"
+                    src="https://imgs.search.brave.com/WLLyFy6GuhBcthuiHpmUnNzm1vK1LhOXbvLINC2KqUw/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi80LzRkL1Vu/aXZlcnNpdHlfb2Zf/Q2FtYnJpZGdlX2xv/Z28ucG5nLzI1MHB4/LVVuaXZlcnNpdHlf/b2ZfQ2FtYnJpZGdl/X2xvZ28ucG5n">
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">University
+                    of Cambridge</h3>
+                  <div class="flex items-center gap-1 text-sm text-gray-600">
+                    <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
+                    <span>Cambridge, UK</span>
+                  </div>
+                </div>
+              </div>
+              <p class="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                A prestigious collegiate university with a rich history of innovation and Nobel laureates, excelling in
+                science, engineering, and the humanities.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-canada" data-tab-panel class="hidden grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <!-- University of Toronto -->
+          <div
+            class="bg-white text-black flex flex-col rounded-2xl border border-gray-200 overflow-hidden group transition-all hover:shadow-2xl hover:-translate-y-1">
+            <div class="relative h-48 overflow-hidden bg-gray-100">
+              <img alt="University of Toronto Campus"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                src="https://imgs.search.brave.com/VArArdUnT_jiUZU_FM5No4Iybd5fVumBugq0PEYqPIY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMjE1/MTk2NjU5Ni9waG90/by91bml2ZXJzaXR5/LW9mLXRvcm9udG8t/Y2FtcHVzLWluLXNw/cmluZy1jYW5hZGEu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PW5ndWJJUmZXV2Rx/akd2U2tzV0o0TE5z/LUxVYUxkMi16ekhV/ZkxEMzlVMUk9">
+            </div>
+            <div class="p-5">
+              <div class="flex items-start gap-3 mb-3">
+                <div
+                  class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-white rounded-lg border border-gray-200 p-1">
+                  <img alt="University of Toronto" class="w-full h-full object-contain"
+                    src="https://imgs.search.brave.com/xVsuJuoelabeD7XseecMQzU8qsmV1RImTjCjfvO5SYI/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi81LzU5L1Vv/ZlRfV29yZG1hcmsu/cG5nLzI1MHB4LVVv/ZlRfV29yZG1hcmsu/cG5n">
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">University
+                    of Toronto</h3>
+                  <div class="flex items-center gap-1 text-sm text-gray-600">
+                    <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
+                    <span>Toronto, CA</span>
+                  </div>
+                </div>
+              </div>
+              <p class="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                Canada’s top research university with a vibrant urban campus and a broad range of programs across three
+                campuses.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-aus" data-tab-panel class="hidden grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <!-- University of Melbourne -->
+          <div
+            class="bg-white text-black flex flex-col rounded-2xl border border-gray-200 overflow-hidden group transition-all hover:shadow-2xl hover:-translate-y-1">
+            <div class="relative h-48 overflow-hidden bg-gray-100">
+              <img alt="University of Melbourne Campus"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                src="https://www.unimelb.edu.au/__data/assets/image/0009/3822948/campuses.w600.min.jpg">
+            </div>
+            <div class="p-5">
+              <div class="flex items-start gap-3 mb-3">
+                <div
+                  class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-white rounded-lg border border-gray-200 p-1">
+                  <img alt="University of Melbourne" class="w-full h-full object-contain"
+                    src="https://imgs.search.brave.com/gN-Te_iMq08_DjxCVFM8bswppZIQbSWoOgRpB9mvm5s/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvZW4vdGh1bWIv/Yi9iNC9UaGVfVW5p/dmVyc2l0eV9vZl9N/ZWxib3VybmVfQ29h/dF9vZl9Bcm1zLnN2/Zy81MTJweC1UaGVf/VW5pdmVyc2l0eV9v/Zl9NZWxib3VybmVf/Q29hdF9vZl9Bcm1z/LnN2Zy5wbmc">
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">University
+                    of Melbourne</h3>
+                  <div class="flex items-center gap-1 text-sm text-gray-600">
+                    <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
+                    <span>Melbourne, AU</span>
+                  </div>
+                </div>
+              </div>
+              <p class="text-sm text-gray-600 leading-relaxed line-clamp-3">
+                Australia’s leading university with globally ranked programs and research-led teaching in a vibrant,
+                multicultural city.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <style>
+          /* Smooth container transition for panels */
+          #partners [data-tab-panel] {
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 260ms ease, transform 260ms ease;
+          }
+
+          #partners [data-tab-panel].is-active {
+            opacity: 1;
+            transform: translateY(0);
+          }
+
+          /* Stagger cards appearance for both grid and scroller */
+          #partners [data-tab-panel].is-active .grid>div,
+          #partners [data-tab-panel].is-active .flex>div {
+            animation: panelItemIn 420ms ease both;
+          }
+
+          #partners [data-tab-panel].is-active .grid>div:nth-child(1),
+          #partners [data-tab-panel].is-active .flex>div:nth-child(1) {
+            animation-delay: 60ms;
+          }
+
+          #partners [data-tab-panel].is-active .grid>div:nth-child(2),
+          #partners [data-tab-panel].is-active .flex>div:nth-child(2) {
+            animation-delay: 110ms;
+          }
+
+          #partners [data-tab-panel].is-active .grid>div:nth-child(3),
+          #partners [data-tab-panel].is-active .flex>div:nth-child(3) {
+            animation-delay: 160ms;
+          }
+
+          #partners [data-tab-panel].is-active .grid>div:nth-child(4),
+          #partners [data-tab-panel].is-active .flex>div:nth-child(4) {
+            animation-delay: 210ms;
+          }
+
+          #partners [data-tab-panel].is-active .grid>div:nth-child(5),
+          #partners [data-tab-panel].is-active .flex>div:nth-child(5) {
+            animation-delay: 260ms;
+          }
+
+          #partners [data-tab-panel].is-active .grid>div:nth-child(6),
+          #partners [data-tab-panel].is-active .flex>div:nth-child(6) {
+            animation-delay: 310ms;
+          }
+
+          #partners [data-tab-panel].is-active .grid>div:nth-child(7),
+          #partners [data-tab-panel].is-active .flex>div:nth-child(7) {
+            animation-delay: 360ms;
+          }
+
+          #partners [data-tab-panel].is-active .grid>div:nth-child(8),
+          #partners [data-tab-panel].is-active .flex>div:nth-child(8) {
+            animation-delay: 410ms;
+          }
+
+          @keyframes panelItemIn {
+            from {
+              opacity: 0;
+              transform: translateY(14px);
+            }
+
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        </style>
+
+        <div class="mt-14 text-center">
+          <button
+            class="inline-flex items-center justify-center gap-3 rounded-md bg-[#D82128] px-10 py-4 text-lg font-semibold text-white hover:bg-red-600"
+            data-testid="cta-view-all-scholarships">View All Scholarships</button>
+        </div>
+        <script>
+          // Tabs script (scoped to Partners section)
+          (function () {
+            const section = document.getElementById('partners');
+            if (!section) return;
+            const btns = Array.from(section.querySelectorAll('.tab-btn'));
+            const panels = Array.from(section.querySelectorAll('[data-tab-panel]'));
+
+            function setActive(btn) {
+              const target = btn.getAttribute('data-tab-target');
+              // Update buttons: aria, data, and explicit classes (fallback if Tailwind variant not applied)
+              btns.forEach(b => {
+                b.setAttribute('aria-selected', 'false');
+                b.removeAttribute('data-active');
+                b.classList.remove('bg-white', 'shadow-sm');
+              });
+              btn.setAttribute('aria-selected', 'true');
+              btn.setAttribute('data-active', 'true');
+              btn.classList.add('bg-white', 'shadow-sm');
+
+              // Update panels
+              panels.forEach(p => { p.classList.add('hidden'); p.classList.remove('is-active'); });
+              const activePanel = section.querySelector(target);
+              if (activePanel) {
+                activePanel.classList.remove('hidden');
+                // Force reflow to ensure animation triggers even when switching quickly
+                // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                activePanel.offsetHeight;
+                activePanel.classList.add('is-active');
+              }
+            }
+
+            // Initialize from current data-active or default to first
+            const initial = btns.find(b => b.getAttribute('data-active') === 'true') || btns[0];
+            if (initial) setActive(initial);
+
+            // Bind events
+            btns.forEach(btn => {
+              btn.addEventListener('click', () => setActive(btn));
+            });
+          })();
+        </script>
       </div>
-    </div>
   </section>
 
   <!-- SECTION: CHANNEL -->
-  <section id="channel" data-testid="section-channel" class="py-20 bg-[#F9F9F9]">
+  <section id="channel" data-testid="section-channel" class="py-20 bg-[#F9F9F9] scroll-animate">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-black">Partner with ApplyLead</h2>
-      </div>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div class="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100">
-          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#D82128]"><i
-              data-lucide="users" class="h-6 w-6 text-white"></i></div>
-          <h3 class="text-xl font-bold text-black">For Agents</h3>
-          <ul class="mt-4 list-disc pl-5 text-black/80 space-y-1">
-            <li>Verified student profiles</li>
-            <li>Transparent commission tracking</li>
-            <li>Training and marketing support</li>
-          </ul>
-          <div class="mt-6"><a href="#" data-testid="cta-join-agents"
-              class="inline-flex rounded-xl bg-[#D82128] px-6 py-3 font-semibold text-white hover:bg-red-600">Join
-              Now</a></div>
+      <!-- Recruitment Partners Block -->
+      <div class="mb-16 grid items-center gap-10 lg:grid-cols-2">
+        <div class="order-2 lg:order-1">
+          <h3 class="text-2xl md:text-3xl font-bold text-black mb-6">For Education Agents</h3>
+
+          <div class="space-y-6">
+            <!-- Feature 1 -->
+            <div class="flex items-start gap-4">
+              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-red-50 text-red-600">
+                <i data-lucide="book-open" class="h-6 w-6"></i>
+              </div>
+              <div>
+                <div class="font-semibold text-black">Access 140,000+ programs at 1,500+ academic institutions</div>
+              </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="flex items-start gap-4">
+              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-red-50 text-red-600">
+                <i data-lucide="sparkles" class="h-6 w-6"></i>
+              </div>
+              <div>
+                <div class="font-semibold text-black">Use AI-powered tools to benefit from our 95% app success rate
+                </div>
+              </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="flex items-start gap-4">
+              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-red-50 text-red-600">
+                <i data-lucide="handshake" class="h-6 w-6"></i>
+              </div>
+              <div>
+                <div class="font-semibold text-black">Support students with extra services from tests to loans</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <a
+              class="inline-flex items-center gap-2 rounded-md border border-red-600 px-5 py-2.5 text-sm font-semibold text-red-700 hover:bg-red-600 hover:text-white transition">
+              Join Our Network
+              <i data-lucide="arrow-right" class="h-4 w-4"></i>
+            </a>
+          </div>
         </div>
-        <div class="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100">
-          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#D82128]"><i
-              data-lucide="building" class="h-6 w-6 text-white"></i></div>
-          <h3 class="text-xl font-bold text-black">For Universities</h3>
-          <ul class="mt-4 list-disc pl-5 text-black/80 space-y-1">
-            <li>Pre-qualified applications</li>
-            <li>Regional marketing exposure</li>
-            <li>Data-driven insights</li>
-          </ul>
-          <div class="mt-6"><a href="#" data-testid="cta-join-universities"
-              class="inline-flex rounded-xl bg-[#D82128] px-6 py-3 font-semibold text-white hover:bg-red-600">Join
-              Now</a></div>
+        <div class="order-1 lg:order-2 hidden lg:block justify-self-end">
+          <img src="Gemini_Generated_Image.png" alt="Recruitment Partners Illustration"
+            class="max-w-md rounded-xl shadow" />
+        </div>
+        <div class="order-3 lg:hidden mt-6">
+          <img src="Gemini_Generated_Image.png" alt="Recruitment Partners Illustration"
+            class="w-full rounded-xl shadow" />
+        </div>
+      </div>
+
+      <!-- Partner Institutions Block -->
+      <div class="grid items-center gap-10 lg:grid-cols-2">
+        <!-- Desktop Illustration (hidden on mobile) -->
+        <div class="hidden lg:block">
+          <img src="Guaranteed scholarship program.png" alt="Partner Institutions Illustration"
+            class="max-w-xl rounded-xl shadow" />
+        </div>
+
+        <div>
+          <h3 class="text-2xl md:text-3xl font-bold text-black mb-6">For Universities</h3>
+
+          <div class="space-y-6">
+            <!-- Feature 1 -->
+            <div class="flex items-start gap-4">
+              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-red-50 text-red-600">
+                <i data-lucide="globe" class="h-6 w-6"></i>
+              </div>
+              <div>
+                <div class="font-semibold text-black">Diversify your enrolment with students from 150+ nationalities
+                </div>
+              </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="flex items-start gap-4">
+              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-red-50 text-red-600">
+                <i data-lucide="file-check-2" class="h-6 w-6"></i>
+              </div>
+              <div>
+                <div class="font-semibold text-black">Receive higher quality applications and improve conversion by
+                  10%</div>
+              </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="flex items-start gap-4">
+              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-red-50 text-red-600">
+                <i data-lucide="settings" class="h-6 w-6"></i>
+              </div>
+              <div>
+                <div class="font-semibold text-black">Leverage proven technology to save time and reduce manual work
+                  by 40%</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <a target="_blank"
+              class="inline-flex items-center gap-2 rounded-md border border-red-600 px-5 py-2.5 text-sm font-semibold text-red-700 hover:bg-red-600 hover:text-white transition">
+              Partner with Us
+              <i data-lucide="arrow-right" class="h-4 w-4"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- SECTION: CTA FINAL -->
-  <section id="cta-final" data-testid="section-cta-final"
-    class="py-20 bg-gradient-to-br from-[#D82128] to-[#111111] text-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-extrabold leading-tight">Students, Agents, and Universities — Join ApplyLead
-        Today.</h2>
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <a href="Students/htmls/Student-sign-up.html" data-testid="cta-register-student"
-          class="inline-flex items-center rounded-xl border border-white px-6 py-3 font-semibold text-white hover:bg-white hover:text-black">Register
-          as Student</a>
-        <a href="#" data-testid="cta-register-agent"
-          class="inline-flex items-center rounded-xl border border-white px-6 py-3 font-semibold text-white hover:bg-white hover:text-black">Register
-          as Agent</a>
-        <a href="#" data-testid="cta-register-university"
-          class="inline-flex items-center rounded-xl border border-white px-6 py-3 font-semibold text-white hover:bg-white hover:text-black">Register
-          as University</a>
+  <section id="cta-final" data-testid="section-cta-final" class="bg-black py-20 text-white md:py-32 scroll-animate">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-4xl text-center">
+        <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-[#D82128] text-white">
+          <i data-lucide="graduation-cap" class="h-8 w-8"></i>
+        </div>
+        <h2 class="mb-6 text-4xl font-bold md:text-5xl">Ready to Transform Your Future?</h2>
+        <p class="mb-8 text-lg text-white/80 md:text-xl">Join thousands of successful students, agents, and universities
+          who trust ApplyLead. Your journey to world-class education starts here.</p>
+        <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="Students/htmls/Student-sign-up.html" data-testid="cta-register-student"
+            class="inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 text-sm font-medium bg-[#D82128] text-white hover:bg-red-600 group">
+            Register as Student
+            <i data-lucide="arrow-right" class="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"></i>
+          </a>
+          <a href="#" data-testid="cta-partner-with-us"
+            class="inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 text-sm font-medium border border-white/20 bg-white/10 text-white hover:bg-white/20">
+            Partner With Us
+          </a>
+        </div>
+        <div class="mt-12 grid gap-8 border-t border-white/20 pt-12 md:grid-cols-3">
+          <div>
+            <div class="mb-2 text-3xl font-bold">10,000+</div>
+            <div class="text-sm text-white/70">Students Served</div>
+          </div>
+          <div>
+            <div class="mb-2 text-3xl font-bold">500+</div>
+            <div class="text-sm text-white/70">Partner Universities</div>
+          </div>
+          <div>
+            <div class="mb-2 text-3xl font-bold">$50M+</div>
+            <div class="text-sm text-white/70">Scholarships Secured</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- SECTION: FAQ -->
-  <section id="faq" data-testid="section-faq" class="py-20 bg-white">
+  <section id="faq" data-testid="section-faq" class="py-20 bg-white scroll-animate">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl md:text-4xl font-bold text-black text-center">Frequently Asked Questions</h2>
       <div class="mt-8 divide-y divide-black/10 border border-black rounded-2xl">
@@ -522,13 +1930,12 @@
   </section>
 
   <!-- SECTION: FOOTER -->
-  <footer id="footer" data-testid="section-footer" class="bg-[#111111] text-[#EEEEEE] py-16">
+  <footer id="footer" data-testid="section-footer" class="bg-[#111111] text-[#EEEEEE] py-16 scroll-animate">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
         <div>
           <div class="flex items-center mb-6">
             <img src="ApplyLead_logo.png" alt="ApplyLead Logo" class="h-8 w-auto mr-3">
-            <span class="font-semibold">ApplyLead</span>
           </div>
           <p class="text-white/70">Your gateway to global education opportunities.</p>
           <div class="mt-4 flex items-center gap-3">
@@ -589,6 +1996,12 @@
     </div>
   </footer>
 
+  <!-- Back to Top Button -->
+  <button id="backToTop" aria-label="Back to top"
+    class="fixed bottom-6 right-6 z-50 inline-flex items-center justify-center rounded-full bg-[#D82128] text-white shadow-lg h-12 w-12 transition-all duration-300 opacity-0 pointer-events-none translate-y-2 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500">
+    <i data-lucide="chevron-up" class="h-6 w-6"></i>
+  </button>
+
   <script>
     // Initialize Lucide Icons
     lucide.createIcons();
@@ -639,6 +2052,48 @@
       }
     });
 
+    // Back to Top Button behavior (show when CTA section is in view)
+    (function () {
+      const btn = document.getElementById('backToTop');
+      if (!btn) return;
+      const cta = document.getElementById('cta-final');
+
+      function showBtn() {
+        btn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
+        btn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      }
+      function hideBtn() {
+        btn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
+        btn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      }
+
+      if ('IntersectionObserver' in window && cta) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              showBtn();
+            } else {
+              hideBtn();
+            }
+          });
+        }, { threshold: 0.2 });
+        io.observe(cta);
+      } else {
+        // Fallback: show when near page end
+        const threshold = 600;
+        const onScroll = () => {
+          const nearBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - threshold);
+          if (nearBottom) showBtn(); else hideBtn();
+        };
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+      }
+
+      btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+
     // Partners tabs
     const tabButtons = document.querySelectorAll('.tab-btn');
     const tabPanels = document.querySelectorAll('[data-tab-panel]');
@@ -668,6 +2123,50 @@
         if (content) content.classList.toggle('hidden');
       });
     });
+
+    // Scroll-triggered animations using Intersection Observer
+    (function () {
+      // Check if user prefers reduced motion
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (prefersReducedMotion) {
+        // Skip animations, show all sections immediately
+        document.querySelectorAll('.scroll-animate').forEach(section => {
+          section.classList.add('is-visible');
+        });
+        return;
+      }
+
+      // Create Intersection Observer for scroll animations
+      const observerOptions = {
+        root: null, // viewport
+        rootMargin: '-50px 0px -50px 0px', // trigger slightly before/after section enters viewport
+        threshold: 0.15 // trigger when 15% of section is visible
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Add visible class to trigger animation
+            entry.target.classList.add('is-visible');
+            // Optional: unobserve after animation to improve performance
+            // observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all sections with scroll-animate class
+      document.querySelectorAll('.scroll-animate').forEach(section => {
+        observer.observe(section);
+      });
+
+      // Also reinitialize Lucide icons after animations complete
+      setTimeout(() => {
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
+      }, 1000);
+    })();
   </script>
 </body>
 
