@@ -64,7 +64,7 @@
     }
 
     .animate-slide {
-      animation: slideLoop 45s linear infinite;
+      animation: slideLoop 12s linear infinite;
     }
 
     .animate-slide:hover {
@@ -105,20 +105,22 @@
   </header>
 
   <!-- SECTION: HERO -->
-  <section id="hero" data-testid="section-hero" class="relative py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div>
-          <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
-            <span style="color: #d82128;">Your Gateway to</span>
+  <section id="hero" data-testid="section-hero" class="relative"
+    style="min-height: clamp(560px, calc(100vh - 80px), 620px); display: flex; align-items: center; background-color: rgba(0, 71, 102, 0.07);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center">
+        <div class="space-y-4 lg:space-y-6">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] xl:text-[50px] font-extrabold leading-tight">
+            <span style="color: #d82128;">Your Gateway to</span><br>
             <span class="text-black"> Global Education</span>
           </h1>
-          <p class="mt-6 text-xl text-gray-600">Find scholarships, connect with top universities, and start your study
+          <p class="text-base sm:text-lg lg:text-xl text-gray-600">Find scholarships, connect with top universities, and
+            start your study
             abroad journey with confidence.</p>
           <!-- Standalone Register button (outside the card) -->
-          <div class="mt-4">
+          <div>
             <a href="Students/htmls/Student-sign-up.html"
-              class="inline-flex items-center rounded-xl bg-[#D82128] px-5 py-2.5 font-semibold text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500">
+              class="inline-flex items-center rounded-xl bg-[#D82128] px-4 py-2 sm:px-5 sm:py-2.5 text-sm sm:text-base font-semibold text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500">
               Register Now
               <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor"
                 aria-hidden="true">
@@ -130,76 +132,43 @@
           </div>
         </div>
 
-        <div>
+        <div class="mt-8 pt-12 lg:mt-0 lg:pt-10">
           <div class="relative">
             <!-- Video Player -->
-            <div class="relative overflow-hidden rounded-3xl shadow-2xl bg-black aspect-video">
+            <div class="relative overflow-hidden rounded-2xl lg:rounded-3xl shadow-2xl bg-black aspect-video">
               <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1400&auto=format&fit=crop"
                 alt="ApplyLead Introduction" class="w-full h-full object-cover" />
               <button id="heroPlay" aria-label="Play intro video"
-                class="absolute inset-0 m-auto h-20 w-20 rounded-full bg-[#D82128] flex items-center justify-center hover:bg-red-600 transition shadow-xl">
-                <i data-lucide="play" class="h-10 w-10 text-white ml-1"></i>
+                class="absolute inset-0 m-auto h-12 w-12 sm:h-16 sm:w-16 lg:h-20 lg:w-20 rounded-full bg-[#D82128] flex items-center justify-center hover:bg-red-600 transition shadow-xl">
+                <i data-lucide="play" class="h-6 w-6 sm:h-8 sm:w-8 lg:h-10 lg:w-10 text-white ml-1"></i>
               </button>
-            </div>
-
-            <!-- Floating Badge -->
-            <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 border border-gray-100">
-              <div class="flex items-center gap-3">
-                <div class="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center">
-                  <i data-lucide="shield-check" class="h-6 w-6 text-red-600"></i>
-                </div>
-                <div>
-                  <div class="text-2xl font-bold text-black">97%</div>
-                  <div class="text-xs text-gray-600">Visa Success</div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Moved: Advanced Search now appears directly under the Hero section -->
-      <section id="search" data-testid="section-search" class="py-20 bg-transparent">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="rounded-3xl overflow-hidden shadow-2xl p-6 md:p-10"
-            style="background: linear-gradient(to right, #ff4949 0%, #971919 50%, #470404 100%);">
-            <div class="text-center mb-12">
-              <p class="mt-4 text-xl text-white font-medium">Find the perfect match for your educational goals</p>
+      <!-- Search section inside Hero -->
+      <section id="search" data-testid="section-search" class="py-6 mt-4 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="rounded-2xl overflow-hidden shadow-2xl p-5"
+            style="background: linear-gradient(to right, #ff4949 0%, #971919 50%, #971919 100%);">
+            <div class="text-center mb-6">
+              <p class="text-2xl font-semibold text-white/90">
+                <strong class="font-extrabold">
+                  Find the <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-red-200/90">perfect
+                    match </span>for your educational goals.
+                </strong>
+              </p>
             </div>
             <form id="programSearchForm"
-              class="relative rounded-2xl border-2 border-white/30 bg-white/95 backdrop-blur-sm p-8 shadow-xl">
-
-              <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+              class="relative rounded-xl border-2 border-white/30 bg-white/95 backdrop-blur-sm p-6 shadow-xl">
+              <div class="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
                 <!-- Program (spans 2 on large) -->
                 <div class="relative lg:col-span-2">
                   <i data-lucide="search" class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"></i>
                   <input id="program" name="program" data-testid="input-program" type="text"
-                    class="w-full rounded-xl border border-gray-300 bg-transparent px-3 py-2 pl-10 text-base md:text-sm outline-none focus:border-[#D82128] focus:ring-2 focus:ring-red-200"
-                    placeholder="Search programs, universities..." />
-
-                </div>
-
-                <!-- Field of Study select -->
-                <div class="relative">
-                  <i data-lucide="graduation-cap"
-                    class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"></i>
-                  <select id="field-of-study" name="field-of-study" data-testid="select-field"
-                    class="w-full appearance-none rounded-xl border border-gray-300 bg-transparent px-3 py-2 pl-10 pr-8 text-sm outline-none focus:border-[#D82128] focus:ring-2 focus:ring-red-200">
-
-                    <option value="">Field of Study</option>
-                    <option>Business</option>
-                    <option>Engineering</option>
-                    <option>Computer Science</option>
-                    <option>Medicine</option>
-                    <option>Arts & Humanities</option>
-                    <option>Sciences</option>
-                    <option>Social Sciences</option>
-                    <option>Law</option>
-                  </select>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                    class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 opacity-50">
-                    <path d="m6 9 6 6 6-6" />
-                  </svg>
+                    class="w-full rounded-xl border border-gray-300 bg-transparent px-3 py-2 pl-10 text-base outline-none focus:border-[#D82128] focus:ring-2 focus:ring-red-200"
+                    placeholder="Search universities..." />
                 </div>
 
                 <!-- Country select -->
@@ -207,7 +176,6 @@
                   <i data-lucide="map-pin" class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"></i>
                   <select id="country" name="country" data-testid="select-country"
                     class="w-full appearance-none rounded-xl border border-gray-300 bg-transparent px-3 py-2 pl-10 pr-8 text-sm outline-none focus:border-[#D82128] focus:ring-2 focus:ring-red-200">
-
                     <option value="">Country</option>
                     <option>USA</option>
                     <option>Canada</option>
@@ -229,32 +197,23 @@
                     class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"></i>
                   <select id="degree" name="degree" data-testid="select-degree"
                     class="w-full appearance-none rounded-xl border border-gray-300 bg-transparent px-3 py-2 pl-10 pr-8 text-sm outline-none focus:border-[#D82128] focus:ring-2 focus:ring-red-200">
-
                     <option value="">Level</option>
-                    <option>Undergraduate</option>
-                    <option>Postgraduate</option>
-                    <option>MBA</option>
-                    <option>PhD</option>
-                    <option>Diploma</option>
+                    <option>Bachelor</option>
+                    <option>Master</option>
                   </select>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                     class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 opacity-50">
                     <path d="m6 9 6 6 6-6" />
                   </svg>
                 </div>
-              </div>
 
-              <!-- Footer row -->
-              <div class="mt-6 flex items-center justify-between">
-                <div class="flex items-center gap-2 text-sm text-gray-600">
-                  <i data-lucide="dollar-sign" class="h-4 w-4 text-[#D82128]"></i>
-                  <span class="font-medium">Filter by scholarship availability</span>
-                </div>
-                <button type="button" id="btnSearchPrograms" data-testid="btn-search-programs"
-                  class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#D82128] px-6 py-3 text-sm font-semibold text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 shadow-lg hover:shadow-xl transition-all hover:scale-105">
+                <a id="btnSearchPrograms" data-testid="btn-search-programs"
+                  href="Students/htmls/Student-find-program.html" target="_blank" rel="noopener"
+                  class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#D82128] px-6 py-2 text-sm font-semibold text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                  aria-label="Open program search">
                   <i data-lucide="search" class="h-4 w-4"></i>
-                  Search Programs
-                </button>
+                  Search
+                </a>
               </div>
             </form>
           </div>
@@ -264,10 +223,97 @@
   </section>
 
   <!-- SECTION: METRICS -->
-  <section id="metrics" data-testid="section-metrics" class="py-20 bg-white">
+  <section id="metrics" data-testid="section-metrics" class="py-12" style="background-color: rgba(0, 71, 102, 0.07);">
+    <style>
+      /* Consistent shadow for all metrics slider cards */
+      #metrics .overflow-hidden .flex>div {
+        width: 14rem;
+        /* reduce from w-64 (16rem) to w-56 (14rem) to lessen side whitespace */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transition: box-shadow 200ms ease, transform 200ms ease;
+      }
+
+      #metrics .overflow-hidden .flex>div:hover {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      }
+
+      /* Theming per card using nth-child across repeats (8-card cycle) */
+      /* 1: Scholarships Awarded - Amber */
+      #metrics .overflow-hidden .flex>div:nth-child(8n+1)>div:first-child {
+        background-color: #F59E0B !important;
+      }
+
+      #metrics .overflow-hidden .flex>div:nth-child(8n+1) .text-4xl {
+        color: #D97706 !important;
+      }
+
+      /* 2: Visa Success Rate - Emerald */
+      #metrics .overflow-hidden .flex>div:nth-child(8n+2)>div:first-child {
+        background-color: #10B981 !important;
+      }
+
+      #metrics .overflow-hidden .flex>div:nth-child(8n+2) .text-4xl {
+        color: #059669 !important;
+      }
+
+      /* 3: Partner Universities - Blue */
+      #metrics .overflow-hidden .flex>div:nth-child(8n+3)>div:first-child {
+        background-color: #3B82F6 !important;
+      }
+
+      #metrics .overflow-hidden .flex>div:nth-child(8n+3) .text-4xl {
+        color: #1D4ED8 !important;
+      }
+
+      /* 4: Fast Profile Review - Purple */
+      #metrics .overflow-hidden .flex>div:nth-child(8n+4)>div:first-child {
+        background-color: #A855F7 !important;
+      }
+
+      #metrics .overflow-hidden .flex>div:nth-child(8n+4) .text-4xl {
+        color: #7C3AED !important;
+      }
+
+      /* 5: Students Helped - Teal */
+      #metrics .overflow-hidden .flex>div:nth-child(8n+5)>div:first-child {
+        background-color: #14B8A6 !important;
+      }
+
+      #metrics .overflow-hidden .flex>div:nth-child(8n+5) .text-4xl {
+        color: #0F766E !important;
+      }
+
+      /* 6: Global Programs - Indigo */
+      #metrics .overflow-hidden .flex>div:nth-child(8n+6)>div:first-child {
+        background-color: #6366F1 !important;
+      }
+
+      #metrics .overflow-hidden .flex>div:nth-child(8n+6) .text-4xl {
+        color: #4338CA !important;
+      }
+
+      /* 7: Institutions Globally - Orange */
+      #metrics .overflow-hidden .flex>div:nth-child(8n+7)>div:first-child {
+        background-color: #F97316 !important;
+      }
+
+      #metrics .overflow-hidden .flex>div:nth-child(8n+7) .text-4xl {
+        color: #C2410C !important;
+      }
+
+      /* 8: Nationalities - Pink */
+      #metrics .overflow-hidden .flex>div:nth-child(8n+8)>div:first-child {
+        background-color: #EC4899 !important;
+      }
+
+      #metrics .overflow-hidden .flex>div:nth-child(8n+8) .text-4xl {
+        color: #BE185D !important;
+      }
+    </style>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold text-black">Trusted by Students Worldwide</h2>
+      <div class="text-center mb-6">
+        <h2 class="text-4xl md:text-5xl font-bold text-black" style="font-size: 36px;">Trusted by Students Worldwide
+        </h2>
         <p class="mt-4 text-xl text-gray-600">Join thousands of successful students who achieved their dreams</p>
       </div>
       <!-- Sliding metrics carousel -->
@@ -440,9 +486,9 @@
       </div>
       <div class="mt-16 text-center">
         <a href="Students/htmls/Student-sign-up.html"
-          class="inline-flex items-center rounded-xl bg-[#D82128] px-10 py-4 text-lg font-semibold text-white hover:bg-red-600 shadow-lg hover:shadow-xl transition"
+          class="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#D82128] to-[#B91C1C] px-8 py-4 text-base font-bold text-white hover:shadow-2xl hover:scale-105 transition-all duration-300"
           data-testid="cta-start-profile">
-          <i data-lucide="arrow-right" class="mr-2 h-5 w-5"></i>
+          <i data-lucide="arrow-right" class="h-5 w-5"></i>
           Start Your Journey Today
         </a>
       </div>
@@ -450,11 +496,11 @@
   </section>
 
   <!-- SECTION: PROGRAMS - REDESIGNED -->
-  <section id="programs" data-testid="section-programs" class="py-20 bg-gradient-to-b from-white to-gray-50">
+  <section id="programs" data-testid="section-programs" class="py-12" style="background-color: rgba(0, 71, 102, 0.07);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="mb-16 text-center">
-        <h2 class="mb-5 text-4xl font-bold text-black md:text-5xl">Find Your Perfect Path</h2>
+      <div class="mb-8 text-center">
+        <h2 class="mb-5 text-4xl font-bold text-black md:text-5xl" style="font-size: 36px;">Find Your Perfect Path</h2>
         <p class="mx-auto max-w-3xl text-xl text-gray-600 leading-relaxed">Explore our specialized programs designed for
           students, parents, and partners. Each pathway is crafted to maximize your success and unlock global
           opportunities.</p>
@@ -491,19 +537,19 @@
             <div class="mb-8 space-y-3">
               <div class="flex items-start gap-3">
                 <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
-                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                  <i data-lucide="percent" class="h-3 w-3 text-[#D82128]"></i>
                 </div>
                 <span class="text-gray-700">Up to <strong class="text-black">100% tuition coverage</strong></span>
               </div>
               <div class="flex items-start gap-3">
                 <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
-                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                  <i data-lucide="award" class="h-3 w-3 text-[#D82128]"></i>
                 </div>
                 <span class="text-gray-700">Merit-based & need-based awards</span>
               </div>
               <div class="flex items-start gap-3">
                 <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
-                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                  <i data-lucide="sparkles" class="h-3 w-3 text-[#D82128]"></i>
                 </div>
                 <span class="text-gray-700">Personalized scholarship matching</span>
               </div>
@@ -511,7 +557,7 @@
 
             <!-- CTA Buttons -->
             <div class="flex flex-col sm:flex-row gap-3">
-              <a href="#" data-modal-open="modal-scholarship"
+              <a href="Students/htmls/Student-GSP-Detail2.html" target="_blank" rel="noopener"
                 class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border-2 border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-700 hover:border-[#D82128] hover:text-[#D82128] transition-all">
                 <i data-lucide="info" class="h-4 w-4"></i>
                 Learn More
@@ -543,26 +589,26 @@
             <div class="mb-8 space-y-3">
               <div class="flex items-start gap-3">
                 <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
-                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                  <i data-lucide="user" class="h-3 w-3 text-[#D82128]"></i>
                 </div>
                 <span class="text-gray-700"><strong class="text-black">1-on-1 counseling</strong> sessions</span>
               </div>
               <div class="flex items-start gap-3">
                 <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
-                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                  <i data-lucide="file-text" class="h-3 w-3 text-[#D82128]"></i>
                 </div>
                 <span class="text-gray-700">Application review & optimization</span>
               </div>
               <div class="flex items-start gap-3">
                 <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
-                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                  <i data-lucide="mic" class="h-3 w-3 text-[#D82128]"></i>
                 </div>
                 <span class="text-gray-700">Interview preparation & mock tests</span>
               </div>
             </div>
 
             <div class="flex flex-col sm:flex-row gap-3">
-              <a href="#" data-modal-open="modal-elite-admission"
+              <a href="Students/htmls/Student-EDP-Detail.html" target="_blank" rel="noopener"
                 class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border-2 border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-700 hover:border-[#D82128] hover:text-[#D82128] transition-all">
                 <i data-lucide="info" class="h-4 w-4"></i>
                 Learn More
@@ -594,26 +640,26 @@
             <div class="mb-8 space-y-3">
               <div class="flex items-start gap-3">
                 <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
-                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                  <i data-lucide="graduation-cap" class="h-3 w-3 text-[#D82128]"></i>
                 </div>
                 <span class="text-gray-700"><strong class="text-black">Ivy League</strong> expertise</span>
               </div>
               <div class="flex items-start gap-3">
                 <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
-                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                  <i data-lucide="pen-line" class="h-3 w-3 text-[#D82128]"></i>
                 </div>
                 <span class="text-gray-700">Essay coaching & statement development</span>
               </div>
               <div class="flex items-start gap-3">
                 <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
-                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                  <i data-lucide="trending-up" class="h-3 w-3 text-[#D82128]"></i>
                 </div>
                 <span class="text-gray-700">Strategic profile building</span>
               </div>
             </div>
 
             <div class="flex flex-col sm:flex-row gap-3">
-              <a href="#" data-modal-open="modal-ivy-global"
+              <a href="Students/htmls/Student-IVY-Detail.html" target="_blank" rel="noopener"
                 class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border-2 border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-700 hover:border-[#D82128] hover:text-[#D82128] transition-all">
                 <i data-lucide="info" class="h-4 w-4"></i>
                 Learn More
@@ -639,33 +685,33 @@
               <h3 class="font-bold text-2xl md:text-3xl text-black mb-3 group-hover:text-[#D82128] transition-colors">
                 Joint Program</h3>
               <p class="text-base text-gray-600 leading-relaxed">Dual-degree and joint-program opportunities with
-                partner institutions.</p>
+                partner.</p>
             </div>
 
             <div class="mb-8 space-y-3">
               <div class="flex items-start gap-3">
                 <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
-                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                  <i data-lucide="layers" class="h-3 w-3 text-[#D82128]"></i>
                 </div>
                 <span class="text-gray-700"><strong class="text-black">Dual degrees</strong> from top
                   universities</span>
               </div>
               <div class="flex items-start gap-3">
                 <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
-                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                  <i data-lucide="globe" class="h-3 w-3 text-[#D82128]"></i>
                 </div>
                 <span class="text-gray-700">Exchange programs worldwide</span>
               </div>
               <div class="flex items-start gap-3">
                 <div class="flex-shrink-0 mt-1 h-5 w-5 rounded-full bg-red-50 flex items-center justify-center">
-                  <i data-lucide="check" class="h-3 w-3 text-[#D82128]"></i>
+                  <i data-lucide="share-2" class="h-3 w-3 text-[#D82128]"></i>
                 </div>
                 <span class="text-gray-700">Access to global network</span>
               </div>
             </div>
 
             <div class="flex flex-col sm:flex-row gap-3">
-              <a href="#" data-modal-open="modal-joint-program"
+              <a href="Students/htmls/Student-GSP-Detail.html" target="_blank" rel="noopener"
                 class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border-2 border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-700 hover:border-[#D82128] hover:text-[#D82128] transition-all">
                 <i data-lucide="info" class="h-4 w-4"></i>
                 Learn More
@@ -1060,9 +1106,10 @@
   </style>
 
   <!-- SECTION: SUCCESS -->
-  <section id="success" data-testid="section-success" class="py-20 bg-white scroll-animate">
+  <section id="success" data-testid="section-success" class="py-12 scroll-animate"
+    style="background-color: rgba(0, 71, 102, 0.07);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="mb-12 text-center">
+      <div class="mb-8 text-center">
         <h2 class="mb-4 text-3xl font-bold text-black md:text-4xl">Student Success Stories</h2>
         <p class="mx-auto max-w-2xl text-lg text-black/70">Real students, real results. See how ApplyLead transformed
           their educational journeys.</p>
@@ -1070,9 +1117,9 @@
       <div class="grid gap-6 md:grid-cols-2">
         <!-- Testimonial 1 -->
         <div
-          class="bg-white text-black flex flex-col gap-6 rounded-xl border border-gray-200 py-6 shadow-sm relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg stagger-item">
-          <div class="p-6">
-            <i data-lucide="quote" class="mb-4 h-6 w-6 text-[#D82128]/30"></i>
+          class="bg-white text-black flex flex-col gap-6 rounded-xl border border-gray-200 py-5 shadow-sm relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg stagger-item">
+          <div class="pt-0 px-6 pb-6">
+            <i data-lucide="quote" class="mb-3 h-6 w-6 text-[#D82128]/30"></i>
             <p class="mb-6 text-base leading-relaxed">ApplyLead helped me secure a full scholarship to Stanford. The
               Elite Admission Program gave me the confidence and guidance I needed to stand out.</p>
             <div class="flex items-center gap-4">
@@ -1097,9 +1144,9 @@
 
         <!-- Testimonial 2 -->
         <div
-          class="bg-white text-black flex flex-col gap-6 rounded-xl border border-gray-200 py-6 shadow-sm relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg stagger-item">
-          <div class="p-6">
-            <i data-lucide="quote" class="mb-4 h-6 w-6 text-[#D82128]/30"></i>
+          class="bg-white text-black flex flex-col gap-6 rounded-xl border border-gray-200 py-5 shadow-sm relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg stagger-item">
+          <div class="pt-0 px-6 pb-6">
+            <i data-lucide="quote" class="mb-3 h-6 w-6 text-[#D82128]/30"></i>
             <p class="mb-6 text-base leading-relaxed">The Ivy Global Program was a game-changer. My counselor helped me
               craft compelling essays that showcased my unique story and leadership experience.</p>
             <div class="flex items-center gap-4">
@@ -1124,9 +1171,9 @@
 
         <!-- Testimonial 3 -->
         <div
-          class="bg-white text-black flex flex-col gap-6 rounded-xl border border-gray-200 py-6 shadow-sm relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg stagger-item">
-          <div class="p-6">
-            <i data-lucide="quote" class="mb-4 h-6 w-6 text-[#D82128]/30"></i>
+          class="bg-white text-black flex flex-col gap-6 rounded-xl border border-gray-200 py-5 shadow-sm relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg stagger-item">
+          <div class="pt-0 px-6 pb-6">
+            <i data-lucide="quote" class="mb-3 h-6 w-6 text-[#D82128]/30"></i>
             <p class="mb-6 text-base leading-relaxed">I never thought I could afford MIT, but ApplyLead connected me
               with scholarships I didn't even know existed. Now I'm living my dream!</p>
             <div class="flex items-center gap-4">
@@ -1151,9 +1198,9 @@
 
         <!-- Testimonial 4 -->
         <div
-          class="bg-white text-black flex flex-col gap-6 rounded-xl border border-gray-200 py-6 shadow-sm relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg stagger-item">
-          <div class="p-6">
-            <i data-lucide="quote" class="mb-4 h-6 w-6 text-[#D82128]/30"></i>
+          class="bg-white text-black flex flex-col gap-6 rounded-xl border border-gray-200 py-5 shadow-sm relative overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg stagger-item">
+          <div class="pt-0 px-6 pb-6">
+            <i data-lucide="quote" class="mb-3 h-6 w-6 text-[#D82128]/30"></i>
             <p class="mb-6 text-base leading-relaxed">The Joint Program opened doors to international opportunities. I'm
               now studying medicine at Oxford with full funding support.</p>
             <div class="flex items-center gap-4">
@@ -1180,32 +1227,49 @@
   </section>
 
   <!-- SECTION: PARTNERS -->
-  <section id="partners" data-testid="section-partners" class="py-24 bg-white scroll-animate">
+  <section id="partners" data-testid="section-partners" class="py-12 scroll-animate"
+    style="background-color: rgba(0, 71, 102, 0.07);">
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="mb-4 text-4xl font-bold text-black md:text-5xl">Our Trusted University Partners</h2>
+      <div class="text-center mb-8">
+        <h2 class="mb-4 text-4xl font-bold text-black md:text-5xl" style="font-size: 36px;">Our Trusted University
+          Partners</h2>
         <p class="mx-auto max-w-2xl text-xl text-black/70">Explore our network of 500+ partner universities and discover
           scholarship opportunities</p>
 
       </div>
 
       <!-- Tabs segmented control -->
-      <div
-        class="bg-gray-100 text-black h-11 items-center justify-center rounded-lg p-1.5 grid w-full max-w-3xl mx-auto grid-cols-4 mb-10"
-        role="tablist" aria-label="Regions">
+      <div class="text-black flex items-center justify-center gap-4 w-full max-w-3xl mx-auto mb-10" role="tablist"
+        aria-label="Regions">
         <button type="button" role="tab" aria-selected="true"
-          class="tab-btn inline-flex h-[34px] items-center justify-center rounded-md px-4 text-base font-medium data-[active=true]:bg-white data-[active=true]:shadow-sm"
-          data-active="true" data-tab-target="#tab-usa">USA</button>
+          class="tab-btn inline-flex items-center gap-2 rounded-full px-4 py-2 text-base font-medium border border-gray-200 bg-white/60 hover:bg-white data-[active=true]:bg-[#D82128] data-[active=true]:text-white data-[active=true]:border-[#D82128] data-[active=true]:shadow-sm"
+          data-active="true" data-tab-target="#tab-usa">
+          <img src="https://flagcdn.com/us.svg" alt="United States flag"
+            class="h-9 w-9 rounded-full border border-gray-200 object-cover bg-white" />
+          <span>United States</span>
+        </button>
         <button type="button" role="tab" aria-selected="false"
-          class="tab-btn inline-flex h-[34px] items-center justify-center rounded-md px-4 text-base font-medium"
-          data-tab-target="#tab-uk">UK</button>
+          class="tab-btn inline-flex items-center gap-2 rounded-full px-4 py-2 text-base font-medium border border-gray-200 bg-white/40 hover:bg-white data-[active=true]:bg-[#D82128] data-[active=true]:text-white data-[active=true]:border-[#D82128] data-[active=true]:shadow-sm"
+          data-tab-target="#tab-uk">
+          <img src="https://flagcdn.com/gb.svg" alt="United Kingdom flag"
+            class="h-9 w-9 rounded-full border border-gray-200 object-cover bg-white" />
+          <span>United Kingdom</span>
+        </button>
         <button type="button" role="tab" aria-selected="false"
-          class="tab-btn inline-flex h-[34px] items-center justify-center rounded-md px-4 text-base font-medium"
-          data-tab-target="#tab-canada">Canada</button>
+          class="tab-btn inline-flex items-center gap-2 rounded-full px-4 py-2 text-base font-medium border border-gray-200 bg-white/40 hover:bg-white data-[active=true]:bg-[#D82128] data-[active=true]:text-white data-[active=true]:border-[#D82128] data-[active=true]:shadow-sm"
+          data-tab-target="#tab-canada">
+          <img src="https://flagcdn.com/ca.svg" alt="Canada flag"
+            class="h-9 w-9 rounded-full border border-gray-200 object-cover bg-white" />
+          <span>Canada</span>
+        </button>
         <button type="button" role="tab" aria-selected="false"
-          class="tab-btn inline-flex h-[34px] items-center justify-center rounded-md px-4 text-base font-medium"
-          data-tab-target="#tab-aus">Australia</button>
+          class="tab-btn inline-flex items-center gap-2 rounded-full px-4 py-2 text-base font-medium border border-gray-200 bg-white/40 hover:bg-white data-[active=true]:bg-[#D82128] data-[active=true]:text-white data-[active=true]:border-[#D82128] data-[active=true]:shadow-sm"
+          data-tab-target="#tab-aus">
+          <img src="https://flagcdn.com/au.svg" alt="Australia flag"
+            class="h-9 w-9 rounded-full border border-gray-200 object-cover bg-white" />
+          <span>Australia</span>
+        </button>
       </div>
 
       <!-- Panels -->
@@ -1232,8 +1296,9 @@
                       src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/harvard-logo-oiBz7likOt1EEPvCOUYFRligQu5YeN.jpg">
                   </div>
                   <div class="flex-1">
-                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">Harvard
-                      University</h3>
+                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors"><a
+                        href="Students/htmls/Student-program-details-2.html" class="text-current" target="_blank"
+                        rel="noopener">Harvard University</a></h3>
                     <div class="flex items-center gap-1 text-sm text-gray-600">
                       <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
                       <span>Cambridge, MA</span>
@@ -1264,8 +1329,9 @@
                       src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/stanford-logo-jjEU1MprKd2uQVLE3oF7HqBjLuxUXd.png">
                   </div>
                   <div class="flex-1">
-                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">Stanford
-                      University</h3>
+                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors"><a
+                        href="Students/htmls/Student-program-details-2.html" class="text-current" target="_blank"
+                        rel="noopener">Stanford University</a></h3>
                     <div class="flex items-center gap-1 text-sm text-gray-600">
                       <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
                       <span>Stanford, CA</span>
@@ -1291,10 +1357,12 @@
                   <div
                     class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-white rounded-lg border border-gray-200 p-1">
                     <img alt="MIT" class="w-full h-full object-contain"
-                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/mit-logo-c4NRDjbRl1JGkls5iK8AbZGpxTqYUW.png">
+                      src="https://imgs.search.brave.com/Q9gCOj6ugPqLxj04mmfCsIGsYbjrWGo7xUa46DZ-E8w/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi8wLzBjL01J/VF9sb2dvLnN2Zy8y/NTBweC1NSVRfbG9n/by5zdmcucG5n">
                   </div>
                   <div class="flex-1">
-                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">MIT</h3>
+                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors"><a
+                        href="Students/htmls/Student-program-details-2.html" class="text-current" target="_blank"
+                        rel="noopener">Massachusetts Institute of Technology</a></h3>
                     <div class="flex items-center gap-1 text-sm text-gray-600">
                       <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
                       <span>Cambridge, MA</span>
@@ -1323,8 +1391,9 @@
                       src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/yale-logo-VMXm3ZiLyXiUUvmKS1Hw7gfOx0Sib7.jpg">
                   </div>
                   <div class="flex-1">
-                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">Yale
-                      University</h3>
+                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors"><a
+                        href="Students/htmls/Student-program-details-2.html" class="text-current" target="_blank"
+                        rel="noopener">Yale University</a></h3>
                     <div class="flex items-center gap-1 text-sm text-gray-600">
                       <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
                       <span>New Haven, CT</span>
@@ -1353,8 +1422,9 @@
                       src="https://imgs.search.brave.com/J1rlPTsdUnsYqNY_iSsQTQp-s6qi8VgZCZjBF660Mnw/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi81LzU5L0Fu/Z2Vsb3N0YXRlX3Vu/aXZfbG9nby5wbmcv/MjUwcHgtQW5nZWxv/c3RhdGVfdW5pdl9s/b2dvLnBuZw">
                   </div>
                   <div class="flex-1">
-                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">Angelo
-                      State University</h3>
+                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors"><a
+                        href="Students/htmls/Student-program-details-2.html" class="text-current" target="_blank"
+                        rel="noopener">Angelo State University</a></h3>
                     <div class="flex items-center gap-1 text-sm text-gray-600">
                       <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
                       <span>San Angelo, TX</span>
@@ -1383,8 +1453,9 @@
                       src="https://imgs.search.brave.com/jP4_6KMrRw9JgPciUfhyW1TKQWJXmE8aF1ZUf7XqAbg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvZW4vdGh1bWIv/NC80MC9UaWZmaW5f/VW5pdmVyc2l0eV9z/ZWFsLnBuZy81MTJw/eC1UaWZmaW5fVW5p/dmVyc2l0eV9zZWFs/LnBuZw">
                   </div>
                   <div class="flex-1">
-                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">Tiffin
-                      University</h3>
+                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors"><a
+                        href="Students/htmls/Student-program-details-2.html" class="text-current" target="_blank"
+                        rel="noopener">Tiffin University</a></h3>
                     <div class="flex items-center gap-1 text-sm text-gray-600">
                       <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
                       <span>Tiffin, OH</span>
@@ -1413,8 +1484,9 @@
                       src="https://imgs.search.brave.com/0RJJsPn4T5TDMnHSv8IyhtLsZH3rrUN7KIU4RwB7OT4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi81LzVlL1Jv/d2FuX3VuaXZfdGV4/dGxvZ28ucG5nLzI1/MHB4LVJvd2FuX3Vu/aXZfdGV4dGxvZ28u/cG5n">
                   </div>
                   <div class="flex-1">
-                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">Rowan
-                      University</h3>
+                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors"><a
+                        href="Students/htmls/Student-program-details-2.html" class="text-current" target="_blank"
+                        rel="noopener">Rowan University</a></h3>
                     <div class="flex items-center gap-1 text-sm text-gray-600">
                       <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
                       <span>Glassboro, NJ</span>
@@ -1443,8 +1515,9 @@
                       src="https://www.osu.edu/images/osu-logo-stacked.svg">
                   </div>
                   <div class="flex-1">
-                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">The Ohio
-                      State University</h3>
+                    <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors"><a
+                        href="Students/htmls/Student-program-details-2.html" class="text-current" target="_blank"
+                        rel="noopener">The Ohio State University</a></h3>
                     <div class="flex items-center gap-1 text-sm text-gray-600">
                       <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
                       <span>Columbus, OH</span>
@@ -1477,8 +1550,9 @@
                     src="https://imgs.search.brave.com/fFkQNktGLiPAJVfQGJY6Bi_69lhDbr76RNr-fwLiU9M/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi8yLzJmL1Vu/aXZlcnNpdHlfb2Zf/T3hmb3JkLnN2Zy8y/NTBweC1Vbml2ZXJz/aXR5X29mX094Zm9y/ZC5zdmcucG5n">
                 </div>
                 <div class="flex-1">
-                  <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">Oxford
-                    University</h3>
+                  <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors"><a
+                      href="Students/htmls/Student-program-details-2.html" class="text-current" target="_blank"
+                      rel="noopener">Oxford University</a></h3>
                   <div class="flex items-center gap-1 text-sm text-gray-600">
                     <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
                     <span>Oxford, UK</span>
@@ -1507,8 +1581,9 @@
                     src="https://imgs.search.brave.com/WLLyFy6GuhBcthuiHpmUnNzm1vK1LhOXbvLINC2KqUw/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi80LzRkL1Vu/aXZlcnNpdHlfb2Zf/Q2FtYnJpZGdlX2xv/Z28ucG5nLzI1MHB4/LVVuaXZlcnNpdHlf/b2ZfQ2FtYnJpZGdl/X2xvZ28ucG5n">
                 </div>
                 <div class="flex-1">
-                  <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">University
-                    of Cambridge</h3>
+                  <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors"><a
+                      href="Students/htmls/Student-program-details-2.html" class="text-current" target="_blank"
+                      rel="noopener">University of Cambridge</a></h3>
                   <div class="flex items-center gap-1 text-sm text-gray-600">
                     <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
                     <span>Cambridge, UK</span>
@@ -1540,8 +1615,9 @@
                     src="https://imgs.search.brave.com/xVsuJuoelabeD7XseecMQzU8qsmV1RImTjCjfvO5SYI/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi81LzU5L1Vv/ZlRfV29yZG1hcmsu/cG5nLzI1MHB4LVVv/ZlRfV29yZG1hcmsu/cG5n">
                 </div>
                 <div class="flex-1">
-                  <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">University
-                    of Toronto</h3>
+                  <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors"><a
+                      href="Students/htmls/Student-program-details-2.html" class="text-current" target="_blank"
+                      rel="noopener">University of Toronto</a></h3>
                   <div class="flex items-center gap-1 text-sm text-gray-600">
                     <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
                     <span>Toronto, CA</span>
@@ -1573,8 +1649,9 @@
                     src="https://imgs.search.brave.com/gN-Te_iMq08_DjxCVFM8bswppZIQbSWoOgRpB9mvm5s/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvZW4vdGh1bWIv/Yi9iNC9UaGVfVW5p/dmVyc2l0eV9vZl9N/ZWxib3VybmVfQ29h/dF9vZl9Bcm1zLnN2/Zy81MTJweC1UaGVf/VW5pdmVyc2l0eV9v/Zl9NZWxib3VybmVf/Q29hdF9vZl9Bcm1z/LnN2Zy5wbmc">
                 </div>
                 <div class="flex-1">
-                  <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors">University
-                    of Melbourne</h3>
+                  <h3 class="font-bold text-lg text-black mb-1 group-hover:text-[#D82128] transition-colors"><a
+                      href="Students/htmls/Student-program-details-2.html" class="text-current" target="_blank"
+                      rel="noopener">University of Melbourne</a></h3>
                   <div class="flex items-center gap-1 text-sm text-gray-600">
                     <i data-lucide="map-pin" class="h-3.5 w-3.5 text-[#D82128]"></i>
                     <span>Melbourne, AU</span>
@@ -1587,135 +1664,124 @@
               </p>
             </div>
           </div>
-        </div>
 
-        <style>
-          /* Smooth container transition for panels */
-          #partners [data-tab-panel] {
-            opacity: 0;
-            transform: translateY(8px);
-            transition: opacity 260ms ease, transform 260ms ease;
-          }
-
-          #partners [data-tab-panel].is-active {
-            opacity: 1;
-            transform: translateY(0);
-          }
-
-          /* Stagger cards appearance for both grid and scroller */
-          #partners [data-tab-panel].is-active .grid>div,
-          #partners [data-tab-panel].is-active .flex>div {
-            animation: panelItemIn 420ms ease both;
-          }
-
-          #partners [data-tab-panel].is-active .grid>div:nth-child(1),
-          #partners [data-tab-panel].is-active .flex>div:nth-child(1) {
-            animation-delay: 60ms;
-          }
-
-          #partners [data-tab-panel].is-active .grid>div:nth-child(2),
-          #partners [data-tab-panel].is-active .flex>div:nth-child(2) {
-            animation-delay: 110ms;
-          }
-
-          #partners [data-tab-panel].is-active .grid>div:nth-child(3),
-          #partners [data-tab-panel].is-active .flex>div:nth-child(3) {
-            animation-delay: 160ms;
-          }
-
-          #partners [data-tab-panel].is-active .grid>div:nth-child(4),
-          #partners [data-tab-panel].is-active .flex>div:nth-child(4) {
-            animation-delay: 210ms;
-          }
-
-          #partners [data-tab-panel].is-active .grid>div:nth-child(5),
-          #partners [data-tab-panel].is-active .flex>div:nth-child(5) {
-            animation-delay: 260ms;
-          }
-
-          #partners [data-tab-panel].is-active .grid>div:nth-child(6),
-          #partners [data-tab-panel].is-active .flex>div:nth-child(6) {
-            animation-delay: 310ms;
-          }
-
-          #partners [data-tab-panel].is-active .grid>div:nth-child(7),
-          #partners [data-tab-panel].is-active .flex>div:nth-child(7) {
-            animation-delay: 360ms;
-          }
-
-          #partners [data-tab-panel].is-active .grid>div:nth-child(8),
-          #partners [data-tab-panel].is-active .flex>div:nth-child(8) {
-            animation-delay: 410ms;
-          }
-
-          @keyframes panelItemIn {
-            from {
-              opacity: 0;
-              transform: translateY(14px);
+          <style>
+            #partners [data-tab-panel].is-active .grid>div:nth-child(1),
+            #partners [data-tab-panel].is-active .flex>div:nth-child(1) {
+              animation-delay: 60ms;
             }
 
-            to {
-              opacity: 1;
-              transform: translateY(0);
+            #partners [data-tab-panel].is-active .grid>div:nth-child(2),
+            #partners [data-tab-panel].is-active .flex>div:nth-child(2) {
+              animation-delay: 110ms;
             }
-          }
-        </style>
 
-        <div class="mt-14 text-center">
-          <button
-            class="inline-flex items-center justify-center gap-3 rounded-md bg-[#D82128] px-10 py-4 text-lg font-semibold text-white hover:bg-red-600"
-            data-testid="cta-view-all-scholarships">View All Scholarships</button>
-        </div>
-        <script>
-          // Tabs script (scoped to Partners section)
-          (function () {
-            const section = document.getElementById('partners');
-            if (!section) return;
-            const btns = Array.from(section.querySelectorAll('.tab-btn'));
-            const panels = Array.from(section.querySelectorAll('[data-tab-panel]'));
+            #partners [data-tab-panel].is-active .grid>div:nth-child(3),
+            #partners [data-tab-panel].is-active .flex>div:nth-child(3) {
+              animation-delay: 160ms;
+            }
 
-            function setActive(btn) {
-              const target = btn.getAttribute('data-tab-target');
-              // Update buttons: aria, data, and explicit classes (fallback if Tailwind variant not applied)
-              btns.forEach(b => {
-                b.setAttribute('aria-selected', 'false');
-                b.removeAttribute('data-active');
-                b.classList.remove('bg-white', 'shadow-sm');
-              });
-              btn.setAttribute('aria-selected', 'true');
-              btn.setAttribute('data-active', 'true');
-              btn.classList.add('bg-white', 'shadow-sm');
+            #partners [data-tab-panel].is-active .grid>div:nth-child(4),
+            #partners [data-tab-panel].is-active .flex>div:nth-child(4) {
+              animation-delay: 210ms;
+            }
 
-              // Update panels
-              panels.forEach(p => { p.classList.add('hidden'); p.classList.remove('is-active'); });
-              const activePanel = section.querySelector(target);
-              if (activePanel) {
-                activePanel.classList.remove('hidden');
-                // Force reflow to ensure animation triggers even when switching quickly
-                // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-                activePanel.offsetHeight;
-                activePanel.classList.add('is-active');
+            #partners [data-tab-panel].is-active .grid>div:nth-child(5),
+            #partners [data-tab-panel].is-active .flex>div:nth-child(5) {
+              animation-delay: 260ms;
+            }
+
+            #partners [data-tab-panel].is-active .grid>div:nth-child(6),
+            #partners [data-tab-panel].is-active .flex>div:nth-child(6) {
+              animation-delay: 310ms;
+            }
+
+            #partners [data-tab-panel].is-active .grid>div:nth-child(7),
+            #partners [data-tab-panel].is-active .flex>div:nth-child(7) {
+              animation-delay: 360ms;
+            }
+
+            #partners [data-tab-panel].is-active .grid>div:nth-child(8),
+            #partners [data-tab-panel].is-active .flex>div:nth-child(8) {
+              animation-delay: 410ms;
+            }
+
+            @keyframes panelItemIn {
+              from {
+                opacity: 0;
+                transform: translateY(14px);
+              }
+
+              to {
+                opacity: 1;
+                transform: translateY(0);
               }
             }
+          </style>
 
-            // Initialize from current data-active or default to first
-            const initial = btns.find(b => b.getAttribute('data-active') === 'true') || btns[0];
-            if (initial) setActive(initial);
 
-            // Bind events
-            btns.forEach(btn => {
-              btn.addEventListener('click', () => setActive(btn));
-            });
-          })();
-        </script>
-      </div>
+          <script>
+            // Tabs script (scoped to Partners section)
+            (function () {
+              const section = document.getElementById('partners');
+              if (!section) return;
+              const btns = Array.from(section.querySelectorAll('.tab-btn'));
+              const panels = Array.from(section.querySelectorAll('[data-tab-panel]'));
+
+              function setActive(btn) {
+                const target = btn.getAttribute('data-tab-target');
+                // Update buttons: aria, data, and classes for active state (red background, white text)
+                btns.forEach(b => {
+                  b.setAttribute('aria-selected', 'false');
+                  b.removeAttribute('data-active');
+                  b.classList.remove('bg-white', 'shadow-sm', 'bg-[#D82128]', 'text-white', 'border-[#D82128]');
+                });
+                btn.setAttribute('aria-selected', 'true');
+                btn.setAttribute('data-active', 'true');
+                btn.classList.add('bg-[#D82128]', 'text-white', 'border-[#D82128]', 'shadow-sm');
+
+                // Update panels
+                panels.forEach(p => { p.classList.add('hidden'); p.classList.remove('is-active'); });
+                const activePanel = section.querySelector(target);
+                if (activePanel) {
+                  activePanel.classList.remove('hidden');
+                  // Force reflow to ensure animation triggers even when switching quickly
+                  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                  activePanel.offsetHeight;
+                  activePanel.classList.add('is-active');
+                }
+              }
+
+              // Initialize from current data-active or default to first
+              const initial = btns.find(b => b.getAttribute('data-active') === 'true') || btns[0];
+              if (initial) setActive(initial);
+
+              // Bind events
+              btns.forEach(btn => {
+                btn.addEventListener('click', () => setActive(btn));
+              });
+            })();
+          </script>
+
+
+        </div>
+
+        <!-- Global CTA outside tabs (below panels) -->
+        <div class="mt-14 text-center" id="partners-cta">
+          <a href="Students/htmls/Student-find-program.html" target="_blank" rel="noopener"
+            class="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#D82128] to-[#B91C1C] px-8 py-4 text-base font-bold text-white hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            data-testid="cta-view-all-scholarships" aria-label="View all scholarships">
+            View All Universities
+          </a>
+        </div>
   </section>
 
   <!-- SECTION: CHANNEL -->
-  <section id="channel" data-testid="section-channel" class="py-20 bg-[#F9F9F9] scroll-animate">
+  <section id="channel" data-testid="section-channel" class="py-12 scroll-animate"
+    style="background-color: rgba(0, 71, 102, 0.07);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Recruitment Partners Block -->
-      <div class="mb-16 grid items-center gap-10 lg:grid-cols-2">
+      <div class="mb-12 grid items-center gap-10 lg:grid-cols-2">
         <div class="order-2 lg:order-1">
           <h3 class="text-2xl md:text-3xl font-bold text-black mb-6">For Education Agents</h3>
 
@@ -1753,19 +1819,19 @@
           </div>
 
           <div class="mt-8">
-            <a
-              class="inline-flex items-center gap-2 rounded-md border border-red-600 px-5 py-2.5 text-sm font-semibold text-red-700 hover:bg-red-600 hover:text-white transition">
+            <a href="Agency/html/Agency-partnership.html" target="_blank" rel="noopener"
+              class="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#D82128] to-[#B91C1C] px-8 py-4 text-base font-bold text-white hover:shadow-2xl hover:scale-105 transition-all duration-300">
               Join Our Network
               <i data-lucide="arrow-right" class="h-4 w-4"></i>
             </a>
           </div>
         </div>
         <div class="order-1 lg:order-2 hidden lg:block justify-self-end">
-          <img src="Gemini_Generated_Image.png" alt="Recruitment Partners Illustration"
-            class="max-w-md rounded-xl shadow" />
+          <img src="Gemini_Generated_Image_b2qh9ab2qh9ab2qh.png" alt="Recruitment Partners Illustration"
+            class="w-full max-w-2xl rounded-xl shadow" />
         </div>
         <div class="order-3 lg:hidden mt-6">
-          <img src="Gemini_Generated_Image.png" alt="Recruitment Partners Illustration"
+          <img src="Gemini_Generated_Image_b2qh9ab2qh9ab2qh.png" alt="Recruitment Partners Illustration"
             class="w-full rounded-xl shadow" />
         </div>
       </div>
@@ -1817,8 +1883,8 @@
           </div>
 
           <div class="mt-8">
-            <a target="_blank"
-              class="inline-flex items-center gap-2 rounded-md border border-red-600 px-5 py-2.5 text-sm font-semibold text-red-700 hover:bg-red-600 hover:text-white transition">
+            <a href="University/html/University-partnership.html" target="_blank" rel="noopener"
+              class="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#D82128] to-[#B91C1C] px-8 py-4 text-base font-bold text-white hover:shadow-2xl hover:scale-105 transition-all duration-300">
               Partner with Us
               <i data-lucide="arrow-right" class="h-4 w-4"></i>
             </a>
@@ -1829,13 +1895,13 @@
   </section>
 
   <!-- SECTION: CTA FINAL -->
-  <section id="cta-final" data-testid="section-cta-final" class="bg-black py-20 text-white md:py-32 scroll-animate">
+  <section id="cta-final" data-testid="section-cta-final" class="bg-black py-12 text-white scroll-animate">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-4xl text-center">
         <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-[#D82128] text-white">
           <i data-lucide="graduation-cap" class="h-8 w-8"></i>
         </div>
-        <h2 class="mb-6 text-4xl font-bold md:text-5xl">Ready to Transform Your Future?</h2>
+        <h2 class="mb-6 text-4xl font-bold md:text-5xl" style="font-size: 36px;">Ready to Transform Your Future?</h2>
         <p class="mb-8 text-lg text-white/80 md:text-xl">Join thousands of successful students, agents, and universities
           who trust ApplyLead. Your journey to world-class education starts here.</p>
         <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -1868,7 +1934,8 @@
   </section>
 
   <!-- SECTION: FAQ -->
-  <section id="faq" data-testid="section-faq" class="py-20 bg-white scroll-animate">
+  <section id="faq" data-testid="section-faq" class="py-12 scroll-animate"
+    style="background-color: rgba(0, 71, 102, 0.07);">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl md:text-4xl font-bold text-black text-center">Frequently Asked Questions</h2>
       <div class="mt-8 divide-y divide-black/10 border border-black rounded-2xl">

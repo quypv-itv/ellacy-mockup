@@ -148,11 +148,6 @@
                             Filters
                         </button>
                     </div>
-                    <button onclick="openAddInstitutionModal()"
-                        class="inline-flex items-center px-4 py-2 bg-red-400 text-white text-sm font-medium rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                        <i data-lucide="plus" class="w-4 h-4 mr-1"></i>
-                        Add Institution
-                    </button>
                 </div>
             </div>
 
@@ -383,6 +378,15 @@
 
                 <!-- Panel: Institutions -->
                 <section id="panel-institutions" class="top-tab-panel">
+                    <!-- Panel Actions -->
+                    <div class="mb-4 flex justify-end">
+                        <button onclick="openAddInstitutionModal()"
+                            class="inline-flex items-center px-4 py-2 text-white text-sm font-medium rounded-lg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                            style="background-color:#d82128;">
+                            <i data-lucide="plus" class="w-4 h-4 mr-1"></i>
+                            Add Institution
+                        </button>
+                    </div>
                     <!-- Institutions Table -->
                     <div class="bg-white rounded-lg shadow-sm overflow-hidden">
                         <table class="min-w-full divide-y divide-gray-200">
@@ -511,10 +515,20 @@
                 <section id="panel-intakes" class="top-tab-panel hidden">
                     <div class="bg-white rounded-lg shadow-sm overflow-hidden p-6">
                         <!-- Header -->
-                        <div class="mb-6">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Manage Intake Periods</h3>
-                            <p class="text-sm text-gray-500">Configure available intake seasons and their enrollment
-                                years. Toggle status to activate or deactivate specific intakes.</p>
+                        <div class="mb-6 flex items-start justify-between gap-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2">Manage Intake Periods</h3>
+                                <p class="text-sm text-gray-500">Configure available intake seasons and their enrollment
+                                    years. Toggle status to activate or deactivate specific intakes.</p>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <button id="addIntakeBtn" type="button"
+                                    class="px-3 py-2 text-sm text-white rounded-md hover:opacity-90"
+                                    style="background-color:#d82128;">
+                                    <i data-lucide="plus" class="w-4 h-4 inline mr-1"></i>
+                                    Add Intake
+                                </button>
+                            </div>
                         </div>
 
                         <!-- Unsaved Changes Warning -->
@@ -530,138 +544,9 @@
                         </div>
 
                         <!-- Intakes Grid -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-                            <!-- Spring Intake -->
-                            <div class="border rounded-lg p-6 hover:shadow-md transition-shadow bg-gray-50">
-                                <div class="flex items-center justify-between mb-4">
-                                    <div class="flex items-center gap-3">
-                                        <div
-                                            class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
-                                            <i data-lucide="calendar" class="w-6 h-6 text-gray-600"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-semibold text-gray-900">Spring</h4>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <label for="springYear" class="text-xs text-gray-700">Year</label>
-                                        <input type="number" id="springYear" value="2026" min="2024" max="2030"
-                                            class="w-20 px-2 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
-                                            onchange="markUnsavedChanges()">
-                                    </div>
-                                </div>
-                                <div class="space-y-3">
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-sm font-medium text-gray-700">Status</span>
-                                        <label class="relative inline-flex items-center cursor-pointer">
-                                            <input type="checkbox" id="springStatus" class="sr-only peer intake-toggle"
-                                                data-season="spring" checked>
-                                            <div
-                                                class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-gray-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600">
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <!-- Summer Intake -->
-                            <div class="border rounded-lg p-6 hover:shadow-md transition-shadow bg-gray-50">
-                                <div class="flex items-center justify-between mb-4">
-                                    <div class="flex items-center gap-3">
-                                        <div
-                                            class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
-                                            <i data-lucide="calendar" class="w-6 h-6 text-gray-600"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-semibold text-gray-900">Summer</h4>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <label for="summerYear" class="text-xs text-gray-700">Year</label>
-                                        <input type="number" id="summerYear" value="2026" min="2024" max="2030"
-                                            class="w-20 px-2 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
-                                            onchange="markUnsavedChanges()">
-                                    </div>
-                                </div>
-                                <div class="space-y-3">
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-sm font-medium text-gray-700">Status</span>
-                                        <label class="relative inline-flex items-center cursor-pointer">
-                                            <input type="checkbox" id="summerStatus" class="sr-only peer intake-toggle"
-                                                data-season="summer" checked>
-                                            <div
-                                                class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-gray-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600">
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Fall Intake -->
-                            <div class="border rounded-lg p-6 hover:shadow-md transition-shadow bg-gray-50">
-                                <div class="flex items-center justify-between mb-4">
-                                    <div class="flex items-center gap-3">
-                                        <div
-                                            class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
-                                            <i data-lucide="calendar" class="w-6 h-6 text-gray-600"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-semibold text-gray-900">Fall</h4>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <label for="fallYear" class="text-xs text-gray-700">Year</label>
-                                        <input type="number" id="fallYear" value="2025" min="2025" max="2030"
-                                            class="w-20 px-2 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
-                                            onchange="markUnsavedChanges()">
-                                    </div>
-                                </div>
-                                <div class="space-y-3">
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-sm font-medium text-gray-700">Status</span>
-                                        <label class="relative inline-flex items-center cursor-pointer">
-                                            <input type="checkbox" id="fallStatus" class="sr-only peer intake-toggle"
-                                                data-season="fall">
-                                            <div
-                                                class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-gray-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600">
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Winter Intake -->
-                            <div class="border rounded-lg p-6 hover:shadow-md transition-shadow bg-gray-50">
-                                <div class="flex items-center justify-between mb-4">
-                                    <div class="flex items-center gap-3">
-                                        <div
-                                            class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
-                                            <i data-lucide="calendar" class="w-6 h-6 text-gray-600"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-semibold text-gray-900">Winter</h4>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <label for="winterYear" class="text-xs text-gray-700">Year</label>
-                                        <input type="number" id="winterYear" value="2025" min="2024" max="2030"
-                                            class="w-20 px-2 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
-                                            onchange="markUnsavedChanges()">
-                                    </div>
-                                </div>
-                                <div class="space-y-3">
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-sm font-medium text-gray-700">Status</span>
-                                        <label class="relative inline-flex items-center cursor-pointer">
-                                            <input type="checkbox" id="winterStatus" class="sr-only peer intake-toggle"
-                                                data-season="winter">
-                                            <div
-                                                class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-gray-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600">
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
+                        <div id="intakesList" class="space-y-3 mb-6">
+                            <!-- Dynamic intake rows will be rendered here -->
                         </div>
 
                         <!-- Info Banner -->
@@ -2851,6 +2736,7 @@ Spring 2026</textarea>
         function savePartners(list) { localStorage.setItem(LS_KEY, JSON.stringify(list)); }
 
         function renderTable() {
+            if (typeof partnersTableBody === 'undefined' || !partnersTableBody) return;
             const list = loadPartners();
             partnersTableBody.innerHTML = '';
             if (!list.length) {
@@ -2876,6 +2762,7 @@ Spring 2026</textarea>
         }
 
         function renderPreview() {
+            if (typeof partnersPreview === 'undefined' || !partnersPreview) return;
             const list = loadPartners();
             partnersPreview.innerHTML = '';
             // Build two sets for seamless loop
@@ -2992,8 +2879,8 @@ Spring 2026</textarea>
                     { logo: 'https://imgs.search.brave.com/vWqXUEDq-6yOdvybXfzZ3HIe2bsNag2-dXlJfNn-9u8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjk0NjkwYTlj/YzdhNzJmYTYyZTc0/NjI5ZDY4ZWRiZTE5/NWFhZDhmMzQ5NTIz/NTBhMTFkYmY5OTA3/OWZlMWZiYy93d3cu/YnV0bGVyLmVkdS8', name: 'Butler University', location: 'Indianapolis, USA', description: 'Strong liberal arts and business programs.', hashtags: ['2+2'] }
                 ]);
             }
-            renderTable();
-            renderPreview();
+            try { renderTable(); } catch { }
+            try { renderPreview(); } catch { }
 
             if (addPartnerBtn) addPartnerBtn.addEventListener('click', () => openPartnerSelectModal());
             if (clearPartnersBtn) clearPartnersBtn.addEventListener('click', () => {
@@ -3001,22 +2888,27 @@ Spring 2026</textarea>
             });
 
 
-            partnersTableBody.addEventListener('click', (e) => {
-                const btn = e.target.closest('button'); if (!btn) return;
-                const idx = parseInt(btn.dataset.idx, 10);
-                const list = loadPartners();
-                if (btn.dataset.action === 'edit') {
-                    upsertPartner(list[idx], idx);
-                } else if (btn.dataset.action === 'delete') {
-                    if (confirm('Delete this partner?')) { list.splice(idx, 1); savePartners(list); renderTable(); renderPreview(); }
-                }
-            });
+            if (partnersTableBody) {
+                partnersTableBody.addEventListener('click', (e) => {
+                    const btn = e.target.closest('button'); if (!btn) return;
+                    const idx = parseInt(btn.dataset.idx, 10);
+                    const list = loadPartners();
+                    if (btn.dataset.action === 'edit') {
+                        upsertPartner(list[idx], idx);
+                    } else if (btn.dataset.action === 'delete') {
+                        if (confirm('Delete this partner?')) { list.splice(idx, 1); savePartners(list); renderTable(); renderPreview(); }
+                    }
+                });
+            }
         });
 
-        // Modal actions
-        document.getElementById('partnerCancel').addEventListener('click', closePartnerModal);
-        document.getElementById('partnerCloseX').addEventListener('click', closePartnerModal);
-        document.getElementById('partnerSave').addEventListener('click', () => {
+        // Modal actions (guarded to avoid errors if elements are not present)
+        const partnerCancelEl = document.getElementById('partnerCancel');
+        if (partnerCancelEl) partnerCancelEl.addEventListener('click', closePartnerModal);
+        const partnerCloseXEl = document.getElementById('partnerCloseX');
+        if (partnerCloseXEl) partnerCloseXEl.addEventListener('click', closePartnerModal);
+        const partnerSaveEl = document.getElementById('partnerSave');
+        if (partnerSaveEl) partnerSaveEl.addEventListener('click', () => {
             const logo = document.getElementById('partnerLogo').value.trim();
             const name = document.getElementById('partnerName').value.trim();
             const location = document.getElementById('partnerLocation').value.trim();
@@ -3143,10 +3035,13 @@ Spring 2026</textarea>
             });
         });
 
-        // Modal actions
-        document.getElementById('tierCancel').addEventListener('click', closeTierModal);
-        document.getElementById('tierCloseX').addEventListener('click', closeTierModal);
-        document.getElementById('tierSave').addEventListener('click', () => {
+        // Modal actions (guarded for safety)
+        const tierCancelEl = document.getElementById('tierCancel');
+        if (tierCancelEl) tierCancelEl.addEventListener('click', closeTierModal);
+        const tierCloseXEl = document.getElementById('tierCloseX');
+        if (tierCloseXEl) tierCloseXEl.addEventListener('click', closeTierModal);
+        const tierSaveEl = document.getElementById('tierSave');
+        if (tierSaveEl) tierSaveEl.addEventListener('click', () => {
             const name = document.getElementById('tierName').value.trim();
             const description = document.getElementById('tierDesc').value.trim();
             const idxStr = document.getElementById('tierIndex').value;
@@ -3162,6 +3057,14 @@ Spring 2026</textarea>
 
         // ===== INTAKES MANAGEMENT =====
         let hasUnsavedChanges = false;
+        // Always use in-memory defaults; do not cache to localStorage
+        const DEFAULT_INTAKES = [
+            { name: 'Spring', year: '2026', status: true },
+            { name: 'Summer', year: '2026', status: false },
+            { name: 'Fall', year: '2026', status: true },
+            { name: 'Winter', year: '2025', status: false }
+        ];
+        let intakesState = [];
 
         function markUnsavedChanges() {
             hasUnsavedChanges = true;
@@ -3180,30 +3083,109 @@ Spring 2026</textarea>
             }
         }
 
-        function initializeIntakes() {
-            // Initialize status toggle listeners using event delegation
-            document.addEventListener('change', function (e) {
-                if (e.target.classList.contains('intake-toggle')) {
-                    const season = e.target.dataset.season;
-                    const statusText = document.getElementById(`${season}StatusText`);
-                    if (statusText) {
-                        updateIntakeStatus(season, e.target.checked, statusText);
-                        markUnsavedChanges();
-                    }
-                }
-            });
-
-            // Load saved intakes from localStorage
-            loadIntakesFromStorage();
+        function loadIntakesList() {
+            // Return a fresh copy of defaults (no persistence)
+            return DEFAULT_INTAKES.map(i => ({ ...i }));
         }
 
-        function updateIntakeStatus(season, isActive, statusTextElement) {
-            if (isActive) {
-                statusTextElement.className = 'px-2 py-1 rounded-full bg-green-100 text-green-800';
-                statusTextElement.textContent = 'Active';
-            } else {
-                statusTextElement.className = 'px-2 py-1 rounded-full bg-gray-100 text-gray-800';
-                statusTextElement.textContent = 'Inactive';
+        function saveIntakesList(list) {
+            // No-op: per requirement, do not cache/store. Keep session-only.
+        }
+
+        function renderIntakes() {
+            const container = document.getElementById('intakesList');
+            if (!container) return;
+            container.innerHTML = '';
+            if (!intakesState.length) {
+                container.innerHTML = '<p class="text-sm text-gray-500">No intakes yet. Click "Add Intake" to create one.</p>';
+                return;
+            }
+            intakesState.forEach((it, idx) => {
+                const row = document.createElement('div');
+                row.className = 'border rounded-lg p-4 bg-gray-50 flex items-center justify-between gap-4';
+                row.dataset.idx = String(idx);
+                row.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
+                            <i data-lucide="calendar" class="w-5 h-5 text-gray-600"></i>
+                        </div>
+                        <input type="text" value="${it.name || ''}" data-field="name" placeholder="Intake name (e.g., Spring, Jan, Aug)" class="w-44 px-2 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" />
+                        <label class="text-xs text-gray-700">Year</label>
+                        <input type="number" value="${it.year || ''}" data-field="year" min="2020" max="2100" class="w-24 px-2 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" />
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm font-medium text-gray-700">Status</span>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" ${it.status ? 'checked' : ''} class="sr-only peer" data-field="status">
+                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600"></div>
+                            </label>
+                        </div>
+                        <button class="text-red-600 hover:text-red-800" data-action="delete" title="Remove intake">
+                            <i data-lucide="trash" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function initializeIntakes() {
+            const addBtn = document.getElementById('addIntakeBtn');
+            const listEl = document.getElementById('intakesList');
+            intakesState = loadIntakesList();
+            renderIntakes();
+
+            if (addBtn) {
+                addBtn.addEventListener('click', () => {
+                    // Default: let user input the year; status starts as inactive
+                    intakesState.push({ name: 'New Intake', year: '', status: false });
+                    renderIntakes();
+                    // Focus the newly added row's year field for quick input
+                    try {
+                        const listElNow = document.getElementById('intakesList');
+                        const lastRow = listElNow?.querySelector('[data-idx]:last-child');
+                        const yearInput = lastRow?.querySelector('input[data-field="year"]');
+                        yearInput?.focus();
+                    } catch { }
+                    markUnsavedChanges();
+                });
+            }
+
+            if (listEl) {
+                // Handle input changes (name/year)
+                listEl.addEventListener('input', (e) => {
+                    const row = e.target.closest('[data-idx]');
+                    if (!row) return;
+                    const idx = parseInt(row.dataset.idx, 10);
+                    const field = e.target.getAttribute('data-field');
+                    if (!field) return;
+                    if (field === 'name') intakesState[idx].name = e.target.value;
+                    if (field === 'year') intakesState[idx].year = e.target.value;
+                    markUnsavedChanges();
+                });
+                // Handle status toggle
+                listEl.addEventListener('change', (e) => {
+                    const row = e.target.closest('[data-idx]');
+                    if (!row) return;
+                    const idx = parseInt(row.dataset.idx, 10);
+                    const field = e.target.getAttribute('data-field');
+                    if (field === 'status') {
+                        intakesState[idx].status = !!e.target.checked;
+                        markUnsavedChanges();
+                    }
+                });
+                // Handle delete
+                listEl.addEventListener('click', (e) => {
+                    const btn = e.target.closest('button[data-action="delete"]');
+                    if (!btn) return;
+                    const row = btn.closest('[data-idx]');
+                    const idx = parseInt(row.dataset.idx, 10);
+                    intakesState.splice(idx, 1);
+                    renderIntakes();
+                    markUnsavedChanges();
+                });
             }
         }
 
@@ -3219,8 +3201,7 @@ Spring 2026</textarea>
         function saveIntakes() {
             const btn = document.getElementById('saveIntakesBtn');
             if (btn) {
-                // Prevent double click while saving
-                if (btn.disabled) return;
+                if (btn.disabled) return; // Prevent double click
                 btn.disabled = true;
                 btn.dataset.originalText = btn.innerHTML || '<i data-lucide="save" class="w-4 h-4 inline mr-2"></i>Save Changes';
                 btn.classList.add('opacity-80', 'cursor-not-allowed');
@@ -3228,102 +3209,27 @@ Spring 2026</textarea>
                 if (window.lucide) lucide.createIcons();
             }
 
-            // Watchdog: ensure we always restore button even if anything fails
             const watchdog = setTimeout(() => restoreSaveButton(btn), 5000);
 
-            // Optional: show a light info notice (commented to reduce noise)
-            // showNotification('Saving intake settings...', 'info');
-
-            // Simulate processing before saving & confirming
             setTimeout(() => {
                 try {
-                    const getVal = (id) => {
-                        const el = document.getElementById(id);
-                        return el && typeof el.value !== 'undefined' ? el.value : '';
-                    };
-                    const getChecked = (id) => {
-                        const el = document.getElementById(id);
-                        return el && typeof el.checked !== 'undefined' ? !!el.checked : false;
-                    };
-
-                    const intakesData = {
-                        spring: { year: getVal('springYear'), status: getChecked('springStatus') },
-                        summer: { year: getVal('summerYear'), status: getChecked('summerStatus') },
-                        fall: { year: getVal('fallYear'), status: getChecked('fallStatus') },
-                        winter: { year: getVal('winterYear'), status: getChecked('winterStatus') }
-                    };
-
-                    // Mock save and always show success
-                    localStorage.setItem('intakesConfig', JSON.stringify(intakesData));
-                    console.log('Intakes saved:', intakesData);
+                    // No persistence; keep in-memory only
+                    console.log('Intakes (session only):', intakesState);
                 } finally {
-                    // Restore button state FIRST to avoid getting stuck on errors below
                     restoreSaveButton(btn);
                     clearTimeout(watchdog);
-
-                    // Then clear warning and show success toast, but guard to avoid breaking UI
                     try { clearUnsavedChanges(); } catch (e) { /* no-op */ }
-                    try {
-                        if (typeof showNotification === 'function') {
-                            showNotification('Intake settings saved successfully! Changes will be reflected in Student and Agency pages.', 'brand-success');
-                        }
-                    } catch (e) { /* no-op */ }
+                    try { if (typeof showNotification === 'function') { showNotification('Intake settings updated. Defaults will load on next visit.', 'brand-success'); } } catch (e) { /* no-op */ }
                 }
-            }, 1000);
+            }, 500);
         }
 
         function resetIntakes() {
-            if (confirm('Reset all intake settings to default values? This will immediately save and affect Student and Agency pages.')) {
-                const defaultIntakes = {
-                    spring: { year: '2025', status: true },
-                    summer: { year: '2025', status: true },
-                    fall: { year: '2025', status: true },
-                    winter: { year: '2026', status: false }
-                };
-
-                // Update UI
-                document.getElementById('springYear').value = defaultIntakes.spring.year;
-                document.getElementById('springStatus').checked = defaultIntakes.spring.status;
-                updateIntakeStatus('spring', defaultIntakes.spring.status, document.getElementById('springStatusText'));
-
-                document.getElementById('summerYear').value = defaultIntakes.summer.year;
-                document.getElementById('summerStatus').checked = defaultIntakes.summer.status;
-                updateIntakeStatus('summer', defaultIntakes.summer.status, document.getElementById('summerStatusText'));
-
-                document.getElementById('fallYear').value = defaultIntakes.fall.year;
-                document.getElementById('fallStatus').checked = defaultIntakes.fall.status;
-                updateIntakeStatus('fall', defaultIntakes.fall.status, document.getElementById('fallStatusText'));
-
-                document.getElementById('winterYear').value = defaultIntakes.winter.year;
-                document.getElementById('winterStatus').checked = defaultIntakes.winter.status;
-                updateIntakeStatus('winter', defaultIntakes.winter.status, document.getElementById('winterStatusText'));
-
-                // Save to localStorage
-                localStorage.setItem('intakesConfig', JSON.stringify(defaultIntakes));
+            if (confirm('Reset to default 4 intakes?')) {
+                intakesState = loadIntakesList();
+                renderIntakes();
                 clearUnsavedChanges();
-                showNotification('Intake settings reset to default', 'success');
-            }
-        }
-
-        function loadIntakesFromStorage() {
-            const saved = localStorage.getItem('intakesConfig');
-            if (saved) {
-                const intakesData = JSON.parse(saved);
-
-                // Update UI with saved values
-                Object.keys(intakesData).forEach(season => {
-                    const yearInput = document.getElementById(`${season}Year`);
-                    const statusCheckbox = document.getElementById(`${season}Status`);
-                    const statusText = document.getElementById(`${season}StatusText`);
-
-                    if (yearInput && intakesData[season].year) {
-                        yearInput.value = intakesData[season].year;
-                    }
-                    if (statusCheckbox && statusText) {
-                        statusCheckbox.checked = intakesData[season].status;
-                        updateIntakeStatus(season, intakesData[season].status, statusText);
-                    }
-                });
+                if (typeof showNotification === 'function') showNotification('Intakes reset to defaults', 'success');
             }
         }
 
