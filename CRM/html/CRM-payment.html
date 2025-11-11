@@ -203,7 +203,7 @@
                                 <div class="w-full sm:w-64">
                                     <div class="relative">
                                         <input type="text" id="search"
-                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm pl-10"
+                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm pl-10"
                                             placeholder="Search by name, email">
                                         <div
                                             class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -217,7 +217,7 @@
                                     <label for="date-range" class="block text-sm font-medium text-gray-700 mb-1">Date
                                         Range</label>
                                     <select id="date-range"
-                                        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                                        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
                                         <option value="this-month">This Month</option>
                                         <option value="last-month">Last Month</option>
                                         <option value="last-3-months">Last 3 Months</option>
@@ -329,7 +329,8 @@
                                                     2025</td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm">
                                                     <span
-                                                        class="status-badge inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Unpaid</span>
+                                                        class="status-badge inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Pending
+                                                        Review</span>
                                                 </td>
                                                 <td
                                                     class="pr-6 pl-10 py-4 whitespace-nowrap text-left text-sm font-medium">
@@ -382,7 +383,7 @@
                                                     2025</td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm">
                                                     <span
-                                                        class="status-badge inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Unpaid</span>
+                                                        class="status-badge inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Unpaid</span>
                                                 </td>
                                                 <td
                                                     class="pr-6 pl-10 py-4 whitespace-nowrap text-left text-sm font-medium">
@@ -488,7 +489,7 @@
                                                     2025</td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm">
                                                     <span
-                                                        class="status-badge inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Unpaid</span>
+                                                        class="status-badge inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Unpaid</span>
                                                 </td>
                                                 <td
                                                     class="pr-6 pl-10 py-4 whitespace-nowrap text-left text-sm font-medium">
@@ -908,38 +909,41 @@
                                             </select>
                                         </div>
 
-                                        <!-- Application Selection -->
+                                        <!-- Application Selection (Multi-select with Checkboxes) -->
                                         <div>
                                             <label class="block text-sm font-semibold text-gray-700 mb-2">
                                                 <i data-lucide="file-text" class="w-4 h-4 inline mr-1"></i>
                                                 Select Application <span class="text-red-600">*</span>
                                             </label>
-                                            <select id="invoice_application" required
-                                                onchange="loadApplicationDetails(this.value)"
-                                                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all">
-                                                <option value="">Select student first...</option>
-                                            </select>
+                                            <div class="relative">
+                                                <button type="button" id="application_dropdown_btn"
+                                                    onclick="toggleApplicationDropdown()"
+                                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all bg-white text-left flex items-center justify-between">
+                                                    <span id="application_dropdown_label" class="text-gray-500">Select
+                                                        student first...</span>
+                                                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400"></i>
+                                                </button>
+                                                <div id="application_dropdown_menu"
+                                                    class="hidden absolute z-50 w-full mt-2 bg-white border-2 border-gray-300 rounded-lg shadow-lg max-h-64 overflow-y-auto">
+                                                    <div id="application_options_list" class="p-2">
+                                                        <p class="px-3 py-2 text-sm text-gray-500">Select a student
+                                                            first</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="mt-1 text-xs text-gray-500">Select one or more applications to
+                                                combine in one invoice</p>
                                         </div>
                                     </div>
 
-                                    <!-- Application Details Card (Hidden until application selected) -->
-                                    <div id="application_details_card"
-                                        class="hidden bg-white border-2 border-gray-200 rounded-xl p-5">
-                                        <h4 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                                    <!-- Application Details (One card per selected application) -->
+                                    <div id="application_details_container" class="hidden space-y-3">
+                                        <h4 class="font-semibold text-gray-900 mb-2 flex items-center gap-2">
                                             <i data-lucide="layers" class="w-5 h-5 text-red-600"></i>
                                             Application Details
                                         </h4>
-                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                            <div>
-                                                <p class="text-xs text-gray-500 mb-1">Program Type</p>
-                                                <p class="font-semibold text-gray-900" id="app_program_type">-</p>
-                                            </div>
-                                            <div class="md:col-span-2">
-                                                <p class="text-xs text-gray-500 mb-1">Universities</p>
-                                                <div id="app_universities" class="flex flex-wrap gap-2">
-                                                    <!-- University chips will be rendered here -->
-                                                </div>
-                                            </div>
+                                        <div id="application_details_list" class="space-y-3">
+                                            <!-- Application detail cards will be rendered here -->
                                         </div>
                                     </div>
                                 </div>
@@ -949,80 +953,30 @@
                                     <div class="bg-gray-50 border-l-4 border-red-500 p-4 rounded-r-lg">
                                         <p class="text-sm text-gray-700">
                                             <i data-lucide="info" class="w-4 h-4 inline mr-1"></i>
-                                            Enter payment stage and amount for this invoice
+                                            Enter payment stage, amount and due date for each selected application
                                         </p>
                                     </div>
 
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <!-- Payment Stage -->
-                                        <div>
-                                            <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                                <i data-lucide="list" class="w-4 h-4 inline mr-1"></i>
-                                                Payment Stage <span class="text-red-600">*</span>
-                                            </label>
-                                            <select id="invoice_payment_stage" required onchange="loadPaymentConfig()"
-                                                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
-                                                <option value="">Select payment stage...</option>
-                                                <option value="first">First Payment</option>
-                                                <option value="second">Second Payment</option>
-                                                <option value="third">Third Payment</option>
-                                            </select>
+                                    <!-- Dynamic Sections: One per selected application -->
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                                            <i data-lucide="layers" class="w-5 h-5 text-red-600"></i>
+                                            Application Payments
+                                        </h4>
+                                        <div id="application_payments_container" class="space-y-4">
+                                            <!-- Sections will be rendered here by JS -->
                                         </div>
+                                    </div>
 
-                                        <!-- Total Amount -->
-                                        <div>
-                                            <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                                <i data-lucide="dollar-sign" class="w-4 h-4 inline mr-1"></i>
-                                                Total Amount (Student Pays) <span class="text-red-600">*</span>
-                                            </label>
-                                            <div class="relative">
-                                                <span
-                                                    class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-semibold">$</span>
-                                                <input type="number" id="invoice_total_amount" required min="0"
-                                                    step="0.01" placeholder="0.00" oninput="calculateBreakdown()"
-                                                    class="w-full px-4 py-3 pl-8 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                                    <!-- Invoice Total (sum of application amounts) -->
+                                    <div class="flex justify-end">
+                                        <div class="w-full md:w-80">
+                                            <div class="flex justify-between py-2 border-t-2 border-gray-800">
+                                                <p class="font-bold text-lg">Total Amount:</p>
+                                                <p id="invoice_total_amount_sum" class="font-bold text-2xl"
+                                                    style="color:#d82128;">$0.00</p>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <!-- Due Date -->
-                                    <div>
-                                        <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                            <i data-lucide="calendar" class="w-4 h-4 inline mr-1"></i>
-                                            Due Date <span class="text-red-600">*</span>
-                                        </label>
-                                        <input type="date" id="invoice_due_date" required
-                                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
-                                    </div>
-
-                                    <!-- Agent Commission Toggle -->
-                                    <div class="pt-2">
-                                        <label class="inline-flex items-center gap-3 cursor-pointer select-none">
-                                            <input type="checkbox" id="pay_commission_toggle"
-                                                onchange="toggleCommissionInput(this.checked)" class="w-5 h-5 rounded"
-                                                style="accent-color:#ff0000;">
-                                            <span class="text-sm font-medium text-gray-800">This invoice includes a
-                                                payout to Agent (Commission)</span>
-                                        </label>
-                                        <p class="text-xs text-gray-500 ml-8 mt-1">If enabled, enter the commission
-                                            amount to pay from the student's payment.</p>
-                                    </div>
-
-                                    <!-- Commission Amount (hidden until toggled) -->
-                                    <div id="commission_input_wrap" class="hidden mt-4">
-                                        <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                            <i data-lucide="users" class="w-4 h-4 inline mr-1"></i>
-                                            Agent Commission Amount
-                                        </label>
-                                        <div class="relative max-w-sm">
-                                            <span
-                                                class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 font-semibold">$</span>
-                                            <input type="number" id="invoice_agent_commission" min="0" step="0.01"
-                                                placeholder="0.00"
-                                                class="w-full pl-7 pr-3 py-3 border-2 border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500">
-                                        </div>
-                                        <p class="text-xs text-gray-500 mt-1">Commission cannot exceed Total Amount
-                                            (Student Pays).</p>
                                     </div>
                                 </div>
 
@@ -1070,15 +1024,8 @@
                                                         Amount</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr class="border-b border-gray-200">
-                                                    <td class="py-3">
-                                                        <p class="font-medium" id="preview_service_name">-</p>
-                                                        <p class="text-xs text-gray-600" id="preview_program_detail">-
-                                                        </p>
-                                                    </td>
-                                                    <td class="text-right font-semibold" id="preview_amount">$0.00</td>
-                                                </tr>
+                                            <tbody id="preview_items_body">
+                                                <!-- Items will be rendered here -->
                                             </tbody>
                                         </table>
 
@@ -1086,7 +1033,7 @@
                                         <div class="flex justify-end mb-6">
                                             <div class="w-64">
                                                 <div class="flex justify-between py-2 border-t-2 border-gray-800">
-                                                    <p class="font-bold text-lg">TOTAL DUE:</p>
+                                                    <p class="font-bold text-lg">Total Amount:</p>
                                                     <p class="font-bold text-2xl" style="color:#d82128;"
                                                         id="preview_total">$0.00</p>
                                                 </div>
@@ -1178,6 +1125,10 @@
                                         </th>
                                         <th
                                             class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Payment Type
+                                        </th>
+                                        <th
+                                            class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Applicable Step
                                         </th>
                                         <th
@@ -1199,17 +1150,26 @@
                                         <td class="px-4 py-3">
                                             <div class="text-sm text-gray-600">Initial payment installment</div>
                                         </td>
+                                        <td class="px-4 py-3 whitespace-nowrap">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Application</span>
+                                        </td>
                                         <td class="px-4 py-3">
                                             <span
-                                                class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-gray-100 text-gray-800 border">Initial
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 border">Initial
                                                 Advising</span>
                                         </td>
                                         <td class="px-4 py-3 whitespace-nowrap">
-                                            <span
-                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                                <i data-lucide="check-circle" class="w-3 h-3 mr-1"></i>
-                                                Active
-                                            </span>
+                                            <div class="flex items-center cursor-pointer select-none"
+                                                onclick="toggleStatusCell(1)" role="switch" aria-checked="true">
+                                                <label class="inline-flex items-center cursor-pointer">
+                                                    <input id="po_status_toggle_1" type="checkbox" class="sr-only peer"
+                                                        onchange="togglePaymentOrderStatus(1)" checked>
+                                                    <div
+                                                        class="relative w-11 h-6 rounded-full bg-gray-200 transition-colors duration-200 ease-in-out peer-focus:ring-2 peer-focus:ring-red-300 peer-checked:bg-red-600 before:content-[''] before:absolute before:top-0.5 before:left-0.5 before:h-5 before:w-5 before:bg-white before:border before:border-gray-300 before:rounded-full before:transition-transform before:duration-200 before:ease-in-out peer-checked:before:translate-x-5">
+                                                    </div>
+                                                </label>
+                                            </div>
                                         </td>
                                         <td class="px-4 py-3 whitespace-nowrap text-right text-sm font-medium">
                                             <button onclick="editPaymentOrder(1)"
@@ -1230,17 +1190,26 @@
                                         <td class="px-4 py-3">
                                             <div class="text-sm text-gray-600">Second payment installment</div>
                                         </td>
+                                        <td class="px-4 py-3 whitespace-nowrap">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Application</span>
+                                        </td>
                                         <td class="px-4 py-3">
                                             <span
-                                                class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-gray-100 text-gray-800 border">Submitted
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 border">Submitted
                                                 to School</span>
                                         </td>
                                         <td class="px-4 py-3 whitespace-nowrap">
-                                            <span
-                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                                <i data-lucide="check-circle" class="w-3 h-3 mr-1"></i>
-                                                Active
-                                            </span>
+                                            <div class="flex items-center cursor-pointer select-none"
+                                                onclick="toggleStatusCell(2)" role="switch" aria-checked="true">
+                                                <label class="inline-flex items-center cursor-pointer">
+                                                    <input id="po_status_toggle_2" type="checkbox" class="sr-only peer"
+                                                        onchange="togglePaymentOrderStatus(2)" checked>
+                                                    <div
+                                                        class="relative w-11 h-6 rounded-full bg-gray-200 transition-colors duration-200 ease-in-out peer-focus:ring-2 peer-focus:ring-red-300 peer-checked:bg-red-600 before:content-[''] before:absolute before:top-0.5 before:left-0.5 before:h-5 before:w-5 before:bg-white before:border before:border-gray-300 before:rounded-full before:transition-transform before:duration-200 before:ease-in-out peer-checked:before:translate-x-5">
+                                                    </div>
+                                                </label>
+                                            </div>
                                         </td>
                                         <td class="px-4 py-3 whitespace-nowrap text-right text-sm font-medium">
                                             <button onclick="editPaymentOrder(2)"
@@ -1261,17 +1230,26 @@
                                         <td class="px-4 py-3">
                                             <div class="text-sm text-gray-600">Third payment installment</div>
                                         </td>
+                                        <td class="px-4 py-3 whitespace-nowrap">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Application</span>
+                                        </td>
                                         <td class="px-4 py-3">
                                             <span
-                                                class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-gray-100 text-gray-800 border">Offer
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 border">Offer
                                                 Letter Issued</span>
                                         </td>
                                         <td class="px-4 py-3 whitespace-nowrap">
-                                            <span
-                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                                <i data-lucide="check-circle" class="w-3 h-3 mr-1"></i>
-                                                Active
-                                            </span>
+                                            <div class="flex items-center cursor-pointer select-none"
+                                                onclick="toggleStatusCell(3)" role="switch" aria-checked="true">
+                                                <label class="inline-flex items-center cursor-pointer">
+                                                    <input id="po_status_toggle_3" type="checkbox" class="sr-only peer"
+                                                        onchange="togglePaymentOrderStatus(3)" checked>
+                                                    <div
+                                                        class="relative w-11 h-6 rounded-full bg-gray-200 transition-colors duration-200 ease-in-out peer-focus:ring-2 peer-focus:ring-red-300 peer-checked:bg-red-600 before:content-[''] before:absolute before:top-0.5 before:left-0.5 before:h-5 before:w-5 before:bg-white before:border before:border-gray-300 before:rounded-full before:transition-transform before:duration-200 before:ease-in-out peer-checked:before:translate-x-5">
+                                                    </div>
+                                                </label>
+                                            </div>
                                         </td>
                                         <td class="px-4 py-3 whitespace-nowrap text-right text-sm font-medium">
                                             <button onclick="editPaymentOrder(3)"
@@ -1279,6 +1257,83 @@
                                                 <i data-lucide="edit" class="w-4 h-4 inline"></i>
                                             </button>
                                             <button onclick="deletePaymentOrder(3)"
+                                                class="text-red-600 hover:text-red-800">
+                                                <i data-lucide="trash-2" class="w-4 h-4 inline"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Sample Row 4 (Service Payment) -->
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="px-4 py-3">
+                                            <div class="text-sm font-medium text-gray-900">Service Fee</div>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <div class="text-sm text-gray-600">One-time counseling service</div>
+                                        </td>
+                                        <td class="px-4 py-3 whitespace-nowrap">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">Service</span>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <span class="text-xs text-gray-400">N/A</span>
+                                        </td>
+                                        <td class="px-4 py-3 whitespace-nowrap">
+                                            <div class="flex items-center cursor-pointer select-none"
+                                                onclick="toggleStatusCell(4)" role="switch" aria-checked="true">
+                                                <label class="inline-flex items-center cursor-pointer">
+                                                    <input id="po_status_toggle_4" type="checkbox" class="sr-only peer"
+                                                        onchange="togglePaymentOrderStatus(4)" checked>
+                                                    <div
+                                                        class="relative w-11 h-6 rounded-full bg-gray-200 transition-colors duration-200 ease-in-out peer-focus:ring-2 peer-focus:ring-red-300 peer-checked:bg-red-600 before:content-[''] before:absolute before:top-0.5 before:left-0.5 before:h-5 before:w-5 before:bg-white before:border before:border-gray-300 before:rounded-full before:transition-transform before:duration-200 before:ease-in-out peer-checked:before:translate-x-5">
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 whitespace-nowrap text-right text-sm font-medium">
+                                            <button onclick="editPaymentOrder(4)"
+                                                class="text-gray-900 hover:text-gray-700 mr-3">
+                                                <i data-lucide="edit" class="w-4 h-4 inline"></i>
+                                            </button>
+                                            <button onclick="deletePaymentOrder(4)"
+                                                class="text-red-600 hover:text-red-800">
+                                                <i data-lucide="trash-2" class="w-4 h-4 inline"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Sample Row 5 (Service Payment - Inactive) -->
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="px-4 py-3">
+                                            <div class="text-sm font-medium text-gray-900">Additional Service Fee</div>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <div class="text-sm text-gray-600">Optional visa consulting add-on</div>
+                                        </td>
+                                        <td class="px-4 py-3 whitespace-nowrap">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">Service</span>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <span class="text-xs text-gray-400">N/A</span>
+                                        </td>
+                                        <td class="px-4 py-3 whitespace-nowrap">
+                                            <div class="flex items-center cursor-pointer select-none"
+                                                onclick="toggleStatusCell(5)" role="switch" aria-checked="false">
+                                                <label class="inline-flex items-center cursor-pointer">
+                                                    <input id="po_status_toggle_5" type="checkbox" class="sr-only peer"
+                                                        onchange="togglePaymentOrderStatus(5)">
+                                                    <div
+                                                        class="relative w-11 h-6 rounded-full bg-gray-200 transition-colors duration-200 ease-in-out peer-focus:ring-2 peer-focus:ring-red-300 peer-checked:bg-red-600 before:content-[''] before:absolute before:top-0.5 before:left-0.5 before:h-5 before:w-5 before:bg-white before:border before:border-gray-300 before:rounded-full before:transition-transform before:duration-200 before:ease-in-out peer-checked:before:translate-x-5">
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 whitespace-nowrap text-right text-sm font-medium">
+                                            <button onclick="editPaymentOrder(5)"
+                                                class="text-gray-900 hover:text-gray-700 mr-3">
+                                                <i data-lucide="edit" class="w-4 h-4 inline"></i>
+                                            </button>
+
+                                            <button onclick="deletePaymentOrder(5)"
                                                 class="text-red-600 hover:text-red-800">
                                                 <i data-lucide="trash-2" class="w-4 h-4 inline"></i>
                                             </button>
@@ -1312,6 +1367,24 @@
                                                 class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" />
                                         </div>
                                         <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Payment
+                                                Type</label>
+                                            <div class="flex items-center gap-6">
+                                                <label class="inline-flex items-center gap-2 text-sm text-gray-700">
+                                                    <input type="radio" name="po_payment_type" id="po_type_application"
+                                                        value="application" class="w-4 h-4"
+                                                        onchange="setApplicableStepVisibility()">
+                                                    <span>Application payment</span>
+                                                </label>
+                                                <label class="inline-flex items-center gap-2 text-sm text-gray-700">
+                                                    <input type="radio" name="po_payment_type" id="po_type_service"
+                                                        value="service" class="w-4 h-4"
+                                                        onchange="setApplicableStepVisibility()">
+                                                    <span>Service payment</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div id="po_applicable_step_container" class="hidden">
                                             <label class="block text-sm font-medium text-gray-700 mb-2">Applicable
                                                 Step</label>
                                             <select id="po_applicable_step"
@@ -1340,14 +1413,79 @@
                             </div>
                         </div>
                         <script>
+                            function togglePaymentOrderStatus(id) {
+                                const toggle = document.getElementById(`po_status_toggle_${id}`);
+                                if (!toggle) return;
+                                // Persist or side-effects can be added here (e.g., API call)
+                            }
+                            function toggleStatusCell(id) {
+                                const toggle = document.getElementById(`po_status_toggle_${id}`);
+                                if (!toggle) return;
+                                toggle.checked = !toggle.checked;
+                                // update aria-checked on container for accessibility
+                                const container = toggle.closest('[role="switch"]');
+                                if (container) container.setAttribute('aria-checked', String(toggle.checked));
+                                togglePaymentOrderStatus(id);
+                            }
+                            function setApplicableStepVisibility() {
+                                const app = document.getElementById('po_type_application');
+                                const svc = document.getElementById('po_type_service');
+                                const isApplication = app && app.checked === true;
+                                const isService = svc && svc.checked === true;
+                                const container = document.getElementById('po_applicable_step_container');
+                                const select = document.getElementById('po_applicable_step');
+                                if (container && select) {
+                                    if (isService || !isApplication) {
+                                        container.classList.add('hidden');
+                                        container.style.display = 'none';
+                                        select.removeAttribute('required');
+                                        select.value = '';
+                                    } else {
+                                        container.classList.remove('hidden');
+                                        container.style.display = '';
+                                        select.setAttribute('required', 'required');
+                                    }
+                                }
+                            }
+
+                            function bindPaymentTypeToggle() {
+                                const app = document.getElementById('po_type_application');
+                                const svc = document.getElementById('po_type_service');
+                                if (app) {
+                                    app.addEventListener('change', setApplicableStepVisibility);
+                                    app.addEventListener('input', setApplicableStepVisibility);
+                                    app.addEventListener('click', setApplicableStepVisibility);
+                                }
+                                if (svc) {
+                                    svc.addEventListener('change', setApplicableStepVisibility);
+                                    svc.addEventListener('input', setApplicableStepVisibility);
+                                    svc.addEventListener('click', setApplicableStepVisibility);
+                                }
+                                setApplicableStepVisibility();
+                            }
+
                             function openAddPaymentOrderModal() {
                                 const el = document.getElementById('add_payment_order_modal');
-                                if (el) el.classList.remove('hidden');
+                                if (el) {
+                                    el.classList.remove('hidden');
+                                    // reset: no default selection
+                                    const app = document.getElementById('po_type_application');
+                                    const svc = document.getElementById('po_type_service');
+                                    if (app) app.checked = false;
+                                    if (svc) svc.checked = false;
+                                    bindPaymentTypeToggle();
+                                    // ensure initial state hidden
+                                    setApplicableStepVisibility();
+                                }
                             }
                             function closeAddPaymentOrderModal() {
                                 const el = document.getElementById('add_payment_order_modal');
                                 if (el) el.classList.add('hidden');
                             }
+                            // Ensure initial hidden state on load
+                            document.addEventListener('DOMContentLoaded', function () {
+                                setApplicableStepVisibility();
+                            });
                         </script>
                     </div>
 
@@ -2691,14 +2829,29 @@
         function resetInvoiceForm() {
             currentInvoiceStep = 1;
             document.getElementById('invoice_student').value = '';
-            document.getElementById('invoice_application').value = '';
-            document.getElementById('invoice_application').innerHTML = '<option value="">Select student first...</option>';
-            document.getElementById('application_details_card').classList.add('hidden');
+            // Reset application multi-select UI
+            selectedApplications = [];
+            const optionsList = document.getElementById('application_options_list');
+            const dropdownLabel = document.getElementById('application_dropdown_label');
+            const dropdownMenu = document.getElementById('application_dropdown_menu');
+            const detailsContainer = document.getElementById('application_details_container');
+            const detailsList = document.getElementById('application_details_list');
+            if (optionsList) optionsList.innerHTML = '<p class="px-3 py-2 text-sm text-gray-500">Select a student first</p>';
+            if (dropdownLabel) {
+                dropdownLabel.textContent = 'Select student first...';
+                dropdownLabel.classList.remove('text-gray-900', 'text-gray-700');
+                dropdownLabel.classList.add('text-gray-500');
+            }
+            if (dropdownMenu) dropdownMenu.classList.add('hidden');
+            if (detailsContainer) detailsContainer.classList.add('hidden');
+            if (detailsList) detailsList.innerHTML = '';
             document.getElementById('invoice_payment_stage').value = '';
             document.getElementById('invoice_total_amount').value = '';
             document.getElementById('invoice_due_date').value = '';
             invoiceData.student = null;
+            invoiceData.applications = [];
             invoiceData.application = null;
+            if (invoiceData.breakdown) invoiceData.breakdown.commission = 0;
         }
 
         function nextInvoiceStep() {
@@ -2719,55 +2872,131 @@
             // Validate current step
             if (currentInvoiceStep === 1) {
                 const studentEl = document.getElementById('invoice_student');
-                const appEl = document.getElementById('invoice_application');
-                const student = studentEl.value;
-                const application = appEl.value;
-                clearError(studentEl); clearError(appEl);
-                if (!student) setError(studentEl);
-                if (!application) setError(appEl);
-                if (!student || !application) {
-                    alert('Please select both student and application');
+                const appBtn = document.getElementById('application_dropdown_btn');
+                const student = studentEl ? studentEl.value : '';
+                clearError(studentEl);
+                clearError(appBtn);
+                let hasError = false;
+                if (!student) { setError(studentEl); hasError = true; }
+                if (!Array.isArray(selectedApplications) || selectedApplications.length === 0) {
+                    setError(appBtn);
+                    hasError = true;
+                }
+                if (hasError) {
+                    alert('Please select student and at least one application');
                     return;
                 }
             } else if (currentInvoiceStep === 2) {
-                const stageEl = document.getElementById('invoice_payment_stage');
-                const amountEl = document.getElementById('invoice_total_amount');
-                const dueEl = document.getElementById('invoice_due_date');
-                const stage = stageEl.value;
-                const amountStr = amountEl.value;
-                const dueDate = dueEl.value;
-
-                // clear previous highlights
-                [stageEl, amountEl, dueEl].forEach(clearError);
-
+                // Validate all per-application sections
                 let hasError = false;
-                if (!stage) { setError(stageEl); hasError = true; }
-                const amountVal = parseCurrency(amountStr);
-                if (amountStr === '' || isNaN(amountVal) || amountVal <= 0) { setError(amountEl); hasError = true; }
-                // Due date is OPTIONAL (do not block progression). Highlight only if explicitly empty and user interacted.
-                if (!dueDate) { clearError(dueEl); }
+                const apps = Array.isArray(selectedApplications) ? selectedApplications : [];
+                let total = 0;
+                apps.forEach(app => {
+                    const idSafe = String(app.id).replace(/[^\w-]/g, '_');
+                    const stageEl = document.getElementById(`pay_stage_${idSafe}`);
+                    const amountEl = document.getElementById(`pay_amount_${idSafe}`);
+                    const dueEl = document.getElementById(`pay_due_${idSafe}`);
+                    const commissionEnableEl = document.getElementById(`pay_commission_enable_${idSafe}`);
+                    const commissionTypeEl = document.getElementById(`pay_commission_type_${idSafe}`);
+                    const commissionValueEl = document.getElementById(`pay_commission_value_${idSafe}`);
+                    [stageEl, amountEl, dueEl, commissionEnableEl, commissionTypeEl, commissionValueEl].forEach(clearError);
+                    const stage = stageEl ? stageEl.value : '';
+                    const amountStr = amountEl ? amountEl.value : '';
+                    const amountVal = parseCurrency(amountStr);
+                    if (!stage) { setError(stageEl); hasError = true; }
+                    if (amountStr === '' || isNaN(amountVal) || amountVal <= 0) { setError(amountEl); hasError = true; }
+                    if (!isNaN(amountVal)) total += Math.max(0, amountVal);
 
-                // Commission validation when toggled (Step 2 checkbox)
-                const commissionToggle = document.getElementById('pay_commission_toggle');
-                const commissionEl = document.getElementById('invoice_agent_commission');
-                let commissionVal = 0;
-                if (commissionToggle && commissionToggle.checked) {
-                    [commissionEl].forEach(clearError);
-                    commissionVal = parseCurrency(commissionEl.value);
-                    if (isNaN(commissionVal) || commissionVal < 0) { setError(commissionEl); hasError = true; }
-                    if (!hasError && commissionVal > amountVal) { setError(commissionEl); hasError = true; alert('Commission cannot exceed Total Amount (Student Pays).'); }
-                }
+                    // Commission per application: enabled -> validate type/value
+                    const enabled = commissionEnableEl && commissionEnableEl.checked;
+                    if (enabled) {
+                        const type = commissionTypeEl ? commissionTypeEl.value : 'fixed';
+                        const valueRaw = commissionValueEl ? commissionValueEl.value : '';
+                        const valueNum = parseCurrency(valueRaw);
+                        if (valueRaw === '' || isNaN(valueNum) || valueNum < 0) {
+                            setError(commissionValueEl); hasError = true;
+                        } else if (type === 'percentage') {
+                            if (valueNum > 100) { setError(commissionValueEl); hasError = true; alert('Commission percentage cannot exceed 100%.'); }
+                        } else if (type === 'fixed') {
+                            if (!isNaN(amountVal) && valueNum > Math.max(0, amountVal)) { setError(commissionValueEl); hasError = true; alert('Commission cannot exceed Amount for an application.'); }
+                        }
+
+                        // Validate commission distribution
+                        let totalCommission = 0;
+                        if (type === 'percentage') {
+                            totalCommission = (amountVal * valueNum) / 100;
+                        } else {
+                            totalCommission = valueNum;
+                        }
+
+                        const personRows = document.querySelectorAll(`[data-person-of="${idSafe}"]`);
+                        let totalPrimaryPct = 0;
+                        let totalDistributedAmt = 0;
+                        const primaryAmounts = {};
+
+                        personRows.forEach(row => {
+                            const isPrimary = row.getAttribute('data-primary') === 'true';
+                            const role = row.getAttribute('data-role');
+                            const pid = row.id.replace(`pay_person_row_${idSafe}_`, '');
+                            const pctInput = document.getElementById(`pay_person_pct_${idSafe}_${pid}`);
+                            const pct = pctInput ? (parseFloat(pctInput.value) || 0) : 0;
+
+                            let calculatedAmount = 0;
+                            if (isPrimary) {
+                                calculatedAmount = (totalCommission * pct) / 100;
+                                primaryAmounts[role] = calculatedAmount;
+                                totalPrimaryPct += pct;
+                            } else {
+                                const primaryAmount = primaryAmounts[role] || 0;
+                                calculatedAmount = (primaryAmount * pct) / 100;
+                            }
+                            totalDistributedAmt += calculatedAmount;
+                        });
+
+                        if (totalPrimaryPct > 100) {
+                            alert(`Application ${app.id}: Total primary commission percentage (${totalPrimaryPct.toFixed(1)}%) exceeds 100%. Please adjust.`);
+                            hasError = true;
+                        }
+                        if (totalDistributedAmt > totalCommission + 0.01) {
+                            alert(`Application ${app.id}: Total distributed commission ($${totalDistributedAmt.toFixed(2)}) exceeds available commission ($${totalCommission.toFixed(2)}). Please adjust.`);
+                            hasError = true;
+                        }
+                    }
+                });
+
                 if (hasError) {
-                    alert('Please complete valid payment details (stage and amount > 0). Due date is optional.');
+                    alert('Please complete valid payment details for each application (stage and amount > 0).');
                     return;
                 }
 
-                invoiceData.totalAmount = parseFloat(amountStr);
-                invoiceData.dueDate = dueDate || null;
-                invoiceData.paymentStage = stage;
-                // store commission if toggled
-                invoiceData.breakdown.commission = commissionToggle && commissionToggle.checked ? commissionVal : 0;
-                // Generate preview
+                // Persist collected data into invoiceData
+                invoiceData.items = apps.map(app => {
+                    const idSafe = String(app.id).replace(/[^\w-]/g, '_');
+                    const stage = (document.getElementById(`pay_stage_${idSafe}`)?.value) || '';
+                    const amount = parseCurrency(document.getElementById(`pay_amount_${idSafe}`)?.value || '');
+                    const due = (document.getElementById(`pay_due_${idSafe}`)?.value) || '';
+                    const commissionEnabled = !!document.getElementById(`pay_commission_enable_${idSafe}`)?.checked;
+                    const commissionType = document.getElementById(`pay_commission_type_${idSafe}`)?.value || 'fixed';
+                    const commissionValue = parseCurrency(document.getElementById(`pay_commission_value_${idSafe}`)?.value || '');
+                    let commissionComputed = 0;
+                    if (commissionEnabled && !isNaN(commissionValue) && commissionValue >= 0) {
+                        if (commissionType === 'percentage') {
+                            commissionComputed = (isNaN(amount) ? 0 : amount) * (commissionValue / 100);
+                        } else {
+                            commissionComputed = commissionValue;
+                        }
+                    }
+                    return { appId: app.id, program: app.program, serviceName: app.serviceName || '', universities: app.universities, stage, amount, due, commissionEnabled, commissionType, commissionValue, commission: commissionComputed };
+                });
+                invoiceData.totalAmount = total;
+                // choose preview due date as earliest among provided ones, or null
+                const dueDates = invoiceData.items.map(it => it.due).filter(Boolean).map(d => new Date(d));
+                invoiceData.dueDate = dueDates.length ? new Date(Math.min.apply(null, dueDates)).toISOString() : null;
+                invoiceData.paymentStage = null; // multiple stages
+                // Sum of commissions across items
+                invoiceData.breakdown.commission = invoiceData.items.reduce((s, it) => s + (isNaN(it.commission) ? 0 : Math.max(0, it.commission)), 0);
+
+                // Generate preview with multiple items
                 generateInvoicePreview();
             } else if (currentInvoiceStep === 3) {
                 // Create invoice
@@ -2827,6 +3056,11 @@
             // Show current step
             document.getElementById(`invoice_step_${currentInvoiceStep}`).classList.remove('hidden');
 
+            // When entering Step 2, render payment sections based on selected applications
+            if (currentInvoiceStep === 2) {
+                renderApplicationPaymentsSections();
+            }
+
             // Update buttons
             const btnPrevious = document.getElementById('btn_previous');
             const btnNext = document.getElementById('btn_next');
@@ -2846,58 +3080,609 @@
             lucide.createIcons();
         }
 
-        // Toggle commission input visibility in Step 2
-        function toggleCommissionInput(enabled) {
-            const wrap = document.getElementById('commission_input_wrap');
-            if (!wrap) return;
-            if (enabled) wrap.classList.remove('hidden');
-            else wrap.classList.add('hidden');
-        }
+        // Removed global commission toggle; commission is now per-application.
+
+        // Track selected applications
+        let selectedApplications = [];
 
         function loadStudentApplications(studentId) {
-            const appSelect = document.getElementById('invoice_application');
-            appSelect.innerHTML = '<option value="">Choose an application...</option>';
+            invoiceData.student = studentId;
+            selectedApplications = [];
 
-            if (studentApplications[studentId]) {
-                studentApplications[studentId].forEach(app => {
-                    const option = document.createElement('option');
-                    option.value = app.id;
+            const optionsList = document.getElementById('application_options_list');
+            const dropdownLabel = document.getElementById('application_dropdown_label');
+
+            if (studentApplications[studentId] && studentApplications[studentId].length > 0) {
+                const appOptions = studentApplications[studentId].map(app => {
                     const uniLabel = app.universities ? `${app.universities.length} universities` : app.university;
-                    option.textContent = `${app.id} - ${programNames[app.program]} (${uniLabel})`;
-                    option.dataset.program = app.program;
-                    option.dataset.universities = JSON.stringify(app.universities ? app.universities : [app.university]);
-                    appSelect.appendChild(option);
-                });
+                    return `
+                        <label class="flex items-center gap-3 px-3 py-2 hover:bg-gray-50 rounded cursor-pointer transition-colors">
+                            <input type="checkbox" 
+                                   class="w-4 h-4 text-red-600 border-gray-300 rounded focus:ring-red-500" 
+                                   value="${app.id}"
+                                   data-program="${app.program}"
+                                   data-universities='${JSON.stringify(app.universities ? app.universities : [app.university])}'
+                                   onchange="handleApplicationSelection()">
+                            <div class="flex-1">
+                                <div class="text-sm font-medium text-gray-900">${app.id}</div>
+                                <div class="text-xs text-gray-500">${programNames[app.program]} (${uniLabel})</div>
+                            </div>
+                        </label>
+                    `;
+                }).join('');
+                // Static services list
+                const services = [
+                    { id: 'SVC_VISA_PREP', name: 'Visa Preparation' },
+                    { id: 'SVC_HEALTH_INS', name: 'Health Insurance' },
+                    { id: 'SVC_APP_REVIEW', name: 'Application Review' },
+                    { id: 'SVC_INTERVIEW', name: 'Interview Coaching' }
+                ];
+                const serviceOptions = `
+                    <div class="px-3 pt-2 pb-1 text-[11px] uppercase tracking-wide text-gray-500">Services</div>
+                    ${services.map(s => `
+                        <label class="flex items-center gap-3 px-3 py-2 hover:bg-gray-50 rounded cursor-pointer transition-colors">
+                            <input type="checkbox" 
+                                   class="w-4 h-4 text-red-600 border-gray-300 rounded focus:ring-red-500" 
+                                   value="${s.id}"
+                                   data-program="SERVICE"
+                                   data-service-name="${s.name}"
+                                   data-universities='[]'
+                                   onchange="handleApplicationSelection()">
+                            <div class="flex-1">
+                                <div class="text-sm font-medium text-gray-900">${s.name}</div>
+                                <div class="text-xs text-gray-500">Service</div>
+                            </div>
+                        </label>
+                    `).join('')}
+                `;
+                optionsList.innerHTML = appOptions + serviceOptions;
+                dropdownLabel.textContent = 'Select applications & services...';
+                dropdownLabel.classList.remove('text-gray-500');
+                dropdownLabel.classList.add('text-gray-700');
+            } else {
+                optionsList.innerHTML = '<p class="px-3 py-2 text-sm text-gray-500">No applications available</p>';
+                dropdownLabel.textContent = 'No applications available';
             }
 
-            invoiceData.student = studentId;
-            document.getElementById('application_details_card').classList.add('hidden');
+            document.getElementById('application_details_container').classList.add('hidden');
+            renderApplicationDetails();
+            lucide.createIcons();
         }
 
-        function loadApplicationDetails(applicationId) {
-            const appSelect = document.getElementById('invoice_application');
-            const selectedOption = appSelect.options[appSelect.selectedIndex];
+        function toggleApplicationDropdown() {
+            const menu = document.getElementById('application_dropdown_menu');
+            menu.classList.toggle('hidden');
+        }
 
-            if (applicationId && selectedOption.dataset.program) {
-                const program = selectedOption.dataset.program;
-                const universities = JSON.parse(selectedOption.dataset.universities || '[]');
+        function handleApplicationSelection() {
+            const checkboxes = document.querySelectorAll('#application_options_list input[type="checkbox"]');
+            selectedApplications = Array.from(checkboxes)
+                .filter(cb => cb.checked)
+                .map(cb => ({
+                    id: cb.value,
+                    program: cb.dataset.program,
+                    universities: JSON.parse(cb.dataset.universities || '[]'),
+                    serviceName: cb.dataset.serviceName || ''
+                }));
 
-                document.getElementById('app_program_type').textContent = `${program} - ${programNames[program]}`;
-                // Render university chips (show up to 4)
-                const uniWrap = document.getElementById('app_universities');
-                if (uniWrap) {
-                    uniWrap.innerHTML = universities.slice(0, 4).map(u => `
-                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800 border">${u}</span>
-                    `).join('');
+            updateDropdownLabel();
+            renderApplicationDetails();
+        }
+
+        function updateDropdownLabel() {
+            const label = document.getElementById('application_dropdown_label');
+            const count = selectedApplications.length;
+
+            if (count === 0) {
+                label.textContent = 'Select applications & services...';
+                label.classList.remove('text-gray-900');
+                label.classList.add('text-gray-500');
+            } else if (count === 1) {
+                const one = selectedApplications[0];
+                if (one.program === 'SERVICE') {
+                    label.textContent = one.serviceName || 'Service';
+                } else {
+                    label.textContent = `${one.id} - ${programNames[one.program]}`;
+                }
+                label.classList.remove('text-gray-500');
+                label.classList.add('text-gray-900');
+            } else {
+                label.textContent = `${count} items selected`;
+                label.classList.remove('text-gray-500');
+                label.classList.add('text-gray-900');
+            }
+        }
+
+        function renderApplicationDetails() {
+            const container = document.getElementById('application_details_container');
+            const list = document.getElementById('application_details_list');
+
+            if (selectedApplications.length === 0) {
+                container.classList.add('hidden');
+                invoiceData.applications = [];
+                invoiceData.application = null;
+                return;
+            }
+
+            // Update invoice data
+            invoiceData.applications = selectedApplications;
+            invoiceData.application = selectedApplications[0]; // Keep first for backward compatibility
+
+            // Render one card per application or service
+            list.innerHTML = selectedApplications.map(app => `
+                <div class="bg-white border-2 border-gray-200 rounded-xl p-4">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <p class="text-xs text-gray-500 mb-1">Application ID</p>
+                            <p class="text-sm font-semibold text-gray-900">${app.id}</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 mb-1">${app.program === 'SERVICE' ? 'Service' : 'Program Type'}</p>
+                            <p class="text-sm font-semibold text-gray-900">${app.program === 'SERVICE' ? (app.serviceName || 'Service') : `${app.program} - ${programNames[app.program]}`}</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 mb-1">Universities</p>
+                            ${app.program === 'SERVICE' ? `<span class="text-xs text-gray-500">N/A</span>` : `
+                            <div class="flex flex-wrap gap-2">
+                                ${app.universities.slice(0, 4).map(u => `
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800 border">${u}</span>
+                                `).join('')}
+                                ${app.universities.length > 4 ? `<span class="text-xs text-gray-500">+${app.universities.length - 4} more</span>` : ''}
+                            </div>`}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            container.classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        // Render per-application payment sections for Step 2
+        function renderApplicationPaymentsSections() {
+            const wrap = document.getElementById('application_payments_container');
+            if (!wrap) return;
+            const apps = Array.isArray(selectedApplications) ? selectedApplications : [];
+            if (apps.length === 0) { wrap.innerHTML = '<p class="text-sm text-gray-500">No applications selected.</p>'; return; }
+
+            wrap.innerHTML = apps.map(app => {
+                const idSafe = String(app.id).replace(/[^\w-]/g, '_');
+                const uniLabel = (app.universities && app.universities.length)
+                    ? `${app.universities.slice(0, 3).join(', ')}${app.universities.length > 3 ? ' +' + (app.universities.length - 3) + ' more' : ''}`
+                    : '-';
+                return `
+                <div class="bg-white border-2 border-gray-200 rounded-xl p-4">
+                  <div class="flex items-center justify-between mb-3">
+                    <div>
+                      <p class="text-xs text-gray-500">Application</p>
+                      <p class="text-sm font-semibold text-gray-900">${app.id} • ${app.program === 'SERVICE' ? (app.serviceName || 'Service') : (programNames[app.program] || app.program)}</p>
+                      <p class="text-xs text-gray-500">${uniLabel}</p>
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                      <label class="block text-sm font-semibold text-gray-700 mb-2"><i data-lucide="list" class="w-4 h-4 inline mr-1"></i> Payment Stage <span class="text-red-600">*</span></label>
+                      <select id="pay_stage_${idSafe}" class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" onchange="recalcInvoiceTotals()">
+                        <option value="">Select payment stage...</option>
+                        <option value="first">First Payment</option>
+                        <option value="second">Second Payment</option>
+                        <option value="third">Third Payment</option>
+                        <option value="service_fee">Service Fee</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="block text-sm font-semibold text-gray-700 mb-2"><i data-lucide="dollar-sign" class="w-4 h-4 inline mr-1"></i> Amount <span class="text-red-600">*</span></label>
+                      <input id="pay_amount_${idSafe}" type="text" placeholder="0.00" class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" oninput="recalcInvoiceTotals(); calcPersonCommission('${idSafe}')" />
+                    </div>
+                    <div>
+                      <label class="block text-sm font-semibold text-gray-700 mb-2"><i data-lucide="calendar" class="w-4 h-4 inline mr-1"></i> Due Date</label>
+                      <input id="pay_due_${idSafe}" type="date" class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" onchange="recalcInvoiceTotals()" />
+                    </div>
+                  </div>
+
+                  <!-- Second row: Commission controls -->
+                  <div class="mt-3 pt-3 border-t border-gray-200">
+                    <div class="flex flex-wrap items-center gap-3">
+                      <label class="inline-flex items-center gap-2 select-none">
+                        <input id="pay_commission_enable_${idSafe}" type="checkbox" class="w-4 h-4 rounded" style="accent-color:#d82128;" onchange="toggleAppCommission('${idSafe}')" />
+                        <span class="text-sm font-semibold text-gray-700"><i data-lucide="users" class="w-4 h-4 inline mr-1"></i> Include Commission</span>
+                      </label>
+                      <div id="pay_commission_wrap_${idSafe}" class="hidden flex items-center gap-2">
+                        <div class="inline-flex border rounded-lg overflow-hidden" role="group" aria-label="Commission Type">
+                          <button type="button" id="pay_commission_btn_fixed_${idSafe}" class="px-2.5 py-1.5 text-xs font-medium bg-red-600 text-white hover:bg-red-700" onclick="setAppCommissionType('${idSafe}','fixed')">$ Fixed</button>
+                          <button type="button" id="pay_commission_btn_percent_${idSafe}" class="px-2.5 py-1.5 text-xs font-medium bg-white text-gray-700 hover:bg-gray-50 border-l" onclick="setAppCommissionType('${idSafe}','percentage')">% Percent</button>
+                        </div>
+                        <div class="relative w-28 md:w-36 flex-none">
+                          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-semibold" id="pay_commission_symbol_${idSafe}">$</span>
+                          <input type="hidden" id="pay_commission_type_${idSafe}" value="fixed" />
+                          <input id="pay_commission_value_${idSafe}" type="number" min="0" step="0.01" placeholder="0.00" class="w-full pl-7 pr-2 py-2 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 text-sm" oninput="recalcInvoiceTotals(); calcPersonCommission('${idSafe}')" />
+                        </div>
+                        <span id="pay_commission_hint_${idSafe}" class="text-[11px] text-gray-500 whitespace-nowrap">Fixed ≤ Amount</span>
+                      </div>
+
+                      <!-- Agents & Advisors (only visible when commission is included) -->
+                      <div id="people_block_${idSafe}" class="hidden basis-full mt-2">
+                        <div class="flex items-center justify-between mb-2">
+                          <h5 class="text-sm font-semibold text-gray-800 flex items-center gap-2"><i data-lucide="users" class="w-4 h-4"></i> Commission Distribution</h5>
+                          <span class="text-xs text-gray-500">Primary: % of commission • Support: % of primary's amount</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-2" id="people_list_${idSafe}">
+                          ${(() => {
+                        // Role definitions with deterministic per-application counts using seeded RNG
+                        function hashStrCounts(str) {
+                            let h = 2166136261 >>> 0;
+                            for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+                            return h >>> 0;
+                        }
+                        function mulberry32Counts(a) {
+                            return function () { let t = a += 0x6D2B79F5; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+                        }
+                        function randInt(rng, min, max) { return Math.floor(rng() * (max - min + 1)) + min; }
+                        const rngCounts = mulberry32Counts(hashStrCounts(String(app.id) + '|counts'));
+                        const roleDefs = [
+                            // Agent: always 1 primary, support 0–1
+                            { key: 'Agent', label: 'Agent', shortLabel: 'AG', counts: [1, randInt(rngCounts, 0, 1)] },
+                            // Academic Advisor: primary 1, support 0–2
+                            { key: 'Academic Advisor', label: 'Academic Advisor', shortLabel: 'AA', counts: [1, randInt(rngCounts, 0, 2)] },
+                            // Visa Advisor: primary 1, support 2–4 (around baseline 3)
+                            { key: 'Visa Advisor', label: 'Visa Advisor', shortLabel: 'VA', counts: [1, randInt(rngCounts, 2, 4)] },
+                            // Senior Advisor: primary 1, support 1–3 (around baseline 2)
+                            { key: 'Senior Advisor', label: 'Senior Advisor', shortLabel: 'SA', counts: [1, randInt(rngCounts, 1, 3)] },
+                        ];
+                        // Create groups from app data if available; otherwise mock
+                        const groups = {};
+                        roleDefs.forEach(r => { groups[r.key] = []; });
+                        if (Array.isArray(app.agents)) {
+                            app.agents.forEach((a, idx) => groups['Agent'].push({ id: a.id || `AG_${idx + 1}`, name: a.name || a.email || `Agent ${idx + 1}`, primary: idx === 0 }));
+                        }
+                        if (Array.isArray(app.advisors)) {
+                            app.advisors.forEach((a, idx) => {
+                                const role = a.role && roleDefs.some(rd => rd.key === a.role) ? a.role : 'Academic Advisor';
+                                const arr = groups[role] || (groups[role] = []);
+                                arr.push({ id: a.id || `${role.replace(/\s/g, '_').toUpperCase()}_${idx + 1}`, name: a.name || a.email || `${role} ${idx + 1}` });
+                            });
+                        }
+                        // Fill with mocks to meet counts, using randomized real-looking names per role
+                        roleDefs.forEach(def => {
+                            const [needPrimary, needSupport] = def.counts;
+                            const list = groups[def.key] || (groups[def.key] = []);
+                            // Simple name pools per role
+                            const pools = {
+                                'Agent': [
+                                    'Alex Nguyen', 'Chris Tran', 'Minh Le', 'Huy Pham', 'Trung Do',
+                                    'David Pham', 'Emily Do', 'Jason Vo', 'Sophia Le', 'Michael Nguyen',
+                                    'Anthony Tran', 'Olivia Phan', 'Daniel Vu', 'Grace Bui', 'Ethan Ho'
+                                ],
+                                'Academic Advisor': [
+                                    'Thao Phan', 'Lan Anh', 'Quynh Nguyen', 'Bao Chau', 'Kim Phuong',
+                                    'Anna Nguyen', 'Daniel Phan', 'Sarah Tran', 'Kevin Le', 'Jenny Vo',
+                                    'Henry Vu', 'Ava Pham', 'Noah Bui', 'Mia Ho', 'Lucas Dang'
+                                ],
+                                'Visa Advisor': [
+                                    'Thanh Vu', 'Hoang Nguyen', 'Duc Anh', 'Pham Tuan', 'My Linh', 'Bich Phuong',
+                                    'Robert Le', 'Isabella Tran', 'James Pham', 'Charlotte Nguyen', 'Benjamin Vo',
+                                    'Amelia Do', 'Logan Bui', 'Harper Phan', 'Jacky Truong', 'Zoe Dang'
+                                ],
+                                'Senior Advisor': [
+                                    'Anh Tuan', 'Ngoc Mai', 'Le Khoa', 'Thu Trang', 'Gia Han', 'Khanh Linh',
+                                    'William Nguyen', 'Victoria Pham', 'Christopher Tran', 'Natalie Le', 'Andrew Vo',
+                                    'Sophia Phan', 'Jonathan Vu', 'Chloe Do', 'Matthew Bui', 'Ella Ho'
+                                ]
+                            };
+                            // Deterministic RNG seeded by app.id to keep names stable per application
+                            function hashStr(str) {
+                                let h = 2166136261 >>> 0;
+                                for (let i = 0; i < str.length; i++) {
+                                    h ^= str.charCodeAt(i);
+                                    h = Math.imul(h, 16777619);
+                                }
+                                return h >>> 0;
+                            }
+                            function mulberry32(a) {
+                                return function () {
+                                    let t = a += 0x6D2B79F5;
+                                    t = Math.imul(t ^ (t >>> 15), t | 1);
+                                    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+                                    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+                                };
+                            }
+                            const rng = mulberry32(hashStr(String(app.id) + '|' + def.key));
+                            const used = new Set((list || []).map(p => p.name));
+                            function nextName(role) {
+                                const arr = pools[role] || pools['Agent'];
+                                // pick a random unused name; if all used, append index
+                                const available = arr.filter(n => !used.has(n));
+                                const pickArr = available.length ? available : arr;
+                                const name = pickArr[Math.floor(rng() * pickArr.length)];
+                                used.add(name);
+                                return name;
+                            }
+                            // Ensure primaries
+                            while (list.filter(p => p.primary).length < needPrimary) {
+                                const idx = list.length + 1;
+                                const name = nextName(def.key);
+                                list.push({ id: `${def.shortLabel}_P${idx}`, name, primary: true });
+                            }
+                            // Ensure supports
+                            while (list.filter(p => !p.primary).length < needSupport) {
+                                const idx = list.filter(p => !p.primary).length + 1;
+                                const name = nextName(def.key);
+                                list.push({ id: `${def.shortLabel}_S${idx}`, name, primary: false });
+                            }
+                        });
+                        // Render 4 columns
+                        return roleDefs.map(def => {
+                            const list = groups[def.key];
+                            const primaryPerson = list.find(p => p.primary);
+                            const supportPeople = list.filter(p => !p.primary);
+                            return `
+                                <div class="border border-gray-200 rounded-lg shadow-sm">
+                                  <div class="px-2 py-1.5 bg-gray-50 text-gray-800 rounded-t-lg text-center border-b border-gray-200">
+                                    <p class="text-[11px] font-semibold">${def.label}</p>
+                                  </div>
+                                  <div class="p-2 space-y-1.5">
+                                    ${primaryPerson ? `
+                                      <div class="border-b pb-2" data-person-of="${idSafe}" data-role="${def.key}" data-primary="true" id="pay_person_row_${idSafe}_${String(primaryPerson.id).replace(/[^\w-]/g, '_')}">
+                                        <div class="flex items-center justify-between mb-1">
+                                          <p class="text-[11px] font-semibold text-gray-900 truncate">${primaryPerson.name}</p>
+                                          <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-yellow-100 text-yellow-800 font-medium">Primary</span>
+                                        </div>
+                                        <div class="flex items-center gap-1.5">
+                                          <div class="relative w-24">
+                                            <input id="pay_person_pct_${idSafe}_${String(primaryPerson.id).replace(/[^\w-]/g, '_')}" type="number" min="0" max="100" step="0.01" placeholder="0" class="w-full pr-7 pl-2 py-1 border border-gray-300 rounded text-[11px] font-mono text-right" oninput="calcPersonCommission('${idSafe}')" />
+                                            <span class="absolute right-1.5 top-1/2 -translate-y-1/2 text-gray-500 text-[11px] font-semibold">%</span>
+                                          </div>
+                                          <span id="pay_person_amt_${idSafe}_${String(primaryPerson.id).replace(/[^\w-]/g, '_')}" class="text-[11px] font-medium text-gray-800 whitespace-nowrap ml-auto">$0.00</span>
+                                        </div>
+                                      </div>
+                                    ` : ''}
+                                    ${supportPeople.map(p => {
+                                const pid = String(p.id).replace(/[^\w-]/g, '_');
+                                return `
+                                        <div class="" data-person-of="${idSafe}" data-role="${def.key}" data-primary="false" id="pay_person_row_${idSafe}_${pid}">
+                                          <div class="flex items-center justify-between mb-1">
+                                            <p class="text-[11px] text-gray-700 truncate">${p.name}</p>
+                                            <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-600 font-medium">${def.key === 'Agent' ? 'Parent' : 'Support'}</span>
+                                          </div>
+                                          <div class="flex items-center gap-1.5">
+                                            <div class="relative w-24">
+                                              <input id="pay_person_pct_${idSafe}_${pid}" type="number" min="0" max="100" step="0.01" placeholder="0" class="w-full pr-7 pl-2 py-1 border border-gray-300 rounded text-[11px] font-mono text-right" oninput="calcPersonCommission('${idSafe}')" />
+                                              <span class="absolute right-1.5 top-1/2 -translate-y-1/2 text-gray-500 text-[11px] font-semibold">%</span>
+                                            </div>
+                                            <span id="pay_person_amt_${idSafe}_${pid}" class="text-[11px] font-medium text-gray-800 whitespace-nowrap ml-auto">$0.00</span>
+                                          </div>
+                                        </div>
+                                      `;
+                            }).join('')}
+                                  </div>
+                                </div>
+                              `;
+                        }).join('');
+                    })()}
+                        </div>
+                        <!-- Commission Distribution Summary -->
+                        <div id="commission_summary_${idSafe}" class="mt-3 p-3 bg-gray-50 border border-gray-200 rounded-lg">
+                          <div class="flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                              <div>
+                                <p class="text-xs text-gray-600">Total Primary %:</p>
+                                <p id="total_primary_pct_${idSafe}" class="text-sm font-bold text-gray-900">0.0%</p>
+                              </div>
+                              <div>
+                                <p class="text-xs text-gray-600">Total Distributed:</p>
+                                <p id="total_distributed_amt_${idSafe}" class="text-sm font-bold text-gray-900">$0.00</p>
+                              </div>
+                              <div>
+                                <p class="text-xs text-gray-600">Available Commission:</p>
+                                <p id="available_commission_${idSafe}" class="text-sm font-bold" style="color:#d82128;">$0.00</p>
+                              </div>
+                            </div>
+                            <div id="commission_warning_${idSafe}" class="hidden">
+                              <div class="flex items-center gap-2 px-3 py-1.5 bg-red-50 border border-red-200 rounded-lg">
+                                <i data-lucide="alert-triangle" class="w-4 h-4 text-red-600"></i>
+                                <p class="text-xs font-medium text-red-600">Exceeded limit!</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>`;
+            }).join('');
+
+            if (window.lucide && lucide.createIcons) lucide.createIcons();
+            recalcInvoiceTotals();
+        }
+
+        function recalcInvoiceTotals() {
+            const apps = Array.isArray(selectedApplications) ? selectedApplications : [];
+            let sum = 0;
+            apps.forEach(app => {
+                const idSafe = String(app.id).replace(/[^\w-]/g, '_');
+                const amountEl = document.getElementById(`pay_amount_${idSafe}`);
+                const val = amountEl ? parseCurrency(amountEl.value) : 0;
+                if (!isNaN(val)) sum += val;
+
+                // Update commission symbol based on type (for UX)
+                const typeEl = document.getElementById(`pay_commission_type_${idSafe}`);
+                const symEl = document.getElementById(`pay_commission_symbol_${idSafe}`);
+                if (typeEl && symEl) {
+                    symEl.textContent = (typeEl.value === 'percentage') ? '%' : '$';
+                    // update constraints for current type
+                    updateCommissionConstraints(idSafe);
+                }
+            });
+            const sumEl = document.getElementById('invoice_total_amount_sum');
+            if (sumEl) sumEl.textContent = `$${(sum || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            // store to invoiceData
+            invoiceData.totalAmount = sum;
+            return sum;
+        }
+
+        // Toggle commission controls per application
+        function toggleAppCommission(idSafe) {
+            const wrap = document.getElementById(`pay_commission_wrap_${idSafe}`);
+            const peopleBlock = document.getElementById(`people_block_${idSafe}`);
+            const enable = document.getElementById(`pay_commission_enable_${idSafe}`)?.checked;
+            if (wrap) wrap.classList.toggle('hidden', !enable);
+            if (peopleBlock) peopleBlock.classList.toggle('hidden', !enable);
+            // Initialize the commission UI state when enabling
+            if (enable) {
+                const currentType = document.getElementById(`pay_commission_type_${idSafe}`)?.value || 'fixed';
+                setAppCommissionType(idSafe, currentType);
+                updateCommissionConstraints(idSafe);
+            }
+        }
+
+        // Toggle commission type between fixed ($) and percentage (%)
+        function toggleAppCommissionType(idSafe) {
+            const typeEl = document.getElementById(`pay_commission_type_${idSafe}`);
+            const symEl = document.getElementById(`pay_commission_symbol_${idSafe}`);
+            if (!typeEl || !symEl) return;
+            typeEl.value = (typeEl.value === 'fixed') ? 'percentage' : 'fixed';
+            symEl.textContent = (typeEl.value === 'percentage') ? '%' : '$';
+            updateCommissionConstraints(idSafe);
+            recalcInvoiceTotals();
+        }
+
+        // Set commission type and update UI (buttons, symbol, hint)
+        function setAppCommissionType(idSafe, type) {
+            const typeEl = document.getElementById(`pay_commission_type_${idSafe}`);
+            const symEl = document.getElementById(`pay_commission_symbol_${idSafe}`);
+            const btnFixed = document.getElementById(`pay_commission_btn_fixed_${idSafe}`);
+            const btnPercent = document.getElementById(`pay_commission_btn_percent_${idSafe}`);
+            const hint = document.getElementById(`pay_commission_hint_${idSafe}`);
+            if (!typeEl || !symEl || !btnFixed || !btnPercent) return;
+            const normalized = (type === 'percentage') ? 'percentage' : 'fixed';
+            typeEl.value = normalized;
+            symEl.textContent = normalized === 'percentage' ? '%' : '$';
+            updateCommissionConstraints(idSafe);
+            // Update buttons
+            if (normalized === 'fixed') {
+                btnFixed.className = 'px-2.5 py-1.5 text-xs font-medium bg-red-600 text-white hover:bg-red-700';
+                btnPercent.className = 'px-2.5 py-1.5 text-xs font-medium bg-white text-gray-700 hover:bg-gray-50 border-l';
+                if (hint) hint.textContent = 'Fixed ≤ Amount';
+            } else {
+                btnPercent.className = 'px-2.5 py-1.5 text-xs font-medium bg-red-600 text-white hover:bg-red-700';
+                btnFixed.className = 'px-2.5 py-1.5 text-xs font-medium bg-white text-gray-700 hover:bg-gray-50';
+                if (hint) hint.textContent = '% in 0–100';
+            }
+            recalcInvoiceTotals();
+        }
+
+        // Apply constraints and placeholder according to commission type
+        function updateCommissionConstraints(idSafe) {
+            const type = document.getElementById(`pay_commission_type_${idSafe}`)?.value || 'fixed';
+            const input = document.getElementById(`pay_commission_value_${idSafe}`);
+            if (!input) return;
+            input.min = '0';
+            input.step = '0.01';
+            if (type === 'percentage') {
+                input.max = '100';
+                input.placeholder = '0.00';
+                input.setAttribute('aria-label', 'Commission percentage');
+            } else {
+                input.max = '100000';
+                input.placeholder = '0.00';
+                input.setAttribute('aria-label', 'Commission amount');
+            }
+        }
+
+        // Calculate per-person commission based on percentages
+        function calcPersonCommission(idSafe) {
+            // Get app-level commission
+            const amountEl = document.getElementById(`pay_amount_${idSafe}`);
+            const commissionTypeEl = document.getElementById(`pay_commission_type_${idSafe}`);
+            const commissionValueEl = document.getElementById(`pay_commission_value_${idSafe}`);
+
+            const amount = amountEl ? parseCurrency(amountEl.value) : 0;
+            const commissionType = commissionTypeEl ? commissionTypeEl.value : 'fixed';
+            const commissionValue = commissionValueEl ? parseCurrency(commissionValueEl.value) : 0;
+
+            let totalCommission = 0;
+            if (commissionType === 'percentage') {
+                totalCommission = (amount * commissionValue) / 100;
+            } else {
+                totalCommission = commissionValue;
+            }
+
+            // Find all person rows for this application
+            const personRows = document.querySelectorAll(`[data-person-of="${idSafe}"]`);
+            const primaryAmounts = {}; // Store primary amounts per role for support calculation
+            let totalPrimaryPct = 0;
+            let totalDistributedAmt = 0;
+
+            personRows.forEach(row => {
+                const isPrimary = row.getAttribute('data-primary') === 'true';
+                const role = row.getAttribute('data-role');
+                const rowId = row.id;
+                const pid = rowId.replace(`pay_person_row_${idSafe}_`, '');
+
+                const pctInput = document.getElementById(`pay_person_pct_${idSafe}_${pid}`);
+                const amtSpan = document.getElementById(`pay_person_amt_${idSafe}_${pid}`);
+
+                if (!pctInput || !amtSpan) return;
+
+                const pct = parseFloat(pctInput.value) || 0;
+                let calculatedAmount = 0;
+
+                if (isPrimary) {
+                    // Primary: % of total commission
+                    calculatedAmount = (totalCommission * pct) / 100;
+                    primaryAmounts[role] = calculatedAmount; // Store for support calculation
+                    totalPrimaryPct += pct;
+                } else {
+                    // Support: % of primary's amount for this role
+                    const primaryAmount = primaryAmounts[role] || 0;
+                    calculatedAmount = (primaryAmount * pct) / 100;
                 }
 
-                document.getElementById('application_details_card').classList.remove('hidden');
+                totalDistributedAmt += calculatedAmount;
+                amtSpan.textContent = `$${calculatedAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            });
 
-                invoiceData.application = {
-                    id: applicationId,
-                    program: program,
-                    universities: universities
-                };
+            // Update summary display
+            const totalPrimaryPctEl = document.getElementById(`total_primary_pct_${idSafe}`);
+            const totalDistributedAmtEl = document.getElementById(`total_distributed_amt_${idSafe}`);
+            const availableCommissionEl = document.getElementById(`available_commission_${idSafe}`);
+            const warningEl = document.getElementById(`commission_warning_${idSafe}`);
+
+            if (totalPrimaryPctEl) {
+                totalPrimaryPctEl.textContent = `${totalPrimaryPct.toFixed(1)}%`;
+                if (totalPrimaryPct > 100) {
+                    totalPrimaryPctEl.classList.add('text-red-600');
+                    totalPrimaryPctEl.classList.remove('text-gray-900');
+                } else {
+                    totalPrimaryPctEl.classList.remove('text-red-600');
+                    totalPrimaryPctEl.classList.add('text-gray-900');
+                }
+            }
+
+            if (totalDistributedAmtEl) {
+                totalDistributedAmtEl.textContent = `$${totalDistributedAmt.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                if (totalDistributedAmt > totalCommission) {
+                    totalDistributedAmtEl.classList.add('text-red-600');
+                    totalDistributedAmtEl.classList.remove('text-gray-900');
+                } else {
+                    totalDistributedAmtEl.classList.remove('text-red-600');
+                    totalDistributedAmtEl.classList.add('text-gray-900');
+                }
+            }
+
+            const remainingCommission = totalCommission - totalDistributedAmt;
+            if (availableCommissionEl) {
+                availableCommissionEl.textContent = `$${remainingCommission.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            }
+
+            // Show/hide warning
+            if (warningEl) {
+                if (totalPrimaryPct > 100 || totalDistributedAmt > totalCommission) {
+                    warningEl.classList.remove('hidden');
+                    if (window.lucide) lucide.createIcons();
+                } else {
+                    warningEl.classList.add('hidden');
+                }
             }
         }
 
@@ -2910,17 +3695,13 @@
             }
         }
 
-        // Build invoice preview (payment method selection removed)
+        // Build invoice preview (supports multiple applications)
         function generateInvoicePreview() {
             const studentSelect = document.getElementById('invoice_student');
-            const studentText = studentSelect.options[studentSelect.selectedIndex].text;
+            const studentText = studentSelect && studentSelect.selectedIndex >= 0
+                ? studentSelect.options[studentSelect.selectedIndex].text
+                : '-';
             const [name, email] = studentText.split(' - ');
-
-            const amount = parseFloat(document.getElementById('invoice_total_amount').value) || 0;
-            const dueDate = document.getElementById('invoice_due_date').value;
-            const paymentStage = document.getElementById('invoice_payment_stage').options[
-                document.getElementById('invoice_payment_stage').selectedIndex
-            ].text;
 
             // Generic instruction since payment method step was removed
             const methodText = 'Payment method will be coordinated by ApplyLead. Please follow the instructions sent to your email after receiving this invoice.';
@@ -2928,19 +3709,66 @@
             // Generate invoice number and dates
             const invoiceNumber = `INV-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 9999)).padStart(4, '0')}`;
             const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-            const dueDateFormatted = dueDate ? new Date(dueDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '-';
 
+            // Prepare items: prefer invoiceData.items (multi-app), else fallback to single application
+            let items = Array.isArray(invoiceData.items) && invoiceData.items.length
+                ? invoiceData.items
+                : (invoiceData.application ? [{
+                    appId: invoiceData.application.id,
+                    program: invoiceData.application.program,
+                    universities: invoiceData.application.universities || [],
+                    stage: document.getElementById('invoice_payment_stage')?.options[document.getElementById('invoice_payment_stage')?.selectedIndex || 0]?.text || '',
+                    amount: parseCurrency(document.getElementById('invoice_total_amount')?.value || '0'),
+                    due: document.getElementById('invoice_due_date')?.value || ''
+                }] : []);
+
+            // Map stage values to human-friendly labels
+            const stageLabels = {
+                first: 'First Payment',
+                second: 'Second Payment',
+                third: 'Third Payment',
+                service_fee: 'Service Fee'
+            };
+
+            // Render table rows
+            const tbody = document.getElementById('preview_items_body');
+            if (tbody) {
+                tbody.innerHTML = items.map(it => {
+                    const uniLabel = (it.universities && it.universities.length)
+                        ? it.universities.slice(0, 4).join(', ')
+                        : '-';
+                    const stageText = stageLabels[it.stage] || it.stage || '-';
+                    const desc = it.program === 'SERVICE'
+                        ? `${stageText} - ${it.serviceName || 'Service'}`
+                        : `${stageText} - ${programNames[it.program] || it.program || '-'}`;
+                    const sub = it.program === 'SERVICE'
+                        ? 'Service'
+                        : `Application: ${it.appId} | ${uniLabel}`;
+                    const amt = isNaN(it.amount) ? 0 : it.amount;
+                    return `
+                        <tr class="border-b border-gray-200">
+                            <td class="py-3">
+                                <p class="font-medium">${desc}</p>
+                                <p class="text-xs text-gray-600">${sub}</p>
+                            </td>
+                            <td class="text-right font-semibold">$${amt.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                        </tr>`;
+                }).join('');
+            }
+
+            // Total and due date
+            const total = items.reduce((s, it) => s + (isNaN(it.amount) ? 0 : Math.max(0, it.amount)), 0);
+            document.getElementById('preview_total').textContent = `$${total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+            const dueDates = items.map(it => it.due).filter(Boolean).map(d => new Date(d));
+            const earliestDue = dueDates.length ? new Date(Math.min.apply(null, dueDates)) : null;
+            const dueDateFormatted = earliestDue ? earliestDue.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '-';
+
+            // Header info
             document.getElementById('preview_invoice_number').textContent = invoiceNumber;
             document.getElementById('preview_date').textContent = `Date: ${today}`;
             document.getElementById('preview_student_name').textContent = name || '-';
             document.getElementById('preview_student_email').textContent = email || '-';
-            document.getElementById('preview_service_name').textContent = `${paymentStage} - ${programNames[invoiceData.application.program]}`;
-            const uniLabel = (invoiceData.application.universities && invoiceData.application.universities.length)
-                ? invoiceData.application.universities.slice(0, 4).join(', ')
-                : '-';
-            document.getElementById('preview_program_detail').textContent = `Application: ${invoiceData.application.id} | ${uniLabel}`;
-            document.getElementById('preview_amount').textContent = `$${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-            document.getElementById('preview_total').textContent = `$${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
             document.getElementById('preview_due_date').textContent = `Due: ${dueDateFormatted}`;
             const methodEl = document.getElementById('preview_payment_method');
             if (methodEl) methodEl.textContent = methodText;
