@@ -358,7 +358,7 @@
                                                         <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
                                                         View
                                                     </button>
-                                                    <button onclick="markAsPaid(this)"
+                                                    <button onclick="openConfirmMarkPaid(this)"
                                                         class="inline-flex items-center px-3 py-1.5 border border-red-600 text-red-700 hover:bg-red-50 rounded-md text-sm font-medium">
                                                         <i data-lucide="check" class="w-4 h-4 mr-1"></i>
                                                         Mark as Paid
@@ -411,7 +411,7 @@
                                                         <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
                                                         View
                                                     </button>
-                                                    <button onclick="markAsPaid(this)"
+                                                    <button onclick="openConfirmMarkPaid(this)"
                                                         class="inline-flex items-center px-3 py-1.5 border border-red-600 text-red-700 hover:bg-red-50 rounded-md text-sm font-medium ml-2">
                                                         <i data-lucide="check" class="w-4 h-4 mr-1"></i>
                                                         Mark as Paid
@@ -678,11 +678,23 @@
                                         </div>
                                     </div>
 
+                                    <!-- Note (if any) -->
+                                    <div id="stu_modal_note_container" class="mt-6 hidden">
+                                        <h4 class="text-sm font-medium text-gray-600 mb-2 flex items-center gap-2">
+                                            <i data-lucide="info" class="w-4 h-4"></i>
+                                            Note
+                                        </h4>
+                                        <div class="bg-gray-50 border rounded-lg p-4">
+                                            <p id="stu_modal_note_text"
+                                                class="text-sm text-gray-700 whitespace-pre-wrap">-</p>
+                                        </div>
+                                    </div>
+
                                     <!-- Evidence uploaded by student -->
                                     <div class="mt-6">
                                         <h4 class="text-sm font-medium text-gray-600 mb-3 flex items-center gap-2">
                                             <i data-lucide="paperclip" class="w-4 h-4"></i>
-                                            Evidence Uploaded by Student
+                                            Evidence Uploaded
                                         </h4>
                                         <div class="bg-gray-50 border rounded-lg p-4">
                                             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -859,42 +871,42 @@
                         <div class="bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[95vh] overflow-y-auto">
                             <!-- Modal Header -->
                             <div
-                                class="sticky top-0 bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-5 rounded-t-2xl z-10">
+                                class="sticky top-0 bg-gray-50 px-6 py-5 rounded-t-2xl z-10 border-b-2 border-gray-300">
                                 <div class="flex items-center justify-between">
                                     <div>
-                                        <h3 class="text-2xl font-bold flex items-center gap-3">
-                                            <i data-lucide="file-text" class="w-7 h-7"></i>
+                                        <h3 class="text-2xl font-bold flex items-center gap-3 text-gray-900">
+                                            <i data-lucide="file-text" class="w-7 h-7 text-red-500"></i>
                                             Create New Invoice
                                         </h3>
-                                        <p class="text-red-100 text-sm mt-1">Generate invoice with automatic payment
+                                        <p class="text-gray-600 text-sm mt-1">Generate invoice with automatic payment
                                             breakdown</p>
                                     </div>
                                     <button onclick="closeCreateInvoiceModal()" type="button"
-                                        class="text-white hover:bg-red-800 p-2 rounded-lg transition-colors">
+                                        class="text-gray-400 hover:text-gray-600 hover:bg-gray-100 p-2 rounded-lg transition-colors">
                                         <i data-lucide="x" class="w-6 h-6"></i>
                                     </button>
                                 </div>
                                 <!-- Progress Steps -->
                                 <div class="flex items-center justify-center mt-6 gap-2">
-                                    <div class="flex items-center" id="step_indicator_1">
+                                    <div class="flex flex-col items-center" id="step_indicator_1">
                                         <div
-                                            class="flex items-center justify-center w-10 h-10 rounded-full bg-white text-red-600 font-bold">
+                                            class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 text-gray-600 font-bold">
                                             1</div>
-                                        <span class="ml-2 text-sm font-medium">Student</span>
+                                        <span class="mt-1 text-sm font-medium text-gray-900">Student</span>
                                     </div>
-                                    <div class="w-16 h-1 bg-red-400 mx-2"></div>
-                                    <div class="flex items-center opacity-50" id="step_indicator_2">
+                                    <div class="w-16 h-px bg-gray-300 mx-2"></div>
+                                    <div class="flex flex-col items-center opacity-50" id="step_indicator_2">
                                         <div
-                                            class="flex items-center justify-center w-10 h-10 rounded-full bg-red-400 text-white font-bold">
+                                            class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 text-gray-600 font-bold">
                                             2</div>
-                                        <span class="ml-2 text-sm font-medium">Payment</span>
+                                        <span class="mt-1 text-sm font-medium text-gray-500">Payment</span>
                                     </div>
-                                    <div class="w-16 h-1 bg-red-400 mx-2"></div>
-                                    <div class="flex items-center opacity-50" id="step_indicator_3">
+                                    <div class="w-16 h-px bg-gray-300 mx-2"></div>
+                                    <div class="flex flex-col items-center opacity-50" id="step_indicator_3">
                                         <div
-                                            class="flex items-center justify-center w-10 h-10 rounded-full bg-red-400 text-white font-bold">
+                                            class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 text-gray-600 font-bold">
                                             3</div>
-                                        <span class="ml-2 text-sm font-medium">Preview</span>
+                                        <span class="mt-1 text-sm font-medium text-gray-500">Preview</span>
                                     </div>
                                 </div>
                             </div>
@@ -958,12 +970,26 @@
                                     <!-- Application Details (One card per selected application) -->
                                     <div id="application_details_container" class="hidden space-y-3">
                                         <h4 class="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                                            <i data-lucide="layers" class="w-5 h-5 text-red-600"></i>
+                                            <i data-lucide="layers" class="w-5 h-5 text-gray-600"></i>
                                             Application Details
                                         </h4>
                                         <div id="application_details_list" class="space-y-3">
                                             <!-- Application detail cards will be rendered here -->
                                         </div>
+                                    </div>
+
+                                    <!-- Admin Note -->
+                                    <div>
+                                        <label for="invoice_admin_note"
+                                            class="block text-sm font-semibold text-gray-700 mb-2">
+                                            <i data-lucide="sticky-note" class="w-4 h-4 inline mr-1"></i>
+                                            Note (optional)
+                                        </label>
+                                        <textarea id="invoice_admin_note" rows="3"
+                                            placeholder="Add any internal notes to appear on the invoice preview..."
+                                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all"></textarea>
+                                        <p class="mt-1 text-xs text-gray-500">This note will be shown in Step 3 preview
+                                            and included when creating the invoice.</p>
                                     </div>
                                 </div>
 
@@ -979,7 +1005,7 @@
                                     <!-- Dynamic Sections: One per selected application -->
                                     <div>
                                         <h4 class="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                                            <i data-lucide="layers" class="w-5 h-5 text-red-600"></i>
+                                            <i data-lucide="layers" class="w-4 h-4 inline mr-1"></i>
                                             Application Payments
                                         </h4>
                                         <div id="application_payments_container" class="space-y-4">
@@ -1002,7 +1028,7 @@
                                 <!-- Step 3: Invoice Preview (Hidden initially) -->
                                 <div id="invoice_step_3" class="hidden space-y-6">
                                     <div
-                                        class="bg-gradient-to-r from-red-50 to-emerald-50 border-l-4 border-red-500 p-4 rounded-r-lg">
+                                        class="bg-gradient-to-r from-red-50 to-red-50 border-l-4 border-red-500 p-4 rounded-r-lg">
                                         <p class="text-sm text-gray-700 font-medium">
                                             <i data-lucide="check-circle" class="w-4 h-4 inline mr-1"></i>
                                             Review invoice before sending to student
@@ -1048,8 +1074,18 @@
                                             </tbody>
                                         </table>
 
-                                        <!-- Total -->
-                                        <div class="flex justify-end mb-6">
+                                        <!-- Total + Note (inline) -->
+                                        <div class="flex items-start justify-between mb-6 gap-6">
+                                            <!-- Admin Note Preview (plain description style) -->
+                                            <div id="preview_admin_note_container"
+                                                class="flex-1 max-w-2xl bg-gray-50 border border-gray-200 p-3 rounded-lg hidden">
+                                                <p class="text-xs text-gray-600 mb-1">Note</p>
+                                                <div class="h-px bg-gray-200 mb-2"></div>
+                                                <p class="text-sm text-gray-700 whitespace-pre-wrap"
+                                                    id="preview_admin_note">-</p>
+                                            </div>
+
+                                            <!-- Total -->
                                             <div class="w-64">
                                                 <div class="flex justify-between py-2 border-t-2 border-gray-800">
                                                     <p class="font-bold text-lg">Total Amount:</p>
@@ -2704,7 +2740,57 @@
             // Deprecated
             return {};
         }
+
+        // Confirm Mark as Paid flow
+        let __pendingMarkPaidBtn = null;
+        function openConfirmMarkPaid(btn) {
+            __pendingMarkPaidBtn = btn;
+            const modal = document.getElementById('confirm_mark_paid_modal');
+            if (modal) modal.classList.remove('hidden');
+            if (window.lucide && lucide.createIcons) lucide.createIcons();
+        }
+
+        function cancelMarkPaid() {
+            const modal = document.getElementById('confirm_mark_paid_modal');
+            if (modal) modal.classList.add('hidden');
+            __pendingMarkPaidBtn = null;
+        }
+
+        function confirmMarkPaid() {
+            try {
+                if (__pendingMarkPaidBtn) {
+                    markAsPaid(__pendingMarkPaidBtn);
+                }
+            } finally {
+                cancelMarkPaid();
+            }
+        }
     </script>
+
+    <!-- Confirm Mark as Paid Modal (global) -->
+    <div id="confirm_mark_paid_modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md">
+            <div class="px-6 py-5 border-b">
+                <h3 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                    <i data-lucide="check-circle" class="w-5 h-5 text-red-600"></i>
+                    Confirm Mark as Paid
+                </h3>
+                <p class="text-sm text-gray-600 mt-1">Are you sure you want to mark this invoice as paid? This action
+                    will update its status to Paid.</p>
+            </div>
+            <div class="px-6 py-5 flex items-center justify-end gap-3">
+                <button type="button" onclick="cancelMarkPaid()"
+                    class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">Cancel</button>
+                <button type="button" onclick="confirmMarkPaid()"
+                    class="px-4 py-2 text-sm font-semibold text-white rounded-md"
+                    style="background: linear-gradient(135deg, #d43131 0%, #d43131 100%);">
+                    <i data-lucide="check" class="w-4 h-4 inline mr-1"></i>
+                    Confirm
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- AI Assistant Floating Button -->
     <div id="ai-assistant" class="fixed bottom-6 right-6" style="z-index: 10000;">
@@ -2871,6 +2957,10 @@
             invoiceData.applications = [];
             invoiceData.application = null;
             if (invoiceData.breakdown) invoiceData.breakdown.commission = 0;
+            // Reset admin note
+            const noteEl = document.getElementById('invoice_admin_note');
+            if (noteEl) noteEl.value = '';
+            invoiceData.adminNote = '';
         }
 
         function nextInvoiceStep() {
@@ -3057,18 +3147,18 @@
                     indicator.classList.remove('opacity-50');
                     const dot = indicator.querySelector('div');
                     // Past steps: white background with red text (no green)
-                    dot.classList.remove('bg-red-400', 'bg-green-500', 'text-white');
-                    dot.classList.add('bg-white', 'text-red-600');
+                    dot.classList.remove('bg-red-400', 'bg-green-500', 'text-white', 'text-red-600', 'text-black');
+                    dot.classList.add('bg-white', 'text-zinc-700');
                 } else if (i === currentInvoiceStep) {
                     indicator.classList.remove('opacity-50');
                     const dot = indicator.querySelector('div');
-                    dot.classList.remove('bg-red-400', 'bg-green-500', 'text-white');
-                    dot.classList.add('bg-white', 'text-red-600');
+                    dot.classList.remove('bg-red-400', 'bg-green-500', 'text-white', 'text-red-600', 'text-black');
+                    dot.classList.add('bg-white', 'text-zinc-700');
                 } else {
                     indicator.classList.add('opacity-50');
                     const dot = indicator.querySelector('div');
-                    dot.classList.remove('bg-white', 'bg-green-500', 'text-red-600');
-                    dot.classList.add('bg-red-400', 'text-white');
+                    dot.classList.remove('bg-green-500', 'text-red-600', 'text-black', 'text-zinc-700');
+                    dot.classList.add('bg-white', 'text-zinc-600');
                 }
             }
 
@@ -3791,6 +3881,21 @@
             document.getElementById('preview_due_date').textContent = `Due: ${dueDateFormatted}`;
             const methodEl = document.getElementById('preview_payment_method');
             if (methodEl) methodEl.textContent = methodText;
+
+            // Admin Note
+            const noteVal = (document.getElementById('invoice_admin_note')?.value || '').trim();
+            invoiceData.adminNote = noteVal;
+            const noteContainer = document.getElementById('preview_admin_note_container');
+            const noteEl = document.getElementById('preview_admin_note');
+            if (noteContainer && noteEl) {
+                if (noteVal) {
+                    noteEl.textContent = noteVal;
+                    noteContainer.classList.remove('hidden');
+                } else {
+                    noteEl.textContent = '-';
+                    noteContainer.classList.add('hidden');
+                }
+            }
         }
 
         function createInvoice() {
@@ -3801,7 +3906,8 @@
                 ...invoiceData,
                 invoiceNumber: document.getElementById('preview_invoice_number').textContent,
                 createdDate: new Date().toISOString(),
-                sendEmail: sendEmail
+                sendEmail: sendEmail,
+                adminNote: invoiceData.adminNote || ''
             };
 
             console.log('Creating invoice:', invoicePayload);
@@ -3922,7 +4028,18 @@
         });
 
         // Payment Details Modal Functions
-        function openPaymentDetails() {
+        function openPaymentDetails(noteText) {
+            // Populate note (if section exists)
+            const noteContainer = document.getElementById('stu_modal_note_container');
+            const noteEl = document.getElementById('stu_modal_note_text');
+            if (noteContainer && noteEl) {
+                const text = typeof noteText === 'string' && noteText.trim().length > 0
+                    ? noteText.trim()
+                    : 'Please include your Application ID in the transfer description. Our team will verify within 24 hours after you upload your receipt.';
+                noteEl.textContent = text;
+                noteContainer.classList.remove('hidden');
+            }
+
             document.getElementById('payment-details-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
@@ -4289,6 +4406,30 @@
                 document.getElementById('third_step').value = '';
             }
         }
+
+        // Step indicator styling: steps <= current => black text on white, future steps => red circle with white text
+        function setInvoiceStep(current) {
+            const total = 3;
+            for (let i = 1; i <= total; i++) {
+                const container = document.getElementById(`step_indicator_${i}`);
+                if (!container) continue;
+                // Dim future steps
+                container.classList.toggle('opacity-50', i > current);
+                // Find the numeric circle
+                const circle = container.querySelector('div.w-10.h-10');
+                if (!circle) continue;
+                if (i <= current) {
+                    circle.classList.remove('bg-red-400', 'text-white', 'text-black');
+                    circle.classList.add('bg-white', 'text-zinc-700');
+                } else {
+                    circle.classList.remove('text-black', 'text-zinc-700');
+                    circle.classList.add('bg-white', 'text-zinc-600');
+                }
+            }
+        }
+
+        // Initialize default step state
+        document.addEventListener('DOMContentLoaded', () => setInvoiceStep(1));
     </script>
 </body>
 
