@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bulk Import - ApplyLead</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .brand-red {
+            background-color: #d82128;
+        }
+
+        .brand-red-text {
+            color: #d82128;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+    <div class="max-w-4xl mx-auto min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="flex items-center justify-between py-4">
+            <button onclick="history.back()"
+                class="inline-flex items-center gap-2 px-3 py-2 border rounded-lg text-gray-700 hover:bg-gray-100">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Back</span>
+            </button>
+        </header>
+
+        <!-- Title -->
+        <div class="mb-4">
+            <h1 class="text-2xl font-semibold text-gray-900">Bulk Import</h1>
+            <p class="text-sm text-gray-600 mt-1">Use this tool to easily import students from a CSV file.</p>
+        </div>
+
+        <!-- Content Card -->
+        <main class="bg-white rounded-2xl shadow-sm p-6 mb-10">
+            <!-- Notices -->
+            <div class="space-y-3 mb-6">
+                <div class="flex items-start gap-3 p-3 rounded-lg border border-red-200 bg-red-50">
+                    <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        class="mt-0.5">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"
+                            fill="#d82128"></path>
+                    </svg>
+                    <p class="text-sm text-gray-800">Use this tool to easily import students. This tool requires you to
+                        use a template. <a href="../../ApplyLead_Bulk_Student_Import_Template.csv"
+                            download="ApplyLead_Bulk_Student_Import_Template.csv"
+                            class="text-red-600 hover:underline">Click here to access the .csv
+                            template.</a></p>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded-lg border border-amber-200 bg-amber-50">
+                    <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        class="mt-0.5">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M10.27 2.994c.77-1.33 2.69-1.33 3.46 0l9.266 16.004c.772 1.333-.19 3.002-1.73 3.002H2.733c-1.54 0-2.502-1.669-1.73-3.002l9.265-16.004zM21.264 20L12 3.996 2.734 20h18.532z"
+                            fill="currentColor"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M13 18h-2v-2h2v2zM13 14h-2V9h2v5z"
+                            fill="currentColor"></path>
+                    </svg>
+                    <p class="text-sm text-gray-800">Please limit upload to 50 students at once.</p>
+                </div>
+            </div>
+
+            <form class="space-y-6" onsubmit="event.preventDefault(); handleImport();">
+                <!-- Assign to Agent/Owner -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Assign Students to...</label>
+                    <div class="relative">
+                        <i data-lucide="user-check" class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                        <input id="assignAgentInput" type="text"
+                            class="w-full pl-10 pr-10 py-2 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                            placeholder="Search agent by name..." autocomplete="off" />
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                        <!-- Suggestions -->
+                        <div id="assignAgentSuggestions"
+                             class="absolute z-50 mt-1 left-0 right-0 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-auto hidden">
+                            <!-- items injected by JS -->
+                        </div>
+                        <input type="hidden" id="assignedAgentHidden" name="assignedAgent" value="" />
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">Optional. If empty, you can assign later.</p>
+                </div>
+
+                <!-- File upload -->
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="text-sm font-medium text-gray-700">CSV File to Import</span>
+                        <span class="text-red-600 text-sm">*</span>
+                    </div>
+                    <div id="dropzone"
+                        class="flex flex-col items-center justify-center gap-3 p-6 border-2 border-dashed rounded-xl bg-gray-50">
+                        <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M19.35 10.04A7.49 7.49 0 0012 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 000 14c0 3.31 2.69 6 6 6h2v-2H6c-2.21 0-4-1.79-4-4s1.79-4 4-4h.71C7.37 7.69 9.48 6 12 6c3.04 0 5.5 2.46 5.5 5.5v.5H19c1.66 0 3 1.34 3 3s-1.34 3-3 3h-3v2h3c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"
+                                fill="#d82128"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M12 10.586l3.707 3.707a1 1 0 01-1.414 1.414L13 14.414V21a1 1 0 11-2 0v-6.586l-1.293 1.293a1 1 0 01-1.414-1.414L12 10.586z"
+                                fill="#d82128"></path>
+                        </svg>
+                        <p class="text-sm text-gray-700">Drag and drop, or</p>
+                        <button type="button" onclick="fileInput.click()"
+                            class="px-4 py-2 border rounded-lg hover:bg-gray-100">Browse Files</button>
+                        <input id="fileInput" type="file" accept=".csv" class="hidden" />
+                        <p id="fileName" class="text-xs text-gray-500"></p>
+                    </div>
+                </div>
+
+                <!-- Consent -->
+                <label class="flex items-start gap-2 text-sm text-gray-700">
+                    <input id="agreeTerms" type="checkbox" class="mt-1 rounded border-gray-300" />
+                    <span>I confirm that the student has agreed to the <a href="#terms" class="text-red-600">Terms &
+                            Conditions</a> and <a href="#privacy" class="text-red-600">Privacy Policy</a>, and I can
+                        provide proof of their consent if required.</span>
+                </label>
+
+                <!-- Actions -->
+                <div class="flex justify-end gap-3 pt-2">
+                    <button type="button" onclick="history.back()"
+                        class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">Cancel</button>
+                    <button type="submit"
+                        class="px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors hover:opacity-90 brand-red">Import
+                        Students</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const fileInput = document.getElementById('fileInput');
+        const dropzone = document.getElementById('dropzone');
+        const fileName = document.getElementById('fileName');
+        // Assign to Agent typeahead refs
+        const assignInput = document.getElementById('assignAgentInput');
+        const assignSug = document.getElementById('assignAgentSuggestions');
+        const assignedAgentHidden = document.getElementById('assignedAgentHidden');
+        const AGENT_LIST = [
+            'John Smith',
+            'Sarah Wilson',
+            'Emily Davis',
+            'Michael Lee',
+            'David Chen'
+        ];
+
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files && fileInput.files[0]) {
+                fileName.textContent = fileInput.files[0].name;
+            } else {
+                fileName.textContent = '';
+            }
+        });
+
+        ;['dragenter', 'dragover'].forEach(evt => {
+            dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.add('ring-2', 'ring-red-500'); });
+        });
+        ;['dragleave', 'drop'].forEach(evt => {
+            dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.remove('ring-2', 'ring-red-500'); });
+        });
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            if (e.dataTransfer.files && e.dataTransfer.files.length) {
+                const [file] = e.dataTransfer.files;
+                if (file && file.name.toLowerCase().endsWith('.csv')) {
+                    fileInput.files = e.dataTransfer.files;
+                    fileName.textContent = file.name;
+                } else {
+                    alert('Please upload a .csv file');
+                }
+            }
+        });
+
+        // --- Typeahead: Assign Students to...
+        function renderAssignSuggestions(items) {
+            if (!items || items.length === 0) {
+                assignSug.innerHTML = '<div class="px-3 py-2 text-sm text-gray-500">No matches</div>';
+                assignSug.classList.remove('hidden');
+                return;
+            }
+            assignSug.innerHTML = items.map(name => `
+                <button type="button" class="w-full text-left px-3 py-2 hover:bg-gray-50 flex items-center gap-2"
+                        data-agent="${name.replace(/"/g, '&quot;')}">
+                    <i data-lucide="user" class="w-4 h-4 text-gray-500"></i>
+                    <span class="text-sm text-gray-800">${name}</span>
+                </button>
+            `).join('');
+            assignSug.classList.remove('hidden');
+            // re-init icons for newly added items
+            lucide.createIcons();
+        }
+
+        function openAssignSuggestions() {
+            const q = (assignInput.value || '').trim().toLowerCase();
+            const items = AGENT_LIST.filter(n => n.toLowerCase().includes(q));
+            renderAssignSuggestions(items);
+        }
+
+        function closeAssignSuggestions() {
+            assignSug.classList.add('hidden');
+        }
+
+        if (assignInput && assignSug) {
+            assignInput.addEventListener('focus', openAssignSuggestions);
+            assignInput.addEventListener('input', openAssignSuggestions);
+            assignInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeAssignSuggestions();
+            });
+            assignSug.addEventListener('click', (e) => {
+                const btn = e.target.closest('[data-agent]');
+                if (!btn) return;
+                const name = btn.getAttribute('data-agent');
+                assignInput.value = name;
+                assignedAgentHidden.value = name;
+                closeAssignSuggestions();
+            });
+            document.addEventListener('click', (e) => {
+                if (!assignSug.contains(e.target) && !assignInput.contains(e.target)) {
+                    closeAssignSuggestions();
+                }
+            });
+        }
+
+        function handleImport() {
+            const fileOk = fileInput.files && fileInput.files.length > 0;
+            const consentEl = document.getElementById('agreeTerms');
+            const consentOk = consentEl ? consentEl.checked : false;
+            if (!fileOk) { alert('Please choose a CSV file to import.'); return; }
+            if (!consentOk) { alert('Please confirm you have received consent.'); return; }
+            alert('Import started (demo).');
+        }
+    </script>
+</body>
+
+</html>

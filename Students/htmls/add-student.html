@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Student - ApplyLead</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .brand-red {
+            background-color: #d82128;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+    <div class="max-w-5xl mx-auto min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="flex items-center justify-between py-4">
+            <button onclick="history.back()"
+                class="inline-flex items-center gap-2 px-3 py-2 border rounded-lg text-gray-700 hover:bg-gray-100">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span>Back</span>
+            </button>
+        </header>
+
+        <!-- Title -->
+        <div class="text-center mb-6">
+            <h2 class="text-2xl font-semibold text-gray-900">Create Your Account</h2>
+        </div>
+
+        <!-- Form -->
+        <main class="bg-white rounded-2xl shadow-sm p-6 mb-10">
+            <!-- Personal Information -->
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Personal Information</h3>
+            <form class="space-y-8" onsubmit="event.preventDefault(); showToast('Student created');">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="md:col-span-2">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First name
+                                    <span class="text-red-600">*</span></label>
+                                <div class="relative">
+                                    <i data-lucide="user"
+                                        class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                                    <input id="firstName" name="firstName" type="text" placeholder="Enter first name"
+                                        class="w-full pl-9 pr-3 py-2 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                        required />
+                                </div>
+                            </div>
+                            <div>
+                                <label for="middleName" class="block text-sm font-medium text-gray-700 mb-1">Middle
+                                    name</label>
+                                <div class="relative">
+                                    <i data-lucide="user"
+                                        class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                                    <input id="middleName" name="middleName" type="text"
+                                        placeholder="Enter middle name (optional)"
+                                        class="w-full pl-9 pr-3 py-2 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" />
+                                </div>
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last name
+                                    <span class="text-red-600">*</span></label>
+                                <div class="relative">
+                                    <i data-lucide="user"
+                                        class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                                    <input id="lastName" name="lastName" type="text" placeholder="Enter last name"
+                                        class="w-full pl-9 pr-3 py-2 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                        required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address <span
+                                class="text-red-600">*</span></label>
+                        <div class="relative">
+                            <i data-lucide="mail"
+                                class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                            <input id="email" type="email" placeholder="Enter your email address"
+                                class="w-full pl-9 pr-3 py-2 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                                required />
+                        </div>
+                    </div>
+                    <div>
+                        <label for="phoneNumber" class="block text-sm font-medium text-gray-700 mb-1">Phone
+                            Number</label>
+                        <div class="flex">
+                            <select class="w-32 border rounded-l-lg px-2">
+                                <option>+84</option>
+                                <option>+1</option>
+                                <option>+44</option>
+                                <option>+61</option>
+                            </select>
+                            <div class="relative flex-1">
+                                <i data-lucide="phone"
+                                    class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                                <input id="phoneNumber" type="text" placeholder="Enter phone number"
+                                    class="w-full pl-9 pr-3 py-2 border rounded-r-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Agent Assignment (conditional by source) below Email & Phone -->
+                    <div>
+                        <div id="agentAssignmentBlock" class="space-y-3">
+                            <!-- CRM: show a select to choose agent -->
+                            <div id="agentSelectRow" class="hidden">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Assign to Agent</label>
+                                <div class="relative">
+                                    <i data-lucide="user-check"
+                                        class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                                    <select id="assignAgentSelect"
+                                        class="w-full pl-10 pr-10 py-2 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 appearance-none">
+                                        <option value="">Select an agent</option>
+                                        <option value="John Smith">John Smith</option>
+                                        <option value="Sarah Wilson">Sarah Wilson</option>
+                                        <option value="Emily Davis">Emily Davis</option>
+                                        <option value="Michael Lee">Michael Lee</option>
+                                        <option value="David Chen">David Chen</option>
+                                    </select>
+                                    <i data-lucide="chevron-down"
+                                        class="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2"></i>
+                                </div>
+                            </div>
+                            <!-- Agency: show readonly assigned pill -->
+                            <div id="agentReadonlyRow" class="hidden">
+                                <span class="text-sm text-gray-700">Assigned to:</span>
+                                <span id="assignedAgentText"
+                                    class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-50 text-red-700 border border-red-200 ml-2">Current
+                                    Agent</span>
+                            </div>
+                            <input type="hidden" id="assignedAgentHidden" name="assignedAgent" value="" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location Information -->
+                <h3 class="text-lg font-semibold text-gray-900">Location Information</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Country</label>
+                        <div class="relative">
+                            <i data-lucide="globe"
+                                class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                            <input id="countryInput" type="text" autocomplete="off" placeholder="Search your country"
+                                class="w-full pl-9 pr-3 py-2 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500" />
+                            <!-- Country suggestions -->
+                            <div id="countrySuggestions"
+                                class="absolute z-50 mt-1 left-0 right-0 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-auto hidden">
+                                <!-- items injected by JS -->
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">State/Province/County</label>
+                        <div class="relative">
+                            <i data-lucide="map-pin"
+                                class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                            <input id="stateInput" type="text" autocomplete="off" placeholder="Select country first"
+                                disabled
+                                class="w-full pl-9 pr-3 py-2 border rounded-lg bg-gray-50 text-gray-500 disabled:cursor-not-allowed focus:ring-2 focus:ring-red-500 focus:border-red-500" />
+                            <!-- State suggestions -->
+                            <div id="stateSuggestions"
+                                class="absolute z-50 mt-1 left-0 right-0 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-auto hidden">
+                                <!-- items injected by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Optional -->
+                <label class="flex items-start gap-2 text-sm text-gray-700">
+                    <input id="agreeTerms" type="checkbox" class="mt-1 rounded border-gray-300" />
+                    <span>I confirm that the student has agreed to the <a href="#terms" class="text-red-600">Terms &
+                            Conditions</a> and <a href="#privacy" class="text-red-600">Privacy Policy</a>, and I can
+                        provide proof of their consent if required.</span>
+                </label>
+
+                <div class="pt-2">
+                    <button type="submit" class="w-full brand-red text-white py-2.5 rounded-lg hover:opacity-90">Create
+                        Account</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // --- Autocomplete Data ---
+        const COUNTRY_LIST = [
+            'Viet Nam',
+            'United States',
+            'United Kingdom',
+            'Canada',
+            'Australia',
+            'New Zealand',
+            'Singapore',
+            'Germany',
+            'France',
+            'Japan'
+        ];
+
+        const STATE_MAP = {
+            'Viet Nam': ['Ha Noi', 'Ho Chi Minh City', 'Da Nang', 'Hai Phong', 'Can Tho'],
+            'United States': ['California', 'New York', 'Texas', 'Florida', 'Washington'],
+            'United Kingdom': ['England', 'Scotland', 'Wales', 'Northern Ireland'],
+            'Canada': ['Ontario', 'Quebec', 'British Columbia', 'Alberta', 'Manitoba'],
+            'Australia': ['New South Wales', 'Victoria', 'Queensland', 'Western Australia', 'South Australia'],
+            'New Zealand': ['Auckland', 'Wellington', 'Canterbury', 'Otago'],
+            'Singapore': ['Central', 'East', 'North', 'North-East', 'West'],
+            'Germany': ['Bavaria', 'Berlin', 'Hamburg', 'Hesse', 'Saxony'],
+            'France': ['Île-de-France', 'Provence-Alpes-Côte d’Azur', 'Auvergne-Rhône-Alpes'],
+            'Japan': ['Tokyo', 'Osaka', 'Hokkaido', 'Aichi', 'Fukuoka']
+        };
+
+        // --- Helpers ---
+        function createSuggestionItem(label, onClick) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'w-full text-left px-3 py-2 hover:bg-gray-100 text-sm';
+            btn.textContent = label;
+            btn.addEventListener('click', onClick);
+            return btn;
+        }
+
+        function renderSuggestions(container, items, onSelect) {
+            container.innerHTML = '';
+            if (!items || items.length === 0) {
+                container.classList.add('hidden');
+                return;
+            }
+            items.slice(0, 50).forEach(item => {
+                container.appendChild(createSuggestionItem(item, () => onSelect(item)));
+            });
+            container.classList.remove('hidden');
+        }
+
+        function attachAutocomplete({ inputEl, listEl, source, onSelect }) {
+            function filter(q) {
+                const query = (q ?? '').trim().toLowerCase();
+                const dataset = source();
+                const res = !query ? dataset : dataset.filter(x => x.toLowerCase().includes(query));
+                renderSuggestions(listEl, res, (picked) => {
+                    onSelect(picked);
+                    listEl.classList.add('hidden');
+                });
+            }
+
+            inputEl.addEventListener('input', (e) => filter(e.target.value));
+            inputEl.addEventListener('focus', (e) => filter(e.target.value));
+        }
+
+        // --- Wire Country & State ---
+        const countryInput = document.getElementById('countryInput');
+        const countrySuggestions = document.getElementById('countrySuggestions');
+        const stateInput = document.getElementById('stateInput');
+        const stateSuggestions = document.getElementById('stateSuggestions');
+
+        let selectedCountry = '';
+
+        function enableState(country) {
+            selectedCountry = country;
+            stateInput.disabled = false;
+            stateInput.placeholder = 'Search state/province';
+            stateInput.classList.remove('bg-gray-50', 'text-gray-500');
+            stateInput.value = '';
+            stateSuggestions.innerHTML = '';
+            stateSuggestions.classList.add('hidden');
+        }
+
+        attachAutocomplete({
+            inputEl: countryInput,
+            listEl: countrySuggestions,
+            source: () => COUNTRY_LIST,
+            onSelect: (val) => {
+                countryInput.value = val;
+                enableState(val);
+            }
+        });
+
+        attachAutocomplete({
+            inputEl: stateInput,
+            listEl: stateSuggestions,
+            source: () => (STATE_MAP[selectedCountry] || []),
+            onSelect: (val) => {
+                stateInput.value = val;
+            }
+        });
+
+        // Close suggestions when clicking outside or pressing Escape
+        document.addEventListener('click', (e) => {
+            if (!countrySuggestions.contains(e.target) && e.target !== countryInput) {
+                countrySuggestions.classList.add('hidden');
+            }
+            if (!stateSuggestions.contains(e.target) && e.target !== stateInput) {
+                stateSuggestions.classList.add('hidden');
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                countrySuggestions.classList.add('hidden');
+                stateSuggestions.classList.add('hidden');
+            }
+        });
+
+        function showToast(msg) {
+            alert(msg);
+        }
+
+        // --- Source-based Agent assignment ---
+        (function setupAgentAssignment() {
+            const params = new URLSearchParams(window.location.search);
+            const source = (params.get('source') || '').toLowerCase();
+
+            const agentSelectRow = document.getElementById('agentSelectRow');
+            const agentReadonlyRow = document.getElementById('agentReadonlyRow');
+            const assignedAgentHidden = document.getElementById('assignedAgentHidden');
+            const assignedAgentText = document.getElementById('assignedAgentText');
+            const assignAgentSelect = document.getElementById('assignAgentSelect');
+
+            if (source === 'crm') {
+                // Show select to choose agent
+                agentSelectRow.classList.remove('hidden');
+                agentReadonlyRow.classList.add('hidden');
+                assignedAgentHidden.value = '';
+                assignAgentSelect.addEventListener('change', function () {
+                    assignedAgentHidden.value = this.value || '';
+                });
+            } else {
+                // Default: agency (or unspecified) -> auto assign to current agent
+                agentSelectRow.classList.add('hidden');
+                agentReadonlyRow.classList.remove('hidden');
+                // If Agency passed ?agent=Name use it, else fallback label
+                const agentFromParam = params.get('agent');
+                const label = agentFromParam || 'Current Agent';
+                assignedAgentText.textContent = label;
+                assignedAgentHidden.value = label;
+            }
+            lucide.createIcons();
+        })();
+    </script>
+</body>
+
+</html>

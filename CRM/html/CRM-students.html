@@ -164,7 +164,8 @@
                 <i data-lucide="building" class="w-5 h-5 mr-3"></i>
                 Institutions
             </a>
-            <a href="CRM-students.html" class="flex items-center px-6 py-3 text-white" style="background-color: #d82128;">
+            <a href="CRM-students.html" class="flex items-center px-6 py-3 text-white"
+                style="background-color: #d82128;">
                 <i data-lucide="user" class="w-5 h-5 mr-3"></i>
                 Students
             </a>
@@ -254,17 +255,64 @@
                             </button>
                         </div>
                     </div>
-                    <button onclick="openAddStudentModal()"
-                        class="text-white px-4 py-2 rounded-xl transition-colors hover:opacity-90 flex items-center"
-                        style="background-color: #d82128;">
-                        <i data-lucide="plus" class="w-5 h-5 inline-block mr-1"></i>
-                        <span>Add New Student</span>
-                    </button>
+                    <div id="add-student-actions" class="relative inline-block">
+                        <button id="add-student-actions-btn" type="button" onclick="toggleAddStudentMenu(event)"
+                            class="text-white px-4 py-2 rounded-xl transition-colors hover:opacity-90 flex items-center gap-2"
+                            aria-haspopup="menu" aria-expanded="false" style="background-color: #d82128;">
+                            <i data-lucide="plus" class="w-5 h-5"></i>
+                            <span>Add New Student</span>
+                            <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5 fill-current opacity-90">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M11.9999 15.9142L18.3639 9.5502L16.9497 8.13599L11.9999 13.0857L7.0502 8.13599L5.63599 9.5502L11.9999 15.9142Z">
+                                </path>
+                            </svg>
+                        </button>
+                        <div id="add-student-actions-menu"
+                            class="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-100 py-2 hidden z-50">
+                            <button onclick="window.location.href='../../Students/htmls/add-student.html?source=crm'"
+                                class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-2">
+                                <i data-lucide="user-plus" class="w-4 h-4 text-gray-500"></i>
+                                Add manually
+                            </button>
+                            <button onclick="window.location.href='../../Students/htmls/bulk-import.html?source=crm'"
+                                class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-2">
+                                <i data-lucide="file-up" class="w-4 h-4 text-gray-500"></i>
+                                Import from CSV
+                            </button>
+                        </div>
+                        <script>
+                            (function () {
+                                const wrap = document.getElementById('add-student-actions');
+                                const btn = document.getElementById('add-student-actions-btn');
+                                const menu = document.getElementById('add-student-actions-menu');
+                                if (!wrap || !btn || !menu) return;
+                                const closeMenu = () => {
+                                    if (!menu.classList.contains('hidden')) {
+                                        menu.classList.add('hidden');
+                                        btn.setAttribute('aria-expanded', 'false');
+                                    }
+                                };
+                                btn.addEventListener('click', function (e) {
+                                    e.stopPropagation();
+                                    menu.classList.toggle('hidden');
+                                    btn.setAttribute('aria-expanded', menu.classList.contains('hidden') ? 'false' : 'true');
+                                });
+                                menu.addEventListener('click', function (e) { e.stopPropagation(); });
+                                document.addEventListener('click', function (e) {
+                                    if (!wrap.contains(e.target)) closeMenu();
+                                });
+                                document.addEventListener('keydown', function (e) {
+                                    if (e.key === 'Escape') closeMenu();
+                                });
+                            })();
+                        </script>
+                    </div>
                 </div>
                 <!-- View Toggle Buttons -->
                 <!--<div class="flex items-center space-x-2 ml-4">
                             <button id="table-view-btn" class="px-3 py-2 text-sm font-medium rounded-lg transition-colors" style="background-color: #d82128; color: white;">
                                 <i data-lucide="list" class="w-4 h-4 inline-block mr-1"></i>
+{{ ... }}
                             </button>
                             <button id="board-view-btn" class="px-3 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
                                 <i data-lucide="columns" class="w-4 h-4 inline-block mr-1"></i>
@@ -319,7 +367,10 @@
                                         <div class="flex items-center pl-6">
                                             <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&fit=crop"
                                                 class="w-8 h-8 rounded-full mr-3">
-                                            <a href="CRM-student-detail.html?student=sarah-chen" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-gray-900 hover:text-red-600">Sarah Chen</a>
+                                            <a href="CRM-student-detail.html?student=sarah-chen" target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="text-sm font-medium text-gray-900 hover:text-red-600">Sarah
+                                                Chen</a>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4">
@@ -333,22 +384,23 @@
                                             FB Ads JUL25
                                         </span>
                                     </td>
-                                    <td class="px-6 py-4 text-sm text-gray-600">Canada – Business</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">Ivy Global Student Program</td>
                                     <td class="px-6 py-4 text-sm text-gray-600">
                                         <div class="flex items-center space-x-2">
                                             <span>Uploaded transcript – 2 days ago</span>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-50 text-red-700 border border-red-200">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-50 text-red-700 border border-red-200">
                                             3 schools
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 text-right">
                                         <div class="flex items-center justify-end space-x-2">
-                                            <a href="CRM-student-detail.html?student=sarah-chen" target="_blank" rel="noopener noreferrer"
-                                                class="p-1 hover:opacity-80" style="color: #d82128;"
-                                                title="View Details">
+                                            <a href="CRM-student-detail.html?student=sarah-chen" target="_blank"
+                                                rel="noopener noreferrer" class="p-1 hover:opacity-80"
+                                                style="color: #d82128;" title="View Details">
                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor"
                                                     viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -378,7 +430,10 @@
                                         <div class="flex items-center pl-6">
                                             <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop"
                                                 class="w-8 h-8 rounded-full mr-3">
-                                            <a href="Agency-my-student-detail.html?student=mike-wong" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-gray-900 hover:text-red-600">Mike Wong</a>
+                                            <a href="Agency-my-student-detail.html?student=mike-wong" target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="text-sm font-medium text-gray-900 hover:text-red-600">Mike
+                                                Wong</a>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4">
@@ -392,22 +447,23 @@
                                             Event HN 2025
                                         </span>
                                     </td>
-                                    <td class="px-6 py-4 text-sm text-gray-600">Australia – Engineering</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">Elite Admission Program</td>
                                     <td class="px-6 py-4 text-sm text-gray-600">
                                         <div class="flex items-center space-x-2">
                                             <span>Updated profile – 5 days ago</span>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-50 text-red-700 border border-red-200">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-50 text-red-700 border border-red-200">
                                             2 schools
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 text-right">
                                         <div class="flex items-center justify-end space-x-2">
-                                            <a href="Agency-my-student-detail.html?student=mike-wong" target="_blank" rel="noopener noreferrer"
-                                                class="p-1 hover:opacity-80" style="color: #d82128;"
-                                                title="View Details">
+                                            <a href="Agency-my-student-detail.html?student=mike-wong" target="_blank"
+                                                rel="noopener noreferrer" class="p-1 hover:opacity-80"
+                                                style="color: #d82128;" title="View Details">
                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor"
                                                     viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -450,7 +506,10 @@
                                         <div class="flex items-center pl-6">
                                             <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop"
                                                 class="w-8 h-8 rounded-full mr-3">
-                                            <a href="Agency-my-student-detail.html?student=david-kim" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-gray-900 hover:text-red-600">David Kim</a>
+                                            <a href="Agency-my-student-detail.html?student=david-kim" target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="text-sm font-medium text-gray-900 hover:text-red-600">David
+                                                Kim</a>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4">
@@ -464,22 +523,23 @@
                                             Partner ABC
                                         </span>
                                     </td>
-                                    <td class="px-6 py-4 text-sm text-gray-600">UK – Medicine</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600">Guaranteed Scholarship Program</td>
                                     <td class="px-6 py-4 text-sm text-gray-600">
                                         <div class="flex items-center space-x-2">
                                             <span>Submitted documents – 1 day ago</span>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-50 text-red-700 border border-red-200">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-50 text-red-700 border border-red-200">
                                             1 school
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 text-right">
                                         <div class="flex items-center justify-end space-x-2">
-                                            <a href="Agency-my-student-detail.html?student=david-kim" target="_blank" rel="noopener noreferrer"
-                                                class="p-1 hover:opacity-80" style="color: #d82128;"
-                                                title="View Details">
+                                            <a href="Agency-my-student-detail.html?student=david-kim" target="_blank"
+                                                rel="noopener noreferrer" class="p-1 hover:opacity-80"
+                                                style="color: #d82128;" title="View Details">
                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor"
                                                     viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -553,7 +613,8 @@
                                             style="background-color: #FEF2F2; color: #d82128;" title="Send Message">
                                             <i data-lucide="message-circle" class="w-3 h-3"></i>
                                         </button>
-                                        <a href="Agency-my-student-detail.html?student=sarah-johnson" target="_blank" rel="noopener noreferrer"
+                                        <a href="Agency-my-student-detail.html?student=sarah-johnson" target="_blank"
+                                            rel="noopener noreferrer"
                                             class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200"
                                             title="View Details">
                                             <i data-lucide="eye" class="w-3 h-3"></i>
@@ -571,7 +632,7 @@
                                             class="w-8 h-8 rounded-full">
                                         <div class="flex-1">
                                             <div class="font-medium text-sm text-gray-900">Lisa Wang</div>
-                                            <div class="text-xs text-gray-500">Canada – Business</div>
+                                            <div class="text-xs text-gray-500">Ivy Global Student Program</div>
                                         </div>
                                     </div>
                                     <span class="text-xs px-2 py-1 rounded-full text-white"
@@ -584,7 +645,8 @@
                                             style="background-color: #FEF2F2; color: #d82128;" title="Send Message">
                                             <i data-lucide="message-circle" class="w-3 h-3"></i>
                                         </button>
-                                        <a href="Agency-my-student-detail.html?student=sarah-johnson" target="_blank" rel="noopener noreferrer"
+                                        <a href="Agency-my-student-detail.html?student=sarah-johnson" target="_blank"
+                                            rel="noopener noreferrer"
                                             class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200"
                                             title="View Details">
                                             <i data-lucide="eye" class="w-3 h-3"></i>
@@ -615,7 +677,7 @@
                                             class="w-8 h-8 rounded-full">
                                         <div class="flex-1">
                                             <div class="font-medium text-sm text-gray-900">Mike Wong</div>
-                                            <div class="text-xs text-gray-500">Australia – Engineering</div>
+                                            <div class="text-xs text-gray-500">Elite Admission Program</div>
                                         </div>
                                     </div>
                                     <span class="text-xs px-2 py-1 rounded-full text-white"
@@ -628,7 +690,8 @@
                                             style="background-color: #FEF2F2; color: #d82128;" title="Send Message">
                                             <i data-lucide="message-circle" class="w-3 h-3"></i>
                                         </button>
-                                        <a href="Agency-my-student-detail.html?student=sarah-johnson" target="_blank" rel="noopener noreferrer"
+                                        <a href="Agency-my-student-detail.html?student=sarah-johnson" target="_blank"
+                                            rel="noopener noreferrer"
                                             class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200"
                                             title="View Details">
                                             <i data-lucide="eye" class="w-3 h-3"></i>
@@ -710,7 +773,7 @@
                                             class="w-8 h-8 rounded-full">
                                         <div class="flex-1">
                                             <div class="font-medium text-sm text-gray-900">Sarah Chen</div>
-                                            <div class="text-xs text-gray-500">Canada – Business</div>
+                                            <div class="text-xs text-gray-500">Ivy Global Student Program</div>
                                         </div>
                                     </div>
                                     <span class="text-xs px-2 py-1 rounded-full text-white"
@@ -723,7 +786,8 @@
                                             style="background-color: #FEF2F2; color: #d82128;" title="Send Message">
                                             <i data-lucide="message-circle" class="w-3 h-3"></i>
                                         </button>
-                                        <a href="Agency-my-student-detail.html?student=sarah-johnson" target="_blank" rel="noopener noreferrer"
+                                        <a href="Agency-my-student-detail.html?student=sarah-johnson" target="_blank"
+                                            rel="noopener noreferrer"
                                             class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded hover:bg-gray-200"
                                             title="View Details">
                                             <i data-lucide="eye" class="w-3 h-3"></i>
@@ -1013,7 +1077,8 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                             <div>
-                                <label class="block text-xs text-gray-600 mb-1">First Name <span class="text-red-600">*</span></label>
+                                <label class="block text-xs text-gray-600 mb-1">First Name <span
+                                        class="text-red-600">*</span></label>
                                 <input type="text" name="firstName" required
                                     class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2"
                                     style="--tw-ring-color: #d82128;">
@@ -1025,7 +1090,8 @@
                                     style="--tw-ring-color: #d82128;">
                             </div>
                             <div>
-                                <label class="block text-xs text-gray-600 mb-1">Last Name <span class="text-red-600">*</span></label>
+                                <label class="block text-xs text-gray-600 mb-1">Last Name <span
+                                        class="text-red-600">*</span></label>
                                 <input type="text" name="lastName" required
                                     class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2"
                                     style="--tw-ring-color: #d82128;">
@@ -1034,7 +1100,8 @@
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Email Address <span class="text-red-600">*</span></label>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email Address <span
+                                class="text-red-600">*</span></label>
                         <input type="email" name="email" required
                             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2"
                             style="--tw-ring-color: #d82128;">
@@ -1049,8 +1116,7 @@
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Country of Interest</label>
-                        <select name="country"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2"
+                        <select name="country" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2"
                             style="--tw-ring-color: #d82128;">
                             <option value="">Select a country</option>
                             <option value="usa">United States</option>
@@ -1253,6 +1319,43 @@
         // Initialize Lucide icons
         lucide.createIcons();
 
+        // Add New Student: click-to-toggle dropdown
+        (function () {
+            const btn = document.getElementById('add-student-actions-btn');
+            const menu = document.getElementById('add-student-actions-menu');
+            const wrap = document.getElementById('add-student-actions');
+            if (!btn || !menu || !wrap) return;
+
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                menu.classList.toggle('hidden');
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!wrap.contains(e.target)) {
+                    menu.classList.add('hidden');
+                }
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    menu.classList.add('hidden');
+                    btn.blur();
+                }
+            });
+        })();
+
+        // Fallback functions for inline handlers
+        function toggleAddStudentMenu(e) {
+            const menu = document.getElementById('add-student-actions-menu');
+            if (e) e.stopPropagation();
+            if (menu) menu.classList.toggle('hidden');
+        }
+        function closeAddStudentMenu() {
+            const menu = document.getElementById('add-student-actions-menu');
+            if (menu) menu.classList.add('hidden');
+        }
+
         // Agent Group Toggle Functionality
         function toggleAgentGroup(agentId) {
             const students = document.querySelectorAll(`.${agentId}-students`);
@@ -1279,7 +1382,8 @@
         }
 
         // Agent Filter Functionality
-        document.getElementById('agent-filter').addEventListener('change', function () {
+        const agentFilterEl = document.getElementById('agent-filter');
+        if (agentFilterEl) agentFilterEl.addEventListener('change', function () {
             const selectedAgent = this.value;
             const allAgentGroups = document.querySelectorAll('.agent-group-header');
             const allStudentRows = document.querySelectorAll('.student-row');
@@ -1918,45 +2022,6 @@
                 }
             });
         }
-
-        // Enhanced toast function with different types
-        function showToast(message, type = 'info') {
-            const toast = document.createElement('div');
-            const bgColor = type === 'success' ? 'bg-green-500' : type === 'error' ? 'bg-red-500' : 'bg-blue-500';
-
-            toast.className = `fixed top-4 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300`;
-            toast.textContent = message;
-
-            document.body.appendChild(toast);
-
-            // Slide in
-            setTimeout(() => {
-                toast.classList.remove('translate-x-full');
-            }, 100);
-
-            // Slide out and remove
-            setTimeout(() => {
-                toast.classList.add('translate-x-full');
-                setTimeout(() => {
-                    if (document.body.contains(toast)) {
-                        document.body.removeChild(toast);
-                    }
-                }, 300);
-            }, 3000);
-        }
-    </script>
-
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-
-        // Filter Drawer Functionality
-        const filterToggle = document.getElementById('filter-toggle');
-        const filterDrawer = document.getElementById('filter-drawer');
-        const filterBackdrop = document.getElementById('filter-backdrop');
-        const closeFilter = document.getElementById('close-filter');
-        const applyFiltersBtn = document.getElementById('apply-filters');
-        const resetFiltersBtn = document.getElementById('reset-filters');
 
         // Open drawer
         function openFilterDrawer() {

@@ -242,16 +242,68 @@
                             </button>
                         </div>
                     </div>
-                    <button onclick="openAddStudentModal()"
-                        class="text-white px-4 py-2 rounded-xl transition-colors hover:opacity-90 flex items-center"
-                        style="background-color: #d82128;">
-                        <i data-lucide="plus" class="w-5 h-5 inline-block mr-1"></i>
-                        <span>Add New Student</span>
-                    </button>
+                    <div id="add-student-actions" class="relative inline-block">
+                        <button id="add-student-actions-btn" type="button" onclick="toggleAddStudentMenu(event)"
+                            class="text-white px-4 py-2 rounded-xl transition-colors hover:opacity-90 flex items-center gap-2"
+                            aria-haspopup="menu" aria-expanded="false" style="background-color: #d82128;">
+                            <i data-lucide="plus" class="w-5 h-5"></i>
+                            <span>Add New Student</span>
+                            <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5 fill-current opacity-90">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M11.9999 15.9142L18.3639 9.5502L16.9497 8.13599L11.9999 13.0857L7.0502 8.13599L5.63599 9.5502L11.9999 15.9142Z">
+                                </path>
+                            </svg>
+                        </button>
+                        <div id="add-student-actions-menu"
+                            class="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-100 py-2 hidden z-50">
+                            <button onclick="window.location.href='../../Students/htmls/add-student.html?source=agency'"
+                                class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-2">
+                                <i data-lucide="user-plus" class="w-4 h-4 text-gray-500"></i>
+                                Add manually
+                            </button>
+                            <button onclick="window.location.href='../../Students/htmls/bulk-import.html?source=agency'"
+                                class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-2">
+                                <i data-lucide="file-up" class="w-4 h-4 text-gray-500"></i>
+                                Import from CSV
+                            </button>
+                        </div>
+                        <script>
+                            (function () {
+                                const wrap = document.getElementById('add-student-actions');
+                                const btn = document.getElementById('add-student-actions-btn');
+                                const menu = document.getElementById('add-student-actions-menu');
+                                if (!wrap || !btn || !menu) return;
+                                const closeMenu = () => {
+                                    if (!menu.classList.contains('hidden')) {
+                                        menu.classList.add('hidden');
+                                        btn.setAttribute('aria-expanded', 'false');
+                                    }
+                                };
+                                btn.addEventListener('click', function (e) {
+                                    e.stopPropagation();
+                                    menu.classList.toggle('hidden');
+                                    btn.setAttribute('aria-expanded', menu.classList.contains('hidden') ? 'false' : 'true');
+                                });
+                                menu.addEventListener('click', function (e) { e.stopPropagation(); });
+                                document.addEventListener('click', function (e) {
+                                    if (!wrap.contains(e.target)) closeMenu();
+                                });
+                                document.addEventListener('keydown', function (e) {
+                                    if (e.key === 'Escape') closeMenu();
+                                });
+                                window.toggleAddStudentMenu = function (ev) {
+                                    if (ev) ev.stopPropagation();
+                                    menu.classList.toggle('hidden');
+                                    btn.setAttribute('aria-expanded', menu.classList.contains('hidden') ? 'false' : 'true');
+                                };
+                            })();
+                        </script>
+                    </div>
                 </div>
                 <!-- View Toggle Buttons -->
                 <!--<div class="flex items-center space-x-2 ml-4">
                             <button id="table-view-btn" class="px-3 py-2 text-sm font-medium rounded-lg transition-colors" style="background-color: #d82128; color: white;">
+{{ ... }}
                                 <i data-lucide="list" class="w-4 h-4 inline-block mr-1"></i>
                             </button>
                             <button id="board-view-btn" class="px-3 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
@@ -1258,6 +1310,43 @@
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
+
+        // Add New Student: click-to-toggle dropdown
+        (function () {
+            const btn = document.getElementById('add-student-actions-btn');
+            const menu = document.getElementById('add-student-actions-menu');
+            const wrap = document.getElementById('add-student-actions');
+            if (!btn || !menu || !wrap) return;
+
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                menu.classList.toggle('hidden');
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!wrap.contains(e.target)) {
+                    menu.classList.add('hidden');
+                }
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    menu.classList.add('hidden');
+                    btn.blur();
+                }
+            });
+        })();
+
+        // Fallback functions for inline handlers
+        function toggleAddStudentMenu(e) {
+            const menu = document.getElementById('add-student-actions-menu');
+            if (e) e.stopPropagation();
+            if (menu) menu.classList.toggle('hidden');
+        }
+        function closeAddStudentMenu() {
+            const menu = document.getElementById('add-student-actions-menu');
+            if (menu) menu.classList.add('hidden');
+        }
 
         // Agent Group Toggle Functionality
         function toggleAgentGroup(agentId) {
